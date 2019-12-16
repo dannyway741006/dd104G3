@@ -1,8 +1,7 @@
 @import "./base/_var";
-@import "./base/_btn_reset";
-@import "./base/_font";
-@import "./base/_media";
 
 @import "./mixins/_mixin";
 
 @import "./layout/_inside_layout";
+
+@import './pages/_mall.scss'
