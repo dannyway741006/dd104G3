@@ -174,7 +174,7 @@ body {
 .slide_bar {
   width: $slideBar;
   height: 100vh;
-  background-image: linear-gradient(to bottom, $primary, $gray);
+  @include slide_bar($primary, $white);
   position: fixed;
   top: 0;
   left: 0;

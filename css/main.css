@@ -231,8 +231,8 @@ body {
 .slide_bar {
   width: 250px;
   height: 100vh;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#67d2de), to(#fff));
-  background-image: linear-gradient(to bottom, #67d2de, #fff);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#67d2de), to(#ffffff));
+  background-image: linear-gradient(to bottom, #67d2de, #ffffff);
   position: fixed;
   top: 0;
   left: 0;
