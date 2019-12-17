@@ -260,34 +260,88 @@ body {
   }
 }
 
+/* mall page css */
 .mall_content {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0 15px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background-color: #f1f1f1;
 }
 
 .mall_content .mall_box {
-  width: 24%;
-  background-color: #c2c2c2;
+  width: 18%;
+  background-color: #fff;
   padding: 1%;
-  margin: 2% 0.8%;
+  margin: 2% 1%;
+  border-radius: 5%;
+  -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  cursor: pointer;
 }
 
 .mall_content .mall_box img {
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
-  clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
   width: 100%;
 }
 
 .mall_content .mall_box p {
-  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.mall_content .mall_box .product_price {
+  margin-top: 10px;
+}
+
+.mall_content .mall_box .product_price .price_sale {
+  color: #cc0000;
+  letter-spacing: 4.8px;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.mall_content .mall_box .product_price span:nth-child(1) {
+  color: #666666;
+  text-decoration: line-through;
+}
+
+.mall_content .mall_box .product_price span:nth-child(2) {
+  color: #990000;
+}
+
+.mall_content .mall_box:hover {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  background-color: #83bac0;
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../img/add_cart.png);
+}
+
+.mall_content .mall_box:hover img {
+  visibility: hidden;
+}
+
+.mall_content .mall_box:hover p, .mall_content .mall_box:hover .product_price {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 
 @media screen and (max-width: 767px) {
   .mall_content {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 0 auto;
   }
   .mall_content .mall_box {
     width: 48%;
