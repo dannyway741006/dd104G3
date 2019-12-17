@@ -1,5 +1,5 @@
 
-
+/* mall page css */
 
 
 
@@ -9,28 +9,74 @@
 //     @include font(1);
 // } 
 .mall_content{
+    width: 100%;
     display: flex;
-    padding: 0 15px;
-    .mall_box{
-        width: 24%;
-        background-color: rgb(194, 194, 194);
+    flex-wrap:wrap;
+      background-color: rgb(241, 241, 241);
+    .mall_box{  //商品圖
+        width: 18%;
+        background-color: #fff;
         padding: 1%;
-        margin: 2% 0.8%;
+        margin: 2% 1%;
+        border-radius: 5%;
+        box-shadow: 1px 1px 10px $shadow;
+        transition: all .5s;
+        cursor: pointer;
           img{
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
             width: 100%;
+        
           }
           p{
-              text-align: center;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp:2;
           }
+          .product_price{
+           margin-top:10px;
+            .price_sale{
+                color:darken($color:$red, $amount: 10) ;
+                @include font(5);
+            }
+          }
+          .product_price span:nth-child(1){
+            color:$dark ;
+            text-decoration:line-through;
+          }
+          .product_price span:nth-child(2){
+            color:darken($color:$red, $amount: 20) ;
+          }
+
+          &:hover{
+              transform:rotateY(180deg) ;
+              background:{
+                  color: #83bac0;
+                  size: 20%;
+                  position: center;
+                  repeat:no-repeat;
+                  image: url(../img/add_cart.png);
+                }
+          
+              img{
+                  visibility: hidden;
+              }
+
+              p,.product_price{
+                transform:rotateY(180deg);
+              }
+           
+
+            }
     }
 }
 
 
 @include media(767px) {
     .mall_content{
-        flex-wrap:wrap;
+        justify-content:center;
+        margin: 0 auto;
         .mall_box{
             width: 48%;  
         }
