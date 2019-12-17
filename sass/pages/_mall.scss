@@ -1,4 +1,39 @@
 
-.h1{
-    @include font(1);
+
+
+
+
+
+
+// .h1{
+//     @include font(1);
+// } 
+.mall_content{
+    display: flex;
+    padding: 0 15px;
+    .mall_box{
+        width: 24%;
+        background-color: rgb(194, 194, 194);
+        padding: 1%;
+        margin: 2% 0.8%;
+          img{
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+            width: 100%;
+          }
+          p{
+              text-align: center;
+          }
+    }
 }
+
+
+@include media(767px) {
+    .mall_content{
+        flex-wrap:wrap;
+        .mall_box{
+            width: 48%;  
+        }
+    }
+    
+  }
