@@ -348,10 +348,42 @@ body {
   }
 }
 
-.gg {
-  letter-spacing: 3.2px;
-  font-size: 16px;
+#program_main {
+  border: 1px solid red;
+  font-size: 0;
+  background-image: url(../img/program_img/office.jpg);
+}
+
+#program_main .program_member {
+  display: inline-block;
+  width: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 5px;
+  vertical-align: middle;
+}
+
+#program_main .program_member img {
+  width: 100%;
+}
+
+#program_main .program_member_more {
+  letter-spacing: 2.8px;
+  font-size: 14px;
   line-height: 20px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid red;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 9px;
+  vertical-align: middle;
+}
+
+#program_main .visit_btn {
+  padding: 5px 15px;
+  margin: 5px;
 }
 
 .card_light_box {
