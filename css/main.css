@@ -459,10 +459,55 @@ body {
           transform: translate(-50%, -50%);
   background-color: #fff;
   width: 768px;
+  min-height: 600px;
   border: 1px solid red;
   border-radius: 10px;
-  -webkit-box-shadow: 3px 3px 6px #777777;
-          box-shadow: 3px 3px 6px #777777;
-  display: none;
+  -webkit-box-shadow: 3px 3px 6px 0px #777777;
+          box-shadow: 3px 3px 6px 0px #777777;
+  overflow: hidden;
+}
+
+.card_light_box h1 {
+  margin: 0 auto;
+  border: 1px solid red;
+  text-align: center;
+  letter-spacing: 4.8px;
+  font-size: 24px;
+  line-height: 50px;
+  background-color: #5395DE;
+  color: white;
+}
+
+.card_light_box .lightbox_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 548px;
+}
+
+.card_light_box .left_aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 180px;
+  min-height: 548px;
+  overflow: hidden;
+  border-right: 1px solid #5395DE;
+  padding-left: 20px;
+}
+
+.card_light_box .left_aside img {
+  margin-right: 15px;
+}
+
+.card_light_box h3 {
+  letter-spacing: 4px;
+  font-size: 20px;
+  line-height: 40px;
+  display: inline-block;
 }
 /*# sourceMappingURL=main.css.map */
