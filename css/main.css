@@ -415,6 +415,14 @@ body {
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 6px #777777;
           box-shadow: 3px 3px 6px #777777;
-  display: none;
+}
+
+.card_light_box h1 {
+  margin: 0 auto;
+  border: 1px solid red;
+  text-align: center;
+  letter-spacing: 4.8px;
+  font-size: 24px;
+  line-height: 2;
 }
 /*# sourceMappingURL=main.css.map */
