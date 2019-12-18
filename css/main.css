@@ -402,6 +402,15 @@ body {
   display: inline-block;
 }
 
+#program_main .cards_column .cards_column_head {
+  height: 50px;
+  width: 300px;
+  border: 1px solid red;
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+}
+
 .card_light_box {
   position: fixed;
   left: 50%;

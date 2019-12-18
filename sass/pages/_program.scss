@@ -2,8 +2,9 @@
 
   font-size: 0;
   background-image: url(../img/program_img/office.jpg);
-background-repeat: no-repeat;
-background-size: cover ;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   .invite_list {
     border: 1px solid red;
 
@@ -52,8 +53,14 @@ background-size: cover ;
     width: 500px;
     display: inline-block;
 
+    .cards_column_head {
+      height: 50px;
+      width: 300px;
+      border: 1px solid red;
+      @include font(2);
+    }
 
-    
+
   }
 
 
