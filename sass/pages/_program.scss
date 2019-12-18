@@ -3,33 +3,44 @@
     font-size: 0;
     background-image: url(../img/program_img/office.jpg);
 
-    .program_member {
-        display: inline-block;
-        width: 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 5px;
-        vertical-align: middle;
-        img {
-            width: 100%;
+    .invisit_list {
+        .program_member {
+            display: inline-block;
+            width: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 5px;
+            vertical-align: middle;
+
+            img {
+                width: 100%;
+
+            }
+        }
+
+        .program_member_more {
+            @include font(0);
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 1px solid red;
+            border-radius: 50%;
+            text-align: center;
+            padding-top: 9px;
+            vertical-align: middle;
+        }
+
+        .invisit_btn {
+            padding: 5px 15px;
+            margin: 5px;
 
         }
+
+        form {
+            // border:1px solid blue;
+            display: inline-block;
+        }
+
     }
 
-    .program_member_more {
-        @include font(0);
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        border: 1px solid red;
-        border-radius: 50%;
-        text-align: center;
-        padding-top: 9px;
-        vertical-align: middle;
-    }
-    .visit_btn{
-        padding:5px 15px;
-        margin: 5px;
-        
-    }
 }
