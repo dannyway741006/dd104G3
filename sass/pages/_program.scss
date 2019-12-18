@@ -1,54 +1,60 @@
 #program_main {
-   
-    font-size: 0;
-    background-image: url(../img/program_img/office.jpg);
 
-    .invite_list {
-        border: 1px solid red;
-        .program_member {
-            display: inline-block;
-            width: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 5px;
-            vertical-align: middle;
+  font-size: 0;
+  background-image: url(../img/program_img/office.jpg);
+background-repeat: no-repeat;
+background-size: cover ;
+  .invite_list {
+    border: 1px solid red;
 
-            img {
-                width: 100%;
+    .program_member {
+      display: inline-block;
+      width: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 5px;
+      vertical-align: middle;
 
-            }
-        }
+      img {
+        width: 100%;
 
-        .program_member_more {
-            @include font(0);
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border: 1px solid red;
-            border-radius: 50%;
-            text-align: center;
-            padding-top: 9px;
-            vertical-align: middle;
-        }
+      }
+    }
 
-        .invite_btn {
-            padding: 5px 15px;
-            margin: 5px;
+    .program_member_more {
+      @include font(0);
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 1px solid red;
+      border-radius: 50%;
+      text-align: center;
+      padding-top: 9px;
+      vertical-align: middle;
+    }
 
-        }
-
-        form {
-            // border:1px solid blue;
-            display: inline-block;
-        }
+    .invite_btn {
+      padding: 5px 15px;
+      margin: 5px;
 
     }
 
-.cards_column{
-    border:1px solid blue;
+    form {
+      // border:1px solid blue;
+      display: inline-block;
+    }
+
+  }
+
+  .cards_column {
+    border: 1px solid blue;
     height: 800px;
     width: 500px;
-}
+    display: inline-block;
+
+
+    
+  }
 
 
 
