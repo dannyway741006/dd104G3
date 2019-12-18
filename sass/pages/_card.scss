@@ -6,9 +6,10 @@
   transform: translate(-50%,-50%);
   background-color: #fff;
   width:768px;
-  // height:900px;
+  min-height: 600px;
   border: 1px solid red;
   border-radius: 10px;
   box-shadow: 3px 3px 6px #777777;
   display: none;
 }
+
