@@ -351,6 +351,8 @@ body {
 #program_main {
   font-size: 0;
   background-image: url(../img/program_img/office.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #program_main .invite_list {
@@ -397,6 +399,7 @@ body {
   border: 1px solid blue;
   height: 800px;
   width: 500px;
+  display: inline-block;
 }
 
 .card_light_box {
