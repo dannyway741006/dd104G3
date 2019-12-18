@@ -1,3 +1,15 @@
+.content {
+  &.open_lightbox {
+    left: 0%;
+    .mask {
+      opacity: 1;
+      visibility: visible;
+    }
+    .slide_bar {
+      left: 0%;
+    }
+  }
+
 .card_light_box{
   position: fixed;
   left: 50%;
