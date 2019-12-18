@@ -2,7 +2,8 @@
 
   font-size: 0;
   background-image: url(../img/program_img/office.jpg);
-
+background-repeat: no-repeat;
+background-size: cover ;
   .invite_list {
     border: 1px solid red;
 
@@ -50,6 +51,9 @@
     height: 800px;
     width: 500px;
     display: inline-block;
+
+
+    
   }
 
 
