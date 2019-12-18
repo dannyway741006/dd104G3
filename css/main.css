@@ -402,29 +402,18 @@ body {
   display: inline-block;
 }
 
-.content.open_lightbox {
-  left: 0%;
-}
-
-.content.open_lightbox .mask {
-  opacity: 1;
-  visibility: visible;
-}
-
-.content .slide_bar {
-  left: 0%;
-}
-
 .card_light_box {
   position: fixed;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: red;
-  width: 972px;
-  height: 972px;
+  background-color: #fff;
+  width: 768px;
   border: 1px solid red;
   border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 6px #777777;
+          box-shadow: 3px 3px 6px #777777;
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */

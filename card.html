@@ -66,14 +66,13 @@
     <div class="card_content">
       <!-- 內容  -->
       <div class="clickButton">
-          <button id="button">點擊後出現燈窗</button>
+          <button id="light_button" type="button">點擊後出現燈窗</button>
     </div>
     <div class="card_light_box" id="card_light_box">
        
     </div>
 
    
-
 
     </div>
   </main>
@@ -87,11 +86,24 @@
     mask.addEventListener("click", () => content.classList.remove("active"));
   </script>
   <script>
-   let button=document.getElementById('button');
-   let light_box=document.getElementById('card_light_box');
-   button.addEventListener('click',()=>
-    
+   let button=document.getElementById("light_button");
+   let light_box=document.getElementById("card_light_box");
+   button.addEventListener("click",()=>{
+    mask.style.opacity="1";
+    mask.style.visibility=" visible";
+    mask.style.display="block";
+    mask.style.zIndex="10000";
+    light_box.style.display="block";
+    light_box.style.zIndex="10001";
+   }
    )
+   mask.addEventListener("click", () =>{
+    mask.style.opacity="0";
+    mask.style.visibility="hidden";
+    mask.style.display="none";
+    mask.style.zIndex="0";
+     light_box.style.display="none";
+   });
   </script>
 </body>
 
