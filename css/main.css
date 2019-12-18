@@ -294,7 +294,7 @@ body {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
 }
 
 .mall_content .mall_box .product_price {
@@ -320,11 +320,11 @@ body {
 .mall_content .mall_box:hover {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+  background-image: url(../img/add_cart.png);
+  background-repeat: no-repeat;
   background-color: #83bac0;
   background-size: 20%;
   background-position: center;
-  background-repeat: no-repeat;
-  background-image: url(../img/add_cart.png);
 }
 
 .mall_content .mall_box:hover img {
@@ -397,10 +397,6 @@ body {
   border: 1px solid blue;
   height: 800px;
   width: 500px;
-}
-
-#program_main .invisit_list form {
-  display: inline-block;
 }
 
 .card_light_box {
