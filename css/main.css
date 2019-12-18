@@ -386,7 +386,10 @@ body {
   margin: 5px;
 }
 
-<<<<<<< HEAD
+#program_main .invisit_list form {
+  display: inline-block;
+}
+
 .card_light_box {
   position: fixed;
   left: 50%;
@@ -398,9 +401,6 @@ body {
   height: 972px;
   border: 1px solid red;
   border-radius: 10px;
-=======
-#program_main .invisit_list form {
-  display: inline-block;
->>>>>>> cho
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */
