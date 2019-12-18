@@ -1,13 +1,6 @@
 
 /* mall page css */
 
-
-
-
-
-// .h1{
-//     @include font(1);
-// } 
 .mall_content{
     width: 100%;
     display: flex;
@@ -32,7 +25,7 @@
             overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp:2;
+            -webkit-line-clamp:3;
           }
           .product_price{
            margin-top:10px;
@@ -51,14 +44,12 @@
 
           &:hover{
               transform:rotateY(180deg) ;
-              background:{
-                  color: #83bac0;
-                  size: 20%;
-                  position: center;
-                  repeat:no-repeat;
-                  image: url(../img/add_cart.png);
-                }
-          
+              background-image: url(../img/add_cart.png);
+              background-repeat:no-repeat;
+              background-color: #83bac0;
+              background-size: 20%;
+              background-position: center;
+        
               img{
                   visibility: hidden;
               }
