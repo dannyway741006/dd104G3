@@ -354,7 +354,7 @@ body {
   background-image: url(../img/program_img/office.jpg);
 }
 
-#program_main .program_member {
+#program_main .invisit_list .program_member {
   display: inline-block;
   width: 80px;
   border-radius: 50%;
@@ -363,11 +363,11 @@ body {
   vertical-align: middle;
 }
 
-#program_main .program_member img {
+#program_main .invisit_list .program_member img {
   width: 100%;
 }
 
-#program_main .program_member_more {
+#program_main .invisit_list .program_member_more {
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
@@ -381,11 +381,12 @@ body {
   vertical-align: middle;
 }
 
-#program_main .visit_btn {
+#program_main .invisit_list .invisit_btn {
   padding: 5px 15px;
   margin: 5px;
 }
 
+<<<<<<< HEAD
 .card_light_box {
   position: fixed;
   left: 50%;
@@ -397,5 +398,9 @@ body {
   height: 972px;
   border: 1px solid red;
   border-radius: 10px;
+=======
+#program_main .invisit_list form {
+  display: inline-block;
+>>>>>>> cho
 }
 /*# sourceMappingURL=main.css.map */
