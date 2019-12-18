@@ -1,24 +1,14 @@
-.content {
-  &.open_lightbox {
-    left: 0%;
-    .mask {
-      opacity: 1;
-      visibility: visible;
-    }
-    .slide_bar {
-      left: 0%;
-    }
-  }
 
 .card_light_box{
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-  background-color: red;
-  width:972px;
-  height:972px;
+  background-color: #fff;
+  width:768px;
+  // height:900px;
   border: 1px solid red;
   border-radius: 10px;
-//   display: none;
+  box-shadow: 3px 3px 6px #777777;
+  display: none;
 }

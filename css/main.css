@@ -389,6 +389,7 @@ body {
   margin: 5px;
 }
 
+<<<<<<< HEAD
 #program_main .invite_list form {
   display: inline-block;
 }
@@ -399,16 +400,27 @@ body {
   width: 500px;
 }
 
+=======
+#program_main .invisit_list form {
+  display: inline-block;
+}
+
+>>>>>>> practice
 .card_light_box {
   position: fixed;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: red;
-  width: 972px;
-  height: 972px;
+  background-color: #fff;
+  width: 768px;
   border: 1px solid red;
   border-radius: 10px;
+<<<<<<< HEAD
+=======
+  -webkit-box-shadow: 3px 3px 6px #777777;
+          box-shadow: 3px 3px 6px #777777;
+  display: none;
+>>>>>>> practice
 }
 /*# sourceMappingURL=main.css.map */
