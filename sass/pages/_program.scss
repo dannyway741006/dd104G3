@@ -1,9 +1,10 @@
 #program_main {
-    border: 1px solid red;
+   
     font-size: 0;
     background-image: url(../img/program_img/office.jpg);
 
-    .invisit_list {
+    .invite_list {
+        border: 1px solid red;
         .program_member {
             display: inline-block;
             width: 80px;
@@ -30,7 +31,7 @@
             vertical-align: middle;
         }
 
-        .invisit_btn {
+        .invite_btn {
             padding: 5px 15px;
             margin: 5px;
 
@@ -42,5 +43,16 @@
         }
 
     }
+
+.cards_column{
+    border:1px solid blue;
+    height: 800px;
+    width: 500px;
+}
+
+
+
+
+
 
 }
