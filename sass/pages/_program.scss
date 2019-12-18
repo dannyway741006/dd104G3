@@ -55,9 +55,13 @@
 
     .cards_column_head {
       height: 50px;
-      width: 300px;
+      width: 100%;
       border: 1px solid red;
-      @include font(2);
+      @include font(2, 50px);
+      background-color: #68d2de;
+      color: #fff;
+      letter-spacing: 3.6px;
+      text-align: center;
     }
 
 

@@ -404,11 +404,15 @@ body {
 
 #program_main .cards_column .cards_column_head {
   height: 50px;
-  width: 300px;
+  width: 100%;
   border: 1px solid red;
   letter-spacing: 3.6px;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 50px;
+  background-color: #68d2de;
+  color: #fff;
+  letter-spacing: 3.6px;
+  text-align: center;
 }
 
 .card_light_box {
