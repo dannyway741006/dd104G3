@@ -510,4 +510,72 @@ body {
   line-height: 40px;
   display: inline-block;
 }
+
+.cart_noshow {
+  position: fixed;
+  z-index: 99999;
+  top: 3%;
+  left: 95%;
+  width: 0%;
+  height: 0%;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+}
+
+.cart_noshow.show {
+  position: fixed;
+  z-index: 99999;
+  top: 10%;
+  left: 15%;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 70%;
+  height: 80%;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.cart_bg.show {
+  position: fixed;
+  z-index: 10000;
+  top: 0%;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+}
+
+.close_cart.show {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #68D2DE;
+  border-radius: 50%;
+  margin: 1.5%;
+  position: relative;
+}
+
+.close_cart.show p {
+  width: 50px;
+  height: 1px;
+  background-color: #68D2DE;
+  position: absolute;
+  top: 50%;
+  left: 15%;
+}
+
+.close_cart.show p:first-child {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.close_cart.show p:last-child {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
 /*# sourceMappingURL=main.css.map */
