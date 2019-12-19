@@ -467,7 +467,7 @@ body {
   overflow: hidden;
 }
 
-.card_light_box h1 {
+.card_light_box h1, .card_light_box .input {
   margin: 0 auto;
   border: 1px solid red;
   text-align: center;
@@ -499,28 +499,24 @@ body {
   padding-left: 20px;
 }
 
-.card_light_box .left_aside .first_right div:nth-child(n) {
+.card_light_box .left_aside .first_right div:nth-child(n), .card_light_box .left_aside .second_right div:nth-child(n) {
   width: 90%;
   margin: 5px 0px;
   padding: 5px;
 }
 
-.card_light_box .left_aside .first_right div:nth-child(n):hover {
+.card_light_box .left_aside .first_right div:nth-child(n):hover, .card_light_box .left_aside .second_right div:nth-child(n):hover {
   background-color: #CEE0FF;
   cursor: pointer;
 }
 
-.card_light_box .left_aside .first_right div:nth-child(n) img:hover {
+.card_light_box .left_aside .first_right div:nth-child(n):hover img, .card_light_box .left_aside .second_right div:nth-child(n):hover img {
   -webkit-filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
           filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
 }
 
 .card_light_box .left_aside hr {
   width: 75%;
-}
-
-.card_light_box .left_aside .second_right div {
-  margin: 10px 0px;
 }
 
 .card_light_box .left_aside img {

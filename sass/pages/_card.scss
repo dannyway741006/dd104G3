@@ -12,14 +12,14 @@
   box-shadow:  3px 3px 6px 0px $shadow;
   // display: none;
   overflow: hidden;
-  h1{
+  h1,.input{
  margin: 0 auto;
  border: 1px solid red;
  text-align: center;
  @include  font(5,50px);
  background-color: #5395DE;
  color: white;
- 
+  
   }
   .lightbox_content{
     display: flex;
@@ -33,7 +33,7 @@
     overflow: hidden;
     border-right: 1px solid #5395DE;
     padding-left: 20px;
-        .first_right div{
+        .first_right div,.second_right div{
           &:nth-child(n){
              width: 90%;
             margin:5px 0px;
@@ -42,19 +42,15 @@
               background-color:#CEE0FF ;
               // color:$primary ;
               cursor: pointer;
-            }
-            img{
-              &:hover{
+              img{
                 filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
               }
             }
+           
           }
         }
        hr{
          width: 75%;
-       }
-       .second_right div{
-        margin:10px 0px;
        }
     img{
       margin-right:15px;

@@ -70,7 +70,7 @@
     </div>
     <div class="card_light_box" id="card_light_box">
      
-       <h1>團專衝刺</h1>
+       <h1 id="card_title"><input type="text" class="input" placeholder="編輯標題" @keyup.enter="inputHandler"></h1>
         <div class="lightbox_content">
        <div class="left_aside">
          <div class="first_right">
@@ -104,7 +104,20 @@
     moreBtn.addEventListener("click", () => content.classList.add("active"));
     mask.addEventListener("click", () => content.classList.remove("active"));
   </script>
+  <script>
+    var vm=new Vue({
+      el:'#light_button',
+      data:{
+            
+      },
+      methods:{
+         
+      },
+    });
+    
+  </script>
   <script src="./js/card.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
 </body>
 
 </html>
