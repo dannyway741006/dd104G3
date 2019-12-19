@@ -1,25 +1,47 @@
+// 側邊攔
 #program_aside {
   border: 1px solid blue;
 
-  .program_add_all {
-    .program_add_btn {
-      padding: 5px 10px;
 
-      .program_add_img {
-        width: 20px;
-        display: inline-block;
-        vertical-align: middle;
+  .program_add_btn {
+    padding: 5px 10px;
 
-        img {
-          width: 100%;
-        }
-      }
+    .program_add_img {
+      width: 20px;
+      display: inline-block;
+      vertical-align: middle;
 
-      p {
-        margin-left: 5px;
-        display: inline-block;
+      img {
+        width: 100%;
       }
     }
+
+    .program_add_list {
+      list-style: none;
+
+      .todolist_li {
+        @include font(3, 30px);
+      }
+    }
+
+  }
+}
+
+//新建專案取名&選色燈箱
+.new_program_choose_box {
+  border: 1px solid red;
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  height: 170px;
+  width: 300px;
+  background-color: white;
+  border-radius: 20px;
+  display: none;
+  &.active{
+    opacity: 1;
+    display: block;
+    z-index: 9999999;
   }
 }
 
@@ -38,6 +60,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 
+  //邀請成員區
   .invite_list {
     border: 1px solid red;
 
@@ -80,6 +103,7 @@
 
   }
 
+  //卡片區
   .cards_column_all {
     border: 1px solid red;
     display: flex;
@@ -91,7 +115,7 @@
       height: 70vh;
       min-height: 450px;
       min-width: 300px;
-
+      text-align: center;
       border-radius: 20px;
       overflow: hidden;
       margin: 10px;
@@ -107,6 +131,16 @@
         text-align: center;
       }
 
+      .cards_add_btn {
+        width: 90%;
+
+
+      }
+      // button{
+      //   // &:hover{
+      //   //   filter: invert(93%) sepia(16%) saturate(2102%) hue-rotate(155deg) brightness(91%) contrast(91%);
+      //   // }
+      // }
     }
   }
 

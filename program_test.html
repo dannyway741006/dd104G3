@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div>
+        <div class="more" id="more">
+          <img src="./img/icon/more-options.svg" alt="more" width="20" />
+          <img src="./img/icon/more-options_on.svg" alt="more" width="20" />
+        </div>
+        <h2>專案管理</h2>
+      </div>
+      <div>
+        <ul class="nav_list">
+          <li>
+            <a href="#">
+              <img src="./img/icon/time-left.svg" alt="clock" width="20" />
+              <img src="./img/icon/time-left_on.svg" alt="clock" width="20" />
+              <p>番茄鐘</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/icon/shopping-bag.svg" alt="shop" width="20" />
+              <img src="./img/icon/shopping-bag_on.svg" alt="shop" width="20" />
+              <p>商城</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/icon/user.svg" alt="member" width="20" />
+              <img src="./img/icon/user_on.svg" alt="member" width="20" />
+              <p>會員中心</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./img/icon/shopping-cart.svg" alt="cart" width="20" />
+              <img src="./img/icon/shopping-cart_on.svg" alt="cart" width="20" />
+            </a>
+          </li>
+        </ul>
+        <div class="status">登出</div>
+      </div>
+    </nav>
+  </header>
+  <main class="content" id="content">
+    <aside class="slide_bar">
+      <div class="logo">
+        <a href="#">
+          <img src="./img/logo.svg" alt="logo" />
+        </a>
+        <!-- 專案aside -->
+        <div id="program_aside">
+
+
+
+          <button class="program_add_btn" id="program_add_btn">
+            <div class="program_add_img"><img src="./img/icon/add_normal.png" alt=""></div>
+            <span>新增專案</span>
+          </button>
+          <ul class="program_add_list">
+            <!-- <li>Update my portfolio <span>x</span></li>
+              <li>Advance in my career <span>x</span></li>
+              <li>Edit those photos.. <span>x</span></li>
+              <li>Learn something new <span>x</span></li> -->
+          </ul>
+          <div class="new_program_choose_box" id="new_program_choose_box">
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </aside>
+    <div class="mask" id="mask"></div>
+    <div id="program_main">
+      <!-- 內容  -->
+      <div class="invite_list">
+        <div class="program_member"><img src="./img/program_img/program_member_1.png" alt=""></div>
+        <div class="program_member"><img src="./img/program_img/program_member_2.png" alt=""></div>
+        <div class="program_member"><img src="./img/program_img/program_member_3.png" alt=""></div>
+
+        <div class="program_member_more">+4</div>
+        <form action="">
+          <!-- <button  type="button" class="invite_btn">邀請</button> -->
+          <input type="button" class="invite_btn" value="邀請">
+        </form>
+      </div>
+
+      <div class="cards_column_all">
+        <div class="cards_column todo_column">
+          <div class="cards_column_head">待辦事項</div>
+
+          <div class="cards_list">
+
+          </div>
+          <button><img src="./homepage/img/plus.a4d786b4.svg" alt=""></button>
+        </div>
+        <div class="cards_column doing_column">
+
+        </div>
+        <div class="cards_column done_column">
+
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src="./js/program.js"></script>
+  <script>
+    const moreBtn = document.getElementById("more");
+    const content = document.getElementById("content");
+    const mask = document.getElementById("mask");
+    moreBtn.addEventListener("click", () => content.classList.add("active"));
+    mask.addEventListener("click", () => content.classList.remove("active"));
+  </script>
+</body>
+
+</html>
