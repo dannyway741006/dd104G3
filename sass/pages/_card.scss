@@ -9,7 +9,7 @@
   min-height: 600px;
   border: 1px solid red;
   border-radius: 10px;
-  box-shadow:  3px 3px 6px 0px #777777;
+  box-shadow:  3px 3px 6px 0px $shadow;
   // display: none;
   overflow: hidden;
   h1{
@@ -23,28 +23,46 @@
   }
   .lightbox_content{
     display: flex;
-    min-height: 548px;
-   
+   margin-top: 20px
   }
   .left_aside{
     display: flex;
     flex-direction: column;
     width: 180px;
-    min-height: 548px;
     // height: 100%;
     overflow: hidden;
     border-right: 1px solid #5395DE;
     padding-left: 20px;
-    // .first_right{
-       
-    // }
+        .first_right div{
+          &:nth-child(n){
+             width: 90%;
+            margin:5px 0px;
+            padding: 5px;
+            &:hover{
+              background-color:#CEE0FF ;
+              // color:$primary ;
+              cursor: pointer;
+            }
+            img{
+              &:hover{
+                filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+              }
+            }
+          }
+        }
+       hr{
+         width: 75%;
+       }
+       .second_right div{
+        margin:10px 0px;
+       }
     img{
       margin-right:15px;
     }
   }
     h3{
-      @include  font(3,40px);
-     
+      @include  font(2,40px);
+     font-weight: 400;
       display: inline-block;
     }
   
