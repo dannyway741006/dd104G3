@@ -366,9 +366,14 @@ body {
   width: 100%;
 }
 
-#program_aside .program_add_all .program_add_btn p {
-  margin-left: 5px;
-  display: inline-block;
+#program_aside .program_add_all .program_add_list {
+  list-style: none;
+}
+
+#program_aside .program_add_all .program_add_list .todolist_li {
+  letter-spacing: 4px;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 #program_main {
