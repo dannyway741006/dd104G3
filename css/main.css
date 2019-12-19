@@ -366,11 +366,6 @@ body {
   width: 100%;
 }
 
-#program_aside .program_add_all .program_add_btn p {
-  margin-left: 5px;
-  display: inline-block;
-}
-
 #program_main {
   font-size: 0;
   background-image: url(../img/program_img/office.jpg);
