@@ -1,4 +1,3 @@
-
 // 側邊攔
 #program_aside {
   border: 1px solid blue;
@@ -17,6 +16,15 @@
         }
       }
     }
+
+    .program_add_list {
+      list-style: none;
+
+      .todolist_li {
+        @include font(3, 30px);
+      }
+    }
+
   }
 }
 
