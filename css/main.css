@@ -376,7 +376,7 @@ body {
   line-height: 30px;
 }
 
-.new_program_choose_box {
+#program_aside .new_program_choose_box {
   border: 1px solid red;
   position: fixed;
   top: 100px;
@@ -385,13 +385,32 @@ body {
   width: 300px;
   background-color: white;
   border-radius: 20px;
-  display: none;
+  text-align: center;
+  margin: 0 auto;
 }
 
-.new_program_choose_box.active {
+#program_aside .new_program_choose_box.active {
   opacity: 1;
   display: block;
-  z-index: 9999999;
+  z-index: 10000;
+}
+
+#program_aside .new_program_choose_box h3 {
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+#program_aside .new_program_choose_box .new_program_choose_name input {
+  padding: 5px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+#program_aside .new_program_choose_box hr {
+  margin: 15px;
+  width: 90%;
 }
 
 #program_main {

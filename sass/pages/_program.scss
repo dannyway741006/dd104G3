@@ -25,23 +25,47 @@
     }
 
   }
-//新建專案取名&選色燈箱
-.new_program_choose_box {
-  border: 1px solid red;
-  position: fixed;
-  top: 100px;
-  left: 20px;
-  height: 170px;
-  width: 300px;
-  background-color: white;
-  border-radius: 20px;
-  display: none;
-  &.active{
-    opacity: 1;
-    display: block;
-    z-index: 10000;
+
+  //新建專案取名&選色燈箱
+  .new_program_choose_box {
+    border: 1px solid red;
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    height: 170px;
+    width: 300px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0 auto;
+
+    // display: none;
+    &.active {
+      opacity: 1;
+      display: block;
+      z-index: 10000;
+    }
+
+    h3 {
+      @include font(2, 40px);
+    }
+
+    .new_program_choose_name {
+
+      input {
+        padding: 5px;
+        @include font(1);
+      }
+    }
+
+    hr {
+      margin: 15px;
+      width: 90%;
+    }
+
   }
-}
+
+  //新建專案取名&選色燈箱--結束
 
 }
 
@@ -138,6 +162,7 @@
 
 
       }
+
       // button{
       //   // &:hover{
       //   //   filter: invert(93%) sepia(16%) saturate(2102%) hue-rotate(155deg) brightness(91%) contrast(91%);
