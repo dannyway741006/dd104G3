@@ -8,6 +8,8 @@
   <title>Document</title>
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap" rel="stylesheet" />
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+  <script src="./js/card.js"></script> -->
 </head>
 
 <body>
@@ -62,15 +64,15 @@
         </a>
       </div>
     </aside>
-    <div class="mask" id="mask"></div>
+    <div class="mask" id="mask" :class='{masked: open}' @click='open = !open'></div>
     <div class="card_content">
       <!-- 內容  -->
       <div class="clickButton">
-          <button id="light_button" type="button">點擊後出現燈窗</button>
+          <button id="light_button" type="button"  @click='open = !open'>點擊後出現燈窗</button>
     </div>
-    <div class="card_light_box" id="card_light_box">
+    <div class="card_light_box" id="card_light_box" :class='{opneLight: open}'>
      
-       <h1 id="card_title"><input type="text" class="input" placeholder="編輯標題" @keyup.enter="inputHandler"></h1>
+       <h1 id="card_title">團專衝刺</h1>
         <div class="lightbox_content">
        <div class="left_aside">
          <div class="first_right">
@@ -96,7 +98,18 @@
     </div>
   </main>
   <footer></footer>
-
+<!-- 
+  <script>
+    const moreBtn = document.getElementById("more");
+    const content = document.getElementById("content");
+    const mask = document.getElementById("mask");
+    moreBtn.addEventListener("click", () => content.classList.add("active"));
+    mask.addEventListener("click", () => content.classList.remove("active"));
+  </script> -->
+  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+  <script src="./js/card.js"></script>
+  
   <script>
     const moreBtn = document.getElementById("more");
     const content = document.getElementById("content");
@@ -104,20 +117,6 @@
     moreBtn.addEventListener("click", () => content.classList.add("active"));
     mask.addEventListener("click", () => content.classList.remove("active"));
   </script>
-  <script>
-    var vm=new Vue({
-      el:'#light_button',
-      data:{
-            
-      },
-      methods:{
-         
-      },
-    });
-    
-  </script>
-  <script src="./js/card.js"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
 </body>
 
 </html>
