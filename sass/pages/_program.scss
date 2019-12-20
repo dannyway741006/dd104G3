@@ -28,47 +28,108 @@
 
   //新建專案取名&選色燈箱
   .new_program_choose_box {
-    border: 1px solid red;
-    position: fixed;
-    top: 100px;
-    left: 20px;
-    height: 170px;
     width: 300px;
     background-color: white;
     border-radius: 20px;
-    text-align: center;
-    margin: 0 auto;
+    padding: 15px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+    letter-spacing: 3.2px;
+    @include font(1, 20px);
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 1;
 
-    display: none;
-
+    //  display: none;
     &.active {
       opacity: 1;
       display: block;
       z-index: 10000;
     }
 
-    h3 {
-      @include font(2, 40px);
-    }
-
-    .new_program_choose_name {
-
-      input {
-        padding: 5px;
-        @include font(1);
+    p {
+      span {
+        letter-spacing: 2.8px;
+        @include font(0, 20px);
       }
     }
 
-    hr {
-      margin: 15px;
-      width: 90%;
+
+
+
+    // 新增專案命名
+    input {
+      letter-spacing: 3.2px;
+      @include font(1, 20px);
+      outline: none;
+      background-color: transparent;
+      color: $dark;
+      padding: 5px;
+      border: 1px solid $dark;
+      border-radius: 10px;
+      width: 100%;
+      margin: 5px 0;
     }
 
-  }  //新建專案取名&選色燈箱--結束
 
+
+    // 新增專案選擇顏色
+    .new_program_choose_color {
+      // border: 1px solid blue;
+
+
+      .new_program_choose_color_item {
+        background-color: #5395DE;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin: 2.5px;
+        display: inline-block;
+        cursor: pointer;
+
+        &:first-child {
+          background-color: #5395DE;
+        }
+
+        &:nth-child(2) {
+          background-color: #8acede;
+        }
+
+        &:nth-child(3) {
+          background-color: #eb7a77;
+        }
+      }
+
+      // 新增專案選擇顏色--結束
+    }
+
+    button {
+      outline: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 3.2px;
+      @include font(1,20px);
+      background-color: $primary;
+      color: $white;
+      float: right;
+      padding: 5px;
+      border-radius: 5px;
+
+      &:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+    }
+
+    //新建專案取名&選色燈箱--結束
+  }
 
 
 }
+
+
 
 
 
