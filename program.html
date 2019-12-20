@@ -55,14 +55,56 @@
     </nav>
   </header>
   <main class="content" id="content">
+    <aside class="slide_bar">
+      <div class="logo">
+        <a href="#">
+          <img src="./img/logo_in.svg" alt="logo" />
+        </a>
+      </div>
+      <div class="slider_header"></div>
 
+      <!-- 專案側邊攔 -->
+      <div id="program_aside">
+        <button class="program_add_btn" id="program_add_btn" @click='open = !open'>
+          <div class="program_add_img"><img src="./img/icon/add_normal.png" alt=""></div>
+          <span>新增專案</span>
+        </button>
+
+        <div class="new_program_choose_box" id="new_program_choose_box" :class='{active: open}'>
+          <h3>請輸入專案名稱</h3>
+          <div class="new_program_choose_name"><input type="text" class="" placeholder="新專案名稱"></div>
+          <hr>
+          <h3>請選擇專案代表色</h3>
+        </div>
+
+
+        <ul class="slide_list">
+          <li>
+            <p>list</p>
+            <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+          </li>
+          <li>
+            <p>list</p>
+            <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+          </li>
+        </ul>
+
+
+      </div>
+
+
+    </aside>
+
+    <!-- 
     <aside class="slide_bar">
       <div class="logo">
         <a href="#">
           <img src="./img/logo.svg" alt="logo" />
-        </a>
-        <!-- 專案aside -->
-        <div id="program_aside">
+        </a> -->
+    <!-- 專案aside -->
+    <!-- <div id="program_aside">
 
 
 
@@ -85,7 +127,9 @@
 
 
         </div>
-    </aside>
+    </aside> -->
+
+
     <div class="mask" id="mask"></div>
     </div>
     <div id="program_main">

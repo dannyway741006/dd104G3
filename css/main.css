@@ -489,6 +489,7 @@ body {
   border-radius: 20px;
   text-align: center;
   margin: 0 auto;
+  display: none;
 }
 
 #program_aside .new_program_choose_box.active {
@@ -765,3 +766,4 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
+/*# sourceMappingURL=main.css.map */
