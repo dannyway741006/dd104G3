@@ -1,6 +1,20 @@
 
 /* mall page css */
 
+
+  #slider{
+    margin: 2% 0 0;
+    .owl-item img{
+      height: 180px;
+    }
+  }
+  
+
+
+
+
+
+
 .mall_content{
     width: 100%;
     display: flex;
@@ -30,7 +44,7 @@
           .product_price{
            margin-top:10px;
             .price_sale{
-                color:darken($color:$red, $amount: 10) ;
+                color:$price;
                 @include font(5);
             }
           }
@@ -39,14 +53,14 @@
             text-decoration:line-through;
           }
           .product_price span:nth-child(2){
-            color:darken($color:$red, $amount: 20) ;
+            color:$price;
           }
 
           &:hover{
               transform:rotateY(180deg) ;
               background-image: url(../img/add_cart.png);
               background-repeat:no-repeat;
-              background-color: #83bac0;
+              background-color: #09afc2;
               background-size: 20%;
               background-position: center;
         
