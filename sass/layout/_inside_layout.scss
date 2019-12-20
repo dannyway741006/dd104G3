@@ -178,8 +178,8 @@ body {
       width: 150px;
     }
   }
-  .slider_header {
-  }
+  // .slider_header {
+  // }
   .slide_list {
     li {
       @include slide_list($secondary, $primary);
