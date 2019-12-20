@@ -487,17 +487,20 @@ body {
 }
 
 #program_aside .new_program_choose_box {
-  border: 1px solid red;
-  position: fixed;
-  top: 100px;
-  left: 20px;
-  height: 170px;
   width: 300px;
   background-color: white;
   border-radius: 20px;
-  text-align: center;
-  margin: 0 auto;
-  display: none;
+  padding: 15px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  letter-spacing: 3.2px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  z-index: 1;
 }
 
 #program_aside .new_program_choose_box.active {
@@ -506,22 +509,69 @@ body {
   z-index: 10000;
 }
 
-#program_aside .new_program_choose_box h3 {
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 40px;
-}
-
-#program_aside .new_program_choose_box .new_program_choose_name input {
-  padding: 5px;
-  letter-spacing: 3.2px;
-  font-size: 16px;
+#program_aside .new_program_choose_box p span {
+  letter-spacing: 2.8px;
+  letter-spacing: 2.8px;
+  font-size: 14px;
   line-height: 20px;
 }
 
-#program_aside .new_program_choose_box hr {
-  margin: 15px;
-  width: 90%;
+#program_aside .new_program_choose_box input {
+  letter-spacing: 3.2px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  outline: none;
+  background-color: transparent;
+  color: #666666;
+  padding: 5px;
+  border: 1px solid #666666;
+  border-radius: 10px;
+  width: 100%;
+  margin: 5px 0;
+}
+
+#program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item {
+  background-color: #5395DE;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 2.5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item:first-child {
+  background-color: #5395DE;
+}
+
+#program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item:nth-child(2) {
+  background-color: #8acede;
+}
+
+#program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item:nth-child(3) {
+  background-color: #eb7a77;
+}
+
+#program_aside .new_program_choose_box button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 3.2px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #8acede;
+  color: #ffffff;
+  float: right;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#program_aside .new_program_choose_box button:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 #program_main {
