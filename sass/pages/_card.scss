@@ -9,7 +9,7 @@
   border: 1px solid red;
   border-radius: 10px;
   box-shadow: 3px 3px 6px 0px $shadow;
-  display: none;
+  // display: none;
   overflow: hidden;
   &.opneLight {
     opacity: 1;
@@ -22,7 +22,7 @@
     border: 1px solid red;
     text-align: center;
     @include font(5, 50px);
-    background-color: #5395de;
+    background-color:$programcolor1;
     color: white;
   }
   .lightbox_content {
@@ -37,6 +37,7 @@
     overflow: hidden;
     border-right: 1px solid #5395de;
     padding-left: 20px;
+    padding-top: 25px;
     .first_right div,
     .second_right div {
       &:nth-child(n) {
@@ -68,9 +69,60 @@
   }
 }
 
+//遮罩
 .content .masked {
   opacity: 1;
   visibility: visible;
   z-index: 10000;
   display: block;
+}
+
+
+//右半邊修改
+.memberRight{
+  padding-left: 30px;
+  .memimg .card_member{
+    display: inline-block;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 5px;
+      vertical-align: middle;
+      img {
+        width: 100%;
+
+      }
+  }
+  .calendar{
+    padding: 8px 0px;
+    .calendar_status{
+      padding: 5px 25px;
+      display: flex;
+      .calendar_img{
+        width:25px ;
+        padding-right: 5px;
+        img{
+          width: 100%;
+        }
+      }
+      p:nth-child(2){
+        &:hover{
+          color:$primary;
+        }
+      }
+      img:nth-child(3){
+        margin-top: 5px;
+        margin-left: 7px;
+      }
+      span:nth-child(4){
+        margin-left: 7px;
+        border-radius:5px;
+        padding: 0 5px;
+        transition:background-color 0.3s;
+        background-color: $danger;
+        color: #fff;
+      }
+    }
+  }
 }

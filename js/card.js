@@ -23,5 +23,9 @@ var vm = new Vue({
   data: {
     open: false
   },
-  methods: {}
+  methods: {
+    changeimg(){
+      
+    }
+  }
 });
