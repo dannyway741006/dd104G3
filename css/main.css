@@ -52,14 +52,13 @@ body {
 }
 
 .navbar {
-  width: 100%;
+  width: calc(100% - 250px);
   height: 60px;
   background-color: #ffffff;
   position: fixed;
   top: 0;
-  left: 0;
-  padding-left: calc(250px + 20px);
-  padding-right: 20px;
+  right: 0;
+  padding: 0 20px;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
   z-index: 99;
@@ -92,15 +91,19 @@ body {
 }
 
 .navbar .more {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
   width: 40px;
   height: 60px;
   line-height: 65px;
   display: none;
-  cursor: pointer;
   position: relative;
 }
 
 .navbar .more img {
+  width: 20px;
+  height: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -114,12 +117,12 @@ body {
   opacity: 0;
 }
 
-.navbar .more:hover img:nth-of-type(2) {
-  opacity: 1;
-}
-
 .navbar .more:hover img:nth-of-type(1) {
   opacity: 0;
+}
+
+.navbar .more:hover img:nth-of-type(2) {
+  opacity: 1;
 }
 
 .navbar .nav_list {
@@ -138,7 +141,7 @@ body {
 }
 
 .navbar .nav_list li:hover > a {
-  color: #67d2de;
+  color: #8acede;
 }
 
 .navbar .nav_list li:hover > a img:nth-of-type(2) {
@@ -187,7 +190,7 @@ body {
 }
 
 .navbar .status:hover {
-  color: #67d2de;
+  color: #8acede;
 }
 
 @media screen and (max-width: 1023px) {
@@ -209,6 +212,7 @@ body {
 
 @media screen and (max-width: 767px) {
   .navbar {
+    width: 100%;
     padding: 0 10px;
   }
   .navbar h2 {
@@ -231,19 +235,26 @@ body {
 .slide_bar {
   width: 250px;
   height: 100vh;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#67d2de), to(#ffffff));
-  background-image: linear-gradient(to bottom, #67d2de, #ffffff);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
   -webkit-transition: left 0.5s;
   transition: left 0.5s;
+  -webkit-box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
 
 .slide_bar .logo {
   height: 60px;
-  padding: 12.5px 0 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 12.5px;
 }
 
 .slide_bar .logo a {
@@ -252,6 +263,97 @@ body {
 
 .slide_bar .logo img {
   width: 150px;
+}
+
+.slide_bar .slide_list li {
+  height: 50px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #999999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 25px;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.slide_bar .slide_list li > img {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 5px;
+  width: 15px;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.slide_bar .slide_list li > img:nth-of-type(2) {
+  opacity: 0;
+}
+
+.slide_bar .slide_list li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(285deg, transparent, rgba(166, 193, 238, 0.6), rgba(138, 206, 222, 0.6));
+  z-index: -1;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.slide_bar .slide_list li.active {
+  color: #666666;
+}
+
+.slide_bar .slide_list li.active::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.slide_bar .slide_list li.active img:nth-of-type(1) {
+  opacity: 0;
+}
+
+.slide_bar .slide_list li.active img:nth-of-type(2) {
+  opacity: 1;
+}
+
+.slide_bar .slide_list li:hover {
+  color: #666666;
+}
+
+.slide_bar .slide_list li:hover::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.slide_bar .slide_list li:hover img:nth-of-type(1) {
+  opacity: 0;
+}
+
+.slide_bar .slide_list li:hover img:nth-of-type(2) {
+  opacity: 1;
 }
 
 @media screen and (max-width: 767px) {
@@ -645,4 +747,3 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
-/*# sourceMappingURL=main.css.map */
