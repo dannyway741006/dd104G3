@@ -1,5 +1,5 @@
 
-.card_light_box{
+ .card_light_box{
   position: fixed;
   left: 50%;
   top: 50%;
@@ -10,8 +10,14 @@
   border: 1px solid red;
   border-radius: 10px;
   box-shadow:  3px 3px 6px 0px $shadow;
-  // display: none;
+  display: none;
   overflow: hidden;
+  &.opneLight{
+    opacity: 1;
+    display: block;
+    z-index: 10001;
+   
+  }
   h1,.input{
  margin: 0 auto;
  border: 1px solid red;
@@ -64,3 +70,9 @@
   
 }
 
+.content .masked{
+  opacity: 1;
+  visibility: visible;
+  z-index: 10000;
+  display: block;
+}
