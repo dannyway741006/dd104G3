@@ -1,0 +1,211 @@
+.memberitem {
+  // border: 0.1px solid rgb(255, 255, 255);
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+
+  .personal_photo {
+    width: 100%;
+    height: 25%;
+    // border: 1px solid red;
+    vertical-align: middle;
+
+    #userName {
+      color: $dark;
+      @include font($level: 2, $lineHeight:null);
+    }
+
+    .edit {
+      width: 100%;
+      height: 15%;
+      display: inline-block;
+
+      #set_up {
+        @include font($level: 0, $lineHeight:null);
+        transition: all 0.5s;
+        color: $dark;
+        cursor: pointer;
+        margin-left: 70%;
+
+        &:hover {
+          color: rgb(250, 83, 83);
+        }
+      }
+
+    }
+
+    .line {
+      width: 90%;
+      border: 0.5px solid rgb(255, 255, 255);
+      border-radius: 50px;
+      margin-left: 5%;
+    }
+
+    .picrange {
+      width: 100%;
+      height: 75%;
+      // border: 1px solid rebeccapurple;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .range {
+        width: 100px;
+        height: 100px;
+        // border: 1px solid gold;
+        border-radius: 100px;
+        background-color: #ffffff;
+        // img{
+        //   object-fit: cover;
+        //   width: 100%;
+        //   height: 100%;
+        // }
+      }
+    }
+  }
+
+  .settings {
+    margin-top: 20px;
+  }
+
+  .settings,
+  .memberorder {
+    transition: all 0.5s;
+    @include font($level: 2, $lineHeight:50px);
+
+    a {
+      text-decoration: none;
+      color: $dark;
+      transition: all 0.5s;
+    }
+
+    &:hover {
+      background-color: rgb(250, 83, 83);
+
+      >a {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.memberContent {
+  // border: 1px solid black;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .memcon1 {
+    width: 45%;
+    height: 90%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgb(228, 228, 228);
+
+    h3 {
+      // border: 1px solid red;
+      width: 100%;
+      height: 10%;
+      color: $dark;
+      padding: 10px 0 0 20px;
+    }
+
+    ul {
+      // border: 1px solid black;
+      width: 100%;
+      height: 90%;
+      padding-top: 30px;
+    }
+
+    .con1_info {
+      text-align: center;
+      @include font($level: 0, $lineHeight:50px);
+
+      .memberbtn {
+        width: 150px;
+        height: 30px;
+        border-radius: 50px;
+        @include font($level: 1, $lineHeight:null);
+        transition: all 0.5s;
+        color: $dark;
+        margin-top: 70px;
+        background-color: $primary;
+        color: $white;
+        border-color: #ffffff;
+        outline: none;
+      }
+
+      li {
+        list-style: none;
+      }
+    }
+
+    .con1_info li p,
+    input {
+      @include btnReset;
+      display: inline-block;
+      color: $dark;
+    }
+
+    input {
+      border-bottom-style: solid;
+      border-width: 1px;
+      width: 60%;
+      border-color: rgb(155, 155, 155);
+      @include font($level: 0, $lineHeight:null);
+      // background-color: aqua;
+
+    }
+  }
+
+  .memcon2 {
+    width: 45%;
+    height: 90%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgb(228, 228, 228);
+
+    h3 {
+      width: 100%;
+      height: 10%;
+      color: $dark;
+      padding: 10px 0 0 20px;
+      // border: 1px solid red;
+    }
+
+    #oder {
+      width: 100%;
+      height: 90%;
+      // border: 1px solid blue;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
+      .table_oder{
+        width: 95%;
+        // border: 1px solid #000000;
+         border-collapse: collapse;
+      }
+      
+    th{
+        @include font($level: 0, $lineHeight:null);
+        font-weight: 100;
+        color: $dark; 
+        border-bottom: #d8d8d8 solid;
+        border-width: 0.5px;
+        height: 30px;
+      }
+    }
+  }
+}
+@include media(1000px){
+  .memberContent .memcon1{
+    width: 90%;
+    // background-color: aqua;
+  }
+  .memcon2{
+    display: none;
+  }
+  
+}

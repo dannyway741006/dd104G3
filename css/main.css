@@ -425,4 +425,239 @@ body {
           box-shadow: 3px 3px 6px #777777;
   display: none;
 }
+
+.memberitem {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.memberitem .personal_photo {
+  width: 100%;
+  height: 25%;
+  vertical-align: middle;
+}
+
+.memberitem .personal_photo #userName {
+  color: #666666;
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.memberitem .personal_photo .edit {
+  width: 100%;
+  height: 15%;
+  display: inline-block;
+}
+
+.memberitem .personal_photo .edit #set_up {
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #666666;
+  cursor: pointer;
+  margin-left: 70%;
+}
+
+.memberitem .personal_photo .edit #set_up:hover {
+  color: #fa5353;
+}
+
+.memberitem .personal_photo .line {
+  width: 90%;
+  border: 0.5px solid white;
+  border-radius: 50px;
+  margin-left: 5%;
+}
+
+.memberitem .personal_photo .picrange {
+  width: 100%;
+  height: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.memberitem .personal_photo .picrange .range {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  background-color: #ffffff;
+}
+
+.memberitem .settings {
+  margin-top: 20px;
+}
+
+.memberitem .settings,
+.memberitem .memberorder {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 50px;
+}
+
+.memberitem .settings a,
+.memberitem .memberorder a {
+  text-decoration: none;
+  color: #666666;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.memberitem .settings:hover,
+.memberitem .memberorder:hover {
+  background-color: #fa5353;
+}
+
+.memberitem .settings:hover > a,
+.memberitem .memberorder:hover > a {
+  color: #67d2de;
+}
+
+.memberContent {
+  width: 100%;
+  height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.memberContent .memcon1 {
+  width: 45%;
+  height: 90%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 5px #e4e4e4;
+          box-shadow: 0px 0px 5px #e4e4e4;
+}
+
+.memberContent .memcon1 h3 {
+  width: 100%;
+  height: 10%;
+  color: #666666;
+  padding: 10px 0 0 20px;
+}
+
+.memberContent .memcon1 ul {
+  width: 100%;
+  height: 90%;
+  padding-top: 30px;
+}
+
+.memberContent .memcon1 .con1_info {
+  text-align: center;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 50px;
+}
+
+.memberContent .memcon1 .con1_info .memberbtn {
+  width: 150px;
+  height: 30px;
+  border-radius: 50px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #666666;
+  margin-top: 70px;
+  background-color: #67d2de;
+  color: #ffffff;
+  border-color: #ffffff;
+  outline: none;
+}
+
+.memberContent .memcon1 .con1_info li {
+  list-style: none;
+}
+
+.memberContent .memcon1 .con1_info li p,
+.memberContent .memcon1 input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  color: #666666;
+}
+
+.memberContent .memcon1 input {
+  border-bottom-style: solid;
+  border-width: 1px;
+  width: 60%;
+  border-color: #9b9b9b;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.memberContent .memcon2 {
+  width: 45%;
+  height: 90%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 5px #e4e4e4;
+          box-shadow: 0px 0px 5px #e4e4e4;
+}
+
+.memberContent .memcon2 h3 {
+  width: 100%;
+  height: 10%;
+  color: #666666;
+  padding: 10px 0 0 20px;
+}
+
+.memberContent .memcon2 #oder {
+  width: 100%;
+  height: 90%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 40px;
+}
+
+.memberContent .memcon2 #oder .table_oder {
+  width: 95%;
+  border-collapse: collapse;
+}
+
+.memberContent .memcon2 #oder th {
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 100;
+  color: #666666;
+  border-bottom: #d8d8d8 solid;
+  border-width: 0.5px;
+  height: 30px;
+}
+
+@media screen and (max-width: 1000px) {
+  .memberContent .memcon1 {
+    width: 90%;
+  }
+  .memcon2 {
+    display: none;
+  }
+}
 /*# sourceMappingURL=main.css.map */
