@@ -489,6 +489,7 @@ body {
   border-radius: 20px;
   text-align: center;
   margin: 0 auto;
+  display: none;
 }
 
 #program_aside .new_program_choose_box.active {
@@ -766,6 +767,7 @@ body {
           transform: rotate(135deg);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 .memberitem {
   width: 100%;
@@ -1004,3 +1006,6 @@ body {
 /*# sourceMappingURL=main.css.map */
 =======
 >>>>>>> dev
+=======
+/*# sourceMappingURL=main.css.map */
+>>>>>>> cho
