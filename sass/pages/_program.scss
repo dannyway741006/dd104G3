@@ -25,8 +25,6 @@
     }
 
   }
-}
-
 //新建專案取名&選色燈箱
 .new_program_choose_box {
   border: 1px solid red;
@@ -41,9 +39,13 @@
   &.active{
     opacity: 1;
     display: block;
-    z-index: 9999999;
+    z-index: 10000;
   }
 }
+
+}
+
+
 
 
 
