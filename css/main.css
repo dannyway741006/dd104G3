@@ -492,7 +492,14 @@ body {
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
+  display: none;
   overflow: hidden;
+}
+
+.card_light_box.opneLight {
+  opacity: 1;
+  display: block;
+  z-index: 10001;
 }
 
 .card_light_box h1, .card_light_box .input {
@@ -557,6 +564,13 @@ body {
   line-height: 40px;
   font-weight: 400;
   display: inline-block;
+}
+
+.content .masked {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10000;
+  display: block;
 }
 
 .cart_noshow {
