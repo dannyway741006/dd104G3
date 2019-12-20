@@ -40,14 +40,13 @@ body {
   }
 }
 .navbar {
-  width: 100%;
+  width: calc(100% - #{$slideBar});
   height: 60px;
   background-color: $white;
   position: fixed;
   top: 0;
-  left: 0;
-  padding-left: calc(#{$slideBar} + 20px);
-  padding-right: 20px;
+  right: 0;
+  padding: 0 20px;
   box-shadow: 0 3px 3px $shadow;
   z-index: 99;
   display: flex;
@@ -63,27 +62,12 @@ body {
     align-items: center;
   }
   .more {
+    @include hoverIcon(20px);
     width: 40px;
     height: 60px;
     line-height: 65px;
     display: none;
-    cursor: pointer;
     position: relative;
-    img {
-      @include positionCenter;
-      transition: opacity 0.3s;
-      &:nth-of-type(2) {
-        opacity: 0;
-      }
-    }
-    &:hover {
-      img:nth-of-type(2) {
-        opacity: 1;
-      }
-      img:nth-of-type(1) {
-        opacity: 0;
-      }
-    }
   }
   .nav_list {
     list-style: none;
@@ -154,6 +138,7 @@ body {
     }
   }
   @include media(767px) {
+    width: 100%;
     padding: 0 10px;
     h2 {
       color: $dark;
@@ -174,20 +159,30 @@ body {
 .slide_bar {
   width: $slideBar;
   height: 100vh;
-  @include slide_bar($primary, $white);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
   transition: left 0.5s;
+  box-shadow: 1px 0 1px $shadow;
+  background-color: $white;
   .logo {
     height: 60px;
-    padding: 12.5px 0 0 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 12.5px;
     a {
       display: inline-block;
     }
     img {
       width: 150px;
+    }
+  }
+  .slider_header {
+  }
+  .slide_list {
+    li {
+      @include slide_list($secondary, $primary);
     }
   }
   @include media(767px) {
