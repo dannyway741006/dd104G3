@@ -39,7 +39,8 @@
     text-align: center;
     margin: 0 auto;
 
-    // display: none;
+    display: none;
+
     &.active {
       opacity: 1;
       display: block;
@@ -63,9 +64,9 @@
       width: 90%;
     }
 
-  }
+  }  //新建專案取名&選色燈箱--結束
 
-  //新建專案取名&選色燈箱--結束
+
 
 }
 
