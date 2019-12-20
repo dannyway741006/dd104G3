@@ -111,9 +111,29 @@
             
       },
       methods:{
-         
-      },
-    });
+        inputHandler(){
+        // 如果input.title裡有東西的話，執行函數
+        if(this.input.type.length){
+  
+           
+               let {type:type,title:title}=this.input;
+            //    相同於 let {type:type,title:title}=this.input:{type:'主廚的話',title:''}
+            //    console(type,title) =主廚的話,''
+             //對應的屬性名稱與實際建立和給予值的變數名稱
+            this.menu.push({
+                //  type:this.input.type,
+                //  title:this.input.title,
+                type,
+                //同 type:type，檢寫成type
+                title,
+                 //同 title:title，檢寫成title
+                 link:'javascript:;'
+            })
+            this.input.title="";
+        }
+    }
+  },
+})
     
   </script>
   <script src="./js/card.js"></script>
