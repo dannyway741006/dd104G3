@@ -1,4 +1,4 @@
-var vm = new Vue({
+var main_content = new Vue({
   el: "#content",
   data: {
     tables: [],
@@ -27,4 +27,9 @@ var vm = new Vue({
       this.open = false;
     });
   },
+});
+
+var cards_column_all = new Vue({
+
+
 });
