@@ -909,9 +909,6 @@ body {
   padding-left: 30px;
 }
 
-<<<<<<< HEAD
-.memberRight .memimg .card_member {
-=======
 .memberRight .card_memver_head {
   margin-bottom: 24px;
 }
@@ -938,7 +935,6 @@ body {
 }
 
 .memberRight .card_memver_head .memimg .card_member {
->>>>>>> practice
   display: inline-block;
   width: 35px;
   height: 35px;
@@ -948,18 +944,11 @@ body {
   vertical-align: middle;
 }
 
-<<<<<<< HEAD
-.memberRight .memimg .card_member img {
-=======
 .memberRight .card_memver_head .memimg .card_member img {
->>>>>>> practice
   width: 100%;
 }
 
 .memberRight .calendar {
-<<<<<<< HEAD
-  padding: 8px 0px;
-=======
   margin-bottom: 24px;
 }
 
@@ -982,7 +971,6 @@ body {
 .memberRight .calendar .calendar_title img {
   -webkit-filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
           filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
->>>>>>> practice
 }
 
 .memberRight .calendar .calendar_status {
@@ -1003,10 +991,7 @@ body {
 
 .memberRight .calendar .calendar_status p:nth-child(2):hover {
   color: #8acede;
-<<<<<<< HEAD
-=======
   cursor: pointer;
->>>>>>> practice
 }
 
 .memberRight .calendar .calendar_status img:nth-child(3) {
@@ -1024,8 +1009,6 @@ body {
   color: #fff;
 }
 
-<<<<<<< HEAD
-=======
 .memberRight .card_todo_content {
   margin-bottom: 24px;
 }
@@ -1214,7 +1197,6 @@ body {
           filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
 }
 
->>>>>>> practice
 .memberitem {
   width: 100%;
   height: 100%;
@@ -1448,69 +1430,7 @@ body {
   .memcon2 {
     display: none;
   }
-<<<<<<< HEAD
 }
-<<<<<<< HEAD
-.memberRight {
-  padding-left: 30px;
-}
-
-.memberRight .memimg .card_member {
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 5px;
-  vertical-align: middle;
-}
-
-.memberRight .memimg .card_member img {
-  width: 100%;
-}
-
-.memberRight .calendar {
-  padding: 8px 0px;
-}
-
-.memberRight .calendar .calendar_status {
-  padding: 5px 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.memberRight .calendar .calendar_status .calendar_img {
-  width: 25px;
-  padding-right: 5px;
-}
-
-.memberRight .calendar .calendar_status .calendar_img img {
-  width: 100%;
-}
-
-.memberRight .calendar .calendar_status p:nth-child(2):hover {
-  color: #8acede;
-}
-
-.memberRight .calendar .calendar_status img:nth-child(3) {
-  margin-top: 5px;
-  margin-left: 7px;
-}
-
-.memberRight .calendar .calendar_status span:nth-child(4) {
-  margin-left: 7px;
-  border-radius: 5px;
-  padding: 0 5px;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
-  background-color: #eb7a77;
-  color: #fff;
-=======
->>>>>>> cho
-}
-=======
->>>>>>> practice
 
 .cart_noshow {
   position: fixed;
