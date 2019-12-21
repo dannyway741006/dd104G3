@@ -10,7 +10,6 @@ var vm = new Vue({
 
   },
   methods: {
-<<<<<<< HEAD
     add_program(program_name) {
       if (this.program_name !== '') {
         this.programs.push(program_name);
@@ -28,17 +27,4 @@ var vm = new Vue({
       this.open = false;
     });
   },
-=======
-    add: function () {
-      // let cope = {
-      //   name: this.name
-      // }
-      // this.name = '';
-      // this.lists.push(cope);
-      // console.log(this.name)
-      // console.log(this.lists)
-      
-    }
-  }
->>>>>>> practice
 });
