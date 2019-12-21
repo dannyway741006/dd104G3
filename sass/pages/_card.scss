@@ -1,12 +1,12 @@
 .card_light_box {
-  position: fixed;
+  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
   width: 768px;
   min-height: 600px;
-  border: 1px solid red;
+  // border: 1px solid red;
   border-radius: 10px;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
@@ -18,15 +18,38 @@
     z-index: 10001;
   }
 
-  h1,
-  .input {
-    margin: 0 auto;
-    border: 1px solid red;
-    text-align: center;
+  .card_header_title {
+    position: relative;
+     background-color: $programcolor1;
+     height: 45px;
+    h1{
+    
     @include font(5, 50px);
-    background-color: $programcolor1;
+    @include positionCenter();
     color: white;
   }
+  div{
+    position: absolute;
+    right: 15px;
+    top: 11px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+   transition: all 0.3s;
+  
+    &:hover{
+      background-color: white;
+      img{
+        filter: invert(53%) sepia(39%) saturate(707%) hue-rotate(171deg) brightness(96%) contrast(90%);      }
+    }
+    img{
+      width: 50%;
+        @include  positionCenter();
+        transition: all 0.3s;
+    }
+  }
+}
 
   .lightbox_content {
     display: flex;
@@ -36,7 +59,7 @@
   .left_aside {
     display: flex;
     flex-direction: column;
-    width: 180px;
+    width: 25%;
     // height: 100%;
     overflow: hidden;
     border-right: 1px solid #5395de;
@@ -65,6 +88,7 @@
 
     hr {
       width: 75%;
+      border: 1px solid #e0dcdc;
     }
 
     img {
@@ -89,6 +113,9 @@
 
 
 //右半邊修改
+.right_aside{
+width: 70%;
+overflow-y: scroll;
 .memberRight {
   padding-left: 30px;
   .card_memver_head{
@@ -143,7 +170,9 @@
     .calendar_status {
       padding: 5px 25px;
       display: flex;
-
+      cursor: pointer;
+      @include font(0,20px);
+     align-items: center;
       .calendar_img {
         width: 25px;
         padding-right: 5px;
@@ -168,10 +197,11 @@
       span:nth-child(4) {
         margin-left: 7px;
         border-radius: 5px;
-        padding: 0 5px;
+        padding:0 5px;
         transition: background-color 0.3s;
         background-color: $danger;
         color: #fff;
+        
       }
     }
   }
@@ -195,14 +225,20 @@
     .todo_main_content {
       padding-left: 25px;
       display: flex;
-      border: 1px solid red;
+       padding-top: 5px;
+       padding-bottom: 5px;
+       position: relative;
           p{
-            @include font(0,20px);
+            @include font(1,20px);
           }
       div {
-        margin-left: 275px;
+       position: absolute;
+       right:7% ;
         cursor: pointer;
-
+        &:hover{
+          color:$primary ;
+          text-decoration: underline;
+        }
        
       }
     }
@@ -211,14 +247,15 @@
     .todo_progress_bar {
       display: flex;
       padding-left: 25px;
-
+      padding-top: 5px;
+      padding-bottom: 5px;
       .progress_bar {
         position: relative;
         height: 5px;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         margin-left: 5px;
-        width: 100%;
+        width: 85%;
         top: 9px;
 
         span {
@@ -236,7 +273,7 @@
   .card_check_item {
     display: flex;
     padding:6px 25px;
-
+   position: relative;
     div:first-child {
       width: 20px;
 
@@ -251,11 +288,19 @@
     }
     div:nth-child(3){
       width: 20px;
+    // float: right;
+    // &:after{
+    //   content: "";
+    //   display: block;
+    //   clear: both;
+ 
+    // }
+    position: absolute;
+    right: 18%;
       img {
         width: 100%;
         cursor: pointer;
         transition: all 0.3s;
-        margin-left:230px;
         &:hover{
           filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
         }
@@ -263,11 +308,18 @@
     }
     div:nth-child(4){
       width: 20px;
+      // float: right;
+      // &:after{
+      //   content: "";
+      //   display: block;
+      //   clear: both;
+      // }
+      position: absolute;
+      right: 6%;
       img {
         width: 100%;
         cursor: pointer;
         transition: all 0.3s;
-        margin-left: 250px;
         &:hover{
           filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
         }
@@ -281,9 +333,9 @@
     button {
       @include btnReset();
       background-color: $primary;
-      @include font(1, 20px);
+      @include font(0, 20px);
       color: #fff;
-      padding: 5px;
+      padding: 3px;
       border-radius: 5px;
       border: 2px solid $primary;
       transition: all 0.3s;
@@ -303,7 +355,10 @@
       }
     }
   }
-  .card_file_title{
+
+  //上傳附件
+  .card_file{
+    .card_file_title{
     display: flex;
     padding:8px 0px;
   margin-bottom: 4px;
@@ -316,5 +371,103 @@
       filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
     }
   }
+  .card_upload_file {
+    padding-left: 25px;
+    margin-top: 10px;
+    button {
+      @include btnReset();
+      background-color: $primary;
+      @include font(0, 20px);
+      color: #fff;
+      padding: 3px;
+      border-radius: 5px;
+      border: 2px solid $primary;
+      transition: all 0.3s;
+      img {
+        transform: translatey(2px);
+        margin-left: 7px;  
+        transition: all 0.3s;
+      }
+      &:hover{
+        color: $primary;
+        background-color:white;
+        img{
+          filter: invert(25%) sepia(51%) saturate(1876%) hue-rotate(164deg) brightness(89%) contrast(94%);
 
+
+        }
+      }
+    }
+  }
+  }
+  
+  
 }
+}
+//卡片rwd
+@include media(850px) {
+  .card_light_box{
+    width: 100%;
+    height: 100%;
+    
+  }
+}
+
+@include media(670px) {
+  .card_light_box{
+    position: initial;
+    transform: translate(0%,0%);
+    .lightbox_content{
+      flex-direction: column;
+      margin-top: 0px;
+      .left_aside{
+        width: 100%;
+        border: none;
+        hr{
+          width: 90%;
+        }
+      }
+      .right_aside{
+        width: 100%;
+        overflow:visible;
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width:503px){
+  .card_light_box{
+ 
+        .lightbox_content{
+        
+          .right_aside{
+           .card_todo_content{
+             .card_check_item{
+              div:nth-child(3){
+                 margin-left: 50%;
+               }
+             }
+           }
+          }
+        }
+      }
+}
+// @include media(503px) {
+//   .card_light_box{
+ 
+//     .lightbox_content{
+    
+//       .right_aside{
+//        .card_todo_content{
+//          .card_check_item{
+//           div:nth-child(3){
+//              margin-left: 50%;
+//            }
+//          }
+//        }
+//       }
+//     }
+//   }
+// }

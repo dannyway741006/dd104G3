@@ -115,6 +115,7 @@
     class="content"
     id="content"
   >
+  
     <aside class="slide_bar">
       <div class="logo">
         <a href="#">
@@ -162,7 +163,11 @@
         id="card_light_box"
         :class="{opneLight: open}"
       >
+      <div class="card_header_title">
         <h1 id="card_title">團專衝刺</h1>
+        <div  @click="open = false"><img src="./img/card_img/cancel_w.svg" alt=""></div>
+      </div>
+
         <div class="lightbox_content">
           <div class="left_aside">
             <div class="first_right">
@@ -253,10 +258,17 @@
                   <h3>到期日</h3>
                 </div>
                 <div class="calendar_status">
-                  <div class="calendar_img"><img
+                  <div class="calendar_img"   @click="changeimg">
+                    <img
                       src="./img/card_img/unchecked_d.9558e11b.svg"
                       alt=""
-                      @click="changeimg"></div>
+                    >
+                    <img
+                    src="./img/card_img/checked_d.721738d0.svg"
+                    alt=""
+                    
+                  >
+                  </div>
                   <p>2019/12/31</p>
                   <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
                  <span>未完成</span>
@@ -292,6 +304,12 @@
                    <div class="card_file_title">
                       <div><img src="./img/card_img/paperclip.cf9c8806.svg" alt="" width="20"></div>
                       <h3>附件</h3>
+                   </div>
+                   <div class="card_upload_file">
+                     <!-- <div>上傳的內容</div> -->
+                    <div class="card_upload_file_button">
+                      <button>增加附件<img src="./img/card_img/plus_write.svg" alt="" width="14"></button>
+                    </div>
                    </div>
               </div>
             </div>
