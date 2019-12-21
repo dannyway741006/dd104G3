@@ -15,6 +15,7 @@ var vm = new Vue({
       // this.lists.push(cope);
       // console.log(this.name)
       // console.log(this.lists)
+      
     }
   }
 });
