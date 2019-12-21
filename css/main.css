@@ -761,6 +761,24 @@ body {
   margin-left: 20px;
 }
 
+#program_main .cards_column_all .cards_column .cards_list .cards_list_card_input_box textarea {
+  letter-spacing: 3.2px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  outline: none;
+  background-color: transparent;
+  color: #666666;
+  padding: 5px;
+  border: 1px solid #666666;
+  border-radius: 10px;
+  width: 100%;
+  margin: 5px 0;
+  resize: vertical;
+  max-height: 162px;
+  min-height: 54px;
+}
+
 #program_main .cards_column_all .cards_column .add_cards_btn {
   background-color: transparent;
   outline: none;

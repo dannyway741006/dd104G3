@@ -150,19 +150,25 @@
                 <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                     src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
                 <span>2020/02/26</span>
-                <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/icon/select.svg"
-                    alt=""></div>
+                <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/icon/select.svg" alt="">
+                </div>
                 <span>1/6</span>
               </div>
             </div>
+
+
+            <div class="cards_list_card cards_list_card_input_box"  v-for="item in cards">
+              <textarea  v-model.trim="card_name"></textarea>
+            </div>
+
           </div>
-          <button class="add_cards_btn"><img src="./img/icon/plus.a4d786b4.svg" alt=""><img
+          <button class="add_cards_btn" @click="add_card(card_name)"><img src="./img/icon/plus.a4d786b4.svg" alt=""><img
               src="./img/icon/plus_on.d2fc8c08.svg" alt=""></button>
         </div>
 
 
         <div class="cards_column doing_column">
-          <div class="cards_column_head">待辦事項</div>
+          <div class="cards_column_head">進行中</div>
 
           <div class="cards_list">
 
@@ -172,8 +178,8 @@
                 <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                     src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
                 <span>2020/02/26</span>
-                <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/icon/select.svg"
-                    alt=""></div>
+                <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/icon/select.svg" alt="">
+                </div>
                 <span>1/6</span>
               </div>
             </div>
