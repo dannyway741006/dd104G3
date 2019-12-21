@@ -728,7 +728,7 @@ body {
   text-align: start;
   width: 100%;
   margin: 10px 0;
-  padding: 5px;
+  padding: 5px 10px;
 }
 
 #program_main .cards_column_all .cards_column .cards_list .cards_list_card p {
@@ -744,7 +744,7 @@ body {
 }
 
 #program_main .cards_column_all .cards_column .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon {
-  width: 25px;
+  width: 20px;
   display: inline-block;
   vertical-align: middle;
 }
@@ -755,6 +755,10 @@ body {
 
 #program_main .cards_column_all .cards_column .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon img {
   width: 100%;
+}
+
+#program_main .cards_column_all .cards_column .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_todoicon {
+  margin-left: 20px;
 }
 
 #program_main .cards_column_all .cards_column .add_cards_btn {

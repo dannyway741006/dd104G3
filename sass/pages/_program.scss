@@ -278,7 +278,7 @@
           text-align: start;
           width: 100%;
           margin: 10px 0;
-          padding: 5px;
+          padding: 5px 10px;
 
           p {
             @include font(1, 30px);
@@ -288,7 +288,7 @@
             @include font(0);
 
             .cards_list_card_icon {
-              width: 25px;
+              width: 20px;
               display: inline-block;
               vertical-align: middle;
 
@@ -301,6 +301,10 @@
 
               }
             }
+.cards_list_card_todoicon{
+  margin-left: 20px;
+}
+
           }
         }
 
