@@ -66,14 +66,13 @@
       <!-- 專案側邊攔 -->
       <div id="program_aside">
         <button class="program_add_btn" id="program_add_btn" @click.stop='open = !open'>
-          <!-- <div class="program_add_img"><img src="./img/icon/plus.a4d786b4.svg" alt=""><img
-              src="./img/icon/plus_on.d2fc8c08.svg" alt=""></div> -->
           <div class="program_add_img"><img src="./img/icon/plus_w.83529fa0.svg" alt=""><img
               src="./img/icon/plus_on.d2fc8c08.svg" alt=""></div>
           <span>新增專案</span>
         </button>
 
-        <div class="new_program_choose_box" id="new_program_choose_box" :class='{active: open}' @click.stop="">
+        <div class="new_program_choose_box" id="new_program_choose_box" :class='{new_program_choose_box_active: open}'
+          @click.stop="">
           <label>
             <p>專案名稱<span>Project</span></p>
             <input type="text" class="" v-model.trim="program_name">
@@ -134,53 +133,93 @@
         <div class="program_member"><img src="./img/program_img/program_member_3.png" alt=""></div>
 
         <div class="program_member_more">+4</div>
-        <form action="">
-          <input type="button" class="invite_btn" value="邀請">
-        </form>
+        <button class="invite_btn" @click.stop='invite_btn = !invite_btn'>邀請</button>
+        <div class="invite_add_member_box" :class='{invite_add_member_box_active: invite_btn}' @click.stop="">
+          <p>邀請加入專案</p>
+          <form action="">
+            <input type="email" class="invite_add_member_addr">
+          </form>
+        </div>
       </div>
 
-      <div class="cards_column_all">
+      <div class="cards_column_all" id="cards_column_all">
         <div class="cards_column todo_column">
           <div class="cards_column_head">待辦事項</div>
 
-          <div class="cards_list">
-            <div class="cards_list_card">
-              <p>事情A</p>
-              <div class="cards_list_card_icon_bar">
-                <div class="cards_list_card_icon cards_list_card_calendaricon"><img
-                    src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                <span>2020/02/26</span>
-                <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/icon/checked_d.721738d0.svg"
-                    alt=""></div>
-                <span>1/6</span>
+          <div class="cards_column_body">
+
+            <div class="cards_list">
+              <div class="cards_list_card">
+                <p>事情A</p>
+                <div class="cards_list_card_icon_bar">
+                  <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                      src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                  <span>2020/02/26</span>
+                  <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/icon/select.svg" alt="">
+                  </div>
+                  <span>1/6</span>
+                </div>
+              </div>
+
+              <div class="cards_list_card" v-for="item in cards">
+                <p>{{item}}</p>
+              </div>
+
+              <div class="cards_list_card cards_list_card_input_box" v-show="cards_list_card_input_box" @click.stop="">
+                <textarea v-model.trim="card_name" @keyup.enter="add_card(card_name)"></textarea>
+                <div class="cards_list_card_input_box_button_bar"><button @click="add_card(card_name)">建立卡片</button>
+                </div>
               </div>
             </div>
+
+            <button class="add_cards_btn" @click.stop="show_cards_list_card_input_box"><img
+                src="./img/icon/plus.a4d786b4.svg" alt=""><img src="./img/icon/plus_on.d2fc8c08.svg" alt=""></button>
           </div>
-          <button class="add_cards_btn"><img src="./img/icon/plus.a4d786b4.svg" alt=""><img
-              src="./img/icon/plus_on.d2fc8c08.svg" alt=""></button>
         </div>
 
 
         <div class="cards_column doing_column">
-          <div class="cards_column_head">待辦事項</div>
+          <div class="cards_column_head">進行中</div>
+          <div class="cards_column_body">
+            <div class="cards_list">
 
-          <div class="cards_list">
-            <div class="cards_list_card">
-              <p>事情A</p>
-              <div class="cards_list_card_icon_bar">
-                <div class="cards_list_card_icon cards_list_card_calendaricon"><img
-                    src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                <span>2020/02/26</span>
-                <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/icon/checked_d.721738d0.svg"
-                    alt=""></div>
-                <span>1/6</span>
+              <div class="cards_list_card">
+                <p>事情A</p>
+                <div class="cards_list_card_icon_bar">
+                  <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                      src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                  <span>2020/02/26</span>
+                  <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/icon/select.svg" alt="">
+                  </div>
+                  <span>1/6</span>
+                </div>
               </div>
             </div>
           </div>
+
+
         </div>
 
 
         <div class="cards_column done_column">
+          <div class="cards_column_head">已完成</div>
+          <div class="cards_column_body">
+            <div class="cards_list">
+
+              <!-- <div class="cards_list_card">
+                <p>事情A</p>
+                <div class="cards_list_card_icon_bar">
+                  <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                      src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                  <span>2020/02/26</span>
+                  <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/icon/select.svg" alt="">
+                  </div>
+                  <span>1/6</span>
+                </div>
+              </div> -->
+            </div>
+          </div>
+
 
         </div>
       </div>
@@ -199,5 +238,6 @@
     mask.addEventListener("click", () => content.classList.remove("active"));
   </script>
 </body>
+
 
 </html>

@@ -554,7 +554,7 @@ body {
   display: none;
 }
 
-#program_aside .new_program_choose_box.active {
+#program_aside .new_program_choose_box.new_program_choose_box_active {
   opacity: 1;
   display: block;
   z-index: 10000;
@@ -611,7 +611,6 @@ body {
   cursor: pointer;
   border: 2px solid #ffffff;
   letter-spacing: 3.2px;
-  letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
   background-color: #8acede;
@@ -635,6 +634,12 @@ body {
   clear: both;
 }
 
+#program_aside .slide_list li p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 #program_main {
   font-size: 0;
   background-image: url(../img/program_img/office.jpg);
@@ -644,6 +649,8 @@ body {
 
 #program_main .invite_list {
   border: 1px solid red;
+  display: inline-block;
+  position: relative;
 }
 
 #program_main .invite_list .program_member {
@@ -666,7 +673,9 @@ body {
   display: inline-block;
   width: 40px;
   height: 40px;
-  border: 1px solid red;
+  border: 1px solid #999999;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #666666;
   border-radius: 50%;
   text-align: center;
   padding-top: 9px;
@@ -674,12 +683,66 @@ body {
 }
 
 #program_main .invite_list .invite_btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
   padding: 5px 15px;
-  margin: 5px;
+  margin: 10px;
+  background-color: #8acede;
+  color: #ffffff;
+  border-radius: 10px;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: middle;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 2px solid #ffffff;
 }
 
-#program_main .invite_list form {
-  display: inline-block;
+#program_main .invite_list .invite_btn:hover {
+  background-color: #ffffff;
+  color: #8acede;
+  border: 2px solid #8acede;
+}
+
+#program_main .invite_list .invite_add_member_box {
+  background-color: #ffffff;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1);
+          box-shadow: rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 200px;
+  position: absolute;
+  top: 70px;
+  right: -120px;
+  display: none;
+}
+
+#program_main .invite_list .invite_add_member_box.invite_add_member_box_active {
+  display: block;
+}
+
+#program_main .invite_list .invite_add_member_box p {
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+#program_main .invite_list .invite_add_member_box input.invite_add_member_addr {
+  letter-spacing: 3.2px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  outline: none;
+  background-color: transparent;
+  color: #666666;
+  padding: 5px;
+  border: 1px solid #666666;
+  border-radius: 10px;
+  width: 100%;
+  margin: 5px 0;
 }
 
 #program_main .cards_column_all {
@@ -690,13 +753,15 @@ body {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   overflow-x: scroll;
+  max-width: 960px;
 }
 
 #program_main .cards_column_all .cards_column {
   border: 1px solid blue;
   height: 70vh;
-  min-height: 450px;
+  height: 700px;
   min-width: 300px;
+  max-width: 300px;
   text-align: center;
   border-radius: 20px;
   overflow: hidden;
@@ -716,11 +781,17 @@ body {
   text-align: center;
 }
 
-#program_main .cards_column_all .cards_column .cards_list {
+#program_main .cards_column_all .cards_column .cards_column_body {
+  border: 1px solid red;
+  height: calc(100% - 50px);
+  overflow-y: scroll;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list {
   padding: 0 5%;
 }
 
-#program_main .cards_column_all .cards_column .cards_list .cards_list_card {
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card {
   border-radius: 10px;
   background-color: #ffffff;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
@@ -728,33 +799,92 @@ body {
   text-align: start;
   width: 100%;
   margin: 10px 0;
-  padding: 5px;
+  padding: 5px 10px;
+  max-height: 85px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
-#program_main .cards_column_all .cards_column .cards_list .cards_list_card p {
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card p {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 30px;
+  word-break: break-word;
 }
 
-#program_main .cards_column_all .cards_column .cards_list .cards_list_card .cards_list_card_icon_bar {
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar {
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
 }
 
-#program_main .cards_column_all .cards_column .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon {
-  width: 25px;
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon {
+  width: 20px;
   display: inline-block;
   vertical-align: middle;
 }
 
-#program_main .cards_column_all .cards_column .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon span {
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon span {
   vertical-align: middle;
 }
 
-#program_main .cards_column_all .cards_column .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon img {
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon img {
   width: 100%;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_todoicon {
+  margin-left: 20px;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box {
+  max-height: none;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box textarea {
+  letter-spacing: 3.2px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  outline: none;
+  background-color: transparent;
+  color: #666666;
+  padding: 5px;
+  border: 1px solid #666666;
+  border-radius: 10px;
+  width: 100%;
+  margin: 5px 0;
+  resize: vertical;
+  max-height: 162px;
+  min-height: 54px;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar {
+  text-align: end;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #8acede;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button:hover {
+  background-color: #ffffff;
+  color: #8acede;
+  border: 2px solid #8acede;
 }
 
 #program_main .cards_column_all .cards_column .add_cards_btn {

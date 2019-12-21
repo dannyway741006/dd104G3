@@ -2,7 +2,6 @@
 #program_aside {
   border: 1px solid blue;
 
-
   .program_add_btn {
     @include btnReset;
     padding: 5px 10px;
@@ -86,7 +85,7 @@
 
     display: none;
 
-    &.active {
+    &.new_program_choose_box_active {
       opacity: 1;
       display: block;
       z-index: 10000;
@@ -148,7 +147,6 @@
     button {
       @include btnReset;
       border: 2px solid $white;
-      letter-spacing: 3.2px;
       @include font(1, 20px);
       background-color: $primary;
       color: $white;
@@ -172,6 +170,16 @@
     }
 
     //新建專案取名&選色燈箱--結束
+  }
+
+  .slide_list {
+    li {
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
   }
 
 
@@ -199,6 +207,9 @@
   //邀請成員區
   .invite_list {
     border: 1px solid red;
+    // max-width: 400px;
+    display: inline-block;
+    position: relative;
 
     .program_member {
       display: inline-block;
@@ -219,7 +230,9 @@
       display: inline-block;
       width: 40px;
       height: 40px;
-      border: 1px solid red;
+      border: 1px solid $gray;
+      background-color: rgba(255, 255, 255, .8);
+      color: $dark;
       border-radius: 50%;
       text-align: center;
       padding-top: 9px;
@@ -227,16 +240,61 @@
     }
 
     .invite_btn {
+      @include btnReset();
       padding: 5px 15px;
-      margin: 5px;
+      margin: 10px;
+      background-color: $primary;
+      color: $white;
+      border-radius: 10px;
+      @include font(0);
+      vertical-align: middle;
+      transition: all 0.3s;
+      border: 2px solid $white;
 
+      &:hover {
+        background-color: $white;
+        color: $primary;
+        border: 2px solid $primary;
+      }
     }
 
-    form {
-      // border:1px solid blue;
-      display: inline-block;
+    .invite_add_member_box {
+      // border:1px solid red;
+      background-color: $white;
+      border-radius: 20px;
+      box-shadow: rgba(0, 0, 0, .1);
+      padding: 15px;
+      width: 200px;
+      // height: 200px;
+      position: absolute;
+      top: 70px;
+      right: -120px;
+      display: none;
+      
+
+      &.invite_add_member_box_active {
+        display: block;
+      }
+
+      p {
+        @include font(1);
+      }
+
+      input.invite_add_member_addr {
+        letter-spacing: 3.2px;
+        @include font(1, 20px);
+        outline: none;
+        background-color: transparent;
+        color: $dark;
+        padding: 5px;
+        border: 1px solid $dark;
+        border-radius: 10px;
+        width: 100%;
+        margin: 5px 0;
+      }
     }
 
+    //邀請成員區--結束
   }
 
   //卡片區
@@ -245,12 +303,14 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: scroll;
+    max-width: 960px;
 
     .cards_column {
       border: 1px solid blue;
       height: 70vh;
-      min-height: 450px;
+      height: 700px;
       min-width: 300px;
+      max-width: 300px;
       text-align: center;
       border-radius: 20px;
       overflow: hidden;
@@ -267,43 +327,112 @@
         text-align: center;
       }
 
-      .cards_list {
-        padding: 0 5%;
+      .cards_column_body {
+        border: 1px solid red;
+        height: calc(100% - 50px);
+        overflow-y: scroll;
 
-        .cards_list_card {
-          // border: 1px solid red;
-          border-radius: 10px;
-          background-color:$white;
-          box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
-          text-align: start;
-          width: 100%;
-          margin: 10px 0;
-          padding: 5px;
+        .cards_list {
+          padding: 0 5%;
 
-          p {
-            @include font(1, 30px);
-          }
+          //卡片本人css
+          .cards_list_card {
+            // border: 1px solid red;
+            border-radius: 10px;
+            background-color: $white;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+            text-align: start;
+            width: 100%;
+            margin: 10px 0;
+            padding: 5px 10px;
+            max-height: 85px;
 
-          .cards_list_card_icon_bar {
-            @include font(0);
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
 
-            .cards_list_card_icon {
-              width: 25px;
-              display: inline-block;
-              vertical-align: middle;
+            p {
+              @include font(1, 30px);
+              word-break: break-word;
+            }
 
-              span {
+            .cards_list_card_icon_bar {
+              @include font(0);
+
+              .cards_list_card_icon {
+                width: 20px;
+                display: inline-block;
                 vertical-align: middle;
+
+                span {
+                  vertical-align: middle;
+                }
+
+                img {
+                  width: 100%;
+
+                }
               }
 
-              img {
-                width: 100%;
+              .cards_list_card_todoicon {
+                margin-left: 20px;
+              }
 
+            }
+
+            //卡片本人css--結束
+          }
+
+          // 建立卡片輸入卡片名的div
+          .cards_list_card_input_box {
+            max-height: none;
+
+            textarea {
+              letter-spacing: 3.2px;
+              @include font(1, 20px);
+              outline: none;
+              background-color: transparent;
+              color: $dark;
+              padding: 5px;
+              border: 1px solid $dark;
+              border-radius: 10px;
+              width: 100%;
+              margin: 5px 0;
+              resize: vertical;
+              // overflow-Y:hidden;
+              max-height: 162px;
+              min-height: 54px;
+            }
+
+            .cards_list_card_input_box_button_bar {
+              text-align: end;
+
+              //建立卡片按鈕
+              button {
+                @include btnReset;
+                border: 2px solid $white;
+                @include font(1, 20px);
+                background-color: $primary;
+                color: $white;
+                // float: right;
+                padding: 5px;
+                border-radius: 5px;
+                transition: all 0.3s;
+
+                &:hover {
+                  background-color: $white;
+                  color: $primary;
+                  border: 2px solid $primary;
+                }
+
+                //建立卡片按鈕--結束
               }
             }
+
+            // 建立卡片輸入卡片名的div--結束
           }
         }
-
       }
 
 
