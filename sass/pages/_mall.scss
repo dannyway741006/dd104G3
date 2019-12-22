@@ -1,12 +1,17 @@
-/* mall page css */
-.mall_bg {
-  background-color: #EAEAEA;
+/*------------------------- */
+/*          商城首頁        */
+/*------------------------- */
 
+.mall_bg { //商品內容背景
+  background-color: #EAEAEA;
 }
 
-#mall_search {
+#mall_search { //search bar
   margin: 5% 0 5% 5%;
-
+  
+  .fa{
+    color: $white;
+  } 
   .mall_search_bar {
     position: relative;
     border: 2px solid #8ACEDE;
@@ -16,7 +21,7 @@
     width: 75%;
     background-color: rgb(240, 240, 240);
   }
-
+  
   .mall_search-btn {
     position: absolute;
     background: #8ACEDE;
@@ -24,13 +29,11 @@
     width: 50px;
     padding: 12px;
     border: none;
-
   }
 }
 
-
 #slider {
-  padding:2% 0 0;
+  padding:3% 0 0;
   width: 92%;
   margin:0 auto;
   .owl-item img {
@@ -44,25 +47,30 @@
   display: flex;
   flex-wrap: wrap;
 
-
-  .mall_box {
-    //商品圖
+  .mall_box {  //商品圖
     width: 18%;
     background-color: rgba(255, 255, 255, 0.568);
-    padding: 1%;
+
     margin: 1.5% 1%;
     border-radius: 2%;
     background-position: center;
     transition: all .5s;
     border: 1px solid #dfdfdcdd;
     display: block;
-    cursor: pointer;
+    // cursor: pointer;
+    
+    a {
+      display: block;
+      margin: 2%;
+      padding: 1%;
+      text-decoration:none;
+      color: $fontColorBlack;
+    }
 
     img {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
       clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
       width: 100%;
-
     }
 
     p {
@@ -109,8 +117,6 @@
       .product_price {
         transform: rotateY(180deg);
       }
-
-
     }
   }
 }
@@ -123,9 +129,7 @@
 
     .mall_box {
       width: 48%;
-   
     }
-
   }
 
   #slider {
@@ -135,5 +139,32 @@
       height: 180px;
     }
   }
+}
+
+
+
+/*------------------------- */
+/*        商品單品頁面      */
+/*------------------------- */
+
+.mall_poduct_content{
+  display: flex;
+  padding: 2%;
+  width: 90%;
+  margin: 0 auto;
+  .product_img{
+    width: 30%;
+   
+    
+    img{
+      width: 100%;
+    }
+  }
+
+  .product_text{
+    width: 70%;
+    background-color: rgb(104, 173, 190);
+  }
 
 }
+
