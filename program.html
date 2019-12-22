@@ -143,8 +143,8 @@
       </div>
 
       <div class="setting_all">
-        <button class="setting_btn" @click.stop='setting_btn = !setting_btn'><img src="./img/icon/setting_white.svg" alt=""><img
-            src="./img/icon/setting_primary.svg" alt="">
+        <button class="setting_btn" @click.stop='setting_btn = !setting_btn'><img src="./img/icon/setting_white.svg"
+            alt=""><img src="./img/icon/setting_primary.svg" alt="">
         </button>
         <div class="setting_content_box" :class='{setting_content_box_active: setting_btn}' @click.stop="">
           <p>專案專屬色<span>Color</span></p>
@@ -247,67 +247,84 @@
         </div>
       </div>
 
-      <div class="program_calendar_all">
-<p class="program_calendar_year">2019</p>
-<div class="program_calendar_month">12月</div>
-<table>
-<tr>
-  <td>日</td>
-  <td>一</td>
-  <td>二</td>
-  <td>三</td>
-  <td>四</td>
-  <td>五</td>
-  <td>六</td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-  <td></td>
-</tr>
 
-</table>
+      <div class="program_right_column">
 
+        <div class="program_calendar_all program_right_column_item">
+          <p class="program_calendar_year">2019</p>
+          <div class="program_calendar_month">12月</div>
+          <table>
+            <tr>
+              <td>日</td>
+              <td>一</td>
+              <td>二</td>
+              <td>三</td>
+              <td>四</td>
+              <td>五</td>
+              <td>六</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+          </table>
+        </div>
+
+        <div class="program_chatroom_all program_right_column_item">
+          <div class="program_chatroom_window">
+            <div class="program_chatroom_oneperson">
+              <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:</p>
+              <div class="program_chatroom_otherside_dialog">大夥們，要戰爭了!</div>
+            </div>
+          </div>
+
+          <div class="program_chatroom_operating_area">
+            <div class="program_chatroom_iconbar"></div>
+            <textarea></textarea>
+          </div>
+        </div>
 
       </div>
     </div>
