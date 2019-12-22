@@ -21,11 +21,69 @@
 var vm = new Vue({
   el: "#content",
   data: {
-    open: false
+    open: false,
+    isactive:true,
+    onactive:false,
+    classObject:{
+        active:false,
+        // error:true,
+    },
+    text:'未完成',
+
+    showselect:true,
+    
+    deleteline:false,
+    
+    todo_lightbox_switch:false,
+
+    todo_list_content_detail:[],
+    input:{
+      title:'',
+    },
+    // 命名好像有bug
+    ittem:'',
   },
   methods: {
     changeimg(){
-      
-    }
-  }
-});
+      this.isactive=false;
+      this.onactive=true;
+      this.classObject.active=true;
+      this.text='完成';
+    },
+    onchangeimg(){
+      this.isactive=true;
+      this.onactive=false;
+      this.classObject.active=false;
+      this.text='未完成';
+    },
+    showSelect(){
+      if(this.showselect==true){
+        this.showselect=false;
+        this.deleteline=true;
+      }else{
+        this.showselect=true;
+        this.deleteline=false;
+      }
+    },
+    // 增加待辦清單項目
+    todo_list_add(){
+   // 如果input.title裡有東西的話，執行函數
+   if(this.input.title.length){
+    
+  
+    this.todo_list_content_detail.push(
+   this.ittem= this.input.title,
+    )
+    this.input.title="";
+    this.todo_lightbox_switch=false;
+}
+}
+},
+mounted() {
+  document.addEventListener('click', () => {
+    // this.open = false;
+    // this.cards_list_card_input_box = false;
+    // this.invite_btn = false;
+  });
+},
+})
