@@ -1,95 +1,95 @@
+// ========側邊欄=======================
 .memberitem {
-  // border: 0.1px solid rgb(255, 255, 255);
   width: 100%;
   height: 100%;
-  display: inline-block;
-  text-align: center;
+  // border: 1px solid red;
+  overflow: hidden;
+
 
   .personal_photo {
     width: 100%;
-    height: 25%;
-    // border: 1px solid red;
-    vertical-align: middle;
-
-    #userName {
-      color: $dark;
-      @include font($level: 2, $lineHeight:null);
-    }
-
-    .edit {
-      width: 100%;
-      height: 15%;
-      display: inline-block;
-
-      #set_up {
-        @include font($level: 0, $lineHeight:null);
-        transition: all 0.5s;
-        color: $dark;
-        cursor: pointer;
-        margin-left: 70%;
-
-        &:hover {
-          color: rgb(250, 83, 83);
-        }
-      }
-
-    }
-
-    .line {
-      width: 90%;
-      border: 0.5px solid rgb(255, 255, 255);
-      border-radius: 50px;
-      margin-left: 5%;
-    }
+    height: 180px;
+    // border: 1px solid gold;
 
     .picrange {
       width: 100%;
-      height: 75%;
-      // border: 1px solid rebeccapurple;
+      height: 120px;
+      // border: 1px solid rgb(0, 0, 0);
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
 
       .range {
-        width: 100px;
-        height: 100px;
-        // border: 1px solid gold;
-        border-radius: 100px;
-        background-color: #ffffff;
-        // img{
-        //   object-fit: cover;
-        //   width: 100%;
-        //   height: 100%;
-        // }
+        width: 80px;
+        height: 80px;
+        border: 1px solid rgb(209, 209, 209);
+        border-radius: 100%;
+        overflow: hidden;
+        position: relative;
+
+        #acceptImg {
+          width: 100%;
+          height: 100%;
+          object-position: center;
+          object-fit: fill;
+        }
       }
     }
-  }
 
-  .settings {
-    margin-top: 20px;
-  }
-
-  .settings,
-  .memberorder {
-    transition: all 0.5s;
-    @include font($level: 2, $lineHeight:50px);
-
-    a {
-      text-decoration: none;
+    #userName {
+      // border: 1px solid gray;
+      width: 100%;
+      height: 30px;
+      text-align: center;
+      line-height: 40px;
       color: $dark;
-      transition: all 0.5s;
     }
 
-    &:hover {
-      background-color: rgb(250, 83, 83);
+    #membericon {
+      width: 100%;
+      height: 30px;
+      // border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10%;
+      position: relative;
 
-      >a {
-        color: $primary;
+      .up_memberpic {
+        width: 100%;
+        height: 100%;
+
+        .double_mem {
+          width: 30%;
+          height: 100%;
+          // border: 1px solid red;
+          position: relative;
+          left: 95%;
+          top: 15%;
+          @include hoverIcon(20px);
+
+          img {
+            cursor: pointer;
+          }
+        }
       }
     }
+  }
+
+  .line {
+    border: 0.2px solid rgb(226, 224, 224);
+    width: 90%;
+    margin-left: 5%;
+    box-shadow: 0 0 0.5px 0.3px rgb(206, 201, 201);
+    margin-bottom: 30px;
+  }
+
+  .slide_list {
+    display: none;
   }
 }
 
+// ========member_內容=============================
 .memberContent {
   // border: 1px solid black;
   width: 100%;
@@ -98,7 +98,7 @@
   align-items: center;
   justify-content: space-around;
 
-  .memcon1 {
+  #memcon1 {
     width: 45%;
     height: 90%;
     border-radius: 10px;
@@ -135,6 +135,47 @@
         color: $white;
         border-color: #ffffff;
         outline: none;
+        cursor: pointer;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          // border: 1px solid red;
+          width: 149px;
+          height: 29px;
+          left: -1.3px;
+          top: -1px;
+          border-radius: 100px;
+          background-color: rgba(138, 206, 222, 0.5);
+          z-index: -1;
+          animation: boxbig 0.5s;
+          transition: all 0.5s;
+        }
+
+        &:hover {
+          background-color: rgb(243, 202, 211);
+          color: $dark;
+        }
+
+        &:hover::after {
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-play-state: running;
+          animation-fill-mode: both;
+          background-color: rgba(243, 202, 211, 0.5);
+        }
+      }
+
+      @keyframes boxbig {
+        form {
+          transform: scale(0);
+        }
+
+        to {
+          transform: scale(1.1);
+
+        }
       }
 
       li {
@@ -147,6 +188,7 @@
       @include btnReset;
       display: inline-block;
       color: $dark;
+
     }
 
     input {
@@ -156,11 +198,10 @@
       border-color: rgb(155, 155, 155);
       @include font($level: 0, $lineHeight:null);
       // background-color: aqua;
-
     }
   }
 
-  .memcon2 {
+  #memcon2 {
     width: 45%;
     height: 90%;
     border-radius: 10px;
@@ -182,30 +223,71 @@
       display: flex;
       justify-content: center;
       padding-top: 40px;
-      .table_oder{
+
+      .table_oder {
         width: 95%;
         // border: 1px solid #000000;
-         border-collapse: collapse;
+        border-collapse: collapse;
+
       }
-      
-    th{
+
+      th {
         @include font($level: 0, $lineHeight:null);
         font-weight: 100;
-        color: $dark; 
+        color: $dark;
         border-bottom: #d8d8d8 solid;
         border-width: 0.5px;
         height: 30px;
+
+        .delete_oder {
+          position: relative;
+          @include hoverIcon(17px);
+          left: 10px;
+        }
       }
     }
   }
 }
-@include media(1000px){
-  .memberContent .memcon1{
+
+@media screen and (min-width:1025px) {
+  .memberContent #memcon1 {
+    display: block;
+  }
+
+  .memberContent #memcon2 {
+    display: block;
+  }
+}
+
+@include media(1024px) {
+  .memberitem .personal_photo .slide_list {
+    display: block;
+  }
+
+  .memberContent #memcon1 {
     width: 90%;
     // background-color: aqua;
   }
-  .memcon2{
+
+  .memberContent #memcon2 {
+    width: 90%;
+    // background-color: aqua;
+  }
+
+  #memcon2 {
     display: none;
   }
-  
+
+}
+
+@include media(768px) {
+  .memberContent #memcon1 {
+    width: 99%;
+    // background-color: aqua;
+  }
+
+  .memberContent #memcon2 {
+    width: 99%;
+    // background-color: aqua;
+  }
 }

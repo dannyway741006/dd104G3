@@ -15,10 +15,10 @@
     <nav class="navbar">
       <div>
         <div class="more" id="more">
-          <img src="./img/icon/more-options.svg" alt="more" width="20" />
-          <img src="./img/icon/more-options_on.svg" alt="more" width="20" />
+          <img src="./img/icon/more-options.svg" alt="more" />
+          <img src="./img/icon/more-options_on.svg" alt="more" />
         </div>
-        <h2>個人設定</h2>
+        <h2>專案管理</h2>
       </div>
       <div>
         <ul class="nav_list">
@@ -58,48 +58,52 @@
     <aside class="slide_bar">
       <div class="logo">
         <a href="#">
-          <img src="./img/logo.svg" alt="logo" />
+          <img src="./img/logo_in.svg" alt="logo" />
         </a>
       </div>
-      <!-- ========會員====================================== -->
-
+      <div class="slider_header"></div>
+<!-- =================member_側邊欄=================================== -->
       <div class="memberitem">
         <div class="personal_photo">
           <div class="picrange">
             <div class="range">
-              <img src="./img/member_img/user-tie-solid.svg" alt="" width="70px">
+              <img id="acceptImg" src="./img/member_img/user-tie-solid.svg" alt="" width="70px">
               <!-- 更換大頭照 -->
             </div>
           </div>
           <div id="userName">
             wilson
           </div>
-          <div class="edit">
-            <span id="set_up">編輯</span>
+          <div id="membericon">
+            <label class="up_memberpic">
+              <input type="file" name="file" onchange="showImg(this)" style="display: none;">
+              <div class="double_mem">
+                <img src="./img/member_img/camera-retro-solid.svg" alt="" width="20">
+                <img src="./img/member_img/camera-retro-solid2.svg" alt="" width="20">
+              </div>
+            </label>
           </div>
           <div class="line">
             <!-- 裝飾線 -->
           </div>
-        </div>
-        <ul>
-          <li class="settings">
-            <a href="#">
-              <p>個人設定</p>
-            </a>
-          </li>
-          <li class="memberorder">
-            <a href="#">
+          <ul class="slide_list">
+            <li onclick="member_page1();" id="member_button1" name="member_button1">
+              <p>基本資料</p>
+              <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+              <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+            </li>
+            <li onclick="member_page2();" id="member_button2" name="member_button2">
               <p>訂單記錄</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-<!-- ===========會員aside======================= -->
+              <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+              <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+            </li>
+          </ul>
+        </div>
     </aside>
     <div class="mask" id="mask"></div>
-<!-- ==========內容========================= -->
+    <!-- ================member內容=============================== -->
     <div class="memberContent">
-      <div class="memcon1">
+      <div id="memcon1">
         <h3>一、基本資料</h3>
         <form action="" method="POST" autocomplete="on">
           <ul class="con1_info">
@@ -122,35 +126,33 @@
           </ul>
         </form>
       </div>
-<!-- =======================會員訂單資料================================= -->
-      <div class="memcon2">
-        <h3>二、訂單資料</h3>
-<!-- =========訂單記錄內容================================= -->
+      <!-- =======================會員訂單資料================================= -->
+      <div id="memcon2">
+        <h3>二、訂單記錄</h3>
+        <!-- =========訂單記錄內容================================= -->
         <form action="" id="oder">
-          <table class="table_oder" >
+          <table class="table_oder">
             <tr>
-           
               <th>商品</th>
-             
               <th>價格</th>
               <th>購買日期</th>
               <th>訂單編號</th>
-              <th><input type="checkbox" name="" id="allcheck">全選/
-                <span>
-                  刪除
-                  <img src="" alt="">
+              <th>
+                <input id="allcheck" type="checkbox" name="">全選/
+                <span class="delete_oder">
+                  <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
+                  <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
                 </span>
+
               </th>
             </tr>
-        
+
             <tr>
+              <td style="width: 50px;height:50px;"></td>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
-             
-        
             </tr>
           </table>
 
@@ -166,6 +168,32 @@
     const mask = document.getElementById("mask");
     moreBtn.addEventListener("click", () => content.classList.add("active"));
     mask.addEventListener("click", () => content.classList.remove("active"));
+
+
+    // =================member_change_paper==============================
+    function member_page1() {
+      document.getElementById("memcon1").style.display = "block";
+      document.getElementById("memcon2").style.display = "none";
+    }
+
+    function member_page2() {
+      document.getElementById("memcon1").style.display = "none";
+      document.getElementById("memcon2").style.display = "block";
+    }
+    // ===================member_change_img====================================
+    function showImg(thisimg) {
+      let file = thisimg.files[0];
+      if (window.FileReader) {
+        let files = new FileReader();
+
+        let showimg = document.getElementById('acceptImg');
+        files.onloadend = function (e) {
+          showimg.src = e.target.result;
+        };
+        files.readAsDataURL(file);
+        acceptImg.style.display = 'block';
+      }
+    }
   </script>
 </body>
 
