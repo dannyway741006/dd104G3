@@ -185,7 +185,6 @@
       let file = thisimg.files[0];
       if (window.FileReader) {
         let files = new FileReader();
-
         let showimg = document.getElementById('acceptImg');
         files.onloadend = function (e) {
           showimg.src = e.target.result;

@@ -927,7 +927,6 @@ body {
   overflow-y: scroll;
 }
 
-<<<<<<< HEAD
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list {
   padding: 0 5%;
 }
@@ -1033,39 +1032,6 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
-=======
-.memberitem {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.memberitem .personal_photo {
-  width: 100%;
-  height: 180px;
-}
-
-.memberitem .personal_photo .picrange {
-  width: 100%;
-  height: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.memberitem .personal_photo .picrange .range {
-  width: 80px;
-  height: 80px;
-  border: 1px solid #d1d1d1;
-  border-radius: 100%;
-  overflow: hidden;
->>>>>>> wey-dev
   position: relative;
   width: 30px;
   height: 30px;
@@ -1077,7 +1043,6 @@ body {
   transition: all 0.3s;
 }
 
-<<<<<<< HEAD
 #program_main .cards_column_all .cards_column .add_cards_btn img {
   width: 30px;
   height: 30px;
@@ -1735,9 +1700,40 @@ body {
 }
 
 .memberitem {
-=======
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.memberitem .personal_photo {
+  width: 100%;
+  height: 180px;
+}
+
+.memberitem .personal_photo .picrange {
+  width: 100%;
+  height: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.memberitem .personal_photo .picrange .range {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #d1d1d1;
+  border-radius: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 .memberitem .personal_photo .picrange .range #acceptImg {
->>>>>>> wey-dev
   width: 100%;
   height: 100%;
   -o-object-position: center;
@@ -2065,8 +2061,6 @@ body {
     display: none;
   }
 }
-<<<<<<< HEAD
-=======
 
 @media screen and (max-width: 768px) {
   .memberContent #memcon1 {
@@ -2076,7 +2070,6 @@ body {
     width: 99%;
   }
 }
->>>>>>> wey-dev
 
 .cart_noshow {
   position: fixed;
