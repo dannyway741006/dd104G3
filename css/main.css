@@ -377,8 +377,37 @@ body {
 }
 
 /* mall page css */
+.mall_bg {
+  background-color: #EAEAEA;
+}
+
+#mall_search {
+  margin: 5% 0 5% 5%;
+}
+
+#mall_search .mall_search_bar {
+  position: relative;
+  border: 2px solid #8ACEDE;
+  padding: 10px;
+  opacity: 0.5;
+  border-radius: 10px 0px 0px 10px;
+  width: 75%;
+  background-color: #f0f0f0;
+}
+
+#mall_search .mall_search-btn {
+  position: absolute;
+  background: #8ACEDE;
+  border-radius: 0px 10px 10px 0px;
+  width: 50px;
+  padding: 12px;
+  border: none;
+}
+
 #slider {
-  margin: 2% 0 0;
+  padding: 2% 0 0;
+  width: 92%;
+  margin: 0 auto;
 }
 
 #slider .owl-item img {
@@ -386,25 +415,26 @@ body {
 }
 
 .mall_content {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background-color: #f1f1f1;
 }
 
 .mall_content .mall_box {
   width: 18%;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.568);
   padding: 1%;
-  margin: 2% 1%;
-  border-radius: 5%;
-  -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-          box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  margin: 1.5% 1%;
+  border-radius: 2%;
+  background-position: center;
   -webkit-transition: all .5s;
   transition: all .5s;
+  border: 1px solid #dfdfdcdd;
+  display: block;
   cursor: pointer;
 }
 
@@ -418,15 +448,12 @@ body {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
-.mall_content .mall_box .product_price {
-  margin-top: 10px;
+  -webkit-line-clamp: 1;
 }
 
 .mall_content .mall_box .product_price .price_sale {
   color: #bd0000;
+  font-weight: bolder;
   letter-spacing: 4.8px;
   font-size: 24px;
   line-height: 30px;
@@ -439,6 +466,8 @@ body {
 
 .mall_content .mall_box .product_price span:nth-child(2) {
   color: #bd0000;
+  margin-left: 5%;
+  font-weight: bolder;
 }
 
 .mall_content .mall_box:hover {
@@ -446,7 +475,7 @@ body {
           transform: rotateY(180deg);
   background-image: url(../img/add_cart.png);
   background-repeat: no-repeat;
-  background-color: #09afc2;
+  background-color: #bbc2bf;
   background-size: 20%;
   background-position: center;
 }
@@ -455,7 +484,8 @@ body {
   visibility: hidden;
 }
 
-.mall_content .mall_box:hover p, .mall_content .mall_box:hover .product_price {
+.mall_content .mall_box:hover p,
+.mall_content .mall_box:hover .product_price {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
@@ -469,6 +499,12 @@ body {
   }
   .mall_content .mall_box {
     width: 48%;
+  }
+  #slider {
+    margin: 2% 0 0;
+  }
+  #slider .owl-item img {
+    height: 180px;
   }
 }
 
@@ -1884,7 +1920,7 @@ body {
 }
 
 .memberContent #memcon1 .con1_info .memberbtn::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 149px;
   height: 29px;
@@ -2038,27 +2074,46 @@ body {
   opacity: 1;
 }
 
-@media screen and (min-width: 1025px) {
-  .memberContent #memcon1 {
-    display: block;
-  }
-  .memberContent #memcon2 {
-    display: block;
-  }
-}
-
 @media screen and (max-width: 1024px) {
   .memberitem .personal_photo .slide_list {
     display: block;
   }
-  .memberContent #memcon1 {
-    width: 90%;
+  .memberContent {
+    display: block;
+    position: relative;
   }
+  .memberContent.active #memcon2 {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  .memberContent.active #memcon1 {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .memberContent #memcon1,
   .memberContent #memcon2 {
     width: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
   }
-  #memcon2 {
-    display: none;
+  .memberContent #memcon1 {
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  .memberContent #memcon2 {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform-origin: left;
+            transform-origin: left;
   }
 }
 
@@ -2138,4 +2193,3 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
-/*# sourceMappingURL=main.css.map */
