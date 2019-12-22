@@ -927,6 +927,7 @@ body {
   overflow-y: scroll;
 }
 
+<<<<<<< HEAD
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list {
   padding: 0 5%;
 }
@@ -1032,6 +1033,39 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
+=======
+.memberitem {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.memberitem .personal_photo {
+  width: 100%;
+  height: 180px;
+}
+
+.memberitem .personal_photo .picrange {
+  width: 100%;
+  height: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.memberitem .personal_photo .picrange .range {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #d1d1d1;
+  border-radius: 100%;
+  overflow: hidden;
+>>>>>>> wey-dev
   position: relative;
   width: 30px;
   height: 30px;
@@ -1043,6 +1077,7 @@ body {
   transition: all 0.3s;
 }
 
+<<<<<<< HEAD
 #program_main .cards_column_all .cards_column .add_cards_btn img {
   width: 30px;
   height: 30px;
@@ -1700,103 +1735,96 @@ body {
 }
 
 .memberitem {
+=======
+.memberitem .personal_photo .picrange .range #acceptImg {
+>>>>>>> wey-dev
   width: 100%;
   height: 100%;
-  display: inline-block;
-  text-align: center;
-}
-
-.memberitem .personal_photo {
-  width: 100%;
-  height: 25%;
-  vertical-align: middle;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .memberitem .personal_photo #userName {
-  color: #666666;
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 30px;
-}
-
-.memberitem .personal_photo .edit {
   width: 100%;
-  height: 15%;
-  display: inline-block;
-}
-
-.memberitem .personal_photo .edit #set_up {
-  letter-spacing: 2.8px;
-  font-size: 14px;
-  line-height: 20px;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  height: 30px;
+  text-align: center;
+  line-height: 40px;
   color: #666666;
-  cursor: pointer;
-  margin-left: 70%;
 }
 
-.memberitem .personal_photo .edit #set_up:hover {
-  color: #fa5353;
-}
-
-.memberitem .personal_photo .line {
-  width: 90%;
-  border: 0.5px solid white;
-  border-radius: 50px;
-  margin-left: 5%;
-}
-
-.memberitem .personal_photo .picrange {
+.memberitem .personal_photo #membericon {
   width: 100%;
-  height: 75%;
+  height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-right: 10%;
+  position: relative;
 }
 
-.memberitem .personal_photo .picrange .range {
-  width: 100px;
-  height: 100px;
-  border-radius: 100px;
-  background-color: #ffffff;
+.memberitem .personal_photo #membericon .up_memberpic {
+  width: 100%;
+  height: 100%;
 }
 
-.memberitem .settings {
-  margin-top: 20px;
+.memberitem .personal_photo #membericon .up_memberpic .double_mem {
+  width: 30%;
+  height: 100%;
+  position: relative;
+  left: 95%;
+  top: 15%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
-.memberitem .settings,
-.memberitem .memberorder {
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 50px;
+.memberitem .personal_photo #membericon .up_memberpic .double_mem img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
-.memberitem .settings a,
-.memberitem .memberorder a {
-  text-decoration: none;
-  color: #666666;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+.memberitem .personal_photo #membericon .up_memberpic .double_mem img:nth-of-type(2) {
+  opacity: 0;
 }
 
-.memberitem .settings:hover,
-.memberitem .memberorder:hover {
-  background-color: #fa5353;
+.memberitem .personal_photo #membericon .up_memberpic .double_mem:hover img:nth-of-type(1) {
+  opacity: 0;
 }
 
-.memberitem .settings:hover > a,
-.memberitem .memberorder:hover > a {
-  color: #8acede;
+.memberitem .personal_photo #membericon .up_memberpic .double_mem:hover img:nth-of-type(2) {
+  opacity: 1;
+}
+
+.memberitem .personal_photo #membericon .up_memberpic .double_mem img {
+  cursor: pointer;
+}
+
+.memberitem .line {
+  border: 0.2px solid #e2e0e0;
+  width: 90%;
+  margin-left: 5%;
+  -webkit-box-shadow: 0 0 0.5px 0.3px #cec9c9;
+          box-shadow: 0 0 0.5px 0.3px #cec9c9;
+  margin-bottom: 30px;
+}
+
+.memberitem .slide_list {
+  display: none;
 }
 
 .memberContent {
@@ -1812,7 +1840,7 @@ body {
       justify-content: space-around;
 }
 
-.memberContent .memcon1 {
+.memberContent #memcon1 {
   width: 45%;
   height: 90%;
   border-radius: 10px;
@@ -1820,27 +1848,27 @@ body {
           box-shadow: 0px 0px 5px #e4e4e4;
 }
 
-.memberContent .memcon1 h3 {
+.memberContent #memcon1 h3 {
   width: 100%;
   height: 10%;
   color: #666666;
   padding: 10px 0 0 20px;
 }
 
-.memberContent .memcon1 ul {
+.memberContent #memcon1 ul {
   width: 100%;
   height: 90%;
   padding-top: 30px;
 }
 
-.memberContent .memcon1 .con1_info {
+.memberContent #memcon1 .con1_info {
   text-align: center;
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 50px;
 }
 
-.memberContent .memcon1 .con1_info .memberbtn {
+.memberContent #memcon1 .con1_info .memberbtn {
   width: 150px;
   height: 30px;
   border-radius: 50px;
@@ -1855,14 +1883,71 @@ body {
   color: #ffffff;
   border-color: #ffffff;
   outline: none;
+  cursor: pointer;
+  position: relative;
 }
 
-.memberContent .memcon1 .con1_info li {
+.memberContent #memcon1 .con1_info .memberbtn::after {
+  content: '';
+  position: absolute;
+  width: 149px;
+  height: 29px;
+  left: -1.3px;
+  top: -1px;
+  border-radius: 100px;
+  background-color: rgba(138, 206, 222, 0.5);
+  z-index: -1;
+  -webkit-animation: boxbig 0.5s;
+          animation: boxbig 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.memberContent #memcon1 .con1_info .memberbtn:hover {
+  background-color: #f3cad3;
+  color: #666666;
+}
+
+.memberContent #memcon1 .con1_info .memberbtn:hover::after {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  background-color: rgba(243, 202, 211, 0.5);
+}
+
+@-webkit-keyframes boxbig {
+  form {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
+@keyframes boxbig {
+  form {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
+.memberContent #memcon1 .con1_info li {
   list-style: none;
 }
 
-.memberContent .memcon1 .con1_info li p,
-.memberContent .memcon1 input {
+.memberContent #memcon1 .con1_info li p,
+.memberContent #memcon1 input {
   background-color: transparent;
   outline: none;
   border: none;
@@ -1871,7 +1956,7 @@ body {
   color: #666666;
 }
 
-.memberContent .memcon1 input {
+.memberContent #memcon1 input {
   border-bottom-style: solid;
   border-width: 1px;
   width: 60%;
@@ -1881,7 +1966,7 @@ body {
   line-height: 20px;
 }
 
-.memberContent .memcon2 {
+.memberContent #memcon2 {
   width: 45%;
   height: 90%;
   border-radius: 10px;
@@ -1889,14 +1974,14 @@ body {
           box-shadow: 0px 0px 5px #e4e4e4;
 }
 
-.memberContent .memcon2 h3 {
+.memberContent #memcon2 h3 {
   width: 100%;
   height: 10%;
   color: #666666;
   padding: 10px 0 0 20px;
 }
 
-.memberContent .memcon2 #oder {
+.memberContent #memcon2 #oder {
   width: 100%;
   height: 90%;
   text-align: center;
@@ -1909,12 +1994,12 @@ body {
   padding-top: 40px;
 }
 
-.memberContent .memcon2 #oder .table_oder {
+.memberContent #memcon2 #oder .table_oder {
   width: 95%;
   border-collapse: collapse;
 }
 
-.memberContent .memcon2 #oder th {
+.memberContent #memcon2 #oder th {
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
@@ -1925,14 +2010,73 @@ body {
   height: 30px;
 }
 
-@media screen and (max-width: 1000px) {
-  .memberContent .memcon1 {
+.memberContent #memcon2 #oder th .delete_oder {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  left: 10px;
+}
+
+.memberContent #memcon2 #oder th .delete_oder img {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.memberContent #memcon2 #oder th .delete_oder img:nth-of-type(2) {
+  opacity: 0;
+}
+
+.memberContent #memcon2 #oder th .delete_oder:hover img:nth-of-type(1) {
+  opacity: 0;
+}
+
+.memberContent #memcon2 #oder th .delete_oder:hover img:nth-of-type(2) {
+  opacity: 1;
+}
+
+@media screen and (min-width: 1025px) {
+  .memberContent #memcon1 {
+    display: block;
+  }
+  .memberContent #memcon2 {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .memberitem .personal_photo .slide_list {
+    display: block;
+  }
+  .memberContent #memcon1 {
     width: 90%;
   }
-  .memcon2 {
+  .memberContent #memcon2 {
+    width: 90%;
+  }
+  #memcon2 {
     display: none;
   }
 }
+<<<<<<< HEAD
+=======
+
+@media screen and (max-width: 768px) {
+  .memberContent #memcon1 {
+    width: 99%;
+  }
+  .memberContent #memcon2 {
+    width: 99%;
+  }
+}
+>>>>>>> wey-dev
 
 .cart_noshow {
   position: fixed;
