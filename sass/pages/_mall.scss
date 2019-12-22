@@ -1,90 +1,139 @@
-
 /* mall page css */
+.mall_bg {
+  background-color: #EAEAEA;
+
+}
+
+#mall_search {
+  margin: 5% 0 5% 5%;
+
+  .mall_search_bar {
+    position: relative;
+    border: 2px solid #8ACEDE;
+    padding: 10px;
+    opacity: 0.5;
+    border-radius: 10px 0px 0px 10px;
+    width: 75%;
+    background-color: rgb(240, 240, 240);
+  }
+
+  .mall_search-btn {
+    position: absolute;
+    background: #8ACEDE;
+    border-radius: 0px 10px 10px 0px;
+    width: 50px;
+    padding: 12px;
+    border: none;
+
+  }
+}
 
 
-  #slider{
-    margin: 2% 0 0;
-    .owl-item img{
-      height: 180px;
+#slider {
+  padding:2% 0 0;
+  width: 92%;
+  margin:0 auto;
+  .owl-item img {
+    height: 180px;
+  }
+}
+
+.mall_content {
+  width: 90%;
+  margin:0 auto;
+  display: flex;
+  flex-wrap: wrap;
+
+
+  .mall_box {
+    //商品圖
+    width: 18%;
+    background-color: rgba(255, 255, 255, 0.568);
+    padding: 1%;
+    margin: 1.5% 1%;
+    border-radius: 2%;
+    background-position: center;
+    transition: all .5s;
+    border: 1px solid #dfdfdcdd;
+    display: block;
+    cursor: pointer;
+
+    img {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+      width: 100%;
+
+    }
+
+    p {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp:1;
+    }
+
+    .product_price {
+      // margin-top: 10px;
+
+      .price_sale {
+        color: $price;
+        font-weight: bolder;
+        @include font(5);
+      }
+    }
+
+    .product_price span:nth-child(1) {
+      color: $dark;
+      text-decoration: line-through;
+    }
+
+    .product_price span:nth-child(2) {
+      color: $price;
+      margin-left: 5%;
+      font-weight: bolder;
+    }
+
+    &:hover {
+      transform: rotateY(180deg);
+      background-image: url(../img/add_cart.png);
+      background-repeat: no-repeat;
+      background-color: #bbc2bf;
+      background-size: 20%;
+      background-position: center;
+
+      img {
+        visibility: hidden;
+      }
+
+      p,
+      .product_price {
+        transform: rotateY(180deg);
+      }
+
+
     }
   }
-  
-
-
-
-
-
-
-.mall_content{
-    width: 100%;
-    display: flex;
-    flex-wrap:wrap;
-      background-color: rgb(241, 241, 241);
-    .mall_box{  //商品圖
-        width: 18%;
-        background-color: #fff;
-        padding: 1%;
-        margin: 2% 1%;
-        border-radius: 5%;
-        box-shadow: 1px 1px 10px $shadow;
-        transition: all .5s;
-        cursor: pointer;
-          img{
-            -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
-            width: 100%;
-        
-          }
-          p{
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp:3;
-          }
-          .product_price{
-           margin-top:10px;
-            .price_sale{
-                color:$price;
-                @include font(5);
-            }
-          }
-          .product_price span:nth-child(1){
-            color:$dark ;
-            text-decoration:line-through;
-          }
-          .product_price span:nth-child(2){
-            color:$price;
-          }
-
-          &:hover{
-              transform:rotateY(180deg) ;
-              background-image: url(../img/add_cart.png);
-              background-repeat:no-repeat;
-              background-color: #09afc2;
-              background-size: 20%;
-              background-position: center;
-        
-              img{
-                  visibility: hidden;
-              }
-
-              p,.product_price{
-                transform:rotateY(180deg);
-              }
-           
-
-            }
-    }
 }
 
 
 @include media(767px) {
-    .mall_content{
-        justify-content:center;
-        margin: 0 auto;
-        .mall_box{
-            width: 48%;  
-        }
+  .mall_content {
+    justify-content: center;
+    margin: 0 auto;
+
+    .mall_box {
+      width: 48%;
+   
     }
-    
+
   }
+
+  #slider {
+    margin: 2% 0 0;
+
+    .owl-item img {
+      height: 180px;
+    }
+  }
+
+}
