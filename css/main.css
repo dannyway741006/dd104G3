@@ -1,3 +1,17 @@
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-track {
+  margin: 15px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -544,7 +558,6 @@ body {
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   letter-spacing: 3.2px;
-  letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
   position: fixed;
@@ -645,6 +658,7 @@ body {
   background-image: url(../img/program_img/office.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  height: calc(100vh - 60px);
 }
 
 #program_main .invite_list {
@@ -745,18 +759,145 @@ body {
   margin: 5px 0;
 }
 
+#program_main .setting_all {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 20px;
+}
+
+#program_main .setting_all .setting_btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #8acede;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#program_main .setting_all .setting_btn img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+#program_main .setting_all .setting_btn img:nth-of-type(2) {
+  opacity: 0;
+}
+
+#program_main .setting_all .setting_btn:hover img:nth-of-type(1) {
+  opacity: 0;
+}
+
+#program_main .setting_all .setting_btn:hover img:nth-of-type(2) {
+  opacity: 1;
+}
+
+#program_main .setting_all .setting_btn:hover {
+  background-color: #ffffff;
+}
+
+#program_main .setting_all .setting_btn img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#program_main .setting_all .setting_content_box {
+  width: 208px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  position: absolute;
+  top: 50px;
+  z-index: 1;
+  display: none;
+}
+
+#program_main .setting_all .setting_content_box.setting_content_box_active {
+  display: block;
+}
+
+#program_main .setting_all .setting_content_box p span {
+  letter-spacing: 2.8px;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#program_main .setting_all .setting_content_box .program_setting_choose_color .program_setting_choose_color_item {
+  background-color: #5395DE;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 2.5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#program_main .setting_all .setting_content_box .program_setting_choose_color .program_setting_choose_color_item:first-child {
+  background-color: #5395DE;
+}
+
+#program_main .setting_all .setting_content_box .program_setting_choose_color .program_setting_choose_color_item:nth-child(2) {
+  background-color: #8acede;
+}
+
+#program_main .setting_all .setting_content_box .program_setting_choose_color .program_setting_choose_color_item:nth-child(3) {
+  background-color: #eb7a77;
+}
+
+#program_main .setting_all .setting_content_box hr {
+  height: 1px;
+  border: none;
+  background-color: #999999;
+}
+
+#program_main .setting_all .setting_content_box .setting_program_status {
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#program_main .setting_all .setting_content_box .setting_program_status.setting_program_status_delete {
+  color: #eb7a77;
+}
+
+#program_main .setting_all .setting_content_box .setting_program_status:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #8acede;
+}
+
 #program_main .cards_column_all {
   border: 1px solid red;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
   overflow-x: scroll;
-  max-width: 960px;
+  max-width: 970px;
+  display: inline-block;
 }
 
 #program_main .cards_column_all .cards_column {
+  display: inline-block;
   border: 1px solid blue;
   height: 70vh;
   height: 700px;
@@ -771,7 +912,6 @@ body {
 #program_main .cards_column_all .cards_column .cards_column_head {
   height: 50px;
   width: 100%;
-  border: 1px solid red;
   letter-spacing: 3.6px;
   font-size: 18px;
   line-height: 50px;
@@ -929,6 +1069,44 @@ body {
 
 #program_main .cards_column_all .cards_column .add_cards_btn:hover {
   border: 2px solid #8acede;
+}
+
+#program_main .program_calendar_all {
+  border: 1px solid blue;
+  height: 300px;
+  width: 300px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+
+#program_main .program_calendar_all .program_calendar_year {
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#program_main .program_calendar_all .program_calendar_month {
+  letter-spacing: 4px;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+#program_main .program_calendar_all table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+#program_main .program_calendar_all table tr td {
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+  border: 1px solid red;
+  width: 40px;
+}
+
+#program_main .program_calendar_all table tr td:first-child, #program_main .program_calendar_all table tr td:last-child {
+  color: #eb7a77;
 }
 
 .card_light_box {

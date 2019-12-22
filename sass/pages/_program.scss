@@ -76,7 +76,7 @@
     border-radius: 20px;
     padding: 15px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
-    letter-spacing: 3.2px;
+    // letter-spacing: 3.2px;
     @include font(1, 20px);
     position: fixed;
     top: 100px;
@@ -203,6 +203,7 @@
   background-image: url(../img/program_img/office.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  height: calc(100vh - 60px);
 
   //邀請成員區
   .invite_list {
@@ -270,7 +271,7 @@
       top: 70px;
       right: -120px;
       display: none;
-      
+
 
       &.invite_add_member_box_active {
         display: block;
@@ -297,15 +298,129 @@
     //邀請成員區--結束
   }
 
+  //設定鈕all
+  .setting_all {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+
+    //設定鈕
+    .setting_btn {
+      @include btnReset;
+      @include hoverIcon(30px);
+      // border: 1px solid blue;
+      background-color: $primary;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $white;
+      }
+
+      img {
+        width: 100%;
+        @include positionCenter;
+      }
+
+      //設定鈕--結束
+    }
+
+    //設定鈕燈箱
+    .setting_content_box {
+      width: 208px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+      @include font(1, 20px);
+      position: absolute;
+      top: 50px;
+      z-index: 1;
+
+      display: none;
+
+      &.setting_content_box_active {
+        display: block;
+      }
+
+      p {
+        span {
+          letter-spacing: 2.8px;
+          @include font(0, 20px);
+        }
+      }
+
+      //設定區選顏色
+      .program_setting_choose_color {
+        .program_setting_choose_color_item {
+          background-color: #5395DE;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          margin: 2.5px;
+          display: inline-block;
+          cursor: pointer;
+
+          &:first-child {
+            background-color: #5395DE;
+          }
+
+          &:nth-child(2) {
+            background-color: #8acede;
+          }
+
+          &:nth-child(3) {
+            background-color: #eb7a77;
+          }
+        }
+
+        //設定區選顏色  
+      }
+
+      hr {
+        // margin: 5px ;
+        height: 1px;
+        border: none;
+        background-color: $gray;
+
+      }
+
+      .setting_program_status {
+        // border: 1px solid  red;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+
+        &.setting_program_status_delete {
+          color: $danger;
+        }
+
+        &:hover {
+          background-color: rgba(0, 0, 0, .1);
+          color: $primary;
+        }
+      }
+
+    }
+
+  }
+
+
+
   //卡片區
   .cards_column_all {
     border: 1px solid red;
-    display: flex;
-    flex-wrap: nowrap;
+    // display: flex;
+    // flex-wrap: nowrap;
     overflow-x: scroll;
-    max-width: 960px;
+    max-width: 970px;
+    display: inline-block;
 
     .cards_column {
+      display: inline-block;
       border: 1px solid blue;
       height: 70vh;
       height: 700px;
@@ -319,7 +434,7 @@
       .cards_column_head {
         height: 50px;
         width: 100%;
-        border: 1px solid red;
+        // border: 1px solid red;
         @include font(2, 50px);
         background-color: $programcolor1;
         color: #fff;
@@ -452,13 +567,48 @@
         }
       }
 
-
     }
   }
 
 
 
 
+  .program_calendar_all {
+    border: 1px solid blue;
+    height: 300px;
+    width: 300px;
+    display: inline-block;
+text-align: center;
 
+    vertical-align: top;
+    // float: right;
+
+    // &:after {
+    //   content: "";
+    //   display: inline-block;
+    //   clear: both;
+    // }
+.program_calendar_year{
+  @include font(0);
+}
+.program_calendar_month{
+  @include font(3,30px);
+}
+table{
+  margin: 0 auto;
+  border-collapse: collapse;
+  tr{
+    td{
+      @include font(2);
+      border: 1px solid red;
+      width: 40px;
+      &:first-child,&:last-child{
+        color:$danger;
+      }
+    }
+  }
+}
+
+  }
 
 }

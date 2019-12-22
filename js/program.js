@@ -13,6 +13,8 @@ var main_content = new Vue({
 
     invite_btn: false,
 
+    setting_btn:false,
+
   },
   methods: {
     //新增專案
@@ -38,9 +40,7 @@ var main_content = new Vue({
       } else {}
     },
 
-    // show_invite_add_member_box() {
-    //   this.open = true;
-    // },
+   
 
   },
   mounted() {
@@ -48,6 +48,7 @@ var main_content = new Vue({
       this.open = false;
       this.cards_list_card_input_box = false;
       this.invite_btn = false;
+      this.setting_btn= false;
     });
   },
 });
