@@ -146,7 +146,6 @@
 
               </th>
             </tr>
-
             <tr>
               <td style="width: 50px;height:50px;"></td>
               <td></td>
@@ -155,7 +154,6 @@
               <td></td>
             </tr>
           </table>
-
         </form>
       </div>
     </div>
@@ -168,33 +166,8 @@
     const mask = document.getElementById("mask");
     moreBtn.addEventListener("click", () => content.classList.add("active"));
     mask.addEventListener("click", () => content.classList.remove("active"));
-
-
-    // =================member_change_paper==============================
-    function member_page1() {
-      document.getElementById("memcon1").style.display = "block";
-      document.getElementById("memcon2").style.display = "none";
-    }
-
-    function member_page2() {
-      document.getElementById("memcon1").style.display = "none";
-      document.getElementById("memcon2").style.display = "block";
-    }
-    // ===================member_change_img====================================
-    function showImg(thisimg) {
-      let file = thisimg.files[0];
-      if (window.FileReader) {
-        let files = new FileReader();
-
-        let showimg = document.getElementById('acceptImg');
-        files.onloadend = function (e) {
-          showimg.src = e.target.result;
-        };
-        files.readAsDataURL(file);
-        acceptImg.style.display = 'block';
-      }
-    }
   </script>
+  <script src="./js/member.js"></script>
 </body>
 
 </html>

@@ -927,7 +927,6 @@ body {
   overflow-y: scroll;
 }
 
-<<<<<<< HEAD
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list {
   padding: 0 5%;
 }
@@ -1033,39 +1032,6 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
-=======
-.memberitem {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.memberitem .personal_photo {
-  width: 100%;
-  height: 180px;
-}
-
-.memberitem .personal_photo .picrange {
-  width: 100%;
-  height: 120px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.memberitem .personal_photo .picrange .range {
-  width: 80px;
-  height: 80px;
-  border: 1px solid #d1d1d1;
-  border-radius: 100%;
-  overflow: hidden;
->>>>>>> wey-dev
   position: relative;
   width: 30px;
   height: 30px;
@@ -1077,7 +1043,6 @@ body {
   transition: all 0.3s;
 }
 
-<<<<<<< HEAD
 #program_main .cards_column_all .cards_column .add_cards_btn img {
   width: 30px;
   height: 30px;
@@ -1735,9 +1700,40 @@ body {
 }
 
 .memberitem {
-=======
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.memberitem .personal_photo {
+  width: 100%;
+  height: 180px;
+}
+
+.memberitem .personal_photo .picrange {
+  width: 100%;
+  height: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.memberitem .personal_photo .picrange .range {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #d1d1d1;
+  border-radius: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 .memberitem .personal_photo .picrange .range #acceptImg {
->>>>>>> wey-dev
   width: 100%;
   height: 100%;
   -o-object-position: center;
@@ -1888,7 +1884,7 @@ body {
 }
 
 .memberContent #memcon1 .con1_info .memberbtn::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 149px;
   height: 29px;
@@ -2042,31 +2038,46 @@ body {
   opacity: 1;
 }
 
-@media screen and (min-width: 1025px) {
-  .memberContent #memcon1 {
-    display: block;
-  }
-  .memberContent #memcon2 {
-    display: block;
-  }
-}
-
 @media screen and (max-width: 1024px) {
   .memberitem .personal_photo .slide_list {
     display: block;
   }
-  .memberContent #memcon1 {
-    width: 90%;
+  .memberContent {
+    display: block;
+    position: relative;
   }
+  .memberContent.active #memcon2 {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  .memberContent.active #memcon1 {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .memberContent #memcon1,
   .memberContent #memcon2 {
     width: 90%;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
-  #memcon2 {
-    display: none;
+  .memberContent #memcon2 {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform-origin: left;
+            transform-origin: left;
   }
 }
-<<<<<<< HEAD
-=======
 
 @media screen and (max-width: 768px) {
   .memberContent #memcon1 {
@@ -2076,7 +2087,6 @@ body {
     width: 99%;
   }
 }
->>>>>>> wey-dev
 
 .cart_noshow {
   position: fixed;
@@ -2145,4 +2155,3 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
-/*# sourceMappingURL=main.css.map */
