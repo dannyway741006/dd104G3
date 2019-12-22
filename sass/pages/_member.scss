@@ -242,7 +242,6 @@
       }
       #memcon1 {
         transform: scaleX(0);
-        transform-origin: right;
         opacity: 0;
         visibility: hidden;
       }
@@ -250,10 +249,13 @@
     #memcon1,
     #memcon2 {
       width: 90%;
-      transition: all 0.3s;
       position: absolute;
       top: 0;
       left: 0;
+      transition: all 0.3s;
+    }
+    #memcon1 {
+      transform-origin: right;
     }
     #memcon2 {
       transform: scaleX(0);

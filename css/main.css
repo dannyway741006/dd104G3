@@ -2055,19 +2055,21 @@ body {
   .memberContent.active #memcon1 {
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
-    -webkit-transform-origin: right;
-            transform-origin: right;
     opacity: 0;
     visibility: hidden;
   }
   .memberContent #memcon1,
   .memberContent #memcon2 {
     width: 90%;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
     position: absolute;
     top: 0;
     left: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .memberContent #memcon1 {
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
   .memberContent #memcon2 {
     -webkit-transform: scaleX(0);
