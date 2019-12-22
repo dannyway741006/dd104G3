@@ -958,6 +958,7 @@ body {
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  padding: 15px 0px;
 }
 
 .card_light_box.opneLight {
@@ -1038,27 +1039,36 @@ body {
   padding-top: 25px;
 }
 
-.card_light_box .left_aside .first_right div,
-.card_light_box .left_aside .second_right div {
+.card_light_box .left_aside .first_right,
+.card_light_box .left_aside .second_right {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
-.card_light_box .left_aside .first_right div:nth-child(n),
-.card_light_box .left_aside .second_right div:nth-child(n) {
+.card_light_box .left_aside .first_right div:nth-child(3), .card_light_box .left_aside .first_right div:nth-child(4), .card_light_box .left_aside .first_right div:nth-child(5), .card_light_box .left_aside .first_right div:nth-child(6),
+.card_light_box .left_aside .second_right div:nth-child(3),
+.card_light_box .left_aside .second_right div:nth-child(4),
+.card_light_box .left_aside .second_right div:nth-child(5),
+.card_light_box .left_aside .second_right div:nth-child(6) {
   width: 90%;
   margin: 5px 0px;
   padding: 5px;
 }
 
-.card_light_box .left_aside .first_right div:nth-child(n):hover,
-.card_light_box .left_aside .second_right div:nth-child(n):hover {
+.card_light_box .left_aside .first_right div:nth-child(3):hover, .card_light_box .left_aside .first_right div:nth-child(4):hover, .card_light_box .left_aside .first_right div:nth-child(5):hover, .card_light_box .left_aside .first_right div:nth-child(6):hover,
+.card_light_box .left_aside .second_right div:nth-child(3):hover,
+.card_light_box .left_aside .second_right div:nth-child(4):hover,
+.card_light_box .left_aside .second_right div:nth-child(5):hover,
+.card_light_box .left_aside .second_right div:nth-child(6):hover {
   background-color: #cee0ff;
   cursor: pointer;
 }
 
-.card_light_box .left_aside .first_right div:nth-child(n):hover img,
-.card_light_box .left_aside .second_right div:nth-child(n):hover img {
+.card_light_box .left_aside .first_right div:nth-child(3):hover img, .card_light_box .left_aside .first_right div:nth-child(4):hover img, .card_light_box .left_aside .first_right div:nth-child(5):hover img, .card_light_box .left_aside .first_right div:nth-child(6):hover img,
+.card_light_box .left_aside .second_right div:nth-child(3):hover img,
+.card_light_box .left_aside .second_right div:nth-child(4):hover img,
+.card_light_box .left_aside .second_right div:nth-child(5):hover img,
+.card_light_box .left_aside .second_right div:nth-child(6):hover img {
   -webkit-filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
           filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
 }
@@ -1203,6 +1213,10 @@ body {
   color: #fff;
 }
 
+.right_aside .memberRight .calendar .calendar_status span:nth-child(4).active {
+  background: #86c166;
+}
+
 .right_aside .memberRight .card_todo_content {
   margin-bottom: 24px;
 }
@@ -1213,6 +1227,7 @@ body {
   display: flex;
   padding: 8px 0px;
   margin-bottom: 4px;
+  position: relative;
 }
 
 .right_aside .memberRight .card_todo_content .todo_title h3 {
@@ -1228,29 +1243,15 @@ body {
           filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
 }
 
-.right_aside .memberRight .card_todo_content .todo_main_content {
-  padding-left: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  position: relative;
-}
-
-.right_aside .memberRight .card_todo_content .todo_main_content p {
-  letter-spacing: 3.2px;
-  font-size: 16px;
-  line-height: 20px;
-}
-
-.right_aside .memberRight .card_todo_content .todo_main_content div {
+.right_aside .memberRight .card_todo_content .todo_title .all_card_todo_delete {
   position: absolute;
   right: 7%;
   cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-.right_aside .memberRight .card_todo_content .todo_main_content div:hover {
+.right_aside .memberRight .card_todo_content .todo_title .all_card_todo_delete:hover {
   color: #8acede;
   text-decoration: underline;
 }
@@ -1288,8 +1289,11 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 6px 25px;
+  padding: 6px 0px;
   position: relative;
+  left: 25px;
+  border-bottom: 1px solid #e0dcdc;
+  width: 88.5%;
 }
 
 .right_aside .memberRight .card_check_item div:first-child {
@@ -1298,6 +1302,7 @@ body {
 
 .right_aside .memberRight .card_check_item div:first-child img {
   width: 100%;
+  cursor: pointer;
 }
 
 .right_aside .memberRight .card_check_item p {
@@ -1307,10 +1312,14 @@ body {
   line-height: 20px;
 }
 
+.right_aside .memberRight .card_check_item p.lineThrough {
+  text-decoration: line-through;
+}
+
 .right_aside .memberRight .card_check_item div:nth-child(3) {
   width: 20px;
   position: absolute;
-  right: 18%;
+  right: 14%;
 }
 
 .right_aside .memberRight .card_check_item div:nth-child(3) img {
@@ -1328,7 +1337,7 @@ body {
 .right_aside .memberRight .card_check_item div:nth-child(4) {
   width: 20px;
   position: absolute;
-  right: 6%;
+  right: 0;
 }
 
 .right_aside .memberRight .card_check_item div:nth-child(4) img {
@@ -1442,6 +1451,71 @@ body {
 .right_aside .memberRight .card_file .card_upload_file button:hover img {
   -webkit-filter: invert(25%) sepia(51%) saturate(1876%) hue-rotate(164deg) brightness(89%) contrast(94%);
           filter: invert(25%) sepia(51%) saturate(1876%) hue-rotate(164deg) brightness(89%) contrast(94%);
+}
+
+.todo_lightbox {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 200px;
+  position: absolute;
+  -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
+  display: none;
+  top: 263px;
+}
+
+.todo_lightbox.opentodo_lightbox {
+  display: block;
+}
+
+.todo_lightbox p {
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.todo_lightbox .todo_lightbox_input {
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  outline: none;
+  background-color: transparent;
+  color: #666666;
+  padding: 5px;
+  border: 1px solid #666666;
+  border-radius: 10px;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.todo_lightbox .todo_lightbox_botton {
+  text-align: right;
+}
+
+.todo_lightbox .todo_lightbox_botton button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  background-color: #8acede;
+  color: #fff;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.todo_lightbox .todo_lightbox_botton button:hover {
+  background-color: #fff;
+  color: #8acede;
+  border: 2px solid #8acede;
 }
 
 @media screen and (max-width: 850px) {

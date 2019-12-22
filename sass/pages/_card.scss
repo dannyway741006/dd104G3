@@ -11,7 +11,7 @@
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
   overflow: hidden;
-
+   padding: 15px 0px;
   &.opneLight {
     opacity: 1;
     display: block;
@@ -66,10 +66,10 @@
     padding-left: 20px;
     padding-top: 25px;
 
-    .first_right div,
-    .second_right div {
+    .first_right ,
+    .second_right {
       transition: all 0.3s;
-      &:nth-child(n) {
+      div:nth-child(3),div:nth-child(4),div:nth-child(5),div:nth-child(6){
         width: 90%;
         margin: 5px 0px;
         padding: 5px;
@@ -112,6 +112,7 @@
 }
 
 
+//內卷軸怎麼不見了
 //右半邊修改
 .right_aside{
 width: 70%;
@@ -201,18 +202,61 @@ overflow-y: scroll;
         transition: background-color 0.3s;
         background-color: $danger;
         color: #fff;
-        
+        &.active{
+          background: $success;
+        }
       }
     }
   }
 
-  //待辦清單
-  .card_todo_content {
+ //原版的樣子待辦清單
+  // .card_todo_content {
+  //   margin-bottom: 24px;
+  // .todo_title{
+  //   display: flex;
+  //   padding:8px 0px;
+  // margin-bottom: 4px;
+  //   h3{
+  //     margin-left: 10px;
+  //     @include font(1,20px);
+  //     font-weight: 600;
+  //   }
+  //   img{
+  //     filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+  //   }
+  // }
+
+    // .todo_main_content {
+    //   padding-left: 25px;
+    //   display: flex;
+    //    padding-top: 5px;
+    //    padding-bottom: 5px;
+    //    position: relative;
+      
+    //       p{
+    //         @include font(1,20px);
+    //       }
+    //   div {
+    //    position: absolute;
+    //    right:7% ;
+    //     cursor: pointer;
+    //     transition: all 0.3s;
+    //     &:hover{
+    //       color:$primary ;
+    //       text-decoration: underline;
+    //     }
+       
+    //   }
+    // }
+
+    //新版待辦清單
+      .card_todo_content {
     margin-bottom: 24px;
   .todo_title{
     display: flex;
     padding:8px 0px;
   margin-bottom: 4px;
+  position: relative;
     h3{
       margin-left: 10px;
       @include font(1,20px);
@@ -221,27 +265,18 @@ overflow-y: scroll;
     img{
       filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
     }
-  }
-    .todo_main_content {
-      padding-left: 25px;
-      display: flex;
-       padding-top: 5px;
-       padding-bottom: 5px;
-       position: relative;
-          p{
-            @include font(1,20px);
+    .all_card_todo_delete{
+         position: absolute;
+         right:7% ;
+          cursor: pointer;
+          transition: all 0.3s;
+          &:hover{
+            color:$primary ;
+            text-decoration: underline;
           }
-      div {
-       position: absolute;
-       right:7% ;
-        cursor: pointer;
-        &:hover{
-          color:$primary ;
-          text-decoration: underline;
+         
         }
-       
-      }
-    }
+  }
 
     //進度條
     .todo_progress_bar {
@@ -272,19 +307,26 @@ overflow-y: scroll;
 
   .card_check_item {
     display: flex;
-    padding:6px 25px;
+    padding:6px 0px;
    position: relative;
+   left: 25px;
+   border-bottom:1px solid #e0dcdc; 
+   width: 88.5%;
     div:first-child {
       width: 20px;
 
       img {
         width: 100%;
+        cursor: pointer;
       }
     }
 
     p {
       margin-left: 15px;
       @include font(0,20px);
+      &.lineThrough{
+        text-decoration: line-through;
+      }
     }
     div:nth-child(3){
       width: 20px;
@@ -296,7 +338,7 @@ overflow-y: scroll;
  
     // }
     position: absolute;
-    right: 18%;
+    right: 14%;
       img {
         width: 100%;
         cursor: pointer;
@@ -315,7 +357,7 @@ overflow-y: scroll;
       //   clear: both;
       // }
       position: absolute;
-      right: 6%;
+      right:0;
       img {
         width: 100%;
         cursor: pointer;
@@ -404,6 +446,58 @@ overflow-y: scroll;
   
 }
 }
+
+//待辦清單燈箱
+.todo_lightbox{
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 200px;
+  position: absolute;
+  box-shadow: 3px 3px 6px 0px $shadow;
+  display: none;
+  top: 263px;
+  &.opentodo_lightbox{
+    display: block;
+  }
+  p{
+    @include font(1,20px);
+  }
+  .todo_lightbox_input{
+    @include font(1,20px);
+    outline: none;
+    background-color: transparent;
+    color: #666666;
+    padding: 5px;
+    border: 1px solid #666666;
+    border-radius: 10px;
+    width: 100%;
+    margin: 5px 0;
+
+  }
+  .todo_lightbox_botton{
+    text-align: right;
+    button{
+      @include btnReset();
+      @include font(1,20px);
+      cursor: pointer;
+      border: 2px solid #fff;
+      background-color: $primary;
+      color: #fff;
+      padding: 5px;
+      margin-top: 5px;
+      border-radius: 5px;
+      transition:all 0.3s;
+      &:hover{
+        background-color:#fff;
+        color:$primary;
+        border: 2px solid  $primary;
+      }
+    }
+  }
+}
+
+
 //卡片rwd
 @include media(850px) {
   .card_light_box{
@@ -471,3 +565,4 @@ overflow-y: scroll;
 //     }
 //   }
 // }
+
