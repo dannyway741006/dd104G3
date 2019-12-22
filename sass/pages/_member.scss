@@ -1,0 +1,279 @@
+// ========側邊欄=======================
+.memberitem {
+  width: 100%;
+  height: 100%;
+  // border: 1px solid red;
+  overflow: hidden;
+
+  .personal_photo {
+    width: 100%;
+    height: 180px;
+    // border: 1px solid gold;
+
+    .picrange {
+      width: 100%;
+      height: 120px;
+      // border: 1px solid rgb(0, 0, 0);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      .range {
+        width: 80px;
+        height: 80px;
+        border: 1px solid rgb(209, 209, 209);
+        border-radius: 100%;
+        overflow: hidden;
+        position: relative;
+
+        #acceptImg {
+          width: 100%;
+          height: 100%;
+          object-position: center;
+          object-fit: fill;
+        }
+      }
+    }
+
+    #userName {
+      // border: 1px solid gray;
+      width: 100%;
+      height: 30px;
+      text-align: center;
+      line-height: 40px;
+      color: $dark;
+    }
+
+    #membericon {
+      width: 100%;
+      height: 30px;
+      // border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10%;
+      position: relative;
+
+      .up_memberpic {
+        width: 100%;
+        height: 100%;
+
+        .double_mem {
+          width: 30%;
+          height: 100%;
+          // border: 1px solid red;
+          position: relative;
+          left: 95%;
+          top: 15%;
+          @include hoverIcon(20px);
+
+          img {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .line {
+    border: 0.2px solid rgb(226, 224, 224);
+    width: 90%;
+    margin-left: 5%;
+    box-shadow: 0 0 0.5px 0.3px rgb(206, 201, 201);
+    margin-bottom: 30px;
+  }
+
+  .slide_list {
+    display: none;
+  }
+}
+
+// ========member_內容=============================
+.memberContent {
+  // border: 1px solid black;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  #memcon1 {
+    width: 45%;
+    height: 90%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgb(228, 228, 228);
+    h3 {
+      // border: 1px solid red;
+      width: 100%;
+      height: 10%;
+      color: $dark;
+      padding: 10px 0 0 20px;
+    }
+    ul {
+      // border: 1px solid black;
+      width: 100%;
+      height: 90%;
+      padding-top: 30px;
+    }
+    .con1_info {
+      text-align: center;
+      @include font($level: 0, $lineHeight: 50px);
+      .memberbtn {
+        width: 150px;
+        height: 30px;
+        border-radius: 50px;
+        @include font($level: 1, $lineHeight: null);
+        transition: all 0.5s;
+        color: $dark;
+        margin-top: 70px;
+        background-color: $primary;
+        color: $white;
+        border-color: #ffffff;
+        outline: none;
+        cursor: pointer;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          // border: 1px solid red;
+          width: 149px;
+          height: 29px;
+          left: -1.3px;
+          top: -1px;
+          border-radius: 100px;
+          background-color: rgba(138, 206, 222, 0.5);
+          z-index: -1;
+          animation: boxbig 0.5s;
+          transition: all 0.5s;
+        }
+        &:hover {
+          background-color: rgb(243, 202, 211);
+          color: $dark;
+        }
+        &:hover::after {
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-play-state: running;
+          animation-fill-mode: both;
+          background-color: rgba(243, 202, 211, 0.5);
+        }
+      }
+      @keyframes boxbig {
+        form {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1.1);
+        }
+      }
+      li {
+        list-style: none;
+      }
+    }
+    .con1_info li p,
+    input {
+      @include btnReset;
+      display: inline-block;
+      color: $dark;
+    }
+    input {
+      border-bottom-style: solid;
+      border-width: 1px;
+      width: 60%;
+      border-color: rgb(155, 155, 155);
+      @include font($level: 0, $lineHeight: null);
+      // background-color: aqua;
+    }
+  }
+
+  #memcon2 {
+    width: 45%;
+    height: 90%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgb(228, 228, 228);
+    h3 {
+      width: 100%;
+      height: 10%;
+      color: $dark;
+      padding: 10px 0 0 20px;
+      // border: 1px solid red;
+    }
+    #oder {
+      width: 100%;
+      height: 90%;
+      // border: 1px solid blue;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
+      .table_oder {
+        width: 95%;
+        // border: 1px solid #000000;
+        border-collapse: collapse;
+      }
+      th {
+        @include font($level: 0, $lineHeight: null);
+        font-weight: 100;
+        color: $dark;
+        border-bottom: #d8d8d8 solid;
+        border-width: 0.5px;
+        height: 30px;
+        .delete_oder {
+          position: relative;
+          @include hoverIcon(17px);
+          left: 10px;
+        }
+      }
+    }
+  }
+}
+
+@include media(1024px) {
+  .memberitem .personal_photo .slide_list {
+    display: block;
+  }
+  .memberContent {
+    display: block;
+    position: relative;
+    &.active {
+      #memcon2 {
+        transform: scaleX(1);
+        opacity: 1;
+        visibility: visible;
+      }
+      #memcon1 {
+        transform: scaleX(0);
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    #memcon1,
+    #memcon2 {
+      width: 90%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 0.3s;
+    }
+    #memcon1 {
+      transform-origin: right;
+    }
+    #memcon2 {
+      transform: scaleX(0);
+      opacity: 0;
+      visibility: hidden;
+      transform-origin: left;
+    }
+  }
+}
+
+@include media(768px) {
+  .memberContent #memcon1 {
+    width: 99%;
+    // background-color: aqua;
+  }
+
+  .memberContent #memcon2 {
+    width: 99%;
+    // background-color: aqua;
+  }
+}

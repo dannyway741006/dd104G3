@@ -2,18 +2,61 @@
 #program_aside {
   border: 1px solid blue;
 
-
   .program_add_btn {
+    @include btnReset;
     padding: 5px 10px;
+    transition: all 0.3s;
+    border-radius: 10px;
+    border: 2px solid $white;
+    color: $white;
+    background-color: $primary;
+    @include font(1);
+
+    &:hover {
+      background-color: $white;
+      color: $primary;
+      border: 2px solid $primary;
+
+      .program_add_img {
+        border: 2px solid $primary;
+        cursor: pointer;
+
+        img {
+          &:nth-of-type(1) {
+            opacity: 0;
+          }
+
+          &:nth-of-type(2) {
+            opacity: 1;
+          }
+        }
+      }
+
+    }
 
     .program_add_img {
+
       width: 20px;
+      height: 20px;
+
       display: inline-block;
       vertical-align: middle;
+      border: 2px solid $white;
+      border-radius: 50%;
+      transition: border-color 0.3s;
+      position: relative;
 
       img {
-        width: 100%;
+        width: 20px;
+        height: 20px;
+        @include positionCenter;
+        transition: opacity 0.3s;
+
+        &:nth-of-type(2) {
+          opacity: 0;
+        }
       }
+
     }
 
     .program_add_list {
@@ -28,46 +71,121 @@
 
   //新建專案取名&選色燈箱
   .new_program_choose_box {
-    border: 1px solid red;
-    position: fixed;
-    top: 100px;
-    left: 20px;
-    height: 170px;
     width: 300px;
     background-color: white;
     border-radius: 20px;
-    text-align: center;
-    margin: 0 auto;
+    padding: 15px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+    // letter-spacing: 3.2px;
+    @include font(1, 20px);
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 1;
 
-    // display: none;
-    &.active {
+    display: none;
+
+    &.new_program_choose_box_active {
       opacity: 1;
       display: block;
       z-index: 10000;
     }
 
-    h3 {
-      @include font(2, 40px);
-    }
-
-    .new_program_choose_name {
-
-      input {
-        padding: 5px;
-        @include font(1);
+    p {
+      span {
+        letter-spacing: 2.8px;
+        @include font(0, 20px);
       }
     }
 
-    hr {
-      margin: 15px;
-      width: 90%;
+
+    // 新增專案命名
+    input {
+      letter-spacing: 3.2px;
+      @include font(1, 20px);
+      outline: none;
+      background-color: transparent;
+      color: $dark;
+      padding: 5px;
+      border: 1px solid $dark;
+      border-radius: 10px;
+      width: 100%;
+      margin: 5px 0;
     }
 
+
+    // 新增專案選擇顏色
+    .new_program_choose_color {
+      // border: 1px solid blue;
+
+
+      .new_program_choose_color_item {
+        background-color: #5395DE;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin: 2.5px;
+        display: inline-block;
+        cursor: pointer;
+
+        &:first-child {
+          background-color: #5395DE;
+        }
+
+        &:nth-child(2) {
+          background-color: #8acede;
+        }
+
+        &:nth-child(3) {
+          background-color: #eb7a77;
+        }
+      }
+
+      // 新增專案選擇顏色--結束
+    }
+
+    button {
+      @include btnReset;
+      border: 2px solid $white;
+      @include font(1, 20px);
+      background-color: $primary;
+      color: $white;
+      float: right;
+      padding: 5px;
+      border-radius: 5px;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $white;
+        color: $primary;
+        border: 2px solid $primary;
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+    }
+
+    //新建專案取名&選色燈箱--結束
   }
 
-  //新建專案取名&選色燈箱--結束
+  .slide_list {
+    li {
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
 
 }
+
+
 
 
 
@@ -85,10 +203,14 @@
   background-image: url(../img/program_img/office.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  height: calc(100vh - 60px);
 
   //邀請成員區
   .invite_list {
     border: 1px solid red;
+    // max-width: 400px;
+    display: inline-block;
+    position: relative;
 
     .program_member {
       display: inline-block;
@@ -109,7 +231,9 @@
       display: inline-block;
       width: 40px;
       height: 40px;
-      border: 1px solid red;
+      border: 1px solid $gray;
+      background-color: rgba(255, 255, 255, .8);
+      color: $dark;
       border-radius: 50%;
       text-align: center;
       padding-top: 9px;
@@ -117,30 +241,191 @@
     }
 
     .invite_btn {
+      @include btnReset();
       padding: 5px 15px;
-      margin: 5px;
+      margin: 10px;
+      background-color: $primary;
+      color: $white;
+      border-radius: 10px;
+      @include font(0);
+      vertical-align: middle;
+      transition: all 0.3s;
+      border: 2px solid $white;
 
+      &:hover {
+        background-color: $white;
+        color: $primary;
+        border: 2px solid $primary;
+      }
     }
 
-    form {
-      // border:1px solid blue;
-      display: inline-block;
+    .invite_add_member_box {
+      // border:1px solid red;
+      background-color: $white;
+      border-radius: 20px;
+      box-shadow: rgba(0, 0, 0, .1);
+      padding: 15px;
+      width: 200px;
+      // height: 200px;
+      position: absolute;
+      top: 70px;
+      right: -120px;
+      display: none;
+
+
+      &.invite_add_member_box_active {
+        display: block;
+      }
+
+      p {
+        @include font(1);
+      }
+
+      input.invite_add_member_addr {
+        letter-spacing: 3.2px;
+        @include font(1, 20px);
+        outline: none;
+        background-color: transparent;
+        color: $dark;
+        padding: 5px;
+        border: 1px solid $dark;
+        border-radius: 10px;
+        width: 100%;
+        margin: 5px 0;
+      }
+    }
+
+    //邀請成員區--結束
+  }
+
+  //設定鈕all
+  .setting_all {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 20px;
+
+    //設定鈕
+    .setting_btn {
+      @include btnReset;
+      @include hoverIcon(30px);
+      // border: 1px solid blue;
+      background-color: $primary;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $white;
+      }
+
+      img {
+        width: 100%;
+        @include positionCenter;
+      }
+
+      //設定鈕--結束
+    }
+
+    //設定鈕燈箱
+    .setting_content_box {
+      width: 208px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+      @include font(1, 20px);
+      position: absolute;
+      top: 50px;
+      z-index: 1;
+
+      display: none;
+
+      &.setting_content_box_active {
+        display: block;
+      }
+
+      p {
+        span {
+          letter-spacing: 2.8px;
+          @include font(0, 20px);
+        }
+      }
+
+      //設定區選顏色
+      .program_setting_choose_color {
+        .program_setting_choose_color_item {
+          background-color: #5395DE;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          margin: 2.5px;
+          display: inline-block;
+          cursor: pointer;
+
+          &:first-child {
+            background-color: #5395DE;
+          }
+
+          &:nth-child(2) {
+            background-color: #8acede;
+          }
+
+          &:nth-child(3) {
+            background-color: #eb7a77;
+          }
+        }
+
+        //設定區選顏色  
+      }
+
+      hr {
+        // margin: 5px ;
+        height: 1px;
+        border: none;
+        background-color: $gray;
+
+      }
+
+      .setting_program_status {
+        // border: 1px solid  red;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+
+        &.setting_program_status_delete {
+          color: $danger;
+        }
+
+        &:hover {
+          background-color: rgba(0, 0, 0, .1);
+          color: $primary;
+        }
+      }
+
     }
 
   }
 
+
+
   //卡片區
   .cards_column_all {
     border: 1px solid red;
-    display: flex;
-    flex-wrap: nowrap;
+    // display: flex;
+    // flex-wrap: nowrap;
     overflow-x: scroll;
+    max-width: 970px;
+    display: inline-block;
 
     .cards_column {
+      display: inline-block;
       border: 1px solid blue;
       height: 70vh;
-      min-height: 450px;
+      height: 700px;
       min-width: 300px;
+      max-width: 300px;
       text-align: center;
       border-radius: 20px;
       overflow: hidden;
@@ -149,30 +434,245 @@
       .cards_column_head {
         height: 50px;
         width: 100%;
-        border: 1px solid red;
+        // border: 1px solid red;
         @include font(2, 50px);
-        background-color: #5395DE;
+        background-color: $programcolor1;
         color: #fff;
         letter-spacing: 3.6px;
         text-align: center;
       }
 
-      .cards_add_btn {
-        width: 90%;
+      .cards_column_body {
+        border: 1px solid red;
+        height: calc(100% - 50px);
+        overflow-y: scroll;
 
+        .cards_list {
+          padding: 0 5%;
 
+          //卡片本人css
+          .cards_list_card {
+            // border: 1px solid red;
+            border-radius: 10px;
+            background-color: $white;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+            text-align: start;
+            width: 100%;
+            margin: 10px 0;
+            padding: 5px 10px;
+            max-height: 85px;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+
+            p {
+              @include font(1, 30px);
+              word-break: break-word;
+            }
+
+            .cards_list_card_icon_bar {
+              @include font(0);
+
+              .cards_list_card_icon {
+                width: 20px;
+                display: inline-block;
+                vertical-align: middle;
+
+                span {
+                  vertical-align: middle;
+                }
+
+                img {
+                  width: 100%;
+
+                }
+              }
+
+              .cards_list_card_todoicon {
+                margin-left: 20px;
+              }
+
+            }
+
+            //卡片本人css--結束
+          }
+
+          // 建立卡片輸入卡片名的div
+          .cards_list_card_input_box {
+            max-height: none;
+
+            textarea {
+              letter-spacing: 3.2px;
+              @include font(1, 20px);
+              outline: none;
+              background-color: transparent;
+              color: $dark;
+              padding: 5px;
+              border: 1px solid $dark;
+              border-radius: 10px;
+              width: 100%;
+              margin: 5px 0;
+              resize: vertical;
+              // overflow-Y:hidden;
+              max-height: 162px;
+              min-height: 54px;
+            }
+
+            .cards_list_card_input_box_button_bar {
+              text-align: end;
+
+              //建立卡片按鈕
+              button {
+                @include btnReset;
+                border: 2px solid $white;
+                @include font(1, 20px);
+                background-color: $primary;
+                color: $white;
+                // float: right;
+                padding: 5px;
+                border-radius: 5px;
+                transition: all 0.3s;
+
+                &:hover {
+                  background-color: $white;
+                  color: $primary;
+                  border: 2px solid $primary;
+                }
+
+                //建立卡片按鈕--結束
+              }
+            }
+
+            // 建立卡片輸入卡片名的div--結束
+          }
+        }
       }
 
-      // button{
-      //   // &:hover{
-      //   //   filter: invert(93%) sepia(16%) saturate(2102%) hue-rotate(155deg) brightness(91%) contrast(91%);
-      //   // }
-      // }
+
+
+      //新增卡片按鈕
+      .add_cards_btn {
+        @include btnReset;
+        position: relative;
+        @include hoverIcon(30px);
+        border: 2px solid $dark;
+        border-radius: 50%;
+        margin: 5px 0;
+        transition: all 0.3s;
+
+        &:hover {
+          border: 2px solid $primary;
+        }
+      }
+
     }
   }
 
 
+  .program_right_column {
+    border: 1px solid red;
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
 
+    //行事曆
+    .program_calendar_all {
+      border: 1px solid blue;
+      height: 300px;
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+
+
+      // float: right;
+
+      // &:after {
+      //   content: "";
+      //   display: inline-block;
+      //   clear: both;
+      // }
+      .program_calendar_year {
+        @include font(0);
+      }
+
+      .program_calendar_month {
+        @include font(3, 30px);
+      }
+
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+
+        tr {
+          td {
+            @include font(2);
+            border: 1px solid red;
+            width: 40px;
+
+            &:first-child,
+            &:last-child {
+              color: $danger;
+            }
+          }
+        }
+      }
+
+      //行事曆--結束
+    }
+
+    .program_chatroom_all {
+      // border: 1px solid blue;
+      width: 100%;
+      display: inline-block;
+      margin-top: 10px;
+      border-radius: 20px;
+      overflow: hidden;
+
+      background-color: rgba(0, 0, 0, .1);
+
+      .program_chatroom_window {
+        height: 300px;
+// border: 1px solid blue;
+padding: 15px;
+        .program_chatroom_oneperson {
+img{
+  width: 30px;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+          .program_chatroom_otherside_name {
+            @include font(0);
+          }
+          .program_chatroom_otherside_dialog{
+            @include font(0);
+          }
+        }
+
+      }
+
+
+      .program_chatroom_operating_area {
+
+        .program_chatroom_iconbar {
+          border: 1px solid red;
+          height: 30px;
+        }
+
+        textarea {
+          resize: none;
+          width: 100%;
+          height: 50px;
+          border: 1px solid $gray;
+          border-radius: 0 0 20px 20px;
+          padding:  5px 10px;
+        }
+      }
+
+    }
+
+  }
 
 
 

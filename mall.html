@@ -6,8 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Document</title>
+
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- owlcarousel2 -->
+  <link rel="stylesheet" href="./css/owlcarousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="./css/owlcarousel/owl.theme.default.css">
+  <link rel="stylesheet" href="./css/owlcarousel/animate.css">
+
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -58,86 +69,166 @@
     <aside class="slide_bar">
       <div class="logo">
         <a href="#">
-          <img src="./img/logo.svg" alt="logo" />
+          <img src="./img/logo_in.svg" alt="logo" />
         </a>
       </div>
+      <div class="slider_header"></div>
+
+      <!-- search_bar -->
+      <form action="" id="mall_search">
+        <input type="text" class="mall_search_bar" placeholder="搜尋">
+        <button class="mall_search-btn" type="submit">
+          <i class="fa fa-search class"></i>
+        </button>
+      </form>
+
+      <ul class="slide_list">
+        <li>
+          <p>包包類</p>
+          <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+          <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+        </li>
+        <li>
+          <p>文具類</p>
+          <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+          <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+        </li>
+        <li>
+          <p>紓壓類</p>
+          <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+          <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+        </li>
+      </ul>
     </aside>
+
     <div class="mask" id="mask"></div>
+
     <div>
       <!-- 內容  -->
+      <div class="mall_bg">
 
-      <div class="mall_content">
-        <div class="mall_box">
-            <img src="img/product_1.jpg" alt="">
-            
-            <p>商品品名商品品名商品品名商品品名商品品名商品品名商品品名商品品名商品品名商品品名商品品名</p>
-            <div class="product_price">
-              <span>$1,600</span>
-              <span>$</span><span class="price_sale">1,200</span>
+        <!-- 輪播  -->
+        <section id="slider">
+          <div class="custom1 owl-carousel owl-theme">
+            <div class="item">
+              <h4><img src="./img/mall_img/banner_1.jpg" alt=""></h4>
             </div>
-        </div>
-        <div class="mall_box">
-            <img src="img/product_1.jpg" alt="">
-            <p>商品品名</p>
-            <div class="product_price">
-              <span>$1600</span>
-              <span>$</span><span class="price_sale">1200</span>
+            <div class="item">
+              <h4><img src="./img/mall_img/banner_2.jpg" alt=""></h4>
             </div>
-        </div>
-        <div class="mall_box">
-            <img src="img/product_1.jpg" alt="">
-            <p>商品品名</p>
-            <div class="product_price">
-              <span>$1600</span>
-              <span>$</span><span class="price_sale">1200</span>
+            <div class="item">
+              <h4><img src="./img/mall_img/banner_3.jpg" alt=""></h4>
             </div>
-        </div>
-        <div class="mall_box">
-            <img src="img/product_1.jpg" alt="">
-            <p>商品品名</p>
-            <div class="product_price">
-              <span>$1600</span>
-              <span>$</span><span class="price_sale">1200</span>
+            <div class="item">
+              <h4><img src="./img/mall_img/banner_4.jpg" alt=""></h4>
             </div>
-        </div>
-        <div class="mall_box">
-          <img src="img/product_1.jpg" alt="">
-          <p>商品品名</p>
-          <div class="product_price">
-            <span>$1600</span>
-            <span>$</span><span class="price_sale">1200</span>
+            <div class="item">
+              <h4><img src="./img/mall_img/banner_5.jpg" alt=""></h4>
+            </div>
           </div>
-      </div>
-      <div class="mall_box">
-          <img src="img/product_1.jpg" alt="">
-          <p>商品品名</p>
-          <div class="product_price">
-            <span>$1600</span>
-            <span>$</span><span class="price_sale">1200</span>
-          </div>
-      </div>
-      <div class="mall_box">
-          <img src="img/product_1.jpg" alt="">
-          <p>商品品名</p>
-          <div class="product_price">
-            <span>$1600</span>
-            <span>$</span><span class="price_sale">1200</span>
-          </div>
-      </div>
-      <div class="mall_box">
-          <img src="img/product_1.jpg" alt="">
-          <p>商品品名</p>
-          <div class="product_price">
-            <span>$1600</span>
-            <span>$</span><span class="price_sale">1200</span>
-          </div>
-      </div>
-      </div>
 
-      
+        </section>
+
+
+        <div class=" mall_content">
+
+          <div class="mall_box">
+            <a href="mall_product.html">
+              <img src="img/mall_img/product_1.jpg" alt="">
+              <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
+              <div class="product_price">
+                <span>$1,600</span>
+                <span>$</span><span class="price_sale">1,200</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="mall_box">
+            <a href="mall_product.html">
+              <img src="img/mall_img/product_1.jpg" alt="">
+              <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
+              <div class="product_price">
+                <span>$1,600</span>
+                <span>$</span><span class="price_sale">1,200</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="mall_box">
+            <a href="mall_product.html">
+              <img src="img/mall_img/product_1.jpg" alt="">
+              <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
+              <div class="product_price">
+                <span>$1,600</span>
+                <span>$</span><span class="price_sale">1,200</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="mall_box">
+            <a href="mall_product.html">
+              <img src="img/mall_img/product_1.jpg" alt="">
+              <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
+              <div class="product_price">
+                <span>$1,600</span>
+                <span>$</span><span class="price_sale">1,200</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="mall_box">
+            <a href="mall_product.html">
+              <img src="img/mall_img/product_1.jpg" alt="">
+              <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
+              <div class="product_price">
+                <span>$1,600</span>
+                <span>$</span><span class="price_sale">1,200</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="mall_box">
+            <a href="mall_product.html">
+              <img src="img/mall_img/product_1.jpg" alt="">
+              <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
+              <div class="product_price">
+                <span>$1,600</span>
+                <span>$</span><span class="price_sale">1,200</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="mall_box">
+            <a href="mall_product.html">
+              <img src="img/mall_img/product_1.jpg" alt="">
+              <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
+              <div class="product_price">
+                <span>$1,600</span>
+                <span>$</span><span class="price_sale">1,200</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="mall_box">
+            <a href="mall_product.html">
+              <img src="img/mall_img/product_1.jpg" alt="">
+              <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
+              <div class="product_price">
+                <span>$1,600</span>
+                <span>$</span><span class="price_sale">1,200</span>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
+
+      </div>
     </div>
   </main>
   <footer></footer>
+
 
   <script>
     const moreBtn = document.getElementById("more");
@@ -145,6 +236,28 @@
     const mask = document.getElementById("mask");
     moreBtn.addEventListener("click", () => content.classList.add("active"));
     mask.addEventListener("click", () => content.classList.remove("active"));
+  </script>
+
+
+
+
+
+  <!--貓頭鷹跑馬燈的JS-->
+  <script src="./js/owlcarousel/owl.carousel.min.js"></script>
+  <!--啟用貓頭鷹-->
+  <script>
+    $(document).ready(function ($) {
+      $('.custom1').owlCarousel({
+        // animateOut: 'slideOutDown',
+        // animateIn: 'flipInY',
+        items: 1,
+        margin: 30,
+        stagePadding: 30,
+        smartSpeed: 450,
+        autoplay: true, //自動輪播
+        autoplayTimeout: 1800, // 輪播速度
+      });
+    });
   </script>
 </body>
 
