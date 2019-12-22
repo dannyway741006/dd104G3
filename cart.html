@@ -89,28 +89,12 @@
         let showCart = document.querySelector('#cart_page');
         let cartBg = document.querySelector('.cart_bg');
         let closeCart = document.querySelector('.close_cart')
-        //---阻止bubble事件---//
-        showCart.addEventListener('click',function(e){
+        showCart.addEventListener('click', (e) => {                                  //---阻止bubble事件---//
             e ? e.stopPropagation() : event.cancelBubble = true;
         });
-        //---打開購物車---//
-        clickCart.addEventListener('click', function () {
-            showCart.classList.add('show');
-            cartBg.classList.add('show');
-            closeCart.classList.add('show');
-        });
-        //---點擊空白處關閉購物車---//
-        cartBg.addEventListener('click', function () {
-            showCart.classList.remove('show');
-            cartBg.classList.remove('show');
-            closeCart.classList.remove('show');
-        });
-        //---點X關閉購物車---//
-        closeCart.addEventListener('click', function () {
-            showCart.classList.remove('show');
-            cartBg.classList.remove('show');
-            closeCart.classList.remove('show');
-        });
+        clickCart.addEventListener('click', () => cartBg.classList.add('show'));     //---打開購物車---//
+        cartBg.addEventListener('click', () => cartBg.classList.remove('show'));     //---點擊空白處關閉購物車---//
+        closeCart.addEventListener('click', () => cartBg.classList.remove('show'));  //---點X關閉購物車---//
     </script>
 </body>
 
