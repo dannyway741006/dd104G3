@@ -143,8 +143,8 @@
         </div>
       </div>
 
-      <div class="setting_all">
-        <button class="setting_btn" @click.stop='setting_btn = !setting_btn'><img src="./img/icon/setting_white.svg"
+      <div class="setting_all set-cal-chat_same_all">
+        <button class="setting_btn set-cal-chat_same_button" @click.stop='setting_btn = !setting_btn'><img src="./img/icon/setting_white.svg"
             alt=""><img src="./img/icon/setting_primary.svg" alt="">
         </button>
         <div class="setting_content_box" :class='{setting_content_box_active: setting_btn}' @click.stop="">
@@ -163,17 +163,17 @@
             <span class="program_setting_choose_color_item"></span>
           </div>
           <hr>
-          <div class="setting_program_status ">完成專案</div>
+          <div class="setting_program_status">完成專案</div>
           <hr>
           <div class="setting_program_status setting_program_status_delete">刪除專案</div>
         </div>
       </div>
 
-      <div class="calendar_all">
-        <!-- <button class="calendar_btn" @click.stop='calendar_btn = !calendar_btn'><img src="./img/icon/calendar_white.svg"
+      <div class="program_calendar_all set-cal-chat_same_all">
+        <button class="calendar_btn set-cal-chat_same_button" @click.stop='calendar_btn = !calendar_btn'><img src="./img/icon/calendar_white.svg"
             alt=""><img src="./img/icon/calendar_primary.svg" alt="">
-        </button> -->
-        <div class="program_calendar_all program_right_column_item">
+        </button>
+        <div class="program_calendar_box program_right_column_item" :class='{program_calendar_box_active: calendar_btn}'>
           <div class="calendar">
             <div class="calendar_header">
               <button id="prev">
@@ -203,7 +203,11 @@
         </div>
       </div>
 
-      <div class="program_chatroom_all program_right_column_item">
+      <div class="program_chatroom_all set-cal-chat_same_all">
+        <button class="chatroom_btn set-cal-chat_same_button" @click.stop='chatroom_btn = !chatroom_btn'><img src="./img/program_img/chat_white.svg"
+          alt=""><img src="./img/program_img/chat_primary.svg" alt="">
+      </button>
+      <div class="program_chatroom_box program_right_column_item" :class='{program_chatroom_box_active: chatroom_btn}'>
         <div class="program_chatroom_window">
           <div class="program_chatroom_oneperson">
             <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:
@@ -219,7 +223,7 @@
           <textarea></textarea>
         </div>
       </div>
-
+    </div>
 
 
 

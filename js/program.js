@@ -15,6 +15,10 @@ var main_content = new Vue({
 
     setting_btn: false,
 
+    calendar_btn:false,
+
+    chatroom_btn:false,
+
   },
   methods: {
     //新增專案
