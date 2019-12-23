@@ -8,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -142,8 +143,8 @@
         </div>
       </div>
 
-      <div class="setting_all">
-        <button class="setting_btn" @click.stop='setting_btn = !setting_btn'><img src="./img/icon/setting_white.svg"
+      <div class="setting_all set-cal-chat_same_all">
+        <button class="setting_btn set-cal-chat_same_button" @click.stop='setting_btn = !setting_btn'><img src="./img/icon/setting_white.svg"
             alt=""><img src="./img/icon/setting_primary.svg" alt="">
         </button>
         <div class="setting_content_box" :class='{setting_content_box_active: setting_btn}' @click.stop="">
@@ -162,11 +163,70 @@
             <span class="program_setting_choose_color_item"></span>
           </div>
           <hr>
-          <div class="setting_program_status ">完成專案</div>
+          <div class="setting_program_status">完成專案</div>
           <hr>
           <div class="setting_program_status setting_program_status_delete">刪除專案</div>
         </div>
       </div>
+
+      <div class="program_calendar_all set-cal-chat_same_all">
+        <button class="calendar_btn set-cal-chat_same_button" @click.stop='calendar_btn = !calendar_btn'><img src="./img/icon/calendar_white.svg"
+            alt=""><img src="./img/icon/calendar_primary.svg" alt="">
+        </button>
+        <div class="program_calendar_box program_right_column_item" :class='{program_calendar_box_active: calendar_btn}'>
+          <div class="calendar">
+            <div class="calendar_header">
+              <button id="prev">
+                <i class="material-icons">
+                  keyboard_arrow_left
+                </i>
+              </button>
+              <p id='month'>May 2019</p>
+              <button id="next">
+                <i class="material-icons">
+                  keyboard_arrow_right
+                </i>
+              </button>
+            </div>
+            <table class="calendar_body">
+              <tr>
+                <td>Su</td>
+                <td>Mo</td>
+                <td>Tu</td>
+                <td>We</td>
+                <td>Th</td>
+                <td>Fr</td>
+                <td>Sa</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="program_chatroom_all set-cal-chat_same_all">
+        <button class="chatroom_btn set-cal-chat_same_button" @click.stop='chatroom_btn = !chatroom_btn'><img src="./img/program_img/chat_white.svg"
+          alt=""><img src="./img/program_img/chat_primary.svg" alt="">
+      </button>
+      <div class="program_chatroom_box program_right_column_item" :class='{program_chatroom_box_active: chatroom_btn}'>
+        <div class="program_chatroom_window">
+          <div class="program_chatroom_oneperson">
+            <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:
+            </p>
+            <div class="program_chatroom_otherside_dialog">大夥們，加油啦!</div>
+          </div>
+        </div>
+
+        <div class="program_chatroom_operating_area">
+          <div class="program_chatroom_iconbar">
+            <div class="program_chatroom_icon"><img src="./img/icon/paperclip.cf9c8806.svg" alt=""></div>
+          </div>
+          <textarea></textarea>
+        </div>
+      </div>
+    </div>
+
+
+
 
       <div class="cards_column_all" id="cards_column_all">
         <div class="cards_column todo_column">
@@ -248,91 +308,12 @@
       </div>
 
 
-      <div class="program_right_column">
-
-        <div class="program_calendar_all program_right_column_item">
-          <p class="program_calendar_year">2019</p>
-          <div class="program_calendar_month">12月</div>
-          <table>
-            <tr>
-              <td>日</td>
-              <td>一</td>
-              <td>二</td>
-              <td>三</td>
-              <td>四</td>
-              <td>五</td>
-              <td>六</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-
-          </table>
-        </div>
-
-        <div class="program_chatroom_all program_right_column_item">
-          <div class="program_chatroom_window">
-            <div class="program_chatroom_oneperson">
-              <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:</p>
-              <div class="program_chatroom_otherside_dialog">大夥們，要戰爭了!</div>
-            </div>
-          </div>
-
-          <div class="program_chatroom_operating_area">
-            <div class="program_chatroom_iconbar"></div>
-            <textarea></textarea>
-          </div>
-        </div>
-
-      </div>
     </div>
   </main>
   <footer></footer>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <!-- <script src='https://unpkg.com/v-calendar@next'></script> -->
   <script src="./js/program.js"></script>
   <script>
     const moreBtn = document.getElementById("more");
