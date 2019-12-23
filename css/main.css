@@ -1247,7 +1247,6 @@ body {
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   padding: 15px 0px;
 }
 
@@ -1327,6 +1326,7 @@ body {
   border-right: 1px solid #5395de;
   padding-left: 20px;
   padding-top: 25px;
+  height: auto;
 }
 
 .card_light_box .left_aside .first_right,
@@ -1390,6 +1390,7 @@ body {
 .right_aside {
   width: 70%;
   overflow-y: scroll;
+  max-height: 600px;
 }
 
 .right_aside .memberRight {
@@ -1509,6 +1510,7 @@ body {
 
 .right_aside .memberRight .card_todo_content {
   margin-bottom: 24px;
+  min-height: 160px;
 }
 
 .right_aside .memberRight .card_todo_content .todo_title {
@@ -1558,7 +1560,7 @@ body {
 .right_aside .memberRight .card_todo_content .todo_progress_bar .progress_bar {
   position: relative;
   height: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin-left: 5px;
   width: 85%;
@@ -1748,7 +1750,7 @@ body {
   border-radius: 10px;
   padding: 15px;
   width: 200px;
-  position: absolute;
+  position: fixed;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
@@ -1803,6 +1805,65 @@ body {
 }
 
 .todo_lightbox .todo_lightbox_botton button:hover {
+  background-color: #fff;
+  color: #8acede;
+  border: 2px solid #8acede;
+}
+
+.card_detail_lightbox {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 200px;
+  position: absolute;
+  top: 550px;
+  -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.card_detail_lightbox.open_card_detail {
+  display: block;
+}
+
+.card_detail_lightbox .card_detail_lightbox_input {
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  outline: none;
+  background-color: transparent;
+  color: #666666;
+  padding: 5px;
+  border: 1px solid #666666;
+  border-radius: 10px;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.card_detail_lightbox form {
+  text-align: left;
+}
+
+.card_detail_lightbox form button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  background-color: #8acede;
+  color: #fff;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.card_detail_lightbox form button:hover {
   background-color: #fff;
   color: #8acede;
   border: 2px solid #8acede;

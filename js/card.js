@@ -37,11 +37,12 @@ var vm = new Vue({
     todo_lightbox_switch:false,
 
     todo_list_content_detail:[],
-    input:{
-      title:'',
-    },
-    // 命名好像有bug
-    ittem:'',
+    todo_lightbox_input_title:'',
+
+    card_detail_lightbox:false,
+
+    card_check_item_detail:[],
+    card_detail_lightbox_add:'',
   },
   methods: {
     changeimg(){
@@ -56,8 +57,9 @@ var vm = new Vue({
       this.classObject.active=false;
       this.text='未完成';
     },
+
     showSelect(){
-      if(this.showselect==true){
+      if(this.showselect){
         this.showselect=false;
         this.deleteline=true;
       }else{
@@ -65,25 +67,30 @@ var vm = new Vue({
         this.deleteline=false;
       }
     },
+
     // 增加待辦清單項目
-    todo_list_add(){
-   // 如果input.title裡有東西的話，執行函數
-   if(this.input.title.length){
-    
-  
-    this.todo_list_content_detail.push(
-   this.ittem= this.input.title,
-    )
-    this.input.title="";
+    todo_list_add(todo_lightbox_input_title){
+   if(this.todo_lightbox_input_title.length){
+    this.todo_list_content_detail.push(todo_lightbox_input_title);
+    this.todo_lightbox_input_title='';
     this.todo_lightbox_switch=false;
 }
-}
+},
+add_card_detail(card_detail_lightbox_add){
+  if(this.card_detail_lightbox_add.length){
+    this.card_check_item_detail.push(card_detail_lightbox_add);
+    this.card_detail_lightbox_add='';
+    this.card_detail_lightbox=false;
+  }
+  
+  
+},
 },
 mounted() {
   document.addEventListener('click', () => {
-    // this.open = false;
-    // this.cards_list_card_input_box = false;
-    // this.invite_btn = false;
+   
+    this.todo_lightbox_switch=false;
+    this.card_detail_lightbox=false;
   });
 },
 })

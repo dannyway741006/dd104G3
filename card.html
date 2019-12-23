@@ -192,7 +192,7 @@
                 />
                 到期日
               </div>
-              <div @click="todo_lightbox_switch =! todo_lightbox_switch">
+              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch">
                 <img
                   src=" ./img/card_img/select.svg"
                   alt=""
@@ -211,15 +211,26 @@
               </div>
            
                   <!-- 新增待辦清單跳窗 -->
-             <div class="todo_lightbox" :class='{opentodo_lightbox: todo_lightbox_switch}'>
+             <div class="todo_lightbox" :class='{opentodo_lightbox: todo_lightbox_switch}'  @click.stop="">
               <label>
                 <p>待辦清單標題</p>
-                <input type="text" class="todo_lightbox_input" v-model.trim="input.title" @keyup.13="todo_list_add">
+                <!-- 讓燈箱的字和標題同步 -->
+                <input type="text" class="todo_lightbox_input" v-model.trim="todo_lightbox_input_title" @keyup.13="todo_list_add(todo_lightbox_input_title)">
               </label>  
-                  <div class="todo_lightbox_botton" @click="todo_list_add">
+                  <div class="todo_lightbox_botton" @click="todo_list_add(todo_lightbox_input_title)">
                     <button>新增</button>
                   </div>  
             </div>
+ 
+           <!-- 新增日曆跳窗 -->
+            <div class="calendar_lightbox">
+               <h3>更改到期日</h3>
+               <p>日期</p>
+               <div class="calendar_lightbox_content">
+                <v-calendar title-position="Popovers" />
+               </div>
+            </div>
+
 
             </div>
             <div class="second_right">
@@ -366,6 +377,7 @@
                     ></button>
                 </div>
               </div>
+
              <!-- 新增出來的待辦清單 -->
              <div class="card_todo_content"  v-for="item in todo_list_content_detail">
               <div class="todo_title">
@@ -374,7 +386,7 @@
                     alt=""
                     width="20"
                   ></div>
-                <h3>{{ittem}}</h3>
+                <h3>{{item}}</h3>
               <div class="all_card_todo_delete">刪除</div>
               </div>
               <div class="todo_progress_bar">
@@ -383,19 +395,54 @@
                   <!-- <span></span> -->
                 </div>
               </div>
-              <div class="card_add_button">
+              <!-- 新增的卡片細項 -->
+              <div class="card_check_item" v-for="item in card_check_item_detail">
+                <div>
+                  <img
+                    src="./img/card_img/unchecked_d.9558e11b.svg"
+                    alt=""
+                    v-if="showselect"
+                    @click="showSelect"
+                  >
+                  <img
+                    src="./img/card_img/checked_d.721738d0.svg"
+                    alt=""
+                    v-else=""
+                    @click="showSelect"
+                  >
+
+                </div>
+                <p :class="{lineThrough:deleteline}">{{item}}</p>
+                <div><img
+                    src="./img/icon/time-left.svg"
+                    alt=""
+                  ></div>
+                <div><img
+                    src="./img/card_img/delete.0df56913.svg"
+                    alt=""
+                  ></div>
+              </div>
+
+
+              <div class="card_add_button" @click.stop="card_detail_lightbox =!  card_detail_lightbox">
                 <button>新增項目<img
                     src="./img/card_img/plus_write.svg"
                     alt=""
                     width="14"
                   ></button>
               </div>
-            </div> 
-  <!--  -->
+                 <!-- 新增內部跳窗 -->
+                 <div class="card_detail_lightbox" :class="{open_card_detail : card_detail_lightbox}" @click.stop="">
+                  <label for="">
+                    <input type="text" class="card_detail_lightbox_input" v-model.trim="card_detail_lightbox_add">
+                  </label>
+                  <form method="post"  @submit.prevent="add_card_detail(card_detail_lightbox_add)">
+                    <button>儲存</button>
+                  </form>
+                  </div>
+            </div>
 
-
-
-               
+                  
 
 
 
