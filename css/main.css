@@ -674,8 +674,7 @@ body {
 }
 
 #program_aside .program_add_btn .program_add_img img {
-  width: 20px;
-  height: 20px;
+  width: 80%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -818,7 +817,7 @@ body {
 
 #program_main .invite_list .program_member {
   display: inline-block;
-  width: 80px;
+  width: 50px;
   border-radius: 50%;
   overflow: hidden;
   margin: 5px;
@@ -1355,6 +1354,10 @@ body {
 
 #program_main .cards_column_all .cards_column .add_cards_btn:hover img:nth-of-type(2) {
   opacity: 1;
+}
+
+#program_main .cards_column_all .cards_column .add_cards_btn img {
+  width: 80%;
 }
 
 #program_main .cards_column_all .cards_column .add_cards_btn:hover {
