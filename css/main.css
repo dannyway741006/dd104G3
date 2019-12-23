@@ -963,15 +963,105 @@ body {
   color: #8acede;
 }
 
+#program_main .program_calendar_all {
+  position: absolute;
+  border: 1px solid blue;
+  height: 300px;
+  width: 300px;
+  text-align: center;
+  top: 60px;
+  right: 0;
+}
+
+#program_main .program_calendar_all .program_calendar_year {
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#program_main .program_calendar_all .program_calendar_month {
+  letter-spacing: 4px;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+#program_main .program_calendar_all table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+#program_main .program_calendar_all table tr td {
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+  border: 1px solid red;
+  width: 40px;
+}
+
+#program_main .program_calendar_all table tr td:first-child, #program_main .program_calendar_all table tr td:last-child {
+  color: #eb7a77;
+}
+
+#program_main .program_chatroom_all {
+  width: 300px;
+  margin-top: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 400px;
+  right: 0;
+}
+
+#program_main .program_chatroom_all .program_chatroom_window {
+  height: 300px;
+  padding: 15px;
+}
+
+#program_main .program_chatroom_all .program_chatroom_window .program_chatroom_oneperson img {
+  width: 30px;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+
+#program_main .program_chatroom_all .program_chatroom_window .program_chatroom_oneperson .program_chatroom_otherside_name {
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#program_main .program_chatroom_all .program_chatroom_window .program_chatroom_oneperson .program_chatroom_otherside_dialog {
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar {
+  border: 1px solid red;
+  height: 30px;
+}
+
+#program_main .program_chatroom_all .program_chatroom_operating_area textarea {
+  resize: none;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #999999;
+  border-radius: 0 0 20px 20px;
+  padding: 5px 10px;
+}
+
 #program_main .cards_column_all {
   border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   overflow-x: scroll;
   max-width: 970px;
-  display: inline-block;
 }
 
 #program_main .cards_column_all .cards_column {
-  display: inline-block;
   border: 1px solid blue;
   height: 70vh;
   height: 700px;
@@ -1143,96 +1233,6 @@ body {
 
 #program_main .cards_column_all .cards_column .add_cards_btn:hover {
   border: 2px solid #8acede;
-}
-
-#program_main .program_right_column {
-  border: 1px solid red;
-  width: 300px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-#program_main .program_right_column .program_calendar_all {
-  border: 1px solid blue;
-  height: 300px;
-  width: 100%;
-  display: inline-block;
-  text-align: center;
-}
-
-#program_main .program_right_column .program_calendar_all .program_calendar_year {
-  letter-spacing: 2.8px;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-#program_main .program_right_column .program_calendar_all .program_calendar_month {
-  letter-spacing: 4px;
-  font-size: 20px;
-  line-height: 30px;
-}
-
-#program_main .program_right_column .program_calendar_all table {
-  margin: 0 auto;
-  border-collapse: collapse;
-}
-
-#program_main .program_right_column .program_calendar_all table tr td {
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 30px;
-  border: 1px solid red;
-  width: 40px;
-}
-
-#program_main .program_right_column .program_calendar_all table tr td:first-child, #program_main .program_right_column .program_calendar_all table tr td:last-child {
-  color: #eb7a77;
-}
-
-#program_main .program_right_column .program_chatroom_all {
-  width: 100%;
-  display: inline-block;
-  margin-top: 10px;
-  border-radius: 20px;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-#program_main .program_right_column .program_chatroom_all .program_chatroom_window {
-  height: 300px;
-  padding: 15px;
-}
-
-#program_main .program_right_column .program_chatroom_all .program_chatroom_window .program_chatroom_oneperson img {
-  width: 30px;
-  vertical-align: middle;
-  border-radius: 50%;
-}
-
-#program_main .program_right_column .program_chatroom_all .program_chatroom_window .program_chatroom_oneperson .program_chatroom_otherside_name {
-  letter-spacing: 2.8px;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-#program_main .program_right_column .program_chatroom_all .program_chatroom_window .program_chatroom_oneperson .program_chatroom_otherside_dialog {
-  letter-spacing: 2.8px;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-#program_main .program_right_column .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar {
-  border: 1px solid red;
-  height: 30px;
-}
-
-#program_main .program_right_column .program_chatroom_all .program_chatroom_operating_area textarea {
-  resize: none;
-  width: 100%;
-  height: 50px;
-  border: 1px solid #999999;
-  border-radius: 0 0 20px 20px;
-  padding: 5px 10px;
 }
 
 .card_light_box {
