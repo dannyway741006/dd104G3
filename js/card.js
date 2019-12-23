@@ -46,7 +46,8 @@ var vm = new Vue({
 
     calandar_switch:false,
 
-    
+    ittem:[],
+    it:'',
   },
   methods: {
     changeimg(){
@@ -78,6 +79,7 @@ var vm = new Vue({
     this.todo_list_content_detail.push(todo_lightbox_input_title);
     this.todo_lightbox_input_title='';
     this.todo_lightbox_switch=false;
+    this.ittem.push(todo_lightbox_input_title);
 }
 },
 
@@ -86,8 +88,8 @@ add_card_detail(){
     //將卡片狀態、名字設為陣列
     this.card_check_item_detail.push({
       content: this.card_detail_lightbox_add,
-      status:false,
-      text:'lineThrough',
+      status:true,
+      text:false,
     });
     this.card_detail_lightbox_add='';
     this.card_detail_lightbox=false;
@@ -95,6 +97,10 @@ add_card_detail(){
   
   
 },
+// cancel(){
+//   this
+//   item.text =!item.text;
+// },
 deletecard_todo(index){
   this.todo_list_content_detail.splice(index,1);
 },
