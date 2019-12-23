@@ -907,32 +907,29 @@ body {
   margin: 5px 0;
 }
 
-#program_main .setting_all {
-  position: relative;
+#program_main .set-cal-chat_same_all {
   display: inline-block;
   vertical-align: middle;
-  margin: 0 20px;
+  margin: 0 5px;
 }
 
-#program_main .setting_all .setting_btn {
+#program_main .set-cal-chat_same_all .set-cal-chat_same_button {
   background-color: transparent;
   outline: none;
   border: none;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  background-color: #8acede;
   width: 40px;
   height: 40px;
+  cursor: pointer;
+  background-color: #8acede;
   border-radius: 50%;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
-#program_main .setting_all .setting_btn img {
-  width: 30px;
-  height: 30px;
+#program_main .set-cal-chat_same_all .set-cal-chat_same_button img {
+  width: 40px;
+  height: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -942,29 +939,34 @@ body {
   transition: opacity 0.3s;
 }
 
-#program_main .setting_all .setting_btn img:nth-of-type(2) {
+#program_main .set-cal-chat_same_all .set-cal-chat_same_button img:nth-of-type(2) {
   opacity: 0;
 }
 
-#program_main .setting_all .setting_btn:hover img:nth-of-type(1) {
+#program_main .set-cal-chat_same_all .set-cal-chat_same_button:hover img:nth-of-type(1) {
   opacity: 0;
 }
 
-#program_main .setting_all .setting_btn:hover img:nth-of-type(2) {
+#program_main .set-cal-chat_same_all .set-cal-chat_same_button:hover img:nth-of-type(2) {
   opacity: 1;
 }
 
-#program_main .setting_all .setting_btn:hover {
+#program_main .set-cal-chat_same_all .set-cal-chat_same_button:hover {
   background-color: #ffffff;
 }
 
-#program_main .setting_all .setting_btn img {
-  width: 100%;
+#program_main .set-cal-chat_same_all .set-cal-chat_same_button img {
+  width: 65%;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+#program_main .setting_all {
+  position: relative;
+  margin-left: 20px;
 }
 
 #program_main .setting_all .setting_content_box {
@@ -1037,7 +1039,43 @@ body {
   color: #8acede;
 }
 
-#program_main .program_calendar_all {
+#program_main .program_calendar_all > button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid red;
+}
+
+#program_main .program_calendar_all > button img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+#program_main .program_calendar_all > button img:nth-of-type(2) {
+  opacity: 0;
+}
+
+#program_main .program_calendar_all > button:hover img:nth-of-type(1) {
+  opacity: 0;
+}
+
+#program_main .program_calendar_all > button:hover img:nth-of-type(2) {
+  opacity: 1;
+}
+
+#program_main .program_calendar_all .program_calendar_box {
   position: absolute;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -1049,7 +1087,11 @@ body {
   right: 30px;
 }
 
-#program_main .program_calendar_all .calendar_header {
+#program_main .program_calendar_all .program_calendar_box.program_calendar_box_active {
+  display: none;
+}
+
+#program_main .program_calendar_all .program_calendar_box .calendar_header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1062,7 +1104,7 @@ body {
   line-height: 20px;
 }
 
-#program_main .program_calendar_all .calendar_header button {
+#program_main .program_calendar_all .program_calendar_box .calendar_header button {
   width: 50px;
   height: 50px;
   border: none;
@@ -1072,20 +1114,20 @@ body {
   color: #666666;
 }
 
-#program_main .program_calendar_all .calendar_header button:hover {
+#program_main .program_calendar_all .program_calendar_box .calendar_header button:hover {
   color: #333333;
 }
 
-#program_main .program_calendar_all .calendar_header p {
+#program_main .program_calendar_all .program_calendar_box .calendar_header p {
   width: 30%;
   text-align: center;
 }
 
-#program_main .program_calendar_all .calendar_body {
+#program_main .program_calendar_all .program_calendar_box .calendar_body {
   width: 100%;
 }
 
-#program_main .program_calendar_all .calendar_body td {
+#program_main .program_calendar_all .program_calendar_box .calendar_body td {
   width: 14.3%;
   text-align: center;
   vertical-align: top;
@@ -1098,7 +1140,11 @@ body {
   line-height: 20px;
 }
 
-#program_main .program_chatroom_all {
+#program_main .program_chatroom_all > button {
+  position: relative;
+}
+
+#program_main .program_chatroom_all .program_chatroom_box {
   width: 256px;
   margin-top: 10px;
   border-radius: 20px;
@@ -1109,42 +1155,46 @@ body {
   right: 30px;
 }
 
-#program_main .program_chatroom_all .program_chatroom_window {
+#program_main .program_chatroom_all .program_chatroom_box.program_chatroom_box_active {
+  display: none;
+}
+
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_window {
   height: 40vh;
   padding: 15px;
 }
 
-#program_main .program_chatroom_all .program_chatroom_window .program_chatroom_oneperson img {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_window .program_chatroom_oneperson img {
   width: 30px;
   vertical-align: middle;
   border-radius: 50%;
 }
 
-#program_main .program_chatroom_all .program_chatroom_window .program_chatroom_oneperson .program_chatroom_otherside_name {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_window .program_chatroom_oneperson .program_chatroom_otherside_name {
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
 }
 
-#program_main .program_chatroom_all .program_chatroom_window .program_chatroom_oneperson .program_chatroom_otherside_dialog {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_window .program_chatroom_oneperson .program_chatroom_otherside_dialog {
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
 }
 
-#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar {
   border: 1px solid red;
   height: 30px;
   position: relative;
 }
 
-#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon {
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
 
-#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon img {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon img {
   width: 30px;
   height: 30px;
   position: absolute;
@@ -1156,19 +1206,19 @@ body {
   transition: opacity 0.3s;
 }
 
-#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon img:nth-of-type(2) {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon img:nth-of-type(2) {
   opacity: 0;
 }
 
-#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon:hover img:nth-of-type(1) {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon:hover img:nth-of-type(1) {
   opacity: 0;
 }
 
-#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon:hover img:nth-of-type(2) {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon:hover img:nth-of-type(2) {
   opacity: 1;
 }
 
-#program_main .program_chatroom_all .program_chatroom_operating_area textarea {
+#program_main .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area textarea {
   resize: none;
   width: 100%;
   height: 50px;

@@ -300,21 +300,20 @@
     //邀請成員區--結束
   }
 
-  //設定鈕all
-  .setting_all {
-    position: relative;
+
+  //設定日曆聊天按鈕統一
+  .set-cal-chat_same_all {
+
     display: inline-block;
     vertical-align: middle;
-    margin: 0 20px;
+    margin: 0 5px;
 
-    //設定鈕
-    .setting_btn {
+
+    .set-cal-chat_same_button {
       @include btnReset;
-      @include hoverIcon(30px);
+      @include hoverIcon(40px);
       // border: 1px solid blue;
       background-color: $primary;
-      width: 40px;
-      height: 40px;
       border-radius: 50%;
       transition: all 0.3s;
 
@@ -323,12 +322,17 @@
       }
 
       img {
-        width: 100%;
+        width: 65%;
         @include positionCenter;
       }
-
-      //設定鈕--結束
     }
+  }
+
+  //設定鈕all
+  .setting_all {
+    position: relative;
+    margin-left: 20px;
+
 
     //設定鈕燈箱
     .setting_content_box {
@@ -412,66 +416,84 @@
 
   //行事曆
   .program_calendar_all {
-    position: absolute;
-    border: 1px solid rgba(0, 0, 0, .1);
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+    &>button {
+      @include btnReset;
+      @include hoverIcon(30px);
+      position: relative;
+      border: 1px solid red;
+    }
 
-    top: 75px;
-    right: 30px;
 
-    .calendar_header {
-      display: flex;
-      width: 100%;
-      justify-content: space-around;
-      color: #666666;
-      @include font(1);
 
-      button {
-        width: 50px;
-        height: 50px;
-        border: none;
-        outline: none;
-        background-color: transparent;
-        cursor: pointer;
+    .program_calendar_box {
+      position: absolute;
+      border: 1px solid rgba(0, 0, 0, .1);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+
+      top: 75px;
+      right: 30px;
+
+      &.program_calendar_box_active {
+        display: none;
+        // width: 0;
+        // height: 0;
+        // overflow: hidden;
+      }
+
+      .calendar_header {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
         color: #666666;
+        @include font(1);
 
-        &:hover {
-          color: #333333;
+        button {
+          width: 50px;
+          height: 50px;
+          border: none;
+          outline: none;
+          background-color: transparent;
+          cursor: pointer;
+          color: #666666;
+
+          &:hover {
+            color: #333333;
+          }
         }
+
+        p {
+          width: 30%;
+          text-align: center;
+        }
+
+        //calendar_header--結束
       }
 
-      p {
-        width: 30%;
-        text-align: center;
+      .calendar_body {
+        width: 100%;
+
+        td {
+          width: 14.3%;
+
+          text-align: center;
+          vertical-align: top;
+          color: #999999;
+          transition: all .5s;
+          cursor: pointer;
+          @include font(0);
+        }
+
+
+        //calendar_body--結束
       }
 
-      //calendar_header--結束
+
+
+      //行事曆box--結束
     }
-
-    .calendar_body {
-      width: 100%;
-
-      td {
-        width: 14.3%;
-
-        text-align: center;
-        vertical-align: top;
-        color: #999999;
-        transition: all .5s;
-        cursor: pointer;
-        @include font(0);
-      }
-
-
-      //calendar_body--結束
-    }
-
-
-
-
 
     //行事曆--結束
   }
@@ -480,62 +502,73 @@
 
   //聊天室
   .program_chatroom_all {
-    // border: 1px solid blue;
-    width: 256px;
-    // display: inline-block;
-    margin-top: 10px;
-    border-radius: 20px;
-    overflow: hidden;
 
-    background-color: rgba(0, 0, 0, .1);
-    position: absolute;
-    top: 350px;
-    right: 30px;
-
-    .program_chatroom_window {
-      height: 40vh;
-      // border: 1px solid blue;
-      padding: 15px;
-
-      .program_chatroom_oneperson {
-        img {
-          width: 30px;
-          vertical-align: middle;
-          border-radius: 50%;
-        }
-
-        .program_chatroom_otherside_name {
-          @include font(0);
-        }
-
-        .program_chatroom_otherside_dialog {
-          @include font(0);
-        }
-      }
-
+    &>button {
+      position: relative;
     }
 
+    .program_chatroom_box {
+      // border: 1px solid blue;
+      width: 256px;
+      // display: inline-block;
+      margin-top: 10px;
+      border-radius: 20px;
+      overflow: hidden;
 
-    .program_chatroom_operating_area {
+      background-color: rgba(0, 0, 0, .1);
+      position: absolute;
+      top: 350px;
+      right: 30px;
+      &.program_chatroom_box_active{
+        display: none;
+      }
+      .program_chatroom_window {
+        height: 40vh;
+        // border: 1px solid blue;
+        padding: 15px;
 
-      .program_chatroom_iconbar {
-        border: 1px solid red;
-        height: 30px;
-        position: relative;
+        .program_chatroom_oneperson {
+          img {
+            width: 30px;
+            vertical-align: middle;
+            border-radius: 50%;
+          }
 
-        .program_chatroom_icon {
-          @include hoverIcon(30px);
+          .program_chatroom_otherside_name {
+            @include font(0);
+          }
+
+          .program_chatroom_otherside_dialog {
+            @include font(0);
+          }
+        }
+
+      }
+
+
+      .program_chatroom_operating_area {
+
+        .program_chatroom_iconbar {
+          border: 1px solid red;
+          height: 30px;
+          position: relative;
+
+          .program_chatroom_icon {
+            @include hoverIcon(30px);
+          }
+        }
+
+        textarea {
+          resize: none;
+          width: 100%;
+          height: 50px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          border-radius: 0 0 20px 20px;
+          padding: 5px 10px;
         }
       }
 
-      textarea {
-        resize: none;
-        width: 100%;
-        height: 50px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 0 0 20px 20px;
-        padding: 5px 10px;
-      }
+      //聊天室box--結束
     }
 
     //聊天室--結束
