@@ -115,7 +115,7 @@
     class="content"
     id="content"
   >
-  
+
     <aside class="slide_bar">
       <div class="logo">
         <a href="#">
@@ -163,10 +163,13 @@
         id="card_light_box"
         :class="{opneLight: open}"
       >
-      <div class="card_header_title">
-        <h1 id="card_title">團專衝刺</h1>
-        <div  @click="open = false"><img src="./img/card_img/cancel_w.svg" alt=""></div>
-      </div>
+        <div class="card_header_title">
+          <h1 id="card_title">團專衝刺</h1>
+          <div @click="open = false"><img
+              src="./img/card_img/cancel_w.svg"
+              alt=""
+            ></div>
+        </div>
 
         <div class="lightbox_content">
           <div class="left_aside">
@@ -181,23 +184,23 @@
                 />
                 成員
               </div>
-              <div class="wave">
+              <div class="wave" @click.stop="calandar_switch =! calandar_switch">
                 <img
                   src="./img/card_img/hanging-calendar.svg"
                   alt=""
                   style="width: 20px;"
                 />
-                到期日 
+                到期日
               </div>
-              <div>
+              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch">
                 <img
-               
                   src=" ./img/card_img/select.svg"
                   alt=""
                   style="width: 20px;"
                 />
                 待辦清單
               </div>
+          
               <div>
                 <img
                   src="./img/card_img/paperclip.cf9c8806.svg"
@@ -206,6 +209,29 @@
                 />
                 上傳附件
               </div>
+           
+                  <!-- 新增待辦清單跳窗 -->
+             <div class="todo_lightbox" :class='{opentodo_lightbox: todo_lightbox_switch}'  @click.stop="">
+              <label>
+                <p>待辦清單標題</p>
+                <!-- 讓燈箱的字和標題同步 -->
+                <input type="text" class="todo_lightbox_input" v-model.trim="todo_lightbox_input_title" @keyup.13="todo_list_add(todo_lightbox_input_title)">
+              </label>  
+                  <div class="todo_lightbox_botton" @click="todo_list_add(todo_lightbox_input_title)">
+                    <button>新增</button>
+                  </div>  
+            </div>
+ 
+           <!-- 新增日曆跳窗 -->
+            <div class="calendar_lightbox" :class="{open_calendar_lightbox : calandar_switch}" @click.stop="">
+               <h3>更改到期日</h3>
+               <p>日期</p>
+               <div class="calendar_lightbox_content">
+                 <!-- 手刻日立 -->
+              </div>
+            </div>
+
+
             </div>
             <div class="second_right">
               <h3>卡片動作</h3>
@@ -223,94 +249,220 @@
           <div class="right_aside">
             <div class="memberRight">
               <div class="card_memver_head">
-              <div class="card_member_title">
-                <div>
-              <img
-                src="./img/card_img/multiple-users-silhouette.cde8086c.svg"
-                alt=""
-                style="width: 20px;"
-              />
-            </div>
-             <h3>成員</h3> 
-             </div>
-              <div class="memimg">
-                <div class="card_member"><img
-                    src="./img/program_img/program_member_1.png"
-                    alt=""
-                  ></div>
-                <div class="card_member"><img
-                    src="./img/program_img/program_member_2.png"
-                    alt=""
-                  ></div>
-                <div class="card_member"><img
-                    src="./img/program_img/program_member_3.png"
-                    alt=""
-                  ></div>
-              </div>
+                <div class="card_member_title">
+                  <div>
+                    <img
+                      src="./img/card_img/multiple-users-silhouette.cde8086c.svg"
+                      alt=""
+                      style="width: 20px;"
+                    />
+                  </div>
+                  <h3>成員</h3>
+                </div>
+                <div class="memimg">
+                  <div class="card_member"><img
+                      src="./img/program_img/program_member_1.png"
+                      alt=""
+                    ></div>
+                  <div class="card_member"><img
+                      src="./img/program_img/program_member_2.png"
+                      alt=""
+                    ></div>
+                  <div class="card_member"><img
+                      src="./img/program_img/program_member_3.png"
+                      alt=""
+                    ></div>
+                </div>
               </div>
               <div class="calendar">
                 <div class="calendar_title">
                   <div><img
-                    src="./img/card_img/hanging-calendar.svg"
-                    alt=""
-                    style="width: 20px;"
-                  /></div>
+                      src="./img/card_img/hanging-calendar.svg"
+                      alt=""
+                      style="width: 20px;"
+                    /></div>
                   <h3>到期日</h3>
                 </div>
                 <div class="calendar_status">
-                  <div class="calendar_img"   @click="changeimg">
+                  <div class="calendar_img">
                     <img
                       src="./img/card_img/unchecked_d.9558e11b.svg"
                       alt=""
+                      v-show="isactive"
+                      @click="changeimg"
                     >
                     <img
-                    src="./img/card_img/checked_d.721738d0.svg"
-                    alt=""
-                    
-                  >
+                      src="./img/card_img/checked_d.721738d0.svg"
+                      alt=""
+                      v-show="onactive"
+                      @click="onchangeimg"
+                    >
                   </div>
                   <p>2019/12/31</p>
-                  <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
-                 <span>未完成</span>
+                  <img
+                    src="./img/card_img/down-arrow.4172a7ec.svg"
+                    alt=""
+                    style="width: 15px;height: 15px;"
+                  >
+                  <span :class="classObject">{{text}}</span>
                 </div>
               </div>
-              <div class="card_todo_content">
-                    <div class="todo_title">
-                       <div><img src=" ./img/card_img/select.svg" alt="" width="20"></div>
-                        <h3>待辦清單</h3>
-                      </div>
-                      <div class="todo_main_content">
-                           <p>寫專案</p>
-                         <div>刪除</div> 
-                      </div>
-                      <div class="todo_progress_bar">
-                         <p>50%</p>
-                         <div class="progress_bar">
-                            <span></span>
-                         </div>
-                      </div>
-                      <div class="card_check_item">
-                        <div><img src="./img/card_img/unchecked_d.9558e11b.svg" alt=""></div>
-                        <p>切版</p>
-                        <div><img src="./img/icon/time-left.svg" alt=""></div>
-                        <div><img src="./img/card_img/delete.0df56913.svg" alt="" ></div>
-                      </div>
-          
-                      <div class="card_add_button">
-                        <button>新增項目<img src="./img/card_img/plus_write.svg" alt="" width="14"></button>
-                      </div>
+              
+              <!-- 原版的樣子 -->
+              <!-- <div class="card_todo_content">
+                <div class="todo_title">
+                  <div><img
+                      src=" ./img/card_img/select.svg"
+                      alt=""
+                      width="20"
+                    ></div>
+                  <h3>待辦清單</h3>
+                </div>
+                <div class="todo_main_content">
+                  <p>寫專案</p>
+                  <div>刪除</div>
+                </div> -->
+
+                <div class="card_todo_content">
+                  <div class="todo_title">
+                    <div><img
+                        src=" ./img/card_img/select.svg"
+                        alt=""
+                        width="20"
+                      ></div>
+                    <h3>待辦清單</h3>
+                  <div class="all_card_todo_delete">刪除</div>
+                  </div>
+
+                <div class="todo_progress_bar">
+                  <p>50%</p>
+                  <div class="progress_bar">
+                    <span></span>
+                  </div>
+                </div>
+                <div class="card_check_item">
+                  <div>
+
+                    <img
+                      src="./img/card_img/unchecked_d.9558e11b.svg"
+                      alt=""
+                      v-if="showselect"
+                      @click="showSelect"
+                    >
+                    <img
+                      src="./img/card_img/checked_d.721738d0.svg"
+                      alt=""
+                      v-else=""
+                      @click="showSelect"
+                    >
+
+                  </div>
+                  <p :class="{lineThrough:deleteline}">切版</p>
+                  <div><img
+                      src="./img/icon/time-left.svg"
+                      alt=""
+                    ></div>
+                  <div><img
+                      src="./img/card_img/delete.0df56913.svg"
+                      alt=""
+                    ></div>
+                    
+                </div>
+                
+                <div class="card_add_button">
+                  <button>新增項目<img
+                      src="./img/card_img/plus_write.svg"
+                      alt=""
+                      width="14"
+                    ></button>
+                </div>
               </div>
+
+             <!-- 新增出來的待辦清單 -->
+             <div class="card_todo_content"  v-for="(item,index) in todo_list_content_detail">
+              <div class="todo_title">
+                <div><img
+                    src=" ./img/card_img/select.svg"
+                    alt=""
+                    width="20"
+                  ></div>
+                <h3>{{item}}</h3>
+              <div class="all_card_todo_delete" @click="deletecard_todo(index)">刪除</div>
+              </div>
+              <div class="todo_progress_bar">
+                <p>0%</p>
+                <div class="progress_bar">
+                  <!-- <span></span> -->
+                </div>
+              </div>
+              <!-- 新增的卡片細項 -->
+              <div class="card_check_item" v-for="(item,index) in card_check_item_detail">
+                <div @click="item.status = !item.status">
+                  <img
+                    src="./img/card_img/unchecked_d.9558e11b.svg"
+                    alt=""
+                    v-if="item.status"
+                  >
+                  <img
+                    src="./img/card_img/checked_d.721738d0.svg"
+                    alt=""
+                    v-else
+                  >
+                </div>
+                <p :cl>{{item.content}}</p>
+                <div><img
+                    src="./img/icon/time-left.svg"
+                    alt=""
+                  ></div>
+                <div><img
+                    src="./img/card_img/delete.0df56913.svg"
+                    alt=""
+                    @click="delete_todo_title(index)"
+                  ></div>
+              </div>
+
+
+              <div class="card_add_button" @click.stop="card_detail_lightbox =!  card_detail_lightbox">
+                <button>新增項目<img
+                    src="./img/card_img/plus_write.svg"
+                    alt=""
+                    width="14"
+                  ></button>
+              </div>
+                 <!-- 新增內部跳窗 -->
+                 <div class="card_detail_lightbox" :class="{open_card_detail : card_detail_lightbox}" @click.stop="">
+                  <label for="">
+                    <input type="text" class="card_detail_lightbox_input" v-model.trim="card_detail_lightbox_add">
+                  </label>
+                  <form method="post"  @submit.prevent="add_card_detail">
+                    <button>儲存</button>
+                  </form>
+                  </div>
+            </div>
+
+                  
+
+
+
               <div class="card_file">
-                   <div class="card_file_title">
-                      <div><img src="./img/card_img/paperclip.cf9c8806.svg" alt="" width="20"></div>
-                      <h3>附件</h3>
-                   </div>
-                   <div class="card_upload_file">
-                     <!-- <div>上傳的內容</div> -->
-                    <div class="card_upload_file_button">
-                      <button>增加附件<img src="./img/card_img/plus_write.svg" alt="" width="14"></button>
-                    </div>
-                   </div>
+                <div class="card_file_title">
+                  <div><img
+                      src="./img/card_img/paperclip.cf9c8806.svg"
+                      alt=""
+                      width="20"
+                    ></div>
+                  <h3>附件</h3>
+                </div>
+                <div class="card_upload_file">
+                  <!-- <div>上傳的內容</div> -->
+                  <div class="card_upload_file_button">
+                    <button>增加附件<img
+                        src="./img/card_img/plus_write.svg"
+                        alt=""
+                        width="14"
+                      ></button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -323,8 +475,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-  <script src="./js/card.js"></script>
-
+ 
+ <script src="./js/card.js"></script>
   <script>
     const moreBtn = document.getElementById("more");
     const content = document.getElementById("content");
