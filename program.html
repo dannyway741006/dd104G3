@@ -8,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -169,11 +170,36 @@
       </div>
 
       <div class="calendar_all">
-        <button class="calendar_btn" @click.stop='calendar_btn = !calendar_btn'><img src="./img/icon/calendar_white.svg"
+        <!-- <button class="calendar_btn" @click.stop='calendar_btn = !calendar_btn'><img src="./img/icon/calendar_white.svg"
             alt=""><img src="./img/icon/calendar_primary.svg" alt="">
-        </button>
+        </button> -->
         <div class="program_calendar_all program_right_column_item">
-          <v-calendar></v-calendar>
+          <div class="calendar">
+            <div class="calendar_header">
+              <button id="prev">
+                <i class="material-icons">
+                  keyboard_arrow_left
+                </i>
+              </button>
+              <p id='month'>May 2019</p>
+              <button id="next">
+                <i class="material-icons">
+                  keyboard_arrow_right
+                </i>
+              </button>
+            </div>
+            <table class="calendar_body">
+              <tr>
+                <td>Su</td>
+                <td>Mo</td>
+                <td>Tu</td>
+                <td>We</td>
+                <td>Th</td>
+                <td>Fr</td>
+                <td>Sa</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -281,7 +307,7 @@
   <footer></footer>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
-  <script src='https://unpkg.com/v-calendar@next'></script>
+  <!-- <script src='https://unpkg.com/v-calendar@next'></script> -->
   <script src="./js/program.js"></script>
   <script>
     const moreBtn = document.getElementById("more");

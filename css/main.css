@@ -965,7 +965,9 @@ body {
 
 #program_main .program_calendar_all {
   position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  padding: 15px;
   text-align: center;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
@@ -973,33 +975,53 @@ body {
   right: 30px;
 }
 
-#program_main .program_calendar_all .program_calendar_year {
-  letter-spacing: 2.8px;
-  font-size: 14px;
+#program_main .program_calendar_all .calendar_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: #666666;
+  letter-spacing: 3.2px;
+  font-size: 16px;
   line-height: 20px;
 }
 
-#program_main .program_calendar_all .program_calendar_month {
-  letter-spacing: 4px;
-  font-size: 20px;
-  line-height: 30px;
+#program_main .program_calendar_all .calendar_header button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #666666;
 }
 
-#program_main .program_calendar_all table {
-  margin: 0 auto;
-  border-collapse: collapse;
+#program_main .program_calendar_all .calendar_header button:hover {
+  color: #333333;
 }
 
-#program_main .program_calendar_all table tr td {
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 30px;
-  border: 1px solid red;
-  width: 40px;
+#program_main .program_calendar_all .calendar_header p {
+  width: 30%;
+  text-align: center;
 }
 
-#program_main .program_calendar_all table tr td:first-child, #program_main .program_calendar_all table tr td:last-child {
-  color: #eb7a77;
+#program_main .program_calendar_all .calendar_body {
+  width: 100%;
+}
+
+#program_main .program_calendar_all .calendar_body td {
+  width: 14.3%;
+  text-align: center;
+  vertical-align: top;
+  color: #999999;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  cursor: pointer;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 #program_main .program_chatroom_all {
@@ -1045,7 +1067,7 @@ body {
   resize: none;
   width: 100%;
   height: 50px;
-  border: 1px solid #999999;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0 0 20px 20px;
   padding: 5px 10px;
 }

@@ -411,43 +411,65 @@
   //行事曆
   .program_calendar_all {
     position: absolute;
-    // border: 1px solid blue;
+    border: 1px solid rgba(0, 0, 0, .1);
     border-radius: 10px;
-    // height: 300px;
-    // width: 300px;
-    // display: inline-block;
+    padding: 15px;
     text-align: center;
-    box-shadow:1px 1px 3px rgba(0, 0, 0, .1);
-
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
 
     top: 75px;
     right: 30px;
 
-    .program_calendar_year {
-      @include font(0);
-    }
+    .calendar_header {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      color: #666666;
+      @include font(1);
 
-    .program_calendar_month {
-      @include font(3, 30px);
-    }
+      button {
+        width: 50px;
+        height: 50px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        cursor: pointer;
+        color: #666666;
 
-    table {
-      margin: 0 auto;
-      border-collapse: collapse;
-
-      tr {
-        td {
-          @include font(2);
-          border: 1px solid red;
-          width: 40px;
-
-          &:first-child,
-          &:last-child {
-            color: $danger;
-          }
+        &:hover {
+          color: #333333;
         }
       }
+
+      p {
+        width: 30%;
+        text-align: center;
+      }
+
+      //calendar_header--結束
     }
+
+    .calendar_body {
+      width: 100%;
+
+      td {
+        width: 14.3%;
+
+        text-align: center;
+        vertical-align: top;
+        color: #999999;
+        transition: all .5s;
+        cursor: pointer;
+        @include font(0);
+      }
+
+
+      //calendar_body--結束
+    }
+
+
+
+
 
     //行事曆--結束
   }
@@ -503,7 +525,7 @@
         resize: none;
         width: 100%;
         height: 50px;
-        border: 1px solid $gray;
+        border: 1px solid rgba(0, 0, 0, .1);
         border-radius: 0 0 20px 20px;
         padding: 5px 10px;
       }
