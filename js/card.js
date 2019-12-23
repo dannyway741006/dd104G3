@@ -43,6 +43,10 @@ var vm = new Vue({
 
     card_check_item_detail:[],
     card_detail_lightbox_add:'',
+
+    calandar_switch:false,
+
+    
   },
   methods: {
     changeimg(){
@@ -76,19 +80,32 @@ var vm = new Vue({
     this.todo_lightbox_switch=false;
 }
 },
-add_card_detail(card_detail_lightbox_add){
+
+add_card_detail(){
   if(this.card_detail_lightbox_add.length){
-    this.card_check_item_detail.push(card_detail_lightbox_add);
+    //將卡片狀態、名字設為陣列
+    this.card_check_item_detail.push({
+      content: this.card_detail_lightbox_add,
+      status:false,
+      text:'lineThrough',
+    });
     this.card_detail_lightbox_add='';
     this.card_detail_lightbox=false;
   }
   
   
 },
+deletecard_todo(index){
+  this.todo_list_content_detail.splice(index,1);
+},
+delete_todo_title(index){
+  this.card_check_item_detail.splice(index,1);
+}
 },
 mounted() {
   document.addEventListener('click', () => {
    
+    this.calandar_switch=false;
     this.todo_lightbox_switch=false;
     this.card_detail_lightbox=false;
   });

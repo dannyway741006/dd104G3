@@ -184,7 +184,7 @@
                 />
                 成員
               </div>
-              <div class="wave">
+              <div class="wave" @click.stop="calandar_switch =! calandar_switch">
                 <img
                   src="./img/card_img/hanging-calendar.svg"
                   alt=""
@@ -223,12 +223,12 @@
             </div>
  
            <!-- 新增日曆跳窗 -->
-            <div class="calendar_lightbox">
+            <div class="calendar_lightbox" :class="{open_calendar_lightbox : calandar_switch}" @click.stop="">
                <h3>更改到期日</h3>
                <p>日期</p>
                <div class="calendar_lightbox_content">
-                <v-calendar title-position="Popovers" />
-               </div>
+                 <!-- 手刻日立 -->
+              </div>
             </div>
 
 
@@ -379,7 +379,7 @@
               </div>
 
              <!-- 新增出來的待辦清單 -->
-             <div class="card_todo_content"  v-for="item in todo_list_content_detail">
+             <div class="card_todo_content"  v-for="(item,index) in todo_list_content_detail">
               <div class="todo_title">
                 <div><img
                     src=" ./img/card_img/select.svg"
@@ -387,7 +387,7 @@
                     width="20"
                   ></div>
                 <h3>{{item}}</h3>
-              <div class="all_card_todo_delete">刪除</div>
+              <div class="all_card_todo_delete" @click="deletecard_todo(index)">刪除</div>
               </div>
               <div class="todo_progress_bar">
                 <p>0%</p>
@@ -396,23 +396,20 @@
                 </div>
               </div>
               <!-- 新增的卡片細項 -->
-              <div class="card_check_item" v-for="item in card_check_item_detail">
-                <div>
+              <div class="card_check_item" v-for="(item,index) in card_check_item_detail">
+                <div @click="item.status = !item.status">
                   <img
                     src="./img/card_img/unchecked_d.9558e11b.svg"
                     alt=""
-                    v-if="showselect"
-                    @click="showSelect"
+                    v-if="item.status"
                   >
                   <img
                     src="./img/card_img/checked_d.721738d0.svg"
                     alt=""
-                    v-else=""
-                    @click="showSelect"
+                    v-else
                   >
-
                 </div>
-                <p :class="{lineThrough:deleteline}">{{item}}</p>
+                <p :cl>{{item.content}}</p>
                 <div><img
                     src="./img/icon/time-left.svg"
                     alt=""
@@ -420,6 +417,7 @@
                 <div><img
                     src="./img/card_img/delete.0df56913.svg"
                     alt=""
+                    @click="delete_todo_title(index)"
                   ></div>
               </div>
 
@@ -436,7 +434,7 @@
                   <label for="">
                     <input type="text" class="card_detail_lightbox_input" v-model.trim="card_detail_lightbox_add">
                   </label>
-                  <form method="post"  @submit.prevent="add_card_detail(card_detail_lightbox_add)">
+                  <form method="post"  @submit.prevent="add_card_detail">
                     <button>儲存</button>
                   </form>
                   </div>
@@ -477,8 +475,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-  <script src="./js/card.js"></script>
-
+ 
+ <script src="./js/card.js"></script>
   <script>
     const moreBtn = document.getElementById("more");
     const content = document.getElementById("content");
