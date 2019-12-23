@@ -382,6 +382,7 @@ body {
 /*------------------------- */
 .mall_bg {
   background-color: #EAEAEA;
+  padding-top: 2%;
 }
 
 #mall_search {
@@ -395,7 +396,7 @@ body {
 #mall_search .mall_search_bar {
   position: relative;
   border: 2px solid #8ACEDE;
-  padding: 10px;
+  padding: 12px;
   opacity: 0.5;
   border-radius: 10px 0px 0px 10px;
   width: 75%;
@@ -415,7 +416,6 @@ body {
 }
 
 #slider {
-  padding: 3% 0 0;
   width: 92%;
   margin: 0 auto;
 }
@@ -481,7 +481,6 @@ body {
   visibility: hidden;
 }
 
-.mall_content .mall_box:hover p,
 .mall_content .mall_box:hover .product_price {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
@@ -527,7 +526,14 @@ body {
 /*------------------------- */
 /*        商品單品頁面      */
 /*------------------------- */
-.mall_poduct_content {
+.mall_poduct_cart {
+  width: 90%;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.568);
+  border-radius: 2%;
+}
+
+.mall_poduct_cart .mall_poduct_content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -536,65 +542,104 @@ body {
   margin: 0 auto;
 }
 
-.mall_poduct_content .product_img {
+.product_img {
   width: 30%;
 }
 
-.mall_poduct_content .product_img img {
+.product_img img {
   width: 100%;
 }
 
-.mall_poduct_content .product_text {
+.product_img .small_pic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.product_img .small_pic div {
+  width: 20%;
+  margin-left: 2%;
+}
+
+.product_img .small_pic div:nth-child(1) {
+  width: 20%;
+  margin-left: 0;
+}
+
+.product_text {
   width: 70%;
   padding: 2% 5%;
 }
 
-.mall_poduct_content .product_text .line {
+.product_text .line {
   height: 1px;
   background-color: rgba(158, 158, 158, 0.609);
   margin: 2% 0;
 }
 
-.mall_poduct_content .product_text p {
+.product_text p {
   letter-spacing: 4.4px;
   font-size: 22px;
   line-height: 30px;
   font-weight: bolder;
 }
 
-.mall_poduct_content .product_text ul.product_line {
+.product_text ul.product_features {
+  width: 100%;
+  margin: 2% 10%;
+}
+
+.product_text ul.product_select {
   width: 100%;
   margin: 2% 5%;
+  list-style: none;
 }
 
-.mall_poduct_content .product_text ul.product_line li {
-  margin: 1 0%;
-}
-
-.mall_poduct_content ul.select_btn {
+.product_text ul.product_select ul.select_btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin: 2%;
-  list-style: none;
   text-align: center;
-  vertical-align: auto;
   list-style: none;
 }
 
-.mall_poduct_content ul.select_btn b {
+.product_text ul.product_select ul.select_btn b {
   margin-right: 2%;
 }
 
-.mall_poduct_content ul.select_btn > li {
-  width: 10%;
-  padding: 0.3%;
+.product_text ul.product_select ul.select_btn > li {
   margin: 0 0.1% 0 2%;
-  border: 1px solid #7c7c7c;
-  cursor: pointer;
 }
 
-.mall_poduct_content button {
+.product_text ul.product_select ul.select_btn > li > input {
+  padding: 15%;
+  border: 1px solid #b1b1b1;
+  cursor: pointer;
+  min-width: 45px;
+}
+
+.product_text ul.product_select ul.select_btn > li > input:hover {
+  background-color: #e7e7e7;
+}
+
+.product_text ul.product_select ul.select_btn > li > select {
+  padding: 14%;
+  border: 1px solid #b1b1b1;
+  cursor: pointer;
+  min-width: 45px;
+  outline: none;
+}
+
+.product_text ul.product_select ul.select_btn > li > select option {
+  -moz-appearance: none;
+  /* Firefox */
+  -webkit-appearance: none;
+  /* Safari 和 Chrome */
+  appearance: none;
+}
+
+button {
   background-color: #8acede;
   width: 15%;
   height: 43px;
@@ -605,20 +650,14 @@ body {
   cursor: pointer;
 }
 
-.mall_poduct_content .small_pic {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.mall_poduct_content .small_pic div {
-  width: 20%;
-  margin-left: 2%;
-}
-
-.mall_poduct_content .small_pic div:nth-child(1) {
-  width: 20%;
-  margin-left: 0;
+@media screen and (max-width: 767px) {
+  .mall_poduct_content {
+    display: block;
+  }
+  .mall_poduct_content .product_img {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 #program_aside {
