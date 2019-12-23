@@ -1136,13 +1136,44 @@ body {
 #program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar {
   border: 1px solid red;
   height: 30px;
+  position: relative;
+}
+
+#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon img:nth-of-type(2) {
+  opacity: 0;
+}
+
+#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon:hover img:nth-of-type(1) {
+  opacity: 0;
+}
+
+#program_main .program_chatroom_all .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon:hover img:nth-of-type(2) {
+  opacity: 1;
 }
 
 #program_main .program_chatroom_all .program_chatroom_operating_area textarea {
   resize: none;
   width: 100%;
   height: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0 0 20px 20px;
   padding: 5px 10px;
 }
