@@ -20,6 +20,7 @@
     border-radius: 10px 0px 0px 10px;
     width: 75%;
     background-color: rgb(240, 240, 240);
+    outline:none;
   }
   
   .mall_search-btn {
@@ -29,7 +30,10 @@
     width: 50px;
     padding: 12px;
     border: none;
+    outline:none;
+    cursor: pointer;
   }
+
 }
 
 #slider {
@@ -50,7 +54,6 @@
   .mall_box {  //商品圖
     width: 18%;
     background-color: rgba(255, 255, 255, 0.568);
-
     margin: 1.5% 1%;
     border-radius: 2%;
     background-position: center;
@@ -80,27 +83,7 @@
       -webkit-line-clamp:1;
     }
 
-    .product_price {
-      // margin-top: 10px;
-
-      .price_sale {
-        color: $price;
-        font-weight: bolder;
-        @include font(5);
-      }
-    }
-
-    .product_price span:nth-child(1) {
-      color: $dark;
-      text-decoration: line-through;
-    }
-
-    .product_price span:nth-child(2) {
-      color: $price;
-      margin-left: 5%;
-      font-weight: bolder;
-    }
-
+   
     &:hover {
       transform: rotateY(180deg);
       background-image: url(../img/add_cart.png);
@@ -120,6 +103,30 @@
     }
   }
 }
+
+//價格
+
+.product_price {
+  // margin-top: 10px;
+
+  .price_sale {
+    color: $price;
+    font-weight: bolder;
+    @include font(5);
+  }
+
+  span:nth-child(1) {
+    color: $dark;
+    text-decoration: line-through;
+  }
+  
+  span:nth-child(2) {
+    color: $price;
+    margin-left: 3%;
+    font-weight: bolder;
+  }
+}
+
 
 
 @include media(767px) {
@@ -154,8 +161,7 @@
   margin: 0 auto;
   .product_img{
     width: 30%;
-   
-    
+  
     img{
       width: 100%;
     }
@@ -163,8 +169,96 @@
 
   .product_text{
     width: 70%;
-    background-color: rgb(104, 173, 190);
+    // background-color: rgb(199, 214, 218);
+    padding: 2% 5%;
+
+    .line{
+      height: 1px;
+      background-color: rgba(158, 158, 158, 0.609);
+      margin: 2% 0;
+    }
+    p{
+      @include font(4);
+      font-weight: bolder;
+    }
+    ul.product_line{
+     width: 100%;
+     margin:2% 5%;
+
+        
+        li{
+          margin:1 0%;
+        }
+
+    }
+ 
+    
   }
+
+  ul.select_btn{
+    display: flex;
+    margin: 2%;
+    list-style: none;
+    text-align: center;
+    vertical-align: auto;
+    list-style: none;
+    
+    b{
+      margin-right: 2%;
+    }
+
+    &>li{
+      width: 10%;
+      padding: 0.3%;
+      margin: 0 0.1% 0 2%;
+      border: 1px solid rgb(124, 124, 124);
+      cursor: pointer;
+    }
+
+  }
+
+
+
+  button{
+    background-color: #8acede;
+    width: 15%;
+    height: 43px;
+    color: #fff;
+    border-radius: 10px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+  }
+
+
+
+  .small_pic{
+    display: flex;
+      div{
+        width: 20%;
+        margin-left: 2%;
+      }
+      div:nth-child(1){
+        width: 20%;
+        margin-left: 0;
+      }
+  }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 
