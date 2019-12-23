@@ -411,15 +411,17 @@
   //行事曆
   .program_calendar_all {
     position: absolute;
-    border: 1px solid blue;
-    height: 300px;
-    width: 300px;
+    // border: 1px solid blue;
+    border-radius: 10px;
+    // height: 300px;
+    // width: 300px;
     // display: inline-block;
     text-align: center;
+    box-shadow:1px 1px 3px rgba(0, 0, 0, .1);
 
 
-    top: 60px;
-    right: 0;
+    top: 75px;
+    right: 30px;
 
     .program_calendar_year {
       @include font(0);
@@ -455,7 +457,7 @@
   //聊天室
   .program_chatroom_all {
     // border: 1px solid blue;
-    width: 300px;
+    width: 256px;
     // display: inline-block;
     margin-top: 10px;
     border-radius: 20px;
@@ -463,11 +465,11 @@
 
     background-color: rgba(0, 0, 0, .1);
     position: absolute;
-    top: 400px;
-    right: 0;
+    top: 350px;
+    right: 30px;
 
     .program_chatroom_window {
-      height: 300px;
+      height: 40vh;
       // border: 1px solid blue;
       padding: 15px;
 
@@ -528,7 +530,7 @@
       // display: inline-block;
       border: 1px solid blue;
       height: 70vh;
-      height: 700px;
+      // height: 700px;
       min-width: 300px;
       max-width: 300px;
       text-align: center;
@@ -565,11 +567,11 @@
             width: 100%;
             margin: 10px 0;
             padding: 5px 10px;
-            max-height: 85px;
+            // max-height: 85px;
 
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 10;
             overflow: hidden;
 
             p {

@@ -52,3 +52,4 @@ var main_content = new Vue({
     });
   },
 });
+
