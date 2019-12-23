@@ -18,7 +18,7 @@
           <img src="./img/icon/more-options.svg" alt="more" />
           <img src="./img/icon/more-options_on.svg" alt="more" />
         </div>
-        <h2>專案管理</h2>
+        <h2>會員中心</h2>
       </div>
       <div>
         <ul class="nav_list">
@@ -62,7 +62,7 @@
         </a>
       </div>
       <div class="slider_header"></div>
-<!-- =================member_側邊欄=================================== -->
+      <!-- =================member_側邊欄=================================== -->
       <div class="memberitem">
         <div class="personal_photo">
           <div class="picrange">
@@ -78,8 +78,8 @@
             <label class="up_memberpic">
               <input type="file" name="file" onchange="showImg(this)" style="display: none;">
               <div class="double_mem">
-                <img src="./img/member_img/camera-retro-solid.svg" alt="" width="20">
-                <img src="./img/member_img/camera-retro-solid2.svg" alt="" width="20">
+                <img src="./img/member_img/camera.svg" alt="">
+                <img src="./img/member_img/camera1.svg" alt="">
               </div>
             </label>
           </div>
@@ -103,6 +103,7 @@
     <div class="mask" id="mask"></div>
     <!-- ================member內容=============================== -->
     <div class="memberContent">
+        <div id="mask" class="mask"></div>
       <div id="memcon1">
         <h3>一、基本資料</h3>
         <form action="" method="POST" autocomplete="on">
@@ -139,10 +140,17 @@
               <th>訂單編號</th>
               <th>
                 <input id="allcheck" type="checkbox" name="">全選/
-                <span class="delete_oder">
+                <label id="delet_btn" class="delete_all_oder">
+                  <input type="botton" name="botton" style="display: none;">
+                  <span class="delete_oder">
+                    <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
+                    <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
+                  </span>
+                </label>
+                <!-- <span class="delete_oder">
                   <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
                   <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
-                </span>
+                </span> -->
 
               </th>
             </tr>
@@ -166,31 +174,6 @@
     const mask = document.getElementById("mask");
     moreBtn.addEventListener("click", () => content.classList.add("active"));
     mask.addEventListener("click", () => content.classList.remove("active"));
-
-
-    // =================member_change_paper==============================
-    function member_page1() {
-      document.getElementById("memcon1").style.display = "block";
-      document.getElementById("memcon2").style.display = "none";
-    }
-
-    function member_page2() {
-      document.getElementById("memcon1").style.display = "none";
-      document.getElementById("memcon2").style.display = "block";
-    }
-    // ===================member_change_img====================================
-    function showImg(thisimg) {
-      let file = thisimg.files[0];
-      if (window.FileReader) {
-        let files = new FileReader();
-        let showimg = document.getElementById('acceptImg');
-        files.onloadend = function (e) {
-          showimg.src = e.target.result;
-        };
-        files.readAsDataURL(file);
-        acceptImg.style.display = 'block';
-      }
-    }
   </script>
   <script src="./js/member.js"></script>
 </body>

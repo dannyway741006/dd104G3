@@ -1,14 +1,10 @@
 @import "./base/_var";
 @import "./base/scrollBar";
-
 @import "./mixins/_mixin";
-
 @import "./layout/_inside_layout";
-
 //pages
 @import "./pages/_mall.scss";
 @import "./pages/_program.scss";
 @import "./pages/card";
-
 @import "./pages/member";
 @import "./pages/cart";

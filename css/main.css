@@ -12,6 +12,32 @@
   margin: 15px;
 }
 
+@-webkit-keyframes boxbig {
+  form {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1.12);
+            transform: scale(1.12);
+    height: 40px;
+    top: -4.65px;
+  }
+}
+
+@keyframes boxbig {
+  form {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1.12);
+            transform: scale(1.12);
+    height: 40px;
+    top: -4.65px;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1813,14 +1839,14 @@ body {
   position: relative;
   left: 95%;
   top: 15%;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
 .memberitem .personal_photo #membericon .up_memberpic .double_mem img {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1907,6 +1933,10 @@ body {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   color: #666666;
@@ -1917,22 +1947,45 @@ body {
   outline: none;
   cursor: pointer;
   position: relative;
+  -webkit-animation: boxbig 1s;
+          animation: boxbig 1s;
+  transition: all 0.5s;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
 }
 
 .memberContent #memcon1 .con1_info .memberbtn::after {
   content: "";
   position: absolute;
-  width: 149px;
-  height: 29px;
-  left: -1.3px;
-  top: -1px;
+  width: 150px;
+  height: 30px;
+  left: 0.5px;
+  top: 1px;
   border-radius: 100px;
   background-color: rgba(138, 206, 222, 0.5);
   z-index: -1;
-  -webkit-animation: boxbig 0.5s;
-          animation: boxbig 0.5s;
+  -webkit-animation: boxbig 1s;
+          animation: boxbig 1s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+}
+
+.memberContent #memcon1 .con1_info .memberbtn::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 30px;
+  left: 0.5px;
+  top: 0.9px;
+  border-radius: 100px;
+  background-color: rgba(138, 206, 222, 0.5);
+  z-index: -1;
+  -webkit-animation: boxbig 1s;
+          animation: boxbig 1s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
 }
 
 .memberContent #memcon1 .con1_info .memberbtn:hover {
@@ -1949,18 +2002,19 @@ body {
           animation-play-state: running;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  background-color: rgba(243, 202, 211, 0.5);
+  background-color: rgba(245, 214, 220, 0.5);
 }
 
-@-webkit-keyframes boxbig {
-  form {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  to {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
-  }
+.memberContent #memcon1 .con1_info .memberbtn:hover::before {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  background-color: rgba(245, 224, 224, 0.5);
 }
 
 @keyframes boxbig {
@@ -1969,8 +2023,10 @@ body {
             transform: scale(0);
   }
   to {
-    -webkit-transform: scale(1.1);
-            transform: scale(1.1);
+    -webkit-transform: scale(1.12);
+            transform: scale(1.12);
+    height: 40px;
+    top: -4.65px;
   }
 }
 
@@ -2098,8 +2154,8 @@ body {
   .memberContent #memcon2 {
     width: 90%;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 5%;
+    left: 5%;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
   }
@@ -2117,13 +2173,59 @@ body {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .memberContent #memcon1 {
-    width: 99%;
-  }
+@media screen and (max-width: 576px) {
   .memberContent #memcon2 {
     width: 99%;
+    position: absolute;
+    top: 5%;
+    left: 0.5%;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
   }
+  .memberContent #memcon1 {
+    width: 99%;
+    top: 5%;
+    left: 0.5%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .memberContent #memcon2 #oder th:nth-last-of-type(1) {
+    text-align: left;
+    padding-left: 10%;
+  }
+  .memberContent #memcon2 #oder th:nth-last-of-type(2) {
+    width: 14%;
+  }
+  .memberContent #memcon2 #oder th:nth-last-of-type(3) {
+    width: 14%;
+  }
+}
+
+.mask {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(100, 92, 93, 0.3);
+  position: absolute;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.mask {
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: #718597;
 }
 
 .cart_noshow {
@@ -2193,3 +2295,4 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
+/*# sourceMappingURL=main.css.map */

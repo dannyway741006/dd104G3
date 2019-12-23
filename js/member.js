@@ -22,3 +22,21 @@ function showImg(thisimg) {
     acceptImg.style.display = "block";
   }
 }
+// ======================member_all_order=================
+
+
+// let delet_btn = document.getElementById("delet_btn");
+// let mask = document.getElementById("mask");
+// let close = document.getElementById("close");
+
+// delet_btn.addEventListener('click', function () {
+//   mask.classList.add('active');
+//   // close.classList.toggle('close');
+// });
+// close.addEventListener('click', function () {
+//   mask.classList.remove('active');
+// });
+// mask.addEventListener('click', function () {
+//   mask.classList.remove('active');
+// });
+
