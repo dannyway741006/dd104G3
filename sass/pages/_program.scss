@@ -114,7 +114,7 @@
       // border: 1px solid blue;
 
       .new_program_choose_color_item {
-        background-color: #5395de;
+        // background-color: #5395de;
         width: 25px;
         height: 25px;
         border-radius: 50%;
@@ -135,17 +135,6 @@
         }
 
 
-        &:first-child {
-          background-color: #5395de;
-        }
-
-        &:nth-child(2) {
-          background-color: #8acede;
-        }
-
-        &:nth-child(3) {
-          background-color: #eb7a77;
-        }
       }
 
       // 新增專案選擇顏色--結束
@@ -187,7 +176,41 @@
       }
     }
   }
+
+  .program_watch_history_text {
+    position: absolute;
+    bottom: 0;
+    // border: 1px solid red;
+    width: 250px;
+    text-align: center;
+    cursor: pointer;
+    color: $dark;
+
+    &:hover {
+      color: $primary;
+    }
+
+    p {
+      border-top: 1px solid $gray;
+      padding: 15px 0;
+      width: 90%;
+      margin-left: 5%;
+
+      // text-decoration:underline ;
+
+    }
+
+
+
+  }
+
+  //側邊欄--結束
 }
+
+
+
+
+
 
 #program_main {
   font-size: 0;
@@ -323,7 +346,7 @@
 
       //設定鈕燈箱
       .setting_content_box {
-        width: 208px;
+        width: 210px;
         background-color: white;
         border-radius: 20px;
         padding: 15px;
@@ -356,18 +379,20 @@
             margin: 2.5px;
             display: inline-block;
             cursor: pointer;
+            position: relative;
 
-            &:first-child {
-              background-color: #5395de;
+            &.program_setting_choose_color_item_checked {
+              &::before {
+                content: "";
+                width: 85%;
+                height: 85%;
+                position: absolute;
+                @include positionCenter();
+                background-image: url('../img/checked_w.626bbc68.svg');
+              }
             }
 
-            &:nth-child(2) {
-              background-color: #8acede;
-            }
 
-            &:nth-child(3) {
-              background-color: #eb7a77;
-            }
           }
 
           //設定區選顏色
@@ -690,19 +715,38 @@
           //卡片本人css
           .cards_list_card {
             // border: 1px solid red;
-            border-radius: 10px;
+            border-radius: 0 0 10px 10px;
             background-color: $white;
             box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
             text-align: start;
             width: 100%;
-            margin: 10px 0;
-            padding: 5px 10px;
-            // max-height: 85px;
+            margin: 10px auto;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
 
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 10;
             overflow: hidden;
+
+            position: relative;
+
+            .cards_list_card_color {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 3px;
+              transition: all 0.3s;
+              z-index: -1;
+              background-color: $programcolor1;
+            }
+
+            &:hover .cards_list_card_color {
+              height: 100%;
+              opacity: 0.4;
+            }
 
             p {
               @include font(1, 30px);

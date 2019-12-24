@@ -84,8 +84,8 @@
               <span 
                 class="new_program_choose_color_item" 
                 v-for='color in colors' 
-                @click.stop='new_program_choose_color_item' 
-                :class='{new_program_choose_color_item_checked}'
+                @click.stop='selectColor = color' 
+                :class='{new_program_choose_color_item_checked: selectColor === color}'
                 :style='{backgroundColor: color}'
               ></span>
               <div>
@@ -115,7 +115,7 @@
           </li>
         </ul>
 
-
+<div class="program_watch_history_text"><p>查看已完成專案</p></div>
       </div>
     </aside>
 
@@ -147,17 +147,14 @@
         <div class="setting_content_box" :class='{setting_content_box_active: setting_btn}' @click.stop="">
           <p>專案專屬色<span>Color</span></p>
           <div class="program_setting_choose_color">
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <br>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
+            <span 
+            class="program_setting_choose_color_item" 
+            v-for='color in colors' 
+            @click.stop='program_setting_choose_selectColor = color' 
+            :class='{program_setting_choose_color_item_checked: program_setting_choose_selectColor === color}'
+            :style='{backgroundColor: color}'
+          ></span>
+       
           </div>
           <hr>
           <div class="setting_program_status">完成專案</div>
@@ -237,6 +234,7 @@
 
             <div class="cards_list">
               <div class="cards_list_card">
+                <div class="cards_list_card_color"></div>
                 <p>事情A</p>
                 <div class="cards_list_card_icon_bar">
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img
@@ -249,6 +247,7 @@
               </div>
 
               <div class="cards_list_card" v-for="item in cards">
+                <div class="cards_list_card_color"></div>
                 <p>{{item}}</p>
               </div>
 
@@ -270,6 +269,7 @@
             <div class="cards_list">
 
               <div class="cards_list_card">
+                <div class="cards_list_card_color"></div>
                 <p>事情A</p>
                 <div class="cards_list_card_icon_bar">
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img

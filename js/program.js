@@ -20,15 +20,17 @@ var main_content = new Vue({
     chatroom_btn: false,
 
     // screenWidth: document.documentElement.clientWidth //屏幕宽度
-    colors: ['#aaa', '#bbb'],
+    colors: ['#5395DF', '#ff6e6e','#89d9b2','#ffb62e','#c182ff','#61cdff'],
+    selectColor: null,
     new_program_choose_color_item:[],
+
+    program_setting_choose_selectColor:null,
+    program_setting_choose_color_item:[],
 
   },
   methods: {
     //新增專案
-    new_program_choose_color_item(){
 
-    },
 
     add_program(program_name) {
       if (this.program_name !== "") {
