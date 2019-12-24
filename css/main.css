@@ -3025,8 +3025,11 @@ body {
           transform: rotate(135deg);
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> f166228f17d4fc742a288651c4a69f11204b4e17
 
 .cart_bg.show #cart_page #close_cart::after {
   content: '';
@@ -3222,6 +3225,16 @@ body {
     font-size: 12px;
     line-height: 20px;
     min-height: 30px;
+  }
+}
+
+.potato_slide_list {
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .potato_slide_list {
+    display: block;
   }
 }
 
@@ -3558,10 +3571,18 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   width: 50%;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-  border: 2px solid #999999;
 }
 
 .main_content .todoList ul {
@@ -3669,14 +3690,12 @@ body {
 .main_content .todoList .fromTrello {
   width: 50%;
   height: 100%;
-  border: 2px solid blue;
   padding: 0 20px;
 }
 
 .main_content .todoList .custom {
   width: 50%;
   height: 100%;
-  border: 2px solid blue;
   position: relative;
 }
 
@@ -3732,15 +3751,6 @@ body {
   }
 }
 
-@media screen and (max-width: 1100px) {
-  .main_content .todoList .custom {
-    width: 100%;
-  }
-  .main_content .todoList .fromTrello {
-    display: none;
-  }
-}
-
 .main_content .todoList .todoHead {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3764,7 +3774,69 @@ body {
   color: #666666;
   text-align: center;
 }
+<<<<<<< HEAD
 =======
 >>>>>>> practice
 /*# sourceMappingURL=main.css.map */
 >>>>>>> afa47cc50e265e21ca138a11eea4851bdd3fde51
+=======
+
+@media screen and (max-width: 1280px) {
+  .main_content .todoList {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .main_content .todoList .custom {
+    width: 98%;
+  }
+  .main_content .todoList .fromTrello {
+    width: 98%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .main_content .todoList {
+    display: block;
+    position: relative;
+  }
+  .main_content .todoList.active #todoCon2 {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  .main_content .todoList.active #todoCon1 {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .main_content .todoList #todoCon1,
+  .main_content .todoList #todoCon2 {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+  }
+  .main_content .todoList #todoCon1 {
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  .main_content .todoList #todoCon2 {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform-origin: left;
+            transform-origin: left;
+  }
+  .main_content .todoList .custom {
+    width: 100%;
+  }
+  .main_content .todoList .fromTrello {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=main.css.map */
+>>>>>>> f166228f17d4fc742a288651c4a69f11204b4e17

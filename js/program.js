@@ -20,6 +20,11 @@ var main_content = new Vue({
     chatroom_btn: false,
 
     // screenWidth: document.documentElement.clientWidth //屏幕宽度
+<<<<<<< HEAD
+    colors: ['#aaa', '#bbb'],
+    new_program_choose_color_item:[],
+
+=======
     colors: ['#5395DF', '#ff6e6e','#89d9b2','#ffb62e','#c182ff','#61cdff'],
     selectColor: null,
     new_program_choose_color_item:[],
@@ -30,9 +35,14 @@ var main_content = new Vue({
     program_text_btn:false,
 
     now_text:"查看已完成專案",
+>>>>>>> dev
   },
   methods: {
     //新增專案
+    new_program_choose_color_item(){
+
+    },
+
     add_program(program_name) {
       if (this.program_name !== "") {
         this.programs.push(program_name);
