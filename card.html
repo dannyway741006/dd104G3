@@ -1,3 +1,4 @@
+html:
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +21,8 @@
     href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap"
     rel="stylesheet"
   />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
   <script src="./js/card.js"></script> -->
 </head>
@@ -118,7 +121,7 @@
 
     <aside class="slide_bar">
       <div class="logo">
-        <a href="#">
+        <a href="./index.html">
           <img
             src="./img/logo_in.svg"
             alt="logo"
@@ -176,7 +179,7 @@
             <div class="first_right">
               <h3>新增至卡片</h3>
               <hr />
-              <div>
+              <div class="first_right_member">
                 <img
                   src="./img/card_img/multiple-users-silhouette.cde8086c.svg"
                   alt=""
@@ -184,7 +187,10 @@
                 />
                 成員
               </div>
-              <div class="wave" @click.stop="calandar_switch =! calandar_switch">
+              <div
+                class="wave"
+                @click.stop="calandar_switch =! calandar_switch"
+              >
                 <img
                   src="./img/card_img/hanging-calendar.svg"
                   alt=""
@@ -192,7 +198,7 @@
                 />
                 到期日
               </div>
-              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch">
+              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch" class="todogo">
                 <img
                   src=" ./img/card_img/select.svg"
                   alt=""
@@ -200,7 +206,7 @@
                 />
                 待辦清單
               </div>
-          
+
               <div>
                 <img
                   src="./img/card_img/paperclip.cf9c8806.svg"
@@ -209,34 +215,77 @@
                 />
                 上傳附件
               </div>
-           
-                  <!-- 新增待辦清單跳窗 -->
-             <div class="todo_lightbox" :class='{opentodo_lightbox: todo_lightbox_switch}'  @click.stop="">
-              <label>
-                <p>待辦清單標題</p>
-                <!-- 讓燈箱的字和標題同步 -->
-                <input type="text" class="todo_lightbox_input" v-model.trim="todo_lightbox_input_title" @keyup.13="todo_list_add(todo_lightbox_input_title)">
-              </label>  
-                  <div class="todo_lightbox_botton" @click="todo_list_add(todo_lightbox_input_title)">
-                    <button>新增</button>
-                  </div>  
-            </div>
- 
-           <!-- 新增日曆跳窗 -->
-            <div class="calendar_lightbox" :class="{open_calendar_lightbox : calandar_switch}" @click.stop="">
-               <h3>更改到期日</h3>
-               <p>日期</p>
-               <div class="calendar_lightbox_content">
-                 <!-- 手刻日立 -->
+
+              <!-- 新增待辦清單跳窗 -->
+              <div
+                class="todo_lightbox"
+                :class='{opentodo_lightbox: todo_lightbox_switch}'
+                @click.stop=""
+              >
+                <label>
+                  <p>待辦清單標題</p>
+                  <!-- 讓燈箱的字和標題同步 -->
+                  <input
+                    type="text"
+                    class="todo_lightbox_input"
+                    v-model.trim="todo_lightbox_input_title"
+                    @keyup.13="todo_list_add(todo_lightbox_input_title)"
+                  >
+                </label>
+                <div
+                  class="todo_lightbox_botton"
+                  @click="todo_list_add(todo_lightbox_input_title)"
+                >
+                  <button>新增</button>
+                </div>
               </div>
-            </div>
+
+              <!-- 新增日曆跳窗 -->
+              <div
+                class="calendar_lightbox"
+                :class="{open_calendar_lightbox : calandar_switch}"
+                @click.stop=""
+              >
+                <h3>更改到期日</h3>
+                <p>日期</p>
+                <div class="calendar_lightbox_content">
+                  <!-- 手刻日立 -->
+                  <div class="calendar">
+                    <div class="calendar_header">
+                        <button id="prev">
+                            <i class="material-icons">
+                                keyboard_arrow_left
+                            </i>
+                        </button>
+                        <p id='month'>May 2019</p>
+                        <button id="next">
+                            <i class="material-icons">
+                                keyboard_arrow_right
+                            </i>
+                        </button>
+                    </div>
+                    <table class="calendar_body">
+                      <tr>
+                        <td>Su</td>
+                        <td>Mo</td>
+                        <td>Tu</td>
+                        <td>We</td>
+                        <td>td</td>
+                        <td>Fr</td>
+                        <td>Sa</td>
+                      </tr>
+                    </table>
+                </div>
+
+                </div>
+              </div>
 
 
             </div>
             <div class="second_right">
               <h3>卡片動作</h3>
               <hr />
-              <div>
+              <div class="second_right_deletecard">
                 <img
                   src="./img/card_img/delete.0df56913.svg"
                   alt=""
@@ -307,7 +356,7 @@
                   <span :class="classObject">{{text}}</span>
                 </div>
               </div>
-              
+
               <!-- 原版的樣子 -->
               <!-- <div class="card_todo_content">
                 <div class="todo_title">
@@ -323,16 +372,16 @@
                   <div>刪除</div>
                 </div> -->
 
-                <div class="card_todo_content">
-                  <div class="todo_title">
-                    <div><img
-                        src=" ./img/card_img/select.svg"
-                        alt=""
-                        width="20"
-                      ></div>
-                    <h3>待辦清單</h3>
-                  <div class="all_card_todo_delete">刪除</div>
-                  </div>
+              <div class="card_todo_content">
+                <div class="todo_title">
+                  <div class="cardtitle_img"><img
+                      src=" ./img/card_img/select.svg"
+                      alt=""
+                      width="20"
+                    ></div>
+                  <h3>待辦清單</h3>
+                  <div class="all_card_todo_delete"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
+                </div>
 
                 <div class="todo_progress_bar">
                   <p>50%</p>
@@ -366,9 +415,9 @@
                       src="./img/card_img/delete.0df56913.svg"
                       alt=""
                     ></div>
-                    
+
                 </div>
-                
+
                 <div class="card_add_button">
                   <button>新增項目<img
                       src="./img/card_img/plus_write.svg"
@@ -378,26 +427,33 @@
                 </div>
               </div>
 
-             <!-- 新增出來的待辦清單 -->
-             <div class="card_todo_content"  v-for="(item,index) in todo_list_content_detail">
-              <div class="todo_title">
-                <div><img
-                    src=" ./img/card_img/select.svg"
-                    alt=""
-                    width="20"
-                  ></div>
-                <h3>{{item}}</h3>
-              <div class="all_card_todo_delete" @click="deletecard_todo(index)">刪除</div>
-              </div>
-              <div class="todo_progress_bar">
-                <p>0%</p>
-                <div class="progress_bar">
-                  <!-- <span></span> -->
+              <!-- 新增出來的待辦清單 -->
+              <div
+                class="card_todo_content"
+                v-for="(item,index) in todo_list_content_detail"
+              >
+                <div class="todo_title">
+                  <div class="cardtitle_img"><img
+                      src=" ./img/card_img/select.svg"
+                      alt=""
+                      width="20"
+                    ></div>
+                  <h3>{{item}}</h3>
+                  <div
+                    class="all_card_todo_delete"
+                    @click="deletecard_todo(index)"
+                  ><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
                 </div>
-              </div>
-              <!-- 新增的卡片細項 -->
-              <div class="card_check_item" v-for="(item,index) in card_check_item_detail">
-                <div @click="item.status = !item.status">
+                <div class="todo_progress_bar">
+                  <p>0%</p>
+                  <div class="progress_bar">
+                    <!-- <span></span> -->
+                  </div>
+                </div>
+                <!-- 新增的卡片細項 -->
+                <div>
+                <div class="card_check_item" v-for="(item,index) in card_check_item_detail">
+                <div @click="item.status = !item.status,item.text =!item.text">
                   <img
                     src="./img/card_img/unchecked_d.9558e11b.svg"
                     alt=""
@@ -409,7 +465,7 @@
                     v-else
                   >
                 </div>
-                <p :cl>{{item.content}}</p>
+                <p :class="{lineThrough:item.text}">{{item.content}}</p>
                 <div><img
                     src="./img/icon/time-left.svg"
                     alt=""
@@ -420,27 +476,41 @@
                     @click="delete_todo_title(index)"
                   ></div>
               </div>
-
-
-              <div class="card_add_button" @click.stop="card_detail_lightbox =!  card_detail_lightbox">
-                <button>新增項目<img
-                    src="./img/card_img/plus_write.svg"
-                    alt=""
-                    width="14"
-                  ></button>
-              </div>
-                 <!-- 新增內部跳窗 -->
-                 <div class="card_detail_lightbox" :class="{open_card_detail : card_detail_lightbox}" @click.stop="">
-                  <label for="">
-                    <input type="text" class="card_detail_lightbox_input" v-model.trim="card_detail_lightbox_add">
-                  </label>
-                  <form method="post"  @submit.prevent="add_card_detail">
-                    <button>儲存</button>
-                  </form>
-                  </div>
             </div>
 
-                  
+                <div
+                  class="card_add_button"
+                  @click.stop="card_detail_lightbox =!  card_detail_lightbox"
+                >
+                  <button>新增項目<img
+                      src="./img/card_img/plus_write.svg"
+                      alt=""
+                      width="14"
+                    ></button>
+                </div>
+                <!-- 新增內部跳窗 -->
+                <div
+                  class="card_detail_lightbox"
+                  :class="{open_card_detail : card_detail_lightbox}"
+                  @click.stop=""
+                >
+                  <label for="">
+                    <input
+                      type="text"
+                      class="card_detail_lightbox_input"
+                      v-model.trim="card_detail_lightbox_add"
+                    >
+                  </label>
+                  <form
+                    method="post"
+                    @submit.prevent="add_card_detail"
+                  >
+                    <button>儲存</button>
+                  </form>
+                </div>
+              </div>
+
+
 
 
 
@@ -475,8 +545,9 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
- 
- <script src="./js/card.js"></script>
+
+  <script src="./js/card.js"></script>
+
   <script>
     const moreBtn = document.getElementById("more");
     const content = document.getElementById("content");
@@ -484,6 +555,8 @@
     moreBtn.addEventListener("click", () => content.classList.add("active"));
     mask.addEventListener("click", () => content.classList.remove("active"));
   </script>
+
+
 </body>
 
 </html>

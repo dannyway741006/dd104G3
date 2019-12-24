@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/32ad805dad.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <div>
+          <div class="more" id="more">
+            <img src="./img/icon/more-options.svg" alt="more" />
+            <img src="./img/icon/more-options_on.svg" alt="more" />
+          </div>
+          <h2>專案管理</h2>
+        </div>
+        <div>
+          <ul class="nav_list">
+            <li>
+              <a href="#">
+                <img src="./img/icon/time-left.svg" alt="clock" width="20" />
+                <img src="./img/icon/time-left_on.svg" alt="clock" width="20" />
+                <p>番茄鐘</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./img/icon/shopping-bag.svg" alt="shop" width="20" />
+                <img
+                  src="./img/icon/shopping-bag_on.svg"
+                  alt="shop"
+                  width="20"
+                />
+                <p>商城</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./img/icon/user.svg" alt="member" width="20" />
+                <img src="./img/icon/user_on.svg" alt="member" width="20" />
+                <p>會員中心</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./img/icon/shopping-cart.svg" alt="cart" width="20" />
+                <img
+                  src="./img/icon/shopping-cart_on.svg"
+                  alt="cart"
+                  width="20"
+                />
+              </a>
+            </li>
+          </ul>
+          <div class="status">登出</div>
+        </div>
+      </nav>
+    </header>
+    <main class="content" id="content">
+      <aside class="slide_bar">
+        <div class="logo">
+          <a href="#">
+            <img src="./img/logo_in.svg" alt="logo" />
+          </a>
+        </div>
+        <div class="slider_header potato_slide">
+          <h2>鈴聲</h2>
+        </div>
+        <ul class="slide_list">
+          <li>
+            <p><label class="radio">
+              <input type="radio" name="r" value="1" checked>
+              <span>鈴聲 #1</span>
+          </label></p>
+            <!-- <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" /> -->
+          </li>
+          <li>
+            <label class="radio">
+              <input type="radio" name="r" value="2">
+              <span>鈴聲 #2</span>
+          </label>
+          </li>
+          <li>
+            <label class="radio">
+              <input type="radio" name="r" value="3">
+              <span>鈴聲 #3</span>
+          </label>
+          </li>
+        </ul>
+      </aside>
+      <div class="mask" id="mask"></div>
+      <div class="main_content">
+        <!-- 內容  -->
+        <div class="timer">
+            <input type="radio" name="rdo" id="work" checked />
+            <input type="radio" name="rdo" id="rest"/>
+            <div class="switch">
+              <label for="work">Work</label>
+              <label for="rest">Rest</label>
+              <!-- <span></span> -->
+            </div>
+            <div class="maskCount">
+              <div class="maskTitle"><span>Done/Todo</span></div>
+              <div class="maskTotal"><span>1/2</span></div>
+            </div>
+          <div class="bell">
+            <p>25:00</p>
+          </div>
+          <div class="control">
+            <div class="side sound"><input type="checkbox"><i class="fas fa-bell status1" class="open"></i>
+            <i class="fas fa-bell-slash status2"></i></div>
+            <div class="sound"><input type="checkbox"><i class="fas fa-play status1"></i>
+              <i class="fas fa-pause status2"></i></div>
+            <div class="side"><i class="fas fa-undo-alt"></i></div>
+          </div>
+        </div>
+        <div class="todoList">
+          
+          <div class="custom">
+            <div class="todoHead"><h2>自訂任務</h2></div>
+            <div class="addMask"><input type="text" placeholder="請輸入任務"><i class="fas fa-plus cross"></i></div>
+          </div>
+          <div class="fromTrello">
+            <div class="todoHead"><h2>行事曆任務</h2></div>
+            <ul>
+              <li><input type="checkbox" id="b0"/>
+                <i class="fas fa-check check"></i>
+                <label for="b0">任務1</label><i class="fas fa-times delete"></i></li>
+                <li><input type="checkbox" id="b1"/>
+                  <i class="fas fa-check check"></i>
+                  <label for="b1">任務2</label><i class="fas fa-times delete"></i></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="./js/owlcarousel/jquery.min.js"></script>
+    <script src="./js/Todolist.js"></script>
+    <script>
+      const moreBtn = document.getElementById("more");
+      const content = document.getElementById("content");
+      const mask = document.getElementById("mask");
+      moreBtn.addEventListener("click", () => content.classList.add("active"));
+      mask.addEventListener("click", () => content.classList.remove("active"));
+    </script>
+  </body>
+</html>

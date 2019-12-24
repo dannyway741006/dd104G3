@@ -58,7 +58,7 @@
   <main class="content" id="content">
     <aside class="slide_bar">
       <div class="logo">
-        <a href="#">
+        <a href="./index.html">
           <img src="./img/logo_in.svg" alt="logo" />
         </a>
       </div>
@@ -143,9 +143,10 @@
         </div>
       </div>
 
-      <div class="setting_all">
-        <button class="setting_btn" @click.stop='setting_btn = !setting_btn'><img src="./img/icon/setting_white.svg"
-            alt=""><img src="./img/icon/setting_primary.svg" alt="">
+      <div class="set-cal-chat_all_bar">
+      <div class="setting_all set-cal-chat_same_all">
+        <button class="setting_btn set-cal-chat_same_button" @click.stop='setting_btn = !setting_btn'><img
+            src="./img/icon/setting_white.svg" alt=""><img src="./img/icon/setting_primary.svg" alt="">
         </button>
         <div class="setting_content_box" :class='{setting_content_box_active: setting_btn}' @click.stop="">
           <p>專案專屬色<span>Color</span></p>
@@ -163,17 +164,19 @@
             <span class="program_setting_choose_color_item"></span>
           </div>
           <hr>
-          <div class="setting_program_status ">完成專案</div>
+          <div class="setting_program_status">完成專案</div>
           <hr>
           <div class="setting_program_status setting_program_status_delete">刪除專案</div>
         </div>
       </div>
 
-      <div class="calendar_all">
-        <!-- <button class="calendar_btn" @click.stop='calendar_btn = !calendar_btn'><img src="./img/icon/calendar_white.svg"
-            alt=""><img src="./img/icon/calendar_primary.svg" alt="">
-        </button> -->
-        <div class="program_calendar_all program_right_column_item">
+      <div class="program_calendar_all set-cal-chat_same_all">
+        <button class="calendar_btn set-cal-chat_same_button" @click.stop='calendar_btn = !calendar_btn'><img
+            src="./img/icon/calendar_white.svg" alt=""><img src="./img/icon/calendar_primary.svg" alt="">
+        </button>
+        <div class="program_calendar_box program_right_column_item"
+          :class='{active: calendar_btn}'>
+          <div class="program_calendar_box_close_box" @click='calendar_btn = !calendar_btn'><span class="program_calendar_box_close"></span></div>
           <div class="calendar">
             <div class="calendar_header">
               <button id="prev">
@@ -203,26 +206,31 @@
         </div>
       </div>
 
-      <div class="program_chatroom_all program_right_column_item">
-        <div class="program_chatroom_window">
-          <div class="program_chatroom_oneperson">
-            <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:
-            </p>
-            <div class="program_chatroom_otherside_dialog">大夥們，加油啦!</div>
+      <div class="program_chatroom_all set-cal-chat_same_all">
+        <button class="chatroom_btn set-cal-chat_same_button" @click.stop='chatroom_btn = !chatroom_btn'><img
+            src="./img/program_img/chat_white.svg" alt=""><img src="./img/program_img/chat_primary.svg" alt="">
+        </button>
+        <div class="program_chatroom_box program_right_column_item"
+          :class='{active: chatroom_btn}'>
+          <div class="program_chatroom_window">
+            <div class="program_chatroom_oneperson">
+              <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:
+              </p>
+              <div class="program_chatroom_otherside_dialog">大夥們，加油啦!</div>
+            </div>
           </div>
-        </div>
 
-        <div class="program_chatroom_operating_area">
-          <div class="program_chatroom_iconbar">
-            <div class="program_chatroom_icon"><img src="./img/icon/paperclip.cf9c8806.svg" alt=""></div>
+          <div class="program_chatroom_operating_area">
+            <div class="program_chatroom_iconbar">
+              <div class="program_chatroom_icon"><img src="./img/program_img/smile_gray.svg" alt=""></div>
+              <div class="program_chatroom_icon"><img src="./img/icon/paperclip.cf9c8806.svg" alt=""></div>
+            </div>
+            <textarea></textarea>
           </div>
-          <textarea></textarea>
         </div>
       </div>
 
-
-
-
+    </div>
 
       <div class="cards_column_all" id="cards_column_all">
         <div class="cards_column todo_column">
@@ -255,7 +263,7 @@
             </div>
 
             <button class="add_cards_btn" @click.stop="show_cards_list_card_input_box"><img
-                src="./img/icon/plus.a4d786b4.svg" alt=""><img src="./img/icon/plus_on.d2fc8c08.svg" alt=""></button>
+                src="./img/icon/plus_w.83529fa0.svg" alt=""><img src="./img/icon/plus_on.d2fc8c08.svg" alt=""></button>
           </div>
         </div>
 
@@ -307,9 +315,9 @@
     </div>
   </main>
   <footer></footer>
-
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
-  <!-- <script src='https://unpkg.com/v-calendar@next'></script> -->
   <script src="./js/program.js"></script>
   <script>
     const moreBtn = document.getElementById("more");
