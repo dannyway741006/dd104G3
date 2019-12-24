@@ -74,27 +74,47 @@
         </div>
         <div class="slider_header potato_slide">
           <h2>鈴聲</h2>
+          <ul class="sound">
+            <li>
+              <p><label class="radio">
+                <input type="radio" name="r" value="1" checked>
+                <span>鈴聲 #1</span>
+            </label></p>
+            </li>
+            <li>
+              <p><label class="radio">
+                <input type="radio" name="r" value="1" checked>
+                <span>鈴聲 #2</span>
+            </label></p>
+            </li>
+            <li>
+              <p><label class="radio">
+                <input type="radio" name="r" value="1" checked>
+                <span>鈴聲 #3</span>
+            </label></p>
+            </li>
+          </ul>
+          <h2>計時器設定</h2>
+          <ul class="counterSet">
+            <li>
+              <p>工作時間<input type="text" class="workTime">分鐘</p>
+            </li>
+            <li>
+              <p>休息時間<input type="text" class="restTime">分鐘</p>
+            </li>
+          </ul>
+          <button class="settingBtn">儲存設定</button>
         </div>
         <ul class="slide_list">
-          <li>
-            <p><label class="radio">
-              <input type="radio" name="r" value="1" checked>
-              <span>鈴聲 #1</span>
-          </label></p>
-            <!-- <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
-            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" /> -->
+          <li class="taskLi active" >
+            <p>自訂任務</p>
+            <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
           </li>
-          <li>
-            <label class="radio">
-              <input type="radio" name="r" value="2">
-              <span>鈴聲 #2</span>
-          </label>
-          </li>
-          <li>
-            <label class="radio">
-              <input type="radio" name="r" value="3">
-              <span>鈴聲 #3</span>
-          </label>
+          <li class="taskLi">
+            <p>行事曆任務</p>
+            <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
           </li>
         </ul>
       </aside>
@@ -109,9 +129,9 @@
               <label for="rest">Rest</label>
               <!-- <span></span> -->
             </div>
-            <div class="maskCount">
-              <div class="maskTitle"><span>Done/Todo</span></div>
-              <div class="maskTotal"><span>1/2</span></div>
+            <div class="taskCount">
+              <div class="taskTitle"><span>Done/Todo</span></div>
+              <div class="taskTotal"><span>1/2</span></div>
             </div>
           <div class="bell">
             <p>25:00</p>
@@ -128,17 +148,23 @@
           
           <div class="custom">
             <div class="todoHead"><h2>自訂任務</h2></div>
-            <div class="addMask"><input type="text" placeholder="請輸入任務"><i class="fas fa-plus cross"></i></div>
+            <div class="addTask"><input type="text" placeholder="請輸入任務"><i class="fas fa-plus cross"></i></div>
           </div>
           <div class="fromTrello">
             <div class="todoHead"><h2>行事曆任務</h2></div>
             <ul>
-              <li><input type="checkbox" id="b0"/>
-                <i class="fas fa-check check"></i>
-                <label for="b0">任務1</label><i class="fas fa-times delete"></i></li>
-                <li><input type="checkbox" id="b1"/>
-                  <i class="fas fa-check check"></i>
-                  <label for="b1">任務2</label><i class="fas fa-times delete"></i></li>
+              <li>
+                <input type="checkbox" id="b0"/>
+                <img src="./img/checked_d.721738d0.svg" alt="" class="imgChecked">
+                <img src="./img/unchecked_d.9558e11b.svg" alt="" class="imgUnchecked">
+                <label for="b0">任務1</label><i class="fas fa-times delete"></i>
+              </li>
+              <li>
+                <input type="checkbox" id="b1"/>
+                <img src="./img/checked_d.721738d0.svg" alt="" class="imgChecked">
+                <img src="./img/unchecked_d.9558e11b.svg" alt="" class="imgUnchecked">
+                <label for="b1">任務2</label><i class="fas fa-times delete"></i>
+              </li>
             </ul>
           </div>
         </div>
@@ -146,7 +172,7 @@
     </main>
     <footer></footer>
     <script src="./js/owlcarousel/jquery.min.js"></script>
-    <script src="./js/Todolist.js"></script>
+    <script src="./js/potato.js"></script>
     <script>
       const moreBtn = document.getElementById("more");
       const content = document.getElementById("content");

@@ -1,7 +1,27 @@
 .potato_slide{
     padding-top: 50px;
     padding-left: 10px;
+    .counterSet{
+        li{
+            margin: 16px auto;
+            p{
+                @include font(1);
+            }
+            input{
+                width: 50px;
+                height: 25px;
+                border-radius: 5px;
+                transform: translateY(-3px);
+                vertical-align: middle;
+                @include font(1);
+            }
+        }
+    }
+    .settingBtn{
+        @include baseBtn();
+    }
 }
+
 .radio {
     margin: 16px 0;
     display: block;
@@ -41,7 +61,7 @@
         &:checked + span {
             &:before {
                 transform: scale(1.04);
-                background: $radioActive;
+                background: $primary;
             }
             &:after {
                 transform: scale(.4);
@@ -70,9 +90,10 @@
 .main_content{
     display: flex;
     width: 100%;
-    height:90vh;
+    height:93.5vh;
     padding-top: 50px;
-    // border: 1px solid red;
+    border: 1px solid red;
+    justify-content: space-around;
     .timer{
         display: flex;
         align-items: center;
@@ -163,23 +184,23 @@
                 }
             }
         }
-        .maskCount{
+        .taskCount{
             width: 170px;
             height: 70px;
             // border: 1px solid red;
             position: absolute;
-            right: 5%;
-            top: 60px;
+            right: 10%;
+            top: 45px;
             display: flex;
             flex-direction: column;
             span{
-                @include font(5)
+                @include font(2)
             }
-            .maskTitle{
+            .taskTitle{
                 // border: 1px solid blue;
                 width: 100%;
             }
-            .maskTotal{
+            .taskTotal{
                 // border: 1px solid blue;
                 width: 50%;
                 margin: 0 auto;
@@ -190,7 +211,7 @@
             height: 370px;
             // border: 2px solid blue;
             border-radius: 50%;
-            margin-top: 10%;
+            margin-top: 25%;
             position: relative;
             background-color: $secondary;
             display: flex;
@@ -198,7 +219,7 @@
             p{
                 color:$white ;
                 display: inline-block;
-                // // border: 1px solid red;
+                // border: 1px solid red;
                 // // position: absolute;
                 // margin-top: 50%;
                 // transform: translateY(-30%);
@@ -206,8 +227,18 @@
                 @include positionCenter;
             }
         }
+        @include media(1200px){
+            .taskCount{
+                right: 0;
+            }
+        }
+        @include media(1120px){
+            .bell{
+                margin-top: 40%;
+            }
+        }
         .control{
-            margin-top: 50px;
+            margin-top: 100px;
             width: 60%;
             height: 80px;
             // border: 2px solid yellow;
@@ -269,7 +300,7 @@
         width: 50%;
         box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
         // height: 100vh;
-        // border: 2px solid $gray;
+        border: 2px solid $gray;
         ul{
             list-style: none;
             margin: 0 auto;
@@ -287,37 +318,60 @@
                 padding-left: 15px;
 	            box-shadow: 1px 1px 3px $shadow;
                 // background-color: #00E6E6;
+                img{
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    left: 15px;
+                    bottom: 10px;
+                    z-index: -1;
+                }
+                .imgUnchecked{
+                    display: block;
+                    opacity: .7;
+                }
+                .imgChecked{
+                    display: none;
+                }
                 .delete{
                     position: absolute;
                     right: 20px;
-                    bottom: 12px;
+                    bottom: 5px;
                     // border: 1px solid red;
-                    font-weight: 700;
+                    font-weight: 600;
                     color: $dark;
                     @include font(5);
                     cursor: pointer;
+                    opacity: .7;
+                    &:hover{
+                        opacity: 1;
+                    }
                 }
                 label{
                     cursor: pointer;
                     display: inline-block;
-                    margin-left: 20px;
-                    transform: translateY(0%);
-                    @include font(3);
+                    margin: 0 auto;
+                    margin-left: 5px;
+                    // transform: translateY(0%);
+                    @include font(2);
                     color: $dark;
                     // border: 1px solid blue;
                 }
                 input{
                     cursor: pointer;
-                    z-index: 999;
-                    width: 25px;
-                    height: 25px;
-                    transform: translateY(70%);
+                    z-index: 9;
+                    width: 30px;
+                    height: 30px;
+                    transform: translateY(5px);
                     opacity: 0;
-                    &:checked ~label{
-                        text-decoration: line-through;
+                    &:hover ~ .imgUnchecked{
+                        opacity: 1;
                     }
-                    &:checked +.check{
-                        color: $success;
+                    &:checked ~.imgUnchecked{
+                        display: none;
+                    }
+                    &:checked +.imgChecked{
+                       display: block;
                     }
                 }
                 .check{
@@ -330,60 +384,30 @@
                     // border: 1px solid red;
                     // vertical-align: middle;
                 }
+                @include media(1280px){
+                    .delete{
+                        right: 5px;
+                    }
+                }
             }
         }
         .fromTrello{
             width: 50%;
             height: 100%;
-            // border: 2px solid blue;
+            border: 2px solid blue;
             padding:0 20px;
-            .todoHead{
-                display: flex;
-                align-items: center;
-                width: 100%;
-                height: 80px;
-                border-top: 2px solid $success;
-                border-radius: 5px;
-                box-shadow: 1px 1px 3px $shadow;
-                margin-top: 20px;
-                h2{
-                    margin: 0 auto;
-                    display: inline-block;
-                    font-size: font(6);
-                    color: $dark;
-                    text-align: center;
-                    // border: 1px solid red;
-                }
-            }
         }
         .custom{
             width: 50%;
             height: 100%;
-            // border: 2px solid blue;
-            padding:0 20px;
+            border: 2px solid blue;
             position: relative;
             .todoHead{
-                display: flex;
-                align-items: center;
-                width: 100%;
-                height: 80px;
-                // border-bottom: 1px solid $dark;
-                border-top: 2px solid $secondary;
-                border-radius: 5px;
-                box-shadow: 3px 3px 3px 1px $shadow;
-                margin-top: 20px;
-                h2{
-                    margin: 0 auto;
-                    display: inline-block;
-                    font-size: font(6);
-                    color: $dark;
-                    text-align: center;
-                    // border: 1px solid red;
-                }
+                border-top: 2px solid $success;
             }
-            .addMask{
+            .addTask{
                 width: 95%;
-                height: 80px;
+                height: 50px;
                 position: relative;
                 margin: 20px auto;
                 // border-bottom: 1px solid $dark;
@@ -399,19 +423,57 @@
                     vertical-align: middle;
                     border: none;
                     margin-left: 20px;
-                    @include font(5);
+                    @include font(1);
                     outline: 0;
                 }
                 .cross{
                     position: absolute;
                     right: 20px;
-                    bottom: 15px;
+                    bottom: 5px;
                     // border: 1px solid red;
                     font-weight: 700;
                     color: $dark;
-                    @include font(10);
+                    @include font(7);
                     cursor: pointer;
+                    opacity: .7;
+                    &:hover{
+                        opacity: 1;
+                    }
                 }
+            }
+            @include media(1280px){
+                .addTask{
+                    .cross{
+                        right: 5px;
+                    }
+                }
+            }
+        }
+        @include media(1100px){
+            .custom{
+                width: 100%;
+            }
+            .fromTrello{
+                display: none;
+            }
+        }
+        .todoHead{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 60px;
+            // border-bottom: 1px solid $dark;
+            border-top: 2px solid $secondary;
+            border-radius: 5px;
+            box-shadow: 3px 3px 3px 1px $shadow;
+            margin-top: 20px;
+            h2{
+                margin: 0 auto;
+                display: inline-block;
+                font-size: font(3);
+                color: $dark;
+                text-align: center;
+                // border: 1px solid red;
             }
         }
     }
