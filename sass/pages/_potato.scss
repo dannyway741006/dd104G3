@@ -479,6 +479,17 @@
             }
         }
     }
+    @include media(1280px){
+        .todoList{
+            flex-direction: column;
+            .custom{
+                width: 98%;
+            }
+            .fromTrello{
+                width: 98%;
+            }
+        }
+    }
     @include media(1100px){
         .todoList{
             display: block;
