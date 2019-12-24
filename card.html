@@ -1,3 +1,4 @@
+html:
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +21,8 @@
     href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap"
     rel="stylesheet"
   />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
   <script src="./js/card.js"></script> -->
 </head>
@@ -118,7 +121,7 @@
 
     <aside class="slide_bar">
       <div class="logo">
-        <a href="#">
+        <a href="./index.html">
           <img
             src="./img/logo_in.svg"
             alt="logo"
@@ -176,7 +179,7 @@
             <div class="first_right">
               <h3>新增至卡片</h3>
               <hr />
-              <div>
+              <div class="first_right_member">
                 <img
                   src="./img/card_img/multiple-users-silhouette.cde8086c.svg"
                   alt=""
@@ -195,7 +198,7 @@
                 />
                 到期日
               </div>
-              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch">
+              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch" class="todogo">
                 <img
                   src=" ./img/card_img/select.svg"
                   alt=""
@@ -247,6 +250,33 @@
                 <p>日期</p>
                 <div class="calendar_lightbox_content">
                   <!-- 手刻日立 -->
+                  <div class="calendar">
+                    <div class="calendar_header">
+                        <button id="prev">
+                            <i class="material-icons">
+                                keyboard_arrow_left
+                            </i>
+                        </button>
+                        <p id='month'>May 2019</p>
+                        <button id="next">
+                            <i class="material-icons">
+                                keyboard_arrow_right
+                            </i>
+                        </button>
+                    </div>
+                    <table class="calendar_body">
+                      <tr>
+                        <td>Su</td>
+                        <td>Mo</td>
+                        <td>Tu</td>
+                        <td>We</td>
+                        <td>td</td>
+                        <td>Fr</td>
+                        <td>Sa</td>
+                      </tr>
+                    </table>
+                </div>
+
                 </div>
               </div>
 
@@ -255,7 +285,7 @@
             <div class="second_right">
               <h3>卡片動作</h3>
               <hr />
-              <div>
+              <div class="second_right_deletecard">
                 <img
                   src="./img/card_img/delete.0df56913.svg"
                   alt=""
@@ -344,13 +374,13 @@
 
               <div class="card_todo_content">
                 <div class="todo_title">
-                  <div><img
+                  <div class="cardtitle_img"><img
                       src=" ./img/card_img/select.svg"
                       alt=""
                       width="20"
                     ></div>
                   <h3>待辦清單</h3>
-                  <div class="all_card_todo_delete">刪除</div>
+                  <div class="all_card_todo_delete"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
                 </div>
 
                 <div class="todo_progress_bar">
@@ -403,7 +433,7 @@
                 v-for="(item,index) in todo_list_content_detail"
               >
                 <div class="todo_title">
-                  <div><img
+                  <div class="cardtitle_img"><img
                       src=" ./img/card_img/select.svg"
                       alt=""
                       width="20"
@@ -412,7 +442,7 @@
                   <div
                     class="all_card_todo_delete"
                     @click="deletecard_todo(index)"
-                  >刪除</div>
+                  ><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
                 </div>
                 <div class="todo_progress_bar">
                   <p>0%</p>
@@ -420,9 +450,8 @@
                     <!-- <span></span> -->
                   </div>
                 </div>
-             
-            </div>
-       <!-- 新增的卡片細項 -->
+                <!-- 新增的卡片細項 -->
+                <div>
                 <div class="card_check_item" v-for="(item,index) in card_check_item_detail">
                 <div @click="item.status = !item.status,item.text =!item.text">
                   <img
@@ -447,8 +476,8 @@
                     @click="delete_todo_title(index)"
                   ></div>
               </div>
-              
-                <div v-for="item in ittem">
+            </div>
+
                 <div
                   class="card_add_button"
                   @click.stop="card_detail_lightbox =!  card_detail_lightbox"
@@ -479,7 +508,7 @@
                     <button>儲存</button>
                   </form>
                 </div>
-            </div>
+              </div>
 
 
 
