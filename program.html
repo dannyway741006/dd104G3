@@ -175,7 +175,7 @@
             src="./img/icon/calendar_white.svg" alt=""><img src="./img/icon/calendar_primary.svg" alt="">
         </button>
         <div class="program_calendar_box program_right_column_item"
-          :class='{program_calendar_box_active: calendar_btn}'>
+          :class='{active: calendar_btn}'>
           <div class="program_calendar_box_close_box" @click='calendar_btn = !calendar_btn'><span class="program_calendar_box_close"></span></div>
           <div class="calendar">
             <div class="calendar_header">
@@ -211,7 +211,7 @@
             src="./img/program_img/chat_white.svg" alt=""><img src="./img/program_img/chat_primary.svg" alt="">
         </button>
         <div class="program_chatroom_box program_right_column_item"
-          :class='{program_chatroom_box_active: chatroom_btn}'>
+          :class='{active: chatroom_btn}'>
           <div class="program_chatroom_window">
             <div class="program_chatroom_oneperson">
               <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:
