@@ -66,57 +66,81 @@
 
       <!-- 專案側邊攔 -->
       <div id="program_aside">
-        <button class="program_add_btn" id="program_add_btn" @click.stop='open = !open'>
-          <div class="program_add_img"><img src="./img/icon/plus_w.83529fa0.svg" alt=""><img
-              src="./img/icon/plus_on.d2fc8c08.svg" alt=""></div>
-          <span>新增專案</span>
-        </button>
+        <div class="program_now_having_all" :class='{program_now_having_all_active:program_text_btn}'>
 
-        <div class="new_program_choose_box" id="new_program_choose_box" :class='{new_program_choose_box_active: open}'
-          @click.stop="">
-          <label>
-            <p>專案名稱<span>Project</span></p>
-            <input type="text" class="" v-model.trim="program_name">
-          </label>
-          <div>
-            <p>專案專屬色<span>Color</span></p>
-            <div class="new_program_choose_color">
-              <span 
-                class="new_program_choose_color_item" 
-                v-for='color in colors' 
-                @click.stop='new_program_choose_color_item' 
-                :class='{new_program_choose_color_item_checked}'
-                :style='{backgroundColor: color}'
-              ></span>
-              <div>
-                <button @click="add_program(program_name)" id="add_program_inner_btn">建立專案</button>
+          <button class="program_add_btn" id="program_add_btn" @click.stop='open = !open'>
+            <div class="program_add_img"><img src="./img/icon/plus_w.83529fa0.svg" alt=""><img
+                src="./img/icon/plus_on.d2fc8c08.svg" alt=""></div>
+            <span>新增專案</span>
+          </button>
+
+          <div class="new_program_choose_box" id="new_program_choose_box" :class='{new_program_choose_box_active: open}'
+            @click.stop="">
+            <label>
+              <p>專案名稱<span>Project</span></p>
+              <input type="text" class="" v-model.trim="program_name">
+            </label>
+            <div>
+              <p>專案專屬色<span>Color</span></p>
+              <div class="new_program_choose_color">
+                <span class="new_program_choose_color_item" v-for='color in colors' @click.stop='selectColor = color'
+                  :class='{new_program_choose_color_item_checked: selectColor === color}'
+                  :style='{backgroundColor: color}'></span>
+                <div>
+                  <button @click="add_program(program_name)" id="add_program_inner_btn">建立專案</button>
+                </div>
               </div>
             </div>
           </div>
+
+          <ul class="slide_list">
+            <li>
+              <p>list</p>
+              <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+              <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+            </li>
+            <li>
+              <p>list</p>
+              <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+              <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+            </li>
+
+            <li v-for="item in programs">
+              <p>{{item}}</p>
+              <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+              <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+            </li>
+          </ul>
+
         </div>
 
 
-        <ul class="slide_list">
-          <li>
-            <p>list</p>
-            <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
-            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
-          </li>
-          <li>
-            <p>list</p>
-            <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
-            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
-          </li>
+        <div class="program_watch_history_all" :class='{program_watch_history_all_active: program_text_btn}'>
+          <div class="program_watch_history_text program_text_btn"
+            @click.stop='program_text_btn = !program_text_btn,change_watched_text()'
+            :class='{program_watch_history_text_active: program_text_btn}'>
+            <p>{{now_text}}</p>
+            <!-- <p>查看已完成專案</p> -->
+            <!-- <p>已完成專案</p> -->
 
-          <li v-for="item in programs">
-            <p>{{item}}</p>
-            <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
-            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
-          </li>
-        </ul>
-
+          </div>
+          <div class="program_watch_history_list">
+            <ul class="slide_list">
+              <li>
+                <p>已完成專案01</p>
+                <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+                <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+              </li>
+            </ul>
+          </div>
+          <div class="program_now_having_text program_text_btn" @click.stop='program_text_btn = !program_text_btn,change_watched_text()'
+            :class='{program_now_having_text_active: program_text_btn}'>
+            <p>查看現有專案</p>
+          </div>
+        </div>
 
       </div>
+
     </aside>
 
 
@@ -140,94 +164,90 @@
       </div>
 
       <div class="set-cal-chat_all_bar">
-      <div class="setting_all set-cal-chat_same_all">
-        <button class="setting_btn set-cal-chat_same_button" @click.stop='setting_btn = !setting_btn'><img
-            src="./img/icon/setting_white.svg" alt=""><img src="./img/icon/setting_primary.svg" alt="">
-        </button>
-        <div class="setting_content_box" :class='{setting_content_box_active: setting_btn}' @click.stop="">
-          <p>專案專屬色<span>Color</span></p>
-          <div class="program_setting_choose_color">
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <br>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-            <span class="program_setting_choose_color_item"></span>
-          </div>
-          <hr>
-          <div class="setting_program_status">完成專案</div>
-          <hr>
-          <div class="setting_program_status setting_program_status_delete">刪除專案</div>
-        </div>
-      </div>
+        <div class="setting_all set-cal-chat_same_all">
+          <button class="setting_btn set-cal-chat_same_button" @click.stop='setting_btn = !setting_btn'><img
+              src="./img/icon/setting_white.svg" alt=""><img src="./img/icon/setting_primary.svg" alt="">
+          </button>
+          <div class="setting_content_box" :class='{setting_content_box_active: setting_btn}' @click.stop="">
+            <p>專案專屬色<span>Color</span></p>
+            <div class="program_setting_choose_color">
+              <span class="program_setting_choose_color_item" v-for='color in colors'
+                @click.stop='program_setting_choose_selectColor = color'
+                :class='{program_setting_choose_color_item_checked: program_setting_choose_selectColor === color}'
+                :style='{backgroundColor: color}'></span>
 
-      <div class="program_calendar_all set-cal-chat_same_all">
-        <button class="calendar_btn set-cal-chat_same_button" @click.stop='calendar_btn = !calendar_btn'><img
-            src="./img/icon/calendar_white.svg" alt=""><img src="./img/icon/calendar_primary.svg" alt="">
-        </button>
-        <div class="program_calendar_box program_right_column_item"
-          :class='{program_calendar_box_active: calendar_btn}'>
-          <div class="program_calendar_box_close_box" @click='calendar_btn = !calendar_btn'><span class="program_calendar_box_close"></span></div>
-          <div class="calendar">
-            <div class="calendar_header">
-              <button id="prev">
-                <i class="material-icons">
-                  keyboard_arrow_left
-                </i>
-              </button>
-              <p id='month'>May 2019</p>
-              <button id="next">
-                <i class="material-icons">
-                  keyboard_arrow_right
-                </i>
-              </button>
             </div>
-            <table class="calendar_body">
-              <tr>
-                <td>Su</td>
-                <td>Mo</td>
-                <td>Tu</td>
-                <td>We</td>
-                <td>Th</td>
-                <td>Fr</td>
-                <td>Sa</td>
-              </tr>
-            </table>
+            <hr>
+            <div class="setting_program_status">完成專案</div>
+            <hr>
+            <div class="setting_program_status setting_program_status_delete">刪除專案</div>
           </div>
         </div>
-      </div>
 
-      <div class="program_chatroom_all set-cal-chat_same_all">
-        <button class="chatroom_btn set-cal-chat_same_button" @click.stop='chatroom_btn = !chatroom_btn'><img
-            src="./img/program_img/chat_white.svg" alt=""><img src="./img/program_img/chat_primary.svg" alt="">
-        </button>
-        <div class="program_chatroom_box program_right_column_item"
-          :class='{program_chatroom_box_active: chatroom_btn}'>
-          <div class="program_chatroom_box_close_box" @click='chatroom_btn = !chatroom_btn'><span class="program_chatroom_box_close"></span></div>
-          <div class="program_chatroom_window">
-            <div class="program_chatroom_oneperson">
-              <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:
-              </p>
-              <div class="program_chatroom_otherside_dialog">大夥們，加油啦!</div>
+        <div class="program_calendar_all set-cal-chat_same_all">
+          <button class="calendar_btn set-cal-chat_same_button" @click.stop='calendar_btn = !calendar_btn'><img
+              src="./img/icon/calendar_white.svg" alt=""><img src="./img/icon/calendar_primary.svg" alt="">
+          </button>
+          <div class="program_calendar_box program_right_column_item"
+            :class='{program_calendar_box_active: calendar_btn}'>
+            <div class="program_calendar_box_close_box" @click='calendar_btn = !calendar_btn'><span
+                class="program_calendar_box_close"></span></div>
+            <div class="calendar">
+              <div class="calendar_header">
+                <button id="prev">
+                  <i class="material-icons">
+                    keyboard_arrow_left
+                  </i>
+                </button>
+                <p id='month'>May 2019</p>
+                <button id="next">
+                  <i class="material-icons">
+                    keyboard_arrow_right
+                  </i>
+                </button>
+              </div>
+              <table class="calendar_body">
+                <tr>
+                  <td>Su</td>
+                  <td>Mo</td>
+                  <td>Tu</td>
+                  <td>We</td>
+                  <td>Th</td>
+                  <td>Fr</td>
+                  <td>Sa</td>
+                </tr>
+              </table>
             </div>
-          </div>
-
-          <div class="program_chatroom_operating_area">
-            <div class="program_chatroom_iconbar">
-              <div class="program_chatroom_icon"><img src="./img/program_img/smile_gray.svg" alt=""></div>
-              <div class="program_chatroom_icon"><img src="./img/icon/paperclip.cf9c8806.svg" alt=""></div>
-            </div>
-            <textarea></textarea>
           </div>
         </div>
-      </div>
 
-    </div>
+        <div class="program_chatroom_all set-cal-chat_same_all">
+          <button class="chatroom_btn set-cal-chat_same_button" @click.stop='chatroom_btn = !chatroom_btn'><img
+              src="./img/program_img/chat_white.svg" alt=""><img src="./img/program_img/chat_primary.svg" alt="">
+          </button>
+          <div class="program_chatroom_box program_right_column_item"
+            :class='{program_chatroom_box_active: chatroom_btn}'>
+            <div class="program_chatroom_box_close_box" @click='chatroom_btn = !chatroom_btn'><span
+                class="program_chatroom_box_close"></span></div>
+            <div class="program_chatroom_window">
+              <div class="program_chatroom_oneperson">
+                <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:
+                </p>
+                <div class="program_chatroom_otherside_dialog">大夥們，加油啦!</div>
+              </div>
+            </div>
+
+            <div class="program_chatroom_operating_area">
+              <div class="program_chatroom_iconbar">
+                <div class="program_chatroom_icon"><img src="./img/program_img/smile_gray.svg" alt=""></div>
+                <div class="program_chatroom_icon"><img src="./img/icon/paperclip.cf9c8806.svg" alt=""></div>
+              </div>
+              <textarea></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
       <div class="cards_column_all" id="cards_column_all">
         <div class="cards_column todo_column">
@@ -237,6 +257,7 @@
 
             <div class="cards_list">
               <div class="cards_list_card">
+                <div class="cards_list_card_color"></div>
                 <p>事情A</p>
                 <div class="cards_list_card_icon_bar">
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img
@@ -249,6 +270,7 @@
               </div>
 
               <div class="cards_list_card" v-for="item in cards">
+                <div class="cards_list_card_color"></div>
                 <p>{{item}}</p>
               </div>
 
@@ -270,6 +292,7 @@
             <div class="cards_list">
 
               <div class="cards_list_card">
+                <div class="cards_list_card_color"></div>
                 <p>事情A</p>
                 <div class="cards_list_card_icon_bar">
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img
