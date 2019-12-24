@@ -512,9 +512,9 @@ body {
 
 @media screen and (max-width: 767px) {
   .mall_content {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
     margin: 0 auto;
     width: 90%;
   }
@@ -613,26 +613,17 @@ body {
 
 .product_text ul.product_select ul.select_btn b {
   margin-right: 2%;
+  font-weight: lighter;
 }
 
 .product_text ul.product_select ul.select_btn > li {
-  margin: 0 0.1% 0 2%;
-}
-
-.product_text ul.product_select ul.select_btn > li > input {
-  padding: 15%;
-  border: 1px solid #b1b1b1;
-  cursor: pointer;
-  min-width: 45px;
-}
-
-.product_text ul.product_select ul.select_btn > li > input:hover {
-  background-color: #e7e7e7;
+  margin: 0;
 }
 
 .product_text ul.product_select ul.select_btn > li > select {
-  padding: 14%;
-  border: 1px solid #b1b1b1;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
   cursor: pointer;
   min-width: 45px;
   outline: none;
@@ -644,6 +635,24 @@ body {
   -webkit-appearance: none;
   /* Safari 和 Chrome */
   appearance: none;
+}
+
+/* 單選框 */
+.radio_style input[type="radio"] {
+  display: none;
+}
+
+.radio_style input[type="radio"] + label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.radio_style input[type="radio"]:checked + label {
+  background-color: #bbc2bf;
+  color: #fff;
 }
 
 .mall_bBtn {
@@ -660,7 +669,7 @@ body {
 
 .product_content_img img {
   width: 70%;
-  margin-left: 5%;
+  margin: 0 0 0 5%;
 }
 
 .mallTitle {
@@ -685,6 +694,13 @@ body {
   }
   .mall_poduct_cart .mall_poduct_content .product_text {
     width: 100%;
+  }
+  .product_content_img img {
+    width: 100%;
+    padding: 5%;
+  }
+  .mallTitle {
+    margin: 1% 0 7%;
   }
 }
 
