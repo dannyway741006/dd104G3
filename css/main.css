@@ -2212,7 +2212,7 @@ body {
   height: 110;
 }
 
-.memberitem .personal_photo 5.picrange {
+.memberitem .personal_photo .picrange {
   width: 100%;
   height: 120px;
   display: -webkit-box;
@@ -2226,7 +2226,7 @@ body {
           justify-content: center;
 }
 
-.memberitem .personal_photo 5.picrange .range {
+.memberitem .personal_photo .picrange .range {
   width: 80px;
   height: 80px;
   border: 1px solid #d1d1d1;
@@ -2235,7 +2235,7 @@ body {
   position: relative;
 }
 
-.memberitem .personal_photo 5.picrange .range #acceptImg {
+.memberitem .personal_photo .picrange .range #acceptImg {
   width: 100%;
   height: 100%;
   -o-object-position: center;
@@ -2705,3 +2705,4 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
+/*# sourceMappingURL=main.css.map */

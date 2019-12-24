@@ -387,7 +387,7 @@
 
     //行事曆
     .program_calendar_all {
-      & > button {
+      &>button {
         @include btnReset;
         @include hoverIcon(30px);
         position: relative;
@@ -406,12 +406,15 @@
         right: 30px;
         width: 350px;
         z-index: 2;
+
         @include media(1599px) {
           display: none;
+
           &.active {
             display: block;
           }
         }
+
         &.program_calendar_box_active {
           // width: 0;
           // height: 0;
@@ -491,10 +494,7 @@
                 color: $danger;
               }
             }
-<<<<<<< HEAD
-=======
 
->>>>>>> cho
           }
 
           //calendar_body--結束
@@ -508,7 +508,7 @@
 
     //聊天室
     .program_chatroom_all {
-      & > button {
+      &>button {
         position: relative;
       }
 
@@ -526,12 +526,15 @@
         top: 350px;
         right: 30px;
         z-index: 2;
+
         @include media(1599px) {
           display: none;
+
           &.active {
             display: block;
           }
         }
+
         &.program_chatroom_box_active {
           // display: none;
         }
@@ -769,6 +772,7 @@
         margin: 5px 0;
         transition: all 0.3s;
         box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+
         img {
           width: 80%;
         }
@@ -779,20 +783,15 @@
       }
     }
   }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> cho
 }
 
 @include media(480px) {
   .set-cal-chat_all_bar {
     display: block;
   }
-<<<<<<< HEAD
-}
-=======
+
 
   #program_main {
     .set-cal-chat_all_bar {
@@ -805,8 +804,5 @@
       }
 
     }
-
   }
-
 }
->>>>>>> cho
