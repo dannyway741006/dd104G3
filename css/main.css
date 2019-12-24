@@ -715,43 +715,110 @@ body {
   overflow: hidden;
 }
 
-#program_aside .program_now_having_all .program_add_btn {
+#program_aside .program_now_having_all .program_add_btn_box {
+  text-align: center;
+  padding: 5%;
+}
+
+#program_aside .program_now_having_all .program_add_btn_box .program_add_btn {
   background-color: transparent;
   outline: none;
   border: none;
   cursor: pointer;
-  padding: 5px 10px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border-radius: 10px;
-  border: 2px solid #ffffff;
-  color: #ffffff;
-  background-color: #8acede;
-  letter-spacing: 3.2px;
-  font-size: 16px;
+  letter-spacing: 2.8px;
+  font-size: 14px;
   line-height: 20px;
+  color: #ffffff;
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+  background-color: #8acede;
+  border-radius: 10px;
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
 }
 
-#program_aside .program_now_having_all .program_add_btn:hover {
-  background-color: #ffffff;
-  color: #8acede;
-  border: 2px solid #8acede;
+#program_aside .program_now_having_all .program_add_btn_box .program_add_btn::before, #program_aside .program_now_having_all .program_add_btn_box .program_add_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #8acede;
+  border-radius: 10px;
+  z-index: -1;
 }
 
-#program_aside .program_now_having_all .program_add_btn:hover .program_add_img {
-  border: 2px solid #8acede;
-  cursor: pointer;
+#program_aside .program_now_having_all .program_add_btn_box .program_add_btn:hover::before, #program_aside .program_now_having_all .program_add_btn_box .program_add_btn:hover::after {
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
 }
 
-#program_aside .program_now_having_all .program_add_btn:hover .program_add_img img:nth-of-type(1) {
-  opacity: 0;
+#program_aside .program_now_having_all .program_add_btn_box .program_add_btn:hover::after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
-#program_aside .program_now_having_all .program_add_btn:hover .program_add_img img:nth-of-type(2) {
-  opacity: 1;
+@-webkit-keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
 }
 
-#program_aside .program_now_having_all .program_add_btn .program_add_img {
+@keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #program_aside .program_now_having_all .program_add_btn_box .program_add_btn {
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 30px;
+  }
+}
+
+#program_aside .program_now_having_all .program_add_btn_box .program_add_btn .program_add_img {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -763,7 +830,7 @@ body {
   position: relative;
 }
 
-#program_aside .program_now_having_all .program_add_btn .program_add_img img {
+#program_aside .program_now_having_all .program_add_btn_box .program_add_btn .program_add_img img {
   width: 80%;
   position: absolute;
   top: 50%;
@@ -774,15 +841,15 @@ body {
   transition: opacity 0.3s;
 }
 
-#program_aside .program_now_having_all .program_add_btn .program_add_img img:nth-of-type(2) {
+#program_aside .program_now_having_all .program_add_btn_box .program_add_btn .program_add_img img:nth-of-type(2) {
   opacity: 0;
 }
 
-#program_aside .program_now_having_all .program_add_btn .program_add_list {
+#program_aside .program_now_having_all .program_add_btn_box .program_add_btn .program_add_list {
   list-style: none;
 }
 
-#program_aside .program_now_having_all .program_add_btn .program_add_list .todolist_li {
+#program_aside .program_now_having_all .program_add_btn_box .program_add_btn .program_add_list .todolist_li {
   letter-spacing: 4px;
   font-size: 20px;
   line-height: 30px;
@@ -799,7 +866,7 @@ body {
   font-size: 16px;
   line-height: 20px;
   position: fixed;
-  top: 100px;
+  top: 120px;
   left: 20px;
   z-index: 1;
   display: none;
@@ -861,23 +928,74 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
-  border: 2px solid #ffffff;
-  letter-spacing: 3.2px;
-  font-size: 16px;
+  letter-spacing: 2.8px;
+  font-size: 14px;
   line-height: 20px;
-  background-color: #8acede;
   color: #ffffff;
+  width: auto;
+  height: auto;
+  min-height: 40px;
+  background-color: #8acede;
+  border-radius: 10px;
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
   float: right;
-  padding: 5px;
-  border-radius: 5px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
 }
 
-#program_aside .program_now_having_all .new_program_choose_box button:hover {
-  background-color: #ffffff;
-  color: #8acede;
-  border: 2px solid #8acede;
+#program_aside .program_now_having_all .new_program_choose_box button::before, #program_aside .program_now_having_all .new_program_choose_box button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #8acede;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+#program_aside .program_now_having_all .new_program_choose_box button:hover::before, #program_aside .program_now_having_all .new_program_choose_box button:hover::after {
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
+}
+
+#program_aside .program_now_having_all .new_program_choose_box button:hover::after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #program_aside .program_now_having_all .new_program_choose_box button {
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 30px;
+  }
 }
 
 #program_aside .program_now_having_all .new_program_choose_box button:after {
@@ -987,24 +1105,75 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
-  padding: 5px 15px;
-  margin: 10px;
-  background-color: #8acede;
-  color: #ffffff;
-  border-radius: 10px;
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
+  color: #ffffff;
+  width: 100px;
+  height: auto;
+  min-height: 40px;
+  background-color: #8acede;
+  border-radius: 10px;
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
+  margin: 10px;
   vertical-align: middle;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border: 2px solid #ffffff;
 }
 
-#program_main .invite_list .invite_btn:hover {
-  background-color: #ffffff;
-  color: #8acede;
-  border: 2px solid #8acede;
+#program_main .invite_list .invite_btn::before, #program_main .invite_list .invite_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #8acede;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+#program_main .invite_list .invite_btn:hover::before, #program_main .invite_list .invite_btn:hover::after {
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
+}
+
+#program_main .invite_list .invite_btn:hover::after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #program_main .invite_list .invite_btn {
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 30px;
+  }
 }
 
 #program_main .invite_list .invite_add_member_box {
@@ -1015,8 +1184,8 @@ body {
   padding: 15px;
   width: 200px;
   position: absolute;
-  top: 70px;
-  right: -120px;
+  top: 60px;
+  right: -90px;
   display: none;
   z-index: 2;
 }
@@ -1570,22 +1739,73 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
-  border: 2px solid #ffffff;
-  letter-spacing: 3.2px;
-  font-size: 16px;
+  letter-spacing: 2.8px;
+  font-size: 14px;
   line-height: 20px;
-  background-color: #8acede;
   color: #ffffff;
-  padding: 5px;
-  border-radius: 5px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  width: 100px;
+  height: auto;
+  min-height: 40px;
+  background-color: #8acede;
+  border-radius: 10px;
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
 }
 
-#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button:hover {
-  background-color: #ffffff;
-  color: #8acede;
-  border: 2px solid #8acede;
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button::before, #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #8acede;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button:hover::before, #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button:hover::after {
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button:hover::after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button {
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 30px;
+  }
 }
 
 #program_main .cards_column_all .cards_column .add_cards_btn {
@@ -1638,7 +1858,7 @@ body {
   border: 2px solid #8acede;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 510px) {
   .set-cal-chat_all_bar {
     display: block;
   }
@@ -2692,7 +2912,7 @@ body {
           animation-delay: 1s;
 }
 
-@-webkit-keyframes animate {
+@keyframes animate {
   0% {
     width: 100%;
     height: 100%;
@@ -2704,13 +2924,13 @@ body {
   }
 }
 
-@keyframes animate {
+@keyframes animate_c {
   0% {
     width: 100%;
     height: 100%;
   }
   100% {
-    width: 140%;
+    width: 150%;
     height: 150%;
     opacity: 0;
   }
@@ -3024,12 +3244,6 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> f166228f17d4fc742a288651c4a69f11204b4e17
 
 .cart_bg.show #cart_page #close_cart::after {
   content: '';
@@ -3214,6 +3428,18 @@ body {
   }
   100% {
     width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
     height: 150%;
     opacity: 0;
   }
@@ -3774,12 +4000,6 @@ body {
   color: #666666;
   text-align: center;
 }
-<<<<<<< HEAD
-=======
->>>>>>> practice
-/*# sourceMappingURL=main.css.map */
->>>>>>> afa47cc50e265e21ca138a11eea4851bdd3fde51
-=======
 
 @media screen and (max-width: 1280px) {
   .main_content .todoList {
@@ -3839,4 +4059,3 @@ body {
   }
 }
 /*# sourceMappingURL=main.css.map */
->>>>>>> f166228f17d4fc742a288651c4a69f11204b4e17
