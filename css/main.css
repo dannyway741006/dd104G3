@@ -785,6 +785,33 @@ body {
   }
 }
 
+<<<<<<< HEAD
+=======
+@-webkit-keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+>>>>>>> dev
 @media screen and (max-width: 479px) {
   #program_aside .program_now_having_all .program_add_btn_box .program_add_btn {
     letter-spacing: 2.4px;
@@ -953,6 +980,21 @@ body {
   }
 }
 
+<<<<<<< HEAD
+=======
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+>>>>>>> dev
 @media screen and (max-width: 479px) {
   #program_aside .program_now_having_all .new_program_choose_box button {
     letter-spacing: 2.4px;
@@ -1119,6 +1161,21 @@ body {
   }
 }
 
+<<<<<<< HEAD
+=======
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+>>>>>>> dev
 @media screen and (max-width: 479px) {
   #program_main .invite_list .invite_btn {
     letter-spacing: 2.4px;
@@ -1739,6 +1796,21 @@ body {
   }
 }
 
+<<<<<<< HEAD
+=======
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+>>>>>>> dev
 @media screen and (max-width: 479px) {
   #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button {
     letter-spacing: 2.4px;
@@ -2853,12 +2925,27 @@ body {
 }
 
 @keyframes animate {
+<<<<<<< HEAD
+=======
   0% {
     width: 100%;
     height: 100%;
   }
   100% {
     width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+>>>>>>> dev
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
     height: 150%;
     opacity: 0;
   }
@@ -3356,6 +3443,18 @@ body {
   }
   100% {
     width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
     height: 150%;
     opacity: 0;
   }
