@@ -4,11 +4,12 @@
     height: 0%;
     transition: all .2s;
 
-    h1 {
+    h2 {
         display: none;
         color: #666;
     }
-    #cart_main{
+
+    #cart_main {
         display: none;
     }
 }
@@ -38,7 +39,7 @@
             margin: 1.5%;
             margin-bottom: 0;
 
-            h1 {
+            h2 {
                 display: block;
                 opacity: 1;
             }
@@ -54,6 +55,7 @@
             position: relative;
             transform: rotate(90deg);
             transition: all .3s;
+
             p {
                 width: 25px;
                 height: 1px;
@@ -87,6 +89,7 @@
             &:hover {
                 transform: rotateZ(-90deg);
                 transition: all .3s;
+
                 &::after {
                     width: 53px;
                     height: 53px;
@@ -104,49 +107,64 @@
             margin: 0 2.5% 20px 2.5%;
             background-image: linear-gradient(to right, rgb(113, 78, 176) 0%, transparent);
         }
-        #cart_main{
-            margin:0 2.5%;
+
+        #cart_main {
+            margin: 0 2.5%;
             width: 95%;
-            display:block;
-        
-            table{
+            display: block;
+            overflow: hidden;
+
+            .cart_product {
                 width: 100%;
                 text-align: center;
-            }
-            
-            td:nth-child(1){
-                width: 20%;
-                img {
-                    width: 70%;
+                position: relative;
+                left: 0;
+                overflow: hidden;
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+
+                div:nth-child(1) {
+                    width: 20%;
+
+                    img {
+                        padding: 0 15%;
+                        width: 100%;
+                    }
                 }
-            }
-        
-            td:nth-child(5){
-                width: 52px;
-                input[type=text]{
-                    text-align: center;
-                    width: 50px;
-                    height: 30px;
-                }
-            }
-        
-            td:nth-child(4),
-            td:nth-child(6),
-            td:last-child{
-                width: 32px;
-                img{
-                    width:30px;
+
+                #cart_product_quantity {
+                    width: 200px;
+                    // height: 50px;
+                    align-self: center;
+
+                    p {
+                        display: inline;
+
+                        img {
+                            width: 20px;
+                            position: relative;
+                            top: 5px;
+                        }
+
+                        input[type=number] {
+                            text-align: center;
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
                 }
             }
 
-            td:last-child{
+            div:last-child {
                 width: 22px;
-                img{
-                    width:20px;
+
+                img {
+                    width: 20px;
                 }
             }
         }
     }
-
 }
-

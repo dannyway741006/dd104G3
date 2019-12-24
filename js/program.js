@@ -19,7 +19,17 @@ var main_content = new Vue({
 
     chatroom_btn: false,
 
-    screenWidth: document.documentElement.clientWidth //屏幕宽度
+    // screenWidth: document.documentElement.clientWidth //屏幕宽度
+    colors: ['#5395DF', '#ff6e6e','#89d9b2','#ffb62e','#c182ff','#61cdff'],
+    selectColor: null,
+    new_program_choose_color_item:[],
+
+    program_setting_choose_selectColor:null,
+    program_setting_choose_color_item:[],
+
+    program_text_btn:false,
+
+    now_text:"查看已完成專案",
   },
   methods: {
     //新增專案
@@ -31,6 +41,16 @@ var main_content = new Vue({
       } else {
         // this.open = false;
       }
+    },
+
+    change_watched_text(){
+      if(this.now_text==="查看已完成專案"){
+        this.now_text="已完成專案";
+        
+      }else{
+        this.now_text="查看已完成專案";
+      }
+      
     },
 
     //新增卡片
@@ -45,21 +65,19 @@ var main_content = new Vue({
       } else {
       }
     },
-    resize_func() {
-      console.log("1");
-    }
-  },
-  watch: {
-    screenWidth: function(val) {
-      //监听屏幕宽度变化
-      var oIframe = document.getElementById("content");
-      oIframe.style.width = Number(val) - 120; //'120'是页面布局调整，可去除
 
-      if (oIframe.style.width < 1600) {
-        console.log("2");
-      }
-    }
   },
+  // watch: {
+  //   screenWidth: function(val) {
+  //     //监听屏幕宽度变化
+  //     var oIframe = document.getElementById("content");
+  //     oIframe.style.width = Number(val) - 120; //'120'是页面布局调整，可去除
+
+  //     if (oIframe.style.width < 1600) {
+  //       console.log("2");
+  //     }
+  //   }
+  // },
 
   mounted() {
     document.addEventListener("click", () => {
@@ -68,11 +86,11 @@ var main_content = new Vue({
       this.invite_btn = false;
       this.setting_btn = false;
     });
-    var _this = this;
-    window.onresize = function() {
-      // 定义窗口大小变更通知事件
-      _this.screenWidth = document.documentElement.clientWidth; //窗口宽度
-    };
+    // var _this = this;
+    // window.onresize = function() {
+    //   // 定义窗口大小变更通知事件
+    //   _this.screenWidth = document.documentElement.clientWidth; //窗口宽度
+    // };
   }
 });
 
