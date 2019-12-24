@@ -1604,8 +1604,15 @@ body {
   transition: all 0.3s;
 }
 
-.card_light_box .left_aside .first_right div:nth-child(3), .card_light_box .left_aside .first_right div:nth-child(4), .card_light_box .left_aside .first_right div:nth-child(5), .card_light_box .left_aside .first_right div:nth-child(6),
-.card_light_box .left_aside .second_right div:nth-child(3),
+.card_light_box .left_aside .first_right .todogo,
+.card_light_box .left_aside .first_right .first_right_member,
+.card_light_box .left_aside .first_right .second_right_deletecard,
+.card_light_box .left_aside .first_right div:nth-child(4),
+.card_light_box .left_aside .first_right div:nth-child(5),
+.card_light_box .left_aside .first_right div:nth-child(6),
+.card_light_box .left_aside .second_right .todogo,
+.card_light_box .left_aside .second_right .first_right_member,
+.card_light_box .left_aside .second_right .second_right_deletecard,
 .card_light_box .left_aside .second_right div:nth-child(4),
 .card_light_box .left_aside .second_right div:nth-child(5),
 .card_light_box .left_aside .second_right div:nth-child(6) {
@@ -1614,8 +1621,15 @@ body {
   padding: 5px;
 }
 
-.card_light_box .left_aside .first_right div:nth-child(3):hover, .card_light_box .left_aside .first_right div:nth-child(4):hover, .card_light_box .left_aside .first_right div:nth-child(5):hover, .card_light_box .left_aside .first_right div:nth-child(6):hover,
-.card_light_box .left_aside .second_right div:nth-child(3):hover,
+.card_light_box .left_aside .first_right .todogo:hover,
+.card_light_box .left_aside .first_right .first_right_member:hover,
+.card_light_box .left_aside .first_right .second_right_deletecard:hover,
+.card_light_box .left_aside .first_right div:nth-child(4):hover,
+.card_light_box .left_aside .first_right div:nth-child(5):hover,
+.card_light_box .left_aside .first_right div:nth-child(6):hover,
+.card_light_box .left_aside .second_right .todogo:hover,
+.card_light_box .left_aside .second_right .first_right_member:hover,
+.card_light_box .left_aside .second_right .second_right_deletecard:hover,
 .card_light_box .left_aside .second_right div:nth-child(4):hover,
 .card_light_box .left_aside .second_right div:nth-child(5):hover,
 .card_light_box .left_aside .second_right div:nth-child(6):hover {
@@ -1623,8 +1637,15 @@ body {
   cursor: pointer;
 }
 
-.card_light_box .left_aside .first_right div:nth-child(3):hover img, .card_light_box .left_aside .first_right div:nth-child(4):hover img, .card_light_box .left_aside .first_right div:nth-child(5):hover img, .card_light_box .left_aside .first_right div:nth-child(6):hover img,
-.card_light_box .left_aside .second_right div:nth-child(3):hover img,
+.card_light_box .left_aside .first_right .todogo:hover img,
+.card_light_box .left_aside .first_right .first_right_member:hover img,
+.card_light_box .left_aside .first_right .second_right_deletecard:hover img,
+.card_light_box .left_aside .first_right div:nth-child(4):hover img,
+.card_light_box .left_aside .first_right div:nth-child(5):hover img,
+.card_light_box .left_aside .first_right div:nth-child(6):hover img,
+.card_light_box .left_aside .second_right .todogo:hover img,
+.card_light_box .left_aside .second_right .first_right_member:hover img,
+.card_light_box .left_aside .second_right .second_right_deletecard:hover img,
 .card_light_box .left_aside .second_right div:nth-child(4):hover img,
 .card_light_box .left_aside .second_right div:nth-child(5):hover img,
 .card_light_box .left_aside .second_right div:nth-child(6):hover img {
@@ -1799,22 +1820,22 @@ body {
   font-weight: 600;
 }
 
-.right_aside .memberRight .card_todo_content .todo_title img {
+.right_aside .memberRight .card_todo_content .todo_title .cardtitle_img {
   -webkit-filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
           filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
 }
 
 .right_aside .memberRight .card_todo_content .todo_title .all_card_todo_delete {
   position: absolute;
-  right: 7%;
+  right: 6.5%;
   cursor: pointer;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .right_aside .memberRight .card_todo_content .todo_title .all_card_todo_delete:hover {
-  color: #8acede;
-  text-decoration: underline;
+  -webkit-filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
+          filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
 }
 
 .right_aside .memberRight .card_todo_content .todo_progress_bar {
@@ -1832,7 +1853,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin-left: 5px;
-  width: 85%;
+  width: 87%;
   top: 9px;
 }
 
@@ -1855,6 +1876,11 @@ body {
   left: 25px;
   border-bottom: 1px solid #e0dcdc;
   width: 88.5%;
+}
+
+.right_aside .memberRight .card_check_item:hover div:nth-child(3),
+.right_aside .memberRight .card_check_item:hover div:nth-child(4) {
+  opacity: 1;
 }
 
 .right_aside .memberRight .card_check_item div:first-child {
@@ -1881,6 +1907,9 @@ body {
   width: 20px;
   position: absolute;
   right: 14%;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .right_aside .memberRight .card_check_item div:nth-child(3) img {
@@ -1899,6 +1928,9 @@ body {
   width: 20px;
   position: absolute;
   right: 0;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .right_aside .memberRight .card_check_item div:nth-child(4) img {
@@ -2144,10 +2176,11 @@ body {
   padding: 15px;
   width: 200px;
   position: absolute;
-  top: 230px;
+  top: 214px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .calendar_lightbox.open_calendar_lightbox {
@@ -2160,6 +2193,79 @@ body {
   line-height: 20px;
   border-bottom: 1px solid #e0dcdc;
   padding: 0px 0 10px 0px;
+}
+
+.calendar_lightbox_content .calendar {
+  width: 100%;
+  margin: 10px auto;
+}
+
+.calendar_lightbox_content .calendar_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  color: #666666;
+}
+
+.calendar_lightbox_content .calendar_header > button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #666666;
+}
+
+.calendar_lightbox_content .calendar_header > button:hover {
+  color: #333333;
+}
+
+.calendar_lightbox_content .calendar_header .calendar_header > p {
+  width: 30%;
+  text-align: center;
+}
+
+.calendar_lightbox_content .calendar_header #month {
+  line-height: 45px;
+}
+
+.calendar_lightbox_content .calendar_body {
+  width: 100%;
+}
+
+.calendar_lightbox_content .calendar_body td {
+  width: 30%;
+  text-align: center;
+  vertical-align: top;
+  color: #999999;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.calendar_lightbox_content .calendar_body td:first-child, .calendar_lightbox_content .calendar_body td:last-child {
+  color: #eb7a77;
+}
+
+.calendar_lightbox_content .calendar_body td p {
+  width: 20px;
+}
+
+.calendar_lightbox_content .calendar_body td:hover {
+  background-color: #e0f4f6;
+}
+
+.calendar_lightbox_content .calendar_body td .now.day {
+  color: #FFF;
+}
+
+.calendar_lightbox_content .calendar_body .day {
+  color: #666666;
 }
 
 @media screen and (max-width: 850px) {
