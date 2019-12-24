@@ -1668,7 +1668,8 @@ body {
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
-  padding: 15px 0px;
+  overflow: hidden;
+  padding-bottom: 15px;
 }
 
 .card_light_box.opneLight {
@@ -1748,59 +1749,56 @@ body {
   padding-left: 20px;
   padding-top: 25px;
   height: auto;
+  position: relative;
 }
 
-.card_light_box .left_aside .first_right,
-.card_light_box .left_aside .second_right {
+.card_light_box .left_aside .second_right, .card_light_box .left_aside .first_right {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
-.card_light_box .left_aside .first_right .todogo,
-.card_light_box .left_aside .first_right .first_right_member,
-.card_light_box .left_aside .first_right .second_right_deletecard,
-.card_light_box .left_aside .first_right div:nth-child(4),
-.card_light_box .left_aside .first_right div:nth-child(5),
-.card_light_box .left_aside .first_right div:nth-child(6),
 .card_light_box .left_aside .second_right .todogo,
 .card_light_box .left_aside .second_right .first_right_member,
 .card_light_box .left_aside .second_right .second_right_deletecard,
 .card_light_box .left_aside .second_right div:nth-child(4),
 .card_light_box .left_aside .second_right div:nth-child(5),
-.card_light_box .left_aside .second_right div:nth-child(6) {
+.card_light_box .left_aside .second_right div:nth-child(6), .card_light_box .left_aside .first_right .todogo,
+.card_light_box .left_aside .first_right .first_right_member,
+.card_light_box .left_aside .first_right .second_right_deletecard,
+.card_light_box .left_aside .first_right div:nth-child(4),
+.card_light_box .left_aside .first_right div:nth-child(5),
+.card_light_box .left_aside .first_right div:nth-child(6) {
   width: 90%;
   margin: 5px 0px;
   padding: 5px;
 }
 
-.card_light_box .left_aside .first_right .todogo:hover,
-.card_light_box .left_aside .first_right .first_right_member:hover,
-.card_light_box .left_aside .first_right .second_right_deletecard:hover,
-.card_light_box .left_aside .first_right div:nth-child(4):hover,
-.card_light_box .left_aside .first_right div:nth-child(5):hover,
-.card_light_box .left_aside .first_right div:nth-child(6):hover,
 .card_light_box .left_aside .second_right .todogo:hover,
 .card_light_box .left_aside .second_right .first_right_member:hover,
 .card_light_box .left_aside .second_right .second_right_deletecard:hover,
 .card_light_box .left_aside .second_right div:nth-child(4):hover,
 .card_light_box .left_aside .second_right div:nth-child(5):hover,
-.card_light_box .left_aside .second_right div:nth-child(6):hover {
+.card_light_box .left_aside .second_right div:nth-child(6):hover, .card_light_box .left_aside .first_right .todogo:hover,
+.card_light_box .left_aside .first_right .first_right_member:hover,
+.card_light_box .left_aside .first_right .second_right_deletecard:hover,
+.card_light_box .left_aside .first_right div:nth-child(4):hover,
+.card_light_box .left_aside .first_right div:nth-child(5):hover,
+.card_light_box .left_aside .first_right div:nth-child(6):hover {
   background-color: #cee0ff;
   cursor: pointer;
 }
 
-.card_light_box .left_aside .first_right .todogo:hover img,
-.card_light_box .left_aside .first_right .first_right_member:hover img,
-.card_light_box .left_aside .first_right .second_right_deletecard:hover img,
-.card_light_box .left_aside .first_right div:nth-child(4):hover img,
-.card_light_box .left_aside .first_right div:nth-child(5):hover img,
-.card_light_box .left_aside .first_right div:nth-child(6):hover img,
 .card_light_box .left_aside .second_right .todogo:hover img,
 .card_light_box .left_aside .second_right .first_right_member:hover img,
 .card_light_box .left_aside .second_right .second_right_deletecard:hover img,
 .card_light_box .left_aside .second_right div:nth-child(4):hover img,
 .card_light_box .left_aside .second_right div:nth-child(5):hover img,
-.card_light_box .left_aside .second_right div:nth-child(6):hover img {
+.card_light_box .left_aside .second_right div:nth-child(6):hover img, .card_light_box .left_aside .first_right .todogo:hover img,
+.card_light_box .left_aside .first_right .first_right_member:hover img,
+.card_light_box .left_aside .first_right .second_right_deletecard:hover img,
+.card_light_box .left_aside .first_right div:nth-child(4):hover img,
+.card_light_box .left_aside .first_right div:nth-child(5):hover img,
+.card_light_box .left_aside .first_right div:nth-child(6):hover img {
   -webkit-filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
           filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
 }
@@ -2100,9 +2098,16 @@ body {
 .right_aside .memberRight .card_add_button {
   padding-left: 25px;
   margin-top: 10px;
+  display: inline-block;
 }
 
-.right_aside .memberRight .card_add_button button {
+.right_aside .memberRight .card_add_button label {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+}
+
+.right_aside .memberRight .card_add_button label input {
   background-color: transparent;
   outline: none;
   border: none;
@@ -2117,24 +2122,32 @@ body {
   border: 2px solid #8acede;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  width: 110px;
+  padding: 5px 25px 5px 5px;
 }
 
-.right_aside .memberRight .card_add_button button img {
-  -webkit-transform: translatey(2px);
-          transform: translatey(2px);
-  margin-left: 7px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+.right_aside .memberRight .card_add_button label input::-webkit-input-placeholder {
+  color: white;
 }
 
-.right_aside .memberRight .card_add_button button:hover {
-  color: #8acede;
-  background-color: white;
+.right_aside .memberRight .card_add_button label input:-ms-input-placeholder {
+  color: white;
 }
 
-.right_aside .memberRight .card_add_button button:hover img {
-  -webkit-filter: invert(25%) sepia(51%) saturate(1876%) hue-rotate(164deg) brightness(89%) contrast(94%);
-          filter: invert(25%) sepia(51%) saturate(1876%) hue-rotate(164deg) brightness(89%) contrast(94%);
+.right_aside .memberRight .card_add_button label input::-ms-input-placeholder {
+  color: white;
+}
+
+.right_aside .memberRight .card_add_button label input::placeholder {
+  color: white;
+}
+
+.right_aside .memberRight .card_add_button label img {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 5px;
 }
 
 .right_aside .memberRight .card_file .card_file_title {
@@ -2207,7 +2220,8 @@ body {
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
-  top: 263px;
+  top: 262px;
+  z-index: 9999999;
 }
 
 .todo_lightbox.opentodo_lightbox {
@@ -2263,76 +2277,18 @@ body {
   border: 2px solid #8acede;
 }
 
-.card_detail_lightbox {
-  background-color: white;
-  border-radius: 10px;
-  padding: 15px;
-  width: 200px;
-  position: absolute;
-  top: 550px;
-  -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
-  display: none;
-}
-
-.card_detail_lightbox.open_card_detail {
-  display: block;
-}
-
-.card_detail_lightbox .card_detail_lightbox_input {
-  letter-spacing: 3.2px;
-  font-size: 16px;
-  line-height: 20px;
-  outline: none;
-  background-color: transparent;
-  color: #666666;
-  padding: 5px;
-  border: 1px solid #666666;
-  border-radius: 10px;
-  width: 100%;
-  margin: 5px 0;
-}
-
-.card_detail_lightbox form {
-  text-align: left;
-}
-
-.card_detail_lightbox form button {
-  background-color: transparent;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 3.2px;
-  font-size: 16px;
-  line-height: 20px;
-  cursor: pointer;
-  border: 2px solid #fff;
-  background-color: #8acede;
-  color: #fff;
-  padding: 5px;
-  margin-top: 5px;
-  border-radius: 5px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.card_detail_lightbox form button:hover {
-  background-color: #fff;
-  color: #8acede;
-  border: 2px solid #8acede;
-}
-
 .calendar_lightbox {
   background-color: white;
   border-radius: 10px;
   padding: 15px;
   width: 200px;
-  position: absolute;
-  top: 214px;
+  position: fixed;
+  top: 215px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 9999999;
 }
 
 .calendar_lightbox.open_calendar_lightbox {
@@ -2345,6 +2301,13 @@ body {
   line-height: 20px;
   border-bottom: 1px solid #e0dcdc;
   padding: 0px 0 10px 0px;
+}
+
+.calendar_lightbox p.day_date {
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 5px;
 }
 
 .calendar_lightbox_content .calendar {
@@ -2420,6 +2383,64 @@ body {
   color: #666666;
 }
 
+.file_lightbox {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 200px;
+  position: fixed;
+  top: 250px;
+  -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
+  display: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 9999999;
+}
+
+.file_lightbox h3 {
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.file_lightbox form {
+  text-align: end;
+  margin-top: 10px;
+}
+
+.file_lightbox form .upfile_content {
+  display: inline-block;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding-left: 16px;
+  background-color: #8acede;
+  border: 2px solid #8acede;
+  height: 35px;
+  position: relative;
+  width: 114px;
+}
+
+.file_lightbox form .upfile_content p {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.file_lightbox form .upfile_content p span img {
+  margin-right: 0;
+}
+
+.file_lightbox form .upfile_content input {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+}
+
 @media screen and (max-width: 850px) {
   .card_light_box {
     width: 100%;
@@ -2446,6 +2467,12 @@ body {
   }
   .card_light_box .lightbox_content .left_aside hr {
     width: 90%;
+  }
+  .card_light_box .lightbox_content .left_aside .calendar_lightbox {
+    top: 197px;
+  }
+  .card_light_box .lightbox_content .left_aside .todo_lightbox {
+    top: 242px;
   }
   .card_light_box .lightbox_content .right_aside {
     width: 100%;
@@ -2997,6 +3024,7 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
+<<<<<<< HEAD
 
 .cart_bg.show #cart_page #close_cart::after {
   content: '';
@@ -3612,4 +3640,6 @@ body {
   color: #666666;
   text-align: center;
 }
+=======
+>>>>>>> practice
 /*# sourceMappingURL=main.css.map */
