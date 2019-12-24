@@ -68,7 +68,7 @@
   <main class="content" id="content">
     <aside class="slide_bar">
       <div class="logo">
-        <a href="#">
+        <a href="index.html">
           <img src="./img/logo_in.svg" alt="logo" />
         </a>
       </div>
@@ -250,12 +250,29 @@
       $('.custom1').owlCarousel({
         // animateOut: 'slideOutDown',
         // animateIn: 'flipInY',
-        items: 1,
+        items: 3,
         margin: 30,
         stagePadding: 30,
         smartSpeed: 450,
         autoplay: true, //自動輪播
         autoplayTimeout: 1800, // 輪播速度
+
+        responsive: {
+          768: {
+            items:3
+          },
+        
+          480: {
+            items:1
+          },
+
+          0:{
+            items:1
+          }
+
+        }
+
+
       });
     });
   </script>

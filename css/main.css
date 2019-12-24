@@ -382,7 +382,7 @@ body {
 /*------------------------- */
 .mall_bg {
   background-color: #EAEAEA;
-  padding-top: 2%;
+  padding: 2% 0;
 }
 
 #mall_search {
@@ -395,8 +395,8 @@ body {
 
 #mall_search .mall_search_bar {
   position: relative;
-  border: 2px solid #8ACEDE;
-  padding: 12px;
+  border: 2px solid #8acede;
+  padding: 10px;
   opacity: 0.5;
   border-radius: 10px 0px 0px 10px;
   width: 75%;
@@ -406,7 +406,7 @@ body {
 
 #mall_search .mall_search-btn {
   position: absolute;
-  background: #8ACEDE;
+  background: #8acede;
   border-radius: 0px 10px 10px 0px;
   width: 50px;
   padding: 12px;
@@ -416,7 +416,7 @@ body {
 }
 
 #slider {
-  width: 92%;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -425,20 +425,20 @@ body {
 }
 
 .mall_content {
-  width: 90%;
-  margin: 0 auto;
+  width: 95%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 0 auto 2%;
 }
 
 .mall_content .mall_box {
   width: 18%;
   background-color: rgba(255, 255, 255, 0.568);
   margin: 1.5% 1%;
-  border-radius: 2%;
+  border-radius: 10px;
   background-position: center;
   -webkit-transition: all .5s;
   transition: all .5s;
@@ -481,6 +481,11 @@ body {
   visibility: hidden;
 }
 
+.mall_content .mall_box:hover p {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
 .mall_content .mall_box:hover .product_price {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
@@ -507,16 +512,17 @@ body {
 
 @media screen and (max-width: 767px) {
   .mall_content {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
     margin: 0 auto;
+    width: 90%;
   }
   .mall_content .mall_box {
     width: 48%;
   }
   #slider {
-    margin: 2% 0 0;
+    margin-top: 2%;
   }
   #slider .owl-item img {
     height: 180px;
@@ -530,20 +536,21 @@ body {
   width: 90%;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.568);
-  border-radius: 2%;
+  border-radius: 10px;
+  border: 1px solid #dfdfdcdd;
 }
 
 .mall_poduct_cart .mall_poduct_content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 2%;
   width: 90%;
   margin: 0 auto;
 }
 
 .product_img {
-  width: 30%;
+  width: 40%;
+  padding: 1% 0 4%;
 }
 
 .product_img img {
@@ -567,14 +574,14 @@ body {
 }
 
 .product_text {
-  width: 70%;
-  padding: 2% 5%;
+  width: 60%;
+  padding: 5% 5%;
 }
 
 .product_text .line {
   height: 1px;
   background-color: rgba(158, 158, 158, 0.609);
-  margin: 2% 0;
+  margin: 5% 0;
 }
 
 .product_text p {
@@ -586,12 +593,12 @@ body {
 
 .product_text ul.product_features {
   width: 100%;
-  margin: 2% 10%;
+  margin: 10% 5%;
 }
 
 .product_text ul.product_select {
   width: 100%;
-  margin: 2% 5%;
+  margin: 2% 0;
   list-style: none;
 }
 
@@ -606,26 +613,17 @@ body {
 
 .product_text ul.product_select ul.select_btn b {
   margin-right: 2%;
+  font-weight: lighter;
 }
 
 .product_text ul.product_select ul.select_btn > li {
-  margin: 0 0.1% 0 2%;
-}
-
-.product_text ul.product_select ul.select_btn > li > input {
-  padding: 15%;
-  border: 1px solid #b1b1b1;
-  cursor: pointer;
-  min-width: 45px;
-}
-
-.product_text ul.product_select ul.select_btn > li > input:hover {
-  background-color: #e7e7e7;
+  margin: 0;
 }
 
 .product_text ul.product_select ul.select_btn > li > select {
-  padding: 14%;
-  border: 1px solid #b1b1b1;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
   cursor: pointer;
   min-width: 45px;
   outline: none;
@@ -639,13 +637,70 @@ body {
   appearance: none;
 }
 
+/* 單選框 */
+.radio_style input[type="radio"] {
+  display: none;
+}
+
+.radio_style input[type="radio"] + label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.radio_style input[type="radio"]:checked + label {
+  background-color: #bbc2bf;
+  color: #fff;
+}
+
+.mall_bBtn {
+  background-color: #8acede;
+  width: 30%;
+  height: 43px;
+  color: #fff;
+  border-radius: 10px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  margin: 0 1%;
+}
+
+.product_content_img img {
+  width: 70%;
+  margin: 0 0 0 5%;
+}
+
+.mallTitle {
+  padding: 1% 2%;
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+  height: 2px;
+  margin: 1% 0 3%;
+}
+
 @media screen and (max-width: 767px) {
-  .mall_poduct_content {
+  .mall_poduct_cart {
+    width: 100%;
+  }
+  .mall_poduct_cart .mall_poduct_content {
     display: block;
   }
-  .mall_poduct_content .product_img {
+  .mall_poduct_cart .mall_poduct_content .product_img {
     width: 100%;
     margin: 0 auto;
+  }
+  .mall_poduct_cart .mall_poduct_content .product_text {
+    width: 100%;
+  }
+  .product_content_img img {
+    width: 100%;
+    padding: 5%;
+  }
+  .mallTitle {
+    margin: 1% 0 7%;
   }
 }
 
@@ -779,6 +834,20 @@ body {
   margin: 2.5px;
   display: inline-block;
   cursor: pointer;
+  position: relative;
+}
+
+#program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item.new_program_choose_color_item_checked::before {
+  content: "";
+  width: 85%;
+  height: 85%;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-image: url("../img/checked_w.626bbc68.svg");
 }
 
 #program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item:first-child {
@@ -1122,11 +1191,15 @@ body {
   z-index: 2;
 }
 
+#program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.program_calendar_box_active {
+  display: none;
+}
+
 @media screen and (max-width: 1599px) {
   #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box {
     display: none;
   }
-  #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.active {
+  #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.program_calendar_box_active {
     display: block;
   }
 }
@@ -1223,11 +1296,15 @@ body {
   z-index: 2;
 }
 
+#program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.program_chatroom_box_active {
+  display: none;
+}
+
 @media screen and (max-width: 1599px) {
   #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box {
     display: none;
   }
-  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.active {
+  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.program_chatroom_box_active {
     display: block;
   }
 }
@@ -1276,13 +1353,16 @@ body {
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar {
-  border: 1px solid red;
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1);
+          box-shadow: rgba(0, 0, 0, 0.1);
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon {
   width: 35px;
-  padding: 2.5px;
-  border: 1px solid blue;
+  padding: 5px;
   display: inline-block;
 }
 
@@ -1296,6 +1376,7 @@ body {
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area textarea {
+  outline: none;
   resize: none;
   width: 100%;
   height: 50px;
@@ -1498,9 +1579,16 @@ body {
     display: block;
   }
   #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box {
-    top: 170px;
+    top: 60px;
     right: 0;
     width: 100%;
+  }
+  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box {
+    width: 90%;
+    right: 5%;
+    top: auto;
+    bottom: 2%;
+    background-color: rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -3023,6 +3111,16 @@ body {
   }
 }
 
+.potato_slide_list {
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .potato_slide_list {
+    display: block;
+  }
+}
+
 .radio {
   margin: 16px 0;
   display: block;
@@ -3356,10 +3454,18 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   width: 50%;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-  border: 2px solid #999999;
 }
 
 .main_content .todoList ul {
@@ -3467,14 +3573,12 @@ body {
 .main_content .todoList .fromTrello {
   width: 50%;
   height: 100%;
-  border: 2px solid blue;
   padding: 0 20px;
 }
 
 .main_content .todoList .custom {
   width: 50%;
   height: 100%;
-  border: 2px solid blue;
   position: relative;
 }
 
@@ -3530,15 +3634,6 @@ body {
   }
 }
 
-@media screen and (max-width: 1100px) {
-  .main_content .todoList .custom {
-    width: 100%;
-  }
-  .main_content .todoList .fromTrello {
-    display: none;
-  }
-}
-
 .main_content .todoList .todoHead {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3561,5 +3656,48 @@ body {
   font-size: 20px;
   color: #666666;
   text-align: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .main_content .todoList {
+    display: block;
+    position: relative;
+  }
+  .main_content .todoList.active #todoCon2 {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  .main_content .todoList.active #todoCon1 {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+  .main_content .todoList #todoCon1,
+  .main_content .todoList #todoCon2 {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+  }
+  .main_content .todoList #todoCon1 {
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  .main_content .todoList #todoCon2 {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform-origin: left;
+            transform-origin: left;
+  }
+  .main_content .todoList .custom {
+    width: 100%;
+  }
+  .main_content .todoList .fromTrello {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=main.css.map */
