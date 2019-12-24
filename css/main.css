@@ -688,11 +688,18 @@ body {
   }
 }
 
-#program_aside {
+#program_aside .program_now_having_all {
   border: 1px solid blue;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-#program_aside .program_add_btn {
+#program_aside .program_now_having_all.program_now_having_all_active {
+  height: 0;
+  overflow: hidden;
+}
+
+#program_aside .program_now_having_all .program_add_btn {
   background-color: transparent;
   outline: none;
   border: none;
@@ -709,26 +716,26 @@ body {
   line-height: 20px;
 }
 
-#program_aside .program_add_btn:hover {
+#program_aside .program_now_having_all .program_add_btn:hover {
   background-color: #ffffff;
   color: #8acede;
   border: 2px solid #8acede;
 }
 
-#program_aside .program_add_btn:hover .program_add_img {
+#program_aside .program_now_having_all .program_add_btn:hover .program_add_img {
   border: 2px solid #8acede;
   cursor: pointer;
 }
 
-#program_aside .program_add_btn:hover .program_add_img img:nth-of-type(1) {
+#program_aside .program_now_having_all .program_add_btn:hover .program_add_img img:nth-of-type(1) {
   opacity: 0;
 }
 
-#program_aside .program_add_btn:hover .program_add_img img:nth-of-type(2) {
+#program_aside .program_now_having_all .program_add_btn:hover .program_add_img img:nth-of-type(2) {
   opacity: 1;
 }
 
-#program_aside .program_add_btn .program_add_img {
+#program_aside .program_now_having_all .program_add_btn .program_add_img {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -740,7 +747,7 @@ body {
   position: relative;
 }
 
-#program_aside .program_add_btn .program_add_img img {
+#program_aside .program_now_having_all .program_add_btn .program_add_img img {
   width: 80%;
   position: absolute;
   top: 50%;
@@ -751,21 +758,21 @@ body {
   transition: opacity 0.3s;
 }
 
-#program_aside .program_add_btn .program_add_img img:nth-of-type(2) {
+#program_aside .program_now_having_all .program_add_btn .program_add_img img:nth-of-type(2) {
   opacity: 0;
 }
 
-#program_aside .program_add_btn .program_add_list {
+#program_aside .program_now_having_all .program_add_btn .program_add_list {
   list-style: none;
 }
 
-#program_aside .program_add_btn .program_add_list .todolist_li {
+#program_aside .program_now_having_all .program_add_btn .program_add_list .todolist_li {
   letter-spacing: 4px;
   font-size: 20px;
   line-height: 30px;
 }
 
-#program_aside .new_program_choose_box {
+#program_aside .program_now_having_all .new_program_choose_box {
   width: 300px;
   background-color: white;
   border-radius: 20px;
@@ -782,20 +789,20 @@ body {
   display: none;
 }
 
-#program_aside .new_program_choose_box.new_program_choose_box_active {
+#program_aside .program_now_having_all .new_program_choose_box.new_program_choose_box_active {
   opacity: 1;
   display: block;
   z-index: 10000;
 }
 
-#program_aside .new_program_choose_box p span {
+#program_aside .program_now_having_all .new_program_choose_box p span {
   letter-spacing: 2.8px;
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
 }
 
-#program_aside .new_program_choose_box input {
+#program_aside .program_now_having_all .new_program_choose_box input {
   letter-spacing: 3.2px;
   letter-spacing: 3.2px;
   font-size: 16px;
@@ -810,7 +817,7 @@ body {
   margin: 5px 0;
 }
 
-#program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item {
+#program_aside .program_now_having_all .new_program_choose_box .new_program_choose_color .new_program_choose_color_item {
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -820,7 +827,7 @@ body {
   position: relative;
 }
 
-#program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item.new_program_choose_color_item_checked::before {
+#program_aside .program_now_having_all .new_program_choose_box .new_program_choose_color .new_program_choose_color_item.new_program_choose_color_item_checked::before {
   content: "";
   width: 85%;
   height: 85%;
@@ -833,7 +840,7 @@ body {
   background-image: url("../img/checked_w.626bbc68.svg");
 }
 
-#program_aside .new_program_choose_box button {
+#program_aside .program_now_having_all .new_program_choose_box button {
   background-color: transparent;
   outline: none;
   border: none;
@@ -851,26 +858,37 @@ body {
   transition: all 0.3s;
 }
 
-#program_aside .new_program_choose_box button:hover {
+#program_aside .program_now_having_all .new_program_choose_box button:hover {
   background-color: #ffffff;
   color: #8acede;
   border: 2px solid #8acede;
 }
 
-#program_aside .new_program_choose_box button:after {
+#program_aside .program_now_having_all .new_program_choose_box button:after {
   content: "";
   display: block;
   clear: both;
 }
 
-#program_aside .slide_list li p {
+#program_aside .program_now_having_all .slide_list li p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-#program_aside .program_watch_history_text {
-  position: absolute;
+#program_aside .program_watch_history_all {
+  border: 1px solid red;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#program_aside .program_watch_history_all.program_watch_history_all_active {
+  height: auto;
+}
+
+#program_aside .program_watch_history_all .program_text_btn {
   bottom: 0;
   width: 250px;
   text-align: center;
@@ -878,15 +896,31 @@ body {
   color: #666666;
 }
 
-#program_aside .program_watch_history_text:hover {
+#program_aside .program_watch_history_all .program_text_btn:hover {
   color: #8acede;
 }
 
-#program_aside .program_watch_history_text p {
+#program_aside .program_watch_history_all .program_text_btn p {
   border-top: 1px solid #999999;
   padding: 15px 0;
   width: 90%;
   margin-left: 5%;
+}
+
+#program_aside .program_watch_history_all .program_watch_history_text {
+  position: absolute;
+}
+
+#program_aside .program_watch_history_all .program_watch_history_text.program_watch_history_text_active {
+  position: static;
+}
+
+#program_aside .program_watch_history_all .program_now_having_text {
+  position: static;
+}
+
+#program_aside .program_watch_history_all .program_now_having_text.program_now_having_text_active {
+  position: absolute;
 }
 
 #program_main {
@@ -968,6 +1002,7 @@ body {
   top: 70px;
   right: -120px;
   display: none;
+  z-index: 2;
 }
 
 #program_main .invite_list .invite_add_member_box.invite_add_member_box_active {
@@ -1073,7 +1108,7 @@ body {
   line-height: 20px;
   position: absolute;
   top: 50px;
-  z-index: 1;
+  z-index: 2;
   display: none;
 }
 
