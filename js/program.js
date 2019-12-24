@@ -45,21 +45,21 @@ var main_content = new Vue({
       } else {
       }
     },
-    resize_func() {
-      console.log("1");
-    }
+    // resize_func() {
+    //   console.log("1");
+    // }
   },
-  watch: {
-    screenWidth: function(val) {
-      //监听屏幕宽度变化
-      var oIframe = document.getElementById("content");
-      oIframe.style.width = Number(val) - 120; //'120'是页面布局调整，可去除
+  // watch: {
+  //   screenWidth: function(val) {
+  //     //监听屏幕宽度变化
+  //     var oIframe = document.getElementById("content");
+  //     oIframe.style.width = Number(val) - 120; //'120'是页面布局调整，可去除
 
-      if (oIframe.style.width < 1600) {
-        console.log("2");
-      }
-    }
-  },
+  //     if (oIframe.style.width < 1600) {
+  //       console.log("2");
+  //     }
+  //   }
+  // },
 
   mounted() {
     document.addEventListener("click", () => {
@@ -68,11 +68,11 @@ var main_content = new Vue({
       this.invite_btn = false;
       this.setting_btn = false;
     });
-    var _this = this;
-    window.onresize = function() {
-      // 定义窗口大小变更通知事件
-      _this.screenWidth = document.documentElement.clientWidth; //窗口宽度
-    };
+    // var _this = this;
+    // window.onresize = function() {
+    //   // 定义窗口大小变更通知事件
+    //   _this.screenWidth = document.documentElement.clientWidth; //窗口宽度
+    // };
   }
 });
 

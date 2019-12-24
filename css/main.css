@@ -1122,11 +1122,15 @@ body {
   z-index: 2;
 }
 
+#program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.program_calendar_box_active {
+  display: none;
+}
+
 @media screen and (max-width: 1599px) {
   #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box {
     display: none;
   }
-  #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.active {
+  #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.program_calendar_box_active {
     display: block;
   }
 }
@@ -1223,11 +1227,15 @@ body {
   z-index: 2;
 }
 
+#program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.program_chatroom_box_active {
+  display: none;
+}
+
 @media screen and (max-width: 1599px) {
   #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box {
     display: none;
   }
-  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.active {
+  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.program_chatroom_box_active {
     display: block;
   }
 }
@@ -1276,13 +1284,16 @@ body {
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar {
-  border: 1px solid red;
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1);
+          box-shadow: rgba(0, 0, 0, 0.1);
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon {
   width: 35px;
-  padding: 2.5px;
-  border: 1px solid blue;
+  padding: 5px;
   display: inline-block;
 }
 
@@ -1296,6 +1307,7 @@ body {
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area textarea {
+  outline: none;
   resize: none;
   width: 100%;
   height: 50px;
@@ -1498,9 +1510,16 @@ body {
     display: block;
   }
   #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box {
-    top: 170px;
+    top: 60px;
     right: 0;
     width: 100%;
+  }
+  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box {
+    width: 90%;
+    right: 5%;
+    top: auto;
+    bottom: 2%;
+    background-color: rgba(255, 255, 255, 0.9);
   }
 }
 
