@@ -1,0 +1,418 @@
+.potato_slide{
+    padding-top: 50px;
+    padding-left: 10px;
+}
+.radio {
+    margin: 16px 0;
+    display: block;
+    cursor: pointer;
+    input {
+        display: none;
+        & + span {
+            line-height: $radioSize;
+            height: $radioSize;
+            padding-left: $radioSize;
+            display: block;
+            position: relative;
+            &:not(:empty) {
+                padding-left: $radioSize + 8;
+            }
+            &:before,
+            &:after {
+                content: '';
+                width: $radioSize;
+                height: $radioSize;
+                display: block;
+                border-radius: 50%;
+                left: 0;
+                top: 0;
+                position: absolute;
+            }
+            &:before {
+                background: $radioBorder;
+                transition: background .2s ease, transform .4s cubic-bezier(.175, .885, .32, 2);
+            }
+            &:after {
+                background: #fff;
+                transform: scale(.78);
+                transition: transform .6s cubic-bezier(.175, .885, .32, 1.4);
+            }
+        }
+        &:checked + span {
+            &:before {
+                transform: scale(1.04);
+                background: $radioActive;
+            }
+            &:after {
+                transform: scale(.4);
+                transition: transform .3s ease;
+            }
+        }
+    }
+    &:hover {
+        input {
+            & + span {
+                &:before {
+                    transform: scale(.92);
+                }
+                &:after {
+                    transform: scale(.74);
+                }
+            }
+            &:checked + span {
+                &:after {
+                    transform: scale(.4);
+                }
+            }
+        }
+    }
+}
+.main_content{
+    display: flex;
+    width: 100%;
+    height:90vh;
+    padding-top: 50px;
+    // border: 1px solid red;
+    .timer{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        // height: 90vh;
+        // border: 1px solid yellow;
+        position: relative;
+        .switch {   
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            margin: -30px 0 0 -75px;
+            background: $primary;
+            transition: all 0.2s ease;
+            border-radius: 25px; 
+            span {
+                position: absolute;
+                width: 20px;
+                height: 4px;
+                top: 50%;
+                left: 50%;
+                margin: -2px 0px 0px -4px;
+                background: $white;
+                display: block;
+                transform: rotate(-45deg);
+                transition: all 0.2s ease;
+                border-radius: 2px;
+                &:after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 4px;
+                    height: 12px;
+                    margin-top: -8px;
+                    background: $white;
+                    transition: all 0.2s ease;
+                    border-radius: 2px;
+                }
+            }
+            label {
+                cursor: pointer;
+                color: rgba(0,0,0,0.2);
+                width: 50%;
+                line-height: 50px;
+                transition: all 0.2s ease;
+                // border: 1px solid red;
+                font-size: 16px;
+                
+            }
+        }
+
+        input[type=radio] {
+            display: none;
+        }
+        label[for=work] {
+            position: absolute;
+            left: 0px;
+            // height: 20px;
+        }
+        label[for=rest] {
+            position: absolute;
+            right: 0px;
+        }
+        #rest {
+            &:checked {
+                ~ {
+                    .switch {
+                        background: $success;
+                        label[for=rest] {
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+        #work {
+            &:checked {
+                ~ {
+                    .switch {
+                        label[for=work] {
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+        .maskCount{
+            width: 170px;
+            height: 70px;
+            // border: 1px solid red;
+            position: absolute;
+            right: 5%;
+            top: 60px;
+            display: flex;
+            flex-direction: column;
+            span{
+                @include font(5)
+            }
+            .maskTitle{
+                // border: 1px solid blue;
+                width: 100%;
+            }
+            .maskTotal{
+                // border: 1px solid blue;
+                width: 50%;
+                margin: 0 auto;
+            }
+        }
+        .bell{
+            width: 370px;
+            height: 370px;
+            // border: 2px solid blue;
+            border-radius: 50%;
+            margin-top: 10%;
+            position: relative;
+            background-color: $secondary;
+            display: flex;
+            justify-content: center;
+            p{
+                color:$white ;
+                display: inline-block;
+                // // border: 1px solid red;
+                // // position: absolute;
+                // margin-top: 50%;
+                // transform: translateY(-30%);
+                @include font(10);
+                @include positionCenter;
+            }
+        }
+        .control{
+            margin-top: 50px;
+            width: 60%;
+            height: 80px;
+            // border: 2px solid yellow;
+            display: flex;
+            justify-content: space-around;
+            .side{
+                width: 55px;
+                height: 55px;
+                i{
+                    font-size: 25px;
+                }
+                &:hover i{
+                    font-size: 30px;
+                }
+            }
+            >div{
+                width: 70px;
+                height: 70px;
+                // border: 1px solid red;
+                border-radius: 50%;
+                background-color: $programcolor1;
+                position: relative;
+                &:hover{
+                    i{
+                        font-size: 35px;
+                        cursor: pointer;
+                    }
+                }
+                input{
+                    cursor: pointer;
+                    z-index: 999;
+                    width: 60px;
+                    height: 60px;
+                    opacity: 0;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    &:checked~ .status1{
+                        display: none;
+                    }
+                    &:checked~ .status2{
+                        display: block;
+                    }
+                }
+                i{
+                    font-size: 30px;
+                    color: white;
+                    @include positionCenter
+                }
+                .status2{
+                    display: none;
+                }
+            }
+        }
+    }
+    .todoList{
+        display: flex;
+        width: 50%;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+        // height: 100vh;
+        // border: 2px solid $gray;
+        ul{
+            list-style: none;
+            margin: 0 auto;
+            // border: 1px solid red;
+            li{
+                // border: 1px solid green;
+                width: 95%;
+                height: 50px;
+                position: relative;
+                margin: 20px auto;
+                // border-bottom: 1px solid $dark;
+                // border: 1px solid $dark;
+                border-radius: 5px;
+                padding: 5px;
+                padding-left: 15px;
+	            box-shadow: 1px 1px 3px $shadow;
+                // background-color: #00E6E6;
+                .delete{
+                    position: absolute;
+                    right: 20px;
+                    bottom: 12px;
+                    // border: 1px solid red;
+                    font-weight: 700;
+                    color: $dark;
+                    @include font(5);
+                    cursor: pointer;
+                }
+                label{
+                    cursor: pointer;
+                    display: inline-block;
+                    margin-left: 20px;
+                    transform: translateY(0%);
+                    @include font(3);
+                    color: $dark;
+                    // border: 1px solid blue;
+                }
+                input{
+                    cursor: pointer;
+                    z-index: 999;
+                    width: 25px;
+                    height: 25px;
+                    transform: translateY(70%);
+                    opacity: 0;
+                    &:checked ~label{
+                        text-decoration: line-through;
+                    }
+                    &:checked +.check{
+                        color: $success;
+                    }
+                }
+                .check{
+                    color: rgba(#000000, 0.2);
+                    z-index: -1;
+                    @include font(5);
+                    position: absolute;
+                    left: 15px;
+                    bottom: 15px;
+                    // border: 1px solid red;
+                    // vertical-align: middle;
+                }
+            }
+        }
+        .fromTrello{
+            width: 50%;
+            height: 100%;
+            // border: 2px solid blue;
+            padding:0 20px;
+            .todoHead{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 80px;
+                border-top: 2px solid $success;
+                border-radius: 5px;
+                box-shadow: 1px 1px 3px $shadow;
+                margin-top: 20px;
+                h2{
+                    margin: 0 auto;
+                    display: inline-block;
+                    font-size: font(6);
+                    color: $dark;
+                    text-align: center;
+                    // border: 1px solid red;
+                }
+            }
+        }
+        .custom{
+            width: 50%;
+            height: 100%;
+            // border: 2px solid blue;
+            padding:0 20px;
+            position: relative;
+            .todoHead{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 80px;
+                // border-bottom: 1px solid $dark;
+                border-top: 2px solid $secondary;
+                border-radius: 5px;
+                box-shadow: 3px 3px 3px 1px $shadow;
+                margin-top: 20px;
+                h2{
+                    margin: 0 auto;
+                    display: inline-block;
+                    font-size: font(6);
+                    color: $dark;
+                    text-align: center;
+                    // border: 1px solid red;
+                }
+            }
+            .addMask{
+                width: 95%;
+                height: 80px;
+                position: relative;
+                margin: 20px auto;
+                // border-bottom: 1px solid $dark;
+                // border: 1px solid $dark;
+                border-radius: 5px;
+                padding: 5px;
+                padding-left: 15px;
+                box-shadow: 3px 3px $shadow;
+                padding: 5px 0;
+                input{
+                    width: 70%;
+                    height: 90%;
+                    vertical-align: middle;
+                    border: none;
+                    margin-left: 20px;
+                    @include font(5);
+                    outline: 0;
+                }
+                .cross{
+                    position: absolute;
+                    right: 20px;
+                    bottom: 15px;
+                    // border: 1px solid red;
+                    font-weight: 700;
+                    color: $dark;
+                    @include font(10);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
