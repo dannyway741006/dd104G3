@@ -66,32 +66,6 @@
 
       <!-- 專案側邊攔 -->
       <div id="program_aside">
-<<<<<<< HEAD
-        <button class="program_add_btn" id="program_add_btn" @click.stop='open = !open'>
-          <div class="program_add_img"><img src="./img/icon/plus_w.83529fa0.svg" alt=""><img
-              src="./img/icon/plus_on.d2fc8c08.svg" alt=""></div>
-          <span>新增專案</span>
-        </button>
-
-        <div class="new_program_choose_box" id="new_program_choose_box" :class='{new_program_choose_box_active: open}'
-          @click.stop="">
-          <label>
-            <p>專案名稱<span>Project</span></p>
-            <input type="text" class="" v-model.trim="program_name">
-          </label>
-          <div>
-            <p>專案專屬色<span>Color</span></p>
-            <div class="new_program_choose_color">
-              <span 
-                class="new_program_choose_color_item" 
-                v-for='color in colors' 
-                @click.stop='new_program_choose_color_item' 
-                :class='{new_program_choose_color_item_checked}'
-                :style='{backgroundColor: color}'
-              ></span>
-              <div>
-                <button @click="add_program(program_name)" id="add_program_inner_btn">建立專案</button>
-=======
         <div class="program_now_having_all" :class='{program_now_having_all_active:program_text_btn}'>
 
           <button class="program_add_btn" id="program_add_btn" @click.stop='open = !open'>
@@ -109,13 +83,16 @@
             <div>
               <p>專案專屬色<span>Color</span></p>
               <div class="new_program_choose_color">
-                <span class="new_program_choose_color_item" v-for='color in colors' @click.stop='selectColor = color'
-                  :class='{new_program_choose_color_item_checked: selectColor === color}'
-                  :style='{backgroundColor: color}'></span>
+                <span 
+                class="new_program_choose_color_item" 
+                v-for='color in colors' 
+                @click.stop='new_program_choose_color_item' 
+                :class='{new_program_choose_color_item_checked}'
+                :style='{backgroundColor: color}'
+              ></span>
                 <div>
                   <button @click="add_program(program_name)" id="add_program_inner_btn">建立專案</button>
                 </div>
->>>>>>> dev
               </div>
             </div>
           </div>
@@ -211,28 +188,6 @@
           </div>
         </div>
 
-<<<<<<< HEAD
-      <div class="program_calendar_all set-cal-chat_same_all">
-        <button class="calendar_btn set-cal-chat_same_button" @click.stop='calendar_btn = !calendar_btn'><img
-            src="./img/icon/calendar_white.svg" alt=""><img src="./img/icon/calendar_primary.svg" alt="">
-        </button>
-        <div class="program_calendar_box program_right_column_item"
-          :class='{program_calendar_box_active: calendar_btn}'>
-          <div class="program_calendar_box_close_box" @click='calendar_btn = !calendar_btn'><span class="program_calendar_box_close"></span></div>
-          <div class="calendar">
-            <div class="calendar_header">
-              <button id="prev">
-                <i class="material-icons">
-                  keyboard_arrow_left
-                </i>
-              </button>
-              <p id='month'>May 2019</p>
-              <button id="next">
-                <i class="material-icons">
-                  keyboard_arrow_right
-                </i>
-              </button>
-=======
         <div class="program_calendar_all set-cal-chat_same_all">
           <button class="calendar_btn set-cal-chat_same_button" @click.stop='calendar_btn = !calendar_btn'><img
               src="./img/icon/calendar_white.svg" alt=""><img src="./img/icon/calendar_primary.svg" alt="">
@@ -266,25 +221,10 @@
                   <td>Sa</td>
                 </tr>
               </table>
->>>>>>> dev
             </div>
           </div>
         </div>
 
-<<<<<<< HEAD
-      <div class="program_chatroom_all set-cal-chat_same_all">
-        <button class="chatroom_btn set-cal-chat_same_button" @click.stop='chatroom_btn = !chatroom_btn'><img
-            src="./img/program_img/chat_white.svg" alt=""><img src="./img/program_img/chat_primary.svg" alt="">
-        </button>
-        <div class="program_chatroom_box program_right_column_item"
-          :class='{program_chatroom_box_active: chatroom_btn}'>
-          <div class="program_chatroom_box_close_box" @click='chatroom_btn = !chatroom_btn'><span class="program_chatroom_box_close"></span></div>
-          <div class="program_chatroom_window">
-            <div class="program_chatroom_oneperson">
-              <p class="program_chatroom_otherside_name"><img src="./img/program_img/program_member_1.png" alt=""> 澤田:
-              </p>
-              <div class="program_chatroom_otherside_dialog">大夥們，加油啦!</div>
-=======
         <div class="program_chatroom_all set-cal-chat_same_all">
           <button class="chatroom_btn set-cal-chat_same_button" @click.stop='chatroom_btn = !chatroom_btn'><img
               src="./img/program_img/chat_white.svg" alt=""><img src="./img/program_img/chat_primary.svg" alt="">
@@ -299,7 +239,6 @@
                 </p>
                 <div class="program_chatroom_otherside_dialog">大夥們，加油啦!</div>
               </div>
->>>>>>> dev
             </div>
 
             <div class="program_chatroom_operating_area">
