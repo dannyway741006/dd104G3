@@ -24,19 +24,36 @@ function showImg(thisimg) {
 }
 // ======================member_all_order=================
 
+let delet_btn = document.getElementById("delet_btn");
+let mem_mask = document.getElementById("mem_mask");
+let liclose = document.getElementById("liclose");
+let memlibox = document.getElementById("memlibox");
+let imgClose = document.getElementById("light_box_title");
+let memberbtn = document.getElementById("memberbtn");
+delet_btn.addEventListener('click', function () {
+  mem_mask.classList.add('active_for_mask');
+  memlibox.classList.add('active_for_memlibox');
+  memlibox.classList.remove('closeani');
+});
 
-// let delet_btn = document.getElementById("delet_btn");
-// let mask = document.getElementById("mask");
-// let close = document.getElementById("close");
+memberbtn.addEventListener("click",function(){
+  mem_mask.classList.add('active_for_mask');
+  memlibox.classList.add('active_for_memlibox');
+  memlibox.classList.remove('closeani');
+});
 
-// delet_btn.addEventListener('click', function () {
-//   mask.classList.add('active');
-//   // close.classList.toggle('close');
-// });
-// close.addEventListener('click', function () {
-//   mask.classList.remove('active');
-// });
-// mask.addEventListener('click', function () {
-//   mask.classList.remove('active');
-// });
+liclose.addEventListener('click', function () {
+  mem_mask.classList.remove('active_for_mask');
+  memlibox.classList.add('closeani');
+});
+
+mem_mask.addEventListener('click', function () {
+  mem_mask.classList.remove('active_for_mask');
+  memlibox.classList.add('closeani');
+});
+
+imgClose.addEventListener('click',function(){
+  mem_mask.classList.remove('active_for_mask');
+  memlibox.classList.add('closeani');
+});
 
