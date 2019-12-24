@@ -13,32 +13,6 @@
   margin: 15px;
 }
 
-@-webkit-keyframes boxbig {
-  form {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  to {
-    -webkit-transform: scale(1.12);
-            transform: scale(1.12);
-    height: 40px;
-    top: -4.65px;
-  }
-}
-
-@keyframes boxbig {
-  form {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  to {
-    -webkit-transform: scale(1.12);
-            transform: scale(1.12);
-    height: 40px;
-    top: -4.65px;
-  }
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -798,7 +772,7 @@ body {
 }
 
 #program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item {
-  background-color: #5395DE;
+  background-color: #5395de;
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -808,7 +782,7 @@ body {
 }
 
 #program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item:first-child {
-  background-color: #5395DE;
+  background-color: #5395de;
 }
 
 #program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item:nth-child(2) {
@@ -1055,7 +1029,7 @@ body {
 }
 
 #program_main .set-cal-chat_all_bar .setting_all .setting_content_box .program_setting_choose_color .program_setting_choose_color_item {
-  background-color: #5395DE;
+  background-color: #5395de;
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -1065,7 +1039,7 @@ body {
 }
 
 #program_main .set-cal-chat_all_bar .setting_all .setting_content_box .program_setting_choose_color .program_setting_choose_color_item:first-child {
-  background-color: #5395DE;
+  background-color: #5395de;
 }
 
 #program_main .set-cal-chat_all_bar .setting_all .setting_content_box .program_setting_choose_color .program_setting_choose_color_item:nth-child(2) {
@@ -1148,8 +1122,13 @@ body {
   z-index: 2;
 }
 
-#program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.program_calendar_box_active {
-  display: none;
+@media screen and (max-width: 1599px) {
+  #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box {
+    display: none;
+  }
+  #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.active {
+    display: block;
+  }
 }
 
 #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box .program_calendar_box_close_box {
@@ -1216,8 +1195,8 @@ body {
   text-align: center;
   vertical-align: top;
   color: #999999;
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   cursor: pointer;
   letter-spacing: 2.8px;
   font-size: 14px;
@@ -1244,8 +1223,13 @@ body {
   z-index: 2;
 }
 
-#program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.program_chatroom_box_active {
-  display: none;
+@media screen and (max-width: 1599px) {
+  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box {
+    display: none;
+  }
+  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.active {
+    display: block;
+  }
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_window {
@@ -2200,10 +2184,10 @@ body {
 
 .memberitem .personal_photo {
   width: 100%;
-  height: 180px;
+  height: 110;
 }
 
-.memberitem .personal_photo .picrange {
+.memberitem .personal_photo 5.picrange {
   width: 100%;
   height: 120px;
   display: -webkit-box;
@@ -2217,7 +2201,7 @@ body {
           justify-content: center;
 }
 
-.memberitem .personal_photo .picrange .range {
+.memberitem .personal_photo 5.picrange .range {
   width: 80px;
   height: 80px;
   border: 1px solid #d1d1d1;
@@ -2226,7 +2210,7 @@ body {
   position: relative;
 }
 
-.memberitem .personal_photo .picrange .range #acceptImg {
+.memberitem .personal_photo 5.picrange .range #acceptImg {
   width: 100%;
   height: 100%;
   -o-object-position: center;
@@ -2358,106 +2342,76 @@ body {
 }
 
 .memberContent #memcon1 .con1_info .memberbtn {
-  width: 150px;
-  height: 30px;
-  border-radius: 50px;
-  letter-spacing: 3.2px;
-  font-size: 16px;
-  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
   cursor: pointer;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  color: #666666;
-  margin-top: 70px;
-  background-color: #8acede;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   color: #ffffff;
-  border-color: #ffffff;
-  outline: none;
-  cursor: pointer;
+  width: auto;
+  height: auto;
+  min-height: 40px;
+  background-color: #8acede;
+  border-radius: 30px;
   position: relative;
-  -webkit-animation: boxbig 1s;
-          animation: boxbig 1s;
-  transition: all 0.5s;
-  -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  padding: 5px 10px;
+  z-index: 1;
 }
 
-.memberContent #memcon1 .con1_info .memberbtn::after {
+.memberContent #memcon1 .con1_info .memberbtn::before, .memberContent #memcon1 .con1_info .memberbtn::after {
   content: "";
   position: absolute;
-  width: 150px;
-  height: 30px;
-  left: 0.5px;
-  top: 1px;
-  border-radius: 100px;
-  background-color: rgba(138, 206, 222, 0.5);
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #8acede;
+  border-radius: 30px;
   z-index: -1;
-  -webkit-animation: boxbig 1s;
-          animation: boxbig 1s;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
 }
 
-.memberContent #memcon1 .con1_info .memberbtn::before {
-  content: "";
-  position: absolute;
-  width: 150px;
-  height: 30px;
-  left: 0.5px;
-  top: 0.9px;
-  border-radius: 100px;
-  background-color: rgba(138, 206, 222, 0.5);
-  z-index: -1;
-  -webkit-animation: boxbig 1s;
-          animation: boxbig 1s;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
-}
-
-.memberContent #memcon1 .con1_info .memberbtn:hover {
-  background-color: #f3cad3;
-  color: #666666;
+.memberContent #memcon1 .con1_info .memberbtn:hover::before, .memberContent #memcon1 .con1_info .memberbtn:hover::after {
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
 }
 
 .memberContent #memcon1 .con1_info .memberbtn:hover::after {
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  background-color: rgba(245, 214, 220, 0.5);
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
 }
 
-.memberContent #memcon1 .con1_info .memberbtn:hover::before {
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  background-color: rgba(245, 224, 224, 0.5);
-}
-
-@keyframes boxbig {
-  form {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+@-webkit-keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
   }
-  to {
-    -webkit-transform: scale(1.12);
-            transform: scale(1.12);
-    height: 40px;
-    top: -4.65px;
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .memberContent #memcon1 .con1_info .memberbtn {
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 30px;
   }
 }
 
@@ -2647,8 +2601,8 @@ body {
           align-items: center;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .mask {
@@ -2726,4 +2680,3 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
-/*# sourceMappingURL=main.css.map */
