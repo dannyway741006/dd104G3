@@ -779,6 +779,20 @@ body {
   margin: 2.5px;
   display: inline-block;
   cursor: pointer;
+  position: relative;
+}
+
+#program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item.new_program_choose_color_item_checked::before {
+  content: "";
+  width: 85%;
+  height: 85%;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-image: url("../img/checked_w.626bbc68.svg");
 }
 
 #program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item:first-child {
