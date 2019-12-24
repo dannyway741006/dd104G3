@@ -382,7 +382,7 @@ body {
 /*------------------------- */
 .mall_bg {
   background-color: #EAEAEA;
-  padding-top: 2%;
+  padding: 2% 0;
 }
 
 #mall_search {
@@ -395,8 +395,8 @@ body {
 
 #mall_search .mall_search_bar {
   position: relative;
-  border: 2px solid #8ACEDE;
-  padding: 12px;
+  border: 2px solid #8acede;
+  padding: 10px;
   opacity: 0.5;
   border-radius: 10px 0px 0px 10px;
   width: 75%;
@@ -406,7 +406,7 @@ body {
 
 #mall_search .mall_search-btn {
   position: absolute;
-  background: #8ACEDE;
+  background: #8acede;
   border-radius: 0px 10px 10px 0px;
   width: 50px;
   padding: 12px;
@@ -416,7 +416,7 @@ body {
 }
 
 #slider {
-  width: 92%;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -425,20 +425,20 @@ body {
 }
 
 .mall_content {
-  width: 90%;
-  margin: 0 auto;
+  width: 95%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 0 auto 2%;
 }
 
 .mall_content .mall_box {
   width: 18%;
   background-color: rgba(255, 255, 255, 0.568);
   margin: 1.5% 1%;
-  border-radius: 2%;
+  border-radius: 10px;
   background-position: center;
   -webkit-transition: all .5s;
   transition: all .5s;
@@ -481,6 +481,11 @@ body {
   visibility: hidden;
 }
 
+.mall_content .mall_box:hover p {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
 .mall_content .mall_box:hover .product_price {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
@@ -507,16 +512,17 @@ body {
 
 @media screen and (max-width: 767px) {
   .mall_content {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
     margin: 0 auto;
+    width: 90%;
   }
   .mall_content .mall_box {
     width: 48%;
   }
   #slider {
-    margin: 2% 0 0;
+    margin-top: 2%;
   }
   #slider .owl-item img {
     height: 180px;
@@ -530,20 +536,21 @@ body {
   width: 90%;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.568);
-  border-radius: 2%;
+  border-radius: 10px;
+  border: 1px solid #dfdfdcdd;
 }
 
 .mall_poduct_cart .mall_poduct_content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 2%;
   width: 90%;
   margin: 0 auto;
 }
 
 .product_img {
-  width: 30%;
+  width: 40%;
+  padding: 1% 0 4%;
 }
 
 .product_img img {
@@ -567,14 +574,14 @@ body {
 }
 
 .product_text {
-  width: 70%;
-  padding: 2% 5%;
+  width: 60%;
+  padding: 5% 5%;
 }
 
 .product_text .line {
   height: 1px;
   background-color: rgba(158, 158, 158, 0.609);
-  margin: 2% 0;
+  margin: 5% 0;
 }
 
 .product_text p {
@@ -586,12 +593,12 @@ body {
 
 .product_text ul.product_features {
   width: 100%;
-  margin: 2% 10%;
+  margin: 10% 5%;
 }
 
 .product_text ul.product_select {
   width: 100%;
-  margin: 2% 5%;
+  margin: 2% 0;
   list-style: none;
 }
 
@@ -606,26 +613,17 @@ body {
 
 .product_text ul.product_select ul.select_btn b {
   margin-right: 2%;
+  font-weight: lighter;
 }
 
 .product_text ul.product_select ul.select_btn > li {
-  margin: 0 0.1% 0 2%;
-}
-
-.product_text ul.product_select ul.select_btn > li > input {
-  padding: 15%;
-  border: 1px solid #b1b1b1;
-  cursor: pointer;
-  min-width: 45px;
-}
-
-.product_text ul.product_select ul.select_btn > li > input:hover {
-  background-color: #e7e7e7;
+  margin: 0;
 }
 
 .product_text ul.product_select ul.select_btn > li > select {
-  padding: 14%;
-  border: 1px solid #b1b1b1;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
   cursor: pointer;
   min-width: 45px;
   outline: none;
@@ -639,13 +637,70 @@ body {
   appearance: none;
 }
 
+/* 單選框 */
+.radio_style input[type="radio"] {
+  display: none;
+}
+
+.radio_style input[type="radio"] + label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.radio_style input[type="radio"]:checked + label {
+  background-color: #bbc2bf;
+  color: #fff;
+}
+
+.mall_bBtn {
+  background-color: #8acede;
+  width: 30%;
+  height: 43px;
+  color: #fff;
+  border-radius: 10px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  margin: 0 1%;
+}
+
+.product_content_img img {
+  width: 70%;
+  margin: 0 0 0 5%;
+}
+
+.mallTitle {
+  padding: 1% 2%;
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+  height: 2px;
+  margin: 1% 0 3%;
+}
+
 @media screen and (max-width: 767px) {
-  .mall_poduct_content {
+  .mall_poduct_cart {
+    width: 100%;
+  }
+  .mall_poduct_cart .mall_poduct_content {
     display: block;
   }
-  .mall_poduct_content .product_img {
+  .mall_poduct_cart .mall_poduct_content .product_img {
     width: 100%;
     margin: 0 auto;
+  }
+  .mall_poduct_cart .mall_poduct_content .product_text {
+    width: 100%;
+  }
+  .product_content_img img {
+    width: 100%;
+    padding: 5%;
+  }
+  .mallTitle {
+    margin: 1% 0 7%;
   }
 }
 
@@ -779,6 +834,20 @@ body {
   margin: 2.5px;
   display: inline-block;
   cursor: pointer;
+  position: relative;
+}
+
+#program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item.new_program_choose_color_item_checked::before {
+  content: "";
+  width: 85%;
+  height: 85%;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-image: url("../img/checked_w.626bbc68.svg");
 }
 
 #program_aside .new_program_choose_box .new_program_choose_color .new_program_choose_color_item:first-child {
@@ -1122,11 +1191,15 @@ body {
   z-index: 2;
 }
 
+#program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.program_calendar_box_active {
+  display: none;
+}
+
 @media screen and (max-width: 1599px) {
   #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box {
     display: none;
   }
-  #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.active {
+  #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box.program_calendar_box_active {
     display: block;
   }
 }
@@ -1223,11 +1296,15 @@ body {
   z-index: 2;
 }
 
+#program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.program_chatroom_box_active {
+  display: none;
+}
+
 @media screen and (max-width: 1599px) {
   #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box {
     display: none;
   }
-  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.active {
+  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.program_chatroom_box_active {
     display: block;
   }
 }
@@ -1276,13 +1353,16 @@ body {
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar {
-  border: 1px solid red;
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1);
+          box-shadow: rgba(0, 0, 0, 0.1);
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area .program_chatroom_iconbar .program_chatroom_icon {
   width: 35px;
-  padding: 2.5px;
-  border: 1px solid blue;
+  padding: 5px;
   display: inline-block;
 }
 
@@ -1296,6 +1376,7 @@ body {
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_operating_area textarea {
+  outline: none;
   resize: none;
   width: 100%;
   height: 50px;
@@ -1498,9 +1579,16 @@ body {
     display: block;
   }
   #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box {
-    top: 170px;
+    top: 60px;
     right: 0;
     width: 100%;
+  }
+  #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box {
+    width: 90%;
+    right: 5%;
+    top: auto;
+    bottom: 2%;
+    background-color: rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -2952,5 +3040,512 @@ body {
 
 .cart_bg.show #cart_page #cart_main div:last-child img {
   width: 20px;
+}
+
+.potato_slide {
+  padding-top: 50px;
+  padding-left: 10px;
+}
+
+.radio {
+  margin: 16px 0;
+  display: block;
+  cursor: pointer;
+}
+
+.radio input {
+  display: none;
+}
+
+.radio input + span {
+  line-height: 22px;
+  height: 22px;
+  padding-left: 22px;
+  display: block;
+  position: relative;
+}
+
+.radio input + span:not(:empty) {
+  padding-left: 30px;
+}
+
+.radio input + span:before, .radio input + span:after {
+  content: '';
+  width: 22px;
+  height: 22px;
+  display: block;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+
+.radio input + span:before {
+  background: #D1D7E3;
+  -webkit-transition: background 0.2s ease, -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
+  transition: background 0.2s ease, -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
+  transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
+  transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2), -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
+}
+
+.radio input + span:after {
+  background: #fff;
+  -webkit-transform: scale(0.78);
+          transform: scale(0.78);
+  -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+  transition: -webkit-transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4), -webkit-transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+}
+
+.radio input:checked + span:before {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  background: #5D9BFB;
+}
+
+.radio input:checked + span:after {
+  -webkit-transform: scale(0.4);
+          transform: scale(0.4);
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+}
+
+.radio:hover input + span:before {
+  -webkit-transform: scale(0.92);
+          transform: scale(0.92);
+}
+
+.radio:hover input + span:after {
+  -webkit-transform: scale(0.74);
+          transform: scale(0.74);
+}
+
+.radio:hover input:checked + span:after {
+  -webkit-transform: scale(0.4);
+          transform: scale(0.4);
+}
+
+.main_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 90vh;
+  padding-top: 50px;
+}
+
+.main_content .timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+  position: relative;
+}
+
+.main_content .timer .switch {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  margin: -30px 0 0 -75px;
+  background: #8acede;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border-radius: 25px;
+}
+
+.main_content .timer .switch span {
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  top: 50%;
+  left: 50%;
+  margin: -2px 0px 0px -4px;
+  background: #ffffff;
+  display: block;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+}
+
+.main_content .timer .switch span:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 4px;
+  height: 12px;
+  margin-top: -8px;
+  background: #ffffff;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+}
+
+.main_content .timer .switch label {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.2);
+  width: 50%;
+  line-height: 50px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.main_content .timer input[type=radio] {
+  display: none;
+}
+
+.main_content .timer label[for=work] {
+  position: absolute;
+  left: 0px;
+}
+
+.main_content .timer label[for=rest] {
+  position: absolute;
+  right: 0px;
+}
+
+.main_content .timer #rest:checked ~ .switch {
+  background: #86c166;
+}
+
+.main_content .timer #rest:checked ~ .switch label[for=rest] {
+  color: #ffffff;
+}
+
+.main_content .timer #work:checked ~ .switch label[for=work] {
+  color: #ffffff;
+}
+
+.main_content .timer .maskCount {
+  width: 170px;
+  height: 70px;
+  position: absolute;
+  right: 5%;
+  top: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main_content .timer .maskCount span {
+  letter-spacing: 4px;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.main_content .timer .maskCount .maskTitle {
+  width: 100%;
+}
+
+.main_content .timer .maskCount .maskTotal {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.main_content .timer .bell {
+  width: 370px;
+  height: 370px;
+  border-radius: 50%;
+  margin-top: 25%;
+  position: relative;
+  background-color: #a6c1ee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main_content .timer .bell p {
+  color: #ffffff;
+  display: inline-block;
+  letter-spacing: 6.8px;
+  font-size: 34px;
+  line-height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main_content .timer .control {
+  margin-top: 100px;
+  width: 60%;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.main_content .timer .control .side {
+  width: 55px;
+  height: 55px;
+}
+
+.main_content .timer .control .side i {
+  font-size: 25px;
+}
+
+.main_content .timer .control .side:hover i {
+  font-size: 30px;
+}
+
+.main_content .timer .control > div {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #5395de;
+  position: relative;
+}
+
+.main_content .timer .control > div:hover i {
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.main_content .timer .control > div input {
+  cursor: pointer;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main_content .timer .control > div input:checked ~ .status1 {
+  display: none;
+}
+
+.main_content .timer .control > div input:checked ~ .status2 {
+  display: block;
+}
+
+.main_content .timer .control > div i {
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.main_content .timer .control > div .status2 {
+  display: none;
+}
+
+.main_content .todoList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+.main_content .todoList ul {
+  list-style: none;
+  margin: 0 auto;
+}
+
+.main_content .todoList ul li {
+  width: 95%;
+  height: 50px;
+  position: relative;
+  margin: 20px auto;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 15px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.main_content .todoList ul li img {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 15px;
+  bottom: 10px;
+  z-index: -1;
+}
+
+.main_content .todoList ul li .imgUnchecked {
+  display: block;
+  opacity: .7;
+}
+
+.main_content .todoList ul li .imgChecked {
+  display: none;
+}
+
+.main_content .todoList ul li .delete {
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
+  font-weight: 600;
+  color: #666666;
+  letter-spacing: 4.8px;
+  font-size: 24px;
+  line-height: 30px;
+  cursor: pointer;
+  opacity: .7;
+}
+
+.main_content .todoList ul li .delete:hover {
+  opacity: 1;
+}
+
+.main_content .todoList ul li label {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto;
+  margin-left: 5px;
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+  color: #666666;
+}
+
+.main_content .todoList ul li input {
+  cursor: pointer;
+  z-index: 9;
+  width: 30px;
+  height: 30px;
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+  opacity: 0;
+}
+
+.main_content .todoList ul li input:hover ~ .imgUnchecked {
+  opacity: 1;
+}
+
+.main_content .todoList ul li input:checked ~ .imgUnchecked {
+  display: none;
+}
+
+.main_content .todoList ul li input:checked + .imgChecked {
+  display: block;
+}
+
+.main_content .todoList ul li .check {
+  color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+  letter-spacing: 4.8px;
+  font-size: 24px;
+  line-height: 30px;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
+
+.main_content .todoList .fromTrello {
+  width: 50%;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.main_content .todoList .custom {
+  width: 50%;
+  height: 100%;
+  padding: 0 20px;
+  position: relative;
+}
+
+.main_content .todoList .custom .todoHead {
+  border-top: 2px solid #86c166;
+}
+
+.main_content .todoList .custom .addMask {
+  width: 95%;
+  height: 50px;
+  position: relative;
+  margin: 20px auto;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 15px;
+  -webkit-box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+  padding: 5px 0;
+}
+
+.main_content .todoList .custom .addMask input {
+  width: 70%;
+  height: 90%;
+  vertical-align: middle;
+  border: none;
+  margin-left: 20px;
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+  outline: 0;
+}
+
+.main_content .todoList .custom .addMask .cross {
+  position: absolute;
+  right: 20px;
+  bottom: 3px;
+  font-weight: 700;
+  color: #666666;
+  letter-spacing: 6.8px;
+  font-size: 34px;
+  line-height: 50px;
+  cursor: pointer;
+  opacity: .7;
+}
+
+.main_content .todoList .custom .addMask .cross:hover {
+  opacity: 1;
+}
+
+.main_content .todoList .todoHead {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 60px;
+  border-top: 2px solid #a6c1ee;
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.main_content .todoList .todoHead h2 {
+  margin: 0 auto;
+  display: inline-block;
+  font-size: 20px;
+  color: #666666;
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */
