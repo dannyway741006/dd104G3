@@ -202,7 +202,8 @@
 #program_main {
 
   font-size: 0;
-  background-image: url(../img/program_img/office.jpg);
+  background-image: url('../img/program_img/program_bg_dark.jpg');
+
   background-repeat: no-repeat;
   background-size: cover;
   height: calc(100vh - 60px);
@@ -300,301 +301,340 @@
     //邀請成員區--結束
   }
 
-
-  //設定日曆聊天按鈕統一
-  .set-cal-chat_same_all {
-
+  .set-cal-chat_all_bar {
     display: inline-block;
-    vertical-align: middle;
-    margin: 0 5px;
+
+    //設定日曆聊天按鈕統一
+    .set-cal-chat_same_all {
+
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 5px;
 
 
-    .set-cal-chat_same_button {
-      @include btnReset;
-      @include hoverIcon(40px);
-      // border: 1px solid blue;
-      background-color: $primary;
-      border-radius: 50%;
-      transition: all 0.3s;
-
-      &:hover {
-        background-color: $white;
-      }
-
-      img {
-        width: 65%;
-        @include positionCenter;
-      }
-    }
-  }
-
-  //設定鈕all
-  .setting_all {
-    position: relative;
-    margin-left: 20px;
-
-
-    //設定鈕燈箱
-    .setting_content_box {
-      width: 208px;
-      background-color: white;
-      border-radius: 20px;
-      padding: 15px;
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
-      @include font(1, 20px);
-      position: absolute;
-      top: 50px;
-      z-index: 1;
-
-      display: none;
-
-      &.setting_content_box_active {
-        display: block;
-      }
-
-      p {
-        span {
-          letter-spacing: 2.8px;
-          @include font(0, 20px);
-        }
-      }
-
-      //設定區選顏色
-      .program_setting_choose_color {
-        .program_setting_choose_color_item {
-          background-color: #5395DE;
-          width: 25px;
-          height: 25px;
-          border-radius: 50%;
-          margin: 2.5px;
-          display: inline-block;
-          cursor: pointer;
-
-          &:first-child {
-            background-color: #5395DE;
-          }
-
-          &:nth-child(2) {
-            background-color: #8acede;
-          }
-
-          &:nth-child(3) {
-            background-color: #eb7a77;
-          }
-        }
-
-        //設定區選顏色  
-      }
-
-      hr {
-        // margin: 5px ;
-        height: 1px;
-        border: none;
-        background-color: $gray;
-
-      }
-
-      .setting_program_status {
-        // border: 1px solid  red;
-        text-align: center;
-        padding: 10px;
-        cursor: pointer;
-
-        &.setting_program_status_delete {
-          color: $danger;
-        }
+      .set-cal-chat_same_button {
+        @include btnReset;
+        @include hoverIcon(40px);
+        // border: 1px solid blue;
+        background-color: $primary;
+        border-radius: 50%;
+        transition: all 0.3s;
 
         &:hover {
-          background-color: rgba(0, 0, 0, .1);
-          color: $primary;
+          background-color: $white;
+        }
+
+        img {
+          width: 65%;
+          @include positionCenter;
         }
       }
-
     }
 
-  }
-
-  //行事曆
-  .program_calendar_all {
-    &>button {
-      @include btnReset;
-      @include hoverIcon(30px);
+    //設定鈕all
+    .setting_all {
       position: relative;
-      border: 1px solid red;
-    }
+      margin-left: 20px;
 
 
+      //設定鈕燈箱
+      .setting_content_box {
+        width: 208px;
+        background-color: white;
+        border-radius: 20px;
+        padding: 15px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+        @include font(1, 20px);
+        position: absolute;
+        top: 50px;
+        z-index: 1;
 
-    .program_calendar_box {
-      position: absolute;
-      border: 1px solid rgba(0, 0, 0, .1);
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
-
-      top: 75px;
-      right: 30px;
-      width: 350px;
-
-      &.program_calendar_box_active {
         display: none;
-        // width: 0;
-        // height: 0;
-        // overflow: hidden;
-      }
 
-      .calendar_header {
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-        color: #666666;
-        @include font(1);
-        vertical-align: middle;
-
-        button {
-          width: 50px;
-          // height: 50px;
-          border: none;
-          outline: none;
-          background-color: transparent;
-          cursor: pointer;
-          color: #666666;
-          vertical-align: middle;
-
-          &:hover {
-            color: #333333;
-          }
+        &.setting_content_box_active {
+          display: block;
         }
 
         p {
-          width: 30%;
-          text-align: center;
-          vertical-align: middle;
-          line-height: 35px;
+          span {
+            letter-spacing: 2.8px;
+            @include font(0, 20px);
+          }
         }
 
-        //calendar_header--結束
-      }
-
-      .calendar_body {
-        width: 100%;
-
-        tr {
-       
-          td {
-            width: 14.3%;
-
-            text-align: center;
-            vertical-align: top;
-            color: #999999;
-            transition: all .5s;
+        //設定區選顏色
+        .program_setting_choose_color {
+          .program_setting_choose_color_item {
+            background-color: #5395DE;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin: 2.5px;
+            display: inline-block;
             cursor: pointer;
-            @include font(0);
 
-            &:first-child,&:last-child{
-              color: $danger;
+            &:first-child {
+              background-color: #5395DE;
+            }
+
+            &:nth-child(2) {
+              background-color: #8acede;
+            }
+
+            &:nth-child(3) {
+              background-color: #eb7a77;
             }
           }
 
-         
+          //設定區選顏色  
+        }
+
+        hr {
+          // margin: 5px ;
+          height: 1px;
+          border: none;
+          background-color: $gray;
 
         }
 
+        .setting_program_status {
+          // border: 1px solid  red;
+          text-align: center;
+          padding: 10px;
+          cursor: pointer;
 
+          &.setting_program_status_delete {
+            color: $danger;
+          }
 
+          &:hover {
+            background-color: rgba(0, 0, 0, .1);
+            color: $primary;
+          }
+        }
 
+      }
 
-        //calendar_body--結束
+    }
+
+    //行事曆
+    .program_calendar_all {
+      &>button {
+        @include btnReset;
+        @include hoverIcon(30px);
+        position: relative;
+        border: 1px solid red;
       }
 
 
 
-      //行事曆box--結束
-    }
-
-    //行事曆--結束
-  }
-
-
-
-  //聊天室
-  .program_chatroom_all {
-
-    &>button {
-      position: relative;
-    }
-
-    .program_chatroom_box {
-      // border: 1px solid blue;
-      width: 256px;
-      // display: inline-block;
-      margin-top: 10px;
-      border-radius: 20px;
-      overflow: hidden;
-
-      background-color: rgba(0, 0, 0, .1);
-      position: absolute;
-      top: 350px;
-      right: 30px;
-
-      &.program_chatroom_box_active {
-        display: none;
-      }
-
-      .program_chatroom_window {
-        height: 40vh;
-        // border: 1px solid blue;
+      .program_calendar_box {
+        position: absolute;
+        border: 1px solid rgba(0, 0, 0, .1);
+        border-radius: 10px;
         padding: 15px;
+        text-align: center;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+        background-color: $white;
+        top: 75px;
+        right: 30px;
+        width: 350px;
+        z-index: 2;
 
-        .program_chatroom_oneperson {
-          img {
-            width: 30px;
-            vertical-align: middle;
-            border-radius: 50%;
+        &.program_calendar_box_active {
+          display: none;
+          // width: 0;
+          // height: 0;
+          // overflow: hidden;
+        }
+
+        .program_calendar_box_close_box {
+          // border: 1px solid blue;
+          border-radius: 0 8px 0 0;
+          padding: 10px;
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          cursor: pointer;
+
+          &:hover .program_calendar_box_close {
+            background-color: $primary;
           }
 
-          .program_chatroom_otherside_name {
-            @include font(0);
-          }
-
-          .program_chatroom_otherside_dialog {
-            @include font(0);
+          .program_calendar_box_close {
+            display: inline-block;
+            background-color: $gray;
+            width: 15px;
+            height: 2px;
           }
         }
 
-      }
-
-
-      .program_chatroom_operating_area {
-
-        .program_chatroom_iconbar {
-          border: 1px solid red;
-          height: 30px;
-          position: relative;
-
-          .program_chatroom_icon {
-            @include hoverIcon(30px);
-          }
-        }
-
-        textarea {
-          resize: none;
+        .calendar_header {
+          display: flex;
           width: 100%;
-          height: 50px;
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          border-radius: 0 0 20px 20px;
-          padding: 5px 10px;
+          justify-content: space-around;
+          color: #666666;
+          @include font(1);
+          vertical-align: middle;
+
+          button {
+            width: 50px;
+            // height: 50px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #666666;
+            vertical-align: middle;
+
+            &:hover {
+              color: #333333;
+            }
+          }
+
+          p {
+            width: 30%;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 35px;
+          }
+
+          //calendar_header--結束
         }
+
+        .calendar_body {
+          width: 100%;
+
+          tr {
+
+            td {
+              width: 14.3%;
+
+              text-align: center;
+              vertical-align: top;
+              color: #999999;
+              transition: all .5s;
+              cursor: pointer;
+              @include font(0);
+
+              &:first-child,
+              &:last-child {
+                color: $danger;
+              }
+            }
+
+
+
+          }
+
+
+
+
+
+          //calendar_body--結束
+        }
+
+
+
+        //行事曆box--結束
       }
 
-      //聊天室box--結束
+      //行事曆--結束
     }
 
-    //聊天室--結束
+    //聊天室
+    .program_chatroom_all {
+
+      &>button {
+        position: relative;
+      }
+
+      .program_chatroom_box {
+        // border: 1px solid blue;
+        width: 350px;
+        // display: inline-block;
+        margin-top: 10px;
+        border-radius: 20px;
+        overflow: hidden;
+
+        // background-color: rgba(0, 0, 0, .1);
+        background-color: rgba(255, 255, 255, 0.7);
+        position: absolute;
+        top: 350px;
+        right: 30px;
+        z-index: 2;
+
+        &.program_chatroom_box_active {
+          display: none;
+        }
+
+        .program_chatroom_window {
+          height: 35vh;
+          // border: 1px solid blue;
+          padding: 15px;
+
+          .program_chatroom_oneperson {
+            img {
+              width: 30px;
+              vertical-align: middle;
+              border-radius: 50%;
+            }
+
+            .program_chatroom_otherside_name {
+              @include font(0);
+            }
+
+            .program_chatroom_otherside_dialog {
+              @include font(0);
+            }
+          }
+
+        }
+
+
+        .program_chatroom_operating_area {
+
+          .program_chatroom_iconbar {
+            border: 1px solid red;
+            // height: 30px;
+
+
+            .program_chatroom_icon {
+              // @include hoverIcon(30px);
+              // position: relative;
+              width: 35px;
+              padding: 2.5px;
+              ;
+              border: 1px solid blue;
+              display: inline-block;
+
+              img {
+                cursor: pointer;
+
+                &:hover {
+                  filter: brightness(40%);
+                }
+              }
+            }
+          }
+
+          textarea {
+            resize: none;
+            width: 100%;
+            height: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 20px 20px;
+            padding: 5px 10px;
+          }
+        }
+
+        //聊天室box--結束
+      }
+
+      //聊天室--結束
+    }
+
   }
-
-
 
 
 
@@ -632,9 +672,10 @@
       }
 
       .cards_column_body {
-        border: 1px solid red;
+        // border: 1px solid red;
         height: calc(100% - 50px);
         overflow-y: scroll;
+        background-color: rgba(255, 255, 255, .5);
 
         .cards_list {
           padding: 0 5%;
@@ -746,10 +787,12 @@
         @include btnReset;
         position: relative;
         @include hoverIcon(30px);
-        border: 2px solid $dark;
+        border: 2px solid $white;
         border-radius: 50%;
         margin: 5px 0;
         transition: all 0.3s;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, .1);
+        ;
 
         img {
           width: 80%;
@@ -766,5 +809,13 @@
 
 
 
+
+}
+
+
+@include media(480px) {
+  .set-cal-chat_all_bar {
+    display: block;
+  }
 
 }

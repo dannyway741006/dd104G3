@@ -15,9 +15,13 @@ var main_content = new Vue({
 
     setting_btn: false,
 
-    calendar_btn:false,
+    calendar_btn: false,
 
-    chatroom_btn:false,
+    chatroom_btn: false,
+
+
+
+    screenWidth: document.documentElement.clientWidth, //屏幕宽度
 
   },
   methods: {
@@ -43,10 +47,26 @@ var main_content = new Vue({
         this.cards_list_card_input_box = false;
       } else {}
     },
-
-
-
+    resize_func() {
+      console.log('1')
+    }
   },
+  watch: {
+    'screenWidth': function (val) { //监听屏幕宽度变化
+      var oIframe = document.getElementById('content');
+      oIframe.style.width = (Number(val) - 120); //'120'是页面布局调整，可去除
+    
+      if (oIframe.style.width < 1600) {
+        console.log('2')
+      }
+
+
+    },
+   
+  },
+
+
+
   mounted() {
     document.addEventListener('click', () => {
       this.open = false;
@@ -54,9 +74,23 @@ var main_content = new Vue({
       this.invite_btn = false;
       this.setting_btn = false;
     });
+    var _this = this;
+    window.onresize = function () { // 定义窗口大小变更通知事件
+      _this.screenWidth = document.documentElement.clientWidth; //窗口宽度
+    };
   },
 });
 
+
+// $(document).ready(function(){
+//   $('#slideButton').click(function(){
+//     $('img').slideToggle(2000,'easeInOutElastic')
+//   })
+// });		jQ第14題
+
+
+
+//行事曆
 (function () {
   const date = new Date();
   const allMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
