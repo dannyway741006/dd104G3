@@ -21,7 +21,14 @@
         @include baseBtn();
     }
 }
-
+.potato_slide_list{
+    display: none;
+}
+@include media(1100px){
+    .potato_slide_list{
+        display: block;
+    }
+}
 .radio {
     margin: 16px 0;
     display: block;
@@ -297,10 +304,13 @@
     }
     .todoList{
         display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
         width: 50%;
         box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
         // height: 100vh;
-        border: 2px solid $gray;
+        // border: 2px solid red;
         ul{
             list-style: none;
             margin: 0 auto;
@@ -394,13 +404,13 @@
         .fromTrello{
             width: 50%;
             height: 100%;
-            border: 2px solid blue;
+            // border: 2px solid blue;
             padding:0 20px;
         }
         .custom{
             width: 50%;
             height: 100%;
-            border: 2px solid blue;
+            // border: 2px solid blue;
             position: relative;
             .todoHead{
                 border-top: 2px solid $success;
@@ -449,14 +459,6 @@
                 }
             }
         }
-        @include media(1100px){
-            .custom{
-                width: 100%;
-            }
-            .fromTrello{
-                display: none;
-            }
-        }
         .todoHead{
             display: flex;
             align-items: center;
@@ -476,5 +478,43 @@
                 // border: 1px solid red;
             }
         }
+    }
+    @include media(1100px){
+        .todoList{
+            display: block;
+            position: relative;
+            &.active{
+                #todoCon2{
+                transform: scaleX(1);
+                opacity: 1;
+                visibility: visible;
+                }
+                #todoCon1 {
+                    transform: scaleX(0);
+                    opacity: 0;
+                    visibility: hidden;
+                  }
+            }
+            #todoCon1,
+            #todoCon2 {
+              transition: all 0.3s;
+              position: absolute;
+            }
+            #todoCon1 {
+                transform-origin: right;
+              }
+            #todoCon2 {
+                transform: scaleX(0);
+                opacity: 0;
+                visibility: hidden;
+                transform-origin: left;
+              }  
+            .custom{
+                width: 100%;
+            }
+            .fromTrello{
+                width: 100%;
+            }
+        }    
     }
 }
