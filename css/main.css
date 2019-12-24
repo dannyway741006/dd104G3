@@ -968,7 +968,7 @@ body {
 #program_main .set-cal-chat_all_bar .set-cal-chat_same_all {
   display: inline-block;
   vertical-align: middle;
-  margin: 0 5px;
+  margin: 5px;
 }
 
 #program_main .set-cal-chat_all_bar .set-cal-chat_same_all .set-cal-chat_same_button {
@@ -1142,7 +1142,7 @@ body {
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
-  top: 75px;
+  top: 120px;
   right: 30px;
   width: 350px;
   z-index: 2;
@@ -1246,6 +1246,26 @@ body {
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box.program_chatroom_box_active {
   display: none;
+}
+
+#program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_box_close_box {
+  border-radius: 0 8px 0 0;
+  padding: 15px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+}
+
+#program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_box_close_box:hover .program_chatroom_box_close {
+  background-color: #8acede;
+}
+
+#program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_box_close_box .program_chatroom_box_close {
+  display: inline-block;
+  background-color: #999999;
+  width: 15px;
+  height: 2px;
 }
 
 #program_main .set-cal-chat_all_bar .program_chatroom_all .program_chatroom_box .program_chatroom_window {
@@ -1492,6 +1512,11 @@ body {
 @media screen and (max-width: 480px) {
   .set-cal-chat_all_bar {
     display: block;
+  }
+  #program_main .set-cal-chat_all_bar .program_calendar_all .program_calendar_box {
+    top: 170px;
+    right: 0;
+    width: 100%;
   }
 }
 
