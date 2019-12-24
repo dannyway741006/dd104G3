@@ -67,12 +67,13 @@
       <!-- 專案側邊攔 -->
       <div id="program_aside">
         <div class="program_now_having_all" :class='{program_now_having_all_active:program_text_btn}'>
-
-          <button class="program_add_btn" id="program_add_btn" @click.stop='open = !open'>
-            <div class="program_add_img"><img src="./img/icon/plus_w.83529fa0.svg" alt=""><img
-                src="./img/icon/plus_on.d2fc8c08.svg" alt=""></div>
-            <span>新增專案</span>
-          </button>
+          <div class="program_add_btn_box">
+            <button class="program_add_btn" id="program_add_btn" @click.stop='open = !open'>
+              <div class="program_add_img"><img src="./img/icon/plus_w.83529fa0.svg" alt=""><img
+                  src="./img/icon/plus_on.d2fc8c08.svg" alt=""></div>
+              <span>新增專案</span>
+            </button>
+          </div>
 
           <div class="new_program_choose_box" id="new_program_choose_box" :class='{new_program_choose_box_active: open}'
             @click.stop="">
@@ -95,12 +96,12 @@
 
           <ul class="slide_list">
             <li>
-              <p>list</p>
+              <p>專案01</p>
               <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
               <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
             </li>
             <li>
-              <p>list</p>
+              <p>專案02</p>
               <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
               <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
             </li>
@@ -133,7 +134,8 @@
               </li>
             </ul>
           </div>
-          <div class="program_now_having_text program_text_btn" @click.stop='program_text_btn = !program_text_btn,change_watched_text()'
+          <div class="program_now_having_text program_text_btn"
+            @click.stop='program_text_btn = !program_text_btn,change_watched_text()'
             :class='{program_now_having_text_active: program_text_btn}'>
             <p>查看現有專案</p>
           </div>
