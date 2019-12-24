@@ -1,118 +1,149 @@
 // 側邊攔
 #program_aside {
-  border: 1px solid blue;
 
-  .program_add_btn {
-    @include btnReset;
-    padding: 5px 10px;
+
+  .program_now_having_all {
+    border: 1px solid blue;
     transition: all 0.3s;
-    border-radius: 10px;
-    border: 2px solid $white;
-    color: $white;
-    background-color: $primary;
-    @include font(1);
 
-    &:hover {
-      background-color: $white;
-      color: $primary;
-      border: 2px solid $primary;
+    &.program_now_having_all_active {
+      height: 0;
+      overflow: hidden;
+    }
+
+    .program_add_btn {
+      @include btnReset;
+      padding: 5px 10px;
+      transition: all 0.3s;
+      border-radius: 10px;
+      border: 2px solid $white;
+      color: $white;
+      background-color: $primary;
+      @include font(1);
+
+      &:hover {
+        background-color: $white;
+        color: $primary;
+        border: 2px solid $primary;
+
+        .program_add_img {
+          border: 2px solid $primary;
+          cursor: pointer;
+
+          img {
+            &:nth-of-type(1) {
+              opacity: 0;
+            }
+
+            &:nth-of-type(2) {
+              opacity: 1;
+            }
+          }
+        }
+      }
 
       .program_add_img {
-        border: 2px solid $primary;
-        cursor: pointer;
+        width: 20px;
+        height: 20px;
+
+        display: inline-block;
+        vertical-align: middle;
+        border: 2px solid $white;
+        border-radius: 50%;
+        transition: border-color 0.3s;
+        position: relative;
 
         img {
-          &:nth-of-type(1) {
-            opacity: 0;
-          }
+          width: 80%;
+          // width: 20px;
+          // height: 20px;
+          @include positionCenter;
+          transition: opacity 0.3s;
 
           &:nth-of-type(2) {
-            opacity: 1;
+            opacity: 0;
           }
         }
       }
-    }
 
-    .program_add_img {
-      width: 20px;
-      height: 20px;
+      .program_add_list {
+        list-style: none;
 
-      display: inline-block;
-      vertical-align: middle;
-      border: 2px solid $white;
-      border-radius: 50%;
-      transition: border-color 0.3s;
-      position: relative;
-
-      img {
-        width: 80%;
-        // width: 20px;
-        // height: 20px;
-        @include positionCenter;
-        transition: opacity 0.3s;
-
-        &:nth-of-type(2) {
-          opacity: 0;
+        .todolist_li {
+          @include font(3, 30px);
         }
       }
     }
 
-    .program_add_list {
-      list-style: none;
-
-      .todolist_li {
-        @include font(3, 30px);
-      }
-    }
-  }
-
-  //新建專案取名&選色燈箱
-  .new_program_choose_box {
-    width: 300px;
-    background-color: white;
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    // letter-spacing: 3.2px;
-    @include font(1, 20px);
-    position: fixed;
-    top: 100px;
-    left: 20px;
-    z-index: 1;
-
-    display: none;
-
-    &.new_program_choose_box_active {
-      opacity: 1;
-      display: block;
-      z-index: 10000;
-    }
-
-    p {
-      span {
-        letter-spacing: 2.8px;
-        @include font(0, 20px);
-      }
-    }
-
-    // 新增專案命名
-    input {
-      letter-spacing: 3.2px;
+    //新建專案取名&選色燈箱
+    .new_program_choose_box {
+      width: 300px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 15px;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      // letter-spacing: 3.2px;
       @include font(1, 20px);
-      outline: none;
-      background-color: transparent;
-      color: $dark;
-      padding: 5px;
-      border: 1px solid $dark;
-      border-radius: 10px;
-      width: 100%;
-      margin: 5px 0;
-    }
+      position: fixed;
+      top: 100px;
+      left: 20px;
+      z-index: 1;
 
-    // 新增專案選擇顏色
-    .new_program_choose_color {
-      // border: 1px solid blue;
+      display: none;
 
+      &.new_program_choose_box_active {
+        opacity: 1;
+        display: block;
+        z-index: 10000;
+      }
+
+      p {
+        span {
+          letter-spacing: 2.8px;
+          @include font(0, 20px);
+        }
+      }
+
+      // 新增專案命名
+      input {
+        letter-spacing: 3.2px;
+        @include font(1, 20px);
+        outline: none;
+        background-color: transparent;
+        color: $dark;
+        padding: 5px;
+        border: 1px solid $dark;
+        border-radius: 10px;
+        width: 100%;
+        margin: 5px 0;
+      }
+
+      // 新增專案選擇顏色
+      .new_program_choose_color {
+        // border: 1px solid blue;
+
+        .new_program_choose_color_item {
+          // background-color: #5395de;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          margin: 2.5px;
+          display: inline-block;
+          cursor: pointer;
+          position: relative;
+
+          &.new_program_choose_color_item_checked {
+            &::before {
+              content: "";
+              width: 85%;
+              height: 85%;
+              position: absolute;
+              @include positionCenter();
+              background-image: url('../img/checked_w.626bbc68.svg');
+            }
+          }
+
+<<<<<<< HEAD
       .new_program_choose_color_item {
         background-color: #5395de;
         width: 25px;
@@ -134,60 +165,121 @@
           }
         }
 
+=======
+>>>>>>> dev
 
-        &:first-child {
-          background-color: #5395de;
         }
 
-        &:nth-child(2) {
-          background-color: #8acede;
+        // 新增專案選擇顏色--結束
+      }
+
+      button {
+        @include btnReset;
+        border: 2px solid $white;
+        @include font(1, 20px);
+        background-color: $primary;
+        color: $white;
+        float: right;
+        padding: 5px;
+        border-radius: 5px;
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: $white;
+          color: $primary;
+          border: 2px solid $primary;
         }
 
-        &:nth-child(3) {
-          background-color: #eb7a77;
+        &:after {
+          content: "";
+          display: block;
+          clear: both;
         }
       }
 
-      // 新增專案選擇顏色--結束
+      //新建專案取名&選色燈箱--結束
     }
 
-    button {
-      @include btnReset;
-      border: 2px solid $white;
-      @include font(1, 20px);
-      background-color: $primary;
-      color: $white;
-      float: right;
-      padding: 5px;
-      border-radius: 5px;
-      transition: all 0.3s;
+    .slide_list {
+      li {
+        p {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+  }
+
+
+  .program_watch_history_all {
+    border: 1px solid red;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s;
+
+    &.program_watch_history_all_active {
+      height: auto;
+    }
+
+    //查看現在&過去專案文字按鈕統一
+    .program_text_btn {
+      bottom: 0;
+      // border: 1px solid red;
+      width: 250px;
+      text-align: center;
+      cursor: pointer;
+      color: $dark;
 
       &:hover {
-        background-color: $white;
         color: $primary;
-        border: 2px solid $primary;
       }
 
-      &:after {
-        content: "";
-        display: block;
-        clear: both;
-      }
-    }
-
-    //新建專案取名&選色燈箱--結束
-  }
-
-  .slide_list {
-    li {
       p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        border-top: 1px solid $gray;
+        padding: 15px 0;
+        width: 90%;
+        margin-left: 5%;
       }
+
     }
+
+
+    //查看已完成專案文字按鈕
+    .program_watch_history_text {
+      position: absolute;
+
+      &.program_watch_history_text_active {
+        position: static;
+      }
+
+      //查看已完成專案文字按鈕--結束
+    }
+
+    //查看現有專案文字按鈕
+    .program_now_having_text {
+      position: static;
+
+      &.program_now_having_text_active {
+        position: absolute;
+      }
+
+      //查看現有專案文字按鈕--結束
+    }
+
+
+
+
   }
+
+  //側邊欄--結束
 }
+
+
+
+
+
 
 #program_main {
   font-size: 0;
@@ -262,6 +354,7 @@
       top: 70px;
       right: -120px;
       display: none;
+      z-index: 2;
 
       &.invite_add_member_box_active {
         display: block;
@@ -323,7 +416,7 @@
 
       //設定鈕燈箱
       .setting_content_box {
-        width: 208px;
+        width: 210px;
         background-color: white;
         border-radius: 20px;
         padding: 15px;
@@ -331,7 +424,7 @@
         @include font(1, 20px);
         position: absolute;
         top: 50px;
-        z-index: 1;
+        z-index: 2;
 
         display: none;
 
@@ -356,18 +449,20 @@
             margin: 2.5px;
             display: inline-block;
             cursor: pointer;
+            position: relative;
 
-            &:first-child {
-              background-color: #5395de;
+            &.program_setting_choose_color_item_checked {
+              &::before {
+                content: "";
+                width: 85%;
+                height: 85%;
+                position: absolute;
+                @include positionCenter();
+                background-image: url('../img/checked_w.626bbc68.svg');
+              }
             }
 
-            &:nth-child(2) {
-              background-color: #8acede;
-            }
 
-            &:nth-child(3) {
-              background-color: #eb7a77;
-            }
           }
 
           //設定區選顏色
@@ -690,19 +785,38 @@
           //卡片本人css
           .cards_list_card {
             // border: 1px solid red;
-            border-radius: 10px;
+            border-radius: 0 0 10px 10px;
             background-color: $white;
             box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
             text-align: start;
             width: 100%;
-            margin: 10px 0;
-            padding: 5px 10px;
-            // max-height: 85px;
+            margin: 10px auto;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
 
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 10;
             overflow: hidden;
+
+            position: relative;
+
+            .cards_list_card_color {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 3px;
+              transition: all 0.3s;
+              z-index: -1;
+              background-color: $programcolor1;
+            }
+
+            &:hover .cards_list_card_color {
+              height: 100%;
+              opacity: 0.4;
+            }
 
             p {
               @include font(1, 30px);
@@ -836,7 +950,11 @@
 
         }
       }
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
     }
   }
 }
+

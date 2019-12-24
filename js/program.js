@@ -20,9 +20,22 @@ var main_content = new Vue({
     chatroom_btn: false,
 
     // screenWidth: document.documentElement.clientWidth //屏幕宽度
+<<<<<<< HEAD
     colors: ['#aaa', '#bbb'],
     new_program_choose_color_item:[],
 
+=======
+    colors: ['#5395DF', '#ff6e6e','#89d9b2','#ffb62e','#c182ff','#61cdff'],
+    selectColor: null,
+    new_program_choose_color_item:[],
+
+    program_setting_choose_selectColor:null,
+    program_setting_choose_color_item:[],
+
+    program_text_btn:false,
+
+    now_text:"查看已完成專案",
+>>>>>>> dev
   },
   methods: {
     //新增專案
@@ -38,6 +51,16 @@ var main_content = new Vue({
       } else {
         // this.open = false;
       }
+    },
+
+    change_watched_text(){
+      if(this.now_text==="查看已完成專案"){
+        this.now_text="已完成專案";
+        
+      }else{
+        this.now_text="查看已完成專案";
+      }
+      
     },
 
     //新增卡片
