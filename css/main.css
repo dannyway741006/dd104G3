@@ -3024,6 +3024,12 @@ body {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> f166228f17d4fc742a288651c4a69f11204b4e17
 
 .cart_bg.show #cart_page #close_cart::after {
   content: '';
@@ -3768,6 +3774,12 @@ body {
   color: #666666;
   text-align: center;
 }
+<<<<<<< HEAD
+=======
+>>>>>>> practice
+/*# sourceMappingURL=main.css.map */
+>>>>>>> afa47cc50e265e21ca138a11eea4851bdd3fde51
+=======
 
 @media screen and (max-width: 1280px) {
   .main_content .todoList {
@@ -3827,3 +3839,4 @@ body {
   }
 }
 /*# sourceMappingURL=main.css.map */
+>>>>>>> f166228f17d4fc742a288651c4a69f11204b4e17
