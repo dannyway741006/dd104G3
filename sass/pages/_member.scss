@@ -7,8 +7,8 @@
 
   .personal_photo {
     width: 100%;
-    height: 180px;
-    // border: 1px solid gold;
+    height: 110;
+    //border: 1px solid gold;
 
     .picrange {
       width: 100%;
@@ -120,88 +120,10 @@
 
     .con1_info {
       text-align: center;
-      @include font($level: 0, $lineHeight: 50px);
+      @include font(0, 50px);
 
       .memberbtn {
-        width: 150px;
-        height: 30px;
-        border-radius: 50px;
-        @include font($level: 1, $lineHeight: null);
-        @include btnReset;
-        transition: all 0.5s;
-        color: $dark;
-        margin-top: 70px;
-        background-color: $primary;
-        color: $white;
-        border-color: #ffffff;
-        outline: none;
-        cursor: pointer;
-        position: relative;
-        animation: boxbig 1s;
-        transition: all 0.5s;
-        animation-delay: 1.5s;
-
-        &::after {
-          content: "";
-          position: absolute;
-          // border: 1px solid red;
-          width: 150px;
-          height: 30px;
-          left: 0.5px;
-          top: 1px;
-          border-radius: 100px;
-          background-color: rgba(138, 206, 222, 0.5);
-          z-index: -1;
-          animation: boxbig 1s;
-          transition: all 0.5s;
-        }
-        &::before {
-          content: "";
-          position: absolute;
-          // border: 1px solid red;
-          width: 150px;
-          height: 30px;
-          left: 0.5px;
-          top: 0.9px;
-          border-radius: 100px;
-          background-color: rgba(138, 206, 222, 0.5);
-          z-index: -1;
-          animation: boxbig 1s;
-          transition: all 0.5s;
-          animation-delay: 0.5s;
-       
-        }
-        &:hover {
-          background-color: rgb(243, 202, 211);
-          color: $dark;
-        }
-
-        &:hover::after {
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
-          animation-play-state: running;
-          animation-fill-mode: both;
-          background-color: rgba(245, 214, 220, 0.5);
-        }
-        &:hover::before {
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
-          animation-play-state: running;
-          animation-fill-mode: both;
-          background-color: rgba(245, 224, 224, 0.5);
-        }
-      }
-
-      @keyframes boxbig {
-        form {
-          transform: scale(0);
-        }
-
-        to {
-          transform: scale(1.12);
-          height: 40px;
-          top: -4.65px;
-        }
+        @include baseBtn;
       }
 
       li {
@@ -221,7 +143,7 @@
       border-width: 1px;
       width: 60%;
       border-color: rgb(155, 155, 155);
-      @include font($level: 0, $lineHeight: null);
+      @include font;
       // background-color: aqua;
     }
   }
@@ -253,11 +175,10 @@
         width: 95%;
         // border: 1px solid #000000;
         border-collapse: collapse;
-    
       }
 
       th {
-        @include font($level: 0, $lineHeight: null);
+        @include font;
         font-weight: 100;
         color: $dark;
         border-bottom: #d8d8d8 solid;
@@ -283,7 +204,7 @@
   .memberContent {
     display: block;
     position: relative;
-    
+
     &.active {
       #memcon2 {
         transform: scaleX(1);
@@ -321,7 +242,6 @@
 }
 
 @include media(576px) {
-
   .memberContent {
     #memcon2 {
       width: 99%;
@@ -330,32 +250,27 @@
       left: 0.5%;
       transition: all 0.3s;
     }
-    #memcon1{
+    #memcon1 {
       width: 99%;
       top: 5%;
       left: 0.5%;
     }
   }
 }
-@include media(420px){
+@include media(420px) {
   .memberContent #memcon2 #oder th {
     &:nth-last-of-type(1) {
       text-align: left;
       padding-left: 10%;
-     
     }
     &:nth-last-of-type(2) {
       width: 14%;
-   
     }
     &:nth-last-of-type(3) {
       width: 14%;
-   
     }
   }
 }
-
-
 
 .mask {
   width: 100%;
@@ -367,13 +282,13 @@
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
-.mask{
+.mask {
   position: absolute;
   z-index: 99;
   width: 100%;
   height: 100%;
-  background-color: rgb(113, 133, 151); 
+  background-color: rgb(113, 133, 151);
 }
