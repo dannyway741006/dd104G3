@@ -22,95 +22,105 @@ var vm = new Vue({
   el: "#content",
   data: {
     open: false,
-    isactive:true,
-    onactive:false,
-    classObject:{
-        active:false,
-        // error:true,
+    isactive: true,
+    onactive: false,
+    classObject: {
+      active: false,
+      // error:true,
     },
-    text:'未完成',
+    text: '未完成',
 
-    showselect:true,
-    
-    deleteline:false,
-    
-    todo_lightbox_switch:false,
+    showselect: true,
 
-    todo_list_content_detail:[],
-    todo_lightbox_input_title:'',
+    deleteline: false,
 
-    card_detail_lightbox:false,
+    todo_lightbox_switch: false,
 
-    card_check_item_detail:[],
-    card_detail_lightbox_add:'',
+    todo_list_content_detail: [],
+    todo_lightbox_input_title: '',
 
-    calandar_switch:false,
+    card_detail_lightbox: false,
 
-    
+    // card_check_item_detail: [],
+    card_detail_lightbox_add: '',
+
+    calandar_switch: false,
+
+
   },
   methods: {
-    changeimg(){
-      this.isactive=false;
-      this.onactive=true;
-      this.classObject.active=true;
-      this.text='完成';
+    changeimg() {
+      this.isactive = false;
+      this.onactive = true;
+      this.classObject.active = true;
+      this.text = '完成';
     },
-    onchangeimg(){
-      this.isactive=true;
-      this.onactive=false;
-      this.classObject.active=false;
-      this.text='未完成';
+    onchangeimg() {
+      this.isactive = true;
+      this.onactive = false;
+      this.classObject.active = false;
+      this.text = '未完成';
     },
 
-    showSelect(){
-      if(this.showselect){
-        this.showselect=false;
-        this.deleteline=true;
-      }else{
-        this.showselect=true;
-        this.deleteline=false;
+    showSelect() {
+      if (this.showselect) {
+        this.showselect = false;
+        this.deleteline = true;
+      } else {
+        this.showselect = true;
+        this.deleteline = false;
       }
     },
 
     // 增加待辦清單項目
-    todo_list_add(todo_lightbox_input_title){
-   if(this.todo_lightbox_input_title.length){
-    this.todo_list_content_detail.push(todo_lightbox_input_title);
-    this.todo_lightbox_input_title='';
-    this.todo_lightbox_switch=false;
-   
-}
-},
+    todo_list_add() {
+      if (this.todo_lightbox_input_title.length) {
+        this.todo_list_content_detail.push({
+          title: this.todo_lightbox_input_title,
+          test: '',
+          // 將卡片細節塞入該陣列裡面
+          lists: []
+        });
 
-add_card_detail(){
-  if(this.card_detail_lightbox_add.length){
-    //將卡片狀態、名字設為陣列
-    this.card_check_item_detail.push({
-      content: this.card_detail_lightbox_add,
-      status:true,
-      text:false,
+        this.todo_lightbox_input_title = '';
+        this.todo_lightbox_switch = false;
+      }
+    },
+
+    add_card_detail(index) {
+      if (this.todo_list_content_detail[index].test.length) {
+        //將卡片狀態、名字設為陣列
+        // console.log(index);
+        this.todo_list_content_detail[index].lists.push({
+          content: this.todo_list_content_detail[index].test,
+          status: true,
+          text: false,
+        });
+        this.todo_list_content_detail[index].test = '';
+        this.card_detail_lightbox = false;
+      }
+
+    },
+
+    deletecard_todo(index) {
+      this.todo_list_content_detail.splice(index, 1);
+    },
+    delete_todo_title(index) {
+      // this.todo_list_content_detail[index].lists.splice(index, 1);
+    },
+  },
+  mounted() {
+    document.addEventListener('click', () => {
+      this.calandar_switch = false;
+      this.todo_lightbox_switch = false;
+      // this.card_detail_lightbox = false;
     });
-    this.card_detail_lightbox_add='';
-    this.card_detail_lightbox=false;
-  }
-  
-},
+  },
+  computed: {
+    progress_bar_length(index) {
 
-deletecard_todo(index){
-  this.todo_list_content_detail.splice(index,1);
-},
-delete_todo_title(index){
-  this.card_check_item_detail.splice(index,1);
-}
-},
-mounted() {
-  document.addEventListener('click', () => {
-   
-    this.calandar_switch=false;
-    this.todo_lightbox_switch=false;
-    this.card_detail_lightbox=false;
-  });
-},
+    }
+  },
 });
 
 
@@ -118,7 +128,8 @@ mounted() {
 (function () {
   const date = new Date();
   const allMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-      'Oct', 'Nov', 'Dec'];
+    'Oct', 'Nov', 'Dec'
+  ];
   const allWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
   const calendar = document.querySelector('.calendar_body');
@@ -127,82 +138,82 @@ mounted() {
   const next = document.getElementById('next');
 
   prev.addEventListener('click', () => {
-      changeMonth(nowMonth - 1);
+    changeMonth(nowMonth - 1);
   })
   next.addEventListener('click', () => {
-      changeMonth(nowMonth + 1);
+    changeMonth(nowMonth + 1);
   })
 
   function changeMonth(index) {
-      let direction = nowMonth - index;
-      if(direction < 0){
-          nowMonth === 11 ? nowYear += 1 : nowYear;
-      }else {
-          nowMonth === 0 ? nowYear -= 1 : nowYear;
-      }
-      nowMonth = (index + 12) % 12;
-      resetDate();
+    let direction = nowMonth - index;
+    if (direction < 0) {
+      nowMonth === 11 ? nowYear += 1 : nowYear;
+    } else {
+      nowMonth === 0 ? nowYear -= 1 : nowYear;
+    }
+    nowMonth = (index + 12) % 12;
+    resetDate();
   }
 
   function isLeap(nowYear) {
-      if (!(nowYear % 4) && nowYear % 100 || !(nowYear % 400)) {
-          return 29;
-      } else {
-          return 28;
-      };
+    if (!(nowYear % 4) && nowYear % 100 || !(nowYear % 400)) {
+      return 29;
+    } else {
+      return 28;
+    };
   };
 
   let fullDate, day;
   let nowYear = date.getFullYear();
   let nowMonth = date.getMonth();
   let nowDate = date.getDate();
-  
-  function getDate(){
-      let firstDay = new Date(`${allMonth[nowMonth]} ${1} ${nowYear}`).getDay();
 
-      if (nowMonth < 7) {
-          nowMonth % 2 ? fullDate = 30 : fullDate = 31;
-      } else {
-          nowMonth % 2 ? fullDate = 31 : fullDate = 30;
-      };
-      if (nowMonth === 1) fullDate = isLeap(nowYear);
-      month.innerText = `${allMonth[nowMonth]} ${nowYear}`;
-      
-      day = 1;
-      createDay(day, firstDay);
+  function getDate() {
+    let firstDay = new Date(`${allMonth[nowMonth]} ${1} ${nowYear}`).getDay();
+
+    if (nowMonth < 7) {
+      nowMonth % 2 ? fullDate = 30 : fullDate = 31;
+    } else {
+      nowMonth % 2 ? fullDate = 31 : fullDate = 30;
+    };
+    if (nowMonth === 1) fullDate = isLeap(nowYear);
+    month.innerText = `${allMonth[nowMonth]} ${nowYear}`;
+
+    day = 1;
+    createDay(day, firstDay);
   }
 
-  function createDay(days, firstDay = 0){
-      let tr = document.createElement('tr');
-      for(let i = 0; i < 7; i++){
-          let td = document.createElement('td');
-          let week = document.createElement('p');
-          let day = document.createElement('p');
-          if(i >= firstDay && days <= fullDate){
-              day.innerText = days;
-              if(
-                  nowDate === days && 
-                  nowMonth === date.getMonth() &&
-                  nowYear === date.getFullYear()
-              ){
-                  td.classList.add('now');
-              }
-              days++;
-          }
-          // week.innerText = allWeek[i];
-          td.appendChild(week);
-          td.appendChild(day);
-          tr.appendChild(td);
+  function createDay(days, firstDay = 0) {
+    let tr = document.createElement('tr');
+    for (let i = 0; i < 7; i++) {
+      let td = document.createElement('td');
+      let week = document.createElement('p');
+      let day = document.createElement('p');
+      if (i >= firstDay && days <= fullDate) {
+        day.innerText = days;
+        if (
+          nowDate === days &&
+          nowMonth === date.getMonth() &&
+          nowYear === date.getFullYear()
+        ) {
+          td.classList.add('now');
+        }
+        days++;
       }
-      calendar.appendChild(tr);
-      if(days <= fullDate) createDay(days);
+      // week.innerText = allWeek[i];
+      td.appendChild(week);
+      td.appendChild(day);
+      tr.appendChild(td);
+    }
+    calendar.appendChild(tr);
+    if (days <= fullDate) createDay(days);
   }
 
-  function resetDate(){
-      while(calendar.hasChildNodes()){
-          calendar.removeChild(calendar.lastChild);
-      }
-      getDate();
+  function resetDate() {
+    while (calendar.hasChildNodes()) {
+      calendar.removeChild(calendar.lastChild);
+    }
+    getDate();
   }
 
   getDate()

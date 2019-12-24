@@ -54,6 +54,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto 2%;
+
   .mall_box {
     //商品圖
     width: 18%;
@@ -103,7 +104,7 @@
       p {
         transform: rotateY(180deg);
       }
-  
+
       .product_price {
         transform: rotateY(180deg);
       }
@@ -135,9 +136,10 @@
 
 @include media(767px) {
   .mall_content {
-    justify-content: center;
+    justify-content: start;
     margin: 0 auto;
     width: 90%;
+
     .mall_box {
       width: 48%;
     }
@@ -177,7 +179,8 @@
 .product_img {
   //商品圖
   width: 40%;
-  padding:1% 0 4%;
+  padding: 1% 0 4%;
+
   img {
     width: 100%;
   }
@@ -232,25 +235,28 @@
 
       b {
         margin-right: 2%;
+        font-weight: lighter;
       }
 
       &>li {
-        margin: 0 0.1% 0 2%;
+        margin: 0;
 
-        &>input {
-          padding: 15%;
-          border: 1px solid rgb(177, 177, 177);
-          cursor: pointer;
-          min-width: 45px;
 
-          &:hover {
-            background-color: rgb(231, 231, 231);
-          }
-        }
+        // &>input {
+        //   padding: 15%;
+        //   border: 1px solid rgb(177, 177, 177);
+        //   cursor: pointer;
+        //   min-width: 45px;
+
+        //   &:hover {
+        //     background-color: rgb(231, 231, 231);
+        //   }
+        // }
 
         &>select {
-          padding: 14%;
-          border: 1px solid rgb(177, 177, 177);
+          padding: 5px 10px;
+          border: 1px solid #ccc;
+          border-radius: 2px;
           cursor: pointer;
           min-width: 45px;
           outline: none;
@@ -274,6 +280,44 @@
 
 }
 
+
+
+/* 單選框 */
+.radio_style input[type="radio"] {
+  display: none;
+}
+
+.radio_style input[type="radio"]+label {
+  display: inline-block;
+
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.radio_style input[type="radio"]:checked+label {
+  background-color: #bbc2bf;
+  color: #fff;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .mall_bBtn {
   background-color: $primary;
   width: 30%;
@@ -287,13 +331,13 @@
 }
 
 
-.product_content_img img{
+.product_content_img img {
   width: 70%;
-  margin-left: 5%;
+  margin: 0 0 0 5%;
 }
 
-.mallTitle{
-  padding:1% 2%;
+.mallTitle {
+  padding: 1% 2%;
   @include font(2);
   height: 2px;
   margin: 1% 0 3%;
@@ -316,7 +360,18 @@
       }
 
 
-    
+
     }
   }
+
+
+  .product_content_img img {
+    width: 100%;
+    padding: 5%;
+  }
+
+  .mallTitle {
+    margin: 1% 0 7%;
+  }
+
 }
