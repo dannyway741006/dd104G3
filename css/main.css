@@ -2939,6 +2939,90 @@ body {
   padding-left: 10px;
 }
 
+.potato_slide .counterSet li {
+  margin: 16px auto;
+}
+
+.potato_slide .counterSet li p {
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.potato_slide .counterSet li input {
+  width: 50px;
+  height: 25px;
+  border-radius: 5px;
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  vertical-align: middle;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.potato_slide .settingBtn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  width: auto;
+  height: auto;
+  min-height: 40px;
+  background-color: #8acede;
+  border-radius: 30px;
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
+}
+
+.potato_slide .settingBtn::before, .potato_slide .settingBtn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #8acede;
+  border-radius: 30px;
+  z-index: -1;
+}
+
+.potato_slide .settingBtn:hover::before, .potato_slide .settingBtn:hover::after {
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
+}
+
+.potato_slide .settingBtn:hover::after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .potato_slide .settingBtn {
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 30px;
+  }
+}
+
 .radio {
   margin: 16px 0;
   display: block;
@@ -2993,7 +3077,7 @@ body {
 .radio input:checked + span:before {
   -webkit-transform: scale(1.04);
           transform: scale(1.04);
-  background: #5D9BFB;
+  background: #8acede;
 }
 
 .radio input:checked + span:after {
@@ -3025,8 +3109,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 90vh;
+  height: 93.5vh;
   padding-top: 50px;
+  border: 1px solid red;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .main_content .timer {
@@ -3123,12 +3210,12 @@ body {
   color: #ffffff;
 }
 
-.main_content .timer .maskCount {
+.main_content .timer .taskCount {
   width: 170px;
   height: 70px;
   position: absolute;
-  right: 5%;
-  top: 60px;
+  right: 10%;
+  top: 45px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3138,17 +3225,17 @@ body {
           flex-direction: column;
 }
 
-.main_content .timer .maskCount span {
-  letter-spacing: 4px;
-  font-size: 20px;
+.main_content .timer .taskCount span {
+  letter-spacing: 3.6px;
+  font-size: 18px;
   line-height: 30px;
 }
 
-.main_content .timer .maskCount .maskTitle {
+.main_content .timer .taskCount .taskTitle {
   width: 100%;
 }
 
-.main_content .timer .maskCount .maskTotal {
+.main_content .timer .taskCount .taskTotal {
   width: 50%;
   margin: 0 auto;
 }
@@ -3179,6 +3266,18 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 1200px) {
+  .main_content .timer .taskCount {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .main_content .timer .bell {
+    margin-top: 40%;
+  }
 }
 
 .main_content .timer .control {
@@ -3260,6 +3359,7 @@ body {
   width: 50%;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  border: 2px solid #999999;
 }
 
 .main_content .todoList ul {
@@ -3358,16 +3458,23 @@ body {
   bottom: 15px;
 }
 
+@media screen and (max-width: 1280px) {
+  .main_content .todoList ul li .delete {
+    right: 5px;
+  }
+}
+
 .main_content .todoList .fromTrello {
   width: 50%;
   height: 100%;
+  border: 2px solid blue;
   padding: 0 20px;
 }
 
 .main_content .todoList .custom {
   width: 50%;
   height: 100%;
-  padding: 0 20px;
+  border: 2px solid blue;
   position: relative;
 }
 
@@ -3375,7 +3482,7 @@ body {
   border-top: 2px solid #86c166;
 }
 
-.main_content .todoList .custom .addMask {
+.main_content .todoList .custom .addTask {
   width: 95%;
   height: 50px;
   position: relative;
@@ -3388,33 +3495,48 @@ body {
   padding: 5px 0;
 }
 
-.main_content .todoList .custom .addMask input {
+.main_content .todoList .custom .addTask input {
   width: 70%;
   height: 90%;
   vertical-align: middle;
   border: none;
   margin-left: 20px;
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 30px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
   outline: 0;
 }
 
-.main_content .todoList .custom .addMask .cross {
+.main_content .todoList .custom .addTask .cross {
   position: absolute;
   right: 20px;
-  bottom: 3px;
+  bottom: 5px;
   font-weight: 700;
   color: #666666;
-  letter-spacing: 6.8px;
-  font-size: 34px;
-  line-height: 50px;
+  letter-spacing: 5.6px;
+  font-size: 28px;
+  line-height: 40px;
   cursor: pointer;
   opacity: .7;
 }
 
-.main_content .todoList .custom .addMask .cross:hover {
+.main_content .todoList .custom .addTask .cross:hover {
   opacity: 1;
+}
+
+@media screen and (max-width: 1280px) {
+  .main_content .todoList .custom .addTask .cross {
+    right: 5px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .main_content .todoList .custom {
+    width: 100%;
+  }
+  .main_content .todoList .fromTrello {
+    display: none;
+  }
 }
 
 .main_content .todoList .todoHead {
