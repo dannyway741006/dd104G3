@@ -46,7 +46,7 @@ var vm = new Vue({
 
     calandar_switch: false,
 
-    
+
   },
   methods: {
     changeimg() {
@@ -77,25 +77,26 @@ var vm = new Vue({
       if (this.todo_lightbox_input_title.length) {
         this.todo_list_content_detail.push({
           title: this.todo_lightbox_input_title,
+          test: '',
           // 將卡片細節塞入該陣列裡面
           lists: []
         });
-       
+
         this.todo_lightbox_input_title = '';
         this.todo_lightbox_switch = false;
       }
     },
 
     add_card_detail(index) {
-      if (this.card_detail_lightbox_add.length) {
+      if (this.todo_list_content_detail[index].test.length) {
         //將卡片狀態、名字設為陣列
         // console.log(index);
         this.todo_list_content_detail[index].lists.push({
-          content: this.card_detail_lightbox_add,
+          content: this.todo_list_content_detail[index].test,
           status: true,
           text: false,
         });
-        this.card_detail_lightbox_add = '';
+        this.todo_list_content_detail[index].test = '';
         this.card_detail_lightbox = false;
       }
 
@@ -105,7 +106,7 @@ var vm = new Vue({
       this.todo_list_content_detail.splice(index, 1);
     },
     delete_todo_title(index) {
-      this.todo_list_content_detail[index].lists.splice(index, 1);
+      // this.todo_list_content_detail[index].lists.splice(index, 1);
     },
   },
   mounted() {
@@ -114,6 +115,11 @@ var vm = new Vue({
       this.todo_lightbox_switch = false;
       // this.card_detail_lightbox = false;
     });
+  },
+  computed: {
+    progress_bar_length(index) {
+
+    }
   },
 });
 
