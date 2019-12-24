@@ -84,9 +84,13 @@
             <div>
               <p>專案專屬色<span>Color</span></p>
               <div class="new_program_choose_color">
-                <span class="new_program_choose_color_item" v-for='color in colors' @click.stop='selectColor = color'
-                  :class='{new_program_choose_color_item_checked: selectColor === color}'
-                  :style='{backgroundColor: color}'></span>
+                <span 
+                class="new_program_choose_color_item" 
+                v-for='color in colors' 
+                @click.stop='new_program_choose_color_item' 
+                :class='{new_program_choose_color_item_checked}'
+                :style='{backgroundColor: color}'
+              ></span>
                 <div>
                   <button @click="add_program(program_name)" id="add_program_inner_btn">建立專案</button>
                 </div>
