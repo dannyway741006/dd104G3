@@ -435,6 +435,7 @@
 
       top: 75px;
       right: 30px;
+      width: 350px;
 
       &.program_calendar_box_active {
         display: none;
@@ -449,15 +450,17 @@
         justify-content: space-around;
         color: #666666;
         @include font(1);
+        vertical-align: middle;
 
         button {
           width: 50px;
-          height: 50px;
+          // height: 50px;
           border: none;
           outline: none;
           background-color: transparent;
           cursor: pointer;
           color: #666666;
+          vertical-align: middle;
 
           &:hover {
             color: #333333;
@@ -467,6 +470,8 @@
         p {
           width: 30%;
           text-align: center;
+          vertical-align: middle;
+          line-height: 35px;
         }
 
         //calendar_header--結束
@@ -475,16 +480,29 @@
       .calendar_body {
         width: 100%;
 
-        td {
-          width: 14.3%;
+        tr {
+       
+          td {
+            width: 14.3%;
 
-          text-align: center;
-          vertical-align: top;
-          color: #999999;
-          transition: all .5s;
-          cursor: pointer;
-          @include font(0);
+            text-align: center;
+            vertical-align: top;
+            color: #999999;
+            transition: all .5s;
+            cursor: pointer;
+            @include font(0);
+
+            &:first-child,&:last-child{
+              color: $danger;
+            }
+          }
+
+         
+
         }
+
+
+
 
 
         //calendar_body--結束
@@ -519,9 +537,11 @@
       position: absolute;
       top: 350px;
       right: 30px;
-      &.program_chatroom_box_active{
+
+      &.program_chatroom_box_active {
         display: none;
       }
+
       .program_chatroom_window {
         height: 40vh;
         // border: 1px solid blue;

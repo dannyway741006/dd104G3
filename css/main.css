@@ -665,17 +665,6 @@ body {
   appearance: none;
 }
 
-button {
-  background-color: #8acede;
-  width: 15%;
-  height: 43px;
-  color: #fff;
-  border-radius: 10px;
-  border: 0;
-  outline: none;
-  cursor: pointer;
-}
-
 @media screen and (max-width: 767px) {
   .mall_poduct_content {
     display: block;
@@ -1150,6 +1139,7 @@ button {
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   top: 75px;
   right: 30px;
+  width: 350px;
 }
 
 #program_main .program_calendar_all .program_calendar_box.program_calendar_box_active {
@@ -1167,16 +1157,17 @@ button {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
+  vertical-align: middle;
 }
 
 #program_main .program_calendar_all .program_calendar_box .calendar_header button {
   width: 50px;
-  height: 50px;
   border: none;
   outline: none;
   background-color: transparent;
   cursor: pointer;
   color: #666666;
+  vertical-align: middle;
 }
 
 #program_main .program_calendar_all .program_calendar_box .calendar_header button:hover {
@@ -1186,13 +1177,15 @@ button {
 #program_main .program_calendar_all .program_calendar_box .calendar_header p {
   width: 30%;
   text-align: center;
+  vertical-align: middle;
+  line-height: 35px;
 }
 
 #program_main .program_calendar_all .program_calendar_box .calendar_body {
   width: 100%;
 }
 
-#program_main .program_calendar_all .program_calendar_box .calendar_body td {
+#program_main .program_calendar_all .program_calendar_box .calendar_body tr td {
   width: 14.3%;
   text-align: center;
   vertical-align: top;
@@ -1203,6 +1196,10 @@ button {
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
+}
+
+#program_main .program_calendar_all .program_calendar_box .calendar_body tr td:first-child, #program_main .program_calendar_all .program_calendar_box .calendar_body tr td:last-child {
+  color: #eb7a77;
 }
 
 #program_main .program_chatroom_all > button {

@@ -276,16 +276,16 @@
 
 }
 
-button {
-  background-color: #8acede;
-  width: 15%;
-  height: 43px;
-  color: #fff;
-  border-radius: 10px;
-  border: 0;
-  outline: none;
-  cursor: pointer;
-}
+// button {
+//   background-color: #8acede;
+//   width: 15%;
+//   height: 43px;
+//   color: #fff;
+//   border-radius: 10px;
+//   border: 0;
+//   outline: none;
+//   cursor: pointer;
+// }
 
 @include media(767px) {
   .mall_poduct_content {
