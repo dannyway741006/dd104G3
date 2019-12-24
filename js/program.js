@@ -19,10 +19,17 @@ var main_content = new Vue({
 
     chatroom_btn: false,
 
-    screenWidth: document.documentElement.clientWidth //屏幕宽度
+    // screenWidth: document.documentElement.clientWidth //屏幕宽度
+    colors: ['#aaa', '#bbb'],
+    new_program_choose_color_item:[],
+
   },
   methods: {
     //新增專案
+    new_program_choose_color_item(){
+
+    },
+
     add_program(program_name) {
       if (this.program_name !== "") {
         this.programs.push(program_name);
@@ -45,9 +52,7 @@ var main_content = new Vue({
       } else {
       }
     },
-    // resize_func() {
-    //   console.log("1");
-    // }
+
   },
   // watch: {
   //   screenWidth: function(val) {
