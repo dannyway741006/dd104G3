@@ -33,10 +33,6 @@ var main_content = new Vue({
   },
   methods: {
     //新增專案
-    new_program_choose_color_item(){
-
-    },
-
     add_program(program_name) {
       if (this.program_name !== "") {
         this.programs.push(program_name);
@@ -209,3 +205,16 @@ var main_content = new Vue({
 
   getDate();
 })();
+
+
+//拖曳
+$(drag);
+
+function drag() {
+  $(".cards_list_todo,.cards_list_doing,.cards_list_done")
+    .sortable({
+      connectWith: ".cards_list",
+      stack: ".cards_column_body .cards_list",
+      revert:true,
+    }).disableSelection();
+}

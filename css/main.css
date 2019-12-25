@@ -377,6 +377,80 @@ body {
   }
 }
 
+.clockFace {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.clockFace #svg {
+  max-width: 350px;
+  min-width: 160px;
+  max-height: 350px;
+  min-height: 160px;
+}
+
+.clockFace #svg circle {
+  stroke-linecap: round;
+  fill: transparent;
+  stroke: #ffffff;
+  stroke-width: 4px;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  -webkit-transition: stroke-dashoffset 1s linear;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.clockFace #svg #gradient stop:nth-of-type(1) {
+  stop-color: #8acede;
+}
+
+.clockFace #svg #gradient stop:nth-of-type(2) {
+  stop-color: #fbc2eb;
+}
+
+.clockFace #svg #bar {
+  fill: rgba(255, 255, 255, 0.5);
+  stroke: url(#gradient);
+  stroke-dashoffset: 400;
+}
+
+.clockFace #svg #outside {
+  stroke: #8acede;
+  stroke-width: 1px;
+}
+
+.clockFace #svg #timer {
+  dominant-baseline: middle;
+  text-anchor: middle;
+  letter-spacing: 6px;
+  font-size: 30px;
+  line-height: 40px;
+  fill: #666666;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+@media screen and (max-width: 767px) {
+  .clockFace {
+    height: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .clockFace #svg #timer {
+    letter-spacing: 4.8px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
 /*------------------------- */
 /*          商城首頁        */
 /*------------------------- */
@@ -1612,8 +1686,7 @@ body {
 #program_main .cards_column_all .cards_column {
   border: 1px solid blue;
   height: 70vh;
-  min-width: 300px;
-  max-width: 300px;
+  width: 300px;
   text-align: center;
   border-radius: 20px;
   overflow: hidden;
@@ -1633,16 +1706,22 @@ body {
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body {
+  border: 1px solid red;
   height: calc(100% - 50px);
   overflow-y: scroll;
   background-color: rgba(255, 255, 255, 0.5);
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list {
-  padding: 0 5%;
+  padding: 2px 5%;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list.cards_list_doing, #program_main .cards_column_all .cards_column .cards_column_body .cards_list.cards_list_done {
+  height: 100%;
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card {
+  /* styles during drag */
   border-radius: 0 0 10px 10px;
   background-color: #ffffff;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
@@ -1658,6 +1737,13 @@ body {
   -webkit-line-clamp: 10;
   overflow: hidden;
   position: relative;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card.ui-sortable-helper {
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_color {
@@ -2450,7 +2536,7 @@ body {
           animation-delay: 1s;
 }
 
-@-webkit-keyframes animate {
+@keyframes animate {
   0% {
     width: 100%;
     height: 100%;
@@ -2462,13 +2548,13 @@ body {
   }
 }
 
-@keyframes animate {
+@keyframes animate_c {
   0% {
     width: 100%;
     height: 100%;
   }
   100% {
-    width: 140%;
+    width: 150%;
     height: 150%;
     opacity: 0;
   }
@@ -2966,7 +3052,6 @@ body {
 }
 
 @keyframes animate {
-<<<<<<< HEAD
   0% {
     width: 100%;
     height: 100%;
@@ -2979,8 +3064,6 @@ body {
 }
 
 @keyframes animate_c {
-=======
->>>>>>> practice
   0% {
     width: 100%;
     height: 100%;
@@ -3249,6 +3332,18 @@ body {
   }
   100% {
     width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
     height: 150%;
     opacity: 0;
   }
@@ -3700,6 +3795,10 @@ body {
           align-items: center;
 }
 
+.cart_bg.show #cart_page #cart_main .cart_product div {
+  border: 1px solid blue;
+}
+
 .cart_bg.show #cart_page #cart_main .cart_product div:nth-child(1) {
   width: 20%;
 }
@@ -3710,10 +3809,17 @@ body {
 }
 
 .cart_bg.show #cart_page #cart_main .cart_product #cart_product_quantity {
-  width: 200px;
+  width: 100px;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  border: 1px solid red;
+}
+
+.cart_bg.show #cart_page #cart_main .cart_product #cart_product_quantity input[type=text] {
+  text-align: center;
+  width: 30px;
+  height: 30px;
 }
 
 .cart_bg.show #cart_page #cart_main .cart_product #cart_product_quantity p {
@@ -3726,17 +3832,11 @@ body {
   top: 5px;
 }
 
-.cart_bg.show #cart_page #cart_main .cart_product #cart_product_quantity p input[type=number] {
-  text-align: center;
-  width: 30px;
-  height: 30px;
-}
-
-.cart_bg.show #cart_page #cart_main div:last-child {
+.cart_bg.show #cart_page #cart_main .cart_product div:last-child {
   width: 22px;
 }
 
-.cart_bg.show #cart_page #cart_main div:last-child img {
+.cart_bg.show #cart_page #cart_main .cart_product div:last-child img {
   width: 20px;
 }
 
@@ -3885,7 +3985,7 @@ body {
 }
 
 .radio input + span:before {
-  background: #D1D7E3;
+  background: #d1d7e3;
   -webkit-transition: background 0.2s ease, -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
   transition: background 0.2s ease, -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
   transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
@@ -4387,7 +4487,6 @@ body {
   color: #666666;
   text-align: center;
 }
-<<<<<<< HEAD
 
 @media screen and (max-width: 1280px) {
   .main_content .todoList {
@@ -4446,6 +4545,3 @@ body {
     width: 100%;
   }
 }
-=======
->>>>>>> practice
-/*# sourceMappingURL=main.css.map */
