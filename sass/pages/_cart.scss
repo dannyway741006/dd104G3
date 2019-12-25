@@ -19,11 +19,11 @@
     @include positionfixed(11000, 0%, 0%);
     width: 100vw;
     height: 100vh;
-    background-color: rgba(150, 150, 150, 0.1);
+    background-color: rgba(150, 150, 150, 0.6);
 
     #cart_page {
         @include positionfixed (99999, 10%, 15%);
-        background-color: rgba(210, 210, 230, 0.8);
+        background-color:#d9d9e9;
         width: 70%;
         height: 80%;
         border-radius: 20px;
