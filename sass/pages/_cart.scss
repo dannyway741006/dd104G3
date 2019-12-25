@@ -122,8 +122,6 @@
             @include media(480px) {
                 .cart_product {
                     margin-bottom: 20px;
-                    flex-wrap: wrap;
-
                     #cart_product_img {
                         width:25%;
 

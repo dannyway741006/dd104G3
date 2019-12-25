@@ -3841,8 +3841,6 @@ body {
 @media screen and (max-width: 480px) {
   .cart_bg.show #cart_page #cart_main .cart_product {
     margin-bottom: 20px;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
   }
   .cart_bg.show #cart_page #cart_main .cart_product #cart_product_img {
     width: 25%;
