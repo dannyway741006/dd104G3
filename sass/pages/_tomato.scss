@@ -1,7 +1,7 @@
 // ul *{
 //     list-style: none;
 // }
-.potato_slide{
+.tomato_slide{
     padding-top: 50px;
     padding-left: 10px;
     .counterSet{
@@ -27,11 +27,11 @@
         @include baseBtn();
     }
 }
-.potato_slide_list{
+.tomato_slide_list{
     display: none;
 }
 @include media(1100px){
-    .potato_slide_list{
+    .tomato_slide_list{
         display: block;
     }
 }
