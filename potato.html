@@ -122,48 +122,146 @@
       <div class="main_content">
         <!-- 內容  -->
         <div class="timer">
-            <input type="radio" name="rdo" id="work" checked />
-            <input type="radio" name="rdo" id="rest"/>
-            <div class="switch">
-              <label for="work">Work</label>
-              <label for="rest">Rest</label>
-              <!-- <span></span> -->
-              <span>123</span>
-            </div>
-            <div class="taskCount">
-              <div class="taskTitle"><span>Done/Todo</span></div>
-              <div class="taskTotal"><span>1/2</span></div>
-            </div>
-          <div class="bell">
-            <p>25:00</p>
-          </div>
-          <div class="control">
-            <div class="side sound"><input type="checkbox"><i class="fas fa-bell status1" class="open"></i>
-            <i class="fas fa-bell-slash status2"></i></div>
-            <div class="sound"><input type="checkbox"><i class="fas fa-play status1"></i>
-              <i class="fas fa-pause status2"></i></div>
-            <div class="side"><i class="fas fa-undo-alt"></i></div>
+          <div class="clockFace">
+            <svg
+              id="svg"
+              width="30vw"
+              height="30vw"
+              viewPort="0 0 155 155"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" />
+                  <stop offset="100%" />
+                </linearGradient>
+              </defs>
+              <circle r="40%" cx="50%" cy="50%" />
+              <circle id="bar" r="40%" cx="50%" cy="50%" />
+              <circle id="outside" r="45%" cx="50%" cy="50%" />
+              <text id="timer" x="50%" y="50%">25:00</text>
+            </svg>
           </div>
         </div>
         <div class="todoList"> 
           <div class="custom" id="todoCon1">
             <div class="todoHead"><h2>自訂任務</h2></div>
+            <ul>
+              <li class="todoLi">
+                <div class="todoColor"></div>
+                <div class="title"><p>任務1</p></div>
+                <div class="info">
+                  <div class="timer">
+                    <img src="./img/icon/time-left.svg" alt="" width="20px">
+                    <p>25:00</p>
+                  </div>
+                  <div class="status">
+                    <div class="checkBtn">
+                      <input type="checkbox" id="b0"/>
+                    <img src="./img/checked_d.721738d0.svg" alt="" class="imgChecked" width="20px">
+                    <img src="./img/unchecked_d.9558e11b.svg" alt="" class="imgUnchecked" width="20px">
+                    </div>
+                    <div class="delete">
+                      <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
+                      <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
+                    </div>
+                  </div>
+                  
+                </div>
+              </li>
+              <li class="todoLi">
+                <div class="todoColor"></div>
+                <div class="title"><p>任務2</p></div>
+                <div class="info">
+                  <div class="timer">
+                    <img src="./img/icon/time-left.svg" alt="" width="20px">
+                    <p>25:00</p>
+                  </div>
+                  <div class="status">
+                    <div class="checkBtn">
+                      <input type="checkbox" id="b0"/>
+                    <img src="./img/checked_d.721738d0.svg" alt="" class="imgChecked" width="20px">
+                    <img src="./img/unchecked_d.9558e11b.svg" alt="" class="imgUnchecked" width="20px">
+                    </div>
+                    <div class="delete">
+                      <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
+                      <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
+                    </div>
+                  </div>
+                  
+                </div>
+              </li>
+            </ul>
             <div class="addTask"><input type="text" placeholder="請輸入任務"><i class="fas fa-plus cross"></i></div>
           </div>
           <div class="fromTrello" id="todoCon2">
             <div class="todoHead"><h2>行事曆任務</h2></div>
             <ul>
-              <li>
-                <input type="checkbox" id="b0"/>
-                <img src="./img/checked_d.721738d0.svg" alt="" class="imgChecked">
-                <img src="./img/unchecked_d.9558e11b.svg" alt="" class="imgUnchecked">
-                <label for="b0">任務1</label><i class="fas fa-times delete"></i>
+              <li class="todoLi">
+                <div class="todoColor"></div>
+                <div class="title"><p>任務1</p></div>
+                <div class="info">
+                  <div class="timer">
+                    <img src="./img/icon/time-left.svg" alt="" width="20px">
+                    <p>25:00</p>
+                  </div>
+                  <div class="status">
+                    <div class="checkBtn">
+                      <input type="checkbox" id="b0"/>
+                    <img src="./img/checked_d.721738d0.svg" alt="" class="imgChecked" width="20px">
+                    <img src="./img/unchecked_d.9558e11b.svg" alt="" class="imgUnchecked" width="20px">
+                    </div>
+                    <div class="delete">
+                      <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
+                      <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
+                    </div>
+                  </div>
+                  
+                </div>
               </li>
-              <li>
-                <input type="checkbox" id="b1"/>
-                <img src="./img/checked_d.721738d0.svg" alt="" class="imgChecked">
-                <img src="./img/unchecked_d.9558e11b.svg" alt="" class="imgUnchecked">
-                <label for="b1">任務2</label><i class="fas fa-times delete"></i>
+              <li class="todoLi">
+                <div class="todoColor"></div>
+                <div class="title"><p>任務2</p></div>
+                <div class="info">
+                  <div class="timer">
+                    <img src="./img/icon/time-left.svg" alt="" width="20px">
+                    <p>25:00</p>
+                  </div>
+                  <div class="status">
+                    <div class="checkBtn">
+                      <input type="checkbox" id="b0"/>
+                    <img src="./img/checked_d.721738d0.svg" alt="" class="imgChecked" width="20px">
+                    <img src="./img/unchecked_d.9558e11b.svg" alt="" class="imgUnchecked" width="20px">
+                    </div>
+                    <div class="delete">
+                      <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
+                      <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
+                    </div>
+                  </div>               
+                </div>
+              </li>
+              <li class="todoLi">
+                <div class="todoColor"></div>
+                <div class="title"><p>任務3</p></div>
+                <div class="info">
+                  <div class="timer">
+                    <img src="./img/icon/time-left.svg" alt="" width="20px">
+                    <p>25:00</p>
+                  </div>
+                  <div class="status">
+                    <div class="checkBtn">
+                      <input type="checkbox" id="b0"/>
+                    <img src="./img/checked_d.721738d0.svg" alt="" class="imgChecked" width="20px">
+                    <img src="./img/unchecked_d.9558e11b.svg" alt="" class="imgUnchecked" width="20px">
+                    </div>
+                    <div class="delete">
+                      <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
+                      <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
+                    </div>
+                  </div>
+                  
+                </div>
               </li>
             </ul>
           </div>

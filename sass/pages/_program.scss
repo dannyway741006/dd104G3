@@ -684,7 +684,9 @@
       // display: inline-block;
       border: 1px solid blue;
       height: 70vh;
-      width: 300px;
+      min-width:300px ;
+      max-width: 300px;
+      // width: 300px;
       text-align: center;
       border-radius: 20px;
       overflow: hidden;
@@ -702,7 +704,7 @@
       }
 
       .cards_column_body {
-        border: 1px solid red;
+        // border: 1px solid red;
         height: calc(100% - 50px);
         overflow-y: scroll;
         background-color: rgba(255, 255, 255, 0.5);
@@ -718,12 +720,12 @@
 
           //卡片本人css
           .cards_list_card {
-/* styles during drag */
-&.ui-sortable-helper{
-  transform: rotate(5deg);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-  // transition: all 0.3s;
-}
+
+            /* styles during drag */
+            &.ui-sortable-helper {
+              transform: rotate(5deg);
+              box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+            }
 
             // border: 1px solid red;
             border-radius: 0 0 10px 10px;
@@ -782,7 +784,7 @@
               }
 
               .cards_list_card_todoicon {
-                margin-left: 20px;
+                margin-left: 50px;
               }
             }
 

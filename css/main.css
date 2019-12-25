@@ -1686,7 +1686,8 @@ body {
 #program_main .cards_column_all .cards_column {
   border: 1px solid blue;
   height: 70vh;
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
   text-align: center;
   border-radius: 20px;
   overflow: hidden;
@@ -1706,7 +1707,6 @@ body {
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body {
-  border: 1px solid red;
   height: calc(100% - 50px);
   overflow-y: scroll;
   background-color: rgba(255, 255, 255, 0.5);
@@ -1742,8 +1742,8 @@ body {
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card.ui-sortable-helper {
   -webkit-transform: rotate(5deg);
           transform: rotate(5deg);
-  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_color {
@@ -1791,7 +1791,7 @@ body {
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_todoicon {
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box {
@@ -3770,7 +3770,6 @@ body {
   margin: 0 2.5%;
   width: 95%;
   display: block;
-  overflow: hidden;
 }
 
 .cart_bg.show #cart_page #cart_main .cart_product {
@@ -3778,7 +3777,6 @@ body {
   text-align: center;
   position: relative;
   left: 0;
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3795,10 +3793,6 @@ body {
           align-items: center;
 }
 
-.cart_bg.show #cart_page #cart_main .cart_product div {
-  border: 1px solid blue;
-}
-
 .cart_bg.show #cart_page #cart_main .cart_product div:nth-child(1) {
   width: 20%;
 }
@@ -3813,7 +3807,6 @@ body {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  border: 1px solid red;
 }
 
 .cart_bg.show #cart_page #cart_main .cart_product #cart_product_quantity input[type=text] {
@@ -3838,6 +3831,85 @@ body {
 
 .cart_bg.show #cart_page #cart_main .cart_product div:last-child img {
   width: 20px;
+}
+
+<<<<<<< HEAD
+.cart_bg.show #cart_page #cart_main #cart_submit {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  width: 100px;
+  height: auto;
+  min-height: 40px;
+  background-color: #8acede;
+  border-radius: 30px;
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
+}
+
+.cart_bg.show #cart_page #cart_main #cart_submit::before, .cart_bg.show #cart_page #cart_main #cart_submit::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #8acede;
+  border-radius: 30px;
+  z-index: -1;
+}
+
+.cart_bg.show #cart_page #cart_main #cart_submit:hover::before, .cart_bg.show #cart_page #cart_main #cart_submit:hover::after {
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
+}
+
+.cart_bg.show #cart_page #cart_main #cart_submit:hover::after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .cart_bg.show #cart_page #cart_main #cart_submit {
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 30px;
+  }
+=======
+ul * {
+  list-style: none;
+>>>>>>> 7db01bb5f90cf912c4ef42ae4283176add505a9b
 }
 
 .potato_slide {
@@ -4039,248 +4111,11 @@ body {
   width: 100%;
   height: 93.5vh;
   padding-top: 50px;
-  border: 1px solid red;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
 
-.main_content .timer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 50%;
-  position: relative;
-}
-
-.main_content .timer .switch {
-  position: absolute;
-  top: 10%;
-  left: 20%;
-  width: 150px;
-  height: 50px;
-  text-align: center;
-  margin: -30px 0 0 -75px;
-  background: #8acede;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  border-radius: 25px;
-}
-
-.main_content .timer .switch span {
-  position: absolute;
-  width: 20px;
-  height: 4px;
-  top: 50%;
-  left: 50%;
-  margin: -2px 0px 0px -4px;
-  background: #ffffff;
-  display: block;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  border-radius: 2px;
-}
-
-.main_content .timer .switch span:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 4px;
-  height: 12px;
-  margin-top: -8px;
-  background: #ffffff;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  border-radius: 2px;
-}
-
-.main_content .timer .switch label {
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.2);
-  width: 50%;
-  line-height: 50px;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  font-size: 16px;
-}
-
-.main_content .timer input[type=radio] {
-  display: none;
-}
-
-.main_content .timer label[for=work] {
-  position: absolute;
-  left: 0px;
-}
-
-.main_content .timer label[for=rest] {
-  position: absolute;
-  right: 0px;
-}
-
-.main_content .timer #rest:checked ~ .switch {
-  background: #86c166;
-}
-
-.main_content .timer #rest:checked ~ .switch label[for=rest] {
-  color: #ffffff;
-}
-
-.main_content .timer #work:checked ~ .switch label[for=work] {
-  color: #ffffff;
-}
-
-.main_content .timer .taskCount {
-  width: 170px;
-  height: 70px;
-  position: absolute;
-  right: 10%;
-  top: 45px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.main_content .timer .taskCount span {
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 30px;
-}
-
-.main_content .timer .taskCount .taskTitle {
-  width: 100%;
-}
-
-.main_content .timer .taskCount .taskTotal {
-  width: 50%;
-  margin: 0 auto;
-}
-
-.main_content .timer .bell {
-  width: 370px;
-  height: 370px;
-  border-radius: 50%;
-  margin-top: 25%;
-  position: relative;
-  background-color: #a6c1ee;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.main_content .timer .bell p {
-  color: #ffffff;
-  display: inline-block;
-  letter-spacing: 6.8px;
-  font-size: 34px;
-  line-height: 50px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-@media screen and (max-width: 1200px) {
-  .main_content .timer .taskCount {
-    right: 0;
-  }
-}
-
-@media screen and (max-width: 1120px) {
-  .main_content .timer .bell {
-    margin-top: 40%;
-  }
-}
-
-.main_content .timer .control {
-  margin-top: 100px;
-  width: 60%;
-  height: 80px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.main_content .timer .control .side {
-  width: 55px;
-  height: 55px;
-}
-
-.main_content .timer .control .side i {
-  font-size: 25px;
-}
-
-.main_content .timer .control .side:hover i {
-  font-size: 30px;
-}
-
-.main_content .timer .control > div {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: #5395de;
-  position: relative;
-}
-
-.main_content .timer .control > div:hover i {
-  font-size: 35px;
-  cursor: pointer;
-}
-
-.main_content .timer .control > div input {
-  cursor: pointer;
-  z-index: 999;
-  width: 60px;
-  height: 60px;
-  opacity: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.main_content .timer .control > div input:checked ~ .status1 {
-  display: none;
-}
-
-.main_content .timer .control > div input:checked ~ .status2 {
-  display: block;
-}
-
-.main_content .timer .control > div i {
-  font-size: 30px;
-  color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.main_content .timer .control > div .status2 {
-  display: none;
-}
-
-.main_content .todoList {
+.todoList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4294,129 +4129,175 @@ body {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   width: 50%;
-  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 }
 
-.main_content .todoList ul {
-  list-style: none;
-  margin: 0 auto;
-}
-
-.main_content .todoList ul li {
-  width: 95%;
-  height: 50px;
+.todoList .todoLi {
   position: relative;
-  margin: 20px auto;
-  border-radius: 5px;
-  padding: 5px;
-  padding-left: 15px;
+  width: 98%;
+  height: 85px;
+  padding: 10px;
+  margin: 15px auto;
+  border-radius: 0 0 10px 10px;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.main_content .todoList ul li img {
+.todoList .todoLi:hover .todoColor {
+  height: 100%;
+  opacity: .3;
+}
+
+.todoList .todoLi .todoColor {
+  border-radius: 0 0 10px 10px;
   position: absolute;
-  width: 25px;
-  height: 25px;
-  left: 15px;
-  bottom: 10px;
+  top: 0;
+  left: 0;
+  background-image: -webkit-gradient(linear, left top, right top, from(#8acede), to(#FBC2EB));
+  background-image: linear-gradient(to right, #8acede, #FBC2EB);
+  width: 100%;
+  height: 3px;
   z-index: -1;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
-.main_content .todoList ul li .imgUnchecked {
-  display: block;
-  opacity: .7;
+.todoList .todoLi .title {
+  margin-top: 5px;
 }
 
-.main_content .todoList ul li .imgChecked {
-  display: none;
+.todoList .todoLi .title p {
+  letter-spacing: 4px;
+  font-size: 20px;
+  line-height: 30px;
 }
 
-.main_content .todoList ul li .delete {
+.todoList .todoLi .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.todoList .todoLi .info .timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: 10px;
+}
+
+.todoList .todoLi .info .timer img {
+  margin-right: 5px;
+}
+
+.todoList .todoLi .info .timer p {
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.todoList .todoLi .info .status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.todoList .todoLi .info .checkBtn {
+  margin: 0 5px;
+  width: 23px;
+  height: 23px;
+  position: relative;
+}
+
+.todoList .todoLi .info .checkBtn input {
+  cursor: pointer;
   position: absolute;
-  right: 20px;
-  bottom: 5px;
-  font-weight: 600;
-  color: #666666;
-  letter-spacing: 4.8px;
-  font-size: 24px;
-  line-height: 30px;
-  cursor: pointer;
-  opacity: .7;
-}
-
-.main_content .todoList ul li .delete:hover {
-  opacity: 1;
-}
-
-.main_content .todoList ul li label {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 auto;
-  margin-left: 5px;
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 30px;
-  color: #666666;
-}
-
-.main_content .todoList ul li input {
-  cursor: pointer;
-  z-index: 9;
-  width: 30px;
-  height: 30px;
-  -webkit-transform: translateY(5px);
-          transform: translateY(5px);
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  width: 23px;
+  height: 23px;
   opacity: 0;
 }
 
-.main_content .todoList ul li input:hover ~ .imgUnchecked {
-  opacity: 1;
-}
-
-.main_content .todoList ul li input:checked ~ .imgUnchecked {
-  display: none;
-}
-
-.main_content .todoList ul li input:checked + .imgChecked {
+.todoList .todoLi .info .checkBtn input:checked + .imgChecked {
   display: block;
 }
 
-.main_content .todoList ul li .check {
-  color: rgba(0, 0, 0, 0.2);
-  z-index: -1;
-  letter-spacing: 4.8px;
-  font-size: 24px;
-  line-height: 30px;
+.todoList .todoLi .info .checkBtn input:checked + .imgUnchecked {
+  display: none;
+}
+
+.todoList .todoLi .info .checkBtn img {
   position: absolute;
-  left: 15px;
-  bottom: 15px;
+  left: 0;
+  bottom: 0;
 }
 
-@media screen and (max-width: 1280px) {
-  .main_content .todoList ul li .delete {
-    right: 5px;
-  }
+.todoList .todoLi .info .checkBtn .imgChecked {
+  display: none;
 }
 
-.main_content .todoList .fromTrello {
+.todoList .todoLi .info .delete {
+  display: block;
+  margin: 0 5px;
+  width: 23px;
+  height: 23px;
+  position: relative;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.todoList .todoLi .info .delete:hover > .ondeleteimg {
+  display: block;
+}
+
+.todoList .todoLi .info .delete:hover > .deleteimg {
+  display: none;
+}
+
+.todoList .todoLi .info .delete img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.todoList .todoLi .info .delete .ondeleteimg {
+  display: none;
+}
+
+.todoList .fromTrello {
   width: 50%;
   height: 100%;
   padding: 0 20px;
 }
 
-.main_content .todoList .custom {
+.todoList .custom {
   width: 50%;
   height: 100%;
   position: relative;
 }
 
-.main_content .todoList .custom .todoHead {
+.todoList .custom .todoHead {
   border-top: 2px solid #86c166;
 }
 
-.main_content .todoList .custom .addTask {
+.todoList .custom .addTask {
   width: 95%;
   height: 50px;
   position: relative;
@@ -4429,7 +4310,7 @@ body {
   padding: 5px 0;
 }
 
-.main_content .todoList .custom .addTask input {
+.todoList .custom .addTask input {
   width: 70%;
   height: 90%;
   vertical-align: middle;
@@ -4441,7 +4322,7 @@ body {
   outline: 0;
 }
 
-.main_content .todoList .custom .addTask .cross {
+.todoList .custom .addTask .cross {
   position: absolute;
   right: 20px;
   bottom: 5px;
@@ -4454,17 +4335,17 @@ body {
   opacity: .7;
 }
 
-.main_content .todoList .custom .addTask .cross:hover {
+.todoList .custom .addTask .cross:hover {
   opacity: 1;
 }
 
 @media screen and (max-width: 1280px) {
-  .main_content .todoList .custom .addTask .cross {
+  .todoList .custom .addTask .cross {
     right: 5px;
   }
 }
 
-.main_content .todoList .todoHead {
+.todoList .todoHead {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4480,7 +4361,7 @@ body {
   margin-top: 20px;
 }
 
-.main_content .todoList .todoHead h2 {
+.todoList .todoHead h2 {
   margin: 0 auto;
   display: inline-block;
   font-size: 20px;
@@ -4489,48 +4370,48 @@ body {
 }
 
 @media screen and (max-width: 1280px) {
-  .main_content .todoList {
+  .todoList {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .main_content .todoList .custom {
+  .todoList .custom {
     width: 98%;
   }
-  .main_content .todoList .fromTrello {
+  .todoList .fromTrello {
     width: 98%;
   }
 }
 
 @media screen and (max-width: 1100px) {
-  .main_content .todoList {
+  .todoList {
     display: block;
     position: relative;
   }
-  .main_content .todoList.active #todoCon2 {
+  .todoList.active #todoCon2 {
     -webkit-transform: scaleX(1);
             transform: scaleX(1);
     opacity: 1;
     visibility: visible;
   }
-  .main_content .todoList.active #todoCon1 {
+  .todoList.active #todoCon1 {
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
     opacity: 0;
     visibility: hidden;
   }
-  .main_content .todoList #todoCon1,
-  .main_content .todoList #todoCon2 {
+  .todoList #todoCon1,
+  .todoList #todoCon2 {
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
     position: absolute;
   }
-  .main_content .todoList #todoCon1 {
+  .todoList #todoCon1 {
     -webkit-transform-origin: right;
             transform-origin: right;
   }
-  .main_content .todoList #todoCon2 {
+  .todoList #todoCon2 {
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
     opacity: 0;
@@ -4538,10 +4419,10 @@ body {
     -webkit-transform-origin: left;
             transform-origin: left;
   }
-  .main_content .todoList .custom {
+  .todoList .custom {
     width: 100%;
   }
-  .main_content .todoList .fromTrello {
+  .todoList .fromTrello {
     width: 100%;
   }
 }
