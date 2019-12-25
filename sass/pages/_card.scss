@@ -930,7 +930,7 @@
 
 @include media(670px) {
   .card_light_box {
-    // position: initial;
+   height: 100%;
     transform: translate(0%, 0%);
   top: 0;
   left: 0;
