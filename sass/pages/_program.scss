@@ -684,9 +684,7 @@
       // display: inline-block;
       border: 1px solid blue;
       height: 70vh;
-      // height: 700px;
-      min-width: 300px;
-      max-width: 300px;
+      width: 300px;
       text-align: center;
       border-radius: 20px;
       overflow: hidden;
@@ -704,16 +702,29 @@
       }
 
       .cards_column_body {
-        // border: 1px solid red;
+        border: 1px solid red;
         height: calc(100% - 50px);
         overflow-y: scroll;
         background-color: rgba(255, 255, 255, 0.5);
 
         .cards_list {
-          padding: 0 5%;
+          padding: 2px 5%;
+
+          &.cards_list_doing,
+          &.cards_list_done {
+            height: 100%;
+            // border: 1px solid white
+          }
 
           //卡片本人css
           .cards_list_card {
+/* styles during drag */
+&.ui-sortable-helper{
+  transform: rotate(5deg);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  // transition: all 0.3s;
+}
+
             // border: 1px solid red;
             border-radius: 0 0 10px 10px;
             background-color: $white;
@@ -804,7 +815,7 @@
 
               //建立卡片按鈕
               button {
-                @include baseBtn(100px,auto, 10px);  
+                @include baseBtn(100px, auto, 10px);
                 // @include btnReset;
                 // border: 2px solid $white;
                 // @include font(1, 20px);
@@ -885,5 +896,3 @@
     }
   }
 }
-
-
