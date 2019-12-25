@@ -3770,7 +3770,6 @@ body {
   margin: 0 2.5%;
   width: 95%;
   display: block;
-  overflow: hidden;
 }
 
 .cart_bg.show #cart_page #cart_main .cart_product {
@@ -3778,7 +3777,6 @@ body {
   text-align: center;
   position: relative;
   left: 0;
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3795,10 +3793,6 @@ body {
           align-items: center;
 }
 
-.cart_bg.show #cart_page #cart_main .cart_product div {
-  border: 1px solid blue;
-}
-
 .cart_bg.show #cart_page #cart_main .cart_product div:nth-child(1) {
   width: 20%;
 }
@@ -3813,7 +3807,6 @@ body {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  border: 1px solid red;
 }
 
 .cart_bg.show #cart_page #cart_main .cart_product #cart_product_quantity input[type=text] {
@@ -3838,6 +3831,80 @@ body {
 
 .cart_bg.show #cart_page #cart_main .cart_product div:last-child img {
   width: 20px;
+}
+
+.cart_bg.show #cart_page #cart_main #cart_submit {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  width: 100px;
+  height: auto;
+  min-height: 40px;
+  background-color: #8acede;
+  border-radius: 30px;
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
+}
+
+.cart_bg.show #cart_page #cart_main #cart_submit::before, .cart_bg.show #cart_page #cart_main #cart_submit::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #8acede;
+  border-radius: 30px;
+  z-index: -1;
+}
+
+.cart_bg.show #cart_page #cart_main #cart_submit:hover::before, .cart_bg.show #cart_page #cart_main #cart_submit:hover::after {
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
+}
+
+.cart_bg.show #cart_page #cart_main #cart_submit:hover::after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .cart_bg.show #cart_page #cart_main #cart_submit {
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 30px;
+  }
 }
 
 .potato_slide {
@@ -4545,3 +4612,4 @@ body {
     width: 100%;
   }
 }
+/*# sourceMappingURL=main.css.map */
