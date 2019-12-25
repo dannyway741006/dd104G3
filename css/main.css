@@ -1998,10 +1998,8 @@ body {
   padding: 10px;
   cursor: pointer;
   z-index: 1;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 10;
-  overflow: hidden;
+  min-height: 85px;
+  vertical-align: bottom;
   position: relative;
 }
 
@@ -2034,12 +2032,19 @@ body {
   font-size: 16px;
   line-height: 30px;
   word-break: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 10;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar {
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
+  line-height: 0;
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon {
@@ -2048,16 +2053,23 @@ body {
   vertical-align: middle;
 }
 
-#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon span {
-  vertical-align: middle;
-}
-
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon img {
   width: 100%;
 }
 
-#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_todoicon {
-  margin-left: 50px;
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar span {
+  vertical-align: middle;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon_right {
+  display: inline-block;
+  float: right;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_icon_right:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box {

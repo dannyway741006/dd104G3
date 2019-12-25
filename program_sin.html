@@ -265,18 +265,35 @@
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                       src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
                   <span>2020/02/26</span>
-                  <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg" alt="">
+                  <div class="cards_list_card_icon_right">
+                    <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
+                        alt="">
+                    </div>
+                    <span>0/6</span>
                   </div>
-                  <span>1/6</span>
                 </div>
               </div>
 
               <div class="cards_list_card" v-for="item in cards">
                 <div class="cards_list_card_color"></div>
                 <p>{{item}}</p>
+                <div class="cards_list_card_icon_bar">
+                  <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                      src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                  <span>未設定</span>
+                  <div class="cards_list_card_icon_right">
+                    <div class="cards_list_card_icon_right">
+                      <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
+                          alt="">
+                      </div>
+                      <span>0/0</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div class="cards_list_card cards_list_card_input_box" id="cards_list_card_input_box" v-show="cards_list_card_input_box" @click.stop="">
+              <div class="cards_list_card cards_list_card_input_box" id="cards_list_card_input_box"
+                v-show="cards_list_card_input_box" @click.stop="">
                 <textarea v-model.trim="card_name" @keyup.enter="add_card(card_name)"></textarea>
                 <div class="cards_list_card_input_box_button_bar"><button @click="add_card(card_name)">建立卡片</button>
                 </div>
@@ -300,9 +317,12 @@
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                       src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
                   <span>2020/02/26</span>
-                  <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg" alt="">
+                  <div class="cards_list_card_icon_right">
+                    <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
+                        alt="">
+                    </div>
+                    <span>0/7</span>
                   </div>
-                  <span>1/6</span>
                 </div>
               </div>
             </div>
@@ -322,9 +342,12 @@
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                       src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
                   <span>2020/02/26</span>
-                  <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg" alt="">
+                  <div class="cards_list_card_icon_right">
+                    <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
+                        alt="">
+                    </div>
+                    <span>3/3</span>
                   </div>
-                  <span>6/6</span>
                 </div>
               </div>
             </div>
@@ -341,7 +364,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
-  <script src="./js/program.js"></script>
+  <script src="./js/program_sin.js"></script>
   <script>
     const moreBtn = document.getElementById("more");
     const content = document.getElementById("content");
