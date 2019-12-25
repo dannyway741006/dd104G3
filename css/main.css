@@ -509,18 +509,22 @@ body {
 
 .mall_content .mall_box {
   width: 18%;
-  background-color: rgba(255, 255, 255, 0.568);
+  background-color: transparent;
   margin: 1.5% 1%;
   border-radius: 10px;
   background-position: center;
-  -webkit-transition: all .5s;
-  transition: all .5s;
   border: 1px solid #dfdfdcdd;
   display: block;
 }
 
 .mall_content .mall_box a {
   display: block;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  width: 100%;
+  height: 100%;
   margin: 2%;
   padding: 1%;
   text-decoration: none;
@@ -540,7 +544,7 @@ body {
   -webkit-line-clamp: 1;
 }
 
-.mall_content .mall_box:hover {
+.mall_content .mall_box:hover a {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
   background-image: url(../img/add_cart.png);
