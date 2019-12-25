@@ -3833,7 +3833,6 @@ body {
   width: 20px;
 }
 
-<<<<<<< HEAD
 .cart_bg.show #cart_page #cart_main #cart_submit {
   background-color: transparent;
   outline: none;
@@ -3906,10 +3905,10 @@ body {
     line-height: 20px;
     min-height: 30px;
   }
-=======
+}
+
 ul * {
   list-style: none;
->>>>>>> 7db01bb5f90cf912c4ef42ae4283176add505a9b
 }
 
 .potato_slide {
