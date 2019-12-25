@@ -25,7 +25,7 @@ html:
     href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet"
   >
-
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css'/>
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
   <script src="./js/card.js"></script> -->
 </head>
@@ -150,8 +150,8 @@ html:
     <div
       class="mask"
       id="mask"
-      :class="{masked: open}"
-      @click="open = false"
+      :class="{masked: opened}"
+      @click="opened = false"
     ></div>
     <div class="card_content">
       <!-- 內容  -->
@@ -159,7 +159,7 @@ html:
         <button
           id="light_button"
           type="button"
-          @click="open = !open"
+          @click="opened = !opened"
         >
           點擊後出現燈窗
         </button>
@@ -167,11 +167,11 @@ html:
       <div
         class="card_light_box"
         id="card_light_box"
-        :class="{opneLight: open}"
+        :class="{opneLight: opened}"
       >
         <div class="card_header_title">
           <h1 id="card_title">團專衝刺</h1>
-          <div @click="open = false"><img
+          <div @click="opened = false"><img
               src="./img/card_img/cancel_w.svg"
               alt=""
             ></div>
@@ -182,7 +182,7 @@ html:
             <div class="first_right">
               <h3>新增至卡片</h3>
               <hr />
-              <div class="first_right_member">
+              <div class="first_right_member"  @click.stop="card_meber_switch =! card_meber_switch">
                 <img
                   src="./img/card_img/multiple-users-silhouette.cde8086c.svg"
                   alt=""
@@ -213,14 +213,17 @@ html:
                 待辦清單
               </div>
 
-              <div>
+              <div
+                  @click.stop="file_switch =! file_switch"
+              >
                 <img
                   src="./img/card_img/paperclip.cf9c8806.svg"
                   alt=""
                   style="width: 20px;"
                 />
                 上傳附件
-              </div>
+              </div
+              >
 
               <!-- 新增待辦清單跳窗 -->
               <div
@@ -235,12 +238,12 @@ html:
                     type="text"
                     class="todo_lightbox_input"
                     v-model.trim="todo_lightbox_input_title"
-                    @keyup.13="todo_list_add(todo_lightbox_input_title)"
+                    @keyup.13="todo_list_add()"
                   >
                 </label>
                 <div
                   class="todo_lightbox_botton"
-                  @click="todo_list_add"
+                  @click="todo_list_add()"
                 >
                   <button>新增</button>
                 </div>
@@ -287,7 +290,7 @@ html:
               </div>
 
               <!-- 上船附件跳窗 -->
-              <div class="file_lightbox">
+              <div class="file_lightbox" :class="{openfile : file_switch}"   @click.stop=""  @change="fileSelected">
                 <h3>上傳檔案</h3>
                 <form
                   method="post"
@@ -303,9 +306,50 @@ html:
                       type="file"
                       multiple
                       id="upFile"
-                    ><br>
+                    >
                   </label>
                 </form>
+              </div>
+
+
+              <!-- 新增成員跳窗 -->
+              <div class="card_member_lightbox" :class="{open_card_mem : card_meber_switch}"  @click.stop="">
+                <h3>成員</h3>
+                <br>
+                 <label for="">
+                   <input type="text" placeholder="搜尋成員">
+                 </label>
+                 <h4>看版成員</h4>
+                 <ul>
+                   <li>
+                       <div class="card_member_message">
+                         <div><img src="./img/program_img/program_member_1.png" alt=""></div>
+                         <span class="card_member_name">王曉明<span> user3456</span></span>
+                        <div><img src="./img/icon/checked_gray.svg" alt=""></div>
+                       </div>
+                   </li>
+                   <li>
+                    <div class="card_member_message">
+                      <div><img src="./img/program_img/program_member_2.png" alt=""></div>
+                      <span class="card_member_name" >楊小梅<span>user4756</span></span class="card_member_name">
+                     <div><img src="./img/icon/checked_gray.svg" alt=""></div>
+                    </div>
+                </li>
+                <li>
+                  <div class="card_member_message">
+                    <div><img src="./img/program_img/program_member_3.png" alt=""></div>
+                    <span class="card_member_name">張大千<span>user1234</span></span>
+                   <div><img src="./img/icon/checked_gray.svg" alt=""></div>
+                  </div>
+              </li>
+              <li>
+                <div class="card_member_message">
+                  <div><img src="./img/card_img/878378-XXL.jpg" alt=""></div>
+                  <span class="card_member_name">吃大餅<span>user3456</span></span class="card_member_name">
+                 <div><img src="./img/icon/checked_gray.svg" alt=""></div>
+                </div>
+            </li>
+                 </ul>
               </div>
 
             </div>
@@ -384,21 +428,8 @@ html:
                 </div>
               </div>
 
-              <!-- 原版的樣子 -->
-              <!-- <div class="card_todo_content">
-                <div class="todo_title">
-                  <div><img
-                      src=" ./img/card_img/select.svg"
-                      alt=""
-                      width="20"
-                    ></div>
-                  <h3>待辦清單</h3>
-                </div>
-                <div class="todo_main_content">
-                  <p>寫專案</p>
-                  <div>刪除</div>
-                </div> -->
-
+             
+<!-- 
               <div class="card_todo_content">
                 <div class="todo_title">
                   <div class="cardtitle_img"><img
@@ -456,12 +487,13 @@ html:
                       width="14"
                     ></button>
                 </div>
-              </div>
+              </div> -->
 
               <!-- 新增出來的待辦清單 -->
               <div
                 class="card_todo_content"
                 v-for="(item,detailIndex) in todo_list_content_detail"
+                :key="detailIndex"
               >
                 <div class="todo_title">
                   <div class="cardtitle_img"><img
@@ -480,7 +512,7 @@ html:
                     ></div>
                 </div>
                 <div class="todo_progress_bar">
-                  <p>{{progress_bar_length}}</p>
+                  <p>0%</p>
                   <div class="progress_bar">
                     <span></span>
                   </div>
@@ -490,6 +522,7 @@ html:
                   <div
                     class="card_check_item"
                     v-for="(item,index) in item.lists"
+                    :key="index"
                   >
                     <div @click="item.status = !item.status,item.text =!item.text">
                       <img
@@ -511,70 +544,35 @@ html:
                     <div><img
                         src="./img/card_img/delete.0df56913.svg"
                         alt=""
-                        @click="delete_todo_title(index)"
+                        @click="delete_todo_title()"
                       ></div>
                   </div>
                 </div>
 
-                <div class="card_add_button">
-
-                  <label for="">
-                    <input
-                      placeholder="增加項目"
-                      type="text"
-                      class="card_detail_lightbox_input"
-                      v-model.trim="item.test"
-                      @keyup.enter="add_card_detail(detailIndex)"
-                    >
-                    <img
-                      src="./img/card_img/plus_write.svg"
-                      alt=""
-                      width="14"
-                    >
-                  </label>
-
-                </div>
-                <!-- <form
-                  method="post"
-                  @submit.prevent="add_card_detail(detailIndex)"
+                <div
+                  class="card_add_button"
                 >
-                  <button>儲存</button>
-                </form> -->
-                <!-- <button>新增項目<img
-                      src="./img/card_img/plus_write.svg"
-                      alt=""
-                      width="14"
-                    ></button> -->
-
-                <!--     @click.stop="card_detail_lightbox =!  card_detail_lightbox"
- -->
-                <!-- 新增內部跳窗 -->
-                <!-- <div
-                  class="card_detail_lightbox"
-                  :class="{open_card_detail : card_detail_lightbox}"
-                  @click.stop=""
-                > -->
-                <!-- <label for="">
-                    <input
-                      type="text"
-                      class="card_detail_lightbox_input"
-                      v-model.trim="card_detail_lightbox_add"
-                    >
-                  </label>
-                  <form
-                    method="post"
-                    @submit.prevent="add_card_detail(detailIndex)"
+    
+                <label for="">
+                  <input
+                  placeholder="增加項目"
+                    type="text"
+                    class="card_detail_lightbox_input"
+                    v-model.trim="item.test"
+                    @keyup.enter="add_card_detail(detailIndex)"
                   >
-                    <button>儲存</button>
-                  </form> -->
-                <!-- </div> -->
+                  <img src="./img/card_img/plus_write.svg" alt="" width="14">
+                </label>
+                  
+               </div>
+               
               </div>
 
 
 
 
 
-              <div class="card_file">
+              <!-- <div class="card_file">
                 <div class="card_file_title">
                   <div><img
                       src="./img/card_img/paperclip.cf9c8806.svg"
@@ -583,14 +581,59 @@ html:
                     ></div>
                   <h3>附件</h3>
                 </div>
-                <div class="card_upload_file">
+                <ul>
+                  <li >
+                     <a href=""></a>
+                     <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>  
+                    </li>
+                </ul> -->
+                <!-- <div class="card_upload_file"> -->
                   <!-- <div>上傳的內容</div> -->
-                  <div class="card_upload_file_button">
+                  <!-- <div class="card_upload_file_button">
                     <button>增加附件</button>
                   </div>
                 </div>
+              </div> -->
+
+              <!-- 上船附件 -->
+              <div class="card_file">
+                <div class="card_file_title">
+                  <div class="file_title_img"><img
+                      src="./img/card_img/paperclip.cf9c8806.svg"
+                      alt=""
+                      width="20"
+                    ></div>
+                  <h3>附件</h3>
+                </div>
+                <ul>
+                  <li v-for="(item,index) in filebox">
+                     <a :href="item.source" :download="item.name">{{item.name}}</a>
+                     <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"  @click="del_file(index)"></div>  
+                    </li>
+                </ul>
+                <div class="card_upload_file">
+                  <!-- <div>上傳的內容</div> -->
+                  <form
+                  method="post"
+                  enctype="multipart/form-data"
+                  @change="fileSelected"
+                >
+                  <label class="upfile_content">
+                    <p>上傳附件 <span><img
+                          src="./img/card_img/plus_write.svg"
+                          alt=""
+                          width="13"
+                        ></span></p>
+                    <input
+                      type="file"
+                      multiple
+                    
+                    >
+                  </label>
+                </form>
+                </div>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
       </div>

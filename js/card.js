@@ -21,7 +21,7 @@
 var vm = new Vue({
   el: "#content",
   data: {
-    open: false,
+    opened: false,
     isactive: true,
     onactive: false,
     classObject: {
@@ -41,12 +41,16 @@ var vm = new Vue({
 
     card_detail_lightbox: false,
 
-    // card_check_item_detail: [],
-    card_detail_lightbox_add: '',
+
 
     calandar_switch: false,
 
+    file_switch:false,
 
+    filebox:[],
+    sourced:'',
+
+    card_meber_switch:false,
   },
   methods: {
     changeimg() {
@@ -81,7 +85,7 @@ var vm = new Vue({
           // 將卡片細節塞入該陣列裡面
           lists: []
         });
-
+       
         this.todo_lightbox_input_title = '';
         this.todo_lightbox_switch = false;
       }
@@ -102,23 +106,54 @@ var vm = new Vue({
 
     },
 
-    deletecard_todo(index) {
-      this.todo_list_content_detail.splice(index, 1);
+    deletecard_todo(detailIndex) {
+      this.todo_list_content_detail.splice(detailIndex, 1);
     },
-    delete_todo_title(index) {
-      // this.todo_list_content_detail[index].lists.splice(index, 1);
+    //為啥抓不到標題在陣列的索引直
+    delete_todo_title(){
+      let index=this.todo_list_content_detail.findIndex(item=>item.title == this.todo_lightbox_input_title);
+      console.log(index);
     },
+
+
+    fileSelected(e){
+      let file = e.target.files[0];
+      // let file = e.target.files.item(0);
+      // console.log(file);
+      this.file_switch=false;
+      let readFile = new FileReader();
+
+      // console.log(readFile);
+
+      readFile.readAsDataURL(file);
+      readFile.addEventListener('load',
+      function file(e){
+        this.sourced=e.target.result;
+      }
+      );
+    
+      this.filebox.push({
+        name:file.name,
+        source:this.sourced,
+      });
+     
+       
+  },
+  del_file(index){
+  this.filebox.splice(index,1);
+  },
   },
   mounted() {
     document.addEventListener('click', () => {
       this.calandar_switch = false;
       this.todo_lightbox_switch = false;
-      // this.card_detail_lightbox = false;
+      this.file_switch=false;
+      this.card_meber_switch=false;
     });
   },
-  computed: {
-    progress_bar_length(index) {
-
+  computed:{
+    progress_bar_length(index){
+    
     }
   },
 });
