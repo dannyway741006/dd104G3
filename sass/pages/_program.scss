@@ -3,7 +3,7 @@
 
 
   .program_now_having_all {
-    border: 1px solid blue;
+    // border: 1px solid blue;
     transition: all 0.3s;
 
     &.program_now_having_all_active {
@@ -157,7 +157,7 @@
 
 
   .program_watch_history_all {
-    border: 1px solid red;
+    // border: 1px solid red;
     height: 0;
     overflow: hidden;
     transition: all 0.3s;
@@ -234,7 +234,7 @@
 
   //邀請成員區
   .invite_list {
-    border: 1px solid red;
+    // border: 1px solid red;
     // max-width: 400px;
     display: inline-block;
     position: relative;
@@ -429,7 +429,7 @@
         @include btnReset;
         @include hoverIcon(30px);
         position: relative;
-        border: 1px solid red;
+        // border: 1px solid red;
       }
 
       .program_calendar_box {
@@ -673,7 +673,7 @@
 
   //卡片區
   .cards_column_all {
-    border: 1px solid red;
+    // border: 1px solid red;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: scroll;
@@ -682,7 +682,7 @@
 
     .cards_column {
       // display: inline-block;
-      border: 1px solid blue;
+      // border: 1px solid blue;
       height: 70vh;
       min-width:300px ;
       max-width: 300px;
