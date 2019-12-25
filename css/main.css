@@ -4115,243 +4115,7 @@ ul * {
       justify-content: space-around;
 }
 
-.main_content .timer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 50%;
-  position: relative;
-}
-
-.main_content .timer .switch {
-  position: absolute;
-  top: 10%;
-  left: 20%;
-  width: 150px;
-  height: 50px;
-  text-align: center;
-  margin: -30px 0 0 -75px;
-  background: #8acede;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  border-radius: 25px;
-}
-
-.main_content .timer .switch span {
-  position: absolute;
-  width: 20px;
-  height: 4px;
-  top: 50%;
-  left: 50%;
-  margin: -2px 0px 0px -4px;
-  background: #ffffff;
-  display: block;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  border-radius: 2px;
-}
-
-.main_content .timer .switch span:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 4px;
-  height: 12px;
-  margin-top: -8px;
-  background: #ffffff;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  border-radius: 2px;
-}
-
-.main_content .timer .switch label {
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.2);
-  width: 50%;
-  line-height: 50px;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  font-size: 16px;
-}
-
-.main_content .timer input[type=radio] {
-  display: none;
-}
-
-.main_content .timer label[for=work] {
-  position: absolute;
-  left: 0px;
-}
-
-.main_content .timer label[for=rest] {
-  position: absolute;
-  right: 0px;
-}
-
-.main_content .timer #rest:checked ~ .switch {
-  background: #86c166;
-}
-
-.main_content .timer #rest:checked ~ .switch label[for=rest] {
-  color: #ffffff;
-}
-
-.main_content .timer #work:checked ~ .switch label[for=work] {
-  color: #ffffff;
-}
-
-.main_content .timer .taskCount {
-  width: 170px;
-  height: 70px;
-  position: absolute;
-  right: 10%;
-  top: 45px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.main_content .timer .taskCount span {
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 30px;
-}
-
-.main_content .timer .taskCount .taskTitle {
-  width: 100%;
-}
-
-.main_content .timer .taskCount .taskTotal {
-  width: 50%;
-  margin: 0 auto;
-}
-
-.main_content .timer .bell {
-  width: 370px;
-  height: 370px;
-  border-radius: 50%;
-  margin-top: 25%;
-  position: relative;
-  background-color: #a6c1ee;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.main_content .timer .bell p {
-  color: #ffffff;
-  display: inline-block;
-  letter-spacing: 6.8px;
-  font-size: 34px;
-  line-height: 50px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-@media screen and (max-width: 1200px) {
-  .main_content .timer .taskCount {
-    right: 0;
-  }
-}
-
-@media screen and (max-width: 1120px) {
-  .main_content .timer .bell {
-    margin-top: 40%;
-  }
-}
-
-.main_content .timer .control {
-  margin-top: 100px;
-  width: 60%;
-  height: 80px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.main_content .timer .control .side {
-  width: 55px;
-  height: 55px;
-}
-
-.main_content .timer .control .side i {
-  font-size: 25px;
-}
-
-.main_content .timer .control .side:hover i {
-  font-size: 30px;
-}
-
-.main_content .timer .control > div {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: #5395de;
-  position: relative;
-}
-
-.main_content .timer .control > div:hover i {
-  font-size: 35px;
-  cursor: pointer;
-}
-
-.main_content .timer .control > div input {
-  cursor: pointer;
-  z-index: 999;
-  width: 60px;
-  height: 60px;
-  opacity: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.main_content .timer .control > div input:checked ~ .status1 {
-  display: none;
-}
-
-.main_content .timer .control > div input:checked ~ .status2 {
-  display: block;
-}
-
-.main_content .timer .control > div i {
-  font-size: 30px;
-  color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.main_content .timer .control > div .status2 {
-  display: none;
-}
-
-.main_content .todoList {
+.todoList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4365,11 +4129,9 @@ ul * {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   width: 50%;
-  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 }
 
-.main_content .todoList .todoLi {
+.todoList .todoLi {
   position: relative;
   width: 98%;
   height: 85px;
@@ -4390,12 +4152,12 @@ ul * {
           justify-content: space-between;
 }
 
-.main_content .todoList .todoLi:hover .todoColor {
+.todoList .todoLi:hover .todoColor {
   height: 100%;
   opacity: .3;
 }
 
-.main_content .todoList .todoLi .todoColor {
+.todoList .todoLi .todoColor {
   border-radius: 0 0 10px 10px;
   position: absolute;
   top: 0;
@@ -4409,17 +4171,17 @@ ul * {
   transition: .3s;
 }
 
-.main_content .todoList .todoLi .title {
+.todoList .todoLi .title {
   margin-top: 5px;
 }
 
-.main_content .todoList .todoLi .title p {
+.todoList .todoLi .title p {
   letter-spacing: 4px;
   font-size: 20px;
   line-height: 30px;
 }
 
-.main_content .todoList .todoLi .info {
+.todoList .todoLi .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4428,7 +4190,7 @@ ul * {
           justify-content: space-between;
 }
 
-.main_content .todoList .todoLi .info .timer {
+.todoList .todoLi .info .timer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4439,30 +4201,30 @@ ul * {
   margin-left: 10px;
 }
 
-.main_content .todoList .todoLi .info .timer img {
+.todoList .todoLi .info .timer img {
   margin-right: 5px;
 }
 
-.main_content .todoList .todoLi .info .timer p {
+.todoList .todoLi .info .timer p {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
 }
 
-.main_content .todoList .todoLi .info .status {
+.todoList .todoLi .info .status {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.main_content .todoList .todoLi .info .checkBtn {
+.todoList .todoLi .info .checkBtn {
   margin: 0 5px;
   width: 23px;
   height: 23px;
   position: relative;
 }
 
-.main_content .todoList .todoLi .info .checkBtn input {
+.todoList .todoLi .info .checkBtn input {
   cursor: pointer;
   position: absolute;
   left: 0;
@@ -4473,25 +4235,25 @@ ul * {
   opacity: 0;
 }
 
-.main_content .todoList .todoLi .info .checkBtn input:checked + .imgChecked {
+.todoList .todoLi .info .checkBtn input:checked + .imgChecked {
   display: block;
 }
 
-.main_content .todoList .todoLi .info .checkBtn input:checked + .imgUnchecked {
+.todoList .todoLi .info .checkBtn input:checked + .imgUnchecked {
   display: none;
 }
 
-.main_content .todoList .todoLi .info .checkBtn img {
+.todoList .todoLi .info .checkBtn img {
   position: absolute;
   left: 0;
   bottom: 0;
 }
 
-.main_content .todoList .todoLi .info .checkBtn .imgChecked {
+.todoList .todoLi .info .checkBtn .imgChecked {
   display: none;
 }
 
-.main_content .todoList .todoLi .info .delete {
+.todoList .todoLi .info .delete {
   display: block;
   margin: 0 5px;
   width: 23px;
@@ -4501,41 +4263,41 @@ ul * {
   cursor: pointer;
 }
 
-.main_content .todoList .todoLi .info .delete:hover > .ondeleteimg {
+.todoList .todoLi .info .delete:hover > .ondeleteimg {
   display: block;
 }
 
-.main_content .todoList .todoLi .info .delete:hover > .deleteimg {
+.todoList .todoLi .info .delete:hover > .deleteimg {
   display: none;
 }
 
-.main_content .todoList .todoLi .info .delete img {
+.todoList .todoLi .info .delete img {
   position: absolute;
   left: 0;
   bottom: 0;
 }
 
-.main_content .todoList .todoLi .info .delete .ondeleteimg {
+.todoList .todoLi .info .delete .ondeleteimg {
   display: none;
 }
 
-.main_content .todoList .fromTrello {
+.todoList .fromTrello {
   width: 50%;
   height: 100%;
   padding: 0 20px;
 }
 
-.main_content .todoList .custom {
+.todoList .custom {
   width: 50%;
   height: 100%;
   position: relative;
 }
 
-.main_content .todoList .custom .todoHead {
+.todoList .custom .todoHead {
   border-top: 2px solid #86c166;
 }
 
-.main_content .todoList .custom .addTask {
+.todoList .custom .addTask {
   width: 95%;
   height: 50px;
   position: relative;
@@ -4548,7 +4310,7 @@ ul * {
   padding: 5px 0;
 }
 
-.main_content .todoList .custom .addTask input {
+.todoList .custom .addTask input {
   width: 70%;
   height: 90%;
   vertical-align: middle;
@@ -4560,7 +4322,7 @@ ul * {
   outline: 0;
 }
 
-.main_content .todoList .custom .addTask .cross {
+.todoList .custom .addTask .cross {
   position: absolute;
   right: 20px;
   bottom: 5px;
@@ -4573,17 +4335,17 @@ ul * {
   opacity: .7;
 }
 
-.main_content .todoList .custom .addTask .cross:hover {
+.todoList .custom .addTask .cross:hover {
   opacity: 1;
 }
 
 @media screen and (max-width: 1280px) {
-  .main_content .todoList .custom .addTask .cross {
+  .todoList .custom .addTask .cross {
     right: 5px;
   }
 }
 
-.main_content .todoList .todoHead {
+.todoList .todoHead {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4599,7 +4361,7 @@ ul * {
   margin-top: 20px;
 }
 
-.main_content .todoList .todoHead h2 {
+.todoList .todoHead h2 {
   margin: 0 auto;
   display: inline-block;
   font-size: 20px;
@@ -4608,48 +4370,48 @@ ul * {
 }
 
 @media screen and (max-width: 1280px) {
-  .main_content .todoList {
+  .todoList {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .main_content .todoList .custom {
+  .todoList .custom {
     width: 98%;
   }
-  .main_content .todoList .fromTrello {
+  .todoList .fromTrello {
     width: 98%;
   }
 }
 
 @media screen and (max-width: 1100px) {
-  .main_content .todoList {
+  .todoList {
     display: block;
     position: relative;
   }
-  .main_content .todoList.active #todoCon2 {
+  .todoList.active #todoCon2 {
     -webkit-transform: scaleX(1);
             transform: scaleX(1);
     opacity: 1;
     visibility: visible;
   }
-  .main_content .todoList.active #todoCon1 {
+  .todoList.active #todoCon1 {
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
     opacity: 0;
     visibility: hidden;
   }
-  .main_content .todoList #todoCon1,
-  .main_content .todoList #todoCon2 {
+  .todoList #todoCon1,
+  .todoList #todoCon2 {
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
     position: absolute;
   }
-  .main_content .todoList #todoCon1 {
+  .todoList #todoCon1 {
     -webkit-transform-origin: right;
             transform-origin: right;
   }
-  .main_content .todoList #todoCon2 {
+  .todoList #todoCon2 {
     -webkit-transform: scaleX(0);
             transform: scaleX(0);
     opacity: 0;
@@ -4657,10 +4419,10 @@ ul * {
     -webkit-transform-origin: left;
             transform-origin: left;
   }
-  .main_content .todoList .custom {
+  .todoList .custom {
     width: 100%;
   }
-  .main_content .todoList .fromTrello {
+  .todoList .fromTrello {
     width: 100%;
   }
 }

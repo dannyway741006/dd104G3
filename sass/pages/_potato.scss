@@ -104,545 +104,256 @@ ul *{
     padding-top: 50px;
     // border: 1px solid red;
     justify-content: space-around;
-    .timer{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: 50%;
-        // height: 90vh;
-        // border: 1px solid yellow;
-        position: relative;
-        .switch {   
-            position: absolute;
-            top: 10%;
-            left: 20%;
-            width: 150px;
-            height: 50px;
-            text-align: center;
-            margin: -30px 0 0 -75px;
-            background: $primary;
-            transition: all 0.2s ease;
-            border-radius: 25px; 
-            span {
-                position: absolute;
-                width: 20px;
-                height: 4px;
-                top: 50%;
-                left: 50%;
-                margin: -2px 0px 0px -4px;
-                background: $white;
-                display: block;
-                transform: rotate(-45deg);
-                transition: all 0.2s ease;
-                border-radius: 2px;
-                &:after {
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    width: 4px;
-                    height: 12px;
-                    margin-top: -8px;
-                    background: $white;
-                    transition: all 0.2s ease;
-                    border-radius: 2px;
-                }
-            }
-            label {
-                cursor: pointer;
-                color: rgba(0,0,0,0.2);
-                width: 50%;
-                line-height: 50px;
-                transition: all 0.2s ease;
-                // border: 1px solid red;
-                font-size: 16px;
-                
-            }
-        }
+}
+.timer{
 
-        input[type=radio] {
-            display: none;
+}
+.todoList{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    // box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+    // border: 1px solid blue;
+    .todoLi{
+        position: relative;
+        width: 98%;
+        height: 85px;
+        padding: 10px;
+        margin: 15px auto;
+        // border: 1px solid red;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 1px 1px 3px $shadow;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &:hover .todoColor{
+            height: 100%;
+            opacity: .3;
         }
-        label[for=work] {
+        .todoColor{
+            border-radius: 0 0 10px 10px;
             position: absolute;
-            left: 0px;
-            // height: 20px;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(to right, #8acede, #FBC2EB);
+            width: 100%;
+            height: 3px;
+            z-index: -1;
+            transition: .3s;
         }
-        label[for=rest] {
-            position: absolute;
-            right: 0px;
-        }
-        #rest {
-            &:checked {
-                ~ {
-                    .switch {
-                        background: $success;
-                        label[for=rest] {
-                            color: $white;
-                        }
-                    }
-                }
-            }
-        }
-        #work {
-            &:checked {
-                ~ {
-                    .switch {
-                        label[for=work] {
-                            color: $white;
-                        }
-                    }
-                }
-            }
-        }
-        .taskCount{
-            width: 170px;
-            height: 70px;
+        .title{
             // border: 1px solid red;
-            position: absolute;
-            right: 10%;
-            top: 45px;
-            display: flex;
-            flex-direction: column;
-            span{
-                @include font(2)
-            }
-            .taskTitle{
-                // border: 1px solid blue;
-                width: 100%;
-            }
-            .taskTotal{
-                // border: 1px solid blue;
-                width: 50%;
-                margin: 0 auto;
-            }
-        }
-        .bell{
-            width: 370px;
-            height: 370px;
-            // border: 2px solid blue;
-            border-radius: 50%;
-            margin-top: 25%;
-            position: relative;
-            background-color: $secondary;
-            display: flex;
-            justify-content: center;
+            margin-top: 5px;
             p{
-                color:$white ;
-                display: inline-block;
-                // border: 1px solid red;
-                // // position: absolute;
-                // margin-top: 50%;
-                // transform: translateY(-30%);
-                @include font(10);
-                @include positionCenter;
+                @include font(3);
             }
         }
-        @include media(1200px){
-            .taskCount{
-                right: 0;
-            }
-        }
-        @include media(1120px){
-            .bell{
-                margin-top: 40%;
-            }
-        }
-        .control{
-            margin-top: 100px;
-            width: 60%;
-            height: 80px;
-            // border: 2px solid yellow;
+        .info{
+            // border: 1px solid blue;
             display: flex;
-            justify-content: space-around;
-            .side{
-                width: 55px;
-                height: 55px;
-                i{
-                    font-size: 25px;
+            justify-content: space-between;
+            .timer{
+                display: flex;
+                flex-direction: row;
+                margin-left: 10px;
+                img{
+                    margin-right: 5px;
                 }
-                &:hover i{
-                    font-size: 30px;
+                p{
+                    @include font(1)
                 }
             }
-            >div{
-                width: 70px;
-                height: 70px;
+            .status{
+                // border: 1px solid lightgreen;
+                display: flex;
+            }
+            .checkBtn{
+                margin: 0 5px;
+                width: 23px;
+                height: 23px;
                 // border: 1px solid red;
-                border-radius: 50%;
-                background-color: $programcolor1;
                 position: relative;
-                &:hover{
-                    i{
-                        font-size: 35px;
-                        cursor: pointer;
-                    }
-                }
                 input{
                     cursor: pointer;
-                    z-index: 999;
-                    width: 60px;
-                    height: 60px;
-                    opacity: 0;
                     position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%,-50%);
-                    &:checked~ .status1{
-                        display: none;
+                    left: 0;
+                    bottom: 0;
+                    z-index: 99;
+                    width: 23px;
+                    height: 23px;
+                    opacity: 0;
+                    &:checked{
+                        +.imgChecked{
+                            display: block;
+                        }
+                        +.imgUnchecked{
+                            display: none;
+                        }
                     }
-                    &:checked~ .status2{
+                }
+                img{
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                }
+                .imgChecked{
+                    display: none;
+                }
+            }
+            .delete{
+                display: block;
+                margin: 0 5px;
+                width: 23px;
+                height: 23px;
+                // border: 1px solid red;
+                position: relative;
+                z-index: 999;
+                &:hover{
+                    > .ondeleteimg{
                         display: block;
                     }
+                    > .deleteimg{
+                        display: none;
+                    }
                 }
-                i{
-                    font-size: 30px;
-                    color: white;
-                    @include positionCenter
+                cursor: pointer;
+                img{
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
                 }
-                .status2{
+                .ondeleteimg{
                     display: none;
                 }
             }
         }
     }
-    .todoList{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
+    .fromTrello{
         width: 50%;
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
-        // border: 1px solid blue;
-        .todoLi{
-            position: relative;
-            width: 98%;
-            height: 85px;
-            padding: 10px;
-            margin: 15px auto;
-            // border: 1px solid red;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 1px 1px 3px $shadow;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            &:hover .todoColor{
-                height: 100%;
-                opacity: .3;
-            }
-            .todoColor{
-                border-radius: 0 0 10px 10px;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-image: linear-gradient(to right, #8acede, #FBC2EB);
-                width: 100%;
-                height: 3px;
-                z-index: -1;
-                transition: .3s;
-            }
-            .title{
-                // border: 1px solid red;
-                margin-top: 5px;
-                p{
-                    @include font(3);
-                }
-            }
-            .info{
-                // border: 1px solid blue;
-                display: flex;
-                justify-content: space-between;
-                .timer{
-                    display: flex;
-                    flex-direction: row;
-                    margin-left: 10px;
-                    img{
-                        margin-right: 5px;
-                    }
-                    p{
-                        @include font(1)
-                    }
-                }
-                .status{
-                    // border: 1px solid lightgreen;
-                    display: flex;
-                }
-                .checkBtn{
-                    margin: 0 5px;
-                    width: 23px;
-                    height: 23px;
-                    // border: 1px solid red;
-                    position: relative;
-                    input{
-                        cursor: pointer;
-                        position: absolute;
-                        left: 0;
-                        bottom: 0;
-                        z-index: 99;
-                        width: 23px;
-                        height: 23px;
-                        opacity: 0;
-                        &:checked{
-                            +.imgChecked{
-                                display: block;
-                            }
-                            +.imgUnchecked{
-                                display: none;
-                            }
-                        }
-                    }
-                    img{
-                        position: absolute;
-                        left: 0;
-                        bottom: 0;
-                    }
-                    .imgChecked{
-                        display: none;
-                    }
-                }
-                .delete{
-                    display: block;
-                    margin: 0 5px;
-                    width: 23px;
-                    height: 23px;
-                    // border: 1px solid red;
-                    position: relative;
-                    z-index: 999;
-                    &:hover{
-                        > .ondeleteimg{
-                            display: block;
-                        }
-                        > .deleteimg{
-                            display: none;
-                        }
-                    }
-                    cursor: pointer;
-                    img{
-                        position: absolute;
-                        left: 0;
-                        bottom: 0;
-                    }
-                    .ondeleteimg{
-                        display: none;
-                    }
-                }
-            }
-        }
-        // border: 2px solid red;
-        // ul{
-        //     list-style: none;
-        //     margin: 0 auto;
-        //     // border: 1px solid red;
-        //     li{
-        //         // border: 1px solid green;
-        //         width: 95%;
-        //         height: 50px;
-        //         position: relative;
-        //         margin: 20px auto;
-        //         // border-bottom: 1px solid $dark;
-        //         // border: 1px solid $dark;
-        //         border-radius: 5px;
-        //         padding: 5px;
-        //         padding-left: 15px;
-	    //         box-shadow: 1px 1px 3px $shadow;
-        //         // background-color: #00E6E6;
-        //         img{
-        //             position: absolute;
-        //             width: 25px;
-        //             height: 25px;
-        //             left: 15px;
-        //             bottom: 10px;
-        //             z-index: -1;
-        //         }
-        //         .imgUnchecked{
-        //             display: block;
-        //             opacity: .7;
-        //         }
-        //         .imgChecked{
-        //             display: none;
-        //         }
-        //         .delete{
-        //             position: absolute;
-        //             right: 20px;
-        //             bottom: 5px;
-        //             // border: 1px solid red;
-        //             font-weight: 600;
-        //             color: $dark;
-        //             @include font(5);
-        //             cursor: pointer;
-        //             opacity: .7;
-        //             &:hover{
-        //                 opacity: 1;
-        //             }
-        //         }
-        //         label{
-        //             cursor: pointer;
-        //             display: inline-block;
-        //             margin: 0 auto;
-        //             margin-left: 5px;
-        //             // transform: translateY(0%);
-        //             @include font(2);
-        //             color: $dark;
-        //             // border: 1px solid blue;
-        //         }
-        //         input{
-        //             cursor: pointer;
-        //             z-index: 9;
-        //             width: 30px;
-        //             height: 30px;
-        //             transform: translateY(5px);
-        //             opacity: 0;
-        //             &:hover ~ .imgUnchecked{
-        //                 opacity: 1;
-        //             }
-        //             &:checked ~.imgUnchecked{
-        //                 display: none;
-        //             }
-        //             &:checked +.imgChecked{
-        //                display: block;
-        //             }
-        //         }
-        //         .check{
-        //             color: rgba(#000000, 0.2);
-        //             z-index: -1;
-        //             @include font(5);
-        //             position: absolute;
-        //             left: 15px;
-        //             bottom: 15px;
-        //             // border: 1px solid red;
-        //             // vertical-align: middle;
-        //         }
-        //         @include media(1280px){
-        //             .delete{
-        //                 right: 5px;
-        //             }
-        //         }
-        //     }
-        // }
-        .fromTrello{
-            width: 50%;
-            height: 100%;
-            // border: 2px solid blue;
-            padding:0 20px;
-        }
-        .custom{
-            width: 50%;
-            height: 100%;
-            // border: 2px solid blue;
-            position: relative;
-            .todoHead{
-                border-top: 2px solid $success;
-            }
-            .addTask{
-                width: 95%;
-                height: 50px;
-                position: relative;
-                margin: 20px auto;
-                // border-bottom: 1px solid $dark;
-                // border: 1px solid $dark;
-                border-radius: 5px;
-                padding: 5px;
-                padding-left: 15px;
-                box-shadow: 3px 3px $shadow;
-                padding: 5px 0;
-                input{
-                    width: 70%;
-                    height: 90%;
-                    vertical-align: middle;
-                    border: none;
-                    margin-left: 20px;
-                    @include font(1);
-                    outline: 0;
-                }
-                .cross{
-                    position: absolute;
-                    right: 20px;
-                    bottom: 5px;
-                    // border: 1px solid red;
-                    font-weight: 700;
-                    color: $dark;
-                    @include font(7);
-                    cursor: pointer;
-                    opacity: .7;
-                    &:hover{
-                        opacity: 1;
-                    }
-                }
-            }
-            @include media(1280px){
-                .addTask{
-                    .cross{
-                        right: 5px;
-                    }
-                }
-            }
-        }
+        height: 100%;
+        // border: 2px solid blue;
+        padding:0 20px;
+    }
+    .custom{
+        width: 50%;
+        height: 100%;
+        // border: 2px solid blue;
+        position: relative;
         .todoHead{
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 60px;
-            // border-bottom: 1px solid $dark;
-            border-top: 2px solid $secondary;
-            border-radius: 5px;
-            box-shadow: 3px 3px 3px 1px $shadow;
-            margin-top: 20px;
-            h2{
-                margin: 0 auto;
-                display: inline-block;
-                font-size: font(3);
-                color: $dark;
-                text-align: center;
-                // border: 1px solid red;
-            }
+            border-top: 2px solid $success;
         }
-    }
-    @include media(1280px){
-        .todoList{
-            flex-direction: column;
-            .custom{
-                width: 98%;
-            }
-            .fromTrello{
-                width: 98%;
-            }
-        }
-    }
-    @include media(1100px){
-        .todoList{
-            display: block;
+        .addTask{
+            width: 95%;
+            height: 50px;
             position: relative;
-            &.active{
-                #todoCon2{
-                transform: scaleX(1);
-                opacity: 1;
-                visibility: visible;
-                }
-                #todoCon1 {
-                    transform: scaleX(0);
-                    opacity: 0;
-                    visibility: hidden;
-                  }
+            margin: 20px auto;
+            // border-bottom: 1px solid $dark;
+            // border: 1px solid $dark;
+            border-radius: 5px;
+            padding: 5px;
+            padding-left: 15px;
+            box-shadow: 3px 3px $shadow;
+            padding: 5px 0;
+            input{
+                width: 70%;
+                height: 90%;
+                vertical-align: middle;
+                border: none;
+                margin-left: 20px;
+                @include font(1);
+                outline: 0;
             }
-            #todoCon1,
-            #todoCon2 {
-              transition: all 0.3s;
-              position: absolute;
+            .cross{
+                position: absolute;
+                right: 20px;
+                bottom: 5px;
+                // border: 1px solid red;
+                font-weight: 700;
+                color: $dark;
+                @include font(7);
+                cursor: pointer;
+                opacity: .7;
+                &:hover{
+                    opacity: 1;
+                }
+            }
+        }
+        @include media(1280px){
+            .addTask{
+                .cross{
+                    right: 5px;
+                }
+            }
+        }
+    }
+    .todoHead{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 60px;
+        // border-bottom: 1px solid $dark;
+        border-top: 2px solid $secondary;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px 1px $shadow;
+        margin-top: 20px;
+        h2{
+            margin: 0 auto;
+            display: inline-block;
+            font-size: font(3);
+            color: $dark;
+            text-align: center;
+            // border: 1px solid red;
+        }
+    }
+}
+@include media(1280px){
+    .todoList{
+        flex-direction: column;
+        .custom{
+            width: 98%;
+        }
+        .fromTrello{
+            width: 98%;
+        }
+    }
+}
+@include media(1100px){
+    .todoList{
+        display: block;
+        position: relative;
+        &.active{
+            #todoCon2{
+            transform: scaleX(1);
+            opacity: 1;
+            visibility: visible;
             }
             #todoCon1 {
-                transform-origin: right;
-              }
-            #todoCon2 {
                 transform: scaleX(0);
                 opacity: 0;
                 visibility: hidden;
-                transform-origin: left;
-              }  
-            .custom{
-                width: 100%;
-            }
-            .fromTrello{
-                width: 100%;
-            }
-        }    
-    }
+              }
+        }
+        #todoCon1,
+        #todoCon2 {
+          transition: all 0.3s;
+          position: absolute;
+        }
+        #todoCon1 {
+            transform-origin: right;
+          }
+        #todoCon2 {
+            transform: scaleX(0);
+            opacity: 0;
+            visibility: hidden;
+            transform-origin: left;
+          }  
+        .custom{
+            width: 100%;
+        }
+        .fromTrello{
+            width: 100%;
+        }
+    }    
 }
