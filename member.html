@@ -100,10 +100,11 @@
           </ul>
         </div>
     </aside>
+
     <div class="mask" id="mask"></div>
+
     <!-- ================member內容=============================== -->
     <div class="memberContent">
-        <div id="mask" class="mask"></div>
       <div id="memcon1">
         <h3>一、基本資料</h3>
         <form action="" method="POST" autocomplete="on">
@@ -123,11 +124,25 @@
             <li>
               <p>住址：</p><input type="text" autocomplete="off">
             </li>
-            <button type="button" class="memberbtn">確認修改</button>
+            <button type="button" class="memberbtn" id="memberbtn">確認修改</button>
           </ul>
         </form>
       </div>
       <!-- =======================會員訂單資料================================= -->
+      <div id="mem_mask" class="mem_mask"></div>
+      <div class="memlibox" id="memlibox">
+        <div class="light_box_title" id="light_box_title">
+              <img src="./img/member_img/times-solid.svg" alt="" width="15">
+              <img src="./img/member_img/times-solid1.svg" alt="" width="15">
+        </div>
+        <div class="light_box_content">
+          <p>確定刪除所有訂單記錄？</p>
+        </div>
+        <div class="memlibtn">
+          <button id="liclose" class="btn_close">取 消</button>
+          <button id="enter_delete" class="btn_close">確 定</button>
+        </div>
+      </div>
       <div id="memcon2">
         <h3>二、訂單記錄</h3>
         <!-- =========訂單記錄內容================================= -->
@@ -138,20 +153,15 @@
               <th>價格</th>
               <th>購買日期</th>
               <th>訂單編號</th>
-              <th>
+              <th style="    text-align: center;">
                 <input id="allcheck" type="checkbox" name="">全選/
-                <label id="delet_btn" class="delete_all_oder">
+                <label id="delet_btn1" class="delete_all_oder">
                   <input type="botton" name="botton" style="display: none;">
-                  <span class="delete_oder">
+                  <span class="delete_oder" id="delet_btn">
                     <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
                     <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
                   </span>
                 </label>
-                <!-- <span class="delete_oder">
-                  <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
-                  <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
-                </span> -->
-
               </th>
             </tr>
             <tr>
@@ -167,7 +177,6 @@
     </div>
   </main>
   <footer></footer>
-
   <script>
     const moreBtn = document.getElementById("more");
     const content = document.getElementById("content");

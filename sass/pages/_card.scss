@@ -11,7 +11,7 @@
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
   overflow: hidden;
-  padding-bottom:15px;
+  padding-bottom: 15px;
 
   &.opneLight {
     opacity: 1;
@@ -72,11 +72,12 @@
     padding-left: 20px;
     padding-top: 25px;
     height: auto;
-     position: relative;
-  
-    .second_right,.first_right{
+    position: relative;
+
+    .second_right,
+    .first_right {
       transition: all 0.3s;
-      
+
       .todogo,
       .first_right_member,
       .second_right_deletecard,
@@ -328,7 +329,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 50%;
+            // width: 50%;
             height: 5px;
             background: linear-gradient(to right, #BFF9DF, #A5B1FF);
           }
@@ -343,6 +344,7 @@
       left: 25px;
       border-bottom: 1px solid #e0dcdc;
       width: 88.5%;
+      text-overflow: ellipsis;
 
       &:hover {
 
@@ -426,36 +428,40 @@
     .card_add_button {
       padding-left: 25px;
       margin-top: 10px;
-       display: inline-block;
-       label{
+      display: inline-block;
+
+      label {
         display: inline-block;
         width: 100%;
         position: relative;
-        input{
-        @include btnReset();
-        background-color: $primary;
-        @include font(0, 20px);
-        color: #fff;
-        padding: 3px;
-        border-radius: 5px;
-        border: 2px solid $primary;
-        transition: all 0.3s;
-         width: 110px;
-         padding: 5px 25px 5px 5px;
-         &::placeholder{
-           color: white;
-         }
-      
 
-     
-      }
-        img {
-         position: absolute;
-         top: 50%;
-        transform: translateY(-50%);
-        right: 5px;
+        input {
+          @include btnReset();
+          background-color: $primary;
+          @include font(0, 20px);
+          color: #fff;
+          padding: 3px;
+          border-radius: 5px;
+          border: 2px solid $primary;
+          transition: all 0.3s;
+          width: 110px;
+          padding: 5px 25px 5px 5px;
+
+          &::placeholder {
+            color: white;
+          }
+
+
+
         }
-    }
+
+        img {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 5px;
+        }
+      }
     }
 
     //上傳附件
@@ -481,31 +487,14 @@
         margin-top: 10px;
 
         button {
-          @include btnReset();
+          @include baseBtn(100px, 30px, 5px);
           background-color: $primary;
           @include font(0, 20px);
           color: #fff;
           padding: 3px;
-          border-radius: 5px;
+
           border: 2px solid $primary;
           transition: all 0.3s;
-
-          img {
-            transform: translatey(2px);
-            margin-left: 7px;
-            transition: all 0.3s;
-          }
-
-          &:hover {
-            color: $primary;
-            background-color: white;
-
-            img {
-              filter: invert(25%) sepia(51%) saturate(1876%) hue-rotate(164deg) brightness(89%) contrast(94%);
-
-
-            }
-          }
         }
       }
     }
@@ -525,6 +514,7 @@
   display: none;
   top: 262px;
   z-index: 9999999;
+
   &.opentodo_lightbox {
     display: block;
   }
@@ -634,7 +624,8 @@
   box-shadow: 3px 3px 6px 0px $shadow;
   display: none;
   border: 1px solid rgba(0, 0, 0, .1);
- z-index: 9999999;
+  z-index: 9999999;
+
   &.open_calendar_lightbox {
     display: block;
   }
@@ -644,7 +635,8 @@
     border-bottom: 1px solid #e0dcdc;
     padding: 0px 0 10px 0px;
   }
-  p.day_date{
+
+  p.day_date {
     @include font(0, 20px);
     margin-top: 5px;
   }
@@ -727,7 +719,7 @@
 }
 
 //上傳附件跳窗
-.file_lightbox{
+.file_lightbox {
   background-color: white;
   border-radius: 10px;
   padding: 15px;
@@ -737,42 +729,48 @@
   box-shadow: 3px 3px 6px 0px $shadow;
   display: none;
   border: 1px solid rgba(0, 0, 0, .1);
- z-index: 9999999;
- h3{
-  @include font(1,20px);
- }
- form{
-   text-align: end;
+  z-index: 9999999;
+
+  h3 {
+    @include font(1, 20px);
+  }
+
+  form {
+    text-align: end;
     margin-top: 10px;
-   .upfile_content{
+
+    .upfile_content {
       display: inline-block;
-      @include font(0,20px);
+      @include font(0, 20px);
       color: #fff;
       border-radius: 5px;
       // margin: 10px 0 5px;
       cursor: pointer;
       padding-left: 16px;
       background-color: $primary;
-      border:2px solid $primary;
+      border: 2px solid $primary;
       height: 35px;
       // text-align: center;
       position: relative;
       width: 114px;
-      p{
+
+      p {
         @include positionCenter(y);
-        span{
-          img{
+
+        span {
+          img {
             margin-right: 0;
           }
         }
       }
-      input{
+
+      input {
         position: fixed;
         opacity: 0;
         visibility: hidden;
       }
-   }
- }
+    }
+  }
 }
 
 //卡片rwd
@@ -800,10 +798,12 @@
         hr {
           width: 90%;
         }
-        .calendar_lightbox{
+
+        .calendar_lightbox {
           top: 197px;
         }
-        .todo_lightbox{
+
+        .todo_lightbox {
           top: 242px;
         }
       }

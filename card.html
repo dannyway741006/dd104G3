@@ -480,9 +480,9 @@ html:
                     ></div>
                 </div>
                 <div class="todo_progress_bar">
-                  <p>0%</p>
+                  <p>{{progress_bar_length}}</p>
                   <div class="progress_bar">
-                    <!-- <span></span> -->
+                    <span></span>
                   </div>
                 </div>
                 <!-- 新增的卡片細項 -->
@@ -516,34 +516,37 @@ html:
                   </div>
                 </div>
 
-                <div
-                  class="card_add_button"
-                >
-              
-                <label for="">
-                  <input
-                  placeholder="增加項目"
-                    type="text"
-                    class="card_detail_lightbox_input"
-                    v-model.trim="card_detail_lightbox_add"
-                    @keyup.enter.prevent="add_card_detail(detailIndex)"
-                  >
-                  <img src="./img/card_img/plus_write.svg" alt="" width="14">
-                </label>
-               
+                <div class="card_add_button">
+
+                  <label for="">
+                    <input
+                      placeholder="增加項目"
+                      type="text"
+                      class="card_detail_lightbox_input"
+                      v-model.trim="item.test"
+                      @keyup.enter="add_card_detail(detailIndex)"
+                    >
+                    <img
+                      src="./img/card_img/plus_write.svg"
+                      alt=""
+                      width="14"
+                    >
+                  </label>
+
+                </div>
                 <!-- <form
                   method="post"
                   @submit.prevent="add_card_detail(detailIndex)"
                 >
                   <button>儲存</button>
                 </form> -->
-                  <!-- <button>新增項目<img
+                <!-- <button>新增項目<img
                       src="./img/card_img/plus_write.svg"
                       alt=""
                       width="14"
                     ></button> -->
-                </div>
-  <!--     @click.stop="card_detail_lightbox =!  card_detail_lightbox"
+
+                <!--     @click.stop="card_detail_lightbox =!  card_detail_lightbox"
  -->
                 <!-- 新增內部跳窗 -->
                 <!-- <div
@@ -551,7 +554,7 @@ html:
                   :class="{open_card_detail : card_detail_lightbox}"
                   @click.stop=""
                 > -->
-                  <!-- <label for="">
+                <!-- <label for="">
                     <input
                       type="text"
                       class="card_detail_lightbox_input"
@@ -583,11 +586,7 @@ html:
                 <div class="card_upload_file">
                   <!-- <div>上傳的內容</div> -->
                   <div class="card_upload_file_button">
-                    <button>增加附件<img
-                        src="./img/card_img/plus_write.svg"
-                        alt=""
-                        width="14"
-                      ></button>
+                    <button>增加附件</button>
                   </div>
                 </div>
               </div>
