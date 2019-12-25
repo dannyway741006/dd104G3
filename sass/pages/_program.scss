@@ -11,68 +11,48 @@
       overflow: hidden;
     }
 
-    .program_add_btn {
-      @include btnReset;
-      padding: 5px 10px;
-      transition: all 0.3s;
-      border-radius: 10px;
-      border: 2px solid $white;
-      color: $white;
-      background-color: $primary;
-      @include font(1);
+    //新增專案btn_box
+    .program_add_btn_box {
+      text-align: center;
+      padding: 5%;
 
-      &:hover {
-        background-color: $white;
-        color: $primary;
-        border: 2px solid $primary;
+      .program_add_btn {
+        @include baseBtn(100%, 40px, 10px);
 
         .program_add_img {
-          border: 2px solid $primary;
-          cursor: pointer;
+          width: 20px;
+          height: 20px;
+
+          display: inline-block;
+          vertical-align: middle;
+          border: 2px solid $white;
+          border-radius: 50%;
+          transition: border-color 0.3s;
+          position: relative;
 
           img {
-            &:nth-of-type(1) {
-              opacity: 0;
-            }
+            width: 80%;
+            // width: 20px;
+            // height: 20px;
+            @include positionCenter;
+            transition: opacity 0.3s;
 
             &:nth-of-type(2) {
-              opacity: 1;
+              opacity: 0;
             }
           }
         }
-      }
 
-      .program_add_img {
-        width: 20px;
-        height: 20px;
+        .program_add_list {
+          list-style: none;
 
-        display: inline-block;
-        vertical-align: middle;
-        border: 2px solid $white;
-        border-radius: 50%;
-        transition: border-color 0.3s;
-        position: relative;
-
-        img {
-          width: 80%;
-          // width: 20px;
-          // height: 20px;
-          @include positionCenter;
-          transition: opacity 0.3s;
-
-          &:nth-of-type(2) {
-            opacity: 0;
+          .todolist_li {
+            @include font(3, 30px);
           }
         }
       }
 
-      .program_add_list {
-        list-style: none;
-
-        .todolist_li {
-          @include font(3, 30px);
-        }
-      }
+      //新增專案btn_box--結束
     }
 
     //新建專案取名&選色燈箱
@@ -85,7 +65,7 @@
       // letter-spacing: 3.2px;
       @include font(1, 20px);
       position: fixed;
-      top: 100px;
+      top: 120px;
       left: 20px;
       z-index: 1;
 
@@ -150,21 +130,8 @@
       }
 
       button {
-        @include btnReset;
-        border: 2px solid $white;
-        @include font(1, 20px);
-        background-color: $primary;
-        color: $white;
+        @include baseBtn(auto, auto, 10px);
         float: right;
-        padding: 5px;
-        border-radius: 5px;
-        transition: all 0.3s;
-
-        &:hover {
-          background-color: $white;
-          color: $primary;
-          border: 2px solid $primary;
-        }
 
         &:after {
           content: "";
@@ -300,22 +267,9 @@
     }
 
     .invite_btn {
-      @include btnReset();
-      padding: 5px 15px;
+      @include baseBtn(100px, auto, 10px);
       margin: 10px;
-      background-color: $primary;
-      color: $white;
-      border-radius: 10px;
-      @include font(0);
       vertical-align: middle;
-      transition: all 0.3s;
-      border: 2px solid $white;
-
-      &:hover {
-        background-color: $white;
-        color: $primary;
-        border: 2px solid $primary;
-      }
     }
 
     .invite_add_member_box {
@@ -327,8 +281,8 @@
       width: 200px;
       // height: 200px;
       position: absolute;
-      top: 70px;
-      right: -120px;
+      top: 60px;
+      right: -90px;
       display: none;
       z-index: 2;
 
@@ -578,10 +532,7 @@
                 color: $danger;
               }
             }
-<<<<<<< HEAD
 
-=======
->>>>>>> practice
           }
 
           //calendar_body--結束
@@ -733,9 +684,7 @@
       // display: inline-block;
       border: 1px solid blue;
       height: 70vh;
-      // height: 700px;
-      min-width: 300px;
-      max-width: 300px;
+      width: 300px;
       text-align: center;
       border-radius: 20px;
       overflow: hidden;
@@ -753,16 +702,29 @@
       }
 
       .cards_column_body {
-        // border: 1px solid red;
+        border: 1px solid red;
         height: calc(100% - 50px);
         overflow-y: scroll;
         background-color: rgba(255, 255, 255, 0.5);
 
         .cards_list {
-          padding: 0 5%;
+          padding: 2px 5%;
+
+          &.cards_list_doing,
+          &.cards_list_done {
+            height: 100%;
+            // border: 1px solid white
+          }
 
           //卡片本人css
           .cards_list_card {
+/* styles during drag */
+&.ui-sortable-helper{
+  transform: rotate(5deg);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  // transition: all 0.3s;
+}
+
             // border: 1px solid red;
             border-radius: 0 0 10px 10px;
             background-color: $white;
@@ -853,21 +815,22 @@
 
               //建立卡片按鈕
               button {
-                @include btnReset;
-                border: 2px solid $white;
-                @include font(1, 20px);
-                background-color: $primary;
-                color: $white;
-                // float: right;
-                padding: 5px;
-                border-radius: 5px;
-                transition: all 0.3s;
+                @include baseBtn(100px, auto, 10px);
+                // @include btnReset;
+                // border: 2px solid $white;
+                // @include font(1, 20px);
+                // background-color: $primary;
+                // color: $white;
+                // // float: right;
+                // padding: 5px;
+                // border-radius: 5px;
+                // transition: all 0.3s;
 
-                &:hover {
-                  background-color: $white;
-                  color: $primary;
-                  border: 2px solid $primary;
-                }
+                // &:hover {
+                //   background-color: $white;
+                //   color: $primary;
+                //   border: 2px solid $primary;
+                // }
 
                 //建立卡片按鈕--結束
               }
@@ -903,14 +866,11 @@
 
 }
 
-@include media(480px) {
+@include media(510px) {
   .set-cal-chat_all_bar {
     display: block;
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> practice
 
   #program_main {
     .set-cal-chat_all_bar {
@@ -933,10 +893,6 @@
         }
       }
 
-<<<<<<< HEAD
     }
   }
 }
-=======
-}
->>>>>>> practice

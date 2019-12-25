@@ -8,8 +8,15 @@ for (var i = 0; i < taskLi.length; i++) {
     taskLi[i].addEventListener("click", function () {
         for(var i = 0;i< taskLi.length; i++){
             taskLi[i].classList.remove("active");
-        }
-        
+        }   
         this.classList.add("active");
     });
 }
+
+let todoList = document.querySelector('.todoList')
+function todo_page1() {
+    todoList.classList.remove("active");
+  }
+  function todo_page2() {
+    todoList.classList.add("active");
+  }
