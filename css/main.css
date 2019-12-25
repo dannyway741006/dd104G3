@@ -377,6 +377,80 @@ body {
   }
 }
 
+.clockFace {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.clockFace #svg {
+  max-width: 350px;
+  min-width: 160px;
+  max-height: 350px;
+  min-height: 160px;
+}
+
+.clockFace #svg circle {
+  stroke-linecap: round;
+  fill: transparent;
+  stroke: #ffffff;
+  stroke-width: 4px;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  -webkit-transition: stroke-dashoffset 1s linear;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.clockFace #svg #gradient stop:nth-of-type(1) {
+  stop-color: #8acede;
+}
+
+.clockFace #svg #gradient stop:nth-of-type(2) {
+  stop-color: #fbc2eb;
+}
+
+.clockFace #svg #bar {
+  fill: rgba(255, 255, 255, 0.5);
+  stroke: url(#gradient);
+  stroke-dashoffset: 400;
+}
+
+.clockFace #svg #outside {
+  stroke: #8acede;
+  stroke-width: 1px;
+}
+
+.clockFace #svg #timer {
+  dominant-baseline: middle;
+  text-anchor: middle;
+  letter-spacing: 6px;
+  font-size: 30px;
+  line-height: 40px;
+  fill: #666666;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+@media screen and (max-width: 767px) {
+  .clockFace {
+    height: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .clockFace #svg #timer {
+    letter-spacing: 4.8px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
 /*------------------------- */
 /*          商城首頁        */
 /*------------------------- */
@@ -3911,7 +3985,7 @@ body {
 }
 
 .radio input + span:before {
-  background: #D1D7E3;
+  background: #d1d7e3;
   -webkit-transition: background 0.2s ease, -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
   transition: background 0.2s ease, -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
   transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2);
@@ -4471,4 +4545,3 @@ body {
     width: 100%;
   }
 }
-/*# sourceMappingURL=main.css.map */
