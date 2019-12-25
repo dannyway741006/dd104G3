@@ -4114,6 +4114,187 @@ ul * {
       justify-content: space-around;
 }
 
+.timer {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 50%;
+}
+
+.timer .clockFace {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.timer .clockFace #svg {
+  max-width: 500px;
+  min-width: 200px;
+  max-height: 500px;
+}
+
+.timer .clockFace #svg circle {
+  stroke-linecap: round;
+  fill: transparent;
+  stroke: #ffffff;
+  stroke-width: 4px;
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 0;
+  -webkit-transition: stroke-dashoffset 1s linear;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.timer .clockFace #svg #gradient stop:nth-of-type(1) {
+  stop-color: #8acede;
+}
+
+.timer .clockFace #svg #gradient stop:nth-of-type(2) {
+  stop-color: #fbc2eb;
+}
+
+.timer .clockFace #svg #bar {
+  fill: rgba(255, 255, 255, 0.5);
+  stroke: url(#gradient);
+  stroke-dashoffset: 400;
+}
+
+.timer .clockFace #svg #outside {
+  stroke: #8acede;
+  stroke-width: 1px;
+}
+
+.timer .clockFace #svg #timer {
+  dominant-baseline: middle;
+  text-anchor: middle;
+  letter-spacing: 6px;
+  font-size: 30px;
+  line-height: 40px;
+  fill: #666666;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+@media screen and (max-width: 767px) {
+  .timer .clockFace {
+    height: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .timer .clockFace #svg #timer {
+    letter-spacing: 4.8px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+.timer .clockControl {
+  width: 100%;
+  margin: auto;
+}
+
+.timer .clockControl .switch {
+  border-radius: 20px;
+  background-color: rgba(206, 164, 189, 0.5);
+  margin: 0 auto;
+  max-width: 300px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.timer .clockControl .switch div {
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+  color: #ffffff;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.timer .clockControl .control {
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+
+.timer .clockControl .control img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.timer .clockControl .control .play {
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+}
+
+.timer .clockControl .control .play img {
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.timer .clockControl .control .play img:nth-of-type(2) {
+  opacity: 0;
+}
+
+.timer .clockControl .control .play:hover img:nth-of-type(1) {
+  opacity: 0;
+}
+
+.timer .clockControl .control .play:hover img:nth-of-type(2) {
+  opacity: 1;
+}
+
+.timer .clockControl .control .pause {
+  display: none;
+}
+
+.timer .clockControl .work:hover {
+  color: #8acede;
+}
+
+.timer .clockControl .rest:hover {
+  color: #FBC2EB;
+}
+
+@media screen and (max-width: 768px) {
+  .timer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
 .todoList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4127,7 +4308,16 @@ ul * {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  width: 50%;
+  width: 60%;
+  height: 98%;
+}
+
+.todoList > div {
+  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  height: 100%;
 }
 
 .todoList .todoLi {
@@ -4189,7 +4379,7 @@ ul * {
           justify-content: space-between;
 }
 
-.todoList .todoLi .info .timer {
+.todoList .todoLi .info .infoTimer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4200,11 +4390,11 @@ ul * {
   margin-left: 10px;
 }
 
-.todoList .todoLi .info .timer img {
+.todoList .todoLi .info .infoTimer img {
   margin-right: 5px;
 }
 
-.todoList .todoLi .info .timer p {
+.todoList .todoLi .info .infoTimer p {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
@@ -4282,13 +4472,11 @@ ul * {
 
 .todoList .fromTrello {
   width: 50%;
-  height: 100%;
   padding: 0 20px;
 }
 
 .todoList .custom {
   width: 50%;
-  height: 100%;
   position: relative;
 }
 
@@ -4357,7 +4545,6 @@ ul * {
   border-radius: 5px;
   -webkit-box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
 }
 
 .todoList .todoHead h2 {
@@ -4366,6 +4553,26 @@ ul * {
   font-size: 20px;
   color: #666666;
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .main_content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .timer {
+    width: 100%;
+    margin: 0;
+  }
+  .todoList {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width: 1280px) {
@@ -4383,7 +4590,7 @@ ul * {
   }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 768px) {
   .todoList {
     display: block;
     position: relative;
