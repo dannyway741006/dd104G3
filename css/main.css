@@ -3832,9 +3832,6 @@ body {
   width: 20px;
 }
 
-<<<<<<< HEAD
-.cart_bg.show #cart_page #cart_main #cart_submit {
-=======
 @media screen and (max-width: 480px) {
   .cart_bg.show #cart_page #cart_main .cart_product {
     margin-bottom: 20px;
@@ -3852,7 +3849,6 @@ body {
 }
 
 .cart_bg.show #cart_page #cart_main #cartSubPosition #cart_submit {
->>>>>>> yen_jen
   background-color: transparent;
   outline: none;
   border: none;
@@ -3927,8 +3923,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
-=======
 @media screen and (max-width: 1200px) {
   .cart_bg.show #cart_page {
     width: 90%;
@@ -3957,7 +3951,6 @@ body {
   }
 }
 
->>>>>>> yen_jen
 ul * {
   list-style: none;
 }
