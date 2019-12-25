@@ -3833,6 +3833,7 @@ body {
   width: 20px;
 }
 
+<<<<<<< HEAD
 .cart_bg.show #cart_page #cart_main #cart_submit {
   background-color: transparent;
   outline: none;
@@ -3905,6 +3906,10 @@ body {
     line-height: 20px;
     min-height: 30px;
   }
+=======
+ul * {
+  list-style: none;
+>>>>>>> 7db01bb5f90cf912c4ef42ae4283176add505a9b
 }
 
 .potato_slide {
@@ -4106,7 +4111,6 @@ body {
   width: 100%;
   height: 93.5vh;
   padding-top: 50px;
-  border: 1px solid red;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -4365,106 +4369,154 @@ body {
           box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 }
 
-.main_content .todoList ul {
-  list-style: none;
-  margin: 0 auto;
-}
-
-.main_content .todoList ul li {
-  width: 95%;
-  height: 50px;
+.main_content .todoList .todoLi {
   position: relative;
-  margin: 20px auto;
-  border-radius: 5px;
-  padding: 5px;
-  padding-left: 15px;
+  width: 98%;
+  height: 85px;
+  padding: 10px;
+  margin: 15px auto;
+  border-radius: 0 0 10px 10px;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.main_content .todoList ul li img {
+.main_content .todoList .todoLi:hover .todoColor {
+  height: 100%;
+  opacity: .3;
+}
+
+.main_content .todoList .todoLi .todoColor {
+  border-radius: 0 0 10px 10px;
   position: absolute;
-  width: 25px;
-  height: 25px;
-  left: 15px;
-  bottom: 10px;
+  top: 0;
+  left: 0;
+  background-image: -webkit-gradient(linear, left top, right top, from(#8acede), to(#FBC2EB));
+  background-image: linear-gradient(to right, #8acede, #FBC2EB);
+  width: 100%;
+  height: 3px;
   z-index: -1;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
-.main_content .todoList ul li .imgUnchecked {
-  display: block;
-  opacity: .7;
+.main_content .todoList .todoLi .title {
+  margin-top: 5px;
 }
 
-.main_content .todoList ul li .imgChecked {
-  display: none;
+.main_content .todoList .todoLi .title p {
+  letter-spacing: 4px;
+  font-size: 20px;
+  line-height: 30px;
 }
 
-.main_content .todoList ul li .delete {
+.main_content .todoList .todoLi .info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main_content .todoList .todoLi .info .timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: 10px;
+}
+
+.main_content .todoList .todoLi .info .timer img {
+  margin-right: 5px;
+}
+
+.main_content .todoList .todoLi .info .timer p {
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.main_content .todoList .todoLi .info .status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main_content .todoList .todoLi .info .checkBtn {
+  margin: 0 5px;
+  width: 23px;
+  height: 23px;
+  position: relative;
+}
+
+.main_content .todoList .todoLi .info .checkBtn input {
+  cursor: pointer;
   position: absolute;
-  right: 20px;
-  bottom: 5px;
-  font-weight: 600;
-  color: #666666;
-  letter-spacing: 4.8px;
-  font-size: 24px;
-  line-height: 30px;
-  cursor: pointer;
-  opacity: .7;
-}
-
-.main_content .todoList ul li .delete:hover {
-  opacity: 1;
-}
-
-.main_content .todoList ul li label {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 auto;
-  margin-left: 5px;
-  letter-spacing: 3.6px;
-  font-size: 18px;
-  line-height: 30px;
-  color: #666666;
-}
-
-.main_content .todoList ul li input {
-  cursor: pointer;
-  z-index: 9;
-  width: 30px;
-  height: 30px;
-  -webkit-transform: translateY(5px);
-          transform: translateY(5px);
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  width: 23px;
+  height: 23px;
   opacity: 0;
 }
 
-.main_content .todoList ul li input:hover ~ .imgUnchecked {
-  opacity: 1;
-}
-
-.main_content .todoList ul li input:checked ~ .imgUnchecked {
-  display: none;
-}
-
-.main_content .todoList ul li input:checked + .imgChecked {
+.main_content .todoList .todoLi .info .checkBtn input:checked + .imgChecked {
   display: block;
 }
 
-.main_content .todoList ul li .check {
-  color: rgba(0, 0, 0, 0.2);
-  z-index: -1;
-  letter-spacing: 4.8px;
-  font-size: 24px;
-  line-height: 30px;
-  position: absolute;
-  left: 15px;
-  bottom: 15px;
+.main_content .todoList .todoLi .info .checkBtn input:checked + .imgUnchecked {
+  display: none;
 }
 
-@media screen and (max-width: 1280px) {
-  .main_content .todoList ul li .delete {
-    right: 5px;
-  }
+.main_content .todoList .todoLi .info .checkBtn img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.main_content .todoList .todoLi .info .checkBtn .imgChecked {
+  display: none;
+}
+
+.main_content .todoList .todoLi .info .delete {
+  display: block;
+  margin: 0 5px;
+  width: 23px;
+  height: 23px;
+  position: relative;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.main_content .todoList .todoLi .info .delete:hover > .ondeleteimg {
+  display: block;
+}
+
+.main_content .todoList .todoLi .info .delete:hover > .deleteimg {
+  display: none;
+}
+
+.main_content .todoList .todoLi .info .delete img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.main_content .todoList .todoLi .info .delete .ondeleteimg {
+  display: none;
 }
 
 .main_content .todoList .fromTrello {
