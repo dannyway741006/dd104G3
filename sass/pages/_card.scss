@@ -17,6 +17,9 @@
     opacity: 1;
     display: block;
     z-index: 10001;
+   font-size: 16px;
+   letter-spacing: 0.8px;
+   line-height: 20px;
   }
 
   .card_header_title {
@@ -574,7 +577,7 @@
   position: fixed;
   box-shadow: 3px 3px 6px 0px $shadow;
   display: none;
-  top: 262px;
+  top: 255px;
   z-index: 9999999;
 
   &.opentodo_lightbox {
@@ -707,20 +710,20 @@
 //日立css
 .calendar_lightbox_content {
 
-  .calendar {
+  .calender {
     width: 100%;
     margin: 10px auto;
   }
 
-  .calendar_header {
+  .calender_header {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
     color: #666666;
 
     &>button {
-      width: 50px;
-      height: 50px;
+      // width: 50px;
+      // height: 50px;
       border: none;
       outline: none;
       background-color: transparent;
@@ -732,19 +735,17 @@
       }
     }
 
-    .calendar_header>p {
+    .calender_header>p {
       width: 30%;
       text-align: center;
     }
 
-    #month {
-      line-height: 45px;
-    }
+ 
   }
 
-  .calendar_body {
+  .calender_body {
     width: 100%;
-
+    margin-top: 5px;
     td {
       width: 30%;
       text-align: center;
@@ -922,7 +923,7 @@
 //卡片rwd
 @include media(850px) {
   .card_light_box {
-    width: 100%;
+    width: 90%;
     // height: 100%;
 
   }
@@ -931,6 +932,7 @@
 @include media(670px) {
   .card_light_box {
    height: 100%;
+   width: 100%;
     transform: translate(0%, 0%);
   top: 0;
   left: 0;
@@ -959,11 +961,14 @@
         }
 
         .calendar_lightbox {
-          top: 197px;
+          top: 185px;
         }
 
         .todo_lightbox {
-          top: 242px;
+          top: 235px;
+        }
+        .file_lightbox{
+          top: 260px;
         }
       }
 

@@ -127,41 +127,41 @@ html:
                 </div>
               </div>
 
-              <!-- 新增日曆跳窗 -->
-              <div class="calendar_lightbox" :class="{open_calendar_lightbox : calandar_switch}" @click.stop="">
-                <h3>更改到期日</h3>
-                <p class="day_date">日期</p>
-                <div class="calendar_lightbox_content">
-                  <!-- 手刻日立 -->
-                  <div class="calendar">
-                    <div class="calendar_header">
-                      <button id="prev">
-                        <i class="material-icons">
-                          keyboard_arrow_left
-                        </i>
-                      </button>
-                      <p id='month'>May 2019</p>
-                      <button id="next">
-                        <i class="material-icons">
-                          keyboard_arrow_right
-                        </i>
-                      </button>
-                    </div>
-                    <table class="calendar_body">
-                      <tr>
-                        <td>Su</td>
-                        <td>Mo</td>
-                        <td>Tu</td>
-                        <td>We</td>
-                        <td>td</td>
-                        <td>Fr</td>
-                        <td>Sa</td>
-                      </tr>
-                    </table>
+             <!-- 新增日曆跳窗 -->
+             <div class="calendar_lightbox" :class="{open_calendar_lightbox : calandar_switch}" @click.stop="">
+              <h3>更改到期日</h3>
+              <p class="day_date">日期</p>
+              <div class="calendar_lightbox_content">
+                <!-- 手刻日立 -->
+                <div class="calender">
+                  <div class="calender_header">
+                    <button id="prevv">
+                      <i class="material-icons">
+                        keyboard_arrow_left
+                      </i>
+                    </button>
+                    <p id='card_month'>May 2019</p>
+                    <button id="nextt">
+                      <i class="material-icons">
+                        keyboard_arrow_right
+                      </i>
+                    </button>
                   </div>
-
+                  <table class="calender_body">
+                    <tr>
+                      <td>Su</td>
+                      <td>Mo</td>
+                      <td>Tu</td>
+                      <td>We</td>
+                      <td>td</td>
+                      <td>Fr</td>
+                      <td>Sa</td>
+                    </tr>
+                  </table>
                 </div>
+
               </div>
+            </div>
 
               <!-- 上船附件跳窗 -->
               <div class="file_lightbox" :class="{openfile : file_switch}" @click.stop="" @change="fileSelected">
