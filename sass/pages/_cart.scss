@@ -23,7 +23,7 @@
 
     #cart_page {
         @include positionfixed (99999, 10%, 15%);
-        background-color: rgba(100, 100, 150, .2);
+        background-color: rgba(210, 210, 230, 0.8);
         width: 70%;
         height: 80%;
         border-radius: 20px;
@@ -33,15 +33,17 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-content: flex-start;
-        transform: rotateZ(360deg);
+        transform: rotateZ(-360deg);
 
         #cart_title {
             margin: 1.5%;
             margin-bottom: 0;
+            width: 80%;
 
             h2 {
                 display: block;
                 opacity: 1;
+                margin-left: 2%;
             }
         }
 
@@ -61,6 +63,8 @@
             width: 95%;
             display: block;
 
+
+
             .cart_product {
                 width: 100%;
                 text-align: center;
@@ -72,13 +76,17 @@
                 justify-content: space-around;
                 align-items: center;
 
-                div:nth-child(1) {
-                    width: 20%;
+                #cart_product_img {
+                    width: 15%;
 
                     img {
-                        padding: 0 15%;
                         width: 100%;
+
                     }
+                }
+
+                div:nth-child(2) {
+                    width: 15%;
                 }
 
                 #cart_product_quantity {
@@ -110,8 +118,61 @@
                     }
                 }
             }
-            #cart_submit{
-                @include baseBtn(100px, auto, 30px);
+
+            @include media(480px) {
+                .cart_product {
+                    margin-bottom: 20px;
+                    flex-wrap: wrap;
+
+                    #cart_product_img {
+                        width:25%;
+
+                        img {
+                        width: 80%
+                        }
+                    }
+                }
+            }
+
+            #cartSubPosition {
+                text-align: right;
+
+                #cart_submit {
+                    @include baseBtn;
+                    margin-right: 10px;
+                }
+            }
+
+        }
+    }
+
+    @include media(1200px) {
+        #cart_page {
+            width: 90%;
+            height: 90%;
+            top: 5%;
+            left: 5%;
+        }
+    }
+
+    @include media(480px) {
+        #cart_page {
+            width: 100%;
+            height: 100%;
+            top: 0%;
+            left: 0%;
+            background-color: #d9d9e9;
+            border-radius: 0;
+
+            #cart_title {
+                margin-top: 4%;
+                margin-bottom: 3%;
+            }
+
+            #close_cart {
+                top: 1%;
+                right: 2%;
+
             }
         }
     }

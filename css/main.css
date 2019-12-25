@@ -3660,7 +3660,7 @@ body {
   z-index: 99999;
   top: 10%;
   left: 15%;
-  background-color: rgba(100, 100, 150, 0.2);
+  background-color: rgba(210, 210, 230, 0.8);
   width: 70%;
   height: 80%;
   border-radius: 20px;
@@ -3680,18 +3680,20 @@ body {
           justify-content: space-between;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  -webkit-transform: rotateZ(360deg);
-          transform: rotateZ(360deg);
+  -webkit-transform: rotateZ(-360deg);
+          transform: rotateZ(-360deg);
 }
 
 .cart_bg.show #cart_page #cart_title {
   margin: 1.5%;
   margin-bottom: 0;
+  width: 80%;
 }
 
 .cart_bg.show #cart_page #cart_title h2 {
   display: block;
   opacity: 1;
+  margin-left: 2%;
 }
 
 .cart_bg.show #cart_page #close_cart {
@@ -3793,13 +3795,16 @@ body {
           align-items: center;
 }
 
-.cart_bg.show #cart_page #cart_main .cart_product div:nth-child(1) {
-  width: 20%;
+.cart_bg.show #cart_page #cart_main .cart_product #cart_product_img {
+  width: 15%;
 }
 
-.cart_bg.show #cart_page #cart_main .cart_product div:nth-child(1) img {
-  padding: 0 15%;
+.cart_bg.show #cart_page #cart_main .cart_product #cart_product_img img {
   width: 100%;
+}
+
+.cart_bg.show #cart_page #cart_main .cart_product div:nth-child(2) {
+  width: 15%;
 }
 
 .cart_bg.show #cart_page #cart_main .cart_product #cart_product_quantity {
@@ -3833,8 +3838,25 @@ body {
   width: 20px;
 }
 
-<<<<<<< HEAD
-.cart_bg.show #cart_page #cart_main #cart_submit {
+@media screen and (max-width: 480px) {
+  .cart_bg.show #cart_page #cart_main .cart_product {
+    margin-bottom: 20px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .cart_bg.show #cart_page #cart_main .cart_product #cart_product_img {
+    width: 25%;
+  }
+  .cart_bg.show #cart_page #cart_main .cart_product #cart_product_img img {
+    width: 80%;
+  }
+}
+
+.cart_bg.show #cart_page #cart_main #cartSubPosition {
+  text-align: right;
+}
+
+.cart_bg.show #cart_page #cart_main #cartSubPosition #cart_submit {
   background-color: transparent;
   outline: none;
   border: none;
@@ -3843,7 +3865,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
-  width: 100px;
+  width: auto;
   height: auto;
   min-height: 40px;
   background-color: #8acede;
@@ -3851,9 +3873,10 @@ body {
   position: relative;
   padding: 5px 10px;
   z-index: 1;
+  margin-right: 10px;
 }
 
-.cart_bg.show #cart_page #cart_main #cart_submit::before, .cart_bg.show #cart_page #cart_main #cart_submit::after {
+.cart_bg.show #cart_page #cart_main #cartSubPosition #cart_submit::before, .cart_bg.show #cart_page #cart_main #cartSubPosition #cart_submit::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -3865,12 +3888,12 @@ body {
   z-index: -1;
 }
 
-.cart_bg.show #cart_page #cart_main #cart_submit:hover::before, .cart_bg.show #cart_page #cart_main #cart_submit:hover::after {
+.cart_bg.show #cart_page #cart_main #cartSubPosition #cart_submit:hover::before, .cart_bg.show #cart_page #cart_main #cartSubPosition #cart_submit:hover::after {
   -webkit-animation: animate 2s infinite;
           animation: animate 2s infinite;
 }
 
-.cart_bg.show #cart_page #cart_main #cart_submit:hover::after {
+.cart_bg.show #cart_page #cart_main #cartSubPosition #cart_submit:hover::after {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
@@ -3900,16 +3923,44 @@ body {
 }
 
 @media screen and (max-width: 479px) {
-  .cart_bg.show #cart_page #cart_main #cart_submit {
+  .cart_bg.show #cart_page #cart_main #cartSubPosition #cart_submit {
     letter-spacing: 2.4px;
     font-size: 12px;
     line-height: 20px;
     min-height: 30px;
   }
-=======
+}
+
+@media screen and (max-width: 1200px) {
+  .cart_bg.show #cart_page {
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cart_bg.show #cart_page {
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    background-color: #d9d9e9;
+    border-radius: 0;
+  }
+  .cart_bg.show #cart_page #cart_title {
+    margin-top: 4%;
+    margin-bottom: 3%;
+  }
+  .cart_bg.show #cart_page #close_cart {
+    top: 1%;
+    right: 2%;
+  }
+}
+
 ul * {
   list-style: none;
->>>>>>> 7db01bb5f90cf912c4ef42ae4283176add505a9b
 }
 
 .potato_slide {
