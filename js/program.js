@@ -363,17 +363,17 @@ $('div:cards_list_card_input_box').removeClass("ui-sortable-handle");
 //創建日立
 
 (function () {
-  const datee = new Date();
+  const card_datee = new Date();
   const allMonthh = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
     'Oct', 'Nov', 'Dec'
   ];
   const allWeekk = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
-  const calendarr = document.querySelector('.calender_body');
+  const card_calendarr = document.querySelector('.calender_body');
   const monthh = document.getElementById('card_month');
   const prevv = document.getElementById('prevv');
   const nextt = document.getElementById('nextt');
-console.log('ss')
+console.log(card_calendarr)
   prevv.addEventListener('click', () => {
      card_changeMonth(nowMonth - 1);
   })
@@ -401,9 +401,9 @@ console.log('ss')
   };
 
   let fullDate, day;
-  let nowYear = datee.getFullYear();
-  let nowMonth = datee.getMonth();
-  let nowDate = datee.getDate();
+  let nowYear = card_datee.getFullYear();
+  let nowMonth = card_datee.getMonth();
+  let nowDate = card_datee.getDate();
 
   function card_getDate() {
     let firstDay = new Date(`${allMonthh[nowMonth]} ${1} ${nowYear}`).getDay();
@@ -430,8 +430,8 @@ console.log('ss')
         day.innerText = days;
         if (
           nowDate === days &&
-          nowMonth === datee.getMonth() &&
-          nowYear === datee.getFullYear()
+          nowMonth === card_datee.getMonth() &&
+          nowYear === card_datee.getFullYear()
         ) {
           td.classList.add('now');
         }
@@ -442,13 +442,13 @@ console.log('ss')
       td.appendChild(day);
       tr.appendChild(td);
     }
-    calendarr.appendChild(tr);
-    if (days <= fullDate) createDay(days);
+    card_calendarr.appendChild(tr);
+    if (days <= fullDate) card_createDay(days);
   }
 
   function card_resetDate() {
-    while (calendarr.hasChildNodes()) {
-      calendarr.removeChild(calendarr.lastChild);
+    while (card_calendarr.hasChildNodes()) {
+      card_calendarr.removeChild(card_calendarr.lastChild);
     }
     card_getDate();
   }

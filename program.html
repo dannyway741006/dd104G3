@@ -258,23 +258,38 @@
           <div class="cards_column_body cards_column_body_todo">
 
             <div class="cards_list cards_list_todo">
-              <div class="cards_list_card" @click="opened = !opened">
+              <div class="cards_list_card">
                 <div class="cards_list_card_color"></div>
                 <p>事情A</p>
                 <div class="cards_list_card_icon_bar">
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                       src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                  <span>2020/02/26</span>
-                  <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
-                      alt="">
+                  <span>2020-02-26 12:02</span>
+                  <div class="cards_list_card_icon_right">
+                    <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
+                        alt="">
+                    </div>
+                    <span>0/6</span>
                   </div>
-                  <span>1/6</span>
                 </div>
               </div>
 
               <div class="cards_list_card" v-for="item in cards">
                 <div class="cards_list_card_color"></div>
                 <p>{{item}}</p>
+                <div class="cards_list_card_icon_bar">
+                  <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                      src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                  <span>未設定</span>
+                  <div class="cards_list_card_icon_right">
+                    <div class="cards_list_card_icon_right">
+                      <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
+                          alt="">
+                      </div>
+                      <span>0/0</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="cards_list_card cards_list_card_input_box" id="cards_list_card_input_box"
@@ -295,17 +310,19 @@
           <div class="cards_column_body cards_column_body_doing">
             <div class="cards_list cards_list_doing">
 
-              <div class="cards_list_card">
+              <div class="cards_list_card" @click="opened = !opened">
                 <div class="cards_list_card_color"></div>
-                <p>事情B</p>
+                <p>團專衝刺</p>
                 <div class="cards_list_card_icon_bar">
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                       src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                  <span>2020/02/26</span>
-                  <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
-                      alt="">
+                  <span>2020-03-02 15:00</span>
+                  <div class="cards_list_card_icon_right">
+                    <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
+                        alt="">
+                    </div>
+                    <span>0/7</span>
                   </div>
-                  <span>1/6</span>
                 </div>
               </div>
             </div>
@@ -324,11 +341,13 @@
                 <div class="cards_list_card_icon_bar">
                   <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                       src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                  <span>2020/02/26</span>
-                  <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
-                      alt="">
+                  <span>2020-02-16 7:00</span>
+                  <div class="cards_list_card_icon_right">
+                    <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/checked_d.721738d0.svg"
+                        alt="">
+                    </div>
+                    <span>3/3</span>
                   </div>
-                  <span>6/6</span>
                 </div>
               </div>
             </div>
