@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="./js/cart.js"></script>
 
 </head>
 
@@ -55,7 +56,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#" id="cart">
               <img src="./img/icon/shopping-cart.svg" alt="cart" width="20" />
               <img src="./img/icon/shopping-cart_on.svg" alt="cart" width="20" />
             </a>
@@ -225,6 +226,70 @@
 
 
       </div>
+    </div>
+      <!-- 購物車 -->
+    <div class="cart_bg">
+      <div id="cart_page">
+        <div id="cart_title">
+          <h2>職人口袋清單</h2>
+        </div>
+        <div id="close_cart">
+          <p></p>
+          <p></p>
+        </div>
+        <div id="cart_underline"></div>
+        <div id="cart_main">
+          <form action="">
+            <div class="cart_product">
+              <div id="cart_product_img">
+                <img src="./img/mall_img/product_1.jpg" alt="">
+              </div>
+              <div>產品說明</div>
+              <div>
+                <p>單價</p>
+                <p>$3999</p>
+              </div>
+              <div id="cart_product_quantity">
+                <p id="cutProductNum"><img src="./img/cart_img/delete.svg" alt=""></p>
+                <input type="text" value="1" id="productNum">
+                <P id="addProductNum"><img src="./img/cart_img/add.svg" alt=""></P>
+              </div>
+              <div>
+                <p>總價</p>
+                <p>$3999</p>
+              </div>
+              <div>
+                <p id="del_product"><img src="./img/member_img/trash-alt-regular1.svg" alt=""></p>
+              </div>
+            </div>
+            <div class="cart_product">
+              <div id="cart_product_img">
+                <img src="./img/mall_img/product_1.jpg" alt="">
+              </div>
+              <div>產品說明</div>
+              <div>
+                <p>單價</p>
+                <p>$3999</p>
+              </div>
+              <div id="cart_product_quantity">
+                <p id="cutProductNum"><img src="./img/cart_img/delete.svg" alt=""></p>
+                <input type="text" value="1" id="productNum">
+                <P id="addProductNum"><img src="./img/cart_img/add.svg" alt=""></P>
+              </div>
+              <div>
+                <p>總價</p>
+                <p>$3999</p>
+              </div>
+              <div>
+                <p id="del_product"><img src="./img/member_img/trash-alt-regular1.svg" alt=""></p>
+              </div>
+            </div>
+            <div id="cartSubPosition">
+              <button id="cart_submit">確認購買</button>
+            </div>
+        </form>
+      </div>
+    </div>
     </div>
   </main>
   <footer></footer>
