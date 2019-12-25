@@ -126,6 +126,11 @@
                 justify-content: space-around;
                 align-items: center;
 
+                div {
+                    border: 1px solid blue;
+
+                }
+
                 div:nth-child(1) {
                     width: 20%;
 
@@ -136,9 +141,16 @@
                 }
 
                 #cart_product_quantity {
-                    width: 200px;
+                    width: 100px;
                     // height: 50px;
                     align-self: center;
+                    border: 1px solid red;
+
+                    input[type=text] {
+                        text-align: center;
+                        width: 30px;
+                        height: 30px;
+                    }
 
                     p {
                         display: inline;
@@ -148,23 +160,19 @@
                             position: relative;
                             top: 5px;
                         }
+                    }
+                }
 
-                        input[type=number] {
-                            text-align: center;
-                            width: 30px;
-                            height: 30px;
-                        }
+                div:last-child {
+                    width: 22px;
+
+                    img {
+                        width: 20px;
                     }
                 }
             }
 
-            div:last-child {
-                width: 22px;
 
-                img {
-                    width: 20px;
-                }
-            }
         }
     }
 }
