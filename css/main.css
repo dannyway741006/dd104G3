@@ -4509,10 +4509,6 @@ body {
   }
 }
 
-ul * {
-  list-style: none;
-}
-
 .potato_slide {
   padding-top: 50px;
   padding-left: 10px;
