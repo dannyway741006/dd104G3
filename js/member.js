@@ -15,7 +15,7 @@ function showImg(thisimg) {
     let files = new FileReader();
 
     let showimg = document.getElementById("acceptImg");
-    files.onloadend = function(e) {
+    files.onloadend = function (e) {
       showimg.src = e.target.result;
     };
     files.readAsDataURL(file);
@@ -36,7 +36,7 @@ delet_btn.addEventListener('click', function () {
   memlibox.classList.remove('closeani');
 });
 
-memberbtn.addEventListener("click",function(){
+memberbtn.addEventListener("click", function () {
   mem_mask.classList.add('active_for_mask');
   memlibox.classList.add('active_for_memlibox');
   memlibox.classList.remove('closeani');
@@ -52,8 +52,20 @@ mem_mask.addEventListener('click', function () {
   memlibox.classList.add('closeani');
 });
 
-imgClose.addEventListener('click',function(){
+imgClose.addEventListener('click', function () {
   mem_mask.classList.remove('active_for_mask');
   memlibox.classList.add('closeani');
 });
+
+// =================input_animatinon=================================
+let upbox = document.getElementById("upbox");
+let member_input = document.getElementById("member_input");
+let input_mask = document.getElementById("input_mask");
+member_input.addEventListener("click", function () {
+  upbox.classList.add('active');
+  upbox.classList.remove('active1');
+});
+input_mask.addEventListener("click", function () {
+  upbox.classList.add('active1');
+})
 
