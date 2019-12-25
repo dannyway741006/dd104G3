@@ -205,3 +205,17 @@ var main_content = new Vue({
 
   getDate();
 })();
+
+
+
+//拖曳
+$(drag);
+
+function drag() {
+  $(".cards_column_body_todo,.cards_column_body_doing, .cards_column_body_done")
+    .sortable({
+      connectWith: ".cards_list",
+      stack: ".cards_column_body .cards_list"
+    })
+    .disableSelection();
+}
