@@ -33,10 +33,6 @@ var main_content = new Vue({
   },
   methods: {
     //新增專案
-    new_program_choose_color_item(){
-
-    },
-
     add_program(program_name) {
       if (this.program_name !== "") {
         this.programs.push(program_name);

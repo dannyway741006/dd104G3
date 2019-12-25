@@ -785,8 +785,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
-=======
 @-webkit-keyframes animate_c {
   0% {
     width: 100%;
@@ -811,7 +809,6 @@ body {
   }
 }
 
->>>>>>> dev
 @media screen and (max-width: 479px) {
   #program_aside .program_now_having_all .program_add_btn_box .program_add_btn {
     letter-spacing: 2.4px;
@@ -980,8 +977,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
-=======
 @keyframes animate_c {
   0% {
     width: 100%;
@@ -994,7 +989,6 @@ body {
   }
 }
 
->>>>>>> dev
 @media screen and (max-width: 479px) {
   #program_aside .program_now_having_all .new_program_choose_box button {
     letter-spacing: 2.4px;
@@ -1161,8 +1155,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
-=======
 @keyframes animate_c {
   0% {
     width: 100%;
@@ -1175,7 +1167,6 @@ body {
   }
 }
 
->>>>>>> dev
 @media screen and (max-width: 479px) {
   #program_main .invite_list .invite_btn {
     letter-spacing: 2.4px;
@@ -1796,8 +1787,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
-=======
 @keyframes animate_c {
   0% {
     width: 100%;
@@ -1810,7 +1799,6 @@ body {
   }
 }
 
->>>>>>> dev
 @media screen and (max-width: 479px) {
   #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button {
     letter-spacing: 2.4px;
@@ -2462,7 +2450,7 @@ body {
           animation-delay: 1s;
 }
 
-@-webkit-keyframes animate {
+@keyframes animate {
   0% {
     width: 100%;
     height: 100%;
@@ -2474,13 +2462,13 @@ body {
   }
 }
 
-@keyframes animate {
+@keyframes animate_c {
   0% {
     width: 100%;
     height: 100%;
   }
   100% {
-    width: 140%;
+    width: 150%;
     height: 150%;
     opacity: 0;
   }
@@ -2978,11 +2966,6 @@ body {
 }
 
 @keyframes animate {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> dev
   0% {
     width: 100%;
     height: 100%;
@@ -2995,12 +2978,6 @@ body {
 }
 
 @keyframes animate_c {
-<<<<<<< HEAD
->>>>>>> dev
-=======
-=======
->>>>>>> practice
->>>>>>> dev
   0% {
     width: 100%;
     height: 100%;
@@ -3269,6 +3246,18 @@ body {
   }
   100% {
     width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
     height: 150%;
     opacity: 0;
   }
@@ -4407,7 +4396,6 @@ body {
   color: #666666;
   text-align: center;
 }
-<<<<<<< HEAD
 
 @media screen and (max-width: 1280px) {
   .main_content .todoList {
@@ -4466,6 +4454,4 @@ body {
     width: 100%;
   }
 }
-=======
->>>>>>> practice
 /*# sourceMappingURL=main.css.map */
