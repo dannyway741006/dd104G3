@@ -2264,6 +2264,9 @@ body {
   opacity: 1;
   display: block;
   z-index: 10001;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  line-height: 20px;
 }
 
 .card_light_box .card_header_title {
@@ -2934,7 +2937,7 @@ body {
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
-  top: 262px;
+  top: 255px;
   z-index: 9999999;
 }
 
@@ -3024,24 +3027,23 @@ body {
   margin-top: 5px;
 }
 
-.calendar_lightbox_content .calendar {
+.calendar_lightbox_content .calender {
   width: 100%;
   margin: 10px auto;
 }
 
-.calendar_lightbox_content .calendar_header {
+.calendar_lightbox_content .calender_header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   color: #666666;
 }
 
-.calendar_lightbox_content .calendar_header > button {
-  width: 50px;
-  height: 50px;
+.calendar_lightbox_content .calender_header > button {
   border: none;
   outline: none;
   background-color: transparent;
@@ -3049,24 +3051,21 @@ body {
   color: #666666;
 }
 
-.calendar_lightbox_content .calendar_header > button:hover {
+.calendar_lightbox_content .calender_header > button:hover {
   color: #333333;
 }
 
-.calendar_lightbox_content .calendar_header .calendar_header > p {
+.calendar_lightbox_content .calender_header .calender_header > p {
   width: 30%;
   text-align: center;
 }
 
-.calendar_lightbox_content .calendar_header #month {
-  line-height: 45px;
-}
-
-.calendar_lightbox_content .calendar_body {
+.calendar_lightbox_content .calender_body {
   width: 100%;
+  margin-top: 5px;
 }
 
-.calendar_lightbox_content .calendar_body td {
+.calendar_lightbox_content .calender_body td {
   width: 30%;
   text-align: center;
   vertical-align: top;
@@ -3077,23 +3076,23 @@ body {
   margin-left: 5px;
 }
 
-.calendar_lightbox_content .calendar_body td:first-child, .calendar_lightbox_content .calendar_body td:last-child {
+.calendar_lightbox_content .calender_body td:first-child, .calendar_lightbox_content .calender_body td:last-child {
   color: #eb7a77;
 }
 
-.calendar_lightbox_content .calendar_body td p {
+.calendar_lightbox_content .calender_body td p {
   width: 20px;
 }
 
-.calendar_lightbox_content .calendar_body td:hover {
+.calendar_lightbox_content .calender_body td:hover {
   background-color: #e0f4f6;
 }
 
-.calendar_lightbox_content .calendar_body td .now.day {
+.calendar_lightbox_content .calender_body td .now.day {
   color: #FFF;
 }
 
-.calendar_lightbox_content .calendar_body .day {
+.calendar_lightbox_content .calender_body .day {
   color: #666666;
 }
 
@@ -3335,13 +3334,14 @@ body {
 
 @media screen and (max-width: 850px) {
   .card_light_box {
-    width: 100%;
+    width: 90%;
   }
 }
 
 @media screen and (max-width: 670px) {
   .card_light_box {
     height: 100%;
+    width: 100%;
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
     top: 0;
@@ -3379,10 +3379,13 @@ body {
     width: 90%;
   }
   .card_light_box .lightbox_content .left_aside .calendar_lightbox {
-    top: 197px;
+    top: 185px;
   }
   .card_light_box .lightbox_content .left_aside .todo_lightbox {
-    top: 242px;
+    top: 235px;
+  }
+  .card_light_box .lightbox_content .left_aside .file_lightbox {
+    top: 260px;
   }
   .card_light_box .lightbox_content .right_aside {
     width: 100%;

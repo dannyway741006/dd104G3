@@ -161,21 +161,21 @@ var vm = new Vue({
 
 //創建日立
 (function () {
-  const date = new Date();
-  const allMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+  const datee = new Date();
+  const allMonthh = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
     'Oct', 'Nov', 'Dec'
   ];
-  const allWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+  const allWeekk = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
-  const calendar = document.querySelector('.calendar_body');
-  const month = document.getElementById('month');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
+  const calendarr = document.querySelector('.calender_body');
+  const monthh = document.getElementById('card_month');
+  const prevv = document.getElementById('prevv');
+  const nextt = document.getElementById('nextt');
 
-  prev.addEventListener('click', () => {
+  prevv.addEventListener('click', () => {
     changeMonth(nowMonth - 1);
   })
-  next.addEventListener('click', () => {
+  nextt.addEventListener('click', () => {
     changeMonth(nowMonth + 1);
   })
 
@@ -199,12 +199,12 @@ var vm = new Vue({
   };
 
   let fullDate, day;
-  let nowYear = date.getFullYear();
-  let nowMonth = date.getMonth();
-  let nowDate = date.getDate();
+  let nowYear = datee.getFullYear();
+  let nowMonth = datee.getMonth();
+  let nowDate = datee.getDate();
 
   function getDate() {
-    let firstDay = new Date(`${allMonth[nowMonth]} ${1} ${nowYear}`).getDay();
+    let firstDay = new Date(`${allMonthh[nowMonth]} ${1} ${nowYear}`).getDay();
 
     if (nowMonth < 7) {
       nowMonth % 2 ? fullDate = 30 : fullDate = 31;
@@ -212,7 +212,7 @@ var vm = new Vue({
       nowMonth % 2 ? fullDate = 31 : fullDate = 30;
     };
     if (nowMonth === 1) fullDate = isLeap(nowYear);
-    month.innerText = `${allMonth[nowMonth]} ${nowYear}`;
+    monthh.innerText = `${allMonthh[nowMonth]} ${nowYear}`;
 
     day = 1;
     createDay(day, firstDay);
@@ -228,8 +228,8 @@ var vm = new Vue({
         day.innerText = days;
         if (
           nowDate === days &&
-          nowMonth === date.getMonth() &&
-          nowYear === date.getFullYear()
+          nowMonth === datee.getMonth() &&
+          nowYear === datee.getFullYear()
         ) {
           td.classList.add('now');
         }
@@ -240,13 +240,13 @@ var vm = new Vue({
       td.appendChild(day);
       tr.appendChild(td);
     }
-    calendar.appendChild(tr);
+    calendarr.appendChild(tr);
     if (days <= fullDate) createDay(days);
   }
 
   function resetDate() {
-    while (calendar.hasChildNodes()) {
-      calendar.removeChild(calendar.lastChild);
+    while (calendarr.hasChildNodes()) {
+      calendarr.removeChild(calendarr.lastChild);
     }
     getDate();
   }
