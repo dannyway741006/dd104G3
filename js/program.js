@@ -215,6 +215,9 @@ function drag() {
     .sortable({
       connectWith: ".cards_list",
       stack: ".cards_column_body .cards_list",
-      revert:true,
+      // revert:true,
     }).disableSelection();
 }
+
+//消除建立專案box的拖曳屬性--失敗
+$('div:cards_list_card_input_box').removeClass("ui-sortable-handle");

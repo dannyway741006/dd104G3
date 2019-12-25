@@ -1612,7 +1612,8 @@ body {
 #program_main .cards_column_all .cards_column {
   border: 1px solid blue;
   height: 70vh;
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
   text-align: center;
   border-radius: 20px;
   overflow: hidden;
@@ -1632,7 +1633,6 @@ body {
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body {
-  border: 1px solid red;
   height: calc(100% - 50px);
   overflow-y: scroll;
   background-color: rgba(255, 255, 255, 0.5);
@@ -1668,8 +1668,8 @@ body {
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card.ui-sortable-helper {
   -webkit-transform: rotate(5deg);
           transform: rotate(5deg);
-  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_color {
@@ -1717,7 +1717,7 @@ body {
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card .cards_list_card_icon_bar .cards_list_card_todoicon {
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box {
