@@ -3007,12 +3007,12 @@ body {
   margin-top: 5px;
 }
 
-.calendar_lightbox_content .calender {
+.calendar_lightbox_content .calendar {
   width: 100%;
   margin: 10px auto;
 }
 
-.calendar_lightbox_content .calender_header {
+.calendar_lightbox_content .calendar_header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3023,7 +3023,7 @@ body {
   color: #666666;
 }
 
-.calendar_lightbox_content .calender_header > button {
+.calendar_lightbox_content .calendar_header > button {
   border: none;
   outline: none;
   background-color: transparent;
@@ -3031,21 +3031,21 @@ body {
   color: #666666;
 }
 
-.calendar_lightbox_content .calender_header > button:hover {
+.calendar_lightbox_content .calendar_header > button:hover {
   color: #333333;
 }
 
-.calendar_lightbox_content .calender_header .calender_header > p {
+.calendar_lightbox_content .calendar_header .calendar_header > p {
   width: 30%;
   text-align: center;
 }
 
-.calendar_lightbox_content .calender_body {
+.calendar_lightbox_content .calendar_body {
   width: 100%;
   margin-top: 5px;
 }
 
-.calendar_lightbox_content .calender_body td {
+.calendar_lightbox_content .calendar_body td {
   width: 30%;
   text-align: center;
   vertical-align: top;
@@ -3056,23 +3056,23 @@ body {
   margin-left: 5px;
 }
 
-.calendar_lightbox_content .calender_body td:first-child, .calendar_lightbox_content .calender_body td:last-child {
+.calendar_lightbox_content .calendar_body td:first-child, .calendar_lightbox_content .calendar_body td:last-child {
   color: #eb7a77;
 }
 
-.calendar_lightbox_content .calender_body td p {
+.calendar_lightbox_content .calendar_body td p {
   width: 20px;
 }
 
-.calendar_lightbox_content .calender_body td:hover {
+.calendar_lightbox_content .calendar_body td:hover {
   background-color: #e0f4f6;
 }
 
-.calendar_lightbox_content .calender_body td .now.day {
+.calendar_lightbox_content .calendar_body td .now.day {
   color: #FFF;
 }
 
-.calendar_lightbox_content .calender_body .day {
+.calendar_lightbox_content .calendar_body .day {
   color: #666666;
 }
 
