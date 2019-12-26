@@ -246,7 +246,8 @@ var main_content = new Vue({
     page(){
       setTimeout(()=>{
         this.calen();
-      },0)
+        drag();
+      },50)
     }
   },
 
@@ -266,6 +267,5 @@ function drag() {
 }
 
 //消除建立專案box的拖曳屬性--失敗
-$("div:cards_list_card_input_box").removeClass("ui-sortable-handle");
+// $("div:cards_list_card_input_box").removeClass("ui-sortable-handle");
 
-//創建日立

@@ -281,7 +281,7 @@
               </div>
 
               <div class="cards_list_card cards_list_card_input_box" id="cards_list_card_input_box"
-                v-show="cards_list_card_input_box" @click.stop="">
+                v-show="cards_list_card_input_box" @click.stop="" draggable="true">
                 <textarea v-model.trim="card_name" @keyup.enter="add_card(card_name)"></textarea>
                 <div class="cards_list_card_input_box_button_bar"><button @click="add_card(card_name)">建立卡片</button>
                 </div>
