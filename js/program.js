@@ -89,8 +89,7 @@ var main_content = new Vue({
         this.cards.push(card_name);
         this.card_name = "";
         this.cards_list_card_input_box = false;
-      } else {
-      }
+      } else {}
     },
     changeimg() {
       this.isactive = false;
@@ -176,7 +175,31 @@ var main_content = new Vue({
     },
     del_file(index) {
       this.filebox.splice(index, 1);
-    }
+    },
+    openmember() {
+      this.card_meber_switch = true;
+      this.calandar_switch = false;
+      this.todo_lightbox_switch = false;
+      this.file_switch = false;
+    },
+    opendate() {
+      this.card_meber_switch = false;
+      this.calandar_switch = true;
+      this.todo_lightbox_switch = false;
+      this.file_switch = false;
+    },
+    opentodo() {
+      this.card_meber_switch = false;
+      this.calandar_switch = false;
+      this.todo_lightbox_switch = true;
+      this.file_switch = false;
+    },
+    openfile() {
+      this.card_meber_switch = false;
+      this.calandar_switch = false;
+      this.todo_lightbox_switch = false;
+      this.file_switch = true;
+    },
   },
   // watch: {
   //   screenWidth: function(val) {
@@ -191,8 +214,7 @@ var main_content = new Vue({
   // },
 
   mounted() {
-    calender(this.$refs.outCalender);
-    calender(this.$refs.inCalender);
+
     document.addEventListener("click", () => {
       this.open = false;
       this.cards_list_card_input_box = false;
@@ -209,6 +231,8 @@ var main_content = new Vue({
     //   // 定义窗口大小变更通知事件
     //   _this.screenWidth = document.documentElement.clientWidth; //窗口宽度
     // };
+    calender(this.$refs.outCalender);
+    calender(this.$refs.inCalender);
   }
 });
 
