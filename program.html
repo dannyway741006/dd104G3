@@ -369,20 +369,20 @@
             <div class="first_right">
               <h3>新增至卡片</h3>
               <hr />
-              <div class="first_right_member" @click.stop="card_meber_switch =! card_meber_switch,calandar_switch = calandar_switch,todo_lightbox_switch = todo_lightbox_switch,file_switch = file_switch">
+              <div class="first_right_member" @click.stop="card_meber_switch =! card_meber_switch,calandar_switch == calandar_switch,todo_lightbox_switch == todo_lightbox_switch,file_switch == file_switch">
                 <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
                 成員
               </div>
-              <div class="wave" @click.stop="calandar_switch =! calandar_switch,card_meber_switch = card_meber_switch,todo_lightbox_switch = todo_lightbox_switch,file_switch = file_switch">
+              <div class="wave" @click.stop="calandar_switch =! calandar_switch,card_meber_switch == card_meber_switch,todo_lightbox_switch == todo_lightbox_switch,file_switch == file_switch">
                 <img src="./img/calendar.e1ea5ef5.svg" alt="" style="width: 20px;" />
                 到期日
               </div>
-              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch,calandar_switch = calandar_switch,card_meber_switch = card_meber_switch,file_switch = file_switch" class="todogo">
+              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch,calandar_switch == calandar_switch,card_meber_switch == card_meber_switch,file_switch === file_switch" class="todogo">
                 <img src="./img/content.22f4a956.svg" alt="" style="width: 20px;" />
                 待辦清單
               </div>
 
-              <div @click.stop="file_switch =! file_switch,calandar_switch = calandar_switch,card_meber_switch = card_meber_switch,todo_lightbox_switch = todo_lightbox_switch">
+              <div @click.stop="file_switch =! file_switch,calandar_switch == calandar_switch,card_meber_switch == card_meber_switch,todo_lightbox_switch == todo_lightbox_switch">
                 <img src="./img/card_img/paperclip.cf9c8806.svg" alt="" style="width: 20px;" />
                 上傳附件
               </div>

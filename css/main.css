@@ -2531,12 +2531,13 @@ body {
 
 .right_aside .memberRight .calendar .calendar_status span:nth-child(4) {
   margin-left: 7px;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 0 5px;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
   background-color: #eb7a77;
   color: #fff;
+  padding: 2.5px 5px;
 }
 
 .right_aside .memberRight .calendar .calendar_status span:nth-child(4).active {
@@ -2782,6 +2783,7 @@ body {
   margin-bottom: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  margin-left: 10px;
 }
 
 .right_aside .memberRight .card_file ul li:hover div {
@@ -2834,22 +2836,10 @@ body {
   line-height: 20px;
   color: #fff;
   cursor: pointer;
-  padding-left: 16px;
+  padding: 5px;
   background-color: #8acede;
-  border: 2px solid #8acede;
   position: relative;
-  width: 67px;
-}
-
-.right_aside .memberRight .card_file .card_upload_file form .upfile_content p {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-.right_aside .memberRight .card_file .card_upload_file form .upfile_content p span img {
-  margin-right: 0;
+  border-radius: 5px;
 }
 
 .right_aside .memberRight .card_file .card_upload_file form .upfile_content input {
@@ -2867,7 +2857,7 @@ body {
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
-  top: 255px;
+  top: 244px;
   z-index: 9999999;
 }
 
@@ -3125,92 +3115,10 @@ body {
   line-height: 20px;
   color: #fff;
   cursor: pointer;
-  padding-left: 16px;
+  padding: 5px;
   background-color: #8acede;
-  border: 2px solid #8acede;
   position: relative;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 2.8px;
-  font-size: 14px;
-  line-height: 20px;
-  color: #ffffff;
-  width: 114px;
-  height: 35px;
-  min-height: 40px;
-  background-color: #8acede;
-  border-radius: 10px;
-  position: relative;
-  padding: 5px 10px;
-  z-index: 1;
-}
-
-.file_lightbox form .upfile_content::before, .file_lightbox form .upfile_content::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: #8acede;
-  border-radius: 10px;
-  z-index: -1;
-}
-
-.file_lightbox form .upfile_content:hover::before, .file_lightbox form .upfile_content:hover::after {
-  -webkit-animation: animate 2s infinite;
-          animation: animate 2s infinite;
-}
-
-.file_lightbox form .upfile_content:hover::after {
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
-}
-
-@keyframes animate {
-  0% {
-    width: 100%;
-    height: 100%;
-  }
-  100% {
-    width: 140%;
-    height: 150%;
-    opacity: 0;
-  }
-}
-
-@keyframes animate_c {
-  0% {
-    width: 100%;
-    height: 100%;
-  }
-  100% {
-    width: 150%;
-    height: 150%;
-    opacity: 0;
-  }
-}
-
-@media screen and (max-width: 479px) {
-  .file_lightbox form .upfile_content {
-    letter-spacing: 2.4px;
-    font-size: 12px;
-    line-height: 20px;
-    min-height: 30px;
-  }
-}
-
-.file_lightbox form .upfile_content p {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-.file_lightbox form .upfile_content p span img {
-  margin-right: 0;
+  border-radius: 5px;
 }
 
 .file_lightbox form .upfile_content input {
