@@ -194,31 +194,21 @@
             :class='{program_calendar_box_active: calendar_btn}'>
             <div class="program_calendar_box_close_box" @click='calendar_btn = !calendar_btn'><span
                 class="program_calendar_box_close"></span></div>
-            <div class="calendar">
+            <div class="calendar" id='outCalender' ref='outCalender'>
               <div class="calendar_header">
-                <button id="prev">
+                <button class="prev">
                   <i class="material-icons">
                     keyboard_arrow_left
                   </i>
                 </button>
-                <p id='month'>May 2019</p>
-                <button id="next">
+                <p class="month">May 2019</p>
+                <button class="next">
                   <i class="material-icons">
                     keyboard_arrow_right
                   </i>
                 </button>
               </div>
-              <table class="calendar_body">
-                <tr>
-                  <td>Su</td>
-                  <td>Mo</td>
-                  <td>Tu</td>
-                  <td>We</td>
-                  <td>Th</td>
-                  <td>Fr</td>
-                  <td>Sa</td>
-                </tr>
-              </table>
+              <table class="calendar_body" ></table>
             </div>
           </div>
         </div>
@@ -325,6 +315,7 @@
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
 
@@ -406,31 +397,21 @@
                 <p class="day_date">日期</p>
                 <div class="calendar_lightbox_content">
                   <!-- 手刻日立 -->
-                  <div class="calender">
-                    <div class="calender_header">
-                      <button id="prevv">
+                  <div class="calendar" id='inCalender' ref='inCalender'>
+                    <div class="calendar_header">
+                      <button class="prev">
                         <i class="material-icons">
                           keyboard_arrow_left
                         </i>
                       </button>
-                      <p id='card_month'>May 2019</p>
-                      <button id="nextt">
+                      <p class="month">May 2019</p>
+                      <button class="next">
                         <i class="material-icons">
                           keyboard_arrow_right
                         </i>
                       </button>
                     </div>
-                    <table class="calender_body">
-                      <tr>
-                        <td>Su</td>
-                        <td>Mo</td>
-                        <td>Tu</td>
-                        <td>We</td>
-                        <td>td</td>
-                        <td>Fr</td>
-                        <td>Sa</td>
-                      </tr>
-                    </table>
+                    <table class="calendar_body" ></table>
                   </div>
 
                 </div>
@@ -605,6 +586,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+  <script src="./js/calender.js"></script>
   <script src="./js/program.js"></script>
   <!-- <script src="./js/card.js"></script> -->
   <script>
