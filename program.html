@@ -19,33 +19,33 @@
           <img src="./img/icon/more-options.svg" alt="more" width="20" />
           <img src="./img/icon/more-options_on.svg" alt="more" width="20" />
         </div>
-        <h2>專案管理</h2>
+        <h2>商城</h2>
       </div>
       <div>
         <ul class="nav_list">
           <li>
-            <a href="#">
+            <a href="./tomato.html">
               <img src="./img/icon/time-left.svg" alt="clock" width="20" />
               <img src="./img/icon/time-left_on.svg" alt="clock" width="20" />
               <p>番茄鐘</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="./mall.html">
               <img src="./img/icon/shopping-bag.svg" alt="shop" width="20" />
               <img src="./img/icon/shopping-bag_on.svg" alt="shop" width="20" />
               <p>商城</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="./member.html">
               <img src="./img/icon/user.svg" alt="member" width="20" />
               <img src="./img/icon/user_on.svg" alt="member" width="20" />
               <p>會員中心</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#" id="cart">
               <img src="./img/icon/shopping-cart.svg" alt="cart" width="20" />
               <img src="./img/icon/shopping-cart_on.svg" alt="cart" width="20" />
             </a>
@@ -369,20 +369,20 @@
             <div class="first_right">
               <h3>新增至卡片</h3>
               <hr />
-              <div class="first_right_member" @click.stop="card_meber_switch =! card_meber_switch">
+              <div class="first_right_member" @click.stop="card_meber_switch =! card_meber_switch,calandar_switch = calandar_switch,todo_lightbox_switch = todo_lightbox_switch,file_switch = file_switch">
                 <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
                 成員
               </div>
-              <div class="wave" @click.stop="calandar_switch =! calandar_switch">
-                <img src="./img/card_img/hanging-calendar.svg" alt="" style="width: 20px;" />
+              <div class="wave" @click.stop="calandar_switch =! calandar_switch,card_meber_switch = card_meber_switch,todo_lightbox_switch = todo_lightbox_switch,file_switch = file_switch">
+                <img src="./img/calendar.e1ea5ef5.svg" alt="" style="width: 20px;" />
                 到期日
               </div>
-              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch" class="todogo">
+              <div @click.stop="todo_lightbox_switch =! todo_lightbox_switch,calandar_switch = calandar_switch,card_meber_switch = card_meber_switch,file_switch = file_switch" class="todogo">
                 <img src="./img/content.22f4a956.svg" alt="" style="width: 20px;" />
                 待辦清單
               </div>
 
-              <div @click.stop="file_switch =! file_switch">
+              <div @click.stop="file_switch =! file_switch,calandar_switch = calandar_switch,card_meber_switch = card_meber_switch,todo_lightbox_switch = todo_lightbox_switch">
                 <img src="./img/card_img/paperclip.cf9c8806.svg" alt="" style="width: 20px;" />
                 上傳附件
               </div>
@@ -441,7 +441,7 @@
                 <h3>上傳檔案</h3>
                 <form method="post" enctype="multipart/form-data">
                   <label class="upfile_content">
-                    <p>上傳附件 <span><img src="./img/card_img/plus_write.svg" alt="" width="13"></span></p>
+                    <p>上傳附件</p>
                     <input type="file" multiple id="upFile">
                   </label>
                 </form>
@@ -515,7 +515,7 @@
               </div>
               <div class="calendar">
                 <div class="calendar_title">
-                  <div><img src="./img/card_img/hanging-calendar.svg" alt="" style="width: 20px;" /></div>
+                  <div><img src="./img/calendar.e1ea5ef5.svg" alt="" style="width: 20px;" /></div>
                   <h3>到期日</h3>
                 </div>
                 <div class="calendar_status">
@@ -587,7 +587,7 @@
                   <!-- <div>上傳的內容</div> -->
                   <form method="post" enctype="multipart/form-data" @change="fileSelected">
                     <label class="upfile_content">
-                      <p>上傳附件 <span><img src="./img/card_img/plus_write.svg" alt="" width="13"></span></p>
+                      <p>上傳附件</p>
                       <input type="file" multiple>
                     </label>
                   </form>
