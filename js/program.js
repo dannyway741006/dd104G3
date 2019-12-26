@@ -147,11 +147,10 @@ var main_content = new Vue({
       this.todo_list_content_detail.splice(detailIndex, 1);
     },
     //為啥抓不到標題在陣列的索引直
-    delete_todo_title() {
-      let index = this.todo_list_content_detail.findIndex(
-        item => item.title == this.todo_lightbox_input_title
-      );
-      console.log(index);
+     delete_todo_title(index){
+      let detailindex=this.todo_list_content_detail.findIndex(item=>item.title===this.this.todo_lightbox_input_title);
+      console.log(detailindex);
+        this.todo_list_content_detail[detailindex].lists.splice(index, 1);
     },
 
     fileSelected(e) {
