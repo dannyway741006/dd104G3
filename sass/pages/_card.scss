@@ -698,12 +698,12 @@
 //日立css
 .calendar_lightbox_content {
 
-  .calender {
+  .calendar {
     width: 100%;
     margin: 10px auto;
   }
 
-  .calender_header {
+  .calendar_header {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -723,15 +723,14 @@
       }
     }
 
-    .calender_header>p {
+    .calendar_header>p {
       width: 30%;
       text-align: center;
     }
 
- 
   }
 
-  .calender_body {
+  .calendar_body {
     width: 100%;
     margin-top: 5px;
     td {
