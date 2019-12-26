@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="threeJs"></div>
+    <div class="container">
+      <header>
+        <div class="nav_hamburger">
+          <div class="navBtn">
+            <div class="navBtn_btn">
+              <p>MENU</p>
+              <div>
+                <span />
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="nav_bar">
+          <div class="nav_slide">
+            <div class="logo">
+              <a href="./index.html">
+                <img src="../img/logo.svg" alt="logo" />
+              </a>
+            </div>
+            <ul class="nav_list">
+              <li>
+                <div class="nav_btn">
+                  <img src="../img/staff-poket.svg" alt="pm" />
+                </div>
+                <p>專案管理</p>
+              </li>
+              <li>
+                <div class="nav_btn">
+                  <img src="../img/time-left.d4d509fa.svg" alt="pm" />
+                </div>
+                <p>番茄鐘</p>
+              </li>
+              <li>
+                <div class="nav_btn">
+                  <img src="../img/shopping-bag.c63fa553.svg" alt="pm" />
+                </div>
+                <p>商城</p>
+              </li>
+              <li>
+                <div class="nav_btn">
+                  <img src="../img/user.9c173fc0.svg" alt="pm" />
+                </div>
+                <p>會員中心</p>
+              </li>
+            </ul>
+          </div>
+          <div class="nav_setting">
+            <div class="clock">
+              <div class="title">
+                <img src="../img/bell.svg" alt="bell" width="30" />
+                <p>鈴聲</p>
+              </div>
+              <ul class="setting_list">
+                <li>
+                  <img src="../img/check_w.svg" alt="check" width="20" />
+                  <p>鈴聲1</p>
+                </li>
+                <li>
+                  <img src="../img/check_w.svg" alt="check" width="20" />
+                  <p>鈴聲2</p>
+                </li>
+              </ul>
+              <div class="title">
+                <img
+                  src="../img/time-left.d4d509fa.svg"
+                  alt="bell"
+                  width="30"
+                />
+                <p>時間設定</p>
+              </div>
+              <div class="set_timer">
+                <p>Work Time</p>
+                <div>
+                  <input type="number" />
+                  <p>分鐘</p>
+                </div>
+              </div>
+              <div class="set_timer">
+                <p>Break Time</p>
+                <div>
+                  <input type="number" />
+                  <p>分鐘</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="user_status">
+            <div class="user_shot"></div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <div class="content">
+          <!-- 內容 -->
+        </div>
+      </main>
+    </div>
+    <script src="./three.min.js"></script>
+    <script type="x-shader/x-fragment" id="fragmentshader">
+      uniform vec3 color;
+        uniform sampler2D texture;
+        varying float opacity;
+        varying vec3 vColor;
+        void main() {
+            gl_FragColor = vec4(vColor * color, 1);
+            gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+        }
+    </script>
+    <script src="./background.js"></script>
+    <script>
+      const hamburger = document.querySelector(".nav_hamburger");
+      const navbar = document.querySelector(".nav_bar");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navbar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
