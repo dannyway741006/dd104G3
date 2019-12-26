@@ -267,7 +267,7 @@
     }
 
     .invite_btn {
-      @include baseBtn(100px, auto, 10px);
+      @include baseBtn(100px, auto, 30px);
       margin: 10px;
       vertical-align: middle;
     }
@@ -321,16 +321,17 @@
       margin: 5px;
 
       .set-cal-chat_same_button {
-        @include btnReset;
-        @include hoverIcon(40px);
-        // border: 1px solid blue;
-        background-color: $primary;
-        border-radius: 50%;
-        transition: all 0.3s;
+        @include baseBtn(40px,40px, 50px);
+        // @include btnReset;
+        // @include hoverIcon(40px);
+        // // border: 1px solid blue;
+        // background-color: $primary;
+        // border-radius: 50%;
+        // transition: all 0.3s;
 
-        &:hover {
-          background-color: $white;
-        }
+        // &:hover {
+        //   background-color: $white;
+        // }
 
         img {
           width: 65%;
@@ -425,12 +426,12 @@
 
     //行事曆
     .program_calendar_all {
-      &>button {
-        @include btnReset;
-        @include hoverIcon(30px);
-        position: relative;
-        // border: 1px solid red;
-      }
+      // &>button {
+      //   @include btnReset;
+      //   @include hoverIcon(30px);
+      //   position: relative;
+      //   // border: 1px solid red;
+      // }
 
       .program_calendar_box {
         position: absolute;
