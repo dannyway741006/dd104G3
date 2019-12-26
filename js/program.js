@@ -373,7 +373,6 @@ $('div:cards_list_card_input_box').removeClass("ui-sortable-handle");
   const monthh = document.getElementById('card_month');
   const prevv = document.getElementById('prevv');
   const nextt = document.getElementById('nextt');
-console.log(card_calendarr)
   prevv.addEventListener('click', () => {
      card_changeMonth(nowMonth - 1);
   })
