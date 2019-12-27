@@ -267,7 +267,7 @@
     }
 
     .invite_btn {
-      @include baseBtn(100px, auto, 10px);
+      @include baseBtn(100px, auto, 30px);
       margin: 10px;
       vertical-align: middle;
     }
@@ -321,16 +321,7 @@
       margin: 5px;
 
       .set-cal-chat_same_button {
-        @include btnReset;
-        @include hoverIcon(40px);
-        // border: 1px solid blue;
-        background-color: $primary;
-        border-radius: 50%;
-        transition: all 0.3s;
-
-        &:hover {
-          background-color: $white;
-        }
+        @include baseBtn(40px,40px, 50px);
 
         img {
           width: 65%;
@@ -425,12 +416,12 @@
 
     //行事曆
     .program_calendar_all {
-      &>button {
-        @include btnReset;
-        @include hoverIcon(30px);
-        position: relative;
-        // border: 1px solid red;
-      }
+      // &>button {
+      //   @include btnReset;
+      //   @include hoverIcon(30px);
+      //   position: relative;
+      //   // border: 1px solid red;
+      // }
 
       .program_calendar_box {
         position: absolute;
@@ -684,7 +675,7 @@
       // display: inline-block;
       // border: 1px solid blue;
       height: 70vh;
-      min-width:300px ;
+      min-width: 300px;
       max-width: 300px;
       // width: 300px;
       text-align: center;
@@ -737,11 +728,8 @@
             padding: 10px;
             cursor: pointer;
             z-index: 1;
-
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 10;
-            overflow: hidden;
+            min-height: 85px;
+            vertical-align: bottom;
 
             position: relative;
 
@@ -764,28 +752,52 @@
             p {
               @include font(1, 30px);
               word-break: break-word;
+
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 10;
+              overflow: hidden;
+              margin-top: 10px;
+              margin-bottom: 5px;
+              // max-height: 300px;
             }
 
             .cards_list_card_icon_bar {
               @include font(0);
+              line-height: 0;
 
               .cards_list_card_icon {
                 width: 20px;
                 display: inline-block;
                 vertical-align: middle;
 
-                span {
-                  vertical-align: middle;
-                }
-
                 img {
                   width: 100%;
                 }
               }
 
-              .cards_list_card_todoicon {
-                margin-left: 50px;
+              span {
+                vertical-align: middle;
+                // @include font(0);
               }
+
+
+              .cards_list_card_icon_right {
+                // border: 1px solid red;
+                display: inline-block;
+                float: right;
+
+                &:after {
+                  content: "";
+                  display: block;
+                  clear: both;
+                }
+              }
+
+              // .cards_list_card_todoicon {
+              //   margin-left: 50px;
+
+              // }
             }
 
             //卡片本人css--結束

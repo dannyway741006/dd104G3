@@ -21,7 +21,7 @@
 var vm = new Vue({
   el: "#content",
   data: {
-    open: false,
+    opened: false,
     isactive: true,
     onactive: false,
     classObject: {
@@ -41,12 +41,16 @@ var vm = new Vue({
 
     card_detail_lightbox: false,
 
-    // card_check_item_detail: [],
-    card_detail_lightbox_add: '',
+
 
     calandar_switch: false,
 
+    file_switch:false,
 
+    filebox:[],
+    sourced:'',
+
+    card_meber_switch:false,
   },
   methods: {
     changeimg() {
@@ -81,7 +85,7 @@ var vm = new Vue({
           // 將卡片細節塞入該陣列裡面
           lists: []
         });
-
+       
         this.todo_lightbox_input_title = '';
         this.todo_lightbox_switch = false;
       }
@@ -102,45 +106,104 @@ var vm = new Vue({
 
     },
 
-    deletecard_todo(index) {
-      this.todo_list_content_detail.splice(index, 1);
+    deletecard_todo(detailIndex) {
+      this.todo_list_content_detail.splice(detailIndex, 1);
     },
-    delete_todo_title(index) {
-      // this.todo_list_content_detail[index].lists.splice(index, 1);
-    },
+    //為啥抓不到標題在陣列的索引直
+    // delete_todo_title(){
+    //   let index=this.todo_list_content_detail.findIndex(item => item.title == this.todo_lightbox_input_title);
+    //   console.log(item);
+    // },
+
+
+    fileSelected(e){
+      let file = e.target.files[0];
+      // let file = e.target.files.item(0);
+      // console.log(file);
+      this.file_switch=false;
+      let readFile = new FileReader();
+
+      // console.log(readFile);
+
+      readFile.readAsDataURL(file);
+      readFile.addEventListener('load',
+      function file(e){
+        this.sourced=e.target.result;
+      }
+      );
+    
+      this.filebox.push({
+        name:file.name,
+        source:this.sourced,
+      });
+     
+       
+  },
+  openmember() {
+    this.card_meber_switch = true;
+    this.calandar_switch = false;
+    this.todo_lightbox_switch = false;
+    this.file_switch = false;
+  },
+  opendate() {
+    this.card_meber_switch = false;
+    this.calandar_switch = true;
+    this.todo_lightbox_switch = false;
+    this.file_switch = false;
+  },
+  opentodo() {
+    this.card_meber_switch = false;
+    this.calandar_switch = false;
+    this.todo_lightbox_switch = true;
+    this.file_switch = false;
+  },
+  openfile() {
+    this.card_meber_switch = false;
+    this.calandar_switch = false;
+    this.todo_lightbox_switch = false;
+    this.file_switch = true;
+  },
+  del_file(index){
+  this.filebox.splice(index,1);
+  },
   },
   mounted() {
     document.addEventListener('click', () => {
       this.calandar_switch = false;
       this.todo_lightbox_switch = false;
-      // this.card_detail_lightbox = false;
+      this.file_switch=false;
+      this.card_meber_switch=false;
     });
   },
-  computed: {
-    progress_bar_length(index) {
-
-    }
+  computed:{
+    progress_bar_length(index){
+    
+    },
+      delete_todo_title(){
+      let index=this.todo_list_content_detail.findIndex(item => item.title == this.todo_lightbox_input_title);
+      console.log(item);
+    },
   },
 });
 
 
 //創建日立
 (function () {
-  const date = new Date();
-  const allMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+  const datee = new Date();
+  const allMonthh = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
     'Oct', 'Nov', 'Dec'
   ];
-  const allWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+  const allWeekk = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
-  const calendar = document.querySelector('.calendar_body');
-  const month = document.getElementById('month');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
+  const calendarr = document.querySelector('.calender_body');
+  const monthh = document.getElementById('card_month');
+  const prevv = document.getElementById('prevv');
+  const nextt = document.getElementById('nextt');
 
-  prev.addEventListener('click', () => {
+  prevv.addEventListener('click', () => {
     changeMonth(nowMonth - 1);
   })
-  next.addEventListener('click', () => {
+  nextt.addEventListener('click', () => {
     changeMonth(nowMonth + 1);
   })
 
@@ -164,12 +227,12 @@ var vm = new Vue({
   };
 
   let fullDate, day;
-  let nowYear = date.getFullYear();
-  let nowMonth = date.getMonth();
-  let nowDate = date.getDate();
+  let nowYear = datee.getFullYear();
+  let nowMonth = datee.getMonth();
+  let nowDate = datee.getDate();
 
   function getDate() {
-    let firstDay = new Date(`${allMonth[nowMonth]} ${1} ${nowYear}`).getDay();
+    let firstDay = new Date(`${allMonthh[nowMonth]} ${1} ${nowYear}`).getDay();
 
     if (nowMonth < 7) {
       nowMonth % 2 ? fullDate = 30 : fullDate = 31;
@@ -177,7 +240,7 @@ var vm = new Vue({
       nowMonth % 2 ? fullDate = 31 : fullDate = 30;
     };
     if (nowMonth === 1) fullDate = isLeap(nowYear);
-    month.innerText = `${allMonth[nowMonth]} ${nowYear}`;
+    monthh.innerText = `${allMonthh[nowMonth]} ${nowYear}`;
 
     day = 1;
     createDay(day, firstDay);
@@ -193,8 +256,8 @@ var vm = new Vue({
         day.innerText = days;
         if (
           nowDate === days &&
-          nowMonth === date.getMonth() &&
-          nowYear === date.getFullYear()
+          nowMonth === datee.getMonth() &&
+          nowYear === datee.getFullYear()
         ) {
           td.classList.add('now');
         }
@@ -205,16 +268,22 @@ var vm = new Vue({
       td.appendChild(day);
       tr.appendChild(td);
     }
-    calendar.appendChild(tr);
+    calendarr.appendChild(tr);
     if (days <= fullDate) createDay(days);
   }
 
   function resetDate() {
-    while (calendar.hasChildNodes()) {
-      calendar.removeChild(calendar.lastChild);
+    while (calendarr.hasChildNodes()) {
+      calendarr.removeChild(calendarr.lastChild);
     }
     getDate();
   }
 
   getDate()
 })();
+
+
+
+
+
+

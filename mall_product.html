@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="./js/cart.js"></script>
 
 </head>
 
@@ -34,30 +35,31 @@
       <div>
         <ul class="nav_list">
           <li>
-            <a href="#">
+            <a href="./tomato.html">
               <img src="./img/icon/time-left.svg" alt="clock" width="20" />
               <img src="./img/icon/time-left_on.svg" alt="clock" width="20" />
               <p>番茄鐘</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="./mall.html">
               <img src="./img/icon/shopping-bag.svg" alt="shop" width="20" />
               <img src="./img/icon/shopping-bag_on.svg" alt="shop" width="20" />
               <p>商城</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="./member.html">
               <img src="./img/icon/user.svg" alt="member" width="20" />
               <img src="./img/icon/user_on.svg" alt="member" width="20" />
               <p>會員中心</p>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#" id="cart">
               <img src="./img/icon/shopping-cart.svg" alt="cart" width="20" />
               <img src="./img/icon/shopping-cart_on.svg" alt="cart" width="20" />
+              <div class="cart_cir"> </div>
             </a>
           </li>
         </ul>
@@ -106,10 +108,11 @@
     <div>
       <!-- 內容  -->
       <div class="mall_bg">
-
+   
         <div class="mall_poduct_cart">
           <div class="mall_poduct_content">
             <div class="product_img">
+              
               <img class="b_img" src="img/mall_img/p1_pink.jpg" alt="">
               <div class="small_pic">
                 <div class="s_img"><img src="./img/mall_img/p1_black.jpg" alt=""></div>
@@ -118,30 +121,32 @@
                 <div class="s_img"><img src="./img/mall_img/p1_pink.jpg" alt=""></div>
               </div>
             </div>
-
+          
             <div class="product_text">
+              
               <p>13吋 輕薄避震手提筆電包</p>
 
               <ul class="product_features">
                 <li>絨毛內裡 保護電腦不刮傷</li>
                 <li>凹形邊緣護墊 有效吸收抵禦衝擊</li>
               </ul>
+              <form action="mall_product.html"> 
               <ul class="product_select">
                 <li>
                   <ul class="select_btn">
                     <b>顏色</b>
                     <b>:</b>
                     <div class="radio_style">
-                      <input type="radio" id="black" name="color">
+                      <input type="radio" id="black" name="color" value="black">
                       <label for="black"">黑色</label>
                     
-                      <input type="radio" id="gray" name="color">
+                      <input type="radio" id="gray" name="color"  value="gray">
                       <label for="gray">灰色</label>
                     
-                      <input type="radio" id="blue" name="color">
+                      <input type="radio" id="blue" name="color" value="blue">
                       <label for="blue">藍色</label>
 
-                      <input type="radio" id="pink" name="color">
+                      <input type="radio" id="pink" name="color" value="pink">
                       <label for="pink">粉色</label>
                     </div>
                   </ul>
@@ -151,10 +156,8 @@
                     <b>尺寸</b>
                     <b>:</b>
                     <div class="radio_style">
-                      <input type="radio" id="thirteen5" name="
-                      size">
+                      <input type="radio" id="thirteen5" name="size" value="13.5">
                       <label for="thirteen5"">13.5</label>
-            
                     </div>
                   </ul>
                 </li>
@@ -165,24 +168,36 @@
                     <li>
                       <select name="select_num" id="selectNum">
                         <option value="1">1</option>
-                        　<option value="2">2</option>
-                        　<option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                       </select>
                     </li>
                   </ul>
                 </li>
+                <li>
+                  <div class="line"></div>
+                  <div class="product_price">
+                    <span>$1,600</span>
+                    <span>$</span><span class="price_sale">1,200</span>
+                  </div>
+                  <div class="line"></div>
+                </li>
+                <li>
+                  <button class="mall_bBtn"  value="Submit">直接購買</button>
+                  <button class="mall_bBtn"  value="Submit">加入購物車</button>
+                </li>
+              
+              
+              
+              
               </ul>
 
-              <div class="line"></div>
-              <div class="product_price">
-                <span>$1,600</span>
-                <span>$</span><span class="price_sale">1,200</span>
-              </div>
-              <div class="line"></div>
+           
 
 
-              <button class="mall_bBtn">直接購買</button>
-              <button class="mall_bBtn">加入購物車</button>
+     
+
+            </form>
             </div>
           </div>
         </div>
@@ -276,6 +291,69 @@
 
     </div>
 
+    <div class="cart_bg">
+      <div id="cart_page">
+        <div id="cart_title">
+          <h2>職人口袋清單</h2>
+        </div>
+        <div id="close_cart">
+          <p></p>
+          <p></p>
+        </div>
+        <div id="cart_underline"></div>
+        <div id="cart_main">
+          <form action="">
+            <div class="cart_product">
+              <div id="cart_product_img">
+                <img src="./img/mall_img/product_1.jpg" alt="">
+              </div>
+              <div>產品說明</div>
+              <div>
+                <p>單價</p>
+                <p>$3999</p>
+              </div>
+              <div id="cart_product_quantity">
+                <p id="cutProductNum"><img src="./img/cart_img/delete.svg" alt=""></p>
+                <input type="text" value="1" id="productNum">
+                <P id="addProductNum"><img src="./img/cart_img/add.svg" alt=""></P>
+              </div>
+              <div>
+                <p>總價</p>
+                <p>$3999</p>
+              </div>
+              <div>
+                <p id="del_product"><img src="./img/member_img/trash-alt-regular1.svg" alt=""></p>
+              </div>
+            </div>
+            <div class="cart_product">
+              <div id="cart_product_img">
+                <img src="./img/mall_img/product_1.jpg" alt="">
+              </div>
+              <div>產品說明</div>
+              <div>
+                <p>單價</p>
+                <p>$3999</p>
+              </div>
+              <div id="cart_product_quantity">
+                <p id="cutProductNum"><img src="./img/cart_img/delete.svg" alt=""></p>
+                <input type="text" value="1" id="productNum">
+                <P id="addProductNum"><img src="./img/cart_img/add.svg" alt=""></P>
+              </div>
+              <div>
+                <p>總價</p>
+                <p>$3999</p>
+              </div>
+              <div>
+                <p id="del_product"><img src="./img/member_img/trash-alt-regular1.svg" alt=""></p>
+              </div>
+            </div>
+            <div id="cartSubPosition">
+              <button id="cart_submit">確認購買</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    </div>
   </main>
   <footer></footer>
 

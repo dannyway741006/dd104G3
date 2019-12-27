@@ -8,7 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap" rel="stylesheet" />
-  <script src="./js/cart_product_delete.js"></script>
+  <script src="./js/cart.js"></script>
 </head>
 
 <body>
@@ -136,7 +136,10 @@
       </div>
     </div>
     </div>
-    </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 372d6ffc9499d5ffe01fd1be7d903082d7540275
   </main>
   <footer></footer>
 
@@ -146,23 +149,6 @@
     const mask = document.getElementById("mask");
     moreBtn.addEventListener("click", () => content.classList.add("active"));
     mask.addEventListener("click", () => content.classList.remove("active"));
-  </script>
-  <script>
-    let clickCart = document.querySelector('#cart');
-    let showCart = document.querySelector('#cart_page');
-    let cartBg = document.querySelector('.cart_bg');
-    let closeCart = document.querySelector('#close_cart');
-    showCart.addEventListener('click', (e) => { //---阻止bubble事件---//
-      e ? e.stopPropagation() : event.cancelBubble = true;
-    });
-    clickCart.addEventListener('click', () => cartBg.classList.add('show')); //---打開購物車---//
-    cartBg.addEventListener('click', () => cartBg.classList.remove('show')); //---點擊空白處關閉購物車---//
-    closeCart.addEventListener('click', () => cartBg.classList.remove('show')); //---點X關閉購物車---//
-    window.onkeydown = (e) => {
-      if (e.keyCode == 27) {
-        cartBg.classList.remove('show')
-      }
-    }; //---按esc關閉購物車---//
   </script>
 </body>
 

@@ -9,7 +9,7 @@
   // border: 1px solid red;
   border-radius: 10px;
   box-shadow: 3px 3px 6px 0px $shadow;
-  // display: none;
+  display: none;
   overflow: hidden;
   padding-bottom: 15px;
 
@@ -17,6 +17,9 @@
     opacity: 1;
     display: block;
     z-index: 10001;
+   font-size: 16px;
+   letter-spacing: 0.8px;
+   line-height: 20px;
   }
 
   .card_header_title {
@@ -227,7 +230,7 @@
           transition: background-color 0.3s;
           background-color: $danger;
           color: #fff;
-
+           padding: 2.5px 5px;
           &.active {
             background: $success;
           }
@@ -278,7 +281,7 @@
     //新版待辦清單
     .card_todo_content {
       margin-bottom: 24px;
-      min-height: 160px;
+      min-height: 125px;
 
       .todo_title {
         display: flex;
@@ -344,8 +347,10 @@
       left: 25px;
       border-bottom: 1px solid #e0dcdc;
       width: 88.5%;
+      white-space: nowrap;
+      overflow: hidden;
       text-overflow: ellipsis;
-
+      margin-bottom: 10px;
       &:hover {
 
         div:nth-child(3),
@@ -355,10 +360,10 @@
       }
 
       div:first-child {
-        width: 20px;
+     
 
         img {
-          width: 100%;
+          width: 20px;
           cursor: pointer;
           // opacity: 0;
         }
@@ -367,7 +372,9 @@
       p {
         margin-left: 15px;
         @include font(0, 20px);
-
+         overflow: hidden;
+         text-overflow: ellipsis;
+         width: 60%;
         &.lineThrough {
           text-decoration: line-through;
         }
@@ -441,14 +448,20 @@
           @include font(0, 20px);
           color: #fff;
           padding: 3px;
-          border-radius: 5px;
+          border-radius: 10px;
           border: 2px solid $primary;
           transition: all 0.3s;
           width: 110px;
           padding: 5px 25px 5px 5px;
-
+            &.addlength{
+              width:250px;
+              &::placeholder {
+                margin: 0 auto;
+              }
+            }
           &::placeholder {
             color: white;
+            
           }
 
 
@@ -477,24 +490,74 @@
           font-weight: 600;
         }
 
-        img {
+       .file_title_img img {
           filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
         }
       }
+       ul{
+         color: #666;
+         list-style-position: inside;
+         list-style-type: disc;
+         @include font(0,20px);
+           li{
+             position: relative;
+             margin-bottom: 5px;
+             transition: all 0.3s;
+             margin-left: 10px;
+             &:hover{
+               div{
+                 opacity: 1;
+               }
+             }
+             a{
+               color: #666;
+               text-decoration: none;
+             }
+             div{
+               cursor: pointer;
+               width: 30px;
+               height: 30px;
+               @include  positionCenter(y);
+               right:5.4%;
+               opacity: 0;
+               transition: all 0.3s;
+               &:hover{
+                filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
 
+               }
+               img{
+                // @include  positionCenter();
+                width: 21px;
+                height: 21px;
+                  
+               }
+             }
+           }
+       }
       .card_upload_file {
         padding-left: 25px;
         margin-top: 10px;
-
-        button {
-          @include baseBtn(100px, 30px, 5px);
-          background-color: $primary;
-          @include font(0, 20px);
-          color: #fff;
-          padding: 3px;
-
-          border: 2px solid $primary;
-          transition: all 0.3s;
+        form {
+          text-align: left;
+          margin-top: 10px;
+      
+          .upfile_content {
+            display: inline-block;
+            @include font(0, 20px);
+            color: #fff;
+            cursor: pointer;
+            padding: 5px;
+            background-color: $primary;
+            position: relative;
+             border-radius: 5px;
+          
+      
+            input {
+              position: fixed;
+              opacity: 0;
+              visibility: hidden;
+            }
+          }
         }
       }
     }
@@ -512,7 +575,7 @@
   position: fixed;
   box-shadow: 3px 3px 6px 0px $shadow;
   display: none;
-  top: 262px;
+  top: 244px;
   z-index: 9999999;
 
   &.opentodo_lightbox {
@@ -543,19 +606,15 @@
       @include btnReset();
       @include font(1, 20px);
       cursor: pointer;
-      border: 2px solid #fff;
+      // border: 2px solid #fff;
       background-color: $primary;
       color: #fff;
       padding: 5px;
       margin-top: 5px;
-      border-radius: 5px;
+      // border-radius: 5px;
       transition: all 0.3s;
-
-      &:hover {
-        background-color: #fff;
-        color: $primary;
-        border: 2px solid $primary;
-      }
+      @include baseBtn(auto,auto,10px);
+       
     }
   }
 }
@@ -653,12 +712,12 @@
   .calendar_header {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
     color: #666666;
 
     &>button {
-      width: 50px;
-      height: 50px;
+      // width: 50px;
+      // height: 50px;
       border: none;
       outline: none;
       background-color: transparent;
@@ -675,14 +734,11 @@
       text-align: center;
     }
 
-    #month {
-      line-height: 45px;
-    }
   }
 
   .calendar_body {
     width: 100%;
-
+    margin-top: 5px;
     td {
       width: 30%;
       text-align: center;
@@ -725,12 +781,14 @@
   padding: 15px;
   width: 200px;
   position: fixed;
-  top: 250px;
+  top: 287px;
   box-shadow: 3px 3px 6px 0px $shadow;
   display: none;
   border: 1px solid rgba(0, 0, 0, .1);
   z-index: 9999999;
-
+   &.openfile{
+     display: block;
+   }
   h3 {
     @include font(1, 20px);
   }
@@ -741,70 +799,160 @@
 
     .upfile_content {
       display: inline-block;
-      @include font(0, 20px);
-      color: #fff;
-      border-radius: 5px;
-      // margin: 10px 0 5px;
+            @include font(0, 20px);
+            color: #fff;
+            cursor: pointer;
+            padding: 5px;
+            background-color: $primary;
+            position: relative;
+             border-radius: 5px;
+          
+      
+            input {
+              position: fixed;
+              opacity: 0;
+              visibility: hidden;
+            }
+    }
+  }
+}
+
+//成員跳窗
+.card_member_lightbox{
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  position: fixed;
+  top:180px;
+  box-shadow: 3px 3px 6px 0px $shadow;
+  display: none;
+  border: 1px solid rgba(0, 0, 0, .1);
+  z-index: 9999999;
+  &.open_card_mem{
+    display: block;
+  }
+  h3{
+    @include font(1,20px);
+    text-align: start;
+  }
+  h4{
+    @include font(0,20px);
+    text-align: start;
+    font-weight: 400;
+  }
+  label{
+    input{
+      @include font(1, 20px);
+      outline: none;
+      background-color: transparent;
+      color: #666666;
+      padding: 5px;
+      border: 1px solid #666666;
+      border-radius: 10px;
+      width: 100%;
+      margin: 5px 0;
+    }
+  }
+  ul{
+    list-style: none;
+    li{
+      margin: 15px 0px;
       cursor: pointer;
-      padding-left: 16px;
-      background-color: $primary;
-      border: 2px solid $primary;
-      height: 35px;
-      // text-align: center;
-      position: relative;
-      width: 114px;
+      .card_member_message{
+         display: flex;
+        position: relative;
+        div:first-child{
+          width: 35px;
+          height: 35px;
+           border-radius: 50%;
+           overflow: hidden;
+           vertical-align: middle;
 
-      p {
-        @include positionCenter(y);
-
-        span {
-          img {
+           img{
+              vertical-align: middle;
+            width: 35px;
+            height: 35px;
             margin-right: 0;
-          }
-        }
-      }
-
-      input {
-        position: fixed;
-        opacity: 0;
-        visibility: hidden;
+           }
+          
+         }
+         span.card_member_name{
+          @include positionCenter(y);
+          left: 20%;
+         }
+         div:last-child{
+          width: 20px;
+          height: 20px;
+           border-radius: 50%;
+           overflow: hidden;
+           vertical-align: middle;
+            @include positionCenter(y);
+            right: 4%;
+           img{
+            vertical-align: middle;
+          width: 20px;
+          height: 20px;
+          margin-right: 0;
+         }
+         }
       }
     }
   }
 }
 
+
+
+
 //卡片rwd
 @include media(850px) {
   .card_light_box {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    // height: 100%;
 
   }
 }
 
 @include media(670px) {
   .card_light_box {
-    position: initial;
+   height: 100%;
+   width: 100%;
     transform: translate(0%, 0%);
-
+  top: 0;
+  left: 0;
     .lightbox_content {
       flex-direction: column;
       margin-top: 0px;
-
+       overflow-y: scroll;
       .left_aside {
         width: 100%;
         border: none;
-
+        .first_right,.second_right{
+          .todogo,
+            .first_right_member,
+            .second_right_deletecard,
+            div:nth-child(4),
+            div:nth-child(5),
+            div:nth-child(6){
+              width: 40%;
+            }
+            .card_member_lightbox{
+              top: 160px;
+            }
+            }
         hr {
           width: 90%;
         }
 
         .calendar_lightbox {
-          top: 197px;
+          top: 185px;
         }
 
         .todo_lightbox {
-          top: 242px;
+          top: 235px;
+        }
+        .file_lightbox{
+          top: 260px;
         }
       }
 
@@ -820,9 +968,20 @@
 
 @media screen and (max-width:503px) {
   .card_light_box {
-
+    // .left_aside{
+    //   .first_right,.second_right{
+    // .todogo,
+    //   .first_right_member,
+    //   .second_right_deletecard,
+    //   div:nth-child(4),
+    //   div:nth-child(5),
+    //   div:nth-child(6){
+    //     width: 40%;
+    //   }
+    //   }
+    //   }
     .lightbox_content {
-
+  
       .right_aside {
         .card_todo_content {
           .card_check_item {
