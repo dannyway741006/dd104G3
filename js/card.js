@@ -45,12 +45,12 @@ var vm = new Vue({
 
     calandar_switch: false,
 
-    file_switch:false,
+    file_switch: false,
 
-    filebox:[],
-    sourced:'',
+    filebox: [],
+    sourced: '',
 
-    card_meber_switch:false,
+    card_meber_switch: false,
   },
   methods: {
     changeimg() {
@@ -85,7 +85,7 @@ var vm = new Vue({
           // 將卡片細節塞入該陣列裡面
           lists: []
         });
-       
+
         this.todo_lightbox_input_title = '';
         this.todo_lightbox_switch = false;
       }
@@ -116,73 +116,85 @@ var vm = new Vue({
     // },
 
 
-    fileSelected(e){
+    fileSelected(e) {
       let file = e.target.files[0];
       // let file = e.target.files.item(0);
       // console.log(file);
-      this.file_switch=false;
+      this.file_switch = false;
       let readFile = new FileReader();
 
       // console.log(readFile);
 
       readFile.readAsDataURL(file);
       readFile.addEventListener('load',
-      function file(e){
-        this.sourced=e.target.result;
-      }
+        function file(e) {
+          this.sourced = e.target.result;
+        }
       );
-    
+
       this.filebox.push({
-        name:file.name,
-        source:this.sourced,
+        name: file.name,
+        source: this.sourced,
       });
-     
-       
-  },
-  openmember() {
-    this.card_meber_switch = true;
-    this.calandar_switch = false;
-    this.todo_lightbox_switch = false;
-    this.file_switch = false;
-  },
-  opendate() {
-    this.card_meber_switch = false;
-    this.calandar_switch = true;
-    this.todo_lightbox_switch = false;
-    this.file_switch = false;
-  },
-  opentodo() {
-    this.card_meber_switch = false;
-    this.calandar_switch = false;
-    this.todo_lightbox_switch = true;
-    this.file_switch = false;
-  },
-  openfile() {
-    this.card_meber_switch = false;
-    this.calandar_switch = false;
-    this.todo_lightbox_switch = false;
-    this.file_switch = true;
-  },
-  del_file(index){
-  this.filebox.splice(index,1);
-  },
+
+
+    },
+    delete_todo_title_detail(index) {
+      let indexx = this.todo_list_content_detail.findIndex(
+        item => {return item.title == this.todo_lightbox_input_title
+        });
+   console.log(indexx);
+      this.todo_list_content_detail[indexx].lists.splice(index, 1);
+      // return indexx;
+   
+    },
+    openmember() {
+      this.card_meber_switch = true;
+      this.calandar_switch = false;
+      this.todo_lightbox_switch = false;
+      this.file_switch = false;
+    },
+    opendate() {
+      this.card_meber_switch = false;
+      this.calandar_switch = true;
+      this.todo_lightbox_switch = false;
+      this.file_switch = false;
+    },
+    opentodo() {
+      this.card_meber_switch = false;
+      this.calandar_switch = false;
+      this.todo_lightbox_switch = true;
+      this.file_switch = false;
+    },
+    openfile() {
+      this.card_meber_switch = false;
+      this.calandar_switch = false;
+      this.todo_lightbox_switch = false;
+      this.file_switch = true;
+    },
+    del_file(index) {
+      this.filebox.splice(index, 1);
+    },
   },
   mounted() {
     document.addEventListener('click', () => {
       this.calandar_switch = false;
       this.todo_lightbox_switch = false;
-      this.file_switch=false;
-      this.card_meber_switch=false;
+      this.file_switch = false;
+      this.card_meber_switch = false;
     });
   },
-  computed:{
-    progress_bar_length(index){
-    
+  computed: {
+    progress_bar_length(index) {
+
     },
-      delete_todo_title(){
-      let index=this.todo_list_content_detail.findIndex(item => item.title == this.todo_lightbox_input_title);
-      console.log(item);
-    },
+    //   delete_todo_title(){
+    //     let indexx=this.todo_list_content_detail.findIndex(
+    //       item => {
+    //          console.log(item.title);
+    //       return  item.title == this.todo_lightbox_input_title} );;
+    //  return  indexx;
+    // },
   },
 });
 
@@ -281,9 +293,3 @@ var vm = new Vue({
 
   getDate()
 })();
-
-
-
-
-
-

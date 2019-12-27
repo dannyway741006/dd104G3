@@ -2252,6 +2252,7 @@ body {
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
+  display: none;
   overflow: hidden;
   padding-bottom: 15px;
 }
