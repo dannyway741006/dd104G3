@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<<body id="container">
+<body id="container">
   <div id="threeJs"></div>
   <header>
     <div class="header">
@@ -38,13 +38,13 @@
         </a>
       </div>
       <ul class="nav_list">
-        <li>
+        <li class="active">
           <div>
             <img src="../img/staff-poket.svg" alt="pm" />
           </div>
           <p>專案管理<br /><span>Project management</span></p>
         </li>
-        <li class="active">
+        <li>
           <div>
             <img src="../img/time-left.d4d509fa.svg" alt="clock" />
           </div>
@@ -70,10 +70,7 @@
         </div>
       </div>
       <div class="page_info">
-     
-     
- 
-    
+
         <div class="title">
           <p>專案</p>
         </div>
@@ -102,16 +99,36 @@
         <div class="setting_bookmark">
           <p>已完成專案</p>
         </div>
-  
-      
+
+
       </div>
-     
+
       </div>
     </nav>
   </header>
   <main>
     <div class="content">
       <!-- 內容 -->
+      <div id="program_main">
+
+        <div class="invite_list">
+          <div class="program_member"><img src="./img/program_img/program_member_1.png" alt=""></div>
+          <div class="program_member"><img src="./img/program_img/program_member_2.png" alt=""></div>
+          <div class="program_member"><img src="./img/program_img/program_member_3.png" alt=""></div>
+
+          <div class="program_member_more">+4</div>
+          <button class="invite_btn" @click.stop='invite_btn = !invite_btn'>邀請</button>
+          <div class="invite_add_member_box" :class='{invite_add_member_box_active: invite_btn}' @click.stop="">
+            <p>輸入會員帳號</p>
+            <form action="">
+              <input type="email" class="invite_add_member_addr">
+            </form>
+          </div>
+        </div>
+
+        
+      </div>
+
     </div>
   </main>
   <script src="../js/lib/three.min.js"></script>
@@ -133,5 +150,11 @@
       container.classList.toggle("nav_open")
     );
   </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+  <script src="./js/calender.js"></script>
+  <script src="./js/program.js"></script>
 </body>
+
 </html>
