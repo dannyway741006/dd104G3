@@ -110,12 +110,10 @@ var vm = new Vue({
       this.todo_list_content_detail.splice(detailIndex, 1);
     },
     //為啥抓不到標題在陣列的索引直
-    delete_todo_title(index){
-      let detailindex=this.todo_list_content_detail.findIndex(item=>item.title);
-      // console.log(index);
-        this.todo_list_content_detail[detailindex].lists.splice(index, 1);
-    },
-  
+    // delete_todo_title(){
+    //   let index=this.todo_list_content_detail.findIndex(item => item.title == this.todo_lightbox_input_title);
+    //   console.log(item);
+    // },
 
 
     fileSelected(e){
@@ -141,37 +139,33 @@ var vm = new Vue({
      
        
   },
+  openmember() {
+    this.card_meber_switch = true;
+    this.calandar_switch = false;
+    this.todo_lightbox_switch = false;
+    this.file_switch = false;
+  },
+  opendate() {
+    this.card_meber_switch = false;
+    this.calandar_switch = true;
+    this.todo_lightbox_switch = false;
+    this.file_switch = false;
+  },
+  opentodo() {
+    this.card_meber_switch = false;
+    this.calandar_switch = false;
+    this.todo_lightbox_switch = true;
+    this.file_switch = false;
+  },
+  openfile() {
+    this.card_meber_switch = false;
+    this.calandar_switch = false;
+    this.todo_lightbox_switch = false;
+    this.file_switch = true;
+  },
   del_file(index){
   this.filebox.splice(index,1);
   },
-
-
-
-
-    openmember(){
-      this.card_meber_switch=true;
-      this.calandar_switch=false;
-      this.todo_lightbox_switch=false;
-      this.file_switch=false;
-    },
-    opendate(){
-      this.card_meber_switch=false;
-      this.calandar_switch=true;
-      this.todo_lightbox_switch=false;
-      this.file_switch=false;
-    },
-    opentodo(){
-      this.card_meber_switch=false;
-      this.calandar_switch=false;
-      this.todo_lightbox_switch=true;
-      this.file_switch=false;
-    },
-    openfile(){
-      this.card_meber_switch=false;
-      this.calandar_switch=false;
-      this.todo_lightbox_switch=false;
-      this.file_switch=true;
-    },
   },
   mounted() {
     document.addEventListener('click', () => {
@@ -184,7 +178,11 @@ var vm = new Vue({
   computed:{
     progress_bar_length(index){
     
-    }
+    },
+      delete_todo_title(){
+      let index=this.todo_list_content_detail.findIndex(item => item.title == this.todo_lightbox_input_title);
+      console.log(item);
+    },
   },
 });
 

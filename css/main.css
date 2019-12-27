@@ -2974,6 +2974,26 @@ main {
   padding: 5px 25px 5px 5px;
 }
 
+.right_aside .memberRight .card_add_button label input.addlength {
+  width: 250px;
+}
+
+.right_aside .memberRight .card_add_button label input.addlength::-webkit-input-placeholder {
+  margin: 0 auto;
+}
+
+.right_aside .memberRight .card_add_button label input.addlength:-ms-input-placeholder {
+  margin: 0 auto;
+}
+
+.right_aside .memberRight .card_add_button label input.addlength::-ms-input-placeholder {
+  margin: 0 auto;
+}
+
+.right_aside .memberRight .card_add_button label input.addlength::placeholder {
+  margin: 0 auto;
+}
+
 .right_aside .memberRight .card_add_button label input::-webkit-input-placeholder {
   color: white;
 }

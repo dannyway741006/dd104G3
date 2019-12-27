@@ -453,9 +453,15 @@
           transition: all 0.3s;
           width: 110px;
           padding: 5px 25px 5px 5px;
-
+            &.addlength{
+              width:250px;
+              &::placeholder {
+                margin: 0 auto;
+              }
+            }
           &::placeholder {
             color: white;
+            
           }
 
 
