@@ -183,6 +183,7 @@ var vm = new Vue({
       this.file_switch = false;
       this.card_meber_switch = false;
     });
+    calender(this.$refs.inCalender);
   },
   computed: {
     progress_bar_length(index) {
@@ -199,97 +200,3 @@ var vm = new Vue({
 });
 
 
-//創建日立
-(function () {
-  const datee = new Date();
-  const allMonthh = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-    'Oct', 'Nov', 'Dec'
-  ];
-  const allWeekk = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
-
-  const calendarr = document.querySelector('.calender_body');
-  const monthh = document.getElementById('card_month');
-  const prevv = document.getElementById('prevv');
-  const nextt = document.getElementById('nextt');
-
-  prevv.addEventListener('click', () => {
-    changeMonth(nowMonth - 1);
-  })
-  nextt.addEventListener('click', () => {
-    changeMonth(nowMonth + 1);
-  })
-
-  function changeMonth(index) {
-    let direction = nowMonth - index;
-    if (direction < 0) {
-      nowMonth === 11 ? nowYear += 1 : nowYear;
-    } else {
-      nowMonth === 0 ? nowYear -= 1 : nowYear;
-    }
-    nowMonth = (index + 12) % 12;
-    resetDate();
-  }
-
-  function isLeap(nowYear) {
-    if (!(nowYear % 4) && nowYear % 100 || !(nowYear % 400)) {
-      return 29;
-    } else {
-      return 28;
-    };
-  };
-
-  let fullDate, day;
-  let nowYear = datee.getFullYear();
-  let nowMonth = datee.getMonth();
-  let nowDate = datee.getDate();
-
-  function getDate() {
-    let firstDay = new Date(`${allMonthh[nowMonth]} ${1} ${nowYear}`).getDay();
-
-    if (nowMonth < 7) {
-      nowMonth % 2 ? fullDate = 30 : fullDate = 31;
-    } else {
-      nowMonth % 2 ? fullDate = 31 : fullDate = 30;
-    };
-    if (nowMonth === 1) fullDate = isLeap(nowYear);
-    monthh.innerText = `${allMonthh[nowMonth]} ${nowYear}`;
-
-    day = 1;
-    createDay(day, firstDay);
-  }
-
-  function createDay(days, firstDay = 0) {
-    let tr = document.createElement('tr');
-    for (let i = 0; i < 7; i++) {
-      let td = document.createElement('td');
-      let week = document.createElement('p');
-      let day = document.createElement('p');
-      if (i >= firstDay && days <= fullDate) {
-        day.innerText = days;
-        if (
-          nowDate === days &&
-          nowMonth === datee.getMonth() &&
-          nowYear === datee.getFullYear()
-        ) {
-          td.classList.add('now');
-        }
-        days++;
-      }
-      // week.innerText = allWeek[i];
-      td.appendChild(week);
-      td.appendChild(day);
-      tr.appendChild(td);
-    }
-    calendarr.appendChild(tr);
-    if (days <= fullDate) createDay(days);
-  }
-
-  function resetDate() {
-    while (calendarr.hasChildNodes()) {
-      calendarr.removeChild(calendarr.lastChild);
-    }
-    getDate();
-  }
-
-  getDate()
-})();
