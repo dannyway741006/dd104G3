@@ -10,7 +10,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  margin: 15px;
+  margin-top: 15px;
 }
 
 * {
@@ -24,8 +24,8 @@ html,
 body {
   width: 100%;
   height: 100vh;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#222), to(#000));
-  background-image: linear-gradient(to bottom, #222, #000);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#222), to(#000000));
+  background-image: linear-gradient(to bottom, #222, #000000);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,7 +84,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: rgba(255, 255, 255, 0.05);
-  padding: 10px 5px 10px 30px;
+  padding: 15px 5px 15px 10px;
   cursor: pointer;
   position: relative;
   z-index: 1;
@@ -159,7 +159,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: rgba(255, 255, 255, 0.05);
-  padding: 10px 5px 10px 30px;
+  padding: 15px 5px 15px 10px;
   height: 70px;
   color: #ffffff;
   letter-spacing: 2.8px;
@@ -170,7 +170,7 @@ body {
 .nav_bar .user_shot div {
   width: 50px;
   height: 50px;
-  background-color: #000;
+  background-color: #000000;
   border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -281,8 +281,10 @@ body {
   background-color: #4e8eec;
 }
 
-.nav_bar .page_info {
-  padding-left: 30px;
+.nav_bar .page_info p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nav_bar .page_info .title {
@@ -291,6 +293,135 @@ body {
   line-height: 30px;
   color: #ffffff;
   margin: 20px 0;
+  padding-left: 40px;
+}
+
+.nav_bar .page_info .setting_timer {
+  max-width: 350px;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  padding-left: 40px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.nav_bar .page_info .setting_timer div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+}
+
+.nav_bar .page_info .setting_timer label {
+  width: 33.33%;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav_bar .page_info .setting_timer label ::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.nav_bar .page_info .setting_timer label input {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 60%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.nav_bar .page_info .setting_timer button {
+  width: 33.33%;
+  height: 30px;
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.nav_bar .page_info .setting_timer button:hover {
+  background-color: #4e8eec;
+}
+
+.nav_bar .page_info .search_bar {
+  margin: 10px 0;
+  max-width: 350px;
+  padding: 0 20px;
+}
+
+.nav_bar .page_info .search_bar ::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.nav_bar .page_info .search_bar label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.nav_bar .page_info .search_bar img {
+  width: 15px;
+}
+
+.nav_bar .page_info .search_bar input {
+  width: 100%;
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 5px;
+  color: #ffffff;
+  padding-left: 10px;
+}
+
+.nav_bar .page_info .setting_bookmark {
+  height: 50px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 50px;
+  color: #ffffff;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.nav_bar .page_info .setting_bookmark:hover {
+  background-color: #4e8eec;
 }
 
 .nav_bar .page_info .page_info_list {
@@ -299,7 +430,6 @@ body {
   line-height: 20px;
   list-style: none;
   color: #ffffff;
-  max-height: 130px;
   overflow-y: auto;
 }
 
@@ -312,9 +442,14 @@ body {
           align-items: center;
   margin-bottom: 15px;
   cursor: pointer;
+  padding-left: 40px;
 }
 
-.nav_bar .page_info .page_info_list li div {
+.nav_bar .page_info .page_info_list.setting_bell {
+  max-height: 130px;
+}
+
+.nav_bar .page_info .page_info_list.setting_bell div {
   margin-right: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -324,12 +459,96 @@ body {
           align-items: center;
 }
 
+.nav_bar .page_info .page_info_list.setting_pm, .nav_bar .page_info .page_info_list.setting_shop {
+  max-height: 250px;
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li, .nav_bar .page_info .page_info_list.setting_shop li {
+  position: relative;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 0;
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li.active::before, .nav_bar .page_info .page_info_list.setting_shop li.active::before {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li::before, .nav_bar .page_info .page_info_list.setting_shop li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.2)), to(transparent));
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li:hover::before, .nav_bar .page_info .page_info_list.setting_shop li:hover::before {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li p, .nav_bar .page_info .page_info_list.setting_shop li p {
+  padding-left: 40px;
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li p {
+  padding-left: 10px;
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li p span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #8acede;
+  margin-right: 20px;
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li img {
+  position: absolute;
+  left: 20px;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li:hover img {
+  left: 40px;
+  opacity: 1;
+}
+
+.nav_bar .page_info .page_info_list.setting_pm li:hover span {
+  opacity: 0;
+}
+
 main {
   width: calc(100% - 350px - 100px);
   height: 95%;
   background-color: #ffffff;
-  border-radius: 30px;
+  border-radius: 20px;
   margin-left: 50px;
+}
+
+main .content {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
 }
 
 @media screen and (max-width: 1023px) {
@@ -427,6 +646,10 @@ main {
     right: 30px;
   }
   .header .nav_hamburger .navBtn {
+    font-family: "Montserrat", "Noto Sans TC", sans-serif;
+    letter-spacing: 2.8px;
+    font-size: 14px;
+    line-height: 20px;
     background-color: transparent;
     outline: none;
     border: none;
@@ -599,9 +822,6 @@ main {
   .nav_bar .logo img {
     width: 85px;
   }
-  .nav_bar .nav_list li {
-    padding-left: 10px;
-  }
   .nav_bar .nav_list li div {
     width: 40px;
     height: 40px;
@@ -610,14 +830,24 @@ main {
   .nav_bar .nav_list li div img {
     width: 15px;
   }
-  .nav_bar .user_shot {
-    padding-left: 10px;
+  .nav_bar .page_info .search_bar {
+    max-width: none;
   }
-  .nav_bar .page_info {
-    padding-left: 10px;
+  .nav_bar .page_info .title,
+  .nav_bar .page_info .setting_timer {
+    padding-left: 17px;
   }
-  .nav_bar .page_info .page_info_list {
+  .nav_bar .page_info .page_info_list.setting_bell, .nav_bar .page_info .page_info_list.setting_pm, .nav_bar .page_info .page_info_list.setting_shop {
     max-height: none;
+  }
+  .nav_bar .page_info .page_info_list li {
+    padding-left: 17px;
+  }
+  .nav_bar .page_info .page_info_list.setting_pm li img {
+    left: 0;
+  }
+  .nav_bar .page_info .page_info_list.setting_pm li:hover img {
+    left: 20px;
   }
   .nav_bar .status div:nth-of-type(1) {
     max-width: none;
@@ -627,6 +857,9 @@ main {
   }
   main {
     height: calc(100% - 55px);
+  }
+  main .content {
+    padding: 10px;
   }
 }
 
@@ -983,6 +1216,10 @@ main {
 }
 
 .mall_bBtn {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -1115,6 +1352,10 @@ main {
     margin: 0;
   }
   .mall_bBtn {
+    font-family: "Montserrat", "Noto Sans TC", sans-serif;
+    letter-spacing: 2.8px;
+    font-size: 14px;
+    line-height: 20px;
     background-color: transparent;
     outline: none;
     border: none;
@@ -1233,6 +1474,10 @@ main {
     margin: 0;
   }
   .mall_bBtn {
+    font-family: "Montserrat", "Noto Sans TC", sans-serif;
+    letter-spacing: 2.8px;
+    font-size: 14px;
+    line-height: 20px;
     background-color: transparent;
     outline: none;
     border: none;
@@ -1346,6 +1591,10 @@ main {
 }
 
 #program_aside .program_now_having_all .program_add_btn_box .program_add_btn {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -1525,6 +1774,10 @@ main {
 }
 
 #program_aside .program_now_having_all .new_program_choose_box button {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -1700,6 +1953,10 @@ main {
 }
 
 #program_main .invite_list .invite_btn {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -1825,6 +2082,10 @@ main {
 }
 
 #program_main .set-cal-chat_all_bar .set-cal-chat_same_all .set-cal-chat_same_button {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -2352,6 +2613,10 @@ main {
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card_input_box .cards_list_card_input_box_button_bar button {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -2426,6 +2691,10 @@ main {
 }
 
 #program_main .cards_column_all .cards_column .add_cards_btn {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -2956,6 +3225,10 @@ main {
 }
 
 .right_aside .memberRight .card_add_button label input {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -3160,6 +3433,10 @@ main {
 }
 
 .todo_lightbox .todo_lightbox_botton button {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -3174,6 +3451,10 @@ main {
   margin-top: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -3736,6 +4017,10 @@ main {
 }
 
 .memberContent #memcon1 .con1_info .memberbtn {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -3816,6 +4101,10 @@ main {
 
 .memberContent #memcon1 .con1_info li p,
 .memberContent #memcon1 input {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -4010,6 +4299,10 @@ main {
 }
 
 .memberContent .memlibox .memlibtn .btn_close {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -4581,6 +4874,10 @@ main {
 }
 
 .cart_bg.show #cart_page #cart_main #cartSubPosition #cart_submit {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -4702,6 +4999,10 @@ main {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
@@ -4717,6 +5018,10 @@ main {
 }
 
 .tomato_slide .settingBtn {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
   background-color: transparent;
   outline: none;
   border: none;
