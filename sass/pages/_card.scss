@@ -9,7 +9,7 @@
   // border: 1px solid red;
   border-radius: 10px;
   box-shadow: 3px 3px 6px 0px $shadow;
-  display: none;
+  // display: none;
   overflow: hidden;
   padding-bottom: 15px;
 
@@ -453,9 +453,15 @@
           transition: all 0.3s;
           width: 110px;
           padding: 5px 25px 5px 5px;
-
+            &.addlength{
+              width:250px;
+              &::placeholder {
+                margin: 0 auto;
+              }
+            }
           &::placeholder {
             color: white;
+            
           }
 
 

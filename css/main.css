@@ -2252,7 +2252,6 @@ body {
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
-  display: none;
   overflow: hidden;
   padding-bottom: 15px;
 }
@@ -2719,6 +2718,26 @@ body {
   transition: all 0.3s;
   width: 110px;
   padding: 5px 25px 5px 5px;
+}
+
+.right_aside .memberRight .card_add_button label input.addlength {
+  width: 250px;
+}
+
+.right_aside .memberRight .card_add_button label input.addlength::-webkit-input-placeholder {
+  margin: 0 auto;
+}
+
+.right_aside .memberRight .card_add_button label input.addlength:-ms-input-placeholder {
+  margin: 0 auto;
+}
+
+.right_aside .memberRight .card_add_button label input.addlength::-ms-input-placeholder {
+  margin: 0 auto;
+}
+
+.right_aside .memberRight .card_add_button label input.addlength::placeholder {
+  margin: 0 auto;
 }
 
 .right_aside .memberRight .card_add_button label input::-webkit-input-placeholder {
