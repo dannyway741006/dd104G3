@@ -286,8 +286,9 @@ html:
                 <div class="card_add_button">
 
                   <label for="">
+                    <!-- 無法再點即時觸發 -->
                     <input placeholder="增加項目" type="text" class="card_detail_lightbox_input" v-model.trim="item.test"
-                      @keyup.enter="add_card_detail(detailIndex)">
+                      @keyup.enter="add_card_detail(detailIndex)" @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}" @blur="item.card_length =! item.card_length">
                     <img src="./img/card_img/plus_write.svg" alt="" width="14">
                   </label>
 
