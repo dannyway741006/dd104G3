@@ -2,8 +2,9 @@
 @import "./base/scrollBar";
 @import "./mixins/_mixin";
 
-@import "./layout/_inside_layout";
-@import "./layout/_newLayout";
+// @import "./layout/_inside_layout";
+@import "./layout/layout"; // @import "./layout/_newLayout";
+// @import "./layout/_newLayout";
 @import "./layout/_clock";
 //pages
 @import "./pages/_mall.scss";

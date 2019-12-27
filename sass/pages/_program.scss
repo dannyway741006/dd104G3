@@ -322,16 +322,6 @@
 
       .set-cal-chat_same_button {
         @include baseBtn(40px,40px, 50px);
-        // @include btnReset;
-        // @include hoverIcon(40px);
-        // // border: 1px solid blue;
-        // background-color: $primary;
-        // border-radius: 50%;
-        // transition: all 0.3s;
-
-        // &:hover {
-        //   background-color: $white;
-        // }
 
         img {
           width: 65%;

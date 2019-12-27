@@ -1,5 +1,5 @@
 const textureLoader = new THREE.TextureLoader();
-const fluffy = textureLoader.load("./fluffy.png");
+const fluffy = textureLoader.load("../img/fluffy.png");
 class Particle {
   constructor(size = 1, colorX, colorY, colorZ, range = 500, density = 300) {
     this.size = size;
@@ -108,10 +108,11 @@ let scene, renderer, camera, width, height, aspect;
 const threeJs = document.getElementById("threeJs");
 scene = new THREE.Scene();
 renderer = new THREE.WebGLRenderer({
-  antialias: true
+  antialias: false,
+  alpha: true
 });
 renderer.setSize(width, height);
-renderer.setClearColor(0x2a323e, 1);
+renderer.setClearColor(0x000000, 0);
 threeJs.appendChild(renderer.domElement);
 
 camera = new THREE.PerspectiveCamera(45, aspect, 1, 5000);
@@ -131,7 +132,7 @@ const shadowLight = new THREE.DirectionalLight(0xffffff, 0.2);
 shadowLight.position.set(500, 400, 0);
 scene.add(globalLight, shadowLight);
 
-let particle = new Particle(3, 0.3, 0.8, 0.8);
+let particle = new Particle(3, 0.9, 0.9, 0.7);
 scene.add(particle.particleSystem);
 
 function render() {

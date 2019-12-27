@@ -31,6 +31,9 @@ var main_content = new Vue({
 
     now_text: "查看已完成專案",
 
+    page: 0,
+
+
     opened: false,
     isactive: true,
     onactive: false,
@@ -61,6 +64,10 @@ var main_content = new Vue({
     card_meber_switch: false
   },
   methods: {
+    calen(){
+      calender(this.$refs.outCalender);
+      calender(this.$refs.inCalender);
+    },
     //新增專案
     add_program(program_name) {
       if (this.program_name !== "") {
@@ -214,7 +221,8 @@ var main_content = new Vue({
   // },
 
   mounted() {
-
+    // calender(this.$refs.outCalender);
+    // calender(this.$refs.inCalender);
     document.addEventListener("click", () => {
       this.open = false;
       this.cards_list_card_input_box = false;
@@ -231,9 +239,17 @@ var main_content = new Vue({
     //   // 定义窗口大小变更通知事件
     //   _this.screenWidth = document.documentElement.clientWidth; //窗口宽度
     // };
-    calender(this.$refs.outCalender);
-    calender(this.$refs.inCalender);
-  }
+    // calender(this.$refs.outCalender);
+    // calender(this.$refs.inCalender);
+  },
+  watch: {
+    page(){
+      setTimeout(()=>{
+        this.calen();
+      },0)
+    }
+  },
+
 });
 
 //拖曳

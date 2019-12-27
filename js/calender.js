@@ -29,7 +29,7 @@ function calender(selector) {
   let calendar = [...selector.childNodes].find(
     node => node.className === "calendar_body"
   );
-  const allWeek = ["Su", "Mo", "Tu", "We", "Thur", "Fri", "Sat"];
+  const allWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
   prev.addEventListener("click", () => {
     changeMonth(nowMonth - 1);
