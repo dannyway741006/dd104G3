@@ -63,12 +63,12 @@
       </div>
       <div class="slider_header"></div>
       <!-- =================member_側邊欄=================================== -->
-      <div class="memberitem">
+      <!-- <div class="memberitem">
         <div class="personal_photo">
           <div class="picrange">
             <div class="range">
               <img id="acceptImg" src="./img/member_img/user-tie-solid.svg" alt="" width="70px">
-              <!-- 更換大頭照 -->
+              更換大頭照
             </div>
           </div>
           <div id="userName">
@@ -84,7 +84,7 @@
             </label>
           </div>
           <div class="line">
-            <!-- 裝飾線 -->
+            裝飾線
           </div>
           <ul class="slide_list">
             <li onclick="member_page1();" id="member_button1" name="member_button1">
@@ -98,13 +98,32 @@
               <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
             </li>
           </ul>
-        </div>
+        </div> -->
     </aside>
 
     <div class="mask" id="mask"></div>
-
     <!-- ================member內容=============================== -->
-    <div id="input_mask" class="input_mask"></div>
+    <div class="memberContent">
+      <div class="memberTitle">
+        <h2>一、基本資料</h2>
+      </div>
+      <div class="memberTitle_content">
+        <div>
+          <img src="" alt="">
+        </div>
+        <div class="up_member_img"></div>
+      </div>
+      <div class="member_info">
+        <form action="">
+          <table>
+
+          </table>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- <div id="input_mask" class="input_mask"></div>
     <div class="memberContent">
       <div id="memcon1">
         <h3>一、基本資料</h3>
@@ -113,27 +132,43 @@
             <li>
               <p>帳號：</p> 
               <label for="" class="line_box">
-                <input type="text_word" autocomplete="off">
+                <input type="text" autocomplete="off" class="text_word">
                 <span class="upbox" id="upbox"></span>
               </label> 
             </li>
             <li>
-              <p>姓名：</p><input type="text" autocomplete="off">
+              <p>姓名：</p> 
+              <label for="" class="line_box">
+                <input type="text" autocomplete="off" class="text_word">
+                <span class="upbox" id="upbox"></span>
+              </label> 
             </li>
             <li>
-              <p>信箱：</p><input type="email" autocomplete="off">
+              <p>信箱：</p> 
+              <label for="" class="line_box">
+                <input type="email" autocomplete="off" class="text_word">
+                <span class="upbox" id="upbox"></span>
+              </label> 
             </li>
             <li>
-              <p>電話：</p><input type="number" name="number" autocomplete="off">
+              <p>電話：</p> 
+              <label for="" class="line_box">
+                <input type="number" autocomplete="off" class="text_word">
+                <span class="upbox" id="upbox"></span>
+              </label> 
             </li>
             <li>
-              <p>住址：</p><input type="text" autocomplete="off">
+              <p>住址：</p> 
+              <label for="" class="line_box">
+                <input type="text" autocomplete="off" class="text_word">
+                <span class="upbox" id="upbox"></span>
+              </label> 
             </li>
             <button type="button" class="memberbtn" id="memberbtn">確認修改</button>
           </ul>
         </form>
       </div>
-      <!-- =======================會員訂單資料================================= -->
+      =======================會員訂單資料=================================
       <div id="mem_mask" class="mem_mask"></div>
       <div class="memlibox" id="memlibox">
         <div class="light_box_title" id="light_box_title">
@@ -150,7 +185,7 @@
       </div>
       <div id="memcon2">
         <h3>二、訂單記錄</h3>
-        <!-- =========訂單記錄內容================================= -->
+        =========訂單記錄內容=================================
         <form action="" id="oder">
           <table class="table_oder">
             <tr>
@@ -179,7 +214,7 @@
           </table>
         </form>
       </div>
-    </div>
+    </div> -->
   </main>
   <footer></footer>
   <script>

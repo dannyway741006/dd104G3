@@ -1,447 +1,541 @@
-// ========側邊欄=======================
-.memberitem {
-  width: 100%;
-  height: 100%;
-  // border: 1px solid red;
-  overflow: hidden;
-
-  .personal_photo {
-    width: 100%;
-    height: 110;
-    //border: 1px solid gold;
-
-    .picrange {
-      width: 100%;
-      height: 120px;
-      // border: 1px solid rgb(0, 0, 0);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-
-      .range {
-        width: 80px;
-        height: 80px;
-        border: 1px solid rgb(209, 209, 209);
-        border-radius: 100%;
-        overflow: hidden;
-        position: relative;
-
-        #acceptImg {
-          width: 100%;
-          height: 100%;
-          object-position: center;
-          object-fit: fill;
-        }
-      }
-    }
-
-    #userName {
-      // border: 1px solid gray;
-      width: 100%;
-      height: 30px;
-      text-align: center;
-      line-height: 40px;
-      color: $dark;
-    }
-
-    #membericon {
-      width: 100%;
-      height: 30px;
-      // border: 1px solid black;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 10%;
-      position: relative;
-
-      .up_memberpic {
-        width: 100%;
-        height: 100%;
-
-        .double_mem {
-          width: 30%;
-          height: 100%;
-          // border: 1px solid red;
-          position: relative;
-          left: 95%;
-          top: 15%;
-          @include hoverIcon(25px);
-
-          img {
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
-
-  .line {
-    border: 0.2px solid rgb(226, 224, 224);
-    width: 90%;
-    margin-left: 5%;
-    box-shadow: 0 0 0.5px 0.3px rgb(206, 201, 201);
-    margin-bottom: 30px;
-  }
-
-  .slide_list {
-    display: none;
-  }
-}
-
-// ========member_內容=============================
+// test card=========================
 .memberContent {
-  // border: 1px solid black;
-  width: 100%;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  width: 30%;
+  height: 700px;
+  // border: 1px solid red;
+  margin: 20px 0 0 20px;
 
-  #memcon1 {
-    width: 45%;
-    height: 90%;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgb(228, 228, 228);
-
-    h3 {
-      // border: 1px solid red;
-      width: 100%;
-      height: 10%;
-      color: $dark;
-      padding: 10px 0 0 20px;
-    }
-
-    ul {
-      // border: 1px solid black;
-      width: 100%;
-      height: 90%;
-      padding-top: 30px;
-    }
-
-    .con1_info {
-      text-align: center;
-      @include font(0, 50px);
-
-      .memberbtn {
-        @include baseBtn;
-        margin-top: 9%;
-      }
-
-      li {
-        list-style: none;
-    
-      }
-    }
-
-    .con1_info li p,
-    input {
-      @include btnReset;
-      display: inline-block;
-      color: $dark;
-    }
-
-    input {
-      border-bottom-style: solid;
-      border-width: 1px;
-      width: 60%;
-      border-color: rgb(155, 155, 155);
-      @include font;
-      // background-color: aqua;
-      
-    }
-  }
-
-  #memcon2 {
-    width: 45%;
-    height: 90%;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgb(228, 228, 228);
-
-    h3 {
-      width: 100%;
-      height: 10%;
-      color: $dark;
-      padding: 10px 0 0 20px;
-      // border: 1px solid red;
-    }
-
-    #oder {
-      width: 100%;
-      height: 90%;
-      // border: 1px solid blue;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      padding-top: 40px;
-
-      .table_oder {
-        width: 95%;
-        // border: 1px solid #000000;
-        border-collapse: collapse;
-      }
-
-      th {
-        @include font;
-        font-weight: 100;
-        color: $dark;
-        border-bottom: #d8d8d8 solid;
-        border-width: 0.5px;
-        height: 30px;
-        // border: 1px solid red;
-
-        .delete_oder {
-          position: relative;
-          @include hoverIcon(17px);
-          left: 10px;
-        }
-      }
-    }
-  }
-
-  // ============light_box============================
-  .mem_mask {
+  .memberTitle_content {
     width: 100%;
-    height: 100vh;
-    background-color: rgba(194, 194, 194, 0.3);
-    position: fixed;
-    z-index: 10000;
-    left: 0%;
-    top: 0%;
-    transition: all 0.5s;
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .memlibox {
-    width: 0px;
-    height: 0px;
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    z-index: 10001;
-    left: 0%;
-    top: 0%;
-    left: calc((100%) / 2);
+    height: 200px;
+    // border: 1px solid black;
+    box-shadow: 1px 1px 3px $shadow;
     border-radius: 10px;
-    box-shadow: 0 0 5px rgb(255, 208, 208);
-    opacity: 0;
-    visibility: hidden;
-
-    .light_box_title {
-      width: 100%;
-      height: 16%;
-      display: flex;
-      // border: 1px solid red;
-      @include hoverIcon(15);
-
-      img {
-        top: 8.5%;
-        left: 94.5%;
-      }
-    } 
-
-    .light_box_content {
-      width: 100%;
-      height: 60%;
-      // border: 1px solid red;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: $dark;
-    }
-
-    .memlibtn {
-      width: 100%;
-      height: 25%;
-      // border: 1px solid gold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .btn_close {
-        @include baseBtn;
-        margin: 0 10% 2%;
-      }
-    }
+    margin-top: 20px;
   }
 
-  .active_for_memlibox {
-    animation-duration: 1s;
-    animation-name: boxrotate;
-    animation-fill-mode: forwards;
-
+  .memberTitle {
+    // border: 1px solid black;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px $shadow;
+    padding-left: 20px;
+    color: $dark;
   }
 
-  .closeani {
-    animation-duration: 1.5s;
-    animation-name: closeani;
-    animation-fill-mode: forwards;
-  }
-
-  .active_for_mask {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  @keyframes boxrotate {
-    from {
-      transform: rotate(0deg);
-      width: 0px;
-      height: 0px;
-      opacity: 0;
-    }
-
-    to {
-      transform: rotate(720deg);
-      top: calc((100% - 220px) / 2);
-      left: calc((100% - 350px) / 2);
-      visibility: visible;
-      opacity: 1;
-      width: 350px;
-      height: 220px;
-    }
-  }
-
-  @keyframes closeani {
-    from {
-      transform: rotate(0deg);
-      top: calc((100% - 220px) / 2);
-      left: calc((100% - 350px) / 2);
-      opacity: 1;
-      visibility: visible;
-      width: 350px;
-      height: 220px;
-    }
-
-    to {
-      transform: rotate(720deg);
-      top: calc((100%) / 2);
-      left: 92%;
-      visibility: hidden;
-      opacity: 0;
-      width: 0px;
-      height: 0px;
-      display: none;
-    }
+  .member_info {
+    margin-top: 20px;
+    width: 100%;
+    height: calc(700px - 80px - 250px);
+    // border: 1px solid palevioletred;
+    box-shadow: 1px 1px 3px $shadow;
+    border-radius: 10px;
   }
 }
 
-@include media(1024px) {
-  .memberitem .personal_photo .slide_list {
-    display: block;
-  }
 
-  .memberContent {
-    display: block;
-    position: relative;
 
-    &.active {
-      #memcon2 {
-        transform: scaleX(1);
-        opacity: 1;
-        visibility: visible;
-      }
 
-      #memcon1 {
-        transform: scaleX(0);
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
 
-    #memcon1,
-    #memcon2 {
-      width: 90%;
-      position: absolute;
-      top: 5%;
-      left: 5%;
-      transition: all 0.3s;
-    }
 
-    #memcon1 {
-      transform-origin: right;
-    }
 
-    #memcon2 {
-      transform: scaleX(0);
-      opacity: 0;
-      visibility: hidden;
-      transform-origin: left;
-    }
-  }
-}
 
-@include media(576px) {
-  .memberContent {
-    #memcon2 {
-      width: 99%;
-      position: absolute;
-      top: 5%;
-      left: 0.5%;
-      transition: all 0.3s;
-    }
 
-    #memcon1 {
-      width: 99%;
-      top: 5%;
-      left: 0.5%;
-    }
-  }
-}
 
-@include media(420px) {
-  .memberContent #memcon2 #oder th {
-    &:nth-last-of-type(1) {
-      text-align: left;
-      padding-left: 10%;
-    }
 
-    &:nth-last-of-type(2) {
-      width: 14%;
-    }
 
-    &:nth-last-of-type(3) {
-      width: 14%;
-    }
-  }
-  @keyframes boxrotate {
-    from {
-      transform: rotate(0deg);
-      width: 0px;
-      height: 0px;
-      opacity: 0;
-    }
 
-    to {
-      transform: rotate(720deg);
-      top: calc((100% - 190px) / 2);
-      left: calc((100% - 320px) / 2);
-      visibility: visible;
-      opacity: 1;
-      width: 320px;
-      height: 190px;
-    }
-  }
 
-  @keyframes closeani {
-    from {
-      transform: rotate(0deg);
-      top: calc((100% - 190px) / 2);
-      left: calc((100% - 320px) / 2);
-      opacity: 1;
-      visibility: visible;
-      width: 320px;
-      height: 190px;
-    }
 
-    to {
-      transform: rotate(720deg);
-      top: calc((100%) / 2);
-      left: 100%;
-      visibility: hidden;
-      opacity: 0;
-      width: 0px;
-      height: 0px;
-      display: none;
-    }
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+// ========側邊欄=======================
+// .memberitem {
+//   width: 100%;
+//   height: 100%;
+//   // border: 1px solid red;
+//   overflow: hidden;
+
+//   .personal_photo {
+//     width: 100%;
+//     height: 110;
+//     //border: 1px solid gold;
+
+//     .picrange {
+//       width: 100%;
+//       height: 120px;
+//       // border: 1px solid rgb(0, 0, 0);
+//       display: flex;
+//       align-items: flex-end;
+//       justify-content: center;
+
+//       .range {
+//         width: 80px;
+//         height: 80px;
+//         border: 1px solid rgb(209, 209, 209);
+//         border-radius: 100%;
+//         overflow: hidden;
+//         position: relative;
+
+//         #acceptImg {
+//           width: 100%;
+//           height: 100%;
+//           object-position: center;
+//           object-fit: fill;
+//         }
+//       }
+//     }
+
+//     #userName {
+//       // border: 1px solid gray;
+//       width: 100%;
+//       height: 30px;
+//       text-align: center;
+//       line-height: 40px;
+//       color: $dark;
+//     }
+
+//     #membericon {
+//       width: 100%;
+//       height: 30px;
+//       // border: 1px solid black;
+//       display: flex;
+//       align-items: center;
+//       justify-content: flex-end;
+//       padding-right: 10%;
+//       position: relative;
+
+//       .up_memberpic {
+//         width: 100%;
+//         height: 100%;
+
+//         .double_mem {
+//           width: 30%;
+//           height: 100%;
+//           // border: 1px solid red;
+//           position: relative;
+//           left: 95%;
+//           top: 15%;
+//           @include hoverIcon(25px);
+
+//           img {
+//             cursor: pointer;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   .line {
+//     border: 0.2px solid rgb(226, 224, 224);
+//     width: 90%;
+//     margin-left: 5%;
+//     box-shadow: 0 0 0.5px 0.3px rgb(206, 201, 201);
+//     margin-bottom: 30px;
+//   }
+
+//   .slide_list {
+//     display: none;
+//   }
+// }
+
+// // ========member_內容=============================
+// .memberContent {
+//   // border: 1px solid black;
+//   width: 100%;
+//   height: 90vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-around;
+
+//   #memcon1 {
+//     width: 45%;
+//     height: 90%;
+//     border-radius: 10px;
+//     box-shadow: 0px 0px 5px rgb(228, 228, 228);
+
+//     h3 {
+//       // border: 1px solid red;
+//       width: 100%;
+//       height: 10%;
+//       color: $dark;
+//       padding: 10px 0 0 20px;
+//     }
+
+//     ul {
+//       // border: 1px solid black;
+//       width: 100%;
+//       height: 90%;
+//       padding-top: 30px;
+//     }
+
+//     .con1_info {
+//       text-align: center;
+//       @include font(1, 50px);
+
+//       .memberbtn {
+//         @include baseBtn;
+//         margin-top: 9%;
+//       }
+
+//       .line_box {
+//         position: relative;
+//         // border: 1px solid gray;
+//         padding-bottom: 10px;
+//       }
+
+//       li {
+//         list-style: none;
+//         margin-bottom: 30px;
+//       }
+
+//       .text_word:focus {
+//         padding: 5px 14px 7px;
+//         transition: 0.3s;
+
+//       }
+
+//       .text_word:focus~.upbox {
+//         transition: 0.3s;
+//         height: 36px;
+//         border-radius: 5px;
+//         z-index: -1;
+//       }
+
+//       .text_word~.upbox {
+//         position: absolute;
+//         height: 0;
+//         bottom: 0;
+//         left: 0;
+//         width: 100%;
+//         transition: 0.3s;
+//         z-index: -1;
+//         // border: 1px solid red;
+//         background: $primary;
+//       }
+//     }
+
+//     .con1_info li p,
+//     input {
+//       @include btnReset;
+//       display: inline-block;
+//       color: $dark;
+//     }
+
+//     input {
+//       width: 60%;
+
+//       border: 0;
+//       padding: 5px 0 7px;
+//       border: 1px solid transparent;
+//       border-bottom-color: rgb(149, 149, 149);
+//       transition: 0.3s;
+//       @include font(2);
+
+//     }
+//   }
+
+//   // ==============訂單資料=========================
+//   #memcon2 {
+//     width: 45%;
+//     height: 90%;
+//     border-radius: 10px;
+//     box-shadow: 0px 0px 5px rgb(228, 228, 228);
+
+//     h3 {
+//       width: 100%;
+//       height: 10%;
+//       color: $dark;
+//       padding: 10px 0 0 20px;
+//       // border: 1px solid red;
+//     }
+
+//     #oder {
+//       width: 100%;
+//       height: 90%;
+//       // border: 1px solid blue;
+//       text-align: center;
+//       display: flex;
+//       justify-content: center;
+//       padding-top: 40px;
+
+//       .table_oder {
+//         width: 95%;
+//         // border: 1px solid #000000;
+//         border-collapse: collapse;
+//       }
+
+//       th {
+//         @include font(1);
+//         font-weight: 400;
+//         color: $dark;
+//         border-bottom: #d8d8d8 solid;
+//         border-width: 0.5px;
+//         height: 30px;
+//         // border: 1px solid red;
+
+//         .delete_oder {
+//           position: relative;
+//           @include hoverIcon(17px);
+//           left: 10px;
+//         }
+//       }
+//     }
+//   }
+
+//   // ============light_box============================
+//   .mem_mask {
+//     width: 100%;
+//     height: 100vh;
+//     background-color: rgba(194, 194, 194, 0.3);
+//     position: fixed;
+//     z-index: 10000;
+//     left: 0%;
+//     top: 0%;
+//     transition: all 0.3s;
+//     opacity: 0;
+//     visibility: hidden;
+//   }
+
+//   .memlibox {
+//     width: 0px;
+//     height: 0px;
+//     background-color: rgb(255, 255, 255);
+//     position: fixed;
+//     z-index: 10001;
+//     left: 0%;
+//     top: 0%;
+//     left: calc((100%) / 2);
+//     border-radius: 10px;
+//     box-shadow: 0 0 5px rgb(255, 208, 208);
+//     opacity: 0;
+//     visibility: hidden;
+
+//     .light_box_title {
+//       width: 100%;
+//       height: 16%;
+//       display: flex;
+//       // border: 1px solid red;
+//       @include hoverIcon(15);
+
+//       img {
+//         top: 8.5%;
+//         left: 94.5%;
+//       }
+//     }
+
+//     .light_box_content {
+//       width: 100%;
+//       height: 60%;
+//       // border: 1px solid red;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       color: $dark;
+//     }
+
+//     .memlibtn {
+//       width: 100%;
+//       height: 25%;
+//       // border: 1px solid gold;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+
+//       .btn_close {
+//         @include baseBtn;
+//         margin: 0 10% 2%;
+//       }
+//     }
+//   }
+
+//   .active_for_memlibox {
+//     animation-duration: 0.3s;
+//     animation-name: boxrotate;
+//     animation-fill-mode: forwards;
+
+//   }
+
+//   .closeani {
+//     animation-duration: 0.3s;
+//     animation-name: closeani;
+//     animation-fill-mode: forwards;
+//   }
+
+//   .active_for_mask {
+//     opacity: 1;
+//     visibility: visible;
+//   }
+
+//   @keyframes boxrotate {
+//     from {
+//       width: 0px;
+//       height: 0px;
+//       opacity: 0;
+//     }
+
+//     to {
+//       top: calc((100% - 220px) / 2);
+//       left: calc((100% - 350px) / 2);
+//       visibility: visible;
+//       opacity: 1;
+//       width: 350px;
+//       height: 220px;
+//     }
+//   }
+
+//   @keyframes closeani {
+//     from {
+//       top: calc((100% - 220px) / 2);
+//       left: calc((100% - 350px) / 2);
+//       opacity: 1;
+//       visibility: visible;
+//       width: 350px;
+//       height: 220px;
+//     }
+
+//     to {
+//       top: calc((100%) / 2);
+//       left: 92%;
+//       visibility: hidden;
+//       opacity: 0;
+//       width: 0px;
+//       height: 0px;
+//       display: none;
+//     }
+//   }
+// }
+
+// @include media(1024px) {
+//   .memberitem .personal_photo .slide_list {
+//     display: block;
+//   }
+
+//   .memberContent {
+//     display: block;
+//     position: relative;
+
+//     &.active {
+//       #memcon2 {
+//         transform: scaleX(1);
+//         opacity: 1;
+//         visibility: visible;
+//       }
+
+//       #memcon1 {
+//         transform: scaleX(0);
+//         opacity: 0;
+//         visibility: hidden;
+//       }
+//     }
+
+//     #memcon1,
+//     #memcon2 {
+//       width: 90%;
+//       position: absolute;
+//       top: 5%;
+//       left: 5%;
+//       transition: all 0.3s;
+//     }
+
+//     #memcon1 {
+//       transform-origin: right;
+//     }
+
+//     #memcon2 {
+//       transform: scaleX(0);
+//       opacity: 0;
+//       visibility: hidden;
+//       transform-origin: left;
+//     }
+//   }
+// }
+
+// @include media(576px) {
+//   .memberContent {
+//     #memcon2 {
+//       width: 99%;
+//       position: absolute;
+//       top: 5%;
+//       left: 0.5%;
+//       transition: all 0.3s;
+//     }
+
+//     #memcon1 {
+//       width: 99%;
+//       top: 5%;
+//       left: 0.5%;
+//     }
+//   }
+// }
+
+// @include media(420px) {
+//   .memberContent #memcon2 #oder th {
+//     &:nth-last-of-type(1) {
+//       text-align: left;
+//       padding-left: 10%;
+//     }
+
+//     &:nth-last-of-type(2) {
+//       width: 14%;
+//     }
+
+//     &:nth-last-of-type(3) {
+//       width: 14%;
+//     }
+//   }
+
+//   @keyframes boxrotate {
+//     from {
+//       transform: rotate(0deg);
+//       width: 0px;
+//       height: 0px;
+//       opacity: 0;
+//     }
+
+//     to {
+//       transform: rotate(720deg);
+//       top: calc((100% - 190px) / 2);
+//       left: calc((100% - 320px) / 2);
+//       visibility: visible;
+//       opacity: 1;
+//       width: 320px;
+//       height: 190px;
+//     }
+//   }
+
+//   @keyframes closeani {
+//     from {
+//       transform: rotate(0deg);
+//       top: calc((100% - 190px) / 2);
+//       left: calc((100% - 320px) / 2);
+//       opacity: 1;
+//       visibility: visible;
+//       width: 320px;
+//       height: 190px;
+//     }
+
+//     to {
+//       transform: rotate(720deg);
+//       top: calc((100%) / 2);
+//       left: 100%;
+//       visibility: hidden;
+//       opacity: 0;
+//       width: 0px;
+//       height: 0px;
+//       display: none;
+//     }
+//   }
+// }

@@ -58,14 +58,32 @@ imgClose.addEventListener('click', function () {
 });
 
 // =================input_animatinon=================================
-let upbox = document.getElementById("upbox");
-let member_input = document.getElementById("member_input");
-let input_mask = document.getElementById("input_mask");
-member_input.addEventListener("click", function () {
-  upbox.classList.add('active');
-  upbox.classList.remove('active1');
-});
-input_mask.addEventListener("click", function () {
-  upbox.classList.add('active1');
-})
+// let upbox = document.getElementById("upbox");
+// let upbox1 = document.getElementById("upbox1");
+// let text_word = document.getElementById("text_word");
+// let text_word1 = document.getElementById("text_word1");
+
+// let input_mask = document.getElementById("input_mask");
+// text_word.addEventListener("click", function () {
+//   upbox.classList.add('active_mem1');
+//   input_mask.classList.add('activeForInput');
+//   upbox.classList.remove('active_mem2');
+// });
+
+// input_mask.addEventListener("click", function () {
+//   upbox.classList.add('active_mem2');
+//   input_mask.classList.remove('activeForInput');
+// });
+
+// text_word1.addEventListener("click", function () {
+//   upbox1.classList.add('active_mem1');
+//   input_mask.classList.add('activeForInput');
+//   upbox1.classList.remove('active_mem2');
+// });
+
+// input_mask.addEventListener("click", function () {
+//   upbox1.classList.add('active_mem2');
+//   input_mask.classList.remove('activeForInput');
+// });
+
 
