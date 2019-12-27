@@ -110,10 +110,10 @@ var vm = new Vue({
       this.todo_list_content_detail.splice(detailIndex, 1);
     },
     //為啥抓不到標題在陣列的索引直
-    delete_todo_title(){
-      let index=this.todo_list_content_detail.findIndex(item => item.title == this.todo_lightbox_input_title);
-      console.log(item);
-    },
+    // delete_todo_title(){
+    //   let index=this.todo_list_content_detail.findIndex(item => item.title == this.todo_lightbox_input_title);
+    //   console.log(item);
+    // },
 
 
     fileSelected(e){
@@ -178,7 +178,11 @@ var vm = new Vue({
   computed:{
     progress_bar_length(index){
     
-    }
+    },
+      delete_todo_title(){
+      let index=this.todo_list_content_detail.findIndex(item => item.title == this.todo_lightbox_input_title);
+      console.log(item);
+    },
   },
 });
 
