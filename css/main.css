@@ -24,8 +24,7 @@ html,
 body {
   width: 100%;
   height: 100vh;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#222), to(#000000));
-  background-image: linear-gradient(to bottom, #222, #000000);
+  background-image: linear-gradient(-30deg, rgba(129, 199, 212, 0.7), rgba(248, 195, 205, 0.6));
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,20 +51,21 @@ body {
 .nav_bar {
   width: 350px;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.35)), to(transparent));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.35), transparent);
   border-radius: 0 10px 0 0;
   overflow-y: scroll;
 }
 
 .nav_bar .logo {
   width: 100%;
-  padding: 23px 0;
-  margin-bottom: 20px;
-  padding-left: 30px;
+  padding: 40px 0 40px 40px;
 }
 
 .nav_bar .logo img {
   width: 150px;
+  -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.1));
+          filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.1));
 }
 
 .nav_bar .nav_list {
@@ -73,7 +73,7 @@ body {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
-  color: #ffffff;
+  color: #777;
 }
 
 .nav_bar .nav_list li {
@@ -83,7 +83,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 15px 5px 15px 10px;
   cursor: pointer;
   position: relative;
@@ -92,8 +92,8 @@ body {
 
 .nav_bar .nav_list li::before {
   content: "";
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.2)), to(transparent));
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.5)), to(transparent));
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5), transparent);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -113,7 +113,7 @@ body {
 .nav_bar .nav_list li div {
   width: 50px;
   height: 50px;
-  background-color: #333;
+  background-color: #777;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -158,10 +158,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 15px 5px 15px 10px;
   height: 70px;
-  color: #ffffff;
+  color: #777;
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
@@ -170,7 +170,7 @@ body {
 .nav_bar .user_shot div {
   width: 50px;
   height: 50px;
-  background-color: #000000;
+  background-color: #777;
   border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -210,11 +210,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   height: 50px;
-  color: #ffffff;
+  color: #777;
 }
 
 .nav_bar .status div {
@@ -229,7 +229,7 @@ body {
 .nav_bar .status div:nth-of-type(1) {
   max-width: 245px;
   width: 70%;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
@@ -239,8 +239,8 @@ body {
 
 .nav_bar .status div:nth-of-type(1)::before {
   content: "";
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.2)), to(transparent));
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.5)), to(transparent));
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5), transparent);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -254,6 +254,7 @@ body {
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
+  z-index: -1;
 }
 
 .nav_bar .status div:nth-of-type(1).active::before {
@@ -278,7 +279,8 @@ body {
 }
 
 .nav_bar .status div:nth-of-type(2):hover {
-  background-color: #4e8eec;
+  background-color: #81c7d4;
+  color: #ffffff;
 }
 
 .nav_bar .page_info p {
@@ -291,7 +293,7 @@ body {
   letter-spacing: 3.6px;
   font-size: 18px;
   line-height: 30px;
-  color: #ffffff;
+  color: #777;
   margin: 20px 0;
   padding-left: 40px;
 }
@@ -301,7 +303,7 @@ body {
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
-  color: #ffffff;
+  color: #777;
   padding-left: 40px;
   width: 100%;
   margin-bottom: 10px;
@@ -341,8 +343,8 @@ body {
   outline: none;
   padding: 5px;
   width: 60%;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #777;
   border-radius: 5px;
   margin-right: 10px;
 }
@@ -358,14 +360,15 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #777;
+  background-color: rgba(255, 255, 255, 0.3);
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
 
 .nav_bar .page_info .setting_timer button:hover {
-  background-color: #4e8eec;
+  background-color: #81c7d4;
+  color: #ffffff;
 }
 
 .nav_bar .page_info .search_bar {
@@ -382,7 +385,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
   padding-left: 10px;
 }
@@ -401,7 +404,7 @@ body {
   border: none;
   outline: none;
   padding: 5px;
-  color: #ffffff;
+  color: #777;
   padding-left: 10px;
 }
 
@@ -410,18 +413,19 @@ body {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 50px;
-  color: #ffffff;
+  color: #777;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
 
 .nav_bar .page_info .setting_bookmark:hover {
-  background-color: #4e8eec;
+  background-color: #81c7d4;
+  color: #ffffff;
 }
 
 .nav_bar .page_info .page_info_list {
@@ -429,7 +433,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   list-style: none;
-  color: #ffffff;
+  color: #777;
   overflow-y: auto;
 }
 
@@ -466,7 +470,7 @@ body {
 .nav_bar .page_info .page_info_list.setting_pm li, .nav_bar .page_info .page_info_list.setting_shop li {
   position: relative;
   height: 50px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
   margin-bottom: 0;
 }
 
@@ -484,8 +488,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.2)), to(transparent));
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.5)), to(transparent));
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5), transparent);
   -webkit-transform-origin: right;
           transform-origin: right;
   -webkit-transform: scaleX(0);
@@ -494,6 +498,7 @@ body {
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
+  z-index: -1;
 }
 
 .nav_bar .page_info .page_info_list.setting_pm li:hover::before, .nav_bar .page_info .page_info_list.setting_shop li:hover::before {
@@ -516,7 +521,7 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #8acede;
+  background-color: #81c7d4;
   margin-right: 20px;
 }
 
@@ -610,7 +615,7 @@ main .content {
             transform: translate(-50%, -50%) scale(1.3);
   }
   body.nav_open .header .nav_hamburger .navBtn .navBtn_btn > p {
-    color: #8acede;
+    color: #81c7d4;
   }
   body.nav_open main {
     opacity: 0;
@@ -630,7 +635,7 @@ main .content {
             justify-content: space-between;
     width: 100%;
     height: 90px;
-    padding: 0 30px;
+    padding: 0 10px;
     position: relative;
     z-index: 999;
   }
@@ -639,11 +644,13 @@ main .content {
   }
   .header .logo img {
     width: 100%;
+    -webkit-filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.1));
   }
   .header .nav_hamburger {
     position: absolute;
     top: 10px;
-    right: 30px;
+    right: 10px;
   }
   .header .nav_hamburger .navBtn {
     font-family: "Montserrat", "Noto Sans TC", sans-serif;
@@ -710,7 +717,7 @@ main .content {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 1px solid #8acede;
+    border: 1px solid #81c7d4;
     cursor: pointer;
     position: relative;
   }
@@ -746,7 +753,7 @@ main .content {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background-color: #8acede;
+    background-color: #81c7d4;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -776,7 +783,7 @@ main .content {
             transform: translate(-50%, -50%) scale(1.3);
   }
   .header .nav_hamburger .navBtn:hover p {
-    color: #8acede;
+    color: #81c7d4;
   }
   .nav_bar {
     position: absolute;
@@ -786,6 +793,7 @@ main .content {
     z-index: 99;
   }
   .nav_bar .logo {
+    padding: 23px 0 0 10px;
     margin-bottom: 0;
     height: 90px;
   }
@@ -802,22 +810,22 @@ main .content {
 @media screen and (max-width: 479px) {
   .header {
     padding: 0 10px;
-    height: 55px;
+    height: 65px;
   }
   .header .logo {
     width: 85px;
   }
   .header .nav_hamburger {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px;
   }
   .nav_bar {
     min-width: 320px;
   }
   .nav_bar .logo {
-    padding: 14px 0 0 10px;
-    height: 55px;
+    padding: 19px 0 0 10px;
+    height: 65px;
   }
   .nav_bar .logo img {
     width: 85px;
@@ -856,7 +864,7 @@ main .content {
     max-width: none;
   }
   main {
-    height: calc(100% - 55px);
+    height: calc(100% - 65px);
   }
   main .content {
     padding: 10px;
@@ -891,11 +899,11 @@ main .content {
 }
 
 .clockFace #svg #gradient stop:nth-of-type(1) {
-  stop-color: #8acede;
+  stop-color: #81c7d4;
 }
 
 .clockFace #svg #gradient stop:nth-of-type(2) {
-  stop-color: #fbc2eb;
+  stop-color: #f8c3cd;
 }
 
 .clockFace #svg #bar {
@@ -905,7 +913,7 @@ main .content {
 }
 
 .clockFace #svg #outside {
-  stroke: #8acede;
+  stroke: #81c7d4;
   stroke-width: 1px;
 }
 
@@ -915,7 +923,7 @@ main .content {
   letter-spacing: 6px;
   font-size: 30px;
   line-height: 40px;
-  fill: #666666;
+  fill: #777;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -955,10 +963,10 @@ main .content {
 
 #mall_search .mall_search_bar {
   position: relative;
-  border-top: 2px solid #8acede;
+  border-top: 2px solid #81c7d4;
   border-right: none;
-  border-bottom: 2px solid #8acede;
-  border-left: 2px solid #8acede;
+  border-bottom: 2px solid #81c7d4;
+  border-left: 2px solid #81c7d4;
   border-radius: 10px 0px 0px 10px;
   padding: 10px;
   opacity: 0.5;
@@ -969,7 +977,7 @@ main .content {
 
 #mall_search .mall_search-btn {
   position: absolute;
-  background: #8acede;
+  background: #81c7d4;
   border-radius: 0px 10px 10px 0px;
   width: 50px;
   padding: 12px;
@@ -1062,7 +1070,7 @@ main .content {
 }
 
 .product_price span:nth-child(1) {
-  color: #666666;
+  color: #777;
   text-decoration: line-through;
 }
 
@@ -1231,7 +1239,7 @@ main .content {
   width: 45%;
   height: 50px;
   min-height: 40px;
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 10px;
   position: relative;
   padding: 5px 10px;
@@ -1245,7 +1253,7 @@ main .content {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 10px;
   z-index: -1;
 }
@@ -1367,7 +1375,7 @@ main .content {
     width: 40%;
     height: 50px;
     min-height: 40px;
-    background-color: #8acede;
+    background-color: #81c7d4;
     border-radius: 10px;
     position: relative;
     padding: 5px 10px;
@@ -1380,7 +1388,7 @@ main .content {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    background-color: #8acede;
+    background-color: #81c7d4;
     border-radius: 10px;
     z-index: -1;
   }
@@ -1489,7 +1497,7 @@ main .content {
     width: 40%;
     height: 50px;
     min-height: 40px;
-    background-color: #8acede;
+    background-color: #81c7d4;
     border-radius: 10px;
     position: relative;
     padding: 5px 10px;
@@ -1502,7 +1510,7 @@ main .content {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    background-color: #8acede;
+    background-color: #81c7d4;
     border-radius: 10px;
     z-index: -1;
   }
@@ -1610,7 +1618,7 @@ main .content {
   height: 40px;
   border: 1px solid #999999;
   background-color: rgba(255, 255, 255, 0.8);
-  color: #666666;
+  color: #777;
   border-radius: 50%;
   text-align: center;
   padding-top: 9px;
@@ -1633,7 +1641,7 @@ main .content {
   width: 100px;
   height: auto;
   min-height: 40px;
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   position: relative;
   padding: 5px 10px;
@@ -1649,7 +1657,7 @@ main .content {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   z-index: -1;
 }
@@ -1728,9 +1736,9 @@ main .content {
   line-height: 20px;
   outline: none;
   background-color: transparent;
-  color: #666666;
+  color: #777;
   padding: 5px;
-  border: 1px solid #666666;
+  border: 1px solid #777;
   border-radius: 10px;
   width: 100%;
   margin: 5px 0;
@@ -2022,7 +2030,7 @@ main .content {
 }
 
 .right_aside .memberRight .calendar .calendar_status p:nth-child(2):hover {
-  color: #8acede;
+  color: #81c7d4;
   cursor: pointer;
 }
 
@@ -2216,14 +2224,14 @@ main .content {
   outline: none;
   border: none;
   cursor: pointer;
-  background-color: #8acede;
+  background-color: #81c7d4;
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
   color: #fff;
   padding: 3px;
   border-radius: 10px;
-  border: 2px solid #8acede;
+  border: 2px solid #81c7d4;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   width: 110px;
@@ -2363,7 +2371,7 @@ main .content {
   color: #fff;
   cursor: pointer;
   padding: 5px;
-  background-color: #8acede;
+  background-color: #81c7d4;
   position: relative;
   border-radius: 5px;
 }
@@ -2428,7 +2436,7 @@ main .content {
   font-size: 16px;
   line-height: 20px;
   cursor: pointer;
-  background-color: #8acede;
+  background-color: #81c7d4;
   color: #fff;
   padding: 5px;
   margin-top: 5px;
@@ -2449,7 +2457,7 @@ main .content {
   width: auto;
   height: auto;
   min-height: 40px;
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 10px;
   position: relative;
   padding: 5px 10px;
@@ -2463,7 +2471,7 @@ main .content {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 10px;
   z-index: -1;
 }
@@ -2650,7 +2658,7 @@ main .content {
   color: #fff;
   cursor: pointer;
   padding: 5px;
-  background-color: #8acede;
+  background-color: #81c7d4;
   position: relative;
   border-radius: 5px;
 }
@@ -2882,7 +2890,7 @@ main .content {
   height: 30px;
   text-align: center;
   line-height: 40px;
-  color: #666666;
+  color: #777;
 }
 
 .memberitem .personal_photo #membericon {
@@ -2982,7 +2990,7 @@ main .content {
 .memberContent #memcon1 h3 {
   width: 100%;
   height: 10%;
-  color: #666666;
+  color: #777;
   padding: 10px 0 0 20px;
 }
 
@@ -3015,7 +3023,7 @@ main .content {
   width: auto;
   height: auto;
   min-height: 40px;
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   position: relative;
   padding: 5px 10px;
@@ -3030,7 +3038,7 @@ main .content {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   z-index: -1;
 }
@@ -3093,7 +3101,7 @@ main .content {
   border: none;
   cursor: pointer;
   display: inline-block;
-  color: #666666;
+  color: #777;
 }
 
 .memberContent #memcon1 input {
@@ -3117,7 +3125,7 @@ main .content {
 .memberContent #memcon2 h3 {
   width: 100%;
   height: 10%;
-  color: #666666;
+  color: #777;
   padding: 10px 0 0 20px;
 }
 
@@ -3144,7 +3152,7 @@ main .content {
   font-size: 14px;
   line-height: 20px;
   font-weight: 100;
-  color: #666666;
+  color: #777;
   border-bottom: #d8d8d8 solid;
   border-width: 0.5px;
   height: 30px;
@@ -3264,7 +3272,7 @@ main .content {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #666666;
+  color: #777;
 }
 
 .memberContent .memlibox .memlibtn {
@@ -3297,7 +3305,7 @@ main .content {
   width: auto;
   height: auto;
   min-height: 40px;
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   position: relative;
   padding: 5px 10px;
@@ -3312,7 +3320,7 @@ main .content {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   z-index: -1;
 }
@@ -3872,7 +3880,7 @@ main .content {
   width: auto;
   height: auto;
   min-height: 40px;
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   position: relative;
   padding: 5px 10px;
@@ -3887,7 +3895,7 @@ main .content {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   z-index: -1;
 }
@@ -3993,7 +4001,7 @@ main .content {
   outline: none;
   width: 50px;
   height: 23px;
-  border: 1px solid #666666;
+  border: 1px solid #777;
   border-radius: 5px;
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
@@ -4016,7 +4024,7 @@ main .content {
   width: auto;
   height: auto;
   min-height: 40px;
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   position: relative;
   padding: 5px 10px;
@@ -4030,7 +4038,7 @@ main .content {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: #8acede;
+  background-color: #81c7d4;
   border-radius: 30px;
   z-index: -1;
 }
@@ -4142,7 +4150,7 @@ main .content {
 .radio input:checked + span:before {
   -webkit-transform: scale(1.04);
           transform: scale(1.04);
-  background: #8acede;
+  background: #81c7d4;
 }
 
 .radio input:checked + span:after {
@@ -4228,11 +4236,11 @@ main .content {
 }
 
 .timer .clockFace #svg #gradient stop:nth-of-type(1) {
-  stop-color: #8acede;
+  stop-color: #81c7d4;
 }
 
 .timer .clockFace #svg #gradient stop:nth-of-type(2) {
-  stop-color: #fbc2eb;
+  stop-color: #f8c3cd;
 }
 
 .timer .clockFace #svg #bar {
@@ -4242,7 +4250,7 @@ main .content {
 }
 
 .timer .clockFace #svg #outside {
-  stroke: #8acede;
+  stroke: #81c7d4;
   stroke-width: 1px;
 }
 
@@ -4251,7 +4259,7 @@ main .content {
   letter-spacing: 6px;
   font-size: 30px;
   line-height: 40px;
-  fill: #666666;
+  fill: #777;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -4583,7 +4591,7 @@ main .content {
   right: 20px;
   bottom: 5px;
   font-weight: 700;
-  color: #666666;
+  color: #777;
   letter-spacing: 5.6px;
   font-size: 28px;
   line-height: 40px;
@@ -4617,7 +4625,7 @@ main .content {
   margin: 0 auto;
   display: inline-block;
   font-size: 20px;
-  color: #666666;
+  color: #777;
   text-align: center;
 }
 
@@ -4702,4 +4710,3 @@ main .content {
     width: 100%;
   }
 }
-/*# sourceMappingURL=main.css.map */

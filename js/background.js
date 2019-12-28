@@ -132,7 +132,7 @@ const shadowLight = new THREE.DirectionalLight(0xffffff, 0.2);
 shadowLight.position.set(500, 400, 0);
 scene.add(globalLight, shadowLight);
 
-let particle = new Particle(3, 0.9, 0.9, 0.7);
+let particle = new Particle(3, 0.3, 0.8, 0.8);
 scene.add(particle.particleSystem);
 
 function render() {
