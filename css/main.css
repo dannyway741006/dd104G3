@@ -72,7 +72,7 @@ body {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
-  color: #777;
+  color: #777777;
 }
 
 .nav_bar .nav_list li {
@@ -112,7 +112,7 @@ body {
 .nav_bar .nav_list li div {
   width: 50px;
   height: 50px;
-  background-color: #777;
+  background-color: #777777;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -160,7 +160,7 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
   padding: 15px 5px 15px 10px;
   height: 70px;
-  color: #777;
+  color: #777777;
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
@@ -169,7 +169,7 @@ body {
 .nav_bar .user_shot div {
   width: 50px;
   height: 50px;
-  background-color: #777;
+  background-color: #777777;
   border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -213,7 +213,7 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   height: 50px;
-  color: #777;
+  color: #777777;
 }
 
 .nav_bar .status div {
@@ -292,7 +292,7 @@ body {
   letter-spacing: 3.6px;
   font-size: 18px;
   line-height: 30px;
-  color: #777;
+  color: #777777;
   margin: 20px 0;
   padding-left: 40px;
 }
@@ -302,7 +302,7 @@ body {
   letter-spacing: 2.8px;
   font-size: 14px;
   line-height: 20px;
-  color: #777;
+  color: #777777;
   padding-left: 40px;
   width: 100%;
   margin-bottom: 10px;
@@ -343,7 +343,7 @@ body {
   padding: 5px;
   width: 60%;
   background-color: rgba(255, 255, 255, 0.3);
-  color: #777;
+  color: #777777;
   border-radius: 5px;
   margin-right: 10px;
 }
@@ -359,7 +359,7 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
-  color: #777;
+  color: #777777;
   background-color: rgba(255, 255, 255, 0.3);
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
@@ -385,7 +385,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
+  border-radius: 10px;
   padding-left: 10px;
 }
 
@@ -403,8 +403,94 @@ body {
   border: none;
   outline: none;
   padding: 5px;
-  color: #777;
+  color: #777777;
   padding-left: 10px;
+}
+
+.nav_bar .page_info .setting_project {
+  padding: 15px 0 15px 40px;
+  letter-spacing: 3.2px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #777777;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav_bar .page_info .setting_project .colors {
+  margin: 5px 0px;
+}
+
+.nav_bar .page_info .setting_project .colors span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #81c7d4;
+  cursor: pointer;
+  position: relative;
+  margin: 2.5px 2.5px;
+}
+
+.nav_bar .page_info .setting_project .colors span.active::before {
+  content: "";
+  width: 85%;
+  height: 85%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-image: url("../img/checked_w.626bbc68.svg");
+}
+
+.nav_bar .page_info .setting_project input {
+  max-width: 290px;
+  width: 100%;
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  margin: 5px 0;
+}
+
+.nav_bar .page_info .setting_project > div {
+  max-width: 305px;
+  padding-right: 13px;
+}
+
+.nav_bar .page_info .setting_project > div::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.nav_bar .page_info .setting_project button {
+  width: 100px;
+  height: 30px;
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #777777;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  float: right;
+}
+
+.nav_bar .page_info .setting_project button:hover {
+  background-color: #81c7d4;
+  color: #ffffff;
 }
 
 .nav_bar .page_info .setting_bookmark {
@@ -412,7 +498,7 @@ body {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 50px;
-  color: #777;
+  color: #777777;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.3);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -432,7 +518,7 @@ body {
   font-size: 14px;
   line-height: 20px;
   list-style: none;
-  color: #777;
+  color: #777777;
   overflow-y: auto;
 }
 
@@ -841,7 +927,8 @@ main .content {
     max-width: none;
   }
   .nav_bar .page_info .title,
-  .nav_bar .page_info .setting_timer {
+  .nav_bar .page_info .setting_timer,
+  .nav_bar .page_info .setting_project {
     padding-left: 17px;
   }
   .nav_bar .page_info .page_info_list.setting_bell, .nav_bar .page_info .page_info_list.setting_pm, .nav_bar .page_info .page_info_list.setting_shop {
@@ -922,7 +1009,7 @@ main .content {
   letter-spacing: 6px;
   font-size: 30px;
   line-height: 40px;
-  fill: #777;
+  fill: #777777;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -1073,7 +1160,7 @@ main .content {
 }
 
 .product_price span:nth-child(1) {
-  color: #777;
+  color: #777777;
   text-decoration: line-through;
 }
 
@@ -2059,7 +2146,7 @@ main .content {
   height: 40px;
   border: 1px solid #999999;
   background-color: rgba(255, 255, 255, 0.8);
-  color: #777;
+  color: #777777;
   border-radius: 50%;
   text-align: center;
   padding-top: 9px;
@@ -2202,9 +2289,9 @@ main .content {
   line-height: 20px;
   outline: none;
   background-color: transparent;
-  color: #777;
+  color: #777777;
   padding: 5px;
-  border: 1px solid #777;
+  border: 1px solid #777777;
   border-radius: 10px;
   width: 100%;
   margin: 5px 0;
@@ -3375,7 +3462,7 @@ main .content {
   height: 30px;
   text-align: center;
   line-height: 40px;
-  color: #777;
+  color: #777777;
 }
 
 .memberitem .personal_photo #membericon {
@@ -3475,7 +3562,7 @@ main .content {
 .memberContent #memcon1 h3 {
   width: 100%;
   height: 10%;
-  color: #777;
+  color: #777777;
   padding: 10px 0 0 20px;
 }
 
@@ -3586,7 +3673,7 @@ main .content {
   border: none;
   cursor: pointer;
   display: inline-block;
-  color: #777;
+  color: #777777;
 }
 
 .memberContent #memcon1 input {
@@ -3610,7 +3697,7 @@ main .content {
 .memberContent #memcon2 h3 {
   width: 100%;
   height: 10%;
-  color: #777;
+  color: #777777;
   padding: 10px 0 0 20px;
 }
 
@@ -3637,7 +3724,7 @@ main .content {
   font-size: 14px;
   line-height: 20px;
   font-weight: 100;
-  color: #777;
+  color: #777777;
   border-bottom: #d8d8d8 solid;
   border-width: 0.5px;
   height: 30px;
@@ -3757,7 +3844,7 @@ main .content {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #777;
+  color: #777777;
 }
 
 .memberContent .memlibox .memlibtn {
@@ -4486,7 +4573,7 @@ main .content {
   outline: none;
   width: 50px;
   height: 23px;
-  border: 1px solid #777;
+  border: 1px solid #777777;
   border-radius: 5px;
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
@@ -4744,7 +4831,7 @@ main .content {
   letter-spacing: 6px;
   font-size: 30px;
   line-height: 40px;
-  fill: #777;
+  fill: #777777;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -5076,7 +5163,7 @@ main .content {
   right: 20px;
   bottom: 5px;
   font-weight: 700;
-  color: #777;
+  color: #777777;
   letter-spacing: 5.6px;
   font-size: 28px;
   line-height: 40px;
@@ -5110,7 +5197,7 @@ main .content {
   margin: 0 auto;
   display: inline-block;
   font-size: 20px;
-  color: #777;
+  color: #777777;
   text-align: center;
 }
 
