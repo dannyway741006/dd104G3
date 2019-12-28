@@ -26,7 +26,7 @@
   padding-bottom: 15px;
   transition: opacity 0.3s;
   // opacity: 0;
-  // z-index: -1;
+  z-index: 10;
   &.opneLight {
     opacity: 1;
     // display: block;
@@ -384,7 +384,8 @@
             top: 0;
             left: 0;
             // width: 50%;
-            height: 5px;
+            height: 4px;
+            transition: width 0.3s;
             background: linear-gradient(to right, #BFF9DF, #A5B1FF);
           }
         }
@@ -626,7 +627,7 @@
   position: fixed;
   box-shadow: 3px 3px 6px 0px $shadow;
   display: none;
-  top: 247px;
+  top:299px;
   z-index: 9999999;
 
   &.opentodo_lightbox {
@@ -730,7 +731,7 @@
   padding: 15px;
   width: 200px;
   position: fixed;
-  top: 215px;
+  top:240px;
   box-shadow: 3px 3px 6px 0px $shadow;
 
   border: 1px solid rgba(0, 0, 0, .1);
@@ -829,7 +830,7 @@
   padding: 15px;
   width: 200px;
   position: fixed;
-  top: 287px;
+  top:353px;
   box-shadow: 3px 3px 6px 0px $shadow;
   display: none;
   border: 1px solid rgba(0, 0, 0, .1);
@@ -872,7 +873,7 @@
   padding: 15px;
   width: 250px;
   position: fixed;
-  top:180px;
+  top:185px;
   box-shadow: 3px 3px 6px 0px $shadow;
   display: none;
   border: 1px solid rgba(0, 0, 0, .1);
@@ -998,7 +999,7 @@
               width: 40%;
             }
             .card_member_lightbox{
-              top: 160px;
+              top: 167px;
             }
             }
         hr {
@@ -1006,14 +1007,14 @@
         }
 
         .calendar_lightbox {
-          top: 185px;
+          top: 220px;
         }
 
         .todo_lightbox {
-          top: 235px;
+          top:278px;
         }
         .file_lightbox{
-          top: 260px;
+          top: 333px;
         }
       }
 

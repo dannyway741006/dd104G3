@@ -12,7 +12,7 @@
 
 </head>
 
-<<body id="container">
+<body id="container">
   <div id="threeJs"></div>
   <header>
     <div class="header">
@@ -274,8 +274,8 @@
                   </div>
                   <div class="calendar_status">
                     <div class="calendar_img">
-                      <img src="./img/card_img/unchecked_d.9558e11b.svg" alt="" v-show="isactive" @click="changeimg">
-                      <img src="./img/card_img/checked_d.721738d0.svg" alt="" v-show="onactive" @click="onchangeimg">
+                      <img src="./img/uncheck.svg" alt="" v-show="isactive" @click="changeimg">
+                      <img src="./img/check.svg" alt="" v-show="onactive" @click="onchangeimg">
                     </div>
                     <p>2019/12/31</p>
                     <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
@@ -292,17 +292,17 @@
                       src="./img/card_img/delete.0df56913.svg" alt="" width="20"  @click="show_test =! show_test"></div>
                 </div>
                 <div class="todo_progress_bar">
-                  <p>{{test_length}}</p>
+                  <p>{{test_length}}%</p>
                   <div class="progress_bar">
-                    <span></span>
+                    <span :style="{width:test_length+'%'}"></span>
                   </div>
                 </div>
                 <!-- 新增的卡片細項 -->
                 <div>
                   <div class="card_check_item" v-for="(item,index) in todo_test" :key="index">
                     <div @click="item.test_status = !item.test_status,item.test_text =! item.test_text">
-                      <img src="./img/card_img/unchecked_d.9558e11b.svg" alt="" v-if="item.test_status">
-                      <img src="./img/card_img/checked_d.721738d0.svg" alt="" v-else>
+                      <img src="./img/uncheck.svg" alt="" v-if="item.test_status">
+                      <img src="./img/check.svg" alt="" v-else>
                     </div>
                     <p :class="{lineThrough:item.test_text}">{{item.test_title}}</p>
                     <div><img src="./img/icon/time-left.svg" alt=""></div>
