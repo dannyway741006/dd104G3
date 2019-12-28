@@ -15,14 +15,7 @@ var main_content = new Vue({
 
     invite_btn: false,
 
-    // setting_btn: false,
-
-    // calendar_btn: false,
-
-    // chatroom_btn: false,
-
-    // screenWidth: document.documentElement.clientWidth //屏幕宽度
-    colors: ["#5395DF", "#ff6e6e", "#89d9b2", "#ffb62e", "#c182ff", "#61cdff"],
+    colors: ["#5395DF", "#ff6e6e", "#89d9b2", "#ffb62e", "#c182ff", "#61cdff","#a6c1ee","#f8c3cd","#f9bf45","#eb7a77","#86c166"],
     selectColor: null,
     new_program_choose_color_item: [],
 
