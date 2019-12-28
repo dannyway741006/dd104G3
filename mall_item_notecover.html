@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="../css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Document</title>
 </head>
@@ -101,30 +100,65 @@
   <main>
     <div class="content">
       <!-- 內容 -->
-      <!-- <div id="app">
-        <div class="mall_content">
-         
 
-          <div class="mall_cart">
-            <div class="product_img">
-              <img :src="book.image" alt="">
-            </div>
+      <div class="mall_content">
 
-       </div>
+
+        <div class="mall_cart">
+          <div class="product_img">
+            <img src="./img/mall_img/note_p01.jpg" alt="">
+          </div>
+          <div class="product_name">品名品名</div>
+          <div class="product_price">$399</div>
+        </div>
+     
+     
+     
+        <div class="mall_cart">
+          <div class="product_img">
+            <img src="./img/mall_img/note_p01.jpg" alt="">
+          </div>
+          <div class="product_name">品名品名</div>
+          <div class="product_price">$399</div>
+        </div>
+
+        
+        <div class="mall_cart">
+          <div class="product_img">
+            <img src="./img/mall_img/note_p01.jpg" alt="">
+          </div>
+          <div class="product_name">品名品名</div>
+          <div class="product_price">$399</div>
+        </div>
+     
+        <div class="mall_cart">
+          <div class="product_img">
+            <img src="./img/mall_img/note_p01.jpg" alt="">
+          </div>
+          <div class="product_name">品名品名</div>
+          <div class="product_price">$399</div>
+        </div>
+     
+        <div class="mall_cart">
+          <div class="product_img">
+            <img src="./img/mall_img/note_p01.jpg" alt="">
+          </div>
+          <div class="product_name">品名品名</div>
+          <div class="product_price">$399</div>
+        </div>
+
+        <div class="mall_cart">
+          <div class="product_img">
+            <img src="./img/mall_img/note_p01.jpg" alt="">
+          </div>
+          <div class="product_name">品名品名</div>
+          <div class="product_price">$399</div>
+        </div>
+     
       </div>
 
-    </div> -->
 
 
-    <div id="app">
-      <div v-for="book in books" class="mall_content">
-        <img :src="book.image" width="200" class="product_img">
-        <a :href="book.url" class="product_name"> 
-          <h1>{{book.title}}</h1>  
-        </a>
-        <span class="product_price">{{book.author}}</span>
-    </div>
-  </div>
 
 
 
@@ -132,20 +166,6 @@
 
   </main>
 
-
-  <script>
-    new Vue({
-      el: '#app',
-      data: {
-        books: [],
-      },
-      mounted() {
-
-        fetch('bookData.json').then(res => res.json()).then(data => this.books = data);
-      },
-
-    });
-  </script>
 
 
 
@@ -172,7 +192,7 @@
       container.classList.toggle("nav_open")
     );
   </script>
- 
+
 </body>
 
 </html>
