@@ -1326,10 +1326,20 @@ main .content {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+<<<<<<< HEAD
 #program_main .cards_column_all .cards_column .cards_column_body .add_card_input_box_all {
   height: 105px;
   position: relative;
   width: 100%;
+=======
+#program_main {
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  background-image: url("../img/program_img/pmbg.jpg");
+  background-size: cover;
+  background-position: center;
+>>>>>>> yang
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .add_card_input_box_all .add_cards_btn_div {
