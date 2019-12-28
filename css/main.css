@@ -1604,13 +1604,19 @@ main .content {
 }
 
 .mask {
-  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
   position: fixed;
-  z-index: 1;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: black;
+}
+
+.mask.masked {
+  opacity: 0.3;
+  z-index: 9;
 }
 
 .card_light_box {
@@ -1627,11 +1633,12 @@ main .content {
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   padding-bottom: 15px;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .card_light_box.opneLight {
   opacity: 1;
-  display: block;
   z-index: 10001;
   font-size: 16px;
   letter-spacing: 0.8px;
@@ -1705,8 +1712,7 @@ main .content {
           flex-direction: column;
   width: 25%;
   overflow: hidden;
-  border-right: 1px solid #5395de;
-  padding-left: 20px;
+  padding-left: 31px;
   padding-top: 25px;
   height: auto;
   position: relative;
@@ -1731,8 +1737,8 @@ main .content {
 .card_light_box .left_aside .first_right div:nth-child(5),
 .card_light_box .left_aside .first_right div:nth-child(6) {
   width: 90%;
-  margin: 5px 0px;
-  padding: 5px;
+  margin: 10px 0px;
+  padding: 10px;
 }
 
 .card_light_box .left_aside .second_right .todogo:hover,
@@ -1767,6 +1773,42 @@ main .content {
           filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
 }
 
+.card_light_box .left_aside .wave.click_light {
+  background-color: #cee0ff;
+}
+
+.card_light_box .left_aside .wave.click_light img {
+  -webkit-filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+}
+
+.card_light_box .left_aside .first_right_member.click_light_two {
+  background-color: #cee0ff;
+}
+
+.card_light_box .left_aside .first_right_member.click_light_two img {
+  -webkit-filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+}
+
+.card_light_box .left_aside .todogo.click_light_three {
+  background-color: #cee0ff;
+}
+
+.card_light_box .left_aside .todogo.click_light_three img {
+  -webkit-filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+}
+
+.card_light_box .left_aside .upfile.click_light_four {
+  background-color: #cee0ff;
+}
+
+.card_light_box .left_aside .upfile.click_light_four img {
+  -webkit-filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+}
+
 .card_light_box .left_aside hr {
   width: 75%;
   border: 1px solid #e0dcdc;
@@ -1782,13 +1824,6 @@ main .content {
   line-height: 40px;
   font-weight: 400;
   display: inline-block;
-}
-
-.content .masked {
-  opacity: 1;
-  visibility: visible;
-  z-index: 10000;
-  display: block;
 }
 
 .right_aside {
@@ -2250,7 +2285,7 @@ main .content {
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
-  top: 244px;
+  top: 247px;
   z-index: 9999999;
 }
 
@@ -2387,13 +2422,8 @@ main .content {
   top: 215px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
-  display: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 9999999;
-}
-
-.calendar_lightbox.open_calendar_lightbox {
-  display: block;
 }
 
 .calendar_lightbox h3 {
@@ -2632,6 +2662,24 @@ main .content {
   width: 20px;
   height: 20px;
   margin-right: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: all .8s ease;
+  transition: all .8s ease;
+}
+
+.fade-enter {
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  opacity: 0;
+}
+
+.fade-leave-to {
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  opacity: 0;
 }
 
 @media screen and (max-width: 850px) {
