@@ -66,6 +66,8 @@ var vm = new Vue({
     test_message:'',
 
     text_card_length:false,
+
+    test_length:30,
   },
   methods: {
     changeimg() {
@@ -229,8 +231,8 @@ var vm = new Vue({
     calender(this.$refs.inCalender);
   },
   computed: {
-    test_length(){
-     
-    },
+    // test_length(){
+      
+    // },
   },
 });

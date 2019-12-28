@@ -1645,6 +1645,7 @@ main .content {
   padding-bottom: 15px;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
+  z-index: 10;
 }
 
 .card_light_box.opneLight {
@@ -2021,7 +2022,9 @@ main .content {
   position: absolute;
   top: 0;
   left: 0;
-  height: 5px;
+  height: 4px;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
   background: -webkit-gradient(linear, left top, right top, from(#BFF9DF), to(#A5B1FF));
   background: linear-gradient(to right, #BFF9DF, #A5B1FF);
 }
@@ -2295,7 +2298,7 @@ main .content {
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
-  top: 247px;
+  top: 299px;
   z-index: 9999999;
 }
 
@@ -2429,7 +2432,7 @@ main .content {
   padding: 15px;
   width: 200px;
   position: fixed;
-  top: 215px;
+  top: 240px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -2526,7 +2529,7 @@ main .content {
   padding: 15px;
   width: 200px;
   position: fixed;
-  top: 287px;
+  top: 353px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
@@ -2574,7 +2577,7 @@ main .content {
   padding: 15px;
   width: 250px;
   position: fixed;
-  top: 180px;
+  top: 185px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
   display: none;
@@ -2733,19 +2736,19 @@ main .content {
     width: 40%;
   }
   .card_light_box .lightbox_content .left_aside .first_right .card_member_lightbox, .card_light_box .lightbox_content .left_aside .second_right .card_member_lightbox {
-    top: 160px;
+    top: 167px;
   }
   .card_light_box .lightbox_content .left_aside hr {
     width: 90%;
   }
   .card_light_box .lightbox_content .left_aside .calendar_lightbox {
-    top: 185px;
+    top: 220px;
   }
   .card_light_box .lightbox_content .left_aside .todo_lightbox {
-    top: 235px;
+    top: 278px;
   }
   .card_light_box .lightbox_content .left_aside .file_lightbox {
-    top: 260px;
+    top: 333px;
   }
   .card_light_box .lightbox_content .right_aside {
     width: 100%;
