@@ -1671,7 +1671,12 @@ main .content {
 }
 
 #program_main {
+  width: 100%;
+  height: 100%;
   font-size: 0;
+  background-image: url("../img/program_img/pmbg.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 #program_main .invite_list {

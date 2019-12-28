@@ -1,93 +1,91 @@
- #program_main {
+#program_main {
+  width: 100%;
+  height: 100%;
   font-size: 0;
-
-
- //邀請成員區
- .invite_list {
-  // border: 1px solid red;
-  // max-width: 400px;
-  display: inline-block;
-  position: relative;
-  background-color: $white;
-  border-radius: 10px;
-  box-shadow: 1px 1px 3px $shadow;
-
-  .program_member {
+  background-image: url("../img/program_img/pmbg.jpg");
+  background-size: cover;
+  background-position: center;
+  //邀請成員區
+  .invite_list {
+    // border: 1px solid red;
+    // max-width: 400px;
     display: inline-block;
-    width: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 5px;
-    vertical-align: middle;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .program_member_more {
-    @include font(0);
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border: 1px solid $gray;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: $dark;
-    border-radius: 50%;
-    text-align: center;
-    padding-top: 9px;
-    vertical-align: middle;
-  }
-
-  .invite_btn {
-    @include baseBtn(100px, auto, 30px);
-    margin: 10px;
-    vertical-align: middle;
-  }
-
-  .invite_add_member_box {
-    // border:1px solid red;
+    position: relative;
     background-color: $white;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    width: 200px;
-    // height: 200px;
-    position: absolute;
-    top: 60px;
-    right: -90px;
-    display: none;
-    z-index: 2;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px $shadow;
 
-    &.invite_add_member_box_active {
-      display: block;
+    .program_member {
+      display: inline-block;
+      width: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 5px;
+      vertical-align: middle;
+      img {
+        width: 100%;
+      }
     }
 
-    p {
-      @include font(1);
-    }
-
-    input.invite_add_member_addr {
-      letter-spacing: 3.2px;
-      @include font(1, 20px);
-      outline: none;
-      background-color: transparent;
+    .program_member_more {
+      @include font(0);
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 1px solid $gray;
+      background-color: rgba(255, 255, 255, 0.8);
       color: $dark;
-      padding: 5px;
-      border: 1px solid $dark;
-      border-radius: 10px;
-      width: 100%;
-      margin: 5px 0;
+      border-radius: 50%;
+      text-align: center;
+      padding-top: 9px;
+      vertical-align: middle;
     }
+
+    .invite_btn {
+      @include baseBtn(100px, auto, 30px);
+      margin: 10px;
+      vertical-align: middle;
+    }
+
+    .invite_add_member_box {
+      // border:1px solid red;
+      background-color: $white;
+      border-radius: 20px;
+      box-shadow: rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      width: 200px;
+      // height: 200px;
+      position: absolute;
+      top: 60px;
+      right: -90px;
+      display: none;
+      z-index: 2;
+
+      &.invite_add_member_box_active {
+        display: block;
+      }
+
+      p {
+        @include font(1);
+      }
+
+      input.invite_add_member_addr {
+        letter-spacing: 3.2px;
+        @include font(1, 20px);
+        outline: none;
+        background-color: transparent;
+        color: $dark;
+        padding: 5px;
+        border: 1px solid $dark;
+        border-radius: 10px;
+        width: 100%;
+        margin: 5px 0;
+      }
+    }
+
+    //邀請成員區--結束
   }
-
-  //邀請成員區--結束
 }
-
-}
-
-
- 
 
 //   .set-cal-chat_all_bar {
 //     display: inline-block;
@@ -161,7 +159,6 @@
 //               }
 //             }
 
-
 //           }
 
 //           //設定區選顏色
@@ -225,8 +222,6 @@
 //             display: block;
 //           }
 //         }
-
-
 
 //         .program_calendar_box_close_box {
 //           // border: 1px solid blue;
@@ -346,8 +341,6 @@
 //           }
 //         }
 
-
-
 //         // &.program_chatroom_box_active {
 //         // display: none;
 //         // }
@@ -372,7 +365,6 @@
 //             height: 2px;
 //           }
 //         }
-
 
 //         .program_chatroom_window {
 //           height: 35vh;
@@ -559,7 +551,6 @@
 //                 // @include font(0);
 //               }
 
-
 //               .cards_list_card_icon_right {
 //                 // border: 1px solid red;
 //                 display: inline-block;
@@ -655,14 +646,12 @@
 //     }
 //   }
 
-
 // }
 
 // @include media(510px) {
 //   .set-cal-chat_all_bar {
 //     display: block;
 //   }
-
 
 //   #program_main {
 //     .set-cal-chat_all_bar {
