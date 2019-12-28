@@ -1072,14 +1072,18 @@ main .content {
   height: 100%;
 }
 
-#program_all header,
-#program_all main {
+#program_all header, #program_all main {
   display: inline-block;
   vertical-align: middle;
 }
 
 #program_main {
+  width: 100%;
+  height: 100%;
   font-size: 0;
+  background-image: url("../img/program_img/pmbg.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 #program_main .fade-enter-active,
@@ -1101,7 +1105,6 @@ main .content {
 }
 
 #program_main .invite_list {
-  border: 1px solid red;
   display: inline-block;
   position: relative;
   background-color: #ffffff;
@@ -1326,20 +1329,10 @@ main .content {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-<<<<<<< HEAD
 #program_main .cards_column_all .cards_column .cards_column_body .add_card_input_box_all {
   height: 105px;
   position: relative;
   width: 100%;
-=======
-#program_main {
-  width: 100%;
-  height: 100%;
-  font-size: 0;
-  background-image: url("../img/program_img/pmbg.jpg");
-  background-size: cover;
-  background-position: center;
->>>>>>> yang
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .add_card_input_box_all .add_cards_btn_div {
