@@ -1303,12 +1303,14 @@ main .content {
 }
 
 #program_main .cards_column_all .cards_column {
+  border: 1px solid blue;
   height: calc(95vh - 160px);
   min-width: 300px;
   max-width: 300px;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   text-align: center;
+  border-radius: 20px;
   overflow: hidden;
   margin: 10px;
 }
@@ -1319,8 +1321,9 @@ main .content {
   letter-spacing: 3.6px;
   font-size: 18px;
   line-height: 50px;
+  color: #fff;
   text-align: center;
-  background-color: rgba(83, 149, 223, 0.3);
+  background-color: #5395df;
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body {
@@ -1523,8 +1526,9 @@ main .content {
 
 #program_main .cards_column_all .cards_column .cards_column_body .cards_list .cards_list_card {
   /* styles during drag */
-  -webkit-box-shadow: 1px 1px 5px #5395de;
-          box-shadow: 1px 1px 5px #5395de;
+  -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 10px 10px;
   background-color: #ffffff;
   text-align: start;
   width: 95%;
@@ -1534,6 +1538,7 @@ main .content {
   z-index: 1;
   min-height: 85px;
   vertical-align: bottom;
+  overflow: hidden;
   position: relative;
 }
 

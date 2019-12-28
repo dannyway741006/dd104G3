@@ -142,13 +142,13 @@
 
     .cards_column {
       // display: inline-block;
-      // border: 1px solid blue;
+      border: 1px solid blue;
       height: calc(95vh - 160px);
       min-width: 300px;
       max-width: 300px;
       box-shadow: 1px 1px 3px $shadow;
       text-align: center;
-      // border-radius: 20px;
+      border-radius: 20px;
       overflow: hidden;
       margin: 10px;
 
@@ -160,9 +160,10 @@
         // border-left: 2px solid $programcolor1;
         @include font(2, 50px);
         // background-color: $programcolor1;
-        // color: #fff;
+        color: #fff;
         text-align: center;
-        background-color: rgba(83, 149, 223, 0.3);
+        background-color: rgb(83, 149, 223);
+        
       }
 
       .cards_column_body {
@@ -287,8 +288,8 @@
             }
 
             // border: 1px solid $gray;
-            box-shadow: 1px 1px 5px $programcolor1;
-            // border-radius: 0 0 10px 10px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 10px 10px;
             background-color: $white;
             text-align: start;
             width: 95%;
@@ -298,7 +299,7 @@
             z-index: 1;
             min-height: 85px;
             vertical-align: bottom;
-
+overflow: hidden;
             position: relative;
 
             .cards_list_card_color {

@@ -77,21 +77,14 @@
           <div class="setting_project">
             <div>
               <p>專案名稱 Project</p>
-              <input type="text" />
+              <input type="text" v-model.trim="program_name" />
               <p>專案專屬色 Color</p>
               <div class="colors">
-                <span class="active"></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="new_program_choose_color_item" v-for='color in colors' @click.stop='selectColor = color'
+                  :class='{new_program_choose_color_item_checked: selectColor === color}'
+                  :style='{backgroundColor: color}'></span>
               </div>
-              <button>建立專案</button>
+              <button @click="add_program(program_name)">建立專案</button>
             </div>
           </div>
           <div class="title">
@@ -110,12 +103,9 @@
               <p><span></span>專案2</p>
               <img src="../img/uncheck.svg" alt="uncheck" width="20" />
             </li>
-            <li>
-              <p><span></span>專案2</p>
-              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-            </li>
-            <li>
-              <p><span></span>專案2</p>
+    
+            <li v-for="item in programs">
+              <p><span></span>{{item}}</p>
               <img src="../img/uncheck.svg" alt="uncheck" width="20" />
             </li>
           </ul>
@@ -265,6 +255,8 @@
 
             </div>
           </div>
+
+
 
         </div>
 
