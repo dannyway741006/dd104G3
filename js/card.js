@@ -51,6 +51,21 @@ var vm = new Vue({
     sourced: '',
 
     card_meber_switch: false,
+
+    i:'',
+    showCalender:false,
+
+    calandar_switch:false,
+    member_switch:false,
+    todo_switch:false,
+    fileder_switch:false,
+    
+    //一開始就出現的todolist
+    show_test:true,
+    todo_test:[],
+    test_message:'',
+
+    text_card_length:false,
   },
   methods: {
     changeimg() {
@@ -105,9 +120,24 @@ var vm = new Vue({
       }
 
     },
-
+    add_test_card(){
+       if(this.test_message.length){
+          this.todo_test.push({
+            test_title:this.test_message,
+            test_status:true,
+            test_text:false,
+           
+          });
+           this.test_message='';
+       }
+      
+    },
+    delte_test_detail(index){
+      this.todo_test.splice(index, 1);
+    },
     deletecard_todo(detailIndex) {
       this.todo_list_content_detail.splice(detailIndex, 1);
+   
     },
     //為啥抓不到標題在陣列的索引直
     // delete_todo_title(){
@@ -139,14 +169,22 @@ var vm = new Vue({
 
 
     },
-    delete_todo_title_detail(index) {
-      let indexx = this.todo_list_content_detail.findIndex(
-        item => {return item.title == this.todo_lightbox_input_title
-        });
-   console.log(indexx);
-      this.todo_list_content_detail[indexx].lists.splice(index, 1);
-      // return indexx;
-   
+
+    delete_todo_title(index) {
+      // let detailindex = this.todo_list_content_detail.findIndex(
+      //   item =>
+      //   item.title == this.todo_lightbox_input_title
+      // );
+      // console.log(detailindex);
+      // this.todo_list_content_detail[0].lists.splice(index, 1);
+      // return detailindex;
+      for(i=0;i<this.todo_list_content_detail.length;i++){
+        // console.log(this.todo_lightbox_input_title);
+        if(item =>item.title == todo_lightbox_input_title){
+           this.todo_list_content_detail[i].lists.splice(index, 1);
+           break;
+        }
+      }
     },
     openmember() {
       this.card_meber_switch = true;
@@ -156,7 +194,7 @@ var vm = new Vue({
     },
     opendate() {
       this.card_meber_switch = false;
-      this.calandar_switch = true;
+      this.showCalender = true;
       this.todo_lightbox_switch = false;
       this.file_switch = false;
     },
@@ -182,19 +220,17 @@ var vm = new Vue({
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.card_meber_switch = false;
+      
+      this.showCalender = false;
+      this.member_switch=false;
+      this.todo_switch=false;
+      this.fileder_switch=false;
     });
     calender(this.$refs.inCalender);
   },
   computed: {
-    progress_bar_length(index) {
-
+    test_length(){
+     
     },
-    //   delete_todo_title(){
-    //     let indexx=this.todo_list_content_detail.findIndex(
-    //       item => {
-    //          console.log(item.title);
-    //       return  item.title == this.todo_lightbox_input_title} );;
-    //  return  indexx;
-    // },
   },
 });
