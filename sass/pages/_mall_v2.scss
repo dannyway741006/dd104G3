@@ -1,0 +1,30 @@
+.mall_content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing:border-box;
+
+  .mall_cart {
+    width: 23%;
+    margin: 2% .8%;
+    padding: .8%;
+    text-align: center;
+
+    .product_img {
+      width: 100%;
+      height: 250px;
+      background-color: rgb(206, 206, 206);
+      border-radius: 5px;
+    }
+
+    .product_name {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .product_price {
+      margin: 10px 0;
+      color: #333;
+    }
+  }
+}
