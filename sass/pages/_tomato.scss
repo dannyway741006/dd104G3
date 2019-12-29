@@ -219,6 +219,7 @@ justify-content: center;
 .custom,.fromTrello{
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
     .todoHead{
         // border: 1px solid green;
         padding-top: 10px;
@@ -270,6 +271,7 @@ justify-content: center;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
         .todoColor{
             border-radius: 0 0 10px 10px;
             position: absolute;

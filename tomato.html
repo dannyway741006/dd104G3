@@ -176,7 +176,7 @@
                 </div>
               </div>
               <ul>
-                <li class="todoLi" v-for="item in todos">
+                <li class="todoLi" v-for="(item,key) in todos">
                   <div class="todoColor"></div>
                   <div class="title">
                     <p> {{ item.title }} </p>
@@ -198,11 +198,11 @@
                         </div>
                       </div>
                       <div class="checkBtn">
-                        <input type="checkbox" id="b0" />
+                        <input type="checkbox" id="b0"/ v-model="item.complete">
                        <img src="../img/check.svg" alt="" width="20px" class="complete">
                        <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
                       </div>
-                      <div class="delete">
+                      <div class="delete" @click="removeTodo(key)">
                         <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
                         <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
                       </div>
@@ -211,7 +211,7 @@
                 </li>
 
               </ul>
-                <input type="text" class="addTodo" placeholder="請輸入任務" v-model="newTodo" @enter="addTodo">
+                <input type="text" class="addTodo" placeholder="請輸入任務" v-model="newTodo" @keyup.enter="addTodo">
             </div>
             <div class="fromTrello" id="todoCon2">
               <div class="todoHead">
@@ -274,7 +274,7 @@
         </div>
       </div>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="./js/vue.js"></script>
     <script src="./js/tomato.js"></script>
     <script src="../js/lib/three.min.js"></script>
     <script type="x-shader/x-fragment" id="fragmentshader">

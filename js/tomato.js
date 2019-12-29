@@ -4,15 +4,30 @@ var app = new Vue({
         newTodo:'',
         todos:[
             {
-                id:'ai',
-                title:'hello',
+                id:'mask1',
+                title:'任務1',
                 complete:false
-            }
+            },
+
         ],
     },
     methods: {
         addTodo(){
-            
+            var value = this.newTodo.trim();
+            var timestamp = Math.floor(Date.now());
+            // console.log(value,timestamp)
+            if(!value){
+                return;
+            }
+            this.todos.push({
+                id:timestamp,
+                title:value,
+                complete:false,
+            })
+            this.newTodo="";
+        },
+        removeTodo(key){
+            this.todos.splice(key,1)    
         }
     },
 });
