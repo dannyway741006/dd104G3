@@ -3,7 +3,8 @@
   width: 100%;
   height: 100%;
 
-  header,main {
+  header,
+  main {
     // border: 1px solid red;
     display: inline-block;
     vertical-align: middle;
@@ -13,7 +14,7 @@
 
 
 
- 
+
 
 
 #program_main {
@@ -24,21 +25,22 @@
   background-size: cover;
   background-position: center;
 
-   //過場動畫
-   .fade-enter-active,
-   .fade-leave-active {
-     transition: all .3s ease;
-   }
-  
-   .fade-enter {
-     transform: translateY(-50px);
-     opacity: 0;
-   }
- 
-   .fade-leave-to {
-     transform: translateY(-50px);
-     opacity: 0;
-   }
+  //過場動畫
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all .3s ease;
+  }
+
+  .fade-enter {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  .fade-leave-to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
   //邀請成員區
   .invite_list {
     // border: 1px solid red;
@@ -62,7 +64,7 @@
         width: 100%;
       }
     }
-  
+
     .program_member_more {
       @include font(0, 28px);
       display: inline-block;
@@ -76,13 +78,13 @@
       vertical-align: middle;
       margin-left: 5px;
     }
-  
+
     .invite_btn {
       @include baseBtn(100px, auto, 30px);
       margin-left: 10px;
       vertical-align: middle;
     }
-  
+
     .invite_add_member_box {
       // border:1px solid red;
       background-color: $white;
@@ -96,11 +98,11 @@
       right: -90px;
       display: none;
       z-index: 2;
-    
+
       &.invite_add_member_box_active {
         display: block;
       }
-    
+
       p {
         @include font(1);
       }
@@ -118,7 +120,7 @@
         margin: 5px 0;
       }
     }
-  
+
     //邀請成員區--結束
   }
 
@@ -163,7 +165,7 @@
         color: #fff;
         text-align: center;
         background-color: rgb(83, 149, 223);
-        
+
       }
 
       .cards_column_body {
@@ -192,30 +194,52 @@
             height: 100%;
             width: 100%;
             cursor: pointer;
+            color: $dark;
+            transition: all 0.3;
+            &:hover {
+              color: $primary;
+              text-shadow: 1px 1px 3px $shadow;
+            
+              .add_cards_btn {
+                border: 2px solid $primary;
 
-            &:hover .add_cards_btn {
-              border: 2px solid $primary;
+                img {
+                  &:nth-of-type(1) {
+                    opacity: 0;
+                  }
+
+                  &:nth-of-type(2) {
+                    opacity: 1;
+                  }
+                }
+              }
             }
 
             .add_cards_btn {
-              @include btnReset;
               position: relative;
-              @include hoverIcon(30px);
+              // @include hoverIcon(30px);
+              width: 30px;
+              height: 30px;
               border: 2px solid $dark;
               border-radius: 50%;
               margin: 5px 0;
               transition: all 0.3s;
               box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-              // @include positionCenter();
+
               margin-top: 25px;
 
               img {
                 width: 80%;
+                @include positionCenter;
+                transition: opacity 0.3s;
+                &:nth-of-type(2) {
+                  opacity: 0;
+                }
               }
 
-            
+
             }
-          
+
             p {
               @include font(0);
             }
@@ -299,7 +323,7 @@
             z-index: 1;
             min-height: 85px;
             vertical-align: bottom;
-overflow: hidden;
+            overflow: hidden;
             position: relative;
 
             .cards_list_card_color {
