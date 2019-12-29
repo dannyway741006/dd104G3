@@ -4494,7 +4494,7 @@ main .content {
 .tomatoContent .clockFace #svg #bar {
   fill: rgba(255, 255, 255, 0.5);
   stroke: url(#gradient);
-  stroke-dashoffset: 400;
+  stroke-dashoffset: 0;
 }
 
 .tomatoContent .clockFace #svg #outside {
@@ -4632,6 +4632,14 @@ main .content {
     opacity: 1;
     visibility: visible;
   }
+  .tomatoContent .todo-stat.active .todoList #todoCon2 {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform-origin: left;
+            transform-origin: left;
+  }
 }
 
 .tomatoContent .todoList {
@@ -4676,6 +4684,7 @@ main .content {
 }
 
 .tomatoContent .todoList .custom .todoHead, .tomatoContent .todoList .fromTrello .todoHead {
+  padding-top: 10px;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4724,11 +4733,6 @@ main .content {
   .tomatoContent .todoList .custom .todoHead .changeTodo, .tomatoContent .todoList .fromTrello .todoHead .changeTodo {
     display: block;
   }
-}
-
-.tomatoContent .todoList .custom .todoHead .backToCus, .tomatoContent .todoList .fromTrello .todoHead .backToCus {
-  -webkit-transform: rotate(180);
-          transform: rotate(180);
 }
 
 .tomatoContent .todoList .custom li, .tomatoContent .todoList .fromTrello li {
@@ -4939,6 +4943,7 @@ main .content {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding-top: 10px;
 }
 
 .tomatoContent .stat .statHead {
@@ -5043,8 +5048,8 @@ main .content {
             transform: scaleX(0);
     opacity: 0;
     visibility: hidden;
-    -webkit-transform-origin: left;
-            transform-origin: left;
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
   .tomatoContent .todoList .custom {
     width: 100%;

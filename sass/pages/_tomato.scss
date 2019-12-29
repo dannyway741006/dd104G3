@@ -67,7 +67,7 @@ justify-content: center;
   #bar {
     fill: rgba($white, 0.5);
     stroke: url(#gradient);
-    stroke-dashoffset: 400;
+    stroke-dashoffset: 0;
   }
   #outside {
     stroke: $primary;
@@ -164,11 +164,20 @@ justify-content: center;
                 background-color: $white;
                 z-index: 999;
         }
-        &.active{
+        &.active {
             .stat{
             transform: scaleX(1);
             opacity: 1;
             visibility: visible;
+            }
+            .todoList{
+                #todoCon2{
+                
+                transform: scaleX(0);
+                opacity: 0;
+                visibility: hidden;
+                transform-origin: left;
+                }
             }
         }
     }
@@ -197,6 +206,7 @@ justify-content: center;
     flex-direction: column;
     .todoHead{
         // border: 1px solid green;
+        padding-top: 10px;
         margin: 0 auto;
         display: flex;
         position: relative;
@@ -231,10 +241,6 @@ justify-content: center;
               @include media(699px){
                 display: block;
             }
-        }
-        .backToCus{
-            // border: 1px solid red;
-            transform: rotate(180);
         }
     }
     li{
@@ -380,6 +386,7 @@ justify-content: center;
     box-shadow: 1px 1px 3px $shadow;
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
     .statHead{
         // border: 1px solid green;
         margin: 0 auto;
@@ -482,8 +489,7 @@ justify-content: center;
             transform: scaleX(0);
             opacity: 0;
             visibility: hidden;
-            transform-origin: left;
-            // background-color: blue;
+            transform-origin: right;
           }  
         .custom{
             width: 100%;

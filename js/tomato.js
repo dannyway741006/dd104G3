@@ -13,16 +13,26 @@ for (var i = 0; i < taskLi.length; i++) {
     });
 }
 
-let todoList = document.querySelector('.todoList')
-function todo_page1() {
-    todoList.classList.remove("active");
-  }
-  function todo_page2() {
-    todoList.classList.add("active");
-  }
+let playPause = document.querySelectorAll('.playPause');
+
+for(var i = 0;i<playPause.length;i++){
+    playPause[i].addEventListener('click',function(){
+        if(this.className == 'playPause active'){
+            this.classList.remove('active')
+        }else{
+            for(var j =0;j<playPause.length;j++){
+                playPause[j].classList.remove('active')
+            }
+            this.classList.add('active')
+        }
+    })
+}
+
+
 
 
 //todolist切換
+var todoList = document.querySelector('.todoList')
 var todoStat = document.querySelector('.todo-stat')
 var ToTrello = document.querySelector('.moveToTrello');
 var backToCus = document.querySelector('.backToCus');
