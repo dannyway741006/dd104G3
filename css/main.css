@@ -1603,6 +1603,43 @@ main .content {
   vertical-align: middle;
 }
 
+#program_aside {
+  border: 1px solid blue;
+}
+
+#program_aside .colors .new_program_choose_color_item {
+  background-color: #5395de;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 2.5px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+#program_aside .colors .new_program_choose_color_item.new_program_choose_color_item_checked::before {
+  content: "";
+  width: 85%;
+  height: 85%;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-image: url("../img/checked_w.626bbc68.svg");
+}
+
+#program_aside .setting_pm.having_program {
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+}
+
+#program_aside .setting_pm.history_program {
+  border: 1px solid red;
+}
+
 #program_main {
   width: 100%;
   height: 100%;
@@ -1619,14 +1656,14 @@ main .content {
 }
 
 #program_main .fade-enter {
-  -webkit-transform: translateY(-50px);
-          transform: translateY(-50px);
+  -webkit-transform: translateX(-50px);
+          transform: translateX(-50px);
   opacity: 0;
 }
 
 #program_main .fade-leave-to {
-  -webkit-transform: translateY(-50px);
-          transform: translateY(-50px);
+  -webkit-transform: translateX(-50px);
+          transform: translateX(-50px);
   opacity: 0;
 }
 
@@ -1851,12 +1888,15 @@ main .content {
   height: 100%;
   width: 100%;
   cursor: pointer;
+}
+
+#program_main .cards_column_all .cards_column .cards_column_body .add_card_input_box_all .add_cards_btn_div p {
   color: #777777;
   -webkit-transition: all 0.3;
   transition: all 0.3;
 }
 
-#program_main .cards_column_all .cards_column .cards_column_body .add_card_input_box_all .add_cards_btn_div:hover {
+#program_main .cards_column_all .cards_column .cards_column_body .add_card_input_box_all .add_cards_btn_div:hover p {
   color: #81c7d4;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -1874,6 +1914,14 @@ main .content {
 }
 
 #program_main .cards_column_all .cards_column .cards_column_body .add_card_input_box_all .add_cards_btn_div .add_cards_btn {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
   position: relative;
   width: 30px;
   height: 30px;
@@ -2105,6 +2153,109 @@ main .content {
   content: "";
   display: block;
   clear: both;
+}
+
+#program_main .cal-chat_all_bar {
+  border: 1px solid red;
+  position: absolute;
+  right: 67px;
+  bottom: 54px;
+  border-radius: 10px;
+  padding: 0 10px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#program_main .cal-chat_all_bar .cal-chat_same_all {
+  display: inline-block;
+}
+
+#program_main .cal-chat_all_bar .cal-chat_same_all .cal-chat_same_btn {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 2.8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  background-color: #81c7d4;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
+  margin: 5px;
+}
+
+#program_main .cal-chat_all_bar .cal-chat_same_all .cal-chat_same_btn::before, #program_main .cal-chat_all_bar .cal-chat_same_all .cal-chat_same_btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #81c7d4;
+  border-radius: 50px;
+  z-index: -1;
+}
+
+#program_main .cal-chat_all_bar .cal-chat_same_all .cal-chat_same_btn:hover::before, #program_main .cal-chat_all_bar .cal-chat_same_all .cal-chat_same_btn:hover::after {
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
+}
+
+#program_main .cal-chat_all_bar .cal-chat_same_all .cal-chat_same_btn:hover::after {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@keyframes animate {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 140%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@keyframes animate_c {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #program_main .cal-chat_all_bar .cal-chat_same_all .cal-chat_same_btn {
+    letter-spacing: 2.4px;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 30px;
+  }
+}
+
+#program_main .cal-chat_all_bar .cal-chat_same_all .cal-chat_same_btn img {
+  width: 65%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .mask {

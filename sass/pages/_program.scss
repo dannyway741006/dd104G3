@@ -12,9 +12,54 @@
 }
 
 
+#program_aside {
+  border: 1px solid blue;
+
+  // 新專案選顏色
+  .colors {
+    .new_program_choose_color_item {
+      background-color: #5395de;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      margin: 2.5px;
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+
+      &.new_program_choose_color_item_checked {
+        &::before {
+          content: "";
+          width: 85%;
+          height: 85%;
+          position: absolute;
+          @include positionCenter();
+          background-image: url('../img/checked_w.626bbc68.svg');
+        }
+      }
+    }
+
+    //新專案選顏色
+  }
 
 
+  .setting_pm {
 
+    //現有專案
+    &.having_program {
+      transition: all 0.15s;
+
+      //ul.having_program--結束
+      }
+
+      //已完成專案
+      &.history_program {
+        border: 1px solid red;
+      }
+    
+      //setting_pm -- 結束
+  }
+}
 
 
 #program_main {
@@ -32,12 +77,12 @@
   }
 
   .fade-enter {
-    transform: translateY(-50px);
+    transform: translateX(-50px);
     opacity: 0;
   }
 
   .fade-leave-to {
-    transform: translateY(-50px);
+    transform: translateX(-50px);
     opacity: 0;
   }
 
@@ -194,12 +239,19 @@
             height: 100%;
             width: 100%;
             cursor: pointer;
-            color: $dark;
-            transition: all 0.3;
+
+            p {
+              color: $dark;
+              transition: all 0.3;
+            }
+
             &:hover {
-              color: $primary;
-              text-shadow: 1px 1px 3px $shadow;
-            
+              p {
+                color: $primary;
+                text-shadow: 1px 1px 3px $shadow;
+              }
+
+
               .add_cards_btn {
                 border: 2px solid $primary;
 
@@ -216,6 +268,7 @@
             }
 
             .add_cards_btn {
+              @include btnReset;
               position: relative;
               // @include hoverIcon(30px);
               width: 30px;
@@ -232,6 +285,7 @@
                 width: 80%;
                 @include positionCenter;
                 transition: opacity 0.3s;
+
                 &:nth-of-type(2) {
                   opacity: 0;
                 }
@@ -399,6 +453,39 @@
 
     }
   }
+
+
+
+  //行事曆、聊天按鈕bar
+  .cal-chat_all_bar {
+    border: 1px solid red;
+    position: absolute;
+    right: 67px;
+    bottom: 54px;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-shadow: 1px 1px 3px $shadow;
+
+    .cal-chat_same_all {
+      display: inline-block;
+
+      .cal-chat_same_btn {
+        // border: 1px solid blue;
+        @include baseBtn(40px, 40px, 50px);
+        margin: 5px;
+
+        img {
+          width: 65%;
+          @include positionCenter;
+        }
+      }
+    }
+
+  }
+
+  //行事曆
+
+
 
 
 }
