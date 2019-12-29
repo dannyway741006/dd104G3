@@ -70,7 +70,8 @@
             <div>登出</div>
           </div>
         </div>
-        <div class="page_info">
+
+        <div class="page_info" id="program_aside">
           <div class="title">
             <p>新建專案</p>
           </div>
@@ -84,36 +85,71 @@
                   :class='{new_program_choose_color_item_checked: selectColor === color}'
                   :style='{backgroundColor: color}'></span>
               </div>
-              <button @click="add_program(program_name)">建立專案</button>
+              <button @click="add_program()">建立專案</button>
             </div>
           </div>
           <div class="title">
-            <p>專案</p>
+            <transition name="fade" mode="out-in">
+              <p v-if="click_complete_btn">已完成專案</p>
+              <p v-else>現有專案</p>
+            </transition>
+
           </div>
-          <ul class="page_info_list setting_pm">
+
+          <ul v-if="click_complete_btn" class="page_info_list setting_pm history_program">
             <li>
+              <p><span></span>已完成專案1</p>
+              <img src="../img/delete.0df56913.svg" alt="uncheck" width="20" />
+            </li>
+
+            <transition-group name="fade" mode="out-in" tag="div">
+              <li v-for="(item,index) in history_programs" :key="index">
+                <p><span :style='{backgroundColor: item.color}'></span>{{item.program_names}}</p>
+                <img src="../img/delete.0df56913.svg" alt="uncheck" width="20" @click='delete_program(index)'/>
+
+              </li>
+            </transition-group>
+
+
+
+          </ul>
+
+
+          <ul v-else class="page_info_list setting_pm having_program">
+            <!-- <li>
               <p><span></span>專案1專案1專案1專案1專案1專案1專案1</p>
               <img src="../img/check.svg" alt="check" width="20" />
-            </li>
-            <li>
-              <p><span></span>專案2</p>
-              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-            </li>
-            <li>
-              <p><span></span>專案2</p>
-              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-            </li>
-    
-            <li v-for="item in programs">
-              <p><span></span>{{item}}</p>
-              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-            </li>
+            </li> -->
+
+            <transition name="fade" mode="out-in">
+              <li @click="open_program">
+                <p><span></span>專案1</p>
+                <img src="../img/uncheck.svg" alt="uncheck" width="20" @click.stop='program_complete_func()' />
+              </li>
+            </transition>
+
+
+
+            <transition-group name="fade" mode="out-in" tag="div">
+              <li v-for="(item,index) in programs" :key="index">
+                <p><span :style='{backgroundColor: item.color}'></span>{{item.program_names}}</p>
+                <img src="../img/check.svg" alt="check" width="20" v-if='item.changeimage'/>
+                <img src="../img/uncheck.svg" alt="uncheck" width="20" v-else
+                  @click="program_complete_func(index)" />
+
+              </li>
+            </transition-group>
+
           </ul>
-          <div class="setting_bookmark">
-            <p>已完成專案</p>
+
+
+
+
+
+          <div class="setting_bookmark" @click='change_watched_text'>
+            <p v-if="click_complete_btn">現有專案</p>
+            <p v-else>已完成專案</p>
           </div>
-
-
         </div>
 
 
@@ -256,7 +292,16 @@
             </div>
           </div>
 
-
+          <div class="cal-chat_all_bar">
+            <div class="program_calendar_all cal-chat_same_all">
+              <button class="calendar_btn cal-chat_same_btn" @click.stop='calendar_btn = !calendar_btn'><img
+                  src="./img/icon/calendar_white.svg" alt=""></button>
+            </div>
+            <div class="program_chatroom_all cal-chat_same_all">
+              <button class="chatroom_btn cal-chat_same_btn" @click.stop='chatroom_btn = !chatroom_btn'><img
+                  src="./img/program_img/chat_white.svg" alt=""></button>
+            </div>
+          </div>
 
         </div>
 
