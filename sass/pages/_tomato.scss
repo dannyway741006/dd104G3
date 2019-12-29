@@ -49,7 +49,7 @@ justify-content: center;
     stroke-linecap: round;
     fill: transparent;
     stroke: $white;
-    stroke-width: 4px;
+    stroke-width: 10px;
     stroke-dasharray: 1500;
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 1s linear;
@@ -201,9 +201,25 @@ justify-content: center;
         box-shadow: 1px 1px 3px $shadow;
         z-index: 999;
     }
+    .custom{
+        position: relative;
+        .addTodo{
+            // border: 3px solid blue;
+            // border-radius: 10px;
+            @include positionCenter(x);
+            @include btnReset;
+            border-bottom: 1px solid #666;
+            bottom: 10px;
+            width: 90%;
+            height: 40px;
+            &::-ms-input-placeholder{text-align: center;}
+            &::-webkit-input-placeholder{text-align:            center;}
+        }
+    }
 .custom,.fromTrello{
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
     .todoHead{
         // border: 1px solid green;
         padding-top: 10px;
@@ -255,6 +271,7 @@ justify-content: center;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
         .todoColor{
             border-radius: 0 0 10px 10px;
             position: absolute;
@@ -377,6 +394,7 @@ justify-content: center;
         }
     }
 }
+
 }
 .stat{
     width: 100%;

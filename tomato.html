@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>番茄鐘</title>
   </head>
   <body id="container">
     <div id="threeJs"></div>
@@ -140,7 +140,7 @@
       </nav>
     </header>
     <main>
-      <div class="content tomatoContent">
+      <div class="content tomatoContent" id="tomatoContent">
         <!-- 內容 -->
         <div class="tomatoTimer">
           <div class="clockFace">
@@ -176,10 +176,10 @@
                 </div>
               </div>
               <ul>
-                <li class="todoLi">
+                <li class="todoLi" v-for="(item,key) in todos">
                   <div class="todoColor"></div>
                   <div class="title">
-                    <p>任務1</p>
+                    <p> {{ item.title }} </p>
                   </div>
                   <div class="info">
                     <div class="infoTimer">
@@ -198,51 +198,20 @@
                         </div>
                       </div>
                       <div class="checkBtn">
-                        <input type="checkbox" id="b0" />
+                        <input type="checkbox" id="b0"/ v-model="item.complete">
                        <img src="../img/check.svg" alt="" width="20px" class="complete">
                        <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
                       </div>
-                      <div class="delete">
+                      <div class="delete" @click="removeTodo(key)">
                         <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
                         <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
                       </div>
                     </div>
                   </div>
                 </li>
-                <li class="todoLi">
-                  <div class="todoColor"></div>
-                  <div class="title">
-                    <p>任務1</p>
-                  </div>
-                  <div class="info">
-                    <div class="infoTimer">
-                      <img src="./img/time-left_c.0dbb2869.svg" alt="" width="20px">
-                      <p>25:00</p>
-                    </div>
-                    <div class="status">
-                      <div class="playPause">
-                        <div class="play">
-                          <img src="./img/play.svg" alt="" width="25px">
-                          <img src="./img/play_c.svg" alt="" width="25px" class="play">
-                        </div>
-                        <div class="play pause">
-                          <img src="./img/pause.svg" alt="">
-                          <img src="./img/pause_c.svg" alt="">
-                        </div>
-                      </div>
-                      <div class="checkBtn">
-                        <input type="checkbox" id="b0" />
-                       <img src="../img/check.svg" alt="" width="20px" class="complete">
-                       <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
-                      </div>
-                      <div class="delete">
-                        <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
-                        <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
-                      </div>
-                    </div>
-                  </div>
-                </li>
+
               </ul>
+                <input type="text" class="addTodo" placeholder="請輸入任務" v-model="newTodo" @keyup.enter="addTodo">
             </div>
             <div class="fromTrello" id="todoCon2">
               <div class="todoHead">
@@ -305,6 +274,8 @@
         </div>
       </div>
     </main>
+    <script src="./js/vue.js"></script>
+    <script src="./js/tomato.js"></script>
     <script src="../js/lib/three.min.js"></script>
     <script type="x-shader/x-fragment" id="fragmentshader">
       uniform vec3 color;
@@ -317,7 +288,6 @@
         }
     </script>
     <script src="../js/background.js"></script>
-    <script src="./js/tomato.js"></script>
     <script>
       const container = document.getElementById("container");
       const hamburger = document.querySelector(".nav_hamburger");

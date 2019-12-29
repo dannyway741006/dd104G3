@@ -1,8 +1,42 @@
+var app = new Vue({
+    el:'#tomatoContent',
+    data:{
+        newTodo:'',
+        todos:[
+            {
+                id:'mask1',
+                title:'任務1',
+                complete:false
+            },
+
+        ],
+    },
+    methods: {
+        addTodo(){
+            var value = this.newTodo.trim();
+            var timestamp = Math.floor(Date.now());
+            // console.log(value,timestamp)
+            if(!value){
+                return;
+            }
+            this.todos.push({
+                id:timestamp,
+                title:value,
+                complete:false,
+            })
+            this.newTodo="";
+        },
+        removeTodo(key){
+            this.todos.splice(key,1)    
+        }
+    },
+});
 // let customTask=document.querySelector('.customTask');
 // customTask.addEventListener('click',(e)=>{
 //     e.target.classList.add('active')
 
 // })
+
 let taskLi = document.querySelectorAll(".taskLi");
 for (var i = 0; i < taskLi.length; i++) {
     taskLi[i].addEventListener("click", function () {
