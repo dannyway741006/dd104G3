@@ -31,9 +31,6 @@ var main_content = new Vue({
 
     now_text: "查看已完成專案",
 
-    page: 0,
-
-
     opened: false,
     isactive: true,
     onactive: false,
@@ -64,10 +61,6 @@ var main_content = new Vue({
     card_meber_switch: false
   },
   methods: {
-    calen(){
-      calender(this.$refs.outCalender);
-      calender(this.$refs.inCalender);
-    },
     //新增專案
     add_program(program_name) {
       if (this.program_name !== "") {
@@ -154,11 +147,10 @@ var main_content = new Vue({
       this.todo_list_content_detail.splice(detailIndex, 1);
     },
     //為啥抓不到標題在陣列的索引直
-    delete_todo_title() {
-      let index = this.todo_list_content_detail.findIndex(
-        item => item.title == this.todo_lightbox_input_title
-      );
-      console.log(index);
+     delete_todo_title(index){
+      let detailindex=this.todo_list_content_detail.findIndex(item=>item.title===this.this.todo_lightbox_input_title);
+      console.log(detailindex);
+        this.todo_list_content_detail[detailindex].lists.splice(index, 1);
     },
 
     fileSelected(e) {
@@ -221,8 +213,7 @@ var main_content = new Vue({
   // },
 
   mounted() {
-    // calender(this.$refs.outCalender);
-    // calender(this.$refs.inCalender);
+
     document.addEventListener("click", () => {
       this.open = false;
       this.cards_list_card_input_box = false;
@@ -239,18 +230,9 @@ var main_content = new Vue({
     //   // 定义窗口大小变更通知事件
     //   _this.screenWidth = document.documentElement.clientWidth; //窗口宽度
     // };
-    // calender(this.$refs.outCalender);
-    // calender(this.$refs.inCalender);
-  },
-  watch: {
-    page(){
-      setTimeout(()=>{
-        this.calen();
-        drag();
-      },50)
-    }
-  },
-
+    calender(this.$refs.outCalender);
+    calender(this.$refs.inCalender);
+  }
 });
 
 //拖曳
@@ -267,5 +249,6 @@ function drag() {
 }
 
 //消除建立專案box的拖曳屬性--失敗
-// $("div:cards_list_card_input_box").removeClass("ui-sortable-handle");
+$("div:cards_list_card_input_box").removeClass("ui-sortable-handle");
 
+//創建日立

@@ -7,7 +7,11 @@ html,
 body {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to bottom, #222, $abyss);
+  background-image: linear-gradient(
+    -30deg,
+    rgba($primary, 0.7),
+    rgba($third, 0.6)
+  );
   display: flex;
   align-items: center;
   font-family: "Montserrat", "Noto Sans TC", sans-serif;
@@ -27,26 +31,25 @@ body {
 .nav_bar {
   width: $slideBar;
   height: 100vh;
-  background-color: rgba($white, 0.2);
+  background-image: linear-gradient(to bottom, rgba($white, 0.35), transparent);
   border-radius: 0 10px 0 0;
   overflow-y: scroll;
   .logo {
     width: 100%;
-    padding: 23px 0;
-    margin-bottom: 20px;
-    padding-left: 30px;
+    padding: 40px 0 40px 40px;
     img {
       width: 150px;
+      filter: drop-shadow(1px 1px 3px $shadow);
     }
   }
   .nav_list {
     list-style: none;
     @include font(1);
-    color: $white;
+    color: $dark;
     li {
       display: flex;
       align-items: center;
-      background-color: rgba($white, 0.05);
+      background-color: rgba($white, 0.2);
       padding: 15px 5px 15px 10px;
       cursor: pointer;
       position: relative;
@@ -55,7 +58,7 @@ body {
         content: "";
         background-image: linear-gradient(
           to right,
-          rgba($white, 0.2),
+          rgba($white, 0.5),
           transparent
         );
         width: 100%;
@@ -71,7 +74,7 @@ body {
       div {
         width: 50px;
         height: 50px;
-        background-color: $fontColorBlack;
+        background-color: $dark;
         border-radius: 10px;
         display: flex;
         align-items: center;
@@ -101,15 +104,15 @@ body {
   .user_shot {
     display: flex;
     align-items: center;
-    background-color: rgba($white, 0.05);
+    background-color: rgba($white, 0.2);
     padding: 15px 5px 15px 10px;
     height: 70px;
-    color: $white;
+    color: $dark;
     @include font;
     div {
       width: 50px;
       height: 50px;
-      background-color: $abyss;
+      background-color: $dark;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -133,23 +136,23 @@ body {
   .status {
     display: flex;
     align-items: center;
-    background-color: rgba($white, 0.05);
-    border-top: 1px solid rgba($white, 0.1);
-    border-bottom: 1px solid rgba($white, 0.1);
+    background-color: rgba($white, 0.2);
+    border-top: 1px solid rgba($white, 0.2);
+    border-bottom: 1px solid rgba($white, 0.2);
     height: 50px;
-    color: $white;
+    color: $dark;
     div {
       &:nth-of-type(1) {
         max-width: 245px;
         width: 70%;
-        border-right: 1px solid rgba($white, 0.1);
+        border-right: 1px solid rgba($white, 0.2);
         transition: transform 0.3s;
         position: relative;
         &::before {
           content: "";
           background-image: linear-gradient(
             to right,
-            rgba($white, 0.2),
+            rgba($white, 0.5),
             transparent
           );
           width: 100%;
@@ -160,6 +163,7 @@ body {
           transform-origin: right;
           transform: scaleX(0);
           transition: transform 0.3s;
+          z-index: -1;
         }
         &.active {
           &::before {
@@ -179,7 +183,8 @@ body {
         width: 30%;
         transition: background-color 0.3s;
         &:hover {
-          background-color: $radioActive;
+          background-color: $primary;
+          color: $white;
         }
       }
       height: 100%;
@@ -196,14 +201,14 @@ body {
     }
     .title {
       @include font(2);
-      color: $white;
+      color: $dark;
       margin: 20px 0;
       padding-left: 40px;
     }
     .setting_timer {
       max-width: 350px;
       @include font;
-      color: $white;
+      color: $dark;
       padding-left: 40px;
       width: 100%;
       margin-bottom: 10px;
@@ -222,8 +227,8 @@ body {
         input {
           @include inputReset;
           width: 60%;
-          background-color: rgba($white, 0.1);
-          color: $white;
+          background-color: rgba($white, 0.3);
+          color: $dark;
           border-radius: 5px;
           margin-right: 10px;
         }
@@ -232,11 +237,12 @@ body {
         width: 33.33%;
         height: 30px;
         @include btnReset;
-        color: $white;
-        background-color: rgba($white, 0.1);
+        color: $dark;
+        background-color: rgba($white, 0.3);
         transition: background-color 0.3s;
         &:hover {
-          background-color: $radioActive;
+          background-color: $primary;
+          color: $white;
         }
       }
     }
@@ -247,8 +253,8 @@ body {
       }
       label {
         display: flex;
-        background-color: rgba($white, 0.1);
-        border-radius: 5px;
+        background-color: rgba($white, 0.3);
+        border-radius: 10px;
         padding-left: 10px;
       }
       img {
@@ -259,28 +265,86 @@ body {
       input {
         width: 100%;
         @include inputReset;
-        color: $white;
+        color: $dark;
         padding-left: 10px;
+      }
+    }
+    .setting_project {
+      padding: 15px 0 15px 40px;
+      @include font(1);
+      color: $dark;
+      background-color: rgba(255, 255, 255, 0.2);
+      .colors {
+        margin: 5px 0px;
+        span {
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          background-color: $primary;
+          cursor: pointer;
+          position: relative;
+          margin: 2.5px 2.5px;
+          &.active {
+            &::before {
+              content: "";
+              width: 85%;
+              height: 85%;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background-image: url("../img/checked_w.626bbc68.svg");
+            }
+          }
+        }
+      }
+      input {
+        max-width: 290px;
+        width: 100%;
+        @include inputReset;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        margin: 5px 0;
+      }
+      > div {
+        max-width: 305px;
+        @include clearfix;
+        padding-right: 13px;
+      }
+      button {
+        width: 100px;
+        height: 30px;
+        @include btnReset;
+        background-color: rgba(255, 255, 255, 0.3);
+        color: $dark;
+        transition: all 0.3s;
+        float: right;
+        &:hover {
+          background-color: $primary;
+          color: $white;
+        }
       }
     }
     .setting_bookmark {
       height: 50px;
       @include font(1, 50px);
-      color: $white;
+      color: $dark;
       text-align: center;
-      background-color: rgba($white, 0.1);
-      border-top: 1px solid rgba($white, 0.1);
-      border-bottom: 1px solid rgba($white, 0.1);
+      background-color: rgba($white, 0.3);
+      border-top: 1px solid rgba($white, 0.2);
+      border-bottom: 1px solid rgba($white, 0.2);
       cursor: pointer;
       transition: background-color 0.3s;
       &:hover {
-        background-color: $radioActive;
+        background-color: $primary;
+        color: $white;
       }
     }
     .page_info_list {
       @include font;
       list-style: none;
-      color: $white;
+      color: $dark;
       overflow-y: auto;
       li {
         display: flex;
@@ -303,7 +367,7 @@ body {
         li {
           position: relative;
           height: 50px;
-          background-color: rgba($white, 0.1);
+          background-color: rgba($white, 0.2);
           margin-bottom: 0;
           &.active {
             &::before {
@@ -320,12 +384,13 @@ body {
             height: 100%;
             background-image: linear-gradient(
               to right,
-              rgba($white, 0.2),
+              rgba($white, 0.5),
               transparent
             );
             transform-origin: right;
             transform: scaleX(0);
             transition: transform 0.3s;
+            z-index: -1;
           }
           &:hover {
             &::before {
@@ -414,19 +479,20 @@ main {
     justify-content: space-between;
     width: 100%;
     height: 90px;
-    padding: 0 30px;
+    padding: 0 10px;
     position: relative;
     z-index: 999;
     .logo {
       width: 150px;
       img {
         width: 100%;
+        filter: drop-shadow(1px 1px 3px $shadow);
       }
     }
     .nav_hamburger {
       position: absolute;
       top: 10px;
-      right: 30px;
+      right: 10px;
       .navBtn {
         @include button(60px, true);
       }
@@ -439,6 +505,7 @@ main {
     width: 100%;
     z-index: 99;
     .logo {
+      padding: 23px 0 0 10px;
       margin-bottom: 0;
       height: 90px;
     }
@@ -454,21 +521,21 @@ main {
 @include media(479px) {
   .header {
     padding: 0 10px;
-    height: 55px;
+    height: 65px;
     .logo {
       width: 85px;
     }
     .nav_hamburger {
       position: absolute;
-      top: 5px;
+      top: 10px;
       right: 10px;
     }
   }
   .nav_bar {
     min-width: 320px;
     .logo {
-      padding: 14px 0 0 10px;
-      height: 55px;
+      padding: 19px 0 0 10px;
+      height: 65px;
       img {
         width: 85px;
       }
@@ -490,9 +557,11 @@ main {
         max-width: none;
       }
       .title,
-      .setting_timer {
+      .setting_timer,
+      .setting_project {
         padding-left: 17px;
       }
+
       .page_info_list {
         &.setting_bell,
         &.setting_pm,
@@ -528,7 +597,7 @@ main {
     }
   }
   main {
-    height: calc(100% - 55px);
+    height: calc(100% - 65px);
     .content {
       padding: 10px;
     }
