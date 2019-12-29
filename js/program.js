@@ -21,7 +21,7 @@ var main_content = new Vue({
     cards: [],
     card_name: "",
 
-    invite_btn: false,
+    invite_add_member_box: false,
 
     colors: ["#5395DF", "#ff6e6e", "#89d9b2", "#ffb62e", "#c182ff", "#61cdff", "#a6c1ee", "#f8c3cd", "#f9bf45", "#eb7a77", "#86c166"],
     selectColor: null,
@@ -33,7 +33,7 @@ var main_content = new Vue({
     program_text_btn: false,
 
     add_cards_btn: false,
-
+    page: 1,
   },
 
   methods: {
@@ -88,10 +88,11 @@ var main_content = new Vue({
     delete_program(index) {
       this.history_programs.splice(index, 1)
     },
-//打開專案
-open_program(){
-
-},
+    //打開專案
+    open_program() {
+      page = 1;
+      console.log('111')
+    },
 
   },
 
@@ -100,9 +101,9 @@ open_program(){
     document.addEventListener("click", () => {
       this.open = false;
       this.add_cards_btn_div = true,
-        this.cards_list_card_input_box = false;
+      this.cards_list_card_input_box = false;
       this.card_name = "",
-        this.invite_btn = false;
+      this.invite_add_member_box = false,
       this.setting_btn = false;
       this.add_cards_btn = false;
 
@@ -114,8 +115,15 @@ open_program(){
     // calender(this.$refs.outCalender);
     // calender(this.$refs.inCalender);
   },
+  watch: {
 
+  }
 });
+
+
+
+
+
 
 //拖曳
 $(drag);
