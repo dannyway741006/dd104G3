@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./node_modules/vue2-datepicker/index.css">
 
 </head>
 
@@ -277,7 +278,9 @@
                       <img src="./img/uncheck.svg" alt="" v-show="isactive" @click="changeimg">
                       <img src="./img/check.svg" alt="" v-show="onactive" @click="onchangeimg">
                     </div>
-                    <p>2019/12/31</p>
+                    <!-- hover時顏色好像改不了 -->
+                    <!-- <p><date-picker v-model="time2" valueType="format"/></p> -->
+                   
                     <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
                     <span :class="classObject">{{text}}</span>
                   </div>
@@ -292,7 +295,7 @@
                       src="./img/card_img/delete.0df56913.svg" alt="" width="20"  @click="show_test =! show_test"></div>
                 </div>
                 <div class="todo_progress_bar">
-                  <p>{{test_length}}%</p>
+                  <p>{{testt_length}}%</p>
                   <div class="progress_bar">
                     <span :style="{width:test_length+'%'}"></span>
                   </div>
@@ -428,8 +431,8 @@
       container.classList.toggle("nav_open")
     );
   </script>
-
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script> -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+   <script src="./node_modules/vue2-datepicker/index.min.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
   <script src="./js/card.js"></script>
 
