@@ -67,7 +67,12 @@ var vm = new Vue({
 
     text_card_length:false,
 
-    test_length:30,
+    test_length:'',
+
+
+ 
+    time2: null,
+  
   },
   methods: {
     changeimg() {
@@ -231,8 +236,16 @@ var vm = new Vue({
     calender(this.$refs.inCalender);
   },
   computed: {
-    // test_length(){
-      
-    // },
+    testt_length(){
+      let length=this.todo_test.length;
+       let array=[];
+      if(this.todo_test.test_status==false){
+        array.push();
+        console.log(array);
+      }
+    },
+  },
+  components: {
+    DatePicker
   },
 });
