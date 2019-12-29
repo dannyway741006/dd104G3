@@ -4397,7 +4397,7 @@ main .content {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.75) 5%, rgba(255, 255, 255, 0.4), transparent);
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1280px) {
   .tomatoContent {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -4410,6 +4410,7 @@ main .content {
   width: 45%;
   height: 100%;
   padding: 2px;
+  border: 1px solid blue;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4428,15 +4429,30 @@ main .content {
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+@media screen and (max-width: 1280px) {
+  .tomatoContent .tomatoTimer {
+    position: absolute;
+    max-width: 30%;
+    height: 45%;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   .tomatoContent .tomatoTimer {
-    width: 100%;
-    height: 50%;
-    margin: 0 auto;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .tomatoContent .tomatoTimer {
+    max-width: 100%;
+    width: 94%;
+    height: 40%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    margin: 0 auto;
   }
 }
 
@@ -4516,12 +4532,14 @@ main .content {
 .tomatoContent .clockControl {
   width: 50%;
   margin: auto;
+  z-index: 9999;
 }
 
 .tomatoContent .clockControl .switch {
   border-radius: 20px;
   background-color: rgba(152, 226, 219, 0.5);
   margin: 0 auto;
+  min-width: 150px;
   max-width: 300px;
   height: 40px;
   display: -webkit-box;
@@ -4552,11 +4570,10 @@ main .content {
   color: #f175c5;
 }
 
-.tomatoContent .todo-analy {
+.tomatoContent .todo-stat {
   width: 60%;
-  height: 100%;
   padding: 1px;
-  border: 1px solid blue;
+  border: 1px solid green;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4567,17 +4584,56 @@ main .content {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  position: relative;
 }
 
-.tomatoContent .todo-analy > div {
+.tomatoContent .todo-stat > div {
   -webkit-transition: .3s;
   transition: .3s;
 }
 
-@media screen and (max-width: 1023px) {
-  .tomatoContent .todo-analy {
+@media screen and (max-width: 699px) {
+  .tomatoContent .todo-stat > div {
     width: 100%;
-    height: 49%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .tomatoContent .todo-stat {
+    width: 100%;
+    height: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .tomatoContent .todo-stat {
+    height: 100%;
+  }
+  .tomatoContent .todo-stat .stat {
+    -webkit-transform-origin: left;
+            transform-origin: left;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    opacity: 0;
+    visibility: hidden;
+    background-color: yellow;
+    z-index: 999;
+  }
+  .tomatoContent .todo-stat.active .stat {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -4596,9 +4652,9 @@ main .content {
           justify-content: space-between;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1280px) {
   .tomatoContent .todoList {
-    height: 100%;
+    height: 50%;
   }
 }
 
@@ -4608,6 +4664,7 @@ main .content {
   border: 1px solid red;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 999;
 }
 
 .tomatoContent .todoList .custom, .tomatoContent .todoList .fromTrello {
@@ -4826,36 +4883,56 @@ main .content {
   display: none;
 }
 
-.tomatoContent .analy {
+.tomatoContent .stat {
   width: 100%;
   height: 50%;
-  border: 2px solid green;
+  border: 2px solid yellow;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.tomatoContent .stat .statHead {
+  border: 1px solid green;
+  margin: 0 auto;
+}
+
+.tomatoContent .stat .statHead h2 {
+  letter-spacing: 3.6px;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+@media screen and (max-width: 1280px) {
+  .tomatoContent .stat {
+    width: 45%;
+    height: 50%;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .tomatoContent .stat {
+    width: 50%;
+    height: 58%;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .tomatoContent .stat {
+    margin: 0;
+    height: 50%;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .tomatoContent .todo-analy {
-    position: relative;
-  }
-  .tomatoContent .todo-analy .analy {
-    width: 100%;
-    height: 100%;
-    background-color: yellow;
-    position: absolute;
-    -webkit-transform: scaleX(0);
-            transform: scaleX(0);
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transform-origin: right;
-            transform-origin: right;
-  }
-  .tomatoContent .todo-analy .analy.active {
-    -webkit-transform: scaleX(1);
-            transform: scaleX(1);
-    opacity: 1;
-    visibility: visible;
-    -webkit-transform-origin: bottom;
-            transform-origin: bottom;
-  }
   .tomatoContent .todoList {
     display: block;
     position: relative;
