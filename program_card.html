@@ -305,7 +305,7 @@
                   <div class="card_check_item" v-for="(item,index) in todo_test" :key="index">
                     <div @click="item.test_status = !item.test_status,item.test_text =! item.test_text">
                       <img src="./img/uncheck.svg" alt="" v-if="item.test_status">
-                      <img src="./img/check.svg" alt="" v-else>
+                      <img src="./img/check.svg" alt="" v-else >
                     </div>
                     <p :class="{lineThrough:item.test_text}">{{item.test_title}}</p>
                     <div><img src="./img/icon/time-left.svg" alt=""></div>
@@ -320,7 +320,7 @@
                     <input placeholder="增加項目" type="text" class="card_detail_lightbox_input" v-model.trim="test_message"
                       @keyup.enter="add_test_card" @focus="text_card_length =! text_card_length"
                       :class="{addlength : text_card_length}" @blur="text_card_length =! text_card_length">
-                    <img src="./img/card_img/plus_write.svg" alt="" width="14">
+                    <img src="./img/card_img/plus_write.svg" alt="" width="14" @mousedown="add_test_card">
                   </label>
 
                 </div>
@@ -341,21 +341,21 @@
                         src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
                   </div>
                   <div class="todo_progress_bar">
-                    <p>0%</p>
+                    <p>{{item.progress_bar_length}}%</p>
                     <div class="progress_bar">
-                      <span></span>
+                      <span :style="{width:item.progress_bar_length+'%'}"></span>
                     </div>
                   </div>
                   <!-- 新增的卡片細項 -->
                   <div>
                     <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
                       <div @click="item.status = !item.status,item.text =!item.text">
-                        <img src="./img/card_img/unchecked_d.9558e11b.svg" alt="" v-if="item.status">
-                        <img src="./img/card_img/checked_d.721738d0.svg" alt="" v-else>
+                        <img src="./img/uncheck.svg" alt="" v-if="item.status">
+                        <img src="./img/check.svg" alt="" v-else  @click="changeprogressbar">
                       </div>
                       <p :class="{lineThrough:item.text}">{{item.content}}</p>
                       <div><img src="./img/icon/time-left.svg" alt=""></div>
-                      <div><img src="./img/card_img/delete.0df56913.svg" alt="" @click="delete_todo_title(index)"></div>
+                      <div><img src="./img/card_img/delete.0df56913.svg" alt="" @click="delete_todo_title(detailIndex,index)"></div>
                     </div>
                   </div>
 
@@ -365,7 +365,7 @@
                       <input placeholder="增加項目" type="text" class="card_detail_lightbox_input" v-model.trim="item.test"
                         @keyup.enter="add_card_detail(detailIndex)" @focus="item.card_length =! item.card_length"
                         :class="{addlength : item.card_length}" @blur="item.card_length =! item.card_length">
-                      <img src="./img/card_img/plus_write.svg" alt="" width="14">
+                      <img src="./img/card_img/plus_write.svg" alt="" width="14" @mousedown="add_card_detail(detailIndex)">
                     </label>
 
                   </div>

@@ -2767,6 +2767,10 @@ main .content {
   position: relative;
 }
 
+.right_aside .memberRight .card_add_button label img {
+  cursor: pointer;
+}
+
 .right_aside .memberRight .card_add_button label input {
   font-family: "Montserrat", "Noto Sans TC", sans-serif;
   letter-spacing: 2.8px;
@@ -3362,6 +3366,7 @@ main .content {
             flex-direction: column;
     margin-top: 0px;
     overflow-y: scroll;
+    max-height: calc(100vh - 100px);
   }
   .card_light_box .lightbox_content .left_aside {
     width: 100%;

@@ -73,6 +73,7 @@ var vm = new Vue({
  
     time2: null,
   
+    progress_mount:[],
   },
   methods: {
     changeimg() {
@@ -105,11 +106,13 @@ var vm = new Vue({
           title: this.todo_lightbox_input_title,
           test: '',
           // 將卡片細節塞入該陣列裡面
-          lists: []
+          lists: [],
+          progress_bar_length:''
         });
 
         this.todo_lightbox_input_title = '';
         this.todo_lightbox_switch = false;
+        this.todo_switch=false;
       }
     },
 
@@ -135,6 +138,7 @@ var vm = new Vue({
             test_text:false,
            
           });
+         
            this.test_message='';
        }
       
@@ -144,7 +148,6 @@ var vm = new Vue({
     },
     deletecard_todo(detailIndex) {
       this.todo_list_content_detail.splice(detailIndex, 1);
-   
     },
     //為啥抓不到標題在陣列的索引直
     // delete_todo_title(){
@@ -174,24 +177,21 @@ var vm = new Vue({
         source: this.sourced,
       });
 
-
     },
 
-    delete_todo_title(index) {
-      // let detailindex = this.todo_list_content_detail.findIndex(
-      //   item =>
-      //   item.title == this.todo_lightbox_input_title
-      // );
-      // console.log(detailindex);
-      // this.todo_list_content_detail[0].lists.splice(index, 1);
-      // return detailindex;
-      for(i=0;i<this.todo_list_content_detail.length;i++){
-        // console.log(this.todo_lightbox_input_title);
-        if(item =>item.title == todo_lightbox_input_title){
-           this.todo_list_content_detail[i].lists.splice(index, 1);
-           break;
-        }
-      }
+    delete_todo_title(bigindex,index) {
+      this.todo_list_content_detail[bigindex].lists.splice(index,1,);
+     
+      // this.todo_list_content_detail[detailIndex].lists.splice(index, 1);
+    },
+
+    changeprogressbar(bigindex,index){
+      this.progress_mount.push(this.todo_list_content_detail[bigindex].lists[index]);
+       let orign=this.todo_list_content_detail[bigindex].lists.length;
+       let alter=this.progress_mount.length;
+       console.log((100/orign)*alter);
+       return (100/orign)*alter;
+      
     },
     openmember() {
       this.card_meber_switch = true;

@@ -29,7 +29,7 @@
   padding-bottom: 15px;
   transition: opacity 0.3s;
   // opacity: 0;
-  z-index: 10;
+  z-index:10;
   &.opneLight {
     opacity: 1;
     // display: block;
@@ -496,7 +496,9 @@
         display: inline-block;
         width: 100%;
         position: relative;
-
+         img{
+           cursor: pointer;
+         }
         input {
           @include btnReset();
           background-color: $primary;
@@ -989,6 +991,7 @@
       flex-direction: column;
       margin-top: 0px;
        overflow-y: scroll;
+       max-height:calc(100vh - 100px);
       .left_aside {
         width: 100%;
         border: none;
