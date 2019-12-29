@@ -20,3 +20,26 @@ function todo_page1() {
   function todo_page2() {
     todoList.classList.add("active");
   }
+
+
+//todolist切換
+var todoStat = document.querySelector('.todo-stat')
+var ToTrello = document.querySelector('.moveToTrello');
+var backToCus = document.querySelector('.backToCus');
+var ToStat = document.querySelector('.moveToStat');
+var backTrello = document.querySelector('.backToTrello');
+var todoStat = document.querySelector('.todo-stat');
+
+ToTrello.addEventListener('click',function(){
+    todoList.classList.add('toTrello')
+})
+backToCus.addEventListener('click',function(){
+    todoList.classList.remove('toTrello')
+})
+ToStat.addEventListener('click',function(){
+    todoStat.classList.add('active')
+})
+backTrello.addEventListener('click',function(){
+    todoStat.classList.remove('active')
+})
+//todolist切換---結束
