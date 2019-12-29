@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="../css/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="./node_modules/vue-event-calendar/dist/style.css">
-    <link rel="stylesheet" href="
-  https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/bootstrap/main.css">
+    <link rel="stylesheet" href="./node_modules/fullcalendar/dist/fullcalendar.css">
+    <link rel="stylesheet" href="./node_modules/@fullcalendar/core/main.css">
+    <link rel="stylesheet" href="./node_modules/@fullcalendar/daygrid/main.css">
+    <link rel="stylesheet" href="./node_modules/@fullcalendar/bootstrap/main.css">
+    <link href='./node_modules/@fullcalendar/fontawesome-free-5.12.0-web/css/all.css' rel='stylesheet'>
+    <link href='./node_modules/@fullcalendar/bootstrape4.0css/bootstrap.css' rel='stylesheet' />
+
     <title>Document</title>
 
 </head>
@@ -216,16 +220,27 @@
     <main>
         <div class="content" id="content">
             <!-- 內容 -->
-
-            <div id="calendar"></div>
-
+            <div id='calendar' v-show="fullcalendar"></div>
+            <button @click="fullcalendar =! fullcalendar">出現行事曆</button>
         </div>
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
+    <script src="./node_modules/@fullcalendar/core/main.js"></script>
+    <script src="./node_modules/@fullcalendar/daygrid/main.js"></script>
+    <script src="./node_modules/@fullcalendar/bootstrap/main.js"></script>
+
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery-ui.custom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./node_modules/fullcalendar/dist/fullcalendar.js"></script>
+    <!-- <script src="./node_modules/fullcalendar/dist/fullcalendar.min.js"></script> -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+
+    <script src="./node_modules/fullcalendar/dist/gcal.js"></script>
+
+
+
     <script src="../js/lib/three.min.js"></script>
     <script type="x-shader/x-fragment" id="fragmentshader">
         uniform vec3 color;
@@ -247,12 +262,10 @@
         );
     </script>
 
-    <script>
-        $('#calendar').fullCalendar({
-            defaultView: 'agendaWeek'
-        });
-    </script>
 
+    <!-- 行事曆 -->
+    <script src="./js/fullcalendar.js"></script>
+   
 
 </body>
 

@@ -1,6 +1,6 @@
-@import "../../node_modules/vue2-datepicker/scss/index.scss";
-$default-color: #555;
-$primary-color: #81c7d4;
+// @import "../../node_modules/vue2-datepicker/scss/index.scss";
+// $default-color: #555;
+// $primary-color: #81c7d4;
 .mask{
   opacity: 0;
   @include positionfixed(-1,0,0);
@@ -1077,3 +1077,5 @@ $primary-color: #81c7d4;
 //     }
 //   }
 // }
+
+
