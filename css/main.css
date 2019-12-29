@@ -4703,7 +4703,7 @@ main .content {
   stroke-linecap: round;
   fill: transparent;
   stroke: #ffffff;
-  stroke-width: 4px;
+  stroke-width: 10px;
   stroke-dasharray: 1500;
   stroke-dashoffset: 0;
   -webkit-transition: stroke-dashoffset 1s linear;
@@ -4722,7 +4722,7 @@ main .content {
 .tomatoContent .clockFace #svg #bar {
   fill: rgba(255, 255, 255, 0.5);
   stroke: url(#gradient);
-  stroke-dashoffset: 400;
+  stroke-dashoffset: 0;
 }
 
 .tomatoContent .clockFace #svg #outside {

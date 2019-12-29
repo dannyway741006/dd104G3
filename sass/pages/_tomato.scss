@@ -38,7 +38,7 @@ justify-content: center;
     stroke-linecap: round;
     fill: transparent;
     stroke: $white;
-    stroke-width: 4px;
+    stroke-width: 10px;
     stroke-dasharray: 1500;
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 1s linear;
@@ -56,7 +56,7 @@ justify-content: center;
   #bar {
     fill: rgba($white, 0.5);
     stroke: url(#gradient);
-    stroke-dashoffset: 400;
+    stroke-dashoffset: 0;
   }
   #outside {
     stroke: $primary;
