@@ -135,7 +135,7 @@
     }
 
     .invite_btn {
-      @include baseBtn(100px, auto, 30px);
+      @include baseBtn(100px, auto, 5px);
       margin-left: 10px;
       vertical-align: middle;
     }

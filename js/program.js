@@ -33,7 +33,7 @@ var main_content = new Vue({
     program_text_btn: false,
 
     add_cards_btn: false,
-    page: 1,
+    page: -1,
   },
 
   methods: {
@@ -101,10 +101,10 @@ var main_content = new Vue({
     document.addEventListener("click", () => {
       this.open = false;
       this.add_cards_btn_div = true,
-      this.cards_list_card_input_box = false;
+        this.cards_list_card_input_box = false;
       this.card_name = "",
-      this.invite_add_member_box = false,
-      this.setting_btn = false;
+        this.invite_add_member_box = false,
+        this.setting_btn = false;
       this.add_cards_btn = false;
 
 
@@ -116,8 +116,21 @@ var main_content = new Vue({
     // calender(this.$refs.inCalender);
   },
   watch: {
+    // page(value, oldvalue) {
+    //   if (value !== oldvalue) {
 
-  }
+    //     $(".cards_list_todo,.cards_list_doing,.cards_list_done")
+    //       .sortable({
+    //         connectWith: ".cards_list",
+    //         stack: ".cards_column_body .cards_list"
+    //         // revert:true,
+    //       })
+
+    //       .disableSelection();
+
+    //   }
+    // }
+  },
 });
 
 
@@ -126,17 +139,20 @@ var main_content = new Vue({
 
 
 //拖曳
-$(drag);
+// if (page !== -2) {
+  $(drag);
 
-function drag() {
-  $(".cards_list_todo,.cards_list_doing,.cards_list_done")
-    .sortable({
-      connectWith: ".cards_list",
-      stack: ".cards_column_body .cards_list"
-      // revert:true,
-    })
-    .disableSelection();
-}
+  function drag() {
+    $(".cards_list_todo,.cards_list_doing,.cards_list_done")
+      .sortable({
+        connectWith: ".cards_list",
+        stack: ".cards_column_body .cards_list"
+        // revert:true,
+      })
+      .disableSelection();
+  }
+// }
+
 
 //消除建立專案box的拖曳屬性--失敗
 // $("div:cards_list_card_input_box").removeClass("ui-sortable-handle");
