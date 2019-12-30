@@ -12,268 +12,267 @@
     <title>番茄鐘</title>
   </head>
   <body id="container">
-    <div id="threeJs"></div>
-    <header>
-      <div class="header">
-        <div class="logo">
-          <a href="">
-            <img src="../img/logo.svg" alt="logo" />
-          </a>
-        </div>
-        <div class="nav_hamburger">
-          <div class="navBtn">
-            <div class="navBtn_btn">
-              <p>MENU</p>
-              <div>
-                <span />
+      <header>
+        <div class="header">
+          <div class="logo">
+            <a href="">
+              <img src="../img/logo.svg" alt="logo" />
+            </a>
+          </div>
+          <div class="nav_hamburger">
+            <div class="navBtn">
+              <div class="navBtn_btn">
+                <p>MENU</p>
+                <div>
+                  <span />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <nav class="nav_bar">
-        <div class="logo">
-          <a href="">
-            <img src="../img/logo.svg" alt="logo" />
-          </a>
-        </div>
-        <ul class="nav_list">
-          <li>
-            <div>
-              <img src="../img/staff-poket.svg" alt="pm" />
-            </div>
-            <p>專案管理<br /><span>Project management</span></p>
-          </li>
-          <li class="active">
-            <div>
-              <img src="../img/time-left.d4d509fa.svg" alt="clock" />
-            </div>
-            <p>番茄鐘<br /><span>Clock</span></p>
-          </li>
-          <li>
-            <div>
-              <img src="../img/shopping-bag.c63fa553.svg" alt="shop" />
-            </div>
-            <p>商城<br /><span>Shop</span></p>
-          </li>
-        </ul>
-        <div class="user_status">
-          <div class="user_shot">
-            <div>
-              <img src="../img/user.9c173fc0.svg" alt="member" />
-            </div>
-            <p>USER_Master Pocket</p>
+        <nav class="nav_bar">
+          <div class="logo">
+            <a href="">
+              <img src="../img/logo.svg" alt="logo" />
+            </a>
           </div>
-          <div class="status">
-            <div>會員中心</div>
-            <div>登出</div>
-          </div>
-        </div>
-        <div class="page_info">
-          <div class="title">
-            <p>鈴聲</p>
-          </div>
-          <ul class="page_info_list setting_bell">
+          <ul class="nav_list">
             <li>
               <div>
-                <img src="../img/check.svg" alt="check" width="20" />
+                <img src="../img/staff-poket.svg" alt="pm" />
               </div>
-              <p>Primary_</p>
+              <p>專案管理<br /><span>Project management</span></p>
+            </li>
+            <li class="active">
+              <div>
+                <img src="../img/time-left.d4d509fa.svg" alt="clock" />
+              </div>
+              <p>番茄鐘<br /><span>Clock</span></p>
             </li>
             <li>
               <div>
-                <img src="../img/uncheck.svg" alt="check" width="20" />
+                <img src="../img/shopping-bag.c63fa553.svg" alt="shop" />
               </div>
-              <p>Primary_2</p>
-            </li>
-            <li>
-              <div>
-                <img src="../img/uncheck.svg" alt="check" width="20" />
-              </div>
-              <p>Primary_3</p>
-            </li>
-            <li>
-              <div>
-                <img src="../img/uncheck.svg" alt="check" width="20" />
-              </div>
-              <p>Primary_4</p>
-            </li>
-            <li>
-              <div>
-                <img src="../img/uncheck.svg" alt="check" width="20" />
-              </div>
-              <p>Primary_5</p>
+              <p>商城<br /><span>Shop</span></p>
             </li>
           </ul>
-          <div class="title">
-            <p>時間設定</p>
-          </div>
-          <div class="setting_timer">
-            <p>Work</p>
-            <div>
-              <label>
-                <input type="number" />
-                <p>分</p>
-              </label>
-              <label>
-                <input type="number" />
-                <p>秒</p>
-              </label>
-              <button>確定</button>
-            </div>
-          </div>
-          <div class="setting_timer">
-            <p>Break</p>
-            <div>
-              <label>
-                <input type="number" />
-                <p>分</p>
-              </label>
-              <label>
-                <input type="number" />
-                <p>秒</p>
-              </label>
-              <button>確定</button>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <div class="content tomatoContent" id="tomatoContent">
-        <!-- 內容 -->
-        <div class="tomatoTimer">
-          <div class="clockFace">
-            <svg id="svg" width="30vw" height="30vw" viewPort="0 0 155 155" version="1.1"
-              xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" />
-                  <stop offset="100%" />
-                </linearGradient>
-              </defs>
-              <circle r="40%" cx="50%" cy="50%" />
-              <circle id="bar" r="40%" cx="50%" cy="50%" />
-              <circle id="outside" r="45%" cx="50%" cy="50%" />
-              <text id="timer" x="50%" y="50%">25:00</text>
-            </svg>
-          </div>
-          <div class="clockControl">
-            <div class="switch">
-              <div class="work">work</div>
-              <div class="rest">rest</div>
-            </div>
-          </div>
-        </div>
-        <div class="todo-stat">
-          <div class="todoList">
-            <div class="custom" id="todoCon1">
-              <div class="todoHead">
-                <h2>自訂任務</h2>
-                <div class="changeTodo moveToTrello">
-                  <img src="./img/icon/arrow-point-to-right.svg" alt="">
-                  <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
-                </div>
+          <div class="user_status">
+            <div class="user_shot">
+              <div>
+                <img src="../img/user.9c173fc0.svg" alt="member" />
               </div>
-              <ul>
-                <li class="todoLi" v-for="(item,key) in todos">
-                  <div class="todoColor"></div>
-                  <div class="title">
-                    <p> {{ item.title }} </p>
-                  </div>
-                  <div class="info">
-                    <div class="infoTimer">
-                      <img src="./img/time-left_c.0dbb2869.svg" alt="" width="20px">
-                      <p>25:00</p>
-                    </div>
-                    <div class="status">
-                      <div class="playPause">
-                        <div class="play">
-                          <img src="./img/play.svg" alt="" width="25px">
-                          <img src="./img/play_c.svg" alt="" width="25px" class="play">
-                        </div>
-                        <div class="play pause">
-                          <img src="./img/pause.svg" alt="">
-                          <img src="./img/pause_c.svg" alt="">
-                        </div>
-                      </div>
-                      <div class="checkBtn">
-                        <input type="checkbox" id="b0"/ v-model="item.complete">
-                       <img src="../img/check.svg" alt="" width="20px" class="complete">
-                       <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
-                      </div>
-                      <div class="delete" @click="removeTodo(key)">
-                        <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
-                        <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-              </ul>
-                <input type="text" class="addTodo" placeholder="請輸入任務" v-model="newTodo" @keyup.enter="addTodo">
+              <p>USER_Master Pocket</p>
             </div>
-            <div class="fromTrello" id="todoCon2">
-              <div class="todoHead">
-                <div class="changeTodo backToCus">
-                 <img src="./img/icon/arrow-point-to-left.svg" alt="">
-                 <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
+            <div class="status">
+              <div>會員中心</div>
+              <div>登出</div>
+            </div>
+          </div>
+          <div class="page_info">
+            <div class="title">
+              <p>鈴聲</p>
+            </div>
+            <ul class="page_info_list setting_bell">
+              <li>
+                <div>
+                  <img src="../img/check.svg" alt="check" width="20" />
                 </div>
-                <h2>行事曆任務</h2>
-                  <div class="changeTodo moveToStat">
+                <p>Primary_</p>
+              </li>
+              <li>
+                <div>
+                  <img src="../img/uncheck.svg" alt="check" width="20" />
+                </div>
+                <p>Primary_2</p>
+              </li>
+              <li>
+                <div>
+                  <img src="../img/uncheck.svg" alt="check" width="20" />
+                </div>
+                <p>Primary_3</p>
+              </li>
+              <li>
+                <div>
+                  <img src="../img/uncheck.svg" alt="check" width="20" />
+                </div>
+                <p>Primary_4</p>
+              </li>
+              <li>
+                <div>
+                  <img src="../img/uncheck.svg" alt="check" width="20" />
+                </div>
+                <p>Primary_5</p>
+              </li>
+            </ul>
+            <div class="title">
+              <p>時間設定</p>
+            </div>
+            <div class="setting_timer">
+              <p>Work</p>
+              <div>
+                <label>
+                  <input type="number" />
+                  <p>分</p>
+                </label>
+                <label>
+                  <input type="number" />
+                  <p>秒</p>
+                </label>
+                <button>確定</button>
+              </div>
+            </div>
+            <div class="setting_timer">
+              <p>Break</p>
+              <div>
+                <label>
+                  <input type="number" />
+                  <p>分</p>
+                </label>
+                <label>
+                  <input type="number" />
+                  <p>秒</p>
+                </label>
+                <button>確定</button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <div class="content tomatoContent" id="tomatoContent">
+          <!-- 內容 -->
+          <div class="tomatoTimer">
+            <div class="clockFace">
+              <svg id="svg" width="30vw" height="30vw" viewPort="0 0 155 155" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" />
+                    <stop offset="100%" />
+                  </linearGradient>
+                </defs>
+                <circle r="40%" cx="50%" cy="50%" />
+                <circle id="bar" r="40%" cx="50%" cy="50%" />
+                <circle id="outside" r="45%" cx="50%" cy="50%" />
+                <text id="timer" x="50%" y="50%">25:00</text>
+              </svg>
+            </div>
+            <div class="clockControl">
+              <div class="switch">
+                <div class="work">work</div>
+                <div class="rest">rest</div>
+              </div>
+            </div>
+          </div>
+          <div class="todo-stat">
+            <div class="todoList">
+              <div class="custom" id="todoCon1">
+                <div class="todoHead">
+                  <h2>自訂任務</h2>
+                  <div class="changeTodo moveToTrello">
                     <img src="./img/icon/arrow-point-to-right.svg" alt="">
                     <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
                   </div>
+                </div>
+                  <transition-group name='fade' tag="ul">
+                    <li class="todoLi" :key='item.id' v-for="(item,key) in todos">
+                      <div class="todoColor"></div>
+                      <div class="title">
+                        <p> {{ item.title }} </p>
+                      </div>
+                      <div class="info">
+                        <div class="infoTimer">
+                          <img src="./img/time-left_c.0dbb2869.svg" alt="" width="20px">
+                          <p>25:00</p>
+                        </div>
+                        <div class="status">
+                          <div class="playPause" @click='changePlay(key)' :key="item.id">
+                            <div v-if='!item.isPlay' class="play">
+                              <img src="./img/play.svg" alt="" width="25px">
+                              <img src="./img/play_c.svg" alt="" width="25px" class="play">
+                            </div>
+                            <div v-else class="play pause">
+                              <img src="./img/pause.svg" alt="">
+                              <img src="./img/pause_c.svg" alt="">
+                            </div>
+                          </div>
+                          <div class="checkBtn">
+                            <input type="checkbox" id="b0"/ v-model="item.complete">
+                           <img src="../img/check.svg" alt="" width="20px" class="complete">
+                           <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
+                          </div>
+                          <div class="delete" @click="removeTodo(key)">
+                            <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
+                            <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </transition-group>
+                  <input type="text" class="addTodo" placeholder="請輸入任務" v-model="newTodo" @keyup.enter="addTodo">
               </div>
-              <!-- <ul>
-                <li class="todoLi">
-                  <div class="todoColor"></div>
-                  <div class="title">
-                    <p>任務1</p>
+              <div class="fromTrello" id="todoCon2">
+                <div class="todoHead">
+                  <div class="changeTodo backToCus">
+                   <img src="./img/icon/arrow-point-to-left.svg" alt="">
+                   <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
                   </div>
-                  <div class="info">
-                    <div class="infoTimer">
-                      <img src="./img/time-left_c.0dbb2869.svg" alt="" width="20px">
-                      <p>25:00</p>
+                  <h2>行事曆任務</h2>
+                    <div class="changeTodo moveToStat">
+                      <img src="./img/icon/arrow-point-to-right.svg" alt="">
+                      <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
                     </div>
-                    <div class="status">
-                      <div class="playPause">
-                        <div class="play">
-                          <img src="./img/play.svg" alt="" width="25px">
-                          <img src="./img/play_c.svg" alt="" width="25px" class="play">
-                        </div>
-                        <div class="play pause">
-                          <img src="./img/pause_c.svg" alt="">
-                          <img src="./img/pause.svg" alt="">
-                        </div>
+                </div>
+                <!-- <ul>
+                  <li class="todoLi">
+                    <div class="todoColor"></div>
+                    <div class="title">
+                      <p>任務1</p>
+                    </div>
+                    <div class="info">
+                      <div class="infoTimer">
+                        <img src="./img/time-left_c.0dbb2869.svg" alt="" width="20px">
+                        <p>25:00</p>
                       </div>
-                      <div class="checkBtn">
-                        <input type="checkbox" id="b0" />
-                       <img src="../img/check.svg" alt="" width="20px" class="complete">
-                       <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
-                      </div>
-                      <div class="delete">
-                        <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
-                        <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
+                      <div class="status">
+                        <div class="playPause">
+                          <div class="play">
+                            <img src="./img/play.svg" alt="" width="25px">
+                            <img src="./img/play_c.svg" alt="" width="25px" class="play">
+                          </div>
+                          <div class="play pause">
+                            <img src="./img/pause_c.svg" alt="">
+                            <img src="./img/pause.svg" alt="">
+                          </div>
+                        </div>
+                        <div class="checkBtn">
+                          <input type="checkbox" id="b0" />
+                         <img src="../img/check.svg" alt="" width="20px" class="complete">
+                         <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
+                        </div>
+                        <div class="delete">
+                          <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
+                          <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              </ul> -->
+                  </li>
+                </ul> -->
+              </div>
             </div>
+            <div class="stat">
+              <div class="statHead">
+                <div class="changeTodo backToTrello">
+                 <img src="./img/icon/arrow-point-to-left.svg" alt="">
+                 <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
+                </div>
+                <h2>統計圖表</h2>
+              </div>
+            </div>    
           </div>
-          <div class="stat">
-            <div class="statHead">
-              <div class="changeTodo backToTrello">
-               <img src="./img/icon/arrow-point-to-left.svg" alt="">
-               <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
-              </div>
-              <h2>統計圖表</h2>
-            </div>
-          </div>    
         </div>
-      </div>
-    </main>
+      </main>
+    <div id="threeJs"></div>
     <script src="./js/vue.js"></script>
     <script src="./js/tomato.js"></script>
     <script src="../js/lib/three.min.js"></script>

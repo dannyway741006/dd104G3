@@ -6,9 +6,9 @@ var app = new Vue({
             {
                 id:'mask1',
                 title:'任務1',
-                complete:false
+                complete:false,
+                isPlay: false,
             },
-
         ],
     },
     methods: {
@@ -23,12 +23,30 @@ var app = new Vue({
                 id:timestamp,
                 title:value,
                 complete:false,
+                isPlay: false,
             })
             this.newTodo="";
         },
         removeTodo(key){
             this.todos.splice(key,1)    
+        },
+        changePlay(key){  
+        if(this.todos[key].isPlay){
+            this.todos[key].isPlay = !this.todos[key].isPlay;
+        }else{
+            this.todos.forEach(item => {
+                item.isPlay = false;
+            });
+            this.todos[key].isPlay = true
+            
         }
+        // this.todos.forEach(item => {
+        //     item.isPlay = false;
+        // });
+        // this.todos[key].isPlay = !this.todos[key].isPlay;
+
+        },
+        
     },
 });
 // let customTask=document.querySelector('.customTask');
@@ -47,20 +65,20 @@ for (var i = 0; i < taskLi.length; i++) {
     });
 }
 
-let playPause = document.querySelectorAll('.playPause');
+// let playPause = document.querySelectorAll('.playPause');
 
-for(var i = 0;i<playPause.length;i++){
-    playPause[i].addEventListener('click',function(){
-        if(this.className == 'playPause active'){
-            this.classList.remove('active')
-        }else{
-            for(var j =0;j<playPause.length;j++){
-                playPause[j].classList.remove('active')
-            }
-            this.classList.add('active')
-        }
-    })
-}
+// for(var i = 0;i<playPause.length;i++){
+//     playPause[i].addEventListener('click',function(){
+//         if(this.className == 'playPause active'){
+//             this.classList.remove('active')
+//         }else{
+//             for(var j =0;j<playPause.length;j++){
+//                 playPause[j].classList.remove('active')
+//             }
+//             this.classList.add('active')
+//         }
+//     })
+// }
 
 
 
