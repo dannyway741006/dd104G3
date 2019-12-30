@@ -1037,30 +1037,54 @@ main .content {
 /*------------------------- */
 .mall_content {
   width: 100%;
+  height: 100%;
+  background-image: url(../img/mall_img/mall_bg.jpg);
+  background: cover;
+  background-position: -350px 0;
+  vertical-align: auto;
+  line-height: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.mall_content .mall_content_right {
+  width: 65%;
+  height: 95%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.8);
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  border-radius: 10px 0 0 10px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
-.mall_content .mall_cart {
-  width: 23%;
-  margin: 2% .8%;
+.mall_content .mall_content_right .mall_cart {
+  width: 31.5%;
+  margin: 1% .8%;
   text-align: center;
   cursor: pointer;
 }
 
-.mall_content .mall_cart .product_img {
+.mall_content .mall_content_right .mall_cart .product_img {
   width: 100%;
-  height: 178px;
+  height: 162px;
   border-radius: 5px;
   overflow: hidden;
 }
 
-.mall_content .mall_cart .product_img img {
+.mall_content .mall_content_right .mall_cart .product_img img {
   width: 100%;
   -webkit-transform-origin: center;
           transform-origin: center;
@@ -1068,30 +1092,30 @@ main .content {
   transition: all .3s linear;
 }
 
-.mall_content .mall_cart .product_name {
-  margin: 10px 0;
+.mall_content .mall_content_right .mall_cart .product_name {
+  margin: 5px 0;
   color: #333;
   -webkit-transition: all 1s linear;
   transition: all 1s linear;
 }
 
-.mall_content .mall_cart .product_price {
+.mall_content .mall_content_right .mall_cart .product_price {
   margin: 10px 0;
-  color: #333;
+  color: #c86c88;
   font-weight: 800;
   -webkit-transition: all 1s linear;
   transition: all 1s linear;
 }
 
-.mall_content .mall_cart:hover .product_img img {
+.mall_content .mall_content_right .mall_cart:hover .product_img img {
   width: 102%;
 }
 
-.mall_content .mall_cart:hover .product_name {
+.mall_content .mall_content_right .mall_cart:hover .product_name {
   color: #616161;
 }
 
-.mall_content .mall_cart:hover .product_name {
+.mall_content .mall_content_right .mall_cart:hover .product_name {
   color: #616161;
 }
 
