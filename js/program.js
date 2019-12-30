@@ -1,26 +1,29 @@
 //新增專案
 var main_content = new Vue({
-  el: "#content",
+  el: "#program_all",
   data: {
     open: false,
 
     programs: [],
     program_name: "",
 
+    history_programs: [],
+    history_program_name: "",
+
+    // program_status_src: './../img/uncheck.svg',
+    program_complete: false,
+
+    click_complete_btn: false,
+
+    add_cards_btn_div: true,
+
     cards_list_card_input_box: false,
     cards: [],
     card_name: "",
 
-    invite_btn: false,
+    invite_add_member_box: false,
 
-    setting_btn: false,
-
-    calendar_btn: false,
-
-    chatroom_btn: false,
-
-    // screenWidth: document.documentElement.clientWidth //屏幕宽度
-    colors: ["#5395DF", "#ff6e6e", "#89d9b2", "#ffb62e", "#c182ff", "#61cdff"],
+    colors: ["#5395DF", "#ff6e6e", "#89d9b2", "#ffb62e", "#c182ff", "#61cdff", "#a6c1ee", "#f8c3cd", "#f9bf45", "#eb7a77", "#86c166"],
     selectColor: null,
     new_program_choose_color_item: [],
 
@@ -29,211 +32,98 @@ var main_content = new Vue({
 
     program_text_btn: false,
 
-    now_text: "查看已完成專案",
-
-    opened: false,
-    isactive: true,
-    onactive: false,
-    classObject: {
-      active: false
-      // error:true,
-    },
-    text: "未完成",
-
-    showselect: true,
-
-    deleteline: false,
-
-    todo_lightbox_switch: false,
-
-    todo_list_content_detail: [],
-    todo_lightbox_input_title: "",
-
-    card_detail_lightbox: false,
-
-    calandar_switch: false,
-
-    file_switch: false,
-
-    filebox: [],
-    sourced: "",
-
-    card_meber_switch: false
+    add_cards_btn: false,
+    page: 1,
   },
+
   methods: {
     //新增專案
-    add_program(program_name) {
-      if (this.program_name !== "") {
-        this.programs.push(program_name);
+    add_program() {
+      if (this.program_name !== "" && this.selectColor) {
+        this.programs.push({
+          program_names: this.program_name,
+          changeimage: false, //uncheck
+          color: this.selectColor
+        });
         this.program_name = "";
-        this.open = false;
-      } else {
-        // this.open = false;
+        this.selectColor = null;
+        this.click_complete_btn = false;
       }
+
     },
 
     change_watched_text() {
-      if (this.now_text === "查看已完成專案") {
-        this.now_text = "已完成專案";
-      } else {
-        this.now_text = "查看已完成專案";
+      if (this.click_complete_btn == false) { //已完成專案畫面
+        this.click_complete_btn = true
+        // document.querySelector(".having_program").style.border = '1px solid red';
+      } else { //現有專案畫面
+        this.click_complete_btn = false;
+        // document.querySelector(".history li").style.transform = 'translateX(-50px);';
+
       }
     },
 
     //新增卡片
     show_cards_list_card_input_box() {
       this.cards_list_card_input_box = true;
+      add_cards_btn = true;
     },
     add_card(card_name) {
       if (this.card_name !== "") {
         this.cards.push(card_name);
         this.card_name = "";
         this.cards_list_card_input_box = false;
+        this.add_cards_btn = false;
+        this.add_cards_btn_div = true;
       } else {}
     },
-    changeimg() {
-      this.isactive = false;
-      this.onactive = true;
-      this.classObject.active = true;
-      this.text = "完成";
+    //完成專案
+    program_complete_func(index) {
+      this.programs[index].changeimage = !this.programs[index].changeimage
+
+      this.history_programs.push(this.programs[index])
+      this.programs.splice(index, 1);
     },
-    onchangeimg() {
-      this.isactive = true;
-      this.onactive = false;
-      this.classObject.active = false;
-      this.text = "未完成";
+    //刪除專案
+    delete_program(index) {
+      this.history_programs.splice(index, 1)
+    },
+    //打開專案
+    open_program() {
+      page = 1;
+      console.log('111')
     },
 
-    showSelect() {
-      if (this.showselect) {
-        this.showselect = false;
-        this.deleteline = true;
-      } else {
-        this.showselect = true;
-        this.deleteline = false;
-      }
-    },
-
-    // 增加待辦清單項目
-    todo_list_add() {
-      if (this.todo_lightbox_input_title.length) {
-        this.todo_list_content_detail.push({
-          title: this.todo_lightbox_input_title,
-          test: "",
-          // 將卡片細節塞入該陣列裡面
-          lists: []
-        });
-
-        this.todo_lightbox_input_title = "";
-        this.todo_lightbox_switch = false;
-      }
-    },
-
-    add_card_detail(index) {
-      if (this.todo_list_content_detail[index].test.length) {
-        //將卡片狀態、名字設為陣列
-        // console.log(index);
-        this.todo_list_content_detail[index].lists.push({
-          content: this.todo_list_content_detail[index].test,
-          status: true,
-          text: false
-        });
-        this.todo_list_content_detail[index].test = "";
-        this.card_detail_lightbox = false;
-      }
-    },
-
-    deletecard_todo(detailIndex) {
-      this.todo_list_content_detail.splice(detailIndex, 1);
-    },
-    //為啥抓不到標題在陣列的索引直
-     delete_todo_title(index){
-      let detailindex=this.todo_list_content_detail.findIndex(item=>item.title===this.this.todo_lightbox_input_title);
-      console.log(detailindex);
-        this.todo_list_content_detail[detailindex].lists.splice(index, 1);
-    },
-
-    fileSelected(e) {
-      let file = e.target.files[0];
-      // let file = e.target.files.item(0);
-      // console.log(file);
-      this.file_switch = false;
-      let readFile = new FileReader();
-
-      // console.log(readFile);
-
-      readFile.readAsDataURL(file);
-      readFile.addEventListener("load", function file(e) {
-        this.sourced = e.target.result;
-      });
-
-      this.filebox.push({
-        name: file.name,
-        source: this.sourced
-      });
-    },
-    del_file(index) {
-      this.filebox.splice(index, 1);
-    },
-    openmember() {
-      this.card_meber_switch = true;
-      this.calandar_switch = false;
-      this.todo_lightbox_switch = false;
-      this.file_switch = false;
-    },
-    opendate() {
-      this.card_meber_switch = false;
-      this.calandar_switch = true;
-      this.todo_lightbox_switch = false;
-      this.file_switch = false;
-    },
-    opentodo() {
-      this.card_meber_switch = false;
-      this.calandar_switch = false;
-      this.todo_lightbox_switch = true;
-      this.file_switch = false;
-    },
-    openfile() {
-      this.card_meber_switch = false;
-      this.calandar_switch = false;
-      this.todo_lightbox_switch = false;
-      this.file_switch = true;
-    },
   },
-  // watch: {
-  //   screenWidth: function(val) {
-  //     //监听屏幕宽度变化
-  //     var oIframe = document.getElementById("content");
-  //     oIframe.style.width = Number(val) - 120; //'120'是页面布局调整，可去除
-
-  //     if (oIframe.style.width < 1600) {
-  //       console.log("2");
-  //     }
-  //   }
-  // },
 
   mounted() {
 
     document.addEventListener("click", () => {
       this.open = false;
+      this.add_cards_btn_div = true,
       this.cards_list_card_input_box = false;
-      this.invite_btn = false;
+      this.card_name = "",
+      this.invite_add_member_box = false,
       this.setting_btn = false;
+      this.add_cards_btn = false;
 
-      this.calandar_switch = false;
-      this.todo_lightbox_switch = false;
-      this.file_switch = false;
-      this.card_meber_switch = false;
+
     });
-    // var _this = this;
-    // window.onresize = function() {
-    //   // 定义窗口大小变更通知事件
-    //   _this.screenWidth = document.documentElement.clientWidth; //窗口宽度
-    // };
-    calender(this.$refs.outCalender);
-    calender(this.$refs.inCalender);
+
+
+
+    // calender(this.$refs.outCalender);
+    // calender(this.$refs.inCalender);
+  },
+  watch: {
+
   }
 });
+
+
+
+
+
 
 //拖曳
 $(drag);
@@ -249,6 +139,4 @@ function drag() {
 }
 
 //消除建立專案box的拖曳屬性--失敗
-$("div:cards_list_card_input_box").removeClass("ui-sortable-handle");
-
-//創建日立
+// $("div:cards_list_card_input_box").removeClass("ui-sortable-handle");

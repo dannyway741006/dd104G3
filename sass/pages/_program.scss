@@ -1,236 +1,100 @@
-// 側邊攔
-#program_aside {
+#program_all {
+  // border: 1px solid red;
+  width: 100%;
+  height: 100%;
 
-
-  .program_now_having_all {
-    // border: 1px solid blue;
-    transition: all 0.3s;
-
-    &.program_now_having_all_active {
-      height: 0;
-      overflow: hidden;
-    }
-
-    //新增專案btn_box
-    .program_add_btn_box {
-      text-align: center;
-      padding: 5%;
-
-      .program_add_btn {
-        @include baseBtn(100%, 40px, 10px);
-
-        .program_add_img {
-          width: 20px;
-          height: 20px;
-
-          display: inline-block;
-          vertical-align: middle;
-          border: 2px solid $white;
-          border-radius: 50%;
-          transition: border-color 0.3s;
-          position: relative;
-
-          img {
-            width: 80%;
-            // width: 20px;
-            // height: 20px;
-            @include positionCenter;
-            transition: opacity 0.3s;
-
-            &:nth-of-type(2) {
-              opacity: 0;
-            }
-          }
-        }
-
-        .program_add_list {
-          list-style: none;
-
-          .todolist_li {
-            @include font(3, 30px);
-          }
-        }
-      }
-
-      //新增專案btn_box--結束
-    }
-
-    //新建專案取名&選色燈箱
-    .new_program_choose_box {
-      width: 300px;
-      background-color: white;
-      border-radius: 20px;
-      padding: 15px;
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-      // letter-spacing: 3.2px;
-      @include font(1, 20px);
-      position: fixed;
-      top: 120px;
-      left: 20px;
-      z-index: 1;
-
-      display: none;
-
-      &.new_program_choose_box_active {
-        opacity: 1;
-        display: block;
-        z-index: 10000;
-      }
-
-      p {
-        span {
-          letter-spacing: 2.8px;
-          @include font(0, 20px);
-        }
-      }
-
-      // 新增專案命名
-      input {
-        letter-spacing: 3.2px;
-        @include font(1, 20px);
-        outline: none;
-        background-color: transparent;
-        color: $dark;
-        padding: 5px;
-        border: 1px solid $dark;
-        border-radius: 10px;
-        width: 100%;
-        margin: 5px 0;
-      }
-
-      // 新增專案選擇顏色
-      .new_program_choose_color {
-        // border: 1px solid blue;
-
-        .new_program_choose_color_item {
-          // background-color: #5395de;
-          width: 25px;
-          height: 25px;
-          border-radius: 50%;
-          margin: 2.5px;
-          display: inline-block;
-          cursor: pointer;
-          position: relative;
-
-          &.new_program_choose_color_item_checked {
-            &::before {
-              content: "";
-              width: 85%;
-              height: 85%;
-              position: absolute;
-              @include positionCenter();
-              background-image: url('../img/checked_w.626bbc68.svg');
-            }
-          }
-
-
-        }
-
-        // 新增專案選擇顏色--結束
-      }
-
-      button {
-        @include baseBtn(auto, auto, 10px);
-        float: right;
-
-        &:after {
-          content: "";
-          display: block;
-          clear: both;
-        }
-      }
-
-      //新建專案取名&選色燈箱--結束
-    }
-
-    .slide_list {
-      li {
-        p {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-    }
-
-  }
-
-
-  .program_watch_history_all {
+  header,
+  main {
     // border: 1px solid red;
-    height: 0;
-    overflow: hidden;
-    transition: all 0.3s;
-
-    &.program_watch_history_all_active {
-      height: auto;
-    }
-
-    //查看現在&過去專案文字按鈕統一
-    .program_text_btn {
-      bottom: 0;
-      // border: 1px solid red;
-      width: 250px;
-      text-align: center;
-      cursor: pointer;
-      color: $dark;
-
-      &:hover {
-        color: $primary;
-      }
-
-      p {
-        border-top: 1px solid $gray;
-        padding: 15px 0;
-        width: 90%;
-        margin-left: 5%;
-      }
-
-    }
-
-
-    //查看已完成專案文字按鈕
-    .program_watch_history_text {
-      position: absolute;
-
-      &.program_watch_history_text_active {
-        position: static;
-      }
-
-      //查看已完成專案文字按鈕--結束
-    }
-
-    //查看現有專案文字按鈕
-    .program_now_having_text {
-      position: static;
-
-      &.program_now_having_text_active {
-        position: absolute;
-      }
-
-      //查看現有專案文字按鈕--結束
-    }
-
-
-
-
+    display: inline-block;
+    vertical-align: middle;
   }
-
-  //側邊欄--結束
 }
 
 
+#program_aside {
+  border: 1px solid blue;
+
+  // 新專案選顏色
+  .colors {
+    .new_program_choose_color_item {
+      background-color: #5395de;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      margin: 2.5px;
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+
+      &.new_program_choose_color_item_checked {
+        &::before {
+          content: "";
+          width: 85%;
+          height: 85%;
+          position: absolute;
+          @include positionCenter();
+          background-image: url('../img/checked_w.626bbc68.svg');
+        }
+      }
+    }
+
+    //新專案選顏色
+  }
 
 
+  .setting_pm {
 
+    //現有專案
+    &.having_program {
+      transition: all 0.15s;
+
+      //ul.having_program--結束
+    }
+
+    //已完成專案
+    &.history_program {
+      border: 1px solid red;
+    }
+
+    //setting_pm -- 結束
+  }
+}
+
+#no_program_screen {
+  border: 1px solid red;
+  width: calc(100% - 500px);
+  text-align: center;
+  @include positionCenter(y);
+  color: $dark;
+  font-size: 36px;
+}
 
 #program_main {
+  border: 1px solid red;
+  width: calc(100% - 500px);
+  height: calc(95% - 40px);
   font-size: 0;
-  background-image: url("../img/program_img/program_bg_dark.jpg");
-
-  background-repeat: no-repeat;
+  background-image: url("../img/program_img/pmbg.jpg");
   background-size: cover;
-  height: calc(100vh - 60px);
+  background-position: center;
+  position: absolute;
+
+  //過場動畫
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all .3s ease;
+  }
+
+  .fade-enter {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  .fade-leave-to {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
 
   //邀請成員區
   .invite_list {
@@ -238,13 +102,17 @@
     // max-width: 400px;
     display: inline-block;
     position: relative;
+    background-color: $white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px $shadow;
+    padding: 10px;
 
     .program_member {
       display: inline-block;
-      width: 50px;
+      width: 40px;
       border-radius: 50%;
       overflow: hidden;
-      margin: 5px;
+      margin: 0 5px;
       vertical-align: middle;
 
       img {
@@ -253,22 +121,22 @@
     }
 
     .program_member_more {
-      @include font(0);
+      @include font(0, 28px);
       display: inline-block;
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       border: 1px solid $gray;
       background-color: rgba(255, 255, 255, 0.8);
       color: $dark;
       border-radius: 50%;
       text-align: center;
-      padding-top: 9px;
       vertical-align: middle;
+      margin-left: 5px;
     }
 
     .invite_btn {
       @include baseBtn(100px, auto, 30px);
-      margin: 10px;
+      margin-left: 10px;
       vertical-align: middle;
     }
 
@@ -283,12 +151,8 @@
       position: absolute;
       top: 60px;
       right: -90px;
-      display: none;
+      // display: none;
       z-index: 2;
-
-      &.invite_add_member_box_active {
-        display: block;
-      }
 
       p {
         @include font(1);
@@ -311,373 +175,31 @@
     //邀請成員區--結束
   }
 
-  .set-cal-chat_all_bar {
-    display: inline-block;
 
-    //設定日曆聊天按鈕統一
-    .set-cal-chat_same_all {
-      display: inline-block;
-      vertical-align: middle;
-      margin: 5px;
 
-      .set-cal-chat_same_button {
-        @include baseBtn(40px,40px, 50px);
 
-        img {
-          width: 65%;
-          @include positionCenter;
-        }
-      }
-    }
-
-    //設定鈕all
-    .setting_all {
-      position: relative;
-      margin-left: 20px;
-
-      //設定鈕燈箱
-      .setting_content_box {
-        width: 210px;
-        background-color: white;
-        border-radius: 20px;
-        padding: 15px;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-        @include font(1, 20px);
-        position: absolute;
-        top: 50px;
-        z-index: 2;
-
-        display: none;
-
-        &.setting_content_box_active {
-          display: block;
-        }
-
-        p {
-          span {
-            letter-spacing: 2.8px;
-            @include font(0, 20px);
-          }
-        }
-
-        //設定區選顏色
-        .program_setting_choose_color {
-          .program_setting_choose_color_item {
-            background-color: #5395de;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            margin: 2.5px;
-            display: inline-block;
-            cursor: pointer;
-            position: relative;
-
-            &.program_setting_choose_color_item_checked {
-              &::before {
-                content: "";
-                width: 85%;
-                height: 85%;
-                position: absolute;
-                @include positionCenter();
-                background-image: url('../img/checked_w.626bbc68.svg');
-              }
-            }
-
-
-          }
-
-          //設定區選顏色
-        }
-
-        hr {
-          // margin: 5px ;
-          height: 1px;
-          border: none;
-          background-color: $gray;
-        }
-
-        .setting_program_status {
-          // border: 1px solid  red;
-          text-align: center;
-          padding: 10px;
-          cursor: pointer;
-
-          &.setting_program_status_delete {
-            color: $danger;
-          }
-
-          &:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-            color: $primary;
-          }
-        }
-      }
-    }
-
-    //行事曆
-    .program_calendar_all {
-      // &>button {
-      //   @include btnReset;
-      //   @include hoverIcon(30px);
-      //   position: relative;
-      //   // border: 1px solid red;
-      // }
-
-      .program_calendar_box {
-        position: absolute;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        padding: 15px;
-        text-align: center;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-        background-color: $white;
-        top: 120px;
-        right: 30px;
-        width: 350px;
-        z-index: 2;
-
-        &.program_calendar_box_active {
-          display: none;
-        }
-
-        @include media(1599px) {
-          display: none;
-
-          &.program_calendar_box_active {
-            display: block;
-          }
-        }
-
-
-
-        .program_calendar_box_close_box {
-          // border: 1px solid blue;
-          border-radius: 0 8px 0 0;
-          padding: 10px;
-          position: absolute;
-          top: 0px;
-          right: 0px;
-          cursor: pointer;
-
-          &:hover .program_calendar_box_close {
-            background-color: $primary;
-          }
-
-          .program_calendar_box_close {
-            display: inline-block;
-            background-color: $gray;
-            width: 15px;
-            height: 2px;
-          }
-        }
-
-        .calendar_header {
-          display: flex;
-          width: 100%;
-          justify-content: space-around;
-          color: #666666;
-          @include font(1);
-          vertical-align: middle;
-
-          button {
-            width: 50px;
-            // height: 50px;
-            border: none;
-            outline: none;
-            background-color: transparent;
-            cursor: pointer;
-            color: #666666;
-            vertical-align: middle;
-
-            &:hover {
-              color: #333333;
-            }
-          }
-
-          p {
-            width: 30%;
-            text-align: center;
-            vertical-align: middle;
-            line-height: 35px;
-          }
-
-          //calendar_header--結束
-        }
-
-        .calendar_body {
-          width: 100%;
-
-          tr {
-            td {
-              width: 14.3%;
-
-              text-align: center;
-              vertical-align: top;
-              color: #999999;
-              transition: all 0.5s;
-              cursor: pointer;
-              @include font(0);
-
-              &:first-child,
-              &:last-child {
-                color: $danger;
-              }
-            }
-
-          }
-
-          //calendar_body--結束
-        }
-
-        //行事曆box--結束
-      }
-
-      //行事曆--結束
-    }
-
-    //聊天室
-    .program_chatroom_all {
-      &>button {
-        position: relative;
-      }
-
-      .program_chatroom_box {
-        // border: 1px solid blue;
-        width: 350px;
-        // display: inline-block;
-        margin-top: 10px;
-        border-radius: 20px;
-        overflow: hidden;
-
-        // background-color: rgba(0, 0, 0, .1);
-        background-color: rgba(255, 255, 255, 0.7);
-        position: absolute;
-        top: 350px;
-        right: 30px;
-        z-index: 2;
-
-        &.program_chatroom_box_active {
-          display: none;
-        }
-
-        @include media(1599px) {
-          display: none;
-
-          &.program_chatroom_box_active {
-            display: block;
-          }
-        }
-
-
-
-        // &.program_chatroom_box_active {
-        // display: none;
-        // }
-
-        .program_chatroom_box_close_box {
-          // border: 1px solid blue;
-          border-radius: 0 8px 0 0;
-          padding: 15px;
-          position: absolute;
-          top: 0px;
-          right: 0px;
-          cursor: pointer;
-
-          &:hover .program_chatroom_box_close {
-            background-color: $primary;
-          }
-
-          .program_chatroom_box_close {
-            display: inline-block;
-            background-color: $gray;
-            width: 15px;
-            height: 2px;
-          }
-        }
-
-
-        .program_chatroom_window {
-          height: 35vh;
-          // border: 1px solid blue;
-          padding: 15px;
-
-          .program_chatroom_oneperson {
-            img {
-              width: 30px;
-              vertical-align: middle;
-              border-radius: 50%;
-            }
-
-            .program_chatroom_otherside_name {
-              @include font(0);
-            }
-
-            .program_chatroom_otherside_dialog {
-              @include font(0);
-            }
-          }
-        }
-
-        .program_chatroom_operating_area {
-          .program_chatroom_iconbar {
-            border-top: 1px solid $gray;
-            border-bottom: 1px solid $gray;
-            background-color: rgba(255, 255, 255, 0.5);
-            box-shadow: rgba(0, 0, 0, 0.1);
-            // height: 30px;
-
-            .program_chatroom_icon {
-              // @include hoverIcon(30px);
-              // position: relative;
-              width: 35px;
-              padding: 5px;
-              // border: 1px solid blue;
-              display: inline-block;
-
-              img {
-                cursor: pointer;
-
-                &:hover {
-                  filter: brightness(40%);
-                }
-              }
-            }
-          }
-
-          textarea {
-            outline: none;
-            resize: none;
-            width: 100%;
-            height: 50px;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 0 0 20px 20px;
-            padding: 5px 10px;
-          }
-        }
-
-        //聊天室box--結束
-      }
-
-      //聊天室--結束
-    }
-  }
 
   //卡片區
   .cards_column_all {
-    // border: 1px solid red;
+    border: 1px solid red;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: scroll;
     max-width: 970px;
+    background-color: $white;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px $shadow;
+    margin-top: 20px;
+
     // display: inline-block;
 
     .cards_column {
       // display: inline-block;
-      // border: 1px solid blue;
-      height: 70vh;
+      border: 1px solid blue;
+      height: calc(95vh - 160px);
       min-width: 300px;
       max-width: 300px;
-      // width: 300px;
+      box-shadow: 1px 1px 3px $shadow;
       text-align: center;
       border-radius: 20px;
       overflow: hidden;
@@ -687,66 +209,197 @@
         height: 50px;
         width: 100%;
         // border: 1px solid red;
+        // border-top: 2px solid $programcolor1;
+        // border-left: 2px solid $programcolor1;
         @include font(2, 50px);
-        background-color: $programcolor1;
+        // background-color: $programcolor1;
         color: #fff;
-        letter-spacing: 3.6px;
         text-align: center;
+        background-color: rgb(83, 149, 223);
+
       }
 
       .cards_column_body {
         // border: 1px solid red;
+        // border: 2px solid $programcolor1;
+        // background-color: rgba(0, 0, 0, 0.3);
+        border-top: none;
         height: calc(100% - 50px);
-        overflow-y: scroll;
+        // overflow-y: scroll;
         background-color: rgba(255, 255, 255, 0.5);
+        // padding-left: 5px;
+
+        .add_card_input_box_all {
+          height: 105px;
+          // overflow: hidden;
+          position: relative;
+          width: 100%;
+
+          //新增卡片按鈕
+          .add_cards_btn_div {
+            // height: 100px;
+            position: absolute;
+            @include positionCenter();
+            // border: 1px solid blue;
+            background-color: rgba(0, 0, 0, 0.1);
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+
+            p {
+              color: $dark;
+              transition: all 0.3;
+            }
+
+            &:hover {
+              p {
+                color: $primary;
+                text-shadow: 1px 1px 3px $shadow;
+              }
+
+
+              .add_cards_btn {
+                border: 2px solid $primary;
+
+                img {
+                  &:nth-of-type(1) {
+                    opacity: 0;
+                  }
+
+                  &:nth-of-type(2) {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+
+            .add_cards_btn {
+              @include btnReset;
+              position: relative;
+              // @include hoverIcon(30px);
+              width: 30px;
+              height: 30px;
+              border: 2px solid $dark;
+              border-radius: 50%;
+              margin: 5px 0;
+              transition: all 0.3s;
+              box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+
+              margin-top: 25px;
+
+              img {
+                width: 80%;
+                @include positionCenter;
+                transition: opacity 0.3s;
+
+                &:nth-of-type(2) {
+                  opacity: 0;
+                }
+              }
+
+
+            }
+
+            p {
+              @include font(0);
+            }
+          }
+
+          // 建立卡片輸入卡片名的div
+          .cards_list_card_input_box {
+            max-height: none;
+            // border: 1px solid blue;
+            position: absolute;
+            width: 100%;
+
+            // background:rgba(0,0,0,0.2);
+            textarea {
+              letter-spacing: 3.2px;
+              @include font(1, 20px);
+              outline: none;
+              background-color: transparent;
+              color: $dark;
+              padding: 5px;
+              border: 1px solid $dark;
+              border-radius: 10px;
+              width: 90%;
+              margin: 5px 0;
+              // resize: vertical;
+              resize: none;
+              // overflow-Y:hidden;
+              max-height: 162px;
+              min-height: 54px;
+              // border: $dark;
+              background-color: rgba(255, 255, 255, 0.8);
+            }
+
+            .cards_list_card_input_box_button_bar {
+              // text-align: end;
+
+              //建立卡片按鈕
+              button {
+                @include baseBtn(90%, auto, 10px);
+                //建立卡片按鈕--結束
+              }
+            }
+
+            // 建立卡片輸入卡片名的div--結束
+          }
+        }
+
 
         .cards_list {
-          padding: 2px 5%;
+          // padding: 5%;
+          min-height: 100%;
+          // border: 1px solid rgb(255, 72, 72);
+          overflow-y: scroll;
 
-          &.cards_list_doing,
-          &.cards_list_done {
-            height: 100%;
-            // border: 1px solid white
+          &.cards_list_todo {
+            min-height: calc(100% - 100px);
           }
+
+
+
+
 
           //卡片本人css
           .cards_list_card {
 
             /* styles during drag */
             &.ui-sortable-helper {
-              transform: rotate(5deg);
+              transform: rotate(5deg) scale(0.9);
               box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
             }
 
-            // border: 1px solid red;
+            // border: 1px solid $gray;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
             border-radius: 0 0 10px 10px;
             background-color: $white;
-            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
             text-align: start;
-            width: 100%;
+            width: 95%;
             margin: 10px auto;
             padding: 10px;
             cursor: pointer;
             z-index: 1;
             min-height: 85px;
             vertical-align: bottom;
-
+            overflow: hidden;
             position: relative;
 
             .cards_list_card_color {
               position: absolute;
               top: 0;
               left: 0;
-              width: 100%;
-              height: 3px;
+              width: 0;
+              height: 100%;
               transition: all 0.3s;
               z-index: -1;
-              background-color: $programcolor1;
+              background-color: $programcolor1
             }
 
             &:hover .cards_list_card_color {
-              height: 100%;
-              opacity: 0.4;
+              width: 100%;
+              opacity: 0.25;
             }
 
             p {
@@ -757,7 +410,7 @@
               -webkit-box-orient: vertical;
               -webkit-line-clamp: 10;
               overflow: hidden;
-              margin-top: 10px;
+              margin-top: 5px;
               margin-bottom: 5px;
               // max-height: 300px;
             }
@@ -787,6 +440,7 @@
                 display: inline-block;
                 float: right;
 
+
                 &:after {
                   content: "";
                   display: block;
@@ -794,119 +448,66 @@
                 }
               }
 
-              // .cards_list_card_todoicon {
-              //   margin-left: 50px;
-
-              // }
             }
 
             //卡片本人css--結束
           }
 
-          // 建立卡片輸入卡片名的div
-          .cards_list_card_input_box {
-            max-height: none;
 
-            textarea {
-              letter-spacing: 3.2px;
-              @include font(1, 20px);
-              outline: none;
-              background-color: transparent;
-              color: $dark;
-              padding: 5px;
-              border: 1px solid $dark;
-              border-radius: 10px;
-              width: 100%;
-              margin: 5px 0;
-              resize: vertical;
-              // overflow-Y:hidden;
-              max-height: 162px;
-              min-height: 54px;
-            }
-
-            .cards_list_card_input_box_button_bar {
-              text-align: end;
-
-              //建立卡片按鈕
-              button {
-                @include baseBtn(100px, auto, 10px);
-                // @include btnReset;
-                // border: 2px solid $white;
-                // @include font(1, 20px);
-                // background-color: $primary;
-                // color: $white;
-                // // float: right;
-                // padding: 5px;
-                // border-radius: 5px;
-                // transition: all 0.3s;
-
-                // &:hover {
-                //   background-color: $white;
-                //   color: $primary;
-                //   border: 2px solid $primary;
-                // }
-
-                //建立卡片按鈕--結束
-              }
-            }
-
-            // 建立卡片輸入卡片名的div--結束
-          }
         }
       }
 
-      //新增卡片按鈕
-      .add_cards_btn {
-        @include btnReset;
-        position: relative;
-        @include hoverIcon(30px);
-        border: 2px solid $white;
-        border-radius: 50%;
-        margin: 5px 0;
-        transition: all 0.3s;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+
+
+  //行事曆、聊天按鈕bar
+  .cal-chat_all_bar {
+    border: 1px solid red;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-shadow: 1px 1px 3px $shadow;
+
+    .cal-chat_same_all {
+      display: inline-block;
+
+      .cal-chat_same_btn {
+        // border: 1px solid blue;
+        @include baseBtn(40px, 40px, 50px);
+        margin: 5px;
 
         img {
-          width: 80%;
-        }
-
-        &:hover {
-          border: 2px solid $primary;
+          width: 65%;
+          @include positionCenter;
         }
       }
     }
+
   }
+
+  //行事曆
+
+
 
 
 }
 
-@include media(510px) {
-  .set-cal-chat_all_bar {
-    display: block;
+
+@include media(1023px) {
+  #no_program_screen {
+    width: calc(100% - 40px);
   }
 
-
   #program_main {
-    .set-cal-chat_all_bar {
-      .program_calendar_all {
-        .program_calendar_box {
-          top: 60px;
-          right: 0;
-          width: 100%;
-        }
-      }
+    width: 95%;
+    height: calc(95% - 82px);
+  }
 
-      .program_chatroom_all {
-        .program_chatroom_box {
-          width: 90%;
-          right: 5%;
-          top: auto;
-          bottom: 2%;
-          background-color: rgba(255, 255, 255, 0.9);
-
-        }
-      }
-
-    }
+  #program_main .cards_column_all .cards_column {
+    height: calc(95vh - 190px);
   }
 }
