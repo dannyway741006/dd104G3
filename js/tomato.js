@@ -92,6 +92,7 @@ var app = new Vue({
             }
         }
     },
+
 });
 
 
