@@ -33,7 +33,7 @@ var main_content = new Vue({
     program_text_btn: false,
 
     add_cards_btn: false,
-    page: 1,
+    page: -1,
   },
 
   methods: {
@@ -48,6 +48,10 @@ var main_content = new Vue({
         this.program_name = "";
         this.selectColor = null;
         this.click_complete_btn = false;
+        // console.log(this.page);
+        // console.log(this.programs.length-1);
+        this.page = this.programs.length - 1;
+
       }
 
     },
@@ -89,10 +93,10 @@ var main_content = new Vue({
       this.history_programs.splice(index, 1)
     },
     //打開專案
-    open_program() {
-      page = 1;
-      console.log('111')
-    },
+    // open_program() {
+    // page = 1;
+    // console.log('111')
+    // },
 
   },
 
@@ -101,12 +105,25 @@ var main_content = new Vue({
     document.addEventListener("click", () => {
       this.open = false;
       this.add_cards_btn_div = true,
-      this.cards_list_card_input_box = false;
+        this.cards_list_card_input_box = false;
       this.card_name = "",
-      this.invite_add_member_box = false,
-      this.setting_btn = false;
+        this.invite_add_member_box = false,
+        this.setting_btn = false;
       this.add_cards_btn = false;
 
+      console.log(this.programs.length - 1)
+      if (this.programs.length - 1 == -1) {
+        // console.log(this.programs.length-1)
+        this.page = -1
+      };
+
+      $(".cards_list_todo,.cards_list_doing,.cards_list_done")
+        .sortable({
+          connectWith: ".cards_list",
+          stack: ".cards_column_body .cards_list"
+          // revert:true,
+        })
+        .disableSelection();
 
     });
 
@@ -117,7 +134,7 @@ var main_content = new Vue({
   },
   watch: {
 
-  }
+  },
 });
 
 
@@ -126,17 +143,14 @@ var main_content = new Vue({
 
 
 //拖曳
-$(drag);
+// $(drag);
 
-function drag() {
-  $(".cards_list_todo,.cards_list_doing,.cards_list_done")
-    .sortable({
-      connectWith: ".cards_list",
-      stack: ".cards_column_body .cards_list"
-      // revert:true,
-    })
-    .disableSelection();
-}
-
-//消除建立專案box的拖曳屬性--失敗
-// $("div:cards_list_card_input_box").removeClass("ui-sortable-handle");
+// function drag() {
+//   $(".cards_list_todo,.cards_list_doing,.cards_list_done")
+//     .sortable({
+//       connectWith: ".cards_list",
+//       stack: ".cards_column_body .cards_list"
+//       // revert:true,
+//     })
+//     .disableSelection();
+// }

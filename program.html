@@ -125,7 +125,7 @@
               </li> -->
             </transition>
             <transition name="fade" mode="out-in">
-              <li @click="page=0">
+              <li @click="page=-1">
                 <p><span></span>專案0</p>
                 <img src="../img/uncheck.svg" alt="uncheck" width="20" @click.stop='program_complete_func()' />
               </li>
@@ -160,8 +160,10 @@
     <main>
       <div class="content">
         <!-- 內容 -->
-        <div id="no_program_screen">快來建立新專案吧!</div>
-        <transition name="fade" mode="out-in">
+        <div id="no_program_screen" v-if="page==-1">快來建立新專案吧!</div>
+
+  
+        <transition-group name="fade" mode="out-in">
           <div id="program_main" v-if="page == index" v-for="(item,index) in programs" :key="index">
 
             <div class="invite_list">
@@ -225,7 +227,7 @@
 
                     <!-- <transition-group name="fade" mode="out-in" tag="div"> -->
                     <div class="cards_list_card" v-for="item in cards" :key="item">
-                      <div class="cards_list_card_color"></div>
+                      <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
                       <p>{{item}}</p>
                       <div class="cards_list_card_icon_bar">
                         <div class="cards_list_card_icon cards_list_card_calendaricon"><img
@@ -311,8 +313,11 @@
             </div>
 
           </div>
-        </transition>
+        </transition-group>
+
    
+
+
       </div>
     </main>
   </div>

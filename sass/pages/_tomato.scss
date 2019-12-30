@@ -1,3 +1,7 @@
+#tomato {
+    width: 100%;
+    height: 100%;
+}
 .tomatoContent{
     // border: 1px solid red;
     display: flex;
@@ -11,7 +15,7 @@
     width: 45%;
     height: 100%;
     padding: 2px;
-    border: 1px solid blue;
+    // border: 1px solid blue;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -130,7 +134,7 @@ justify-content: center;
 .todo-stat{
     width: 60%;
     padding: 1px;
-    border: 1px solid green;
+    // border: 1px solid green;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -149,11 +153,6 @@ justify-content: center;
         height: 100%;
         flex-direction:column-reverse;
         align-items: flex-end;
-        // >div{
-        //     border: 1px solid green;
-        //     width: 100%;
-        //     height: 50%;
-        // }
     }
     @include media(699px){
         .stat{
@@ -195,10 +194,10 @@ justify-content: center;
     }
     >div{
         width: 49%;
-        height: 100%;
-        border: 1px solid red;
+        // height: 100%;
+        // border: 1px solid red;
         border-radius: 10px;
-        box-shadow: 1px 1px 3px $shadow;
+        box-shadow: 1px 1px 3px $heavyshadow;
         z-index: 999;
     }
     .custom{
@@ -209,17 +208,22 @@ justify-content: center;
             @include positionCenter(x);
             @include btnReset;
             border-bottom: 1px solid #666;
-            bottom: 10px;
+            bottom: 5px;
             width: 90%;
             height: 40px;
+            background: $white;
             &::-ms-input-placeholder{text-align: center;}
             &::-webkit-input-placeholder{text-align:            center;}
         }
     }
 .custom,.fromTrello{
+    height: 100%;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    ul{
+        padding-bottom: 40px;
+        overflow-y: scroll;
+    }
     .todoHead{
         // border: 1px solid green;
         padding-top: 10px;
@@ -265,13 +269,23 @@ justify-content: center;
         height: 85px;
         padding: 10px;
         margin: 15px auto;
-        border: 1px solid red;
+        // border: 1px solid red;
         border-radius: 0 0 10px 10px;
         box-shadow: 1px 1px 3px $shadow;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
+        // animation: slide-up .8s ease;
+        // @keyframes slide-up {
+        //     0% {
+        //         opacity: 0;
+        //         transform: translateY(20px);
+        //     }
+        //     100% {
+        //         opacity: 1;
+        //         transform: translateY(0);
+        //     }
+        // }
         .todoColor{
             border-radius: 0 0 10px 10px;
             position: absolute;
@@ -318,9 +332,9 @@ justify-content: center;
             .play{
                 @include hoverIcon(23px)
             }
-            .pause{
-                display: none;
-            }
+            // .pause{
+            //     display: none;
+            // }
             &.active{
                 .play{
                     display: none;
@@ -399,7 +413,7 @@ justify-content: center;
 .stat{
     width: 100%;
     height: 49%;
-    border: 2px solid yellow;
+    // border: 2px solid yellow;
     border-radius: 10px;
     box-shadow: 1px 1px 3px $shadow;
     display: flex;
@@ -458,25 +472,6 @@ justify-content: center;
     }
 }
 @include media(768px){
-    // .todo-stat{
-    //     position: relative;
-    //     .stat{
-    //         width: 100%;
-    //         height: 100%;
-    //         background-color: yellow;
-    //         position: absolute;;
-    //         transform: scaleX(0);
-    //         opacity: 0;
-    //         visibility: hidden;
-    //         transform-origin: right;
-    //         &.active{
-    //         transform: scaleX(1);
-    //         opacity: 1;
-    //         visibility: visible;
-    //         transform-origin: bottom;
-    //         }
-    //     }
-    // }
     .todoList{
         display: block;
         position: relative;
@@ -517,9 +512,23 @@ justify-content: center;
         }
     }    
 }
-.todo-stat{
-    
 }
+.fade-enter-active, .fade-leave-active {
+    transition: all .2s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+        
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 // @include media(512px){
 //     .tomatoContent{
