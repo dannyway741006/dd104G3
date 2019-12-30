@@ -57,33 +57,26 @@ imgClose.addEventListener('click', function () {
   memlibox.classList.add('closeani');
 });
 
-// =================input_animatinon=================================
-// let upbox = document.getElementById("upbox");
-// let upbox1 = document.getElementById("upbox1");
-// let text_word = document.getElementById("text_word");
-// let text_word1 = document.getElementById("text_word1");
+// ==================================================
+let allcheck = document.getElementById("allcheck");
+let change_word1 = document.getElementById("change_word1");
+let change_word2 = document.getElementById("change_word2");
 
-// let input_mask = document.getElementById("input_mask");
-// text_word.addEventListener("click", function () {
-//   upbox.classList.add('active_mem1');
-//   input_mask.classList.add('activeForInput');
-//   upbox.classList.remove('active_mem2');
-// });
+function selectAll(event) {
+  const allCheckBox = document.getElementsByClassName('checks');
+  
+  for (var i = 0; i < allCheckBox.length; i++) {
+    allCheckBox[i].checked = event.target.checked;
+  }
+}
+allcheck.addEventListener('click',function(){
+if(change_word1.innerHTML.match("全選/")){
+  change_word1.innerHTML.style = "color:red";
+  change_word1.innerHTML = "取消/";
+}else{
+  change_word1.innerHTML = "全選/";
+}
+});
 
-// input_mask.addEventListener("click", function () {
-//   upbox.classList.add('active_mem2');
-//   input_mask.classList.remove('activeForInput');
-// });
-
-// text_word1.addEventListener("click", function () {
-//   upbox1.classList.add('active_mem1');
-//   input_mask.classList.add('activeForInput');
-//   upbox1.classList.remove('active_mem2');
-// });
-
-// input_mask.addEventListener("click", function () {
-//   upbox1.classList.add('active_mem2');
-//   input_mask.classList.remove('activeForInput');
-// });
 
 
