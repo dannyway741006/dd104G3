@@ -16,11 +16,18 @@ $programcolor1: #5395de;
 $radioSize: 22px;
 $radioBorder: #d1d7e3;
 $radioActive: #4e8eec;
-$heavyshadow:rgba($color: #000000, $alpha: .2);
+$heavyshadow: rgba(
+  $color: #000000,
+  $alpha: 0.2
+);
 $fontColorBlack: #333;
 
 //側面欄寬
 $slideBar: 350px;
+
+//card
+$borderRadius: 20px;
+$headerHeight: 50px;
 
 //字級，行距，字間距
 $baseFont: 14px;

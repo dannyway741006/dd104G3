@@ -1,0 +1,94 @@
+@mixin card($width: auto, $height: auto, $header: true, $color: $primary) {
+  width: $width;
+  height: $height;
+  border-radius: $borderRadius;
+  box-shadow: 1px 1px 3px $shadow;
+  overflow: hidden;
+  @if ($header) {
+    > .card_header {
+      width: 100%;
+      height: $headerHeight;
+      background-color: $color;
+      color: $white;
+      @include font(3, $headerHeight);
+      text-align: center;
+    }
+  }
+  > .card_content {
+    width: 100%;
+    padding: 20px;
+  }
+}
+@mixin layoutBtn() {
+  @include font(1);
+  padding: 5px;
+  color: $dark;
+  cursor: pointer;
+  width: 200px;
+  background-color: $white;
+  box-shadow: 1px 1px 3px $shadow;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  > p {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  > span {
+    display: inline-block;
+    @include positionCenter;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%) scale(20);
+    border-radius: 50%;
+    background-color: $white;
+    opacity: 1;
+    z-index: -1;
+  }
+  p::before,
+  p::after,
+  &::before,
+  &::after {
+    @include positionCenter;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba($secondary, 0.3);
+    z-index: -2;
+    opacity: 0;
+  }
+  &:hover {
+    > span {
+      transition: background-color 0.3s, transform 0.5s, opacity 0.5s 2s,
+        z-index 0.1s 1s;
+      background-color: $secondary;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      z-index: -3;
+    }
+    p::before,
+    p::after,
+    &::before,
+    &::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(20);
+      transition: transform 1s;
+    }
+    &::before {
+      transition-delay: 0.6s;
+    }
+    &::after {
+      background-color: $white;
+      transition-delay: 1.5s;
+    }
+    p::after {
+      transition-delay: 1s;
+    }
+    p::before {
+      transition-delay: 0.8s;
+    }
+  }
+}
