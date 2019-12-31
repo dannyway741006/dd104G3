@@ -163,7 +163,7 @@
         <div id="no_program_screen" v-if="page==-1">快來建立新專案吧!</div>
 
   
-        <transition-group name="fade" mode="out-in" class="show_page">
+        <transition-group name="fade" mode="out-in">
           <div id="program_main" v-if="page == index" v-for="(item,index) in programs" :key="index">
 
             <div class="invite_list">

@@ -1692,12 +1692,6 @@ main .content {
   transition: all .3s ease;
 }
 
-#program_main .fade-enter-active.show_page,
-#program_main .fade-leave-active.show_page {
-  -webkit-transition: all .8s ease;
-  transition: all .8s ease;
-}
-
 #program_main .fade-enter {
   -webkit-transform: translateX(-50px);
           transform: translateX(-50px);

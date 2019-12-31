@@ -84,12 +84,6 @@
   .fade-enter-active,
   .fade-leave-active {
     transition: all .3s ease;
-
-    &.show_page {
-      transition: all .8s ease;
-    }
-
-
   }
 
   .fade-enter {
