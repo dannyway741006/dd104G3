@@ -2,6 +2,12 @@
 /*        商品清單頁面      */
 /*------------------------- */
 
+.content{
+  
+  position: relative;
+
+}
+
 
 
 
@@ -20,6 +26,9 @@
   position: relative;
   display: flex;
   justify-content:flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
  
   .mall_content_right {
     // margin-left: 0px;
@@ -55,7 +64,7 @@
 
       .product_name {
         margin: 5px 0;
-        color: #333;
+        color: $fontColorBlack;
         transition: all 1s linear;
       }
 
@@ -125,11 +134,8 @@
 
 .mall_poduct_cart {
   //商品卡片
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.568);
-  border-radius: 10px;
-  border: 1px solid #dfdfdcdd;
 
   .mall_poduct_content {
     //卡片內容
@@ -142,7 +148,7 @@
 
 .product_img {
   //商品圖
-  width: 40%;
+  width: 60%;
   padding: 1% 0 4%;
 
   img {
@@ -170,7 +176,7 @@
 
 .product_text {
   //商品文字
-  width: 60%;
+  width: 40%;
   padding: 5% 5%;
 
   .line {
