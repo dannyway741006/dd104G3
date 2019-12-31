@@ -1688,8 +1688,14 @@ main .content {
 
 #program_main .fade-enter-active,
 #program_main .fade-leave-active {
-  -webkit-transition: all .6s ease;
-  transition: all .6s ease;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+#program_main .fade-enter-active.show_page,
+#program_main .fade-leave-active.show_page {
+  -webkit-transition: all .8s ease;
+  transition: all .8s ease;
 }
 
 #program_main .fade-enter {

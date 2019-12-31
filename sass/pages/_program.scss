@@ -83,7 +83,13 @@
   //過場動畫
   .fade-enter-active,
   .fade-leave-active {
-    transition: all .6s ease;
+    transition: all .3s ease;
+
+    &.show_page {
+      transition: all .8s ease;
+    }
+
+
   }
 
   .fade-enter {
