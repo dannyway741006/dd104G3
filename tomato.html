@@ -154,13 +154,13 @@
                 <circle r="40%" cx="50%" cy="50%" />
                 <circle id="bar" r="40%" cx="50%" cy="50%" />
                 <circle id="outside" r="45%" cx="50%" cy="50%" />
-                <text id="timer" x="50%" y="50%">25:00</text>
+                <text id="timer" x="50%" y="50%"> {{countdownTime}} </text>
               </svg>
             </div>
             <div class="clockControl">
               <div class="switch">
-                <div class="work">work</div>
-                <div class="rest">rest</div>
+                <div class="work" @click="isRest=false">work</div>
+                <div class="rest" @click="isRest=true">rest</div>
               </div>
             </div>
           </div>
