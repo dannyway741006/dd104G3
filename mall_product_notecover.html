@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./css/owlcarousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="./css/owlcarousel/owl.theme.default.css">
   <title>Document</title>
 </head>
 
@@ -103,14 +105,19 @@
 
       <div class="mall_content">
 
-
-        <div class="mall_bg">
-   
+        <div class="mall_content_right">
+          <!-- <div class="mall_cart">
+            <div class="product_img">
+              <img src="./img/mall_img/bag_p01.png" alt="">
+            </div>
+            <div class="product_name">品名品名</div>
+            <div class="product_price">$399</div>
+          </div> -->
           <div class="mall_poduct_cart">
             <div class="mall_poduct_content">
               <div class="product_img">
-                
-                <img class="b_img" src="img/mall_img/p1_pink.jpg" alt="">
+
+                <img class="b_img" src="img/mall_img/p1_black.jpg" alt="">
                 <div class="small_pic">
                   <div class="s_img"><img src="./img/mall_img/p1_black.jpg" alt=""></div>
                   <div class="s_img"><img src="./img/mall_img/p1_blue.jpg" alt=""></div>
@@ -118,97 +125,141 @@
                   <div class="s_img"><img src="./img/mall_img/p1_pink.jpg" alt=""></div>
                 </div>
               </div>
-            
+
               <div class="product_text">
-                
-                <p>13吋 輕薄避震手提筆電包</p>
-  
+
+                <p>纖巧商務包（三角洲）</p>
+
                 <ul class="product_features">
                   <li>絨毛內裡 保護電腦不刮傷</li>
                   <li>凹形邊緣護墊 有效吸收抵禦衝擊</li>
                 </ul>
-                <form action="mall_product.html"> 
-                <ul class="product_select">
-                  <li>
-                    <ul class="select_btn">
-                      <b>顏色</b>
-                      <b>:</b>
-                      <div class="radio_style">
-                        <input type="radio" id="black" name="color" value="black">
-                        <label for="black"">黑色</label>
+                <form action="mall_product.html">
+                  <ul class="product_select">
+                    <li>
+                      <ul class="select_btn">
+                        <b>顏色</b>
+                        <b>:</b>
+                        <div class="radio_style">
+                          <input type="radio" id="black" name="color" value="black">
+                          <label for="black"">黑色</label>
                       
-                        <input type="radio" id="gray" name="color"  value="gray">
-                        <label for="gray">灰色</label>
-                      
-                        <input type="radio" id="blue" name="color" value="blue">
-                        <label for="blue">藍色</label>
-  
-                        <input type="radio" id="pink" name="color" value="pink">
-                        <label for="pink">粉色</label>
+                    
+
+                            <input type="radio" id="blue" name="color" value="blue">
+                            <label for="blue">藍色</label>
+
+                            <input type="radio" id="pink" name="color" value="pink">
+                            <label for="pink">粉色</label>
+                        </div>
+                      </ul>
+                    </li>
+                    <li>
+                      <ul class="select_btn">
+                        <b>尺寸</b>
+                        <b>:</b>
+                        <div class="radio_style">
+                          <input type="radio" id="thirteen5" name="size" value="13.5">
+                          <label for="thirteen5"">13.5</label>
                       </div>
                     </ul>
                   </li>
                   <li>
-                    <ul class="select_btn">
-                      <b>尺寸</b>
-                      <b>:</b>
-                      <div class="radio_style">
-                        <input type="radio" id="thirteen5" name="size" value="13.5">
-                        <label for="thirteen5"">13.5</label>
+                    <ul class=" select_btn">
+                            <b>數量</b>
+                            <b>:</b>
+                            <li>
+                              <select name="select_num" id="selectNum">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                              </select>
+                            </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <div class="product_price">
+                        <span>$1,600</span>
+                        <span>$</span><span class="price_sale">1,200</span>
                       </div>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul class="select_btn">
-                      <b>數量</b>
-                      <b>:</b>
-                      <li>
-                        <select name="select_num" id="selectNum">
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <div class="line"></div>
-                    <div class="product_price">
-                      <span>$1,600</span>
-                      <span>$</span><span class="price_sale">1,200</span>
-                    </div>
-                    <div class="line"></div>
-                  </li>
-                  <li>
-                    <button class="mall_bBtn"  value="Submit">直接購買</button>
-                    <button class="mall_bBtn"  value="Submit">加入購物車</button>
-                  </li>
-                
-                
-                
-                
-                </ul>
-  
-             
-  
-  
-       
-  
-              </form>
+                     
+                    </li>
+                    <li>
+                      <button class="mall_bBtn" value="Submit">直接購買</button>
+                      <button class="mall_bBtn" value="Submit">加入購物車</button>
+                    </li>
+
+
+
+
+                  </ul>
+
+
+
+
+
+
+                </form>
               </div>
             </div>
           </div>
-  
-      
 
-  
+
+
+
+          
+          <!-- 輪播  -->
+          <div class="slider-bg">
+            <h2>其它商品</h2>   
+            <section id="slider">
+              <div class="custom1 owl-carousel owl-theme">
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+              </div>
+            </section>
+          </div>
+
+
+
+
+
+
         </div>
-  
-        
-
-     
       </div>
-
 
 
 
@@ -224,7 +275,7 @@
 
 
 
-
+  <script src="./js/mall.js"></script>
   <script src="../js/lib/three.min.js"></script>
   <script type="x-shader/x-fragment" id="fragmentshader">
     uniform vec3 color;
@@ -244,6 +295,49 @@
       container.classList.toggle("nav_open")
     );
   </script>
+
+
+
+  <!--啟用貓頭鷹-->
+  <script>
+    $(document).ready(function ($) {
+      $('.custom1').owlCarousel({
+        // animateOut: 'slideOutDown',
+        // animateIn: 'flipInY',
+        items: 3,
+        margin: 30,
+        stagePadding: 30,
+        smartSpeed: 450,
+        loop: true,
+        autoplay: true, //自動輪播
+        autoplayTimeout: 4500, // 輪播速度
+        dots: false,
+        nav: true,
+
+        responsive: {
+          768: {
+            items: 3
+          },
+
+          480: {
+            items: 1
+          },
+
+          0: {
+            items: 1
+          }
+
+        }
+
+
+      });
+    });
+  </script>
+
+  <!--貓頭鷹跑馬燈的JS-->
+  <script src="./js/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/js/owlcarousel/jquery.min.js"></script>
+  <script src="owlcarousel/owl.carousel.min.js"></script>
 
 </body>
 
