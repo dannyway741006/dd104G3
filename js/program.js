@@ -18,8 +18,8 @@ var main_content = new Vue({
     add_cards_btn_div: true,
 
     cards_list_card_input_box: false,
-    cards: [],
-    card_name: "",
+    // cards: [],
+    // card_name: "",
 
     invite_add_member_box: false,
 
@@ -33,9 +33,11 @@ var main_content = new Vue({
     program_text_btn: false,
 
     add_cards_btn: false,
-    page: -1,
-  },
 
+    page: -1,
+    history_page: null,
+
+  },
   methods: {
     //新增專案
     add_program() {
@@ -43,7 +45,12 @@ var main_content = new Vue({
         this.programs.push({
           program_names: this.program_name,
           changeimage: false, //uncheck
-          color: this.selectColor
+          color: this.selectColor,
+          
+          cards: [],
+          card_name: "",
+          
+         
         });
         this.program_name = "";
         this.selectColor = null;
@@ -55,10 +62,11 @@ var main_content = new Vue({
       }
 
     },
-
+    //切換現有-已完成專案
     change_watched_text() {
       if (this.click_complete_btn == false) { //已完成專案畫面
-        this.click_complete_btn = true
+        this.click_complete_btn = true;
+        
         // document.querySelector(".having_program").style.border = '1px solid red';
       } else { //現有專案畫面
         this.click_complete_btn = false;
@@ -72,9 +80,10 @@ var main_content = new Vue({
       this.cards_list_card_input_box = true;
       add_cards_btn = true;
     },
-    add_card(card_name) {
+    add_card(card_name,index) {
+     console.log(this.program[index]);
       if (this.card_name !== "") {
-        this.cards.push(card_name);
+        this.program[index].cards.push(card_name);
         this.card_name = "";
         this.cards_list_card_input_box = false;
         this.add_cards_btn = false;
@@ -86,17 +95,21 @@ var main_content = new Vue({
       this.programs[index].changeimage = !this.programs[index].changeimage
 
       this.history_programs.push(this.programs[index])
+      
+      this.page = index - 1;
       this.programs.splice(index, 1);
+
+      if (this.programs.length != 0 && this.page == -1) {
+        this.page = 0;
+      }
+// console.log(this.history_page=this.history_programs.length);
+this.history_page=this.history_programs.length-1;
     },
     //刪除專案
     delete_program(index) {
       this.history_programs.splice(index, 1)
     },
-    //打開專案
-    // open_program() {
-    // page = 1;
-    // console.log('111')
-    // },
+
 
   },
 
@@ -104,19 +117,19 @@ var main_content = new Vue({
 
     document.addEventListener("click", () => {
       this.open = false;
-      this.add_cards_btn_div = true,
-        this.cards_list_card_input_box = false;
-      this.card_name = "",
-        this.invite_add_member_box = false,
-        this.setting_btn = false;
+      this.add_cards_btn_div = true;
+      this.cards_list_card_input_box = false;
+      this.card_name = "";
+      this.invite_add_member_box = false;
+      this.setting_btn = false;
       this.add_cards_btn = false;
 
-      console.log(this.programs.length - 1)
-      if (this.programs.length - 1 == -1) {
+      // console.log(this.programs.length - 1)
+      if (this.programs.length == 0) {
         // console.log(this.programs.length-1)
         this.page = -1
       };
-
+      //拖曳
       $(".cards_list_todo,.cards_list_doing,.cards_list_done")
         .sortable({
           connectWith: ".cards_list",
@@ -126,7 +139,6 @@ var main_content = new Vue({
         .disableSelection();
 
     });
-
 
 
     // calender(this.$refs.outCalender);
