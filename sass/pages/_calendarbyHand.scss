@@ -1,44 +1,44 @@
 [v-cloak]{
-    display: none;
-  }
+  display: none;
+}
 .calendar{
-    margin:30px 0;
-    .weekDay,.week{
-        display: flex;
-        box-shadow: 1px 1px 3px rgb(0,0,0);
-        // border-bottom: 1px solid #ddd;
-      }
-      .week{
-        // border-right: 1px solid #ddd;
-        box-shadow: 1px 1px 3px rgb(0,0,0);
-        div{
-            position: relative;
-            flex: 1 1 0%;
-            height: 90px;
-            line-height: 30px;
-            box-shadow: 1px 1px 3px rgb(0,0,0);
-            // border-left: 1px solid #ddd;
-            &:before{
-                position: absolute;
-                content:attr(data-date);
-                top: 0;
-                right: 0;
-                display: block;
-                width: 30px;
-                // border-left: 1px solid #ddd;
-                // border-bottom: 1px solid #ddd;
-              }
-          }
-      }
+  margin:30px 0;
+  .weekDay,.week{
+      display: flex;
+      box-shadow: 1px 1px 3px $shadow;
+      // border-bottom: 1px solid #ddd;
+    }
+    .week{
+      // border-right: 1px solid #ddd;
+      box-shadow: 1px 1px 3px $shadow;
+      div{
+          position: relative;
+          flex: 1 1 0%;
+          height: 90px;
+          line-height: 30px;
+          box-shadow: 1px 1px 3px $shadow;
+          // border-left: 1px solid #ddd;
+          &:before{
+              position: absolute;
+              content:attr(data-date);
+              top: 0;
+              right: 0;
+              display: block;
+              width: 30px;
+              // border-left: 1px solid #ddd;
+              // border-bottom: 1px solid #ddd;
+            }
+        }
+    }
 }
 
 .today{
-    &:before{
-        color: #fff;
-        background-color: #000;
-      }
+  &:before{
+      color: #fff;
+      background-color: #000;
+    }
 }
 .other{
-    color: #bbb;
-    // background-color: #ddd;
-  }
+  color: #bbb;
+  // background-color: #ddd;
+}
