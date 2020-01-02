@@ -213,7 +213,7 @@
       <div class="content">
         <!-- 內容 -->
         <div id="app" v-cloak>
-            <h1>{{calendar.year}} 年 {{calendar.month+1}} 月</h1>
+            <h1>{{calendar.year}} 年 {{calendar.month+1}} 月 {{calendar.date}}日  星期{{calendar.day}}</h1>
             <div>
                 <button @click="adjustYear(-1)">上一年</button>
                 <button @click="adjustMonth(-1)">上個月</button>
@@ -236,10 +236,8 @@
                   :class="{
                    today:calendarMonth[(i-1)*7+j-1].year === today.year && calendarMonth[(i-1)*7+j-1].month === today.month && calendarMonth[(i-1)*7+j-1].date === today.date,
                    other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
-                  }"
-                
+                  }" 
                 >
-      
                 </div>
               </div>
             </div>

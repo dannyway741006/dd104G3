@@ -5,16 +5,19 @@
     margin:30px 0;
     .weekDay,.week{
         display: flex;
-        border-bottom: 1px solid #ddd;
+        box-shadow: 1px 1px 3px rgb(0,0,0);
+        // border-bottom: 1px solid #ddd;
       }
       .week{
-        border-right: 1px solid #ddd;
+        // border-right: 1px solid #ddd;
+        box-shadow: 1px 1px 3px rgb(0,0,0);
         div{
             position: relative;
             flex: 1 1 0%;
             height: 90px;
             line-height: 30px;
-            border-left: 1px solid #ddd;
+            box-shadow: 1px 1px 3px rgb(0,0,0);
+            // border-left: 1px solid #ddd;
             &:before{
                 position: absolute;
                 content:attr(data-date);
@@ -22,8 +25,8 @@
                 right: 0;
                 display: block;
                 width: 30px;
-                border-left: 1px solid #ddd;
-                border-bottom: 1px solid #ddd;
+                // border-left: 1px solid #ddd;
+                // border-bottom: 1px solid #ddd;
               }
           }
       }
@@ -37,5 +40,5 @@
 }
 .other{
     color: #bbb;
-    background-color: #ddd;
+    // background-color: #ddd;
   }
