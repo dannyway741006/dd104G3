@@ -16,7 +16,7 @@ body {
   background-image: linear-gradient(
     -30deg,
     rgba($primary, 0.7),
-    rgba($third, 0.6)
+    rgba($third, 0.7)
   );
   font-family: "Montserrat", "Noto Sans TC", sans-serif;
   overflow: hidden;
@@ -440,9 +440,6 @@ body {
       }
     }
   }
-}
-.layout_btn {
-  @include layoutBtn;
 }
 main {
   width: calc(100% - #{$slideBar} - 100px);
