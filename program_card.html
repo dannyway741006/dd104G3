@@ -131,27 +131,31 @@
               <div class="first_right">
                 <h3>新增至卡片</h3>
                 <hr />
-                <div class="first_right_member" @click.stop="openmember(),member_switch =! member_switch" :class="{click_light_two :member_switch}">
+                <div class="first_right_member" @click.stop="openmember(),member_switch =! member_switch"
+                  :class="{click_light_two :member_switch}">
                   <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
                   成員
                 </div>
-                <div class="wave" @click.stop="opendate(),calandar_switch =! calandar_switch" :class="{click_light :calandar_switch}">
+                <div class="wave" @click.stop="opendate(),calandar_switch =! calandar_switch"
+                  :class="{click_light :calandar_switch}">
                   <img src="./img/calendar.e1ea5ef5.svg" alt="" style="width: 20px;" />
                   到期日
                 </div>
-                <div @click.stop="opentodo(),todo_switch =! todo_switch" class="todogo" :class="{click_light_three :todo_switch}">
+                <div @click.stop="opentodo(),todo_switch =! todo_switch" class="todogo"
+                  :class="{click_light_three :todo_switch}">
                   <img src="./img/content.22f4a956.svg" alt="" style="width: 20px;" />
                   待辦清單
                 </div>
 
-                <div @click.stop="openfile(),fileder_switch =! fileder_switch" class="upfile" :class="{click_light_four : fileder_switch}">
+                <div @click.stop="openfile(),fileder_switch =! fileder_switch" class="upfile"
+                  :class="{click_light_four : fileder_switch}">
                   <img src="./img/card_img/paperclip.cf9c8806.svg" alt="" style="width: 20px;" />
                   上傳附件
                 </div>
 
                 <!-- 新增待辦清單跳窗 -->
-               
-                  <div class="todo_lightbox" :class='{opentodo_lightbox: todo_lightbox_switch}' @click.stop="">
+                <transition name="fade" mode="out-in">
+                  <div class="todo_lightbox" v-show="todo_lightbox_switch" @click.stop="">
                     <label>
                       <p>待辦清單標題</p>
                       <!-- 讓燈箱的字和標題同步 -->
@@ -162,49 +166,53 @@
                       <button>新增</button>
                     </div>
                   </div>
-               
+                </transition>
+
+
                 <!-- 新增日曆跳窗 -->
                 <transition name="fade" mode="out-in">
-                <div class="calendar_lightbox" @click.stop="" v-show="showCalender">
-                  <h3>更改到期日</h3>
-                  <p class="day_date">日期</p>
-                  <div class="calendar_lightbox_content">
-                    <!-- 手刻日立 -->
-                    <div class="calendar" id='inCalender' ref='inCalender'>
-                      <div class="calendar_header">
-                        <button class="prev">
-                          <i class="material-icons">
-                            keyboard_arrow_left
-                          </i>
-                        </button>
-                        <p class="month">May 2019</p>
-                        <button class="next">
-                          <i class="material-icons">
-                            keyboard_arrow_right
-                          </i>
-                        </button>
+                  <div class="calendar_lightbox" @click.stop="" v-show="showCalender">
+                    <h3>更改到期日</h3>
+                    <p class="day_date">日期</p>
+                    <div class="calendar_lightbox_content">
+                      <!-- 手刻日立 -->
+                      <div class="calendar" id='inCalender' ref='inCalender'>
+                        <div class="calendar_header">
+                          <button class="prev">
+                            <i class="material-icons">
+                              keyboard_arrow_left
+                            </i>
+                          </button>
+                          <p class="month">May 2019</p>
+                          <button class="next">
+                            <i class="material-icons">
+                              keyboard_arrow_right
+                            </i>
+                          </button>
+                        </div>
+                        <table class="calendar_body"></table>
                       </div>
-                      <table class="calendar_body"></table>
-                    </div>
 
+                    </div>
                   </div>
-                </div>
-              </transition>
+                </transition>
 
                 <!-- 上船附件跳窗 -->
-                <div class="file_lightbox" :class="{openfile : file_switch}" @click.stop="" @change="fileSelected">
-                  <h3>上傳檔案</h3>
-                  <form method="post" enctype="multipart/form-data">
-                    <label class="upfile_content">
-                      <p>上傳附件</p>
-                      <input type="file" multiple id="upFile">
-                    </label>
-                  </form>
-                </div>
-
+                <transition name="fade" mode="out-in">
+                  <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="fileSelected">
+                    <h3>上傳檔案</h3>
+                    <form method="post" enctype="multipart/form-data">
+                      <label class="upfile_content">
+                        <p>上傳附件</p>
+                        <input type="file" multiple id="upFile">
+                      </label>
+                    </form>
+                  </div>
+                </transition>
 
                 <!-- 新增成員跳窗 -->
-                <div class="card_member_lightbox" :class="{open_card_mem : card_meber_switch}" @click.stop="">
+                <transition name="fade" mode="out-in">
+                <div class="card_member_lightbox" v-show="card_meber_switch" @click.stop="">
                   <h3>成員</h3>
                   <br>
                   <label for="">
@@ -242,6 +250,9 @@
                     </li>
                   </ul>
                 </div>
+              </transition>
+
+
 
               </div>
               <div class="second_right">
@@ -280,58 +291,60 @@
                     </div>
                     <!-- hover時顏色好像改不了 -->
                     <!-- <p><date-picker v-model="time2" valueType="format"/></p> -->
-                   
+
                     <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
                     <span :class="classObject">{{text}}</span>
                   </div>
                 </div>
-                    
+
 
                 <div class="card_todo_content" v-show="show_test">
-                <div class="todo_title">
-                  <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20"></div>
-                  <h3>待辦事項</h3>
-                  <div class="all_card_todo_delete" ><img
-                      src="./img/card_img/delete.0df56913.svg" alt="" width="20"  @click="show_test =! show_test"></div>
-                </div>
-                <div class="todo_progress_bar">
-                  <p>{{testt_length}}%</p>
-                  <div class="progress_bar">
-                    <span :style="{width:test_length+'%'}"></span>
+                  <div class="todo_title">
+                    <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20"></div>
+                    <h3>待辦事項</h3>
+                    <div class="all_card_todo_delete"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                        @click="show_test =! show_test"></div>
                   </div>
-                </div>
-                <!-- 新增的卡片細項 -->
-                <div>
-                  <div class="card_check_item" v-for="(item,index) in todo_test" :key="index">
-                    <div @click="item.test_status = !item.test_status,item.test_text =! item.test_text">
-                      <img src="./img/uncheck.svg" alt="" v-if="item.test_status">
-                      <img src="./img/check.svg" alt="" v-else >
+                  <div class="todo_progress_bar">
+                    <p>0%</p>
+                    <div class="progress_bar">
+                      <span :style="{width:test_length+'%'}"></span>
                     </div>
-                    <p :class="{lineThrough:item.test_text}">{{item.test_title}}</p>
-                    <div><img src="./img/icon/time-left.svg" alt=""></div>
-                    <div><img src="./img/card_img/delete.0df56913.svg" alt="" @click="delte_test_detail(index)"></div>
-                  
                   </div>
-                 
+                  <!-- 新增的卡片細項 -->
+                  <div>
+                    <div class="card_check_item" v-for="(item,index) in todo_test" :key="index">
+                      <div @click="item.test_status = !item.test_status,item.test_text =! item.test_text">
+                        <img src="./img/uncheck.svg" alt="" v-if="item.test_status">
+                        <img src="./img/check.svg" alt="" v-else>
+                      </div>
+                      <p :class="{lineThrough:item.test_text}">{{item.test_title}}</p>
+                      <div><img src="./img/icon/time-left.svg" alt=""></div>
+                      <div><img src="./img/card_img/delete.0df56913.svg" alt="" @click="delte_test_detail(index)"></div>
+
+                    </div>
+
+                  </div>
+                  <div class="card_add_button">
+
+                    <label for="">
+                      <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
+                        v-model.trim="test_message" @keyup.enter="add_test_card"
+                        @focus="text_card_length =! text_card_length" :class="{addlength : text_card_length}"
+                        @blur="text_card_length =! text_card_length">
+                      <img src="./img/card_img/plus_write.svg" alt="" width="14" @mousedown="add_test_card">
+                    </label>
+
+                  </div>
+
+
                 </div>
-                <div class="card_add_button">
-
-                  <label for="">
-                    <input placeholder="增加項目" type="text" class="card_detail_lightbox_input" v-model.trim="test_message"
-                      @keyup.enter="add_test_card" @focus="text_card_length =! text_card_length"
-                      :class="{addlength : text_card_length}" @blur="text_card_length =! text_card_length">
-                    <img src="./img/card_img/plus_write.svg" alt="" width="14" @mousedown="add_test_card">
-                  </label>
-
-                </div>
-                
-
-              </div>
 
 
 
 
                 <!-- 新增出來的待辦清單 -->
+                <transition-group name="fade" tag="div">
                 <div class="card_todo_content" v-for="(item,detailIndex) in todo_list_content_detail"
                   :key="detailIndex">
                   <div class="todo_title">
@@ -341,23 +354,29 @@
                         src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
                   </div>
                   <div class="todo_progress_bar">
-                    <p>{{item.progress_bar_length}}%</p>
+                    <p>0%</p>
                     <div class="progress_bar">
-                      <span :style="{width:item.progress_bar_length+'%'}"></span>
+                      <span :style="{width:0+'%'}"></span>
                     </div>
                   </div>
                   <!-- 新增的卡片細項 -->
-                  <div>
+
+
+                  <transition-group name="fade" tag="div" >
+                 
                     <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
                       <div @click="item.status = !item.status,item.text =!item.text">
-                        <img src="./img/uncheck.svg" alt="" v-if="item.status">
-                        <img src="./img/check.svg" alt="" v-else  @click="changeprogressbar">
+                        <img src="./img/uncheck.svg" alt="" v-if="item.status"
+                          @click="changeprogressbar(bigindex,index)">
+                        <img src="./img/check.svg" alt="" v-else>
                       </div>
                       <p :class="{lineThrough:item.text}">{{item.content}}</p>
                       <div><img src="./img/icon/time-left.svg" alt=""></div>
                       <div><img src="./img/card_img/delete.0df56913.svg" alt="" @click="delete_todo_title(detailIndex,index)"></div>
                     </div>
-                  </div>
+                 
+                </transition-group>
+
 
                   <div class="card_add_button">
 
@@ -365,12 +384,14 @@
                       <input placeholder="增加項目" type="text" class="card_detail_lightbox_input" v-model.trim="item.test"
                         @keyup.enter="add_card_detail(detailIndex)" @focus="item.card_length =! item.card_length"
                         :class="{addlength : item.card_length}" @blur="item.card_length =! item.card_length">
-                      <img src="./img/card_img/plus_write.svg" alt="" width="14" @mousedown="add_card_detail(detailIndex)">
+                      <img src="./img/card_img/plus_write.svg" alt="" width="14"
+                        @mousedown="add_card_detail(detailIndex)">
                     </label>
 
                   </div>
 
                 </div>
+              </transition-group>
 
 
 
@@ -431,12 +452,12 @@
       container.classList.toggle("nav_open")
     );
   </script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
-   <script src="./node_modules/vue2-datepicker/index.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+  <script src="./node_modules/vue2-datepicker/index.min.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
   <script src="./js/card.js"></script>
 
 
-  </body>
+</body>
 
 </html>

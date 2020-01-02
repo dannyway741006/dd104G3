@@ -107,7 +107,8 @@ var vm = new Vue({
           test: '',
           // 將卡片細節塞入該陣列裡面
           lists: [],
-          progress_bar_length:''
+          // progress_bar_length:'',
+          card_length:false,
         });
 
         this.todo_lightbox_input_title = '';
@@ -179,19 +180,17 @@ var vm = new Vue({
 
     },
 
-    delete_todo_title(bigindex,index) {
-      this.todo_list_content_detail[bigindex].lists.splice(index,1,);
+    delete_todo_title(detailIndex,index) {
+      this.todo_list_content_detail[detailIndex].lists.splice(index,1,);
      
       // this.todo_list_content_detail[detailIndex].lists.splice(index, 1);
     },
 
     changeprogressbar(bigindex,index){
-      this.progress_mount.push(this.todo_list_content_detail[bigindex].lists[index]);
-       let orign=this.todo_list_content_detail[bigindex].lists.length;
-       let alter=this.progress_mount.length;
-       console.log((100/orign)*alter);
-       return (100/orign)*alter;
-      
+      // this.progress_mount.push(this.todo_list_content_detail[bigindex].lists[index]);
+      //  let orign=this.todo_list_content_detail[bigindex].lists.length;
+      //  let alter=this.progress_mount.length;
+     
     },
     openmember() {
       this.card_meber_switch = true;
@@ -236,14 +235,19 @@ var vm = new Vue({
     calender(this.$refs.inCalender);
   },
   computed: {
-    testt_length(){
-      let length=this.todo_test.length;
-       let array=[];
-      if(this.todo_test.test_status==false){
-        array.push();
-        console.log(array);
-      }
-    },
+    // testt_length(){
+    //   let length=this.todo_test.length;
+    //    let array=[];
+    //   if(this.todo_test.test_status==false){
+    //     array.push();
+    //     console.log(array);
+    //   }
+    // },
+    // progress_bar_length(){
+    
+    //    console.log(alter);
+    //    return (100/orign)*alter;
+    // },
   },
   components: {
     DatePicker

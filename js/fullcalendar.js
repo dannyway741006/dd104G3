@@ -14,9 +14,8 @@ $(document).ready(function () {
         header: {
           left: 'prev,next today',
           center: 'title',
-          right: 'month,agendaWeek,agendaDay,listMonth'
+          right: 'month,agendaDay'
         },
-        handleWindowResize:true,
         events: [{
                 title: 'All Day Event',
                 start: new Date(y, m, 1)
