@@ -1035,6 +1035,10 @@ main .content {
 /*------------------------- */
 /*        商品清單頁面      */
 /*------------------------- */
+.content {
+  position: relative;
+}
+
 .mall_content {
   width: 100%;
   height: 100%;
@@ -1050,6 +1054,9 @@ main .content {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .mall_content .mall_content_right {
@@ -1132,11 +1139,8 @@ main .content {
 /*        商品單品頁面      */
 /*------------------------- */
 .mall_poduct_cart {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.568);
-  border-radius: 10px;
-  border: 1px solid #dfdfdcdd;
 }
 
 .mall_poduct_cart .mall_poduct_content {
@@ -1148,7 +1152,7 @@ main .content {
 }
 
 .product_img {
-  width: 40%;
+  width: 60%;
   padding: 1% 0 4%;
 }
 
@@ -1174,7 +1178,7 @@ main .content {
 }
 
 .product_text {
-  width: 60%;
+  width: 40%;
   padding: 5% 5%;
 }
 
@@ -2844,19 +2848,19 @@ main .content {
 }
 
 .right_aside .memberRight .card_add_button label input.addlength::-webkit-input-placeholder {
-  margin: 0 auto;
+  text-align: center;
 }
 
 .right_aside .memberRight .card_add_button label input.addlength:-ms-input-placeholder {
-  margin: 0 auto;
+  text-align: center;
 }
 
 .right_aside .memberRight .card_add_button label input.addlength::-ms-input-placeholder {
-  margin: 0 auto;
+  text-align: center;
 }
 
 .right_aside .memberRight .card_add_button label input.addlength::placeholder {
-  margin: 0 auto;
+  text-align: center;
 }
 
 .right_aside .memberRight .card_add_button label input::-webkit-input-placeholder {
@@ -2991,13 +2995,8 @@ main .content {
   position: fixed;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
-  display: none;
   top: 299px;
   z-index: 9999999;
-}
-
-.todo_lightbox.opentodo_lightbox {
-  display: block;
 }
 
 .todo_lightbox p {
@@ -3226,13 +3225,8 @@ main .content {
   top: 353px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
-  display: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 9999999;
-}
-
-.file_lightbox.openfile {
-  display: block;
 }
 
 .file_lightbox h3 {
@@ -3274,13 +3268,8 @@ main .content {
   top: 185px;
   -webkit-box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.1);
-  display: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
   z-index: 9999999;
-}
-
-.card_member_lightbox.open_card_mem {
-  display: block;
 }
 
 .card_member_lightbox h3 {
@@ -3373,8 +3362,8 @@ main .content {
 
 .fade-enter-active,
 .fade-leave-active {
-  -webkit-transition: all .8s ease;
-  transition: all .8s ease;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
 }
 
 .fade-enter {
@@ -5109,14 +5098,93 @@ main .content {
 .btn-primary {
   background-color: #81c7d4 !important;
   border-color: #81c7d4 !important;
+  border-radius: 5px !important;
 }
 
-#content #calendar {
-  max-width: 1050px;
+.fc-day-header {
+  background-color: #546A76 !important;
+  color: white !important;
+}
+
+.fc-content {
+  background-color: #B4D4EE;
+}
+
+.fc-bootstrap4 a.fc-event:not([href]):not([tabindex]) {
+  color: #777777 !important;
+  border: none !important;
+}
+
+.fc-event {
+  border: none !important;
+  color: #546A76 !important;
+}
+
+.fc-day-number {
+  color: #546A76 !important;
+}
+
+#content .rwdcalendar {
+  border: 1px solid red;
+  margin: 50px auto;
+}
+
+#content .rwdcalendar #calendar {
+  max-width: 1000px;
+  min-height: 90vh;
   border: 1px solid blue;
-  padding: 15px;
-  border-radius: 10px;
+  border-radius: 20px;
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.calendar {
+  margin: 30px 0;
+}
+
+.calendar .weekDay, .calendar .week {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.calendar .week {
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.calendar .week div {
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  height: 90px;
+  line-height: 30px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.calendar .week div:before {
+  position: absolute;
+  content: attr(data-date);
+  top: 0;
+  right: 0;
+  display: block;
+  width: 30px;
+}
+
+.today:before {
+  color: #fff;
+  background-color: #000;
+}
+
+.other {
+  color: #bbb;
 }
 /*# sourceMappingURL=main.css.map */

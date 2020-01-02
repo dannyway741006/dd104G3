@@ -12,5 +12,5 @@
       "savePath": "./css"
     }
   ],
-  "liveServer.settings.CustomBrowser": "chrome"
+  "liveServer.settings.CustomBrowser": "chrome:PrivateMode"
 }
