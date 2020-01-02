@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../node_modules/vue2-datepicker/scss/var.scss"
-    ],
-    "names": [],
-    "file": "var.css"
-}
