@@ -1,401 +1,266 @@
 /*------------------------- */
-/*        商品清單頁面      */
+/*          商城頁面        */
 /*------------------------- */
 
-.content{
-  
-  position: relative;
-
+main{
+  overflow: hidden;
 }
 
-
-
-
-
-
-
+.content {
+  position: relative;
+}
 
 .mall_content {
-  width: 100%;
-  height: 100%;
-  background-image: url(../img/mall_img/mall_bg.jpg);
-  background: cover;
-  background-position: -350px 0;
-  vertical-align: auto;
-  line-height: 100%;
-  position: relative;
-  display: flex;
-  justify-content:flex-end;
-  position: absolute;
-  top: 0;
-  left: 0;
- 
+
   .mall_content_right {
-    // margin-left: 0px;
-    width:65%;
-    height:95%;
+    // border: 1px solid blue;
+    width: 65%;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(255, 255, 255, 0.80);
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.85);
     align-content: flex-start;
-    border-radius: 10px 0 0 10px;
     @include positionCenter(y);
+    align-content: space-around;
+    box-shadow: 1px 1px 20px rgba(129, 129, 129, 0.7);
+    // border-radius: 10px 0 0 10px;
 
-    .mall_cart {
-      width: 31.5%;
-      margin: 1% .8%;
-      text-align: center;
-      cursor: pointer;
-      
 
-      .product_img {
-        width: 100%;
-        height: 162px;
-        border-radius: 5px;
-        overflow: hidden;
+    .cart_bg{
+      position: absolute;
+      padding: 10px;
+      width:10%;
+      height:50px;
+      top:0;
+      right:0;
+      margin: 10px;
 
-        img {
-          width: 100%;
-          transform-origin: center;
-          transition: all .3s linear;
+      .mall_cart_cir{
+        background-color:$danger;
+        color: $white;
+        width: 18px;
+        height: 18px;
+        border-radius: 18px;
+        border: 2px solid $danger;
+        position: absolute;
+        top: 25px;
+        left: 30px;
+        text-align: center;
+        vertical-align: middle;
+
+      }
+
+      >img{
+        cursor: pointer;
+        max-width: 30px;
+      }
+    
+    }
+
+    .mall_poduct_cart {
+      //商品卡片
+      width: 100%;
+      margin: 50px auto 0;
+
+      .mall_poduct_content {
+        //卡片內容
+        display: flex;
+        margin: 0 auto;
+
+        .product_img {
+          //商品圖
+          width: 50%;
+          padding: 10px;
+          // margin: 20px;
+          // border: 1px solid rgb(0, 255, 13);
+
+          .big_pic {
+            width: 100%;
+
+            .b_img {
+              width: 100%;
+            }
+          }
         }
 
-      }
+        .product_text {
+          //商品文字
+          width: 50%;
+          // border: 1px solid red;
 
-      .product_name {
-        margin: 5px 0;
-        color: $fontColorBlack;
-        transition: all 1s linear;
-      }
+          p {
+            @include font(5);
+          }
 
-      .product_price {
-        margin: 10px 0;
-        color: #c86c88;
-        font-weight: 800;
-        transition: all 1s linear;
-      }
+          ul.product_features {
+            margin: 20px 0 0 20px;
 
-
-      &:hover .product_img img {
-        width: 102%;
-      }
-
-      &:hover .product_name {
-        color: rgb(97, 97, 97);
-      }
-
-      &:hover .product_name {
-        color: rgb(97, 97, 97);
-      }
-
-
-    }
-
-
-  }
-}
-
-@include media(767px) {
-
-  .mall_content {
-    .mall_cart {
-      width: 48%;
-      margin: 2% .8%;
-      // padding: .8%;
-      text-align: center;
-      cursor: pointer;
-      // box-shadow: 2px 2px 10px rgb(195, 195, 195);
-    }
-  }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*------------------------- */
-/*        商品單品頁面      */
-/*------------------------- */
-
-
-.mall_poduct_cart {
-  //商品卡片
-  width: 100%;
-  margin: 0 auto;
-
-  .mall_poduct_content {
-    //卡片內容
-    display: flex;
-    width: 90%;
-    margin: 0 auto;
-  }
-
-}
-
-.product_img {
-  //商品圖
-  width: 60%;
-  padding: 1% 0 4%;
-
-  img {
-    width: 100%;
-  }
-
-  .small_pic {
-    display: flex;
-    cursor: pointer;
-
-
-    div {
-      width: 20%;
-      margin-left: 4%;
-    }
-
-    div:nth-child(1) {
-      width: 20%;
-      margin-left: 0;
-    }
-
-  }
-
-}
-
-.product_text {
-  //商品文字
-  width: 40%;
-  padding: 5% 5%;
-
-  .line {
-    height: 1px;
-    background-color: rgba(158, 158, 158, 0.609);
-    margin: 5% 0;
-  }
-
-  p {
-    @include font(4);
-    font-weight: bolder;
-  }
-
-  ul.product_features {
-    width: 100%;
-    margin: 10% 5%;
-  }
-
-  ul.product_select {
-    width: 100%;
-    margin: 2% 0;
-    list-style: none;
-
-    ul.select_btn {
-      display: flex;
-      margin: 2%;
-      text-align: center;
-      list-style: none;
-
-      b {
-        margin-right: 2%;
-        font-weight: lighter;
-      }
-
-      &>li {
-        margin: 0;
-
-
-        // &>input {
-        //   padding: 15%;
-        //   border: 1px solid rgb(177, 177, 177);
-        //   cursor: pointer;
-        //   min-width: 45px;
-
-        //   &:hover {
-        //     background-color: rgb(231, 231, 231);
-        //   }
-        // }
-
-        &>select {
-          padding: 5px 10px;
-          border: 1px solid #ccc;
-          border-radius: 2px;
-          cursor: pointer;
-          min-width: 45px;
-          outline: none;
-
-          option {
-            -moz-appearance: none;
-            /* Firefox */
-            -webkit-appearance: none;
-            /* Safari 和 Chrome */
-            appearance: none;
-
-            // &:invalid {
-
-            // }
-
+            >li {
+              @include font(1, 2);
+              color: $dark;
+            }
           }
         }
       }
     }
   }
+}
 
+//價格 按鈕
+.price_btn {
+  margin-top: 40px;
+
+  .product_price {
+    color: $price;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 20%;
+    margin-right: 30px;
+
+    .price_sale {
+      font-weight: bolder;
+      @include font(6);
+    }
+
+    span:nth-child(1) {
+      font-weight: bolder;
+    }
+
+    span:nth-child(2) {
+      margin-left: 5px;
+      font-weight: bolder;
+    }
+  }
+
+  .mall_bBtn_all {
+    display: inline-block;
+    width: 70%;
+    vertical-align: middle;
+
+    .mall_bBtn {
+      background-color: $primary;
+      width: 40%;
+      padding: 15px 0;
+      color: #fff;
+      border-radius: 10px;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      @include font(1);
+      // @include baseBtn(30%, 50px, 10px);
+    }
+
+    .mall_bBtn_cir {
+      background-color: lighten($color: $primary, $amount:12) ;
+      width: 55px;
+      height: 55px;
+      border-radius: 55px;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      padding: 15px 10px;
+      margin: 0 5px;
+      @include font(1);
+      vertical-align: middle;
+      // @include baseBtn(30%, 50px, 10px);
+    }
+
+   
+  }
+}
+// .line {
+//   height: 1px;
+//   background-color: rgba(93, 93, 93, 0.609);
+//   width: 100%;
+//   margin: 10px;
+// }
+
+//輪播
+
+.slider-bg {
+  overflow: hidden;
+  width: 100%;
+
+  h2 {
+    padding: 10px 0 0 10px;
+    color:$primary;
+    font-weight: 300;
+    margin: 0 0 0 20px;
+  }
+}
+
+.item {
+  text-align: center;
+
+  a {
+    display: block;
+    // border:1px solid red;
+    color: rgb(77, 77, 77);
+    text-decoration: none;
+    padding: 20px 0;
+
+    h4 {
+      padding: 10px 0;
+    }
+  }
+}
+
+.mall_content {
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/mall_img/mall_bg.jpg);
+  background-size: cover;
+  vertical-align: auto;
+  line-height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 
-
-/* 單選框 */
-.radio_style input[type="radio"] {
-  display: none;
+@include media(1200px) {
+  .price_btn {
+    margin-top: 40px;
+  
+    .product_price {
+      color: $price;
+      display: inline-block;
+      vertical-align: bottom;
+      width: 20%;
+      margin-right: 30px;
+  
+      .price_sale {
+        font-weight: bolder;
+        @include font(6);
+      }
+  
+      span:nth-child(1) {
+        font-weight: bolder;
+      }
+  
+      span:nth-child(2) {
+        margin-left: 5px;
+        font-weight: bolder;
+      }
+    }
+  
+    .mall_bBtn_all {
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+ 
+    }
+  }
 }
-
-.radio_style input[type="radio"]+label {
-  display: inline-block;
-  cursor: pointer;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-}
-
-.radio_style input[type="radio"]:checked+label {
-  background-color: #bbc2bf;
-  color: #fff;
-
-}
-
-.mall_bBtn {
-  // background-color: $primary;
-  // width: 30%;
-  // height: 43px;
-  // color: #fff;
-  // border-radius: 10px;
-  // border: 0;
-  // outline: none;
-  // cursor: pointer;
-  // margin: 0 1%;
-  @include baseBtn(45%, 50px, 10px);
-}
-
-.product_content_img img {
-  width: 70%;
-  margin: 0 0 0 5%;
-}
-
-.mallTitle {
-  padding: 1% 2%;
-  @include font(2);
-  height: 2px;
-  margin: 1% 0 3%;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 @include media(992px) {
-  .mall_poduct_cart {
-    width: 100%;
-
-    .mall_poduct_content {
-      display: block;
-
-      .product_img {
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .product_text {
-        width: 100%;
-        padding: 5% 2%;
-      }
-
-      .product_content_img img {
-        width: 100%;
-        padding: 5%;
-        margin: 0;
-      }
-
-    }
-  }
-
-
-  .mall_bBtn {
-    // margin: 0 1%;
-    @include baseBtn(40%, 50px, 10px);
-  }
-
-  .mallTitle {
-    margin: 1% 0 7%;
-  }
-
+  
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @include media(767px) {
-  .mall_poduct_cart {
-    width: 100%;
-
-    .mall_poduct_content {
-      display: block;
-
-      .product_img {
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .product_text {
-        width: 100%;
-        padding: 5% 2%;
-      }
-
-      .product_content_img img {
-        width: 100%;
-        padding: 5%;
-        margin: 0;
-      }
-
-    }
-  }
-
-  .mall_bBtn {
-    // margin: 0 1%;
-    @include baseBtn(40%, 50px, 10px);
-  }
-
-  .mallTitle {
-    margin: 1% 0 7%;
-  }
 
 }
