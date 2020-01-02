@@ -1,5 +1,5 @@
 new Vue({
-  el: "#app",
+  el: "#calendar",
   data() {
     return {
       today:{
@@ -12,7 +12,9 @@ new Vue({
         year:0,
         month:0,
         date:0,
-        day:0
+        day:0,
+        week:["January", "February", "March", "April", "May", "June", "July","August","Septemper","October","November","December"][new Date().getMonth()],
+       
       }
     };
   },
@@ -21,12 +23,13 @@ new Vue({
   },
   methods:{
     setToday(){
-      console.log("123");
+      // console.log("123");
       const date = new Date()
       this.today.year = this.calendar.year = date.getFullYear()
       this.today.month = this.calendar.month = date.getMonth() // 0~11
       this.today.date = this.calendar.date = date.getDate()
-      this.today.day = this.calendar.day = date.getDay()
+      this.today.day = this.calendar.day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()]
+      this.calendar.week=["January", "February", "March", "April", "May", "June", "July","August","Septemper","October","November","December"][new Date().getMonth()]
     },
     adjustYear(fix){
       this.calendar.year += fix
@@ -34,14 +37,19 @@ new Vue({
     adjustMonth(fix){
       // this.calendar.month += fix 範圍
       let month = this.calendar.month + fix
+      // let engeng_month
       if(month > 11){
         this.adjustYear(1)
         this.calendar.month = 0
+         this.calendar.week=["January", "February", "March", "April", "May", "June", "July","August","Septemper","October","November","December"][0]
       }else if(month < 0){
         this.adjustYear(-1)
         this.calendar.month = 11
+        this.calendar.week=["January", "February", "March", "April", "May", "June", "July","August","Septemper","October","November","December"][11]
+        // this.calendar.eng_month=11
       }else{
         this.calendar.month = month
+        this.calendar.week=["January", "February", "March", "April", "May", "June", "July","August","Septemper","October","November","December"][month]
       }
 
     }
@@ -63,7 +71,8 @@ new Vue({
         year:date.getFullYear(),
         month:date.getMonth(),
         date:date.getDate(),
-        day:date.getDay(),
+        day:["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()],
+       
       }
     },
     calendarMonth(){
@@ -75,7 +84,8 @@ new Vue({
           year:date.getFullYear(),
           month:date.getMonth(),
           date:date.getDate(),
-          day:date.getDay()
+          day:["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()],
+
         })
       }
       return data
