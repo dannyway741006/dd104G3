@@ -5389,16 +5389,58 @@ main .content {
   color: #546A76 !important;
 }
 
-#content {
+#content .rwdcalendar {
   border: 1px solid red;
   margin: 50px auto;
 }
 
-#content #calendar {
+#content .rwdcalendar #calendar {
   max-width: 1000px;
+  min-height: 90vh;
   border: 1px solid blue;
   border-radius: 20px;
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.calendar {
+  margin: 30px 0;
+}
+
+.calendar .weekDay, .calendar .week {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.calendar .week div {
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  height: 90px;
+  line-height: 30px;
+}
+
+.calendar .week div:before {
+  position: absolute;
+  content: attr(data-date);
+  top: 0;
+  right: 0;
+  display: block;
+  width: 30px;
+}
+
+.today:before {
+  color: #fff;
+  background-color: #000;
+}
+
+.other {
+  color: #bbb;
 }
 /*# sourceMappingURL=main.css.map */
