@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./css/owlcarousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="./css/owlcarousel/owl.theme.default.css">
   <title>Document</title>
 </head>
 
@@ -100,85 +102,77 @@
   <main>
     <div class="content">
       <!-- 內容 -->
-
-      <div class="mall_content">
-
-        <div class="mall_content_right">
-
-
       
-        <div class="mall_cart">
-          <div class="product_img">
-            <img src="./img/mall_img/bag_p01.png" alt="">
+      <div class="mall_content">
+        <div class="mall_content_right">
+          <div class="mall_cart">
+            <div class="product_img">
+              <img src="./img/mall_img/bag_p01.png" alt="">
+            </div>
+            <div class="product_name">品名品名</div>
+            <div class="product_price">$399</div>
           </div>
-          <div class="product_name">品名品名</div>
-          <div class="product_price">$399</div>
-        </div>
-
-
-
-        <div class="mall_cart">
-          <div class="product_img">
-            <img src="./img/mall_img/bag_p01.png" alt="">
+          <div class="mall_cart">
+            <div class="product_img">
+              <img src="./img/mall_img/bag_p01.png" alt="">
+            </div>
+            <div class="product_name">品名品名</div>
+            <div class="product_price">$399</div>
           </div>
-          <div class="product_name">品名品名</div>
-          <div class="product_price">$399</div>
-        </div>
 
-
-        <div class="mall_cart">
-          <div class="product_img">
-            <img src="./img/mall_img/bag_p01.png" alt="">
+          <div class="mall_cart">
+            <div class="product_img">
+              <img src="./img/mall_img/bag_p01.png" alt="">
+            </div>
+            <div class="product_name">品名品名</div>
+            <div class="product_price">$399</div>
           </div>
-          <div class="product_name">品名品名</div>
-          <div class="product_price">$399</div>
-        </div>
 
-        <div class="mall_cart">
-          <div class="product_img">
-            <img src="./img/mall_img/bag_p01.png" alt="">
+          <div class="mall_cart">
+            <div class="product_img">
+              <img src="./img/mall_img/bag_p01.png" alt="">
+            </div>
+            <div class="product_name">品名品名</div>
+            <div class="product_price">$399</div>
           </div>
-          <div class="product_name">品名品名</div>
-          <div class="product_price">$399</div>
-        </div>
 
-        <div class="mall_cart">
-          <div class="product_img">
-            <img src="./img/mall_img/bag_p01.png" alt="">
+          <div class="mall_cart">
+            <div class="product_img">
+              <img src="./img/mall_img/bag_p01.png" alt="">
+            </div>
+            <div class="product_name">品名品名</div>
+            <div class="product_price">$399</div>
           </div>
-          <div class="product_name">品名品名</div>
-          <div class="product_price">$399</div>
-        </div>
 
-        <div class="mall_cart">
-          <div class="product_img">
-            <img src="./img/mall_img/bag_p01.png" alt="">
+          <div class="mall_cart">
+            <div class="product_img">
+              <img src="./img/mall_img/bag_p01.png" alt="">
+            </div>
+            <div class="product_name">品名品名</div>
+            <div class="product_price">$399</div>
           </div>
-          <div class="product_name">品名品名</div>
-          <div class="product_price">$399</div>
-        </div>
 
 
-        <div class="mall_cart">
-          <div class="product_img">
-            <img src="./img/mall_img/bag_p01.png" alt="">
+          <div class="mall_cart">
+            <a href="mall_product_notecover.html">
+            <div class="product_img">
+              <img src="./img/mall_img/bag_p01.png" alt="">
+            </div>
+            <div class="product_name">品名品名</div>
+            <div class="product_price">$399</div>
+          </a>
           </div>
-          <div class="product_name">品名品名</div>
-          <div class="product_price">$399</div>
+          
+     
+
+
+
+
+
+
+
         </div>
-
-
-        <div class="mall_cart">
-          <div class="product_img">
-            <img src="./img/mall_img/bag_p01.png" alt="">
-          </div>
-          <div class="product_name">品名品名</div>
-          <div class="product_price">$399</div>
-        </div>
-
       </div>
-    </div>
-
 
 
 
@@ -194,7 +188,7 @@
 
 
 
-
+  <script src="./js/mall.js"></script>
   <script src="../js/lib/three.min.js"></script>
   <script type="x-shader/x-fragment" id="fragmentshader">
     uniform vec3 color;
@@ -214,6 +208,49 @@
       container.classList.toggle("nav_open")
     );
   </script>
+
+
+
+  <!--啟用貓頭鷹-->
+  <script>
+    $(document).ready(function ($) {
+      $('.custom1').owlCarousel({
+        // animateOut: 'slideOutDown',
+        // animateIn: 'flipInY',
+        items: 3,
+        margin: 30,
+        stagePadding: 30,
+        smartSpeed: 450,
+        loop: true,
+        autoplay: true, //自動輪播
+        autoplayTimeout: 4500, // 輪播速度
+        dots: false,
+        nav: true,
+
+        responsive: {
+          768: {
+            items: 3
+          },
+
+          480: {
+            items: 1
+          },
+
+          0: {
+            items: 1
+          }
+
+        }
+
+
+      });
+    });
+  </script>
+
+  <!--貓頭鷹跑馬燈的JS-->
+  <script src="./js/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/js/owlcarousel/jquery.min.js"></script>
+  <script src="owlcarousel/owl.carousel.min.js"></script>
 
 </body>
 

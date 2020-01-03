@@ -186,12 +186,12 @@
                           <p>25:00</p>
                         </div>
                         <div class="status">
-                          <div class="playPause" @click='countDown(key)' :key="item.id">
-                            <div v-if='!item.isPlay' class="play">
+                          <div class="playPause" :key="item.id">
+                            <div v-if='item.runstatus ==0' @click='startTomato(item)' class="play" >
                               <img src="./img/play.svg" alt="" width="25px">
                               <img src="./img/play_c.svg" alt="" width="25px" class="play">
                             </div>
-                            <div v-else class="play pause">
+                            <div v-if='item.runstatus ==1' @click='pauseTomato(item)' class="play pause">
                               <img src="./img/pause.svg" alt="">
                               <img src="./img/pause_c.svg" alt="">
                             </div>

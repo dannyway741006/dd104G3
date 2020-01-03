@@ -334,7 +334,7 @@
 
     //新版待辦清單
     .card_todo_content {
-      margin-bottom: 24px;
+      margin-bottom: 50px;
       min-height: 125px;
 
       .todo_title {
@@ -513,7 +513,7 @@
             &.addlength{
               width:250px;
               &::placeholder {
-                margin: 0 auto;
+                text-align: center;
               }
             }
           &::placeholder {
@@ -631,13 +631,13 @@
   width: 200px;
   position: fixed;
   box-shadow: 3px 3px 6px 0px $shadow;
-  display: none;
+  // display: none;
   top:299px;
   z-index: 9999999;
 
-  &.opentodo_lightbox {
-    display: block;
-  }
+  // &.opentodo_lightbox {
+  //   display: block;
+  // }
 
   p {
     @include font(1, 20px);
@@ -837,12 +837,12 @@
   position: fixed;
   top:353px;
   box-shadow: 3px 3px 6px 0px $shadow;
-  display: none;
+  // display: none;
   border: 1px solid rgba(0, 0, 0, .1);
   z-index: 9999999;
-   &.openfile{
-     display: block;
-   }
+  //  &.openfile{
+  //    display: block;
+  //  }
   h3 {
     @include font(1, 20px);
   }
@@ -880,12 +880,12 @@
   position: fixed;
   top:185px;
   box-shadow: 3px 3px 6px 0px $shadow;
-  display: none;
+  // display: none;
   border: 1px solid rgba(0, 0, 0, .1);
   z-index: 9999999;
-  &.open_card_mem{
-    display: block;
-  }
+  // &.open_card_mem{
+  //   display: block;
+  // }
   h3{
     @include font(1,20px);
     text-align: start;
@@ -958,7 +958,7 @@
 // 卡片動畫效果
 .fade-enter-active, 
 .fade-leave-active {
-  transition: all .8s ease;
+  transition: all .3s ease;
 }
 .fade-enter {
   transform: translateX(-50%);
