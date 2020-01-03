@@ -326,7 +326,7 @@
                       <h4>看版成員</h4>
                       <ul>
                         <li>
-                          <div class="card_member_message" v-for="(item,index) in memebergo" @click="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                          <div class="card_member_message" v-for="(item,index) in memebergo" @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
                             <div><img :src="item.src" alt=""></div>
                             <span class="card_member_name">{{item.member_name}}<span>{{item.userId}}</span></span>
                             <div ><img :src="item.check" alt=""></div>
@@ -379,7 +379,7 @@
                         <h3>成員</h3>
                       </div>
                       <div class="memimg">
-                        <div class="card_member" v-for="(item,index) in member_inout"><img :src="item.source" alt=""></div>
+                        <div class="card_member" v-for="(item,index) in member_inout"><img :src="item" alt=""></div>
                         <!-- <div class="card_member"><img src="./img/program_img/program_member_2.png" alt=""></div>
                         <div class="card_member"><img src="./img/program_img/program_member_3.png" alt=""></div> -->
                       </div>
