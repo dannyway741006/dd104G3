@@ -502,14 +502,10 @@
     
         <div class="card_content">
           <!-- 內容  -->
-          <!-- <div class="clickButton">
-            <button id="light_button" type="button" @click="opened =! opened">
-              點擊後出現燈窗
-            </button>
-          </div> -->
-          <div class="card_light_box" id="card_light_box" :class="{opneLight: opened}">
+      
+          <div class="card_light_box" id="card_light_box" :class="{opneLight: opened}" v-for="(item,index) in programs.cards">
             <div class="card_header_title">
-              <h1 id="card_title">團專衝刺</h1>
+              <h1 id="card_title">123</h1>
               <div @click="opened = false"><img src="./img/card_img/cancel_w.svg" alt=""></div>
             </div>
   
@@ -614,27 +610,7 @@
                           <div ><img :src="item.check" alt=""></div>
                         </div>
                       </li>
-                      <!-- <li>
-                        <div class="card_member_message">
-                          <div><img src="./img/program_img/program_member_2.png" alt=""></div>
-                          <span class="card_member_name">楊小梅<span>user4756</span></span class="card_member_name">
-                         <div><img src="./" alt=""></div> 
-                        </div>
-                      </li>
-                      <li>
-                        <div class="card_member_message">
-                          <div><img src="./img/program_img/program_member_3.png" alt=""></div>
-                          <span class="card_member_name">張大千<span>user1234</span></span>
-                          <div><img src="./img/icon/checked_gray.svg" alt=""></div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="card_member_message">
-                          <div><img src="./img/card_img/878378-XXL.jpg" alt=""></div>
-                          <span class="card_member_name">吃大餅<span>user456</span></span class="card_member_name">
-                          <div><img src="./img/icon/checked_gray.svg" alt=""></div>
-                        </div>
-                      </li> -->
+                
                     </ul>
                   </div>
                 </transition>
