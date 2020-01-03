@@ -159,8 +159,8 @@
             </div>
             <div class="clockControl">
               <div class="switch">
-                <div class="work" @click="isRest=false">work</div>
-                <div class="rest" @click="isRest=true">rest</div>
+                <div class="work" @click="stoping=false">work</div>
+                <div class="rest" @click="stoping=true">rest</div>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@
                           <p>25:00</p>
                         </div>
                         <div class="status">
-                          <div class="playPause" @click='changePlay(key)' :key="item.id">
+                          <div class="playPause" @click='countDown(key)' :key="item.id">
                             <div v-if='!item.isPlay' class="play">
                               <img src="./img/play.svg" alt="" width="25px">
                               <img src="./img/play_c.svg" alt="" width="25px" class="play">
