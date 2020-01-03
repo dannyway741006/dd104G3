@@ -154,12 +154,12 @@
   .invite_list {
     // border: 1px solid red;
     // max-width: 400px;
-    @include card(auto, auto, false);
+    // @include card(auto, auto, false);
     display: inline-block;
     position: relative;
     background-color: $white;
-    // border-radius: 10px;
-    // box-shadow: 1px 1px 3px $shadow;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px $shadow;
     padding: 20px;
 
 
@@ -212,6 +212,7 @@
 
       p {
         @include font(1);
+        color: $dark;
       }
 
       input.invite_add_member_addr {

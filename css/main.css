@@ -1413,20 +1413,12 @@ main {
 }
 
 #program_main .invite_list {
-  width: auto;
-  height: auto;
-  border-radius: 20px;
-  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   display: inline-block;
   position: relative;
   background-color: #ffffff;
-  padding: 20px;
-}
-
-#program_main .invite_list > .card_content {
-  width: 100%;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
 
@@ -1580,6 +1572,7 @@ main {
   letter-spacing: 3.2px;
   font-size: 16px;
   line-height: 20px;
+  color: #777777;
 }
 
 #program_main .invite_list .invite_add_member_box input.invite_add_member_addr {
