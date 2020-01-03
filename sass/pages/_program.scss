@@ -15,32 +15,44 @@
 #program_aside {
   border: 1px solid blue;
 
-  // 新專案選顏色
-  .colors {
-    .new_program_choose_color_item {
-      background-color: #5395de;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      margin: 2.5px;
-      display: inline-block;
-      cursor: pointer;
-      position: relative;
 
-      &.new_program_choose_color_item_checked {
-        &::before {
-          content: "";
-          width: 85%;
-          height: 85%;
-          position: absolute;
-          @include positionCenter();
-          background-image: url('../img/checked_w.626bbc68.svg');
-        }
-      }
+  .setting_project {
+    .setting_project_title1 {
+      margin-bottom: 10px;
     }
 
-    //新專案選顏色
+    .setting_project_title2 {
+      margin: 15px 0 10px;
+    }
+
+    // 新專案選顏色
+    .colors {
+      .new_program_choose_color_item {
+        background-color: #5395de;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin: 2.5px;
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+
+        &.new_program_choose_color_item_checked {
+          &::before {
+            content: "";
+            width: 85%;
+            height: 85%;
+            position: absolute;
+            @include positionCenter();
+            background-image: url('../img/checked_w.626bbc68.svg');
+          }
+        }
+      }
+
+      //新專案選顏色
+    }
   }
+
 
 
   .setting_pm {
@@ -63,7 +75,8 @@
 
 #no_program_screen {
   border: 1px solid red;
-  width: calc(100% - 500px);
+  // width: calc(100% - 500px);
+  width: calc(100% - 40px);
   text-align: center;
   @include positionCenter(y);
   color: $dark;
@@ -72,10 +85,10 @@
 
 #program_main {
   border: 1px solid red;
-  width: calc(100% - 500px);
-  height: calc(95% - 40px);
+  width: calc(100% - 40px);
+  height: 95%;
   font-size: 0;
-  background-image: url("../img/program_img/pmbg.jpg");
+  // background-image: url("../img/program_img/pmbg.jpg");
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -95,6 +108,22 @@
     transform: translateX(-50px);
     opacity: 0;
   }
+ 
+  
+  // .show-page-enter-active,
+  // .show-page-leave-active {
+  //   transition: all 0.8s ease;
+  // }
+
+  // .show-page-enter{
+  //   transform: translateX(-50px);
+  //   opacity: 0;
+  // }
+  // .show-page-leave-to{
+  //   transform: translateX(-50px);
+  //   opacity: 0;
+    
+  // }
 
   //邀請成員區
   .invite_list {
@@ -135,7 +164,7 @@
     }
 
     .invite_btn {
-      @include baseBtn(100px, auto, 30px);
+      @include baseBtn(100px, auto, 5px);
       margin-left: 10px;
       vertical-align: middle;
     }
@@ -373,7 +402,7 @@
 
             // border: 1px solid $gray;
             box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 10px 0 0;
             background-color: $white;
             text-align: start;
             width: 95%;
@@ -466,8 +495,8 @@
   .cal-chat_all_bar {
     border: 1px solid red;
     position: absolute;
-    right: 0px;
-    bottom: 0px;
+    right: 0;
+    bottom: 0;
     border-radius: 10px;
     padding: 0 10px;
     box-shadow: 1px 1px 3px $shadow;
@@ -504,7 +533,7 @@
 
   #program_main {
     width: 95%;
-    height: calc(95% - 82px);
+    // height: calc(95% - 82px);
   }
 
   #program_main .cards_column_all .cards_column {

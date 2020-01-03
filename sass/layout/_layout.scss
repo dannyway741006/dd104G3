@@ -7,16 +7,26 @@ html,
 body {
   width: 100%;
   height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+}
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
   background-image: linear-gradient(
     -30deg,
     rgba($primary, 0.7),
-    rgba($third, 0.6)
+    rgba($third, 0.7)
   );
-  display: flex;
-  align-items: center;
   font-family: "Montserrat", "Noto Sans TC", sans-serif;
   overflow: hidden;
+  position: relative;
   z-index: 1;
+  .header {
+    display: none;
+  }
 }
 #threeJs {
   position: absolute;
@@ -25,12 +35,10 @@ body {
   height: 100vh;
   z-index: -1;
 }
-.header {
-  display: none;
-}
 .nav_bar {
   width: $slideBar;
   height: 100vh;
+  min-height: 700px;
   background-image: linear-gradient(to bottom, rgba($white, 0.35), transparent);
   border-radius: 0 10px 0 0;
   overflow-y: scroll;
@@ -442,6 +450,7 @@ main {
   background-color: $white;
   border-radius: 20px;
   margin-left: 50px;
+  overflow: hidden;
   .content {
     width: 100%;
     height: 100%;
@@ -449,7 +458,7 @@ main {
   }
 }
 @include media(1023px) {
-  body {
+  #app {
     flex-direction: column;
     &.nav_open {
       .nav_bar {
@@ -469,34 +478,34 @@ main {
         opacity: 0;
       }
     }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 90px;
+      padding: 0 10px;
+      position: relative;
+      z-index: 999;
+      .logo {
+        width: 150px;
+        img {
+          width: 100%;
+          filter: drop-shadow(1px 1px 3px $shadow);
+        }
+      }
+      .nav_hamburger {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        .navBtn {
+          @include button(60px, true);
+        }
+      }
+    }
   }
   header {
     width: 100%;
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 90px;
-    padding: 0 10px;
-    position: relative;
-    z-index: 999;
-    .logo {
-      width: 150px;
-      img {
-        width: 100%;
-        filter: drop-shadow(1px 1px 3px $shadow);
-      }
-    }
-    .nav_hamburger {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      .navBtn {
-        @include button(60px, true);
-      }
-    }
   }
   .nav_bar {
     position: absolute;
@@ -519,16 +528,18 @@ main {
   }
 }
 @include media(479px) {
-  .header {
-    padding: 0 10px;
-    height: 65px;
-    .logo {
-      width: 85px;
-    }
-    .nav_hamburger {
-      position: absolute;
-      top: 10px;
-      right: 10px;
+  #app {
+    .header {
+      padding: 0 10px;
+      height: 65px;
+      .logo {
+        width: 85px;
+      }
+      .nav_hamburger {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
     }
   }
   .nav_bar {
