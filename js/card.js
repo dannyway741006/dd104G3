@@ -264,19 +264,23 @@ var vm = new Vue({
       if( this.memebergo[index].check==''){
         this.memebergo[index].uncolor=true;
         this.memebergo[index].check="./img/checked_member.svg";
-        if(this.member_inout.indexOf(this.memebergo[index].src)==-1)
+        console.log(this.member_inout);
+        console.log(this.memebergo[index].src);
+        console.log(this.member_inout.indexOf(this.memebergo[index].src));
+        if(this.member_inout.indexOf(this.memebergo[index].src) == -1)
         this.member_inout.push({
           source:this.memebergo[index].src,
         })
       }else{
         this.memebergo[index].check='';
         this.memebergo[index].uncolor=false;
-        if(this.member_inout.indexOf(this.memebergo[index].src)!=-1)
-        this.member_inout.splice(this.memebergo[index],1
-        )
+       
+          // this.member_inout.splice(this.memebergo[index],1)
+        
+          
+        
         // this.member_inout.slice(memebergo[index],1);
       }
-       
     },
   },
   mounted() {
