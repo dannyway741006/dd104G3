@@ -17,11 +17,14 @@
   },
   "homepage": "https://github.com/dannyway741006/dd104G3#readme",
   "dependencies": {
+<<<<<<< HEAD
     "@fullcalendar/bootstrap": "^4.3.0",
     "@fullcalendar/core": "^4.3.1",
     "@fullcalendar/daygrid": "^4.3.0",
     "blowup": "^1.0.1",
     "fullcalendar": "^3.10.1",
+=======
+>>>>>>> 4f3997c711c928c95a4ebbe5fe411d6579c27932
     "v-calendar": "^1.0.0-beta.23",
     "vue-event-calendar": "^1.5.2",
     "vue2-datepicker": "^3.3.0"

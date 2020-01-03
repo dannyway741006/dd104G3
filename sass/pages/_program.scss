@@ -108,8 +108,8 @@
     transform: translateX(-50px);
     opacity: 0;
   }
- 
-  
+
+
   // .show-page-enter-active,
   // .show-page-leave-active {
   //   transition: all 0.8s ease;
@@ -122,19 +122,46 @@
   // .show-page-leave-to{
   //   transform: translateX(-50px);
   //   opacity: 0;
-    
+
   // }
+
+  //scroll bar
+  /*定义滚动条高宽及背景
+ 高宽分别对应横竖滚动条的尺寸*/
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #F5F5F5;
+  }
+
+  /*定义滚动条轨道
+  内阴影+圆角*/
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+  }
+
+  /*定义滑块
+  内阴影+圆角*/
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px $primary;
+    background-color: $white;
+  }
 
   //邀請成員區
   .invite_list {
     // border: 1px solid red;
     // max-width: 400px;
+    @include card(auto, auto, false);
     display: inline-block;
     position: relative;
     background-color: $white;
-    border-radius: 10px;
-    box-shadow: 1px 1px 3px $shadow;
-    padding: 10px;
+    // border-radius: 10px;
+    // box-shadow: 1px 1px 3px $shadow;
+    padding: 20px;
+
 
     .program_member {
       display: inline-block;
@@ -154,9 +181,9 @@
       display: inline-block;
       width: 30px;
       height: 30px;
-      border: 1px solid $gray;
+      border: 1px solid $primary;
       background-color: rgba(255, 255, 255, 0.8);
-      color: $dark;
+      color: $primary;
       border-radius: 50%;
       text-align: center;
       vertical-align: middle;
@@ -164,7 +191,7 @@
     }
 
     .invite_btn {
-      @include baseBtn(100px, auto, 5px);
+      @include baseBtn(70px, auto, 5px);
       margin-left: 10px;
       vertical-align: middle;
     }
@@ -181,7 +208,7 @@
       top: 60px;
       right: -90px;
       // display: none;
-      z-index: 2;
+      z-index: 3;
 
       p {
         @include font(1);
@@ -210,6 +237,7 @@
 
   //卡片區
   .cards_column_all {
+    // @include card(auto, auto, false);
     border: 1px solid red;
     display: flex;
     flex-wrap: nowrap;
@@ -225,7 +253,8 @@
     .cards_column {
       // display: inline-block;
       border: 1px solid blue;
-      height: calc(95vh - 160px);
+      height: calc(90vh - 130px);
+
       min-width: 300px;
       max-width: 300px;
       box-shadow: 1px 1px 3px $shadow;
@@ -380,11 +409,13 @@
         .cards_list {
           // padding: 5%;
           min-height: 100%;
+          max-height: 100%;
           // border: 1px solid rgb(255, 72, 72);
           overflow-y: scroll;
 
           &.cards_list_todo {
-            min-height: calc(100% - 100px);
+            min-height: calc(100% - 105px);
+            max-height: calc(100% - 105px);
           }
 
 
@@ -419,15 +450,15 @@
               position: absolute;
               top: 0;
               left: 0;
-              width: 0;
-              height: 100%;
+              width: 100%;
+              height: 3px;
               transition: all 0.3s;
               z-index: -1;
               background-color: $programcolor1
             }
 
             &:hover .cards_list_card_color {
-              width: 100%;
+         height: 100%;
               opacity: 0.25;
             }
 
@@ -496,18 +527,27 @@
     border: 1px solid red;
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 10px;
     border-radius: 10px;
     padding: 0 10px;
     box-shadow: 1px 1px 3px $shadow;
+    // width: 100%;
 
     .cal-chat_same_all {
       display: inline-block;
+      // float: right;
+
+      // &::after {
+      //   content: "";
+      //   display: block;
+      //   clear: both;
+      // }
 
       .cal-chat_same_btn {
         // border: 1px solid blue;
         @include baseBtn(40px, 40px, 50px);
         margin: 5px;
+        z-index: 2;
 
         img {
           width: 65%;
@@ -518,7 +558,6 @@
 
   }
 
-  //行事曆
 
 
 
@@ -527,9 +566,9 @@
 
 
 @include media(1023px) {
-  #no_program_screen {
-    width: calc(100% - 40px);
-  }
+  // #no_program_screen {
+  //   width: calc(100% - 40px);
+  // }
 
   #program_main {
     width: 95%;
@@ -537,6 +576,16 @@
   }
 
   #program_main .cards_column_all .cards_column {
+    height: calc(95vh - 215px);
+  }
+
+}
+
+@include media(479px) {
+
+  #program_main .cards_column_all .cards_column {
     height: calc(95vh - 190px);
   }
+
+
 }

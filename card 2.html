@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+  <script src="./js/card.js"></script> -->
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <div>
+          <div class="more" id="more">
+            <img src="./img/icon/more-options.svg" alt="more" width="20" />
+            <img src="./img/icon/more-options_on.svg" alt="more" width="20" />
+          </div>
+          <h2>專案管理</h2>
+        </div>
+        <div>
+          <ul class="nav_list">
+            <li>
+              <a href="#">
+                <img src="./img/icon/time-left.svg" alt="clock" width="20" />
+                <img src="./img/icon/time-left_on.svg" alt="clock" width="20" />
+                <p>番茄鐘</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./img/icon/shopping-bag.svg" alt="shop" width="20" />
+                <img
+                  src="./img/icon/shopping-bag_on.svg"
+                  alt="shop"
+                  width="20"
+                />
+                <p>商城</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./img/icon/user.svg" alt="member" width="20" />
+                <img src="./img/icon/user_on.svg" alt="member" width="20" />
+                <p>會員中心</p>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./img/icon/shopping-cart.svg" alt="cart" width="20" />
+                <img
+                  src="./img/icon/shopping-cart_on.svg"
+                  alt="cart"
+                  width="20"
+                />
+              </a>
+            </li>
+          </ul>
+          <div class="status">登出</div>
+        </div>
+      </nav>
+    </header>
+    <main class="content" id="content">
+      <aside class="slide_bar">
+        <div class="logo">
+          <a href="#">
+            <img src="./img/logo_in.svg" alt="logo" />
+          </a>
+        </div>
+        <div class="slider_header"></div>
+        <ul class="slide_list">
+          <li>
+            <p>list</p>
+            <img src="./img/icon/arrow-point-to-right.svg" alt="arrow" />
+            <img src="./img/icon/arrow-point-to-right_on.svg" alt="arrow" />
+          </li>
+        </ul>
+      </aside>
+      <div
+        class="mask"
+        id="mask"
+        :class="{masked: open}"
+        @click="open = false"
+      ></div>
+      <div class="card_content">
+        <!-- 內容  -->
+        <div class="clickButton">
+          <button id="light_button" type="button" @click="open = !open">
+            點擊後出現燈窗
+          </button>
+        </div>
+        <div
+          class="card_light_box"
+          id="card_light_box"
+          :class="{opneLight: open}"
+        >
+          <h1 id="card_title">團專衝刺</h1>
+          <div class="lightbox_content">
+            <div class="left_aside">
+              <div class="first_right">
+                <h3>新增至卡片</h3>
+                <hr />
+                <div>
+                  <img
+                    src="./img/card_img/multiple-users-silhouette.cde8086c.svg"
+                    alt=""
+                    style="width: 20px;"
+                  />
+                  成員
+                </div>
+                <div class="wave">
+                  <img
+                    src="./img/card_img/select.svg"
+                    alt=""
+                    style="width: 20px;"
+                  />
+                  待辦清單
+                </div>
+                <div>
+                  <img
+                    src="./img/card_img/paperclip.cf9c8806.svg"
+                    alt=""
+                    style="width: 20px;"
+                  />
+                  上傳附件
+                </div>
+              </div>
+              <div class="second_right">
+                <h3>卡片動作</h3>
+                <hr />
+                <div>
+                  <img
+                    src="./img/card_img/delete.0df56913.svg"
+                    alt=""
+                    style="width: 20px;"
+                  />
+                  刪除卡片
+                </div>
+              </div>
+            </div>
+            <div class="right_aside"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <!-- 
+  <script>
+    const moreBtn = document.getElementById("more");
+    const content = document.getElementById("content");
+    const mask = document.getElementById("mask");
+    moreBtn.addEventListener("click", () => content.classList.add("active"));
+    mask.addEventListener("click", () => content.classList.remove("active"));
+  </script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="./js/card.js"></script>
+
+    <script>
+      const moreBtn = document.getElementById("more");
+      const content = document.getElementById("content");
+      const mask = document.getElementById("mask");
+      moreBtn.addEventListener("click", () => content.classList.add("active"));
+      mask.addEventListener("click", () => content.classList.remove("active"));
+    </script>
+  </body>
+</html>
