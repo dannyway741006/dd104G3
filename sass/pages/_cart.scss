@@ -16,7 +16,7 @@
     // border: 1px solid seagreen;
 
     h1 {
-      @include font(5,50px);
+      @include font(5, 50px);
       // color: $fontColorBlack;
     }
   }
@@ -36,7 +36,7 @@
     overflow: scroll;
 
     .cart_product {
-      margin-bottom:20px;
+      margin-bottom: 20px;
       display: flex;
       border-radius: 10px;
       box-shadow: 1px 1px 3px $shadow;
@@ -63,8 +63,8 @@
           @include font(0, 18px);
         }
 
-        h2 {
-          @include font(4, 26px);
+        h3 {
+          @include font(3, 26px);
         }
       }
 
@@ -80,8 +80,8 @@
           @include btnReset;
           width: 30px;
           height: 30px;
-          background-color: rgba(255,255,255,.2);
-          border: 1px solid rgba(255,255,255,.3);
+          background-color: rgba(255, 255, 255, .2);
+          border: 1px solid rgba(255, 255, 255, .3);
         }
 
         p {
@@ -89,9 +89,9 @@
           height: 30px;
           text-align: center;
           line-height: 30px;
-          background-color:  rgba(255,255,255,.2);
-          border-Top: 1px solid rgba(255,255,255,.3);
-          border-bottom: 1px solid rgba(255,255,255,.3);
+          background-color: rgba(255, 255, 255, .2);
+          border-Top: 1px solid rgba(255, 255, 255, .3);
+          border-bottom: 1px solid rgba(255, 255, 255, .3);
         }
       }
     }
@@ -102,4 +102,76 @@
   width: calc(40% - 20px);
   margin-left: 10px;
   box-sizing: border-box;
+
+  .cart_summary {
+    width: 100%;
+    // height: 30%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    h2 {
+      height: 50px;
+      @include font(4, 50px);
+    }
+
+    p {
+      @include font(3, 26px);
+    }
+
+    ;
+
+    h3 {
+      @include font(3, 30px);
+    }
+  }
+
+  .cart_account {
+    width: 100%;
+    border: 1px solid green;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+
+    .cart_credit_card {
+      width: 340px;
+      height: 212.5px;
+      border: 1px solid deeppink;
+      border-radius: 10px;
+      margin: auto;
+    }
+
+    .cart_credit_card_mes {
+      width: 100%;
+      border: 1px solid blue;
+      padding: 10px;
+      border-radius: 10px;
+
+      .cart_card_text {
+        padding: 10px 0px;
+        @include font(0, 18px);
+      }
+
+      .cart_numbox {
+        display: flex;
+        justify-content: space-between;
+
+        .cart_inputnum1 {
+          border: 1px solid orchid;
+          width: 22%;
+          height: 30px;
+          margin-bottom: 15px;
+          border-radius: 5px;
+        }
+        .cart_inputnum2 {
+          border: 1px solid orchid;
+          width:100%;
+          height: 30px;
+          margin-bottom: 15px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
 }
