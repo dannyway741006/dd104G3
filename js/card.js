@@ -81,38 +81,38 @@ var vm = new Vue({
         member_name: '王曉明',
         userId: 'user3456',
         src: './img/program_img/program_member_1.png',
-        check:'',
-        uncolor:false,
+        check: '',
+        uncolor: false,
       },
       {
         member_name: '楊小梅',
         userId: 'user4756',
         src: "./img/program_img/program_member_2.png",
-        check:'',
-        uncolor:false,
+        check: '',
+        uncolor: false,
       },
       {
         member_name: '張大千',
         userId: 'user1234',
         src: './img/program_img/program_member_3.png',
-        check:'',
-        uncolor:false,
+        check: '',
+        uncolor: false,
       },
       {
         member_name: '陳小羽',
         userId: 'user456',
         src: './img/card_img/878378-XXL.jpg',
-        check:'',
-        uncolor:false,
+        check: '',
+        uncolor: false,
       },
     ],
-     
+
     //member的去向
-    member_in:[],
+    member_in: [],
 
-    showcheck:false,
+    showcheck: false,
 
-    member_inout:[],
+    member_inout: [],
   },
   methods: {
     changeimg() {
@@ -258,29 +258,33 @@ var vm = new Vue({
     del_file(index) {
       this.filebox.splice(index, 1);
     },
-
     //成員進入
-    member_outin(index){
-      if( this.memebergo[index].check==''){
-        this.memebergo[index].uncolor=true;
-        this.memebergo[index].check="./img/checked_member.svg";
+    member_outin(index) {
+      if (this.memebergo[index].check == '') {
+        this.memebergo[index].uncolor = true;
+        this.memebergo[index].check = "./img/checked_member.svg";
         console.log(this.member_inout);
         console.log(this.memebergo[index].src);
         console.log(this.member_inout.indexOf(this.memebergo[index].src));
-        if(this.member_inout.indexOf(this.memebergo[index].src) == -1)
-        this.member_inout.push({
-          source:this.memebergo[index].src,
-        })
-      }else{
-        this.memebergo[index].check='';
-        this.memebergo[index].uncolor=false;
-       
-          // this.member_inout.splice(this.memebergo[index],1)
-        
-          
-        
-        // this.member_inout.slice(memebergo[index],1);
+        if (this.member_inout.indexOf(this.memebergo[index].src) == -1){
+          this.member_inout.push({
+            source: this.memebergo[index].src,
+          })
+        } 
       }
+      else {
+        this.memebergo[index].check = '';
+        this.memebergo[index].uncolor = false;
+        console.log('b');
+          // this.member_inout.splice(this.memebergo[index],1);
+        
+        // this.member_inout.splice(this.memebergo[index],1)
+
+
+
+        // this.member_inout.slice(memebergo[index],1);
+      
+    }
     },
   },
   mounted() {
@@ -315,4 +319,4 @@ var vm = new Vue({
   components: {
     DatePicker
   },
-});
+})
