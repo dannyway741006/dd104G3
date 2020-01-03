@@ -257,6 +257,13 @@ var main_content = new Vue({
       }
 
     },
+    //打開卡片本人
+    open_card_func(index) {
+      this.opened = ! this.opened;
+      console.log(this.programs[index].cards[this.programs[index].cards.length-1]);
+      
+    },
+
 
     //卡片背面
     changeimg() {

@@ -249,7 +249,7 @@
                     </div> -->
 
                     <!-- <transition-group name="fade" mode="out-in" tag="div"> -->
-                    <div class="cards_list_card" v-for="item in item.cards" :key="item"  @click="opened =! opened">
+                    <div class="cards_list_card" v-for="item in item.cards" :key="item"  @click="open_card_func(index)">
                       <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
                       <p>{{item}}</p>
                       <div class="cards_list_card_icon_bar">
