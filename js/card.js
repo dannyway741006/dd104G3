@@ -267,10 +267,12 @@ var vm = new Vue({
         console.log(this.member_inout);
         console.log(this.memebergo[index].src);
         console.log(this.member_inout.indexOf(this.memebergo[index].src));
-        if(this.member_inout.indexOf(this.memebergo[index].src) == -1)
-        this.member_inout.push({
+        if(this.member_inout.indexOf(this.memebergo[index].src) == -1){
+           this.member_inout.push({
           source:this.memebergo[index].src,
         })
+        }
+       
       }else{
         this.memebergo[index].check='';
         this.memebergo[index].uncolor=false;

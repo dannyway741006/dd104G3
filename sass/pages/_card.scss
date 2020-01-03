@@ -28,8 +28,8 @@
   overflow: hidden;
   padding-bottom: 15px;
   transition: opacity 0.3s;
-  opacity: 0;
-  z-index:-1;
+  // opacity: 0;
+  z-index:10;
   &.opneLight {
     opacity: 1;
     // display: block;
