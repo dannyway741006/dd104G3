@@ -263,26 +263,6 @@ var vm = new Vue({
       if (this.memebergo[index].check == '') {
         this.memebergo[index].uncolor = true;
         this.memebergo[index].check = "./img/checked_member.svg";
-<<<<<<< HEAD
-        console.log(this.member_inout);
-        console.log(this.memebergo[index].src);
-        console.log(this.member_inout.indexOf(this.memebergo[index].src));
-        if (this.member_inout.indexOf(this.memebergo[index].src) == -1){
-          this.member_inout.push({
-            source: this.memebergo[index].src,
-          })
-        } 
-      }
-      else {
-        this.memebergo[index].check = '';
-        this.memebergo[index].uncolor = false;
-        console.log('b');
-          // this.member_inout.splice(this.memebergo[index],1);
-        
-        // this.member_inout.splice(this.memebergo[index],1)
-
-
-=======
         // console.log(this.member_inout);
         // console.log("source:this.memebergo[index].src");
         // console.log(this.member_inout.indexOf(this.memebergo[index].src));
@@ -297,7 +277,6 @@ var vm = new Vue({
         this.memebergo[index].uncolor = false;
       let findIndex= this.member_inout.findIndex((item)=>{return item== this.memebergo[index].src});
         this.member_inout.splice(findIndex,1);
->>>>>>> practice
 
         // this.member_inout.slice(memebergo[index],1);
       
