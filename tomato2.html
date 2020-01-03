@@ -79,7 +79,7 @@
                 <div>
                   <img src="../img/check.svg" alt="check" width="20" />
                 </div>
-                <p>Primary_1Primary_1Primary_1Primary_1</p>
+                <p>Primary_</p>
               </li>
               <li>
                 <div>
@@ -106,28 +106,6 @@
                 <p>Primary_5</p>
               </li>
             </ul>
-            <div class="title">
-              <p>新建專案</p>
-            </div>
-            <div class="setting_project">
-              <div>
-                <p>專案名稱 Project</p>
-                <input type="text" />
-                <p>專案專屬色 Color</p>
-                <div class="colors">
-                  <span class="active"></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <button>建立專案</button>
-              </div>
-            </div>
             <div class="title">
               <p>時間設定</p>
             </div>
@@ -159,97 +137,99 @@
                 <button>確定</button>
               </div>
             </div>
-            <div class="title">
-              <p>專案</p>
-            </div>
-            <ul class="page_info_list setting_pm">
-              <li>
-                <p><span></span>專案1專案1專案1專案1專案1專案1專案1</p>
-                <img src="../img/check.svg" alt="check" width="20" />
-              </li>
-              <li>
-                <p><span></span>專案2</p>
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-              </li>
-              <li>
-                <p><span></span>專案2</p>
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-              </li>
-              <li>
-                <p><span></span>專案2</p>
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-              </li>
-              <li>
-                <p><span></span>專案2</p>
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-              </li>
-            </ul>
-            <div class="setting_bookmark">
-              <p>已完成專案</p>
-            </div>
-            <div class="search_bar">
-              <label>
-                <img src="../img/icon/search.svg" alt="search" />
-                <input type="text" placeholder="Search Somethings..." />
-              </label>
-            </div>
-            <div class="title">
-              <p>商品分類</p>
-            </div>
-            <ul class="page_info_list setting_shop">
-              <li>
-                <p>分類分類分類分類分類分類分類分類</p>
-              </li>
-              <li>
-                <p>分類</p>
-              </li>
-              <li>
-                <p>分類</p>
-              </li>
-            </ul>
           </div>
         </nav>
       </header>
-      <main>        <div class="content tomatoContent" id="tomatoContent">
-        <!-- 內容 -->
-        <div class="tomatoTimer">
-          <div class="clockFace">
-            <svg id="svg" width="30vw" height="30vw" viewPort="0 0 155 155" version="1.1"
-              xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" />
-                  <stop offset="100%" />
-                </linearGradient>
-              </defs>
-              <circle r="40%" cx="50%" cy="50%" />
-              <circle id="bar" r="40%" cx="50%" cy="50%" />
-              <circle id="outside" r="45%" cx="50%" cy="50%" />
-              <text id="timer" x="50%" y="50%"> {{countdownTime}} </text>
-            </svg>
-          </div>
-          <div class="clockControl">
-            <div class="switch">
-              <div class="work" @click="isRest=false">work</div>
-              <div class="rest" @click="isRest=true">rest</div>
+      <main>       
+        <div class="content tomatoContent" id="tomatoContent">
+          <!-- 內容 -->
+          <div class="tomatoTimer">
+            <div class="clockFace">
+              <svg id="svg" width="30vw" height="30vw" viewPort="0 0 155 155" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" />
+                    <stop offset="100%" />
+                  </linearGradient>
+                </defs>
+                <circle r="40%" cx="50%" cy="50%" />
+                <circle id="bar" r="40%" cx="50%" cy="50%" />
+                <circle id="outside" r="45%" cx="50%" cy="50%" />
+                <text id="timer" x="50%" y="50%"> {{countdownTime}} </text>
+              </svg>
+            </div>
+            <div class="clockControl">
+              <div class="switch">
+                <div class="work" @click="isRest=false">work</div>
+                <div class="rest" @click="isRest=true">rest</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="todo-stat">
-          <div class="todoList">
-            <div class="custom" id="todoCon1">
-              <div class="todoHead">
-                <h2>自訂任務</h2>
-                <div class="changeTodo moveToTrello">
-                  <img src="./img/icon/arrow-point-to-right.svg" alt="">
-                  <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
+          <div class="todo-stat">
+            <div class="todoList">
+              <div class="custom" id="todoCon1">
+                <div class="todoHead">
+                  <h2>自訂任務</h2>
+                  <div class="changeTodo moveToTrello">
+                    <img src="./img/icon/arrow-point-to-right.svg" alt="">
+                    <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
+                  </div>
                 </div>
+                  <transition-group name='fade' tag="ul">
+                    <li class="todoLi" :key='item.id' v-for="(item,key) in todos">
+                      <div class="todoColor"></div>
+                      <div class="title">
+                        <p> {{ item.title }} </p>
+                      </div>
+                      <div class="info">
+                        <div class="infoTimer">
+                          <img src="./img/time-left_c.0dbb2869.svg" alt="" width="20px">
+                          <p>25:00</p>
+                        </div>
+                        <div class="status">
+                          <div class="playPause" @click='changePlay(key)' :key="item.id">
+                            <div v-if='!item.isPlay' class="play">
+                              <img src="./img/play.svg" alt="" width="25px">
+                              <img src="./img/play_c.svg" alt="" width="25px" class="play">
+                            </div>
+                            <div v-else class="play pause">
+                              <img src="./img/pause.svg" alt="">
+                              <img src="./img/pause_c.svg" alt="">
+                            </div>
+                          </div>
+                          <div class="checkBtn">
+                            <input type="checkbox" id="b0"/ v-model="item.complete">
+                           <img src="../img/check.svg" alt="" width="20px" class="complete">
+                           <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
+                          </div>
+                          <div class="delete" @click="removeTodo(key)">
+                            <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
+                            <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </transition-group>
+                  <input type="text" class="addTodo" placeholder="請輸入任務" v-model="newTodo" @keyup.enter="addTodo">
               </div>
-                <transition-group name='fade' tag="ul">
-                  <li class="todoLi" :key='item.id' v-for="(item,key) in todos">
+              <div class="fromTrello" id="todoCon2">
+                <div class="todoHead">
+                  <div class="changeTodo backToCus">
+                   <img src="./img/icon/arrow-point-to-left.svg" alt="">
+                   <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
+                  </div>
+                  <h2>行事曆任務</h2>
+                    <div class="changeTodo moveToStat">
+                      <img src="./img/icon/arrow-point-to-right.svg" alt="">
+                      <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
+                    </div>
+                </div>
+                <!-- <ul>
+                  <li class="todoLi">
                     <div class="todoColor"></div>
                     <div class="title">
-                      <p> {{ item.title }} </p>
+                      <p>任務1</p>
                     </div>
                     <div class="info">
                       <div class="infoTimer">
@@ -257,118 +237,46 @@
                         <p>25:00</p>
                       </div>
                       <div class="status">
-                        <div class="playPause" @click='changePlay(key)' :key="item.id">
-                          <div v-if='!item.isPlay' class="play">
+                        <div class="playPause">
+                          <div class="play">
                             <img src="./img/play.svg" alt="" width="25px">
                             <img src="./img/play_c.svg" alt="" width="25px" class="play">
                           </div>
-                          <div v-else class="play pause">
-                            <img src="./img/pause.svg" alt="">
+                          <div class="play pause">
                             <img src="./img/pause_c.svg" alt="">
+                            <img src="./img/pause.svg" alt="">
                           </div>
                         </div>
                         <div class="checkBtn">
-                          <input type="checkbox" id="b0"/ v-model="item.complete">
+                          <input type="checkbox" id="b0" />
                          <img src="../img/check.svg" alt="" width="20px" class="complete">
                          <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
                         </div>
-                        <div class="delete" @click="removeTodo(key)">
+                        <div class="delete">
                           <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
                           <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
                         </div>
                       </div>
                     </div>
                   </li>
-                </transition-group>
-                <input type="text" class="addTodo" placeholder="請輸入任務" v-model="newTodo" @keyup.enter="addTodo">
+                </ul> -->
+              </div>
             </div>
-            <div class="fromTrello" id="todoCon2">
-              <div class="todoHead">
-                <div class="changeTodo backToCus">
+            <div class="stat">
+              <div class="statHead">
+                <div class="changeTodo backToTrello">
                  <img src="./img/icon/arrow-point-to-left.svg" alt="">
                  <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
                 </div>
-                <h2>行事曆任務</h2>
-                  <div class="changeTodo moveToStat">
-                    <img src="./img/icon/arrow-point-to-right.svg" alt="">
-                    <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
-                  </div>
+                <h2>統計圖表</h2>
               </div>
-              <!-- <ul>
-                <li class="todoLi">
-                  <div class="todoColor"></div>
-                  <div class="title">
-                    <p>任務1</p>
-                  </div>
-                  <div class="info">
-                    <div class="infoTimer">
-                      <img src="./img/time-left_c.0dbb2869.svg" alt="" width="20px">
-                      <p>25:00</p>
-                    </div>
-                    <div class="status">
-                      <div class="playPause">
-                        <div class="play">
-                          <img src="./img/play.svg" alt="" width="25px">
-                          <img src="./img/play_c.svg" alt="" width="25px" class="play">
-                        </div>
-                        <div class="play pause">
-                          <img src="./img/pause_c.svg" alt="">
-                          <img src="./img/pause.svg" alt="">
-                        </div>
-                      </div>
-                      <div class="checkBtn">
-                        <input type="checkbox" id="b0" />
-                       <img src="../img/check.svg" alt="" width="20px" class="complete">
-                       <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
-                      </div>
-                      <div class="delete">
-                        <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
-                        <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul> -->
-            </div>
+            </div>    
           </div>
-          <div class="stat">
-            <div class="statHead">
-              <div class="changeTodo backToTrello">
-               <img src="./img/icon/arrow-point-to-left.svg" alt="">
-               <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
-              </div>
-              <h2>統計圖表</h2>
-            </div>
-          </div>    
         </div>
-      </div>
-        <!-- <div class="content">
-          <!-- 內容 -->
-          <!-- 卡片(有header) -->
-          <!-- @include card($width: auto, $height: auto, $header: true, $color: $primary) -->
-
-          <!-- 
-          .card_box {
-            @include card(500px, 500px, true, $primary);
-          } 
-          -->
-          <!-- <div class="card_box">
-            <div class="card_header">123</div>
-            <div class="card_content">456</div>
-          </div> -->
-          <!-- 卡片(沒header) -->
-          <!-- 
-          .card_box {
-            @include card(500px, 500px, false);
-          } 
-          -->
-          <!-- <div class="card_box">
-            <div class="card_content">456</div>
-          </div> -->
-        </div> -->
       </main>
     </div>
-
+    <script src="./js/vue.js"></script>
+    <script src="./js/tomato.js"></script>
     <script src="../js/lib/three.min.js"></script>
     <script type="x-shader/x-fragment" id="fragmentshader">
       uniform vec3 color;

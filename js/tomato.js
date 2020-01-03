@@ -1,5 +1,5 @@
 var app = new Vue({
-    el:'#tomatoContent',
+    el:'#app',
     data:{
         newTodo:'',
         countdownTime:'1:00',
