@@ -2080,7 +2080,8 @@ main {
   padding-bottom: 15px;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
-  z-index: 10;
+  opacity: 0;
+  z-index: -1;
 }
 
 .card_light_box.opneLight {
@@ -2157,7 +2158,6 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 25%;
-  overflow: hidden;
   padding-left: 31px;
   padding-top: 25px;
   height: auto;
@@ -3165,7 +3165,8 @@ main {
             flex-direction: column;
     margin-top: 0px;
     overflow-y: scroll;
-    max-height: calc(100vh - 100px);
+    max-height: 100vh;
+    height: 82vh;
   }
   .card_light_box .lightbox_content .left_aside {
     width: 100%;

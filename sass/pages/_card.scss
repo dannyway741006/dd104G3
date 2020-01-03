@@ -28,8 +28,8 @@
   overflow: hidden;
   padding-bottom: 15px;
   transition: opacity 0.3s;
-  // opacity: 0;
-  z-index:10;
+  opacity: 0;
+  z-index:-1;
   &.opneLight {
     opacity: 1;
     // display: block;
@@ -89,7 +89,7 @@
     flex-direction: column;
     width: 25%;
     // height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
     // border-right: 1px solid #5395de;
     padding-left: 31px;
     padding-top: 25px;
@@ -999,7 +999,8 @@
       flex-direction: column;
       margin-top: 0px;
        overflow-y: scroll;
-       max-height:calc(100vh - 100px);
+       max-height:100vh;
+       height: 82vh;
       .left_aside {
         width: 100%;
         border: none;
