@@ -35,14 +35,14 @@
      @include font(1);
 
    }
-   div:nth-child(2){
-    margin:0 15px;
+   div:nth-child(3){
+    margin-right: 10px;
   
   }
-  div:nth-child(3){
+  div:nth-child(2){
     // margin:0 15px;
-  
-    width: 120px;
+    margin: 0 10px;
+        width: 120px;
   }
  }
 .todaybutton{
