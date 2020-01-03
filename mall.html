@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
-  <body id="container">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./css/owlcarousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="./css/owlcarousel/owl.theme.default.css">
+
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
     <div id="threeJs"></div>
     <header>
       <div class="header">
@@ -70,100 +75,7 @@
           </div>
         </div>
         <div class="page_info">
-          <div class="title">
-            <p>鈴聲</p>
-          </div>
-          <ul class="page_info_list setting_bell">
-            <li>
-              <div>
-                <img src="../img/check.svg" alt="check" width="20" />
-              </div>
-              <p>Primary_1Primary_1Primary_1Primary_1</p>
-            </li>
-            <li>
-              <div>
-                <img src="../img/uncheck.svg" alt="check" width="20" />
-              </div>
-              <p>Primary_2</p>
-            </li>
-            <li>
-              <div>
-                <img src="../img/uncheck.svg" alt="check" width="20" />
-              </div>
-              <p>Primary_3</p>
-            </li>
-            <li>
-              <div>
-                <img src="../img/uncheck.svg" alt="check" width="20" />
-              </div>
-              <p>Primary_4</p>
-            </li>
-            <li>
-              <div>
-                <img src="../img/uncheck.svg" alt="check" width="20" />
-              </div>
-              <p>Primary_5</p>
-            </li>
-          </ul>
-          <div class="title">
-            <p>時間設定</p>
-          </div>
-          <div class="setting_timer">
-            <p>Work</p>
-            <div>
-              <label>
-                <input type="number" />
-                <p>分</p>
-              </label>
-              <label>
-                <input type="number" />
-                <p>秒</p>
-              </label>
-              <button>確定</button>
-            </div>
-          </div>
-          <div class="setting_timer">
-            <p>Break</p>
-            <div>
-              <label>
-                <input type="number" />
-                <p>分</p>
-              </label>
-              <label>
-                <input type="number" />
-                <p>秒</p>
-              </label>
-              <button>確定</button>
-            </div>
-          </div>
-          <div class="title">
-            <p>專案</p>
-          </div>
-          <ul class="page_info_list setting_pm">
-            <li>
-              <p><span></span>專案1專案1專案1專案1專案1專案1專案1</p>
-              <img src="../img/check.svg" alt="check" width="20" />
-            </li>
-            <li>
-              <p><span></span>專案2</p>
-              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-            </li>
-            <li>
-              <p><span></span>專案2</p>
-              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-            </li>
-            <li>
-              <p><span></span>專案2</p>
-              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-            </li>
-            <li>
-              <p><span></span>專案2</p>
-              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-            </li>
-          </ul>
-          <div class="setting_bookmark">
-            <p>已完成專案</p>
-          </div>
+
           <div class="search_bar">
             <label>
               <img src="../img/icon/search.svg" alt="search" />
@@ -175,13 +87,13 @@
           </div>
           <ul class="page_info_list setting_shop">
             <li>
-              <p>分類分類分類分類分類分類分類分類</p>
+              <p>公事包</p>
             </li>
             <li>
-              <p>分類</p>
+              <p>識別證</p>
             </li>
             <li>
-              <p>分類</p>
+              <p>名片夾</p>
             </li>
           </ul>
         </div>
@@ -189,206 +101,126 @@
     </header>
     <main>
       <div class="content">
-        <!-- 內容 -->
-        <div class="mall_bg">
+        <div class="mall_content">
+          <div class="mall_content_right">
+            <div class="cart_bg">
+              <img src="./img/icon/shopping-cart_on_gray.svg" alt="">
+              <div class="mall_cart_cir">1</div>
+            </div>
+            <div class="mall_poduct_cart">
+              <div class="mall_poduct_content">
+                <div class="product_img">
+                  <div class="big_pic">
+                    <img class="b_img" src="img/mall_img/p1_black.png" alt="">
+                  </div>
+                </div>
 
-          <!-- 輪播  -->
-          <section id="slider">
-            <div class="custom1 owl-carousel owl-theme">
-              <div class="item">
-                <h4><img src="./img/mall_img/banner_1.jpg" alt=""></h4>
+                <div class="product_text">
+
+                  <p>纖巧商務包（三角洲）</p>
+
+                  <ul class="product_features">
+                    <li>絨毛內裡 保護電腦不刮傷</li>
+                    <li>凹形邊緣護墊 有效吸收抵禦衝擊</li>
+                  </ul>
+
+
+                  <div class="price_btn">
+                    <div class="product_price">
+                      <span>$</span><span class="price_sale">1,200</span>
+                    </div>
+                    <div class="mall_bBtn_all">
+
+<!-- 
+                      <div class="radio_style">
+                        <input type="radio" id="brown" name="color" value="brown">
+                        <label for="brown"">駝棕色</label>
+                        
+                            <input type="radio" id="blue" name="color" value="blue">
+                          <label for="blue">孔雀藍</label>
+
+                          <input type="radio" id="white" name="color" value="white">
+                          <label for="white">白米色</label>
+                      </div> -->
+                      <select name="mall_amount1" id="mall_amount1">
+                        <option value="brown">駝棕色</option>
+                        <option value="blue">孔雀藍</option>
+                        <option value="white">白米色</option>
+                      </select>
+
+                      <select name="mall_amount2" id="mall_amount2">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                      </select>
+
+                      <button class="mall_bBtn" value="Submit">加入購物車</button>
+
+                      <!-- <button class="mall_bBtn_cir" value="Submit"> -->
+                      <!-- <img src="./img/icon/shopping-cart_on_w.svg" alt="" width="80%"> -->
+                      <!-- </button> -->
+                    </div>
+                  </div>
+
+                  </form>
+                </div>
               </div>
-              <div class="item">
-                <h4><img src="./img/mall_img/banner_2.jpg" alt=""></h4>
-              </div>
-              <div class="item">
-                <h4><img src="./img/mall_img/banner_3.jpg" alt=""></h4>
-              </div>
-              <div class="item">
-                <h4><img src="./img/mall_img/banner_1.jpg" alt=""></h4>
-              </div>
-              <div class="item">
-                <h4><img src="./img/mall_img/banner_2.jpg" alt=""></h4>
-              </div>
-              <div class="item">
-                <h4><img src="./img/mall_img/banner_3.jpg" alt=""></h4>
-              </div>
             </div>
-  
-          </section>
-  
-  
-          <div class=" mall_content">
-  
-            <div class="mall_box">
-              <a href="mall_product.html">
-                <img src="img/mall_img/product_1.jpg" alt="">
-                <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
-                <div class="product_price">
-                  <span>$1,600</span>
-                  <span>$</span><span class="price_sale">1,200</span>
+            <!-- <div class="line"></div> -->
+
+            <!-- 輪播  -->
+            <div class="slider-bg">
+              <h2>其它商品</h2>
+              <section id="slider">
+                <div class="custom1 owl-carousel owl-theme">
+                  <div class="item">
+                    <a href="#" class="item_list">
+                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
+                      <div>商品品名</div>
+                    </a>
+                  </div>
+                  <div class="item">
+                    <a href="#" class="item_list">
+                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
+                      <div>商品品名</div>
+                    </a>
+                  </div>
+                  <div class="item">
+                    <a href="#" class="item_list">
+                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
+                      <div>商品品名</div>
+                    </a>
+                  </div>
+                  <div class="item">
+                    <a href="#" class="item_list">
+                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
+                      <div>商品品名</div>
+                    </a>
+                  </div>
+                  <div class="item">
+                    <a href="#" class="item_list">
+                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
+                      <div>商品品名</div>
+                    </a>
+                  </div>
+                  <div class="item">
+                    <a href="#" class="item_list">
+                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
+                      <div>商品品名</div>
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </section>
             </div>
-  
-  
-            <div class="mall_box">
-              <a href="mall_product.html">
-                <img src="img/mall_img/product_1.jpg" alt="">
-                <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
-                <div class="product_price">
-                  <span>$1,600</span>
-                  <span>$</span><span class="price_sale">1,200</span>
-                </div>
-              </a>
-            </div>
-  
-            <div class="mall_box">
-              <a href="mall_product.html">
-                <img src="img/mall_img/product_1.jpg" alt="">
-                <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
-                <div class="product_price">
-                  <span>$1,600</span>
-                  <span>$</span><span class="price_sale">1,200</span>
-                </div>
-              </a>
-            </div>
-  
-            <div class="mall_box">
-              <a href="mall_product.html">
-                <img src="img/mall_img/product_1.jpg" alt="">
-                <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
-                <div class="product_price">
-                  <span>$1,600</span>
-                  <span>$</span><span class="price_sale">1,200</span>
-                </div>
-              </a>
-            </div>
-  
-            <div class="mall_box">
-              <a href="mall_product.html">
-                <img src="img/mall_img/product_1.jpg" alt="">
-                <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
-                <div class="product_price">
-                  <span>$1,600</span>
-                  <span>$</span><span class="price_sale">1,200</span>
-                </div>
-              </a>
-            </div>
-  
-            <div class="mall_box">
-              <a href="mall_product.html">
-                <img src="img/mall_img/product_1.jpg" alt="">
-                <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
-                <div class="product_price">
-                  <span>$1,600</span>
-                  <span>$</span><span class="price_sale">1,200</span>
-                </div>
-              </a>
-            </div>
-  
-            <div class="mall_box">
-              <a href="mall_product.html">
-                <img src="img/mall_img/product_1.jpg" alt="">
-                <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
-                <div class="product_price">
-                  <span>$1,600</span>
-                  <span>$</span><span class="price_sale">1,200</span>
-                </div>
-              </a>
-            </div>
-  
-            <div class="mall_box">
-              <a href="mall_product.html">
-                <img src="img/mall_img/product_1.jpg" alt="">
-                <p>商品品名商品品名商品品名商品品名商品品名商品品</p>
-                <div class="product_price">
-                  <span>$1,600</span>
-                  <span>$</span><span class="price_sale">1,200</span>
-                </div>
-              </a>
-            </div>
-  
           </div>
-  
-  
         </div>
       </div>
-        <!-- 購物車 -->
-      <div class="cart_bg">
-        <div id="cart_page">
-          <div id="cart_title">
-            <h2>職人口袋清單</h2>
-          </div>
-          <div id="close_cart">
-            <p></p>
-            <p></p>
-          </div>
-          <div id="cart_underline"></div>
-          <div id="cart_main">
-            <form action="">
-              <div class="cart_product">
-                <div id="cart_product_img">
-                  <img src="./img/mall_img/product_1.jpg" alt="">
-                </div>
-                <div>產品說明</div>
-                <div>
-                  <p>單價</p>
-                  <p>$3999</p>
-                </div>
-                <div id="cart_product_quantity">
-                  <p id="cutProductNum"><img src="./img/cart_img/delete.svg" alt=""></p>
-                  <input type="text" value="1" id="productNum">
-                  <P id="addProductNum"><img src="./img/cart_img/add.svg" alt=""></P>
-                </div>
-                <div>
-                  <p>總價</p>
-                  <p>$3999</p>
-                </div>
-                <div>
-                  <p id="del_product"><img src="./img/member_img/trash-alt-regular1.svg" alt=""></p>
-                </div>
-              </div>
-              <div class="cart_product">
-                <div id="cart_product_img">
-                  <img src="./img/mall_img/product_1.jpg" alt="">
-                </div>
-                <div>產品說明</div>
-                <div>
-                  <p>單價</p>
-                  <p>$3999</p>
-                </div>
-                <div id="cart_product_quantity">
-                  <p id="cutProductNum"><img src="./img/cart_img/delete.svg" alt=""></p>
-                  <input type="text" value="1" id="productNum">
-                  <P id="addProductNum"><img src="./img/cart_img/add.svg" alt=""></P>
-                </div>
-                <div>
-                  <p>總價</p>
-                  <p>$3999</p>
-                </div>
-                <div>
-                  <p id="del_product"><img src="./img/member_img/trash-alt-regular1.svg" alt=""></p>
-                </div>
-              </div>
-              <div id="cartSubPosition">
-                <button id="cart_submit">確認購買</button>
-              </div>
-          </form>
-        </div>
-      </div>
-      </div>
     </main>
-    <footer></footer>
-  
+  </div>
 
-
-
-      </div>
-    </main>
-    <script src="../js/lib/three.min.js"></script>
-    <script type="x-shader/x-fragment" id="fragmentshader">
-      uniform vec3 color;
+  <script src="../js/lib/three.min.js"></script>
+  <script type="x-shader/x-fragment" id="fragmentshader">
+    uniform vec3 color;
         uniform sampler2D texture;
         varying float opacity;
         varying vec3 vColor;
@@ -397,21 +229,36 @@
             gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
         }
     </script>
-    <script src="../js/background.js"></script>
-    <script>
-      const container = document.getElementById("container");
-      const hamburger = document.querySelector(".nav_hamburger");
-      hamburger.addEventListener("click", () =>
-        container.classList.toggle("nav_open")
-      );
-    </script>
+  <script src="../js/background.js"></script>
+  <script>
+    const container = document.getElementById("app");
+    const hamburger = document.querySelector(".nav_hamburger");
+    hamburger.addEventListener("click", () =>
+      container.classList.toggle("nav_open")
+    );
+  </script>
+
+  <script src="./js/mall.js"></script>
 
 
-  <!--貓頭鷹跑馬燈的JS-->
-  <script src="./js/owlcarousel/owl.carousel.min.js"></script>
-  <!--啟用貓頭鷹-->
+  <!-- 放大鏡 -->
+  <!-- <script>
+    $(".big_pic img").blowup({
+      background: "#FCEBB6"
+    });
+  </script> -->
+
+
+  <!-- niceSelect下拉選單 -->
+  <script src="./js/nice_select/jquery.js"></script>
+  <script src="./js/nice_select/jquery.nice-select.js"></script>
+
+  <!--啟用貓頭鷹/niceSelect下拉-->
   <script>
     $(document).ready(function ($) {
+      $('#mall_amount1').niceSelect();
+      $('#mall_amount2').niceSelect();
+
       $('.custom1').owlCarousel({
         // animateOut: 'slideOutDown',
         // animateIn: 'flipInY',
@@ -421,20 +268,21 @@
         smartSpeed: 450,
         loop: true,
         autoplay: true, //自動輪播
-        autoplayTimeout: 1800, // 輪播速度
-        dots:false,
+        autoplayTimeout: 4500, // 輪播速度
+        dots: true,
+        // nav: true,
 
         responsive: {
           768: {
-            items:3
-          },
-        
-          480: {
-            items:1
+            items: 3
           },
 
-          0:{
-            items:1
+          480: {
+            items: 2
+          },
+
+          0: {
+            items: 2
           }
 
         }
@@ -443,5 +291,10 @@
       });
     });
   </script>
-  </body>
+
+  <!--貓頭鷹跑馬燈的JS-->
+  <script src="./js/owlcarousel/owl.carousel.min.js"></script>
+  <script src="./js/owlcarousel/jquery.min.js"></script>
+</body>
+
 </html>
