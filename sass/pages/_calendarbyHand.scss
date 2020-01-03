@@ -1,41 +1,111 @@
 [v-cloak]{
-    display: none;
+  display: none;
+}
+#calendar{
+  margin-top: 50px;
+ .calendar_date_title{
+   color:$primary;
+  //  border: 1px solid red;
+   position: relative;
+   .mont_date{
+       @include font(30,60px);
+       display: inline-block;
+       vertical-align:middle;
+   }
+   div:nth-child(2){
+    @include font(4,30px);
+    // border: 1px solid red;
+    display: inline-block;
+    vertical-align:top;
+   }
+  
+ }
+ .calendar_date_midtitle{
+   margin-top: 15px;
+   color:#777;
+  display:inline-flex;
+   font-size: 0;
+  //  border: 1px solid red;
+  //  justify-content: space-between;
+  .calleft_arrow,.calright_arrow{
+    cursor: pointer;
   }
+  div{
+  
+     @include font(1);
+
+   }
+   div:nth-child(2){
+    margin:0 15px;
+  
+  }
+  div:nth-child(3){
+    // margin:0 15px;
+  
+    width: 120px;
+  }
+ }
+.todaybutton{
+  position: absolute;
+  right: 50px;
+  bottom: 0;
+  button{
+    background-color: $primary;
+  @include baseBtn();
+  }
+  
+}
+}
 .calendar{
-    margin:30px 0;
-    .weekDay,.week{
-        display: flex;
-        border-bottom: 1px solid #ddd;
+  text-align:center;
+  margin:30px 0;
+  .weekDay,.week{
+      display: flex;
+      box-shadow: 1px 1px 3px $shadow;
+      // border-bottom: 1px solid #ddd;
+    }
+    .weekDay{
+      div{
+        flex: 1 1 0%;
+        line-height: 30px;
       }
-      .week{
-        border-right: 1px solid #ddd;
-        div{
-            position: relative;
-            flex: 1 1 0%;
-            height: 90px;
-            line-height: 30px;
-            border-left: 1px solid #ddd;
-            &:before{
-                position: absolute;
-                content:attr(data-date);
-                top: 0;
-                right: 0;
-                display: block;
-                width: 30px;
-                border-left: 1px solid #ddd;
-                border-bottom: 1px solid #ddd;
-              }
+    }
+    .week{
+      // border-right: 1px solid #ddd;
+      box-shadow: 1px 1px 3px $shadow;
+      div{
+          position: relative;
+          flex: 1 1 0%;
+          height: 90px;
+          line-height: 30px;
+          // box-shadow: 1px 1px 3px $shadow;
+          // border-left: 1px solid #ddd;
+          &:before{
+              position: absolute;
+              content:attr(data-date);
+              top: 0;
+              right: 0;
+              display: block;
+              width: 30px;
+             
+            }
+        }
+        div:nth-child(1),div:last-child{
+          &:before{
+            color: red;
           }
-      }
+        }
+    }
 }
 
 .today{
-    &:before{
-        color: #fff;
-        background-color: #000;
-      }
+  background-color: rgba(129,199,212,0.8);
+  &:before{
+      color: #fff;
+      // background-color: #000;
+    }
 }
 .other{
-    color: #bbb;
-    background-color: #ddd;
-  }
+  color: #bbb;
+  // background-color: #ddd;
+}
