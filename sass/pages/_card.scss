@@ -28,8 +28,8 @@
   overflow: hidden;
   padding-bottom: 15px;
   transition: opacity 0.3s;
-  // opacity: 0;
-  z-index:10;
+  opacity: 0;
+  z-index:-1;
   &.opneLight {
     opacity: 1;
     // display: block;
@@ -89,7 +89,7 @@
     flex-direction: column;
     width: 25%;
     // height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
     // border-right: 1px solid #5395de;
     padding-left: 31px;
     padding-top: 25px;
@@ -99,13 +99,14 @@
     .second_right,
     .first_right {
       transition: all 0.3s;
-
       .todogo,
       .first_right_member,
       .second_right_deletecard,
-      div:nth-child(4),
-      div:nth-child(5),
-      div:nth-child(6) {
+      .upfile,
+      .wave
+      // div:nth-child(5),
+      // div:nth-child(6) 
+      {
         width: 90%;
         margin: 10px 0px;
         padding: 10px;
@@ -224,7 +225,7 @@
 
         img {
           width: 100%;
-
+           height: 100%;
         }
       }
     }
@@ -887,11 +888,11 @@
   //   display: block;
   // }
   h3{
-    @include font(1,20px);
+    @include font(1,30px);
     text-align: start;
   }
   h4{
-    @include font(0,20px);
+    @include font(0,30px);
     text-align: start;
     font-weight: 400;
   }
@@ -906,6 +907,9 @@
       border-radius: 10px;
       width: 100%;
       margin: 5px 0;
+      &::placeholder{
+        @include font(0, 20px);
+      }
     }
   }
   ul{
@@ -916,6 +920,10 @@
       .card_member_message{
          display: flex;
         position: relative;
+        margin: 7px 0px;
+        &.mem_addcolor{
+          color:$radioActive ;
+        }
         div:first-child{
           width: 35px;
           height: 35px;
@@ -991,17 +999,17 @@
       flex-direction: column;
       margin-top: 0px;
        overflow-y: scroll;
-       max-height:calc(100vh - 100px);
+       max-height:100vh;
+       height: 82vh;
       .left_aside {
         width: 100%;
         border: none;
         .first_right,.second_right{
           .todogo,
-            .first_right_member,
-            .second_right_deletecard,
-            div:nth-child(4),
-            div:nth-child(5),
-            div:nth-child(6){
+          .first_right_member,
+          .second_right_deletecard,
+          .upfile,
+          .wave{
               width: 40%;
             }
             .card_member_lightbox{

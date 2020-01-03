@@ -52,28 +52,67 @@ var vm = new Vue({
 
     card_meber_switch: false,
 
-    i:'',
-    showCalender:false,
+    i: '',
+    showCalender: false,
 
-    calandar_switch:false,
-    member_switch:false,
-    todo_switch:false,
-    fileder_switch:false,
-    
+    calandar_switch: false,
+    member_switch: false,
+    todo_switch: false,
+    fileder_switch: false,
+
     //一開始就出現的todolist
-    show_test:true,
-    todo_test:[],
-    test_message:'',
+    show_test: true,
+    todo_test: [],
+    test_message: '',
 
-    text_card_length:false,
+    text_card_length: false,
 
-    test_length:'',
+    test_length: '',
 
 
- 
+
     time2: null,
-  
-    progress_mount:[],
+
+    progress_mount: [],
+
+
+    //顯示成員
+    memebergo: [{
+        member_name: '王曉明',
+        userId: 'user3456',
+        src: './img/program_img/program_member_1.png',
+        check:'',
+        uncolor:false,
+      },
+      {
+        member_name: '楊小梅',
+        userId: 'user4756',
+        src: "./img/program_img/program_member_2.png",
+        check:'',
+        uncolor:false,
+      },
+      {
+        member_name: '張大千',
+        userId: 'user1234',
+        src: './img/program_img/program_member_3.png',
+        check:'',
+        uncolor:false,
+      },
+      {
+        member_name: '陳小羽',
+        userId: 'user456',
+        src: './img/card_img/878378-XXL.jpg',
+        check:'',
+        uncolor:false,
+      },
+    ],
+     
+    //member的去向
+    member_in:[],
+
+    showcheck:false,
+
+    member_inout:[],
   },
   methods: {
     changeimg() {
@@ -108,12 +147,12 @@ var vm = new Vue({
           // 將卡片細節塞入該陣列裡面
           lists: [],
           // progress_bar_length:'',
-          card_length:false,
+          card_length: false,
         });
 
         this.todo_lightbox_input_title = '';
         this.todo_lightbox_switch = false;
-        this.todo_switch=false;
+        this.todo_switch = false;
       }
     },
 
@@ -131,20 +170,20 @@ var vm = new Vue({
       }
 
     },
-    add_test_card(){
-       if(this.test_message.length){
-          this.todo_test.push({
-            test_title:this.test_message,
-            test_status:true,
-            test_text:false,
-           
-          });
-         
-           this.test_message='';
-       }
-      
+    add_test_card() {
+      if (this.test_message.length) {
+        this.todo_test.push({
+          test_title: this.test_message,
+          test_status: true,
+          test_text: false,
+
+        });
+
+        this.test_message = '';
+      }
+
     },
-    delte_test_detail(index){
+    delte_test_detail(index) {
       this.todo_test.splice(index, 1);
     },
     deletecard_todo(detailIndex) {
@@ -180,17 +219,17 @@ var vm = new Vue({
 
     },
 
-    delete_todo_title(detailIndex,index) {
-      this.todo_list_content_detail[detailIndex].lists.splice(index,1,);
-     
+    delete_todo_title(detailIndex, index) {
+      this.todo_list_content_detail[detailIndex].lists.splice(index, 1, );
+
       // this.todo_list_content_detail[detailIndex].lists.splice(index, 1);
     },
 
-    changeprogressbar(bigindex,index){
+    changeprogressbar(bigindex, index) {
       // this.progress_mount.push(this.todo_list_content_detail[bigindex].lists[index]);
       //  let orign=this.todo_list_content_detail[bigindex].lists.length;
       //  let alter=this.progress_mount.length;
-     
+
     },
     openmember() {
       this.card_meber_switch = true;
@@ -219,6 +258,30 @@ var vm = new Vue({
     del_file(index) {
       this.filebox.splice(index, 1);
     },
+
+    //成員進入
+    member_outin(index){
+      if( this.memebergo[index].check==''){
+        this.memebergo[index].uncolor=true;
+        this.memebergo[index].check="./img/checked_member.svg";
+        console.log(this.member_inout);
+        console.log(this.memebergo[index].src);
+        console.log(this.member_inout.indexOf(this.memebergo[index].src));
+        if(this.member_inout.indexOf(this.memebergo[index].src) == -1)
+        this.member_inout.push({
+          source:this.memebergo[index].src,
+        })
+      }else{
+        this.memebergo[index].check='';
+        this.memebergo[index].uncolor=false;
+       
+          // this.member_inout.splice(this.memebergo[index],1)
+        
+          
+        
+        // this.member_inout.slice(memebergo[index],1);
+      }
+    },
   },
   mounted() {
     document.addEventListener('click', () => {
@@ -226,11 +289,11 @@ var vm = new Vue({
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.card_meber_switch = false;
-      
+
       this.showCalender = false;
-      this.member_switch=false;
-      this.todo_switch=false;
-      this.fileder_switch=false;
+      this.member_switch = false;
+      this.todo_switch = false;
+      this.fileder_switch = false;
     });
     calender(this.$refs.inCalender);
   },
@@ -244,7 +307,7 @@ var vm = new Vue({
     //   }
     // },
     // progress_bar_length(){
-    
+
     //    console.log(alter);
     //    return (100/orign)*alter;
     // },
