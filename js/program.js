@@ -1,74 +1,168 @@
-// $(function () {
-
-//   $('button.program_add_btn').click(function (e) {
-//     e.preventDefault();
-
-//     if (!$(this).hasClass('active')) {
-//       $(this).addClass('active');
-
-//       $('ul.program_add_list').prepend('<li class="todolist_li"><input type="text" class="todolist_input"></li>');
-//       $('input.todolist_input').focus();
-
-//       $('input.todolist_input').bind('keypress', function (e) {
-//         if (e.keyCode === 13) {
-//           var text = $('input.todolist_input').val();
-
-//           if (text !== '') {
-//             $('input.todolist_input').hide(0, function () {
-//               $(this).parent().html(text + '<span>x</span>');
-//               $(this).remove();
-//               $('button.program_add_btn').removeClass('active');
-//             });
-//           }
-//         }
-//       });
-//     }
-//   });
-
-//   $(document).on('click', 'li span', function () {
-//     $(this).parent().hide(0, function () {
-//       $(this).remove();
-//     });
-//   });
-
-// });
-
-// let button = document.getElementById("program_add_btn");
-// let light_box = document.getElementById("new_program_choose_box");
-// button.addEventListener("click", () => {
-//   mask.style.opacity = "1";
-//   mask.style.visibility = " visible";
-//   mask.style.display = "block";
-//   mask.style.zIndex = "10000";
-//   light_box.style.display = "block";
-//   light_box.style.zIndex = "10001";
-// })
-// mask.addEventListener("click", () => {
-//   mask.style.opacity = "0";
-//   mask.style.visibility = "hidden";
-//   mask.style.display = "none";
-//   mask.style.zIndex = "0";
-//   light_box.style.display = "none";
-// });
-
-
-
-var vm = new Vue({
-  el: "#content",
+//新增專案
+var main_content = new Vue({
+  el: "#program_all",
   data: {
-    tables: [],
-    lists: [],
-    open: false
+    open: false,
+
+    programs: [],
+    program_name: "",
+
+    history_programs: [],
+    history_program_name: "",
+
+    // program_status_src: './../img/uncheck.svg',
+    program_complete: false,
+
+    click_complete_btn: false,
+
+    add_cards_btn_div: true,
+
+    cards_list_card_input_box: false,
+    // cards: [],
+    // card_name: "",
+
+    invite_add_member_box: false,
+
+    colors: ["#5395DF", "#ff6e6e", "#89d9b2", "#ffb62e", "#c182ff", "#61cdff", "#a6c1ee", "#f8c3cd", "#f9bf45", "#eb7a77", "#86c166"],
+    selectColor: null,
+    new_program_choose_color_item: [],
+
+    program_setting_choose_selectColor: null,
+    program_setting_choose_color_item: [],
+
+    program_text_btn: false,
+
+    add_cards_btn: false,
+
+    page: -1,
+    history_page: null,
+
   },
   methods: {
-    add: function () {
-      // let cope = {
-      //   name: this.name
-      // }
-      // this.name = '';
-      // this.lists.push(cope);
-      // console.log(this.name)
-      // console.log(this.lists)
-    }
-  }
+    //新增專案
+    add_program() {
+      if (this.program_name !== "" && this.selectColor) {
+        this.programs.push({
+          program_names: this.program_name,
+          changeimage: false, //uncheck
+          color: this.selectColor,
+          
+          cards: [],
+          card_name: "",
+          
+         
+        });
+        this.program_name = "";
+        this.selectColor = null;
+        this.click_complete_btn = false;
+        // console.log(this.page);
+        // console.log(this.programs.length-1);
+        this.page = this.programs.length - 1;
+
+      }
+
+    },
+    //切換現有-已完成專案
+    change_watched_text() {
+      if (this.click_complete_btn == false) { //已完成專案畫面
+        this.click_complete_btn = true;
+        
+        // document.querySelector(".having_program").style.border = '1px solid red';
+      } else { //現有專案畫面
+        this.click_complete_btn = false;
+        // document.querySelector(".history li").style.transform = 'translateX(-50px);';
+
+      }
+    },
+
+    //新增卡片
+    show_cards_list_card_input_box() {
+      this.cards_list_card_input_box = true;
+      add_cards_btn = true;
+    },
+    add_card(card_name,index) {
+     console.log(this.program[index]);
+      if (this.card_name !== "") {
+        this.program[index].cards.push(card_name);
+        this.card_name = "";
+        this.cards_list_card_input_box = false;
+        this.add_cards_btn = false;
+        this.add_cards_btn_div = true;
+      } else {}
+    },
+    //完成專案
+    program_complete_func(index) {
+      this.programs[index].changeimage = !this.programs[index].changeimage
+
+      this.history_programs.push(this.programs[index])
+      
+      this.page = index - 1;
+      this.programs.splice(index, 1);
+
+      if (this.programs.length != 0 && this.page == -1) {
+        this.page = 0;
+      }
+// console.log(this.history_page=this.history_programs.length);
+this.history_page=this.history_programs.length-1;
+    },
+    //刪除專案
+    delete_program(index) {
+      this.history_programs.splice(index, 1)
+    },
+
+
+  },
+
+  mounted() {
+
+    document.addEventListener("click", () => {
+      this.open = false;
+      this.add_cards_btn_div = true;
+      this.cards_list_card_input_box = false;
+      this.card_name = "";
+      this.invite_add_member_box = false;
+      this.setting_btn = false;
+      this.add_cards_btn = false;
+
+      // console.log(this.programs.length - 1)
+      if (this.programs.length == 0) {
+        // console.log(this.programs.length-1)
+        this.page = -1
+      };
+      //拖曳
+      $(".cards_list_todo,.cards_list_doing,.cards_list_done")
+        .sortable({
+          connectWith: ".cards_list",
+          stack: ".cards_column_body .cards_list"
+          // revert:true,
+        })
+        .disableSelection();
+
+    });
+
+
+    // calender(this.$refs.outCalender);
+    // calender(this.$refs.inCalender);
+  },
+  watch: {
+
+  },
 });
+
+
+
+
+
+
+//拖曳
+// $(drag);
+
+// function drag() {
+//   $(".cards_list_todo,.cards_list_doing,.cards_list_done")
+//     .sortable({
+//       connectWith: ".cards_list",
+//       stack: ".cards_column_body .cards_list"
+//       // revert:true,
+//     })
+//     .disableSelection();
+// }

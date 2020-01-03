@@ -1,0 +1,16 @@
+{
+  "liveServer.settings.port": 5502,
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "./css"
+    },
+    {
+      "extensionName": ".min.css",
+      "format": "compressed",
+      "savePath": "./css"
+    }
+  ],
+  "liveServer.settings.CustomBrowser": "chrome"
+}

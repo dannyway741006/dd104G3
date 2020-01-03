@@ -1,48 +1,90 @@
-.cart_noshow {
-    @include positionfixed (99999, 3%, 95%);
-    width: 0%;
-    height: 0%;
-    transition: all .1s;
-}
+.cart_page.active {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: nowrap;
 
-.cart_noshow.show {
-    @include positionfixed (99999, 10%, 15%);
-    background-color: rgba(0, 0, 0, .3);
-    width: 70%;
-    height: 80%;
-    transition: all .3s;
-    display: flex;
-    flex-direction: row-reverse;
-}
 
-.cart_bg.show {
-    @include positionfixed(10000, 0%, 0%);
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent;
-}
+  .cart_list,
+  .cart_total {
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 1px 1px 3px $shadow;
+  }
 
-.close_cart.show {
-    width: 70px;
-    height: 70px;
-    border: 1px solid #68D2DE;
-    border-radius: 50%;
-    margin: 1.5%;
-    position: relative;
+  .cart_list {
+    margin-right: 10px;
 
-    p {
-        width: 50px;
-        height: 1px;
-        background-color: #68D2DE;
-        position: absolute;
-        top:50%;
-        left:15%;
-        &:first-child {
-            transform: rotate(45deg);
-        }
-        &:last-child {
-            transform: rotate(135deg);
-        }
+    .cart_list_title {
+      height: 50px;
+      margin: 20px;
+      margin-bottom: 10px;
+
+      h1 {
+        line-height: 50px;
+      }
     }
 
+    .cart_product {
+      margin: 10px 20px;
+      display: flex;
+      border-radius: 10px;
+      box-shadow: 1px 1px 3px $shadow;
+      background-color: #eee;
+      justify-content: flex-start;
+      align-items: center;
+
+      .cart_product_img {
+        width: 30%;
+        margin: 10px;
+        display: block;
+
+        img {
+          width: 100%;
+          border-radius: 10px;
+        }
+      }
+
+      .cart_product_message {
+        width: 50%;
+
+        p {
+          margin: 5px 0px;
+          font-size: 1em;
+        }
+        h2{
+          font-size: 1.2em;
+        }
+      }
+
+      .cart_product_qty {
+        width: 20%;
+        margin-right: 10px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        background-color: #fff;
+
+        .cart_cut_product,
+        .cart_add_product {
+          @include btnReset;
+          width: 30px;
+          height: 30px;
+        }
+        p{
+          width: 30px;
+          height: 30px;
+          text-align: center;
+          line-height: 30px;
+        }
+      }
+
+    }
+
+    .cart_total {
+      margin-left: 10px;
+    }
+  }
 }

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./css/owlcarousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="./css/owlcarousel/owl.theme.default.css">
+  <title>Document</title>
+</head>
+
+<body id="container">
+  <div id="threeJs"></div>
+  <header>
+    <div class="header">
+      <div class="logo">
+        <a href="">
+          <img src="../img/logo.svg" alt="logo" />
+        </a>
+      </div>
+      <div class="nav_hamburger">
+        <div class="navBtn">
+          <div class="navBtn_btn">
+            <p>MENU</p>
+            <div>
+              <span />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav_bar">
+      <div class="logo">
+        <a href="">
+          <img src="../img/logo.svg" alt="logo" />
+        </a>
+      </div>
+      <ul class="nav_list">
+        <li>
+          <div>
+            <img src="../img/staff-poket.svg" alt="pm" />
+          </div>
+          <p>專案管理<br /><span>Project management</span></p>
+        </li>
+        <li class="active">
+          <div>
+            <img src="../img/time-left.d4d509fa.svg" alt="clock" />
+          </div>
+          <p>番茄鐘<br /><span>Clock</span></p>
+        </li>
+        <li>
+          <div>
+            <img src="../img/shopping-bag.c63fa553.svg" alt="shop" />
+          </div>
+          <p>商城<br /><span>Shop</span></p>
+        </li>
+      </ul>
+      <div class="user_status">
+        <div class="user_shot">
+          <div>
+            <img src="../img/user.9c173fc0.svg" alt="member" />
+          </div>
+          <p>USER_Master Pocket</p>
+        </div>
+        <div class="status">
+          <div>會員中心</div>
+          <div>登出</div>
+        </div>
+      </div>
+      <div class="page_info">
+        <div class="search_bar">
+          <label>
+            <img src="../img/icon/search.svg" alt="search" />
+            <input type="text" placeholder="Search Somethings..." />
+          </label>
+        </div>
+        <div class="title">
+          <p>商品分類</p>
+        </div>
+        <ul class="page_info_list setting_shop">
+          <li>
+            <p>公事包</p>
+          </li>
+          <li>
+            <p>識別證</p>
+          </li>
+          <li>
+            <p>名片夾</p>
+          </li>
+          <li>
+            <p>其它配件</p>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="content">
+      <!-- 內容 -->
+
+      <div class="mall_content">
+
+        <div class="mall_content_right">
+   
+          <div class="mall_poduct_cart">
+            <div class="mall_poduct_content">
+              <div class="product_img">
+                <div class="big_pic">
+                  <img class="b_img" src="img/mall_img/p1_black.jpg" alt="">
+                </div>
+               
+                <div class="small_pic">
+                  <div class="s_img"><img src="./img/mall_img/p1_black.jpg" alt=""></div>
+                  <div class="s_img"><img src="./img/mall_img/p1_blue.jpg" alt=""></div>
+                  <div class="s_img"><img src="./img/mall_img/p1_gray.jpg" alt=""></div>
+                  <div class="s_img"><img src="./img/mall_img/p1_pink.jpg" alt=""></div>
+                </div>
+              </div>
+
+              <div class="product_text">
+
+                <p>纖巧商務包（三角洲）</p>
+
+                <ul class="product_features">
+                  <li>絨毛內裡 保護電腦不刮傷</li>
+                  <li>凹形邊緣護墊 有效吸收抵禦衝擊</li>
+                </ul>
+                <form action="mall_product.html">
+                  <ul class="product_select">
+                    <li>
+                      <ul class="select_btn">
+                        <b>顏色</b>
+                        <b>:</b>
+                        <div class="radio_style">
+                          <input type="radio" id="black" name="color" value="black">
+                          <label for="black"">黑色</label>
+                      
+                    
+
+                            <input type="radio" id="blue" name="color" value="blue">
+                            <label for="blue">藍色</label>
+
+                            <input type="radio" id="pink" name="color" value="pink">
+                            <label for="pink">粉色</label>
+                        </div>
+                      </ul>
+                    </li>
+                    <li>
+                      <ul class="select_btn">
+                        <b>尺寸</b>
+                        <b>:</b>
+                        <div class="radio_style">
+                          <input type="radio" id="thirteen5" name="size" value="13.5">
+                          <label for="thirteen5"">13.5</label>
+                      </div>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul class=" select_btn">
+                            <b>數量</b>
+                            <b>:</b>
+                            <li>
+                              <select name="select_num" id="selectNum">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                              </select>
+                            </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <div class="product_price">
+                        <span>$1,600</span>
+                        <span>$</span><span class="price_sale">1,200</span>
+                      </div>
+                     
+                    </li>
+                    <li>
+                      <button class="mall_bBtn" value="Submit">直接購買</button>
+                      <button class="mall_bBtn" value="Submit">加入購物車</button>
+                    </li>
+
+
+
+
+                  </ul>
+
+
+
+
+
+
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- <div class="line"></div> -->
+          
+          <!-- 輪播  -->
+          <!-- <div class="slider-bg">
+            <h2>其它商品</h2>   
+            <section id="slider">
+              <div class="custom1 owl-carousel owl-theme">
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#" class="item_list">
+                    <h4><img src="./img/mall_img/bag_p01.png" alt=""></h4>
+                    <div>商品品名</div>
+                  </a>
+                </div>
+              </div>
+            </section>
+          </div> -->
+
+
+
+
+
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+  </main>
+
+
+
+
+
+
+
+  <script src="./js/mall.js"></script>
+  <script src="../js/lib/three.min.js"></script>
+  <script type="x-shader/x-fragment" id="fragmentshader">
+    uniform vec3 color;
+        uniform sampler2D texture;
+        varying float opacity;
+        varying vec3 vColor;
+        void main() {
+            gl_FragColor = vec4(vColor * color, 1);
+            gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+        }
+    </script>
+  <script src="../js/background.js"></script>
+  <script>
+    const container = document.getElementById("container");
+    const hamburger = document.querySelector(".nav_hamburger");
+    hamburger.addEventListener("click", () =>
+      container.classList.toggle("nav_open")
+    );
+  </script>
+
+
+
+  <!--啟用貓頭鷹-->
+  <script>
+    $(document).ready(function ($) {
+      $('.custom1').owlCarousel({
+        // animateOut: 'slideOutDown',
+        // animateIn: 'flipInY',
+        items: 3,
+        margin: 30,
+        stagePadding: 30,
+        smartSpeed: 450,
+        loop: true,
+        autoplay: true, //自動輪播
+        autoplayTimeout: 4500, // 輪播速度
+        dots: false,
+        nav: true,
+
+        responsive: {
+          768: {
+            items: 3
+          },
+
+          480: {
+            items: 2
+          },
+
+          0: {
+            items: 2
+          }
+
+        }
+
+
+      });
+    });
+  </script>
+
+  <!--貓頭鷹跑馬燈的JS-->
+  <script src="./js/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/js/owlcarousel/jquery.min.js"></script>
+  <script src="owlcarousel/owl.carousel.min.js"></script>
+
+</body>
+
+</html>
