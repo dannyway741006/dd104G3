@@ -1,50 +1,6 @@
 [v-cloak] {
   display: none;
 }
-<<<<<<< HEAD
-#calendar{
-  margin-top: 50px;
- .calendar_date_title{
-   color:$primary;
-  //  border: 1px solid red;
-   position: relative;
-   .mont_date{
-       @include font(30,60px);
-       display: inline-block;
-       vertical-align:middle;
-   }
-   div:nth-child(2){
-    @include font(4,30px);
-    // border: 1px solid red;
-    display: inline-block;
-    vertical-align:top;
-   }
-  
- }
- .calendar_date_midtitle{
-   margin-top: 15px;
-   color:#777;
-  display:inline-flex;
-   font-size: 0;
-  //  border: 1px solid red;
-  //  justify-content: space-between;
-  .calleft_arrow,.calright_arrow{
-    cursor: pointer;
-  }
-  div{
-  
-     @include font(1);
-
-   }
-   div:nth-child(3){
-    margin-right: 10px;
-  
-  }
-  div:nth-child(2){
-    // margin:0 15px;
-    margin: 0 10px;
-        width: 120px;
-=======
 
 #calendar {
   @include card(auto, auto, false);
@@ -111,7 +67,6 @@
 
       width: 120px;
     }
->>>>>>> cho
   }
 
   .todaybutton {
