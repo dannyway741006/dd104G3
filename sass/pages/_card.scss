@@ -99,13 +99,14 @@
     .second_right,
     .first_right {
       transition: all 0.3s;
-
       .todogo,
       .first_right_member,
       .second_right_deletecard,
-      div:nth-child(4),
-      div:nth-child(5),
-      div:nth-child(6) {
+      .upfile,
+      .wave
+      // div:nth-child(5),
+      // div:nth-child(6) 
+      {
         width: 90%;
         margin: 10px 0px;
         padding: 10px;
@@ -224,7 +225,7 @@
 
         img {
           width: 100%;
-
+           height: 100%;
         }
       }
     }
@@ -887,11 +888,11 @@
   //   display: block;
   // }
   h3{
-    @include font(1,20px);
+    @include font(1,30px);
     text-align: start;
   }
   h4{
-    @include font(0,20px);
+    @include font(0,30px);
     text-align: start;
     font-weight: 400;
   }
@@ -906,6 +907,9 @@
       border-radius: 10px;
       width: 100%;
       margin: 5px 0;
+      &::placeholder{
+        @include font(0, 20px);
+      }
     }
   }
   ul{
@@ -916,6 +920,10 @@
       .card_member_message{
          display: flex;
         position: relative;
+        margin: 7px 0px;
+        &.mem_addcolor{
+          color:$radioActive ;
+        }
         div:first-child{
           width: 35px;
           height: 35px;
@@ -997,11 +1005,10 @@
         border: none;
         .first_right,.second_right{
           .todogo,
-            .first_right_member,
-            .second_right_deletecard,
-            div:nth-child(4),
-            div:nth-child(5),
-            div:nth-child(6){
+          .first_right_member,
+          .second_right_deletecard,
+          .upfile,
+          .wave{
               width: 40%;
             }
             .card_member_lightbox{
