@@ -113,6 +113,21 @@ var vm = new Vue({
     showcheck: false,
 
     member_inout: [],
+
+    member_input:'',
+
+    addmemberswitch:false,
+    add_card_meber_switch:false,
+    // members:'',
+    // memeshoww:member_inout.length,
+    members:true,
+    showhideMember:false,
+
+    change_name:'待辦事項',
+    showname:false,
+    test_title_name:true,
+
+    new_array:[],
   },
   methods: {
     changeimg() {
@@ -148,6 +163,8 @@ var vm = new Vue({
           lists: [],
           // progress_bar_length:'',
           card_length: false,
+          showname:false,
+          test_title_name:true,
         });
 
         this.todo_lightbox_input_title = '';
@@ -176,9 +193,17 @@ var vm = new Vue({
           test_title: this.test_message,
           test_status: true,
           test_text: false,
-
         });
-
+        // let findIndex=this.todo_test.findIndex(x => x.test_title == this.test_message) 
+     
+         
+      // if(this.todo_test[findIndex].test_status==false){
+      //   this.new_array.push(this.todo_test[findIndex].test_title);
+      // }
+      // let abc=array.length;
+      // console.log(this.new_array);
+      // console.log(this.todo_test);
+      // console.log(this.todo_test[0].test_status);
         this.test_message = '';
       }
 
@@ -255,32 +280,46 @@ var vm = new Vue({
       this.todo_lightbox_switch = false;
       this.file_switch = true;
     },
+    openaddmember(){
+      this.card_meber_switch = false;
+      this.calandar_switch = false;
+      this.todo_lightbox_switch = false;
+      this.file_switch = false;
+      this.add_card_meber_switch=true;
+    },
     del_file(index) {
       this.filebox.splice(index, 1);
     },
     //成員進入
     member_outin(index) {
-      if (this.memebergo[index].check == '') {
-        this.memebergo[index].uncolor = true;
-        this.memebergo[index].check = "./img/checked_member.svg";
-        // console.log(this.member_inout);
-        // console.log("source:this.memebergo[index].src");
-        // console.log(this.member_inout.indexOf(this.memebergo[index].src));
-        if (this.member_inout.indexOf(this.memebergo[index].src) === -1) {
-          this.member_inout.push(
-            this.memebergo[index].src
-          )
-          // console.log(this.member_inout.indexOf(this.memebergo[index].src));
+      if (this.showmember_select[index].check == '') {
+        this.showmember_select[index].uncolor = true;
+        this.showmember_select[index].check = "./img/checked_member.svg";
+     
+        console.log(this.member_inout);
+        if (this.member_inout.map(x =>x.source).indexOf(this.showmember_select[index].src) === -1 ) {
+          this.member_inout.push({
+               source:this.showmember_select[index].src, 
+          }
+          ) 
         }
+    
       } else {
-        this.memebergo[index].check = '';
-        this.memebergo[index].uncolor = false;
-      let findIndex= this.member_inout.findIndex((item)=>{return item== this.memebergo[index].src});
+        this.showmember_select[index].check = '';
+        this.showmember_select[index].uncolor = false;
+      let findIndex= this.member_inout.findIndex(item=>item.source === this.showmember_select[index].src);
         this.member_inout.splice(findIndex,1);
-
-        // this.member_inout.slice(memebergo[index],1);
-      
+       console.log(index);
+     
     }
+    },
+    addprogress(){
+      let findIndex=this.todo_test.findIndex(x => x.test_title == this.test_message);
+      this.new_array.push(this.new_array.push("1"));
+      console.log(this.new_array);
+    },
+    removeprogress(){
+
     },
   },
   mounted() {
@@ -289,28 +328,63 @@ var vm = new Vue({
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.card_meber_switch = false;
+      this.add_card_meber_switch=false;
 
       this.showCalender = false;
       this.member_switch = false;
+      this.addmemberswitch=false;
       this.todo_switch = false;
       this.fileder_switch = false;
+      this.member_input='';
+      this.showname =false;
+      this.test_title_name =true;
+
+      this.todo_lightbox_input_title = '';
+      //抓不到index = =
+      // this.todo_list_content_detail[detailIndex].test ='';
+      this.test_message = '';
+    // console.log(this.todo_list_content_detail);
     });
     calender(this.$refs.inCalender);
   },
   computed: {
-    // testt_length(){
+    // post_length(){
     //   let length=this.todo_test.length;
     //    let array=[];
-    //   if(this.todo_test.test_status==false){
-    //     array.push();
-    //     console.log(array);
+    //    let findIndex=this.todo_test.findIndex(x => x.test_title == this.test_message); 
+    //   if(this.todo_test[findIndex].test_status==false){
+    //     array.push("1");
     //   }
+    //   let abc=array.length;
+    //   return (100/length)* abc;
     // },
     // progress_bar_length(){
 
     //    console.log(alter);
     //    return (100/orign)*alter;
     // },
+    showmember_select(){
+      if(this.member_input.length){
+        return this.memebergo.filter(item=>{
+          let content=item.userId.toLowerCase();
+          let name=item.member_name;
+          let realcontent=content.concat(name);
+          let keyword=this.member_input.toLowerCase();
+          return  realcontent.indexOf(keyword) !=-1;
+        })
+      }else{
+        return this.memebergo;
+      }
+    },
+    hidemembers(){
+      if(this.member_inout.length>3){
+        this.showhideMember=true;
+      }else{
+        this.showhideMember=false;
+      }
+      let member_length= this.member_inout.length;
+      return member_length-3;
+    }
   },
   components: {
     DatePicker

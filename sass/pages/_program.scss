@@ -1,17 +1,3 @@
-#program_all {
-  // border: 1px solid red;
-  width: 100%;
-  height: 100%;
-
-  header,
-  main {
-    // border: 1px solid red;
-    display: inline-block;
-    vertical-align: middle;
-  }
-}
-
-
 #program_aside {
   border: 1px solid blue;
 
@@ -458,7 +444,7 @@
             }
 
             &:hover .cards_list_card_color {
-         height: 100%;
+              height: 100%;
               opacity: 0.25;
             }
 
@@ -556,6 +542,35 @@
       }
     }
 
+  }
+
+
+
+
+
+}
+
+//確認刪除專案燈箱
+.complete_info_mask {
+  @include positionfixed(10, 0, 0);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .complete_info_box {
+    @include card(auto, auto, false);
+    @include positionCenter;
+    background-color: $white;
+    padding: 15px;
+    text-align: center;
+    p{
+      @include font(0);
+    }
+    button{
+      @include baseBtn(70px,auto, 20px);
+      margin: 15px;
+      margin-bottom: 0;
+    }
   }
 
 
