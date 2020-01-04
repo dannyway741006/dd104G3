@@ -28,6 +28,9 @@ var main_content = new Vue({
     program_setting_choose_selectColor: null,
     program_setting_choose_color_item: [],
 
+    complete_info_box: false,
+    // complete_info_btn:false,
+
     program_text_btn: false,
 
     add_cards_btn: false,
@@ -112,6 +115,8 @@ var main_content = new Vue({
 
     progress_mount: [],
 
+    targetCardInfo: null,
+
 
     //顯示成員
     memebergo: [{
@@ -161,9 +166,11 @@ var main_content = new Vue({
           program_names: this.program_name,
           changeimage: false, //uncheck
           color: this.selectColor,
+          show_complete_info_box: false,
+          // cards: [],
+          // card_name: "",
 
           cards: [],
-          card_name: "",
 
 
         });
@@ -173,7 +180,8 @@ var main_content = new Vue({
         // console.log(this.page);
         // console.log(this.programs.length-1);
         this.page = this.programs.length - 1;
-
+      } else {
+        alert('請填寫專案名稱及選擇專案專屬色')
       }
 
     },
@@ -192,19 +200,32 @@ var main_content = new Vue({
 
     //新增卡片
     show_cards_list_card_input_box() {
+      this.add_cards_btn_div = !this.add_cards_btn_div;
       this.cards_list_card_input_box = true;
       add_cards_btn = true;
     },
-    add_card(card_name, index) {
+    add_card(index) {
       //  console.log(index);
       if (this.card_name !== "") {
-        this.programs[index].cards.push(card_name);
+        this.programs[index].cards.push({
+          card_name: this.card_name,
+          // dateline: "",
+          // complete_list: "",
+        });
         this.card_name = "";
         this.cards_list_card_input_box = false;
         this.add_cards_btn = false;
         this.add_cards_btn_div = true;
       } else {}
+      // console.log(this.$refs)
     },
+    //完成專案跳窗提醒
+    complete_info_func(index) {
+      this.complete_info_box = !this.complete_info_box;
+      this.programs[index].show_complete_info_box = true;
+    },
+
+
     //完成專案
     program_complete_func(index) {
       this.programs[index].changeimage = !this.programs[index].changeimage
@@ -219,6 +240,8 @@ var main_content = new Vue({
       }
       // console.log(this.history_page=this.history_programs.length);
       this.history_page = this.history_programs.length - 1;
+
+      // this.show_complete_info_box =true;
     },
     //刪除專案
     delete_program(index) {
@@ -227,7 +250,6 @@ var main_content = new Vue({
 
     // 日曆部分
     setToday() {
-      // console.log("123");
       const date = new Date()
       this.today.year = this.calendar.year = date.getFullYear()
       this.today.month = this.calendar.month = date.getMonth() // 0~11
@@ -258,13 +280,24 @@ var main_content = new Vue({
 
     },
     //打開卡片本人
-    open_card_func(index) {
-      this.opened = ! this.opened;
-      console.log(this.programs[index].cards[this.programs[index].cards.length-1]);
+    open_card_func(programIndex, cardIndex) {
+      this.targetCardInfo = {
+        programIndex,
+        cardIndex
+      }
+      this.opened = !this.opened;
+      // console.log(this.programs[index].cards[this.programs[index].cards.length - 1]);
+      // console.log(this.$refs.calendarBody)
+      if(!this.$refs.calendarBody.hasChildNodes()){
+        calender(this.$refs.inCalender);
+      }
       
     },
+    //抓卡片位置
+    catch_card_position() {
 
-
+      // console.log($(this).parents('.cards_list').attr('id'));
+    },
     //卡片背面
     changeimg() {
       this.isactive = false;
@@ -367,12 +400,6 @@ var main_content = new Vue({
       // this.todo_list_content_detail[detailIndex].lists.splice(index, 1);
     },
 
-    // changeprogressbar(bigindex, index) {
-    // this.progress_mount.push(this.todo_list_content_detail[bigindex].lists[index]);
-    //  let orign=this.todo_list_content_detail[bigindex].lists.length;
-    //  let alter=this.progress_mount.length;
-    // },
-
     openmember() {
       this.card_meber_switch = true;
       this.calandar_switch = false;
@@ -384,6 +411,7 @@ var main_content = new Vue({
       this.showCalender = true;
       this.todo_lightbox_switch = false;
       this.file_switch = false;
+      // calender(this.$refs.inCalender);
     },
     opentodo() {
       this.card_meber_switch = false;
@@ -453,9 +481,7 @@ var main_content = new Vue({
 
   },
 
-
   mounted() {
-
     document.addEventListener("click", () => {
       this.open = false;
       this.add_cards_btn_div = true;
@@ -465,6 +491,17 @@ var main_content = new Vue({
       this.setting_btn = false;
       this.add_cards_btn = false;
       this.calendar_btn = false;
+
+      //卡片背面
+      this.calandar_switch = false;
+      this.todo_lightbox_switch = false;
+      this.file_switch = false;
+      this.card_meber_switch = false;
+
+      this.showCalender = false;
+      this.member_switch = false;
+      this.todo_switch = false;
+      this.fileder_switch = false;
       // console.log(this.programs.length - 1)
       if (this.programs.length == 0) {
         // console.log(this.programs.length-1)
@@ -479,25 +516,13 @@ var main_content = new Vue({
         })
         .disableSelection();
 
+
+
     });
 
     // 日曆部分
     this.setToday()
 
-
-    //卡片背面
-    document.addEventListener('click', () => {
-      this.calandar_switch = false;
-      this.todo_lightbox_switch = false;
-      this.file_switch = false;
-      this.card_meber_switch = false;
-
-      this.showCalender = false;
-      this.member_switch = false;
-      this.todo_switch = false;
-      this.fileder_switch = false;
-    });
-    // calender(this.$refs.inCalender);
 
 
 
