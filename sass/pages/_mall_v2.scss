@@ -4,8 +4,25 @@
 /*------------------------- */
 /*          商城頁面        */
 /*------------------------- */
+select {
+  // -webkit-appearance: none;
+  // -moz-appearance: none;
+  // appearance: none;
+  color: $gray;
+  font-weight: bold;
+  padding: 10px 10px;
+}
 
+select::-ms-expand {
+  /* for IE 11 */
+  display: none;
+}
 
+option {
+  color: $gray;
+  font-weight: bold;
+  padding: 5px
+}
 
 
 /* 單選框 */
@@ -40,7 +57,7 @@
 
 
 
-  
+
 
 
 
@@ -181,20 +198,21 @@
     // display: inline-block;
     // width: 70%;
     vertical-align: middle;
-    
+
     .mall_bBtn {
-      background-color: $primary;
-      width: 90%;
-      padding: 15px 0;
-      color: #fff;
-      border-radius: 10px;
-      border: 0;
-      outline: none;
+      // background-color: $primary;
+      // width: 90%;
+      // padding: 15px 0;
+      // color: #fff;
+      // border-radius: 10px;
+      // border: 0;
+      // outline: none;
       cursor: pointer;
-      @include font(1);
-      // @include baseBtn(30%, 50px, 10px);
+      // @include font(1);
+      @include baseBtn(90%, 50px, 10px);
       margin: 10px 0px;
-  
+    
+
     }
 
     .mall_bBtn_cir {
@@ -357,6 +375,7 @@
 
             ul.product_features {
               margin: 10px 0 0 20px;
+
               >li {
                 @include font(1);
 
@@ -368,7 +387,21 @@
     }
   }
 
-  #slider {}
+
+
+  .price_btn {
+    margin-top: 20px;
+
+    .mall_bBtn_all {
+
+
+      .mall_bBtn {
+        @include baseBtn(100%, 50px, 10px);
+      }
+    }
+  }
+
+  // #slider {}
 
   .slider-bg {
 

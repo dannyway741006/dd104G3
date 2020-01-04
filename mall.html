@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="./css/owlcarousel/owl.carousel.min.css">
   <link rel="stylesheet" href="./css/owlcarousel/owl.theme.default.css">
 
@@ -111,7 +112,7 @@
               <div class="mall_poduct_content">
                 <div class="product_img">
                   <div class="big_pic">
-                    <img class="b_img" src="img/mall_img/p1_black.png" alt="">
+                    <img class="b_img" src="img/mall_img/c1_p1_black.png" alt="">
                   </div>
                 </div>
 
@@ -142,13 +143,14 @@
                           <input type="radio" id="white" name="color" value="white">
                           <label for="white">白米色</label>
                       </div> -->
-                      <select name="mall_amount1" id="mall_amount1">
-                        <option value="brown">駝棕色</option>
-                        <option value="blue">孔雀藍</option>
-                        <option value="white">白米色</option>
+                      <select name="mall_color" id="mall_color">
+                        <option value="c1_p1_black">典雅黑</option>
+                        <option value="c1_p1_brown">駝棕色</option>
+                        <option value="c1_p1_blue">孔雀藍</option>
+                        <option value="c1_p1_white">白米色</option>
                       </select>
 
-                      <select name="mall_amount2" id="mall_amount2">
+                      <select name="mall_amount" id="mall_amount">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -250,14 +252,14 @@
 
 
   <!-- niceSelect下拉選單 -->
-  <script src="./js/nice_select/jquery.js"></script>
-  <script src="./js/nice_select/jquery.nice-select.js"></script>
+  <!-- <script src="./js/nice_select/jquery.js"></script>
+  <script src="./js/nice_select/jquery.nice-select.js"></script> -->
 
   <!--啟用貓頭鷹/niceSelect下拉-->
   <script>
     $(document).ready(function ($) {
-      $('#mall_amount1').niceSelect();
-      $('#mall_amount2').niceSelect();
+      // $('#mall_color').niceSelect();
+      // $('#mall_amount').niceSelect();
 
       $('.custom1').owlCarousel({
         // animateOut: 'slideOutDown',
