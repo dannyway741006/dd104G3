@@ -57,15 +57,15 @@
     }
 
     div {
+      // @include closeBtn($insideTagName:p);
+   width: 20px;
+   height: 20px;
       position: absolute;
-      right: 15px;
+      right: 11px;
       top: 11px;
-      width: 20px;
-      height: 20px;
       cursor: pointer;
       border-radius: 50%;
       transition: all 0.3s;
-
       &:hover {
         background-color: white;
 
@@ -116,11 +116,15 @@
 
         &:hover {
           background-color: #cee0ff;
+          
           // color:$primary ;
           cursor: pointer;
 
           img {
-            filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+            // filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+            filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
+
           }
         }
       }
@@ -131,7 +135,8 @@
         background-color: #cee0ff;
 
         img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
       }
     }
@@ -142,7 +147,8 @@
 
 
         img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
       }
     }
@@ -152,7 +158,8 @@
         background-color: #cee0ff;
 
         img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
       }
     }
@@ -162,7 +169,8 @@
         background-color: #cee0ff;
 
         img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
       }
     }
@@ -214,12 +222,14 @@
         }
 
         img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
 
         }
       }
 
       .memimg {
+        margin-left: 25px;
         .add_member_to_card {
           display: inline-block;
           width: 30px;
@@ -227,7 +237,6 @@
           border-radius: 50%;
           border: 2px solid rgb(160, 153, 153);
           vertical-align: middle;
-          margin-left: 30px;
           cursor: pointer;
           position: relative;
           transition: all 0.3s;
@@ -300,7 +309,8 @@
         }
 
         img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
       }
 
@@ -434,7 +444,8 @@
         }
       }
         .cardtitle_img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
 
         .all_card_todo_delete {
@@ -639,7 +650,8 @@
         }
 
         .file_title_img img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
       }
 
@@ -732,7 +744,7 @@
   position: fixed;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
-  top: 299px;
+  top: 243px;
   z-index: 9999999;
 
   // &.opentodo_lightbox {
@@ -836,7 +848,7 @@
   padding: 15px;
   width: 200px;
   position: fixed;
-  top: 240px;
+  top: 243px;
   box-shadow: 3px 3px 6px 0px $shadow;
 
   border: 1px solid rgba(0, 0, 0, .1);
@@ -936,7 +948,7 @@
   padding: 15px;
   width: 200px;
   position: fixed;
-  top: 353px;
+  top: 297px;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
   border: 1px solid rgba(0, 0, 0, .1);
@@ -980,7 +992,7 @@
   padding: 15px;
   width: 250px;
   position: fixed;
-  top: 185px;
+  top: 186px;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
   border: 1px solid rgba(0, 0, 0, .1);
@@ -1112,7 +1124,7 @@
   }
 }
 
-@include media(670px) {
+@include media(748px) {
   .card_light_box {
     height: 100%;
     width: 100%;
@@ -1152,15 +1164,15 @@
         }
 
         .calendar_lightbox {
-          top: 220px;
+          top: 221px;
         }
 
         .todo_lightbox {
-          top: 278px;
+          top: 223px;
         }
 
         .file_lightbox {
-          top: 333px;
+          top: 277px;
         }
       }
 

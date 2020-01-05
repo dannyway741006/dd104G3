@@ -127,7 +127,6 @@ var vm = new Vue({
     showname:false,
     test_title_name:true,
 
-    new_array:[],
   },
   methods: {
     changeimg() {
@@ -179,7 +178,7 @@ var vm = new Vue({
         // console.log(index);
         this.todo_list_content_detail[index].lists.push({
           content: this.todo_list_content_detail[index].test,
-          status: true,
+          status: false,
           text: false,
         });
         this.todo_list_content_detail[index].test = '';
@@ -191,25 +190,15 @@ var vm = new Vue({
       if (this.test_message.length) {
         this.todo_test.push({
           test_title: this.test_message,
-          test_status: true,
+          test_status: false,
           test_text: false,
         });
-        // let findIndex=this.todo_test.findIndex(x => x.test_title == this.test_message) 
-     
-         
-      // if(this.todo_test[findIndex].test_status==false){
-      //   this.new_array.push(this.todo_test[findIndex].test_title);
-      // }
-      // let abc=array.length;
-      // console.log(this.new_array);
-      // console.log(this.todo_test);
-      // console.log(this.todo_test[0].test_status);
         this.test_message = '';
       }
 
     },
     delte_test_detail(index) {
-      this.todo_test.splice(index, 1);
+      this.todo_test.splice(index, 1); 
     },
     deletecard_todo(detailIndex) {
       this.todo_list_content_detail.splice(detailIndex, 1);
@@ -250,35 +239,36 @@ var vm = new Vue({
       // this.todo_list_content_detail[detailIndex].lists.splice(index, 1);
     },
 
-    changeprogressbar(bigindex, index) {
-      // this.progress_mount.push(this.todo_list_content_detail[bigindex].lists[index]);
-      //  let orign=this.todo_list_content_detail[bigindex].lists.length;
-      //  let alter=this.progress_mount.length;
-
-    },
+ 
     openmember() {
       this.card_meber_switch = true;
-      this.calandar_switch = false;
+      // this.calandar_switch = false;
       this.todo_lightbox_switch = false;
       this.file_switch = false;
+      this.fileder_switch=false;
+      this.todo_switch=false;
     },
-    opendate() {
-      this.card_meber_switch = false;
-      this.showCalender = true;
-      this.todo_lightbox_switch = false;
-      this.file_switch = false;
-    },
+    // opendate() {
+    //   this.card_meber_switch = false;
+    //   this.showCalender = true;
+    //   this.todo_lightbox_switch = false;
+    //   this.file_switch = false;
+    // },
     opentodo() {
       this.card_meber_switch = false;
-      this.calandar_switch = false;
+      // this.calandar_switch = false;
       this.todo_lightbox_switch = true;
       this.file_switch = false;
+      this.fileder_switch=false;
+      this.member_switch=false;
     },
     openfile() {
       this.card_meber_switch = false;
-      this.calandar_switch = false;
+      // this.calandar_switch = false;
       this.todo_lightbox_switch = false;
       this.file_switch = true;
+      this.todo_switch=false;
+      this.member_switch=false;
     },
     openaddmember(){
       this.card_meber_switch = false;
@@ -286,6 +276,7 @@ var vm = new Vue({
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.add_card_meber_switch=true;
+    
     },
     del_file(index) {
       this.filebox.splice(index, 1);
@@ -313,24 +304,18 @@ var vm = new Vue({
      
     }
     },
-    addprogress(){
-      let findIndex=this.todo_test.findIndex(x => x.test_title == this.test_message);
-      this.new_array.push(this.new_array.push("1"));
-      console.log(this.new_array);
-    },
-    removeprogress(){
 
-    },
   },
+
   mounted() {
     document.addEventListener('click', () => {
-      this.calandar_switch = false;
+      // this.calandar_switch = false;
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.card_meber_switch = false;
       this.add_card_meber_switch=false;
 
-      this.showCalender = false;
+      // this.showCalender = false;
       this.member_switch = false;
       this.addmemberswitch=false;
       this.todo_switch = false;
@@ -345,23 +330,37 @@ var vm = new Vue({
       this.test_message = '';
     // console.log(this.todo_list_content_detail);
     });
-    calender(this.$refs.inCalender);
+    // calender(this.$refs.inCalender);
   },
   computed: {
-    // post_length(){
-    //   let length=this.todo_test.length;
-    //    let array=[];
-    //    let findIndex=this.todo_test.findIndex(x => x.test_title == this.test_message); 
-    //   if(this.todo_test[findIndex].test_status==false){
-    //     array.push("1");
+  
+    progerss(){
+      return this.todo_test.filter(todo=>{
+        return todo.test_status;
+      });
+    },
+    progress_bar_length(){
+      let length=this.todo_test.length;
+      if(length==0){
+        return 0;
+      }else{
+         return Math.round((100/length)*this.progerss.length);
+      }
+      
+    },
+    inner_progress(index){
+      console.log(index);
+      return  this.todo_list_content_detail[index].lists.filter(item=>{
+        return item.status;
+      })
+    },
+    // inner_progress_bar(index){
+    //   let length=this.todo_list_content_detail[index].lists.length;
+    //   if(length==0){
+    //     return 0;
+    //   }else{
+    //      return Math.round((100/length)*this.inner_progress.length);
     //   }
-    //   let abc=array.length;
-    //   return (100/length)* abc;
-    // },
-    // progress_bar_length(){
-
-    //    console.log(alter);
-    //    return (100/orign)*alter;
     // },
     showmember_select(){
       if(this.member_input.length){
