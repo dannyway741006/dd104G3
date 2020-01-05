@@ -1,10 +1,70 @@
+// @import "./pages/calendarbyHand";
+// @import "./pages/calendarbyHand";
+
 /*------------------------- */
 /*          商城頁面        */
 /*------------------------- */
-
-main{
-  overflow: hidden;
+select {
+  // -webkit-appearance: none;
+  // -moz-appearance: none;
+  // appearance: none;
+  color: $gray;
+  font-weight: bold;
+  padding: 10px 10px;
 }
+
+select::-ms-expand {
+  /* for IE 11 */
+  display: none;
+}
+
+option {
+  color: $gray;
+  font-weight: bold;
+  padding: 5px
+}
+
+
+/* 單選框 */
+
+// .radio_style input[type="radio"] {
+//   display: none;
+
+// }
+
+// .radio_style input[type="radio"]+label {
+//   display: inline-block;
+//   cursor: pointer;
+//   padding: 5px 10px;
+//   border: 1px solid #e8e8e8;
+//   border-radius: 5px;
+//   background-color: #fff;
+//   height: 42px;
+//   vertical-align: middle;
+//   text-align: center;
+//   line-height:33px;
+//   clear: both;
+// }
+
+// .radio_style input[type="radio"]:checked+label {
+//   background-color: #fff;
+//   border-color:#999999;
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .content {
   position: relative;
@@ -27,17 +87,16 @@ main{
     // border-radius: 10px 0 0 10px;
 
 
-    .cart_bg{
+    .cart_bg {
       position: absolute;
       padding: 10px;
-      width:10%;
-      height:50px;
-      top:0;
-      right:0;
-      margin: 10px;
+      height: 50px;
+      top: 0;
+      right: 0;
+      margin: 15px 30px;
 
-      .mall_cart_cir{
-        background-color:$danger;
+      .mall_cart_cir {
+        background-color: $danger;
         color: $white;
         width: 18px;
         height: 18px;
@@ -51,11 +110,11 @@ main{
 
       }
 
-      >img{
+      >img {
         cursor: pointer;
-        max-width: 30px;
+        width: 30px;
       }
-    
+
     }
 
     .mall_poduct_cart {
@@ -66,6 +125,7 @@ main{
       .mall_poduct_content {
         //卡片內容
         display: flex;
+        flex-wrap: nowrap;
         margin: 0 auto;
 
         .product_img {
@@ -87,17 +147,18 @@ main{
         .product_text {
           //商品文字
           width: 50%;
+          padding: 40px 0;
           // border: 1px solid red;
 
           p {
-            @include font(5);
+            @include font(4);
           }
 
           ul.product_features {
             margin: 20px 0 0 20px;
 
             >li {
-              @include font(1, 2);
+              @include font(1);
               color: $dark;
             }
           }
@@ -134,25 +195,28 @@ main{
   }
 
   .mall_bBtn_all {
-    display: inline-block;
-    width: 70%;
+    // display: inline-block;
+    // width: 70%;
     vertical-align: middle;
 
     .mall_bBtn {
-      background-color: $primary;
-      width: 40%;
-      padding: 15px 0;
-      color: #fff;
-      border-radius: 10px;
-      border: 0;
-      outline: none;
+      // background-color: $primary;
+      // width: 90%;
+      // padding: 15px 0;
+      // color: #fff;
+      // border-radius: 10px;
+      // border: 0;
+      // outline: none;
       cursor: pointer;
-      @include font(1);
-      // @include baseBtn(30%, 50px, 10px);
+      // @include font(1);
+      @include baseBtn(90%, 50px, 10px);
+      margin: 10px 0px;
+    
+
     }
 
     .mall_bBtn_cir {
-      background-color: lighten($color: $primary, $amount:12) ;
+      background-color: lighten($color: $primary, $amount:12);
       width: 55px;
       height: 55px;
       border-radius: 55px;
@@ -166,25 +230,18 @@ main{
       // @include baseBtn(30%, 50px, 10px);
     }
 
-   
+
   }
 }
-// .line {
-//   height: 1px;
-//   background-color: rgba(93, 93, 93, 0.609);
-//   width: 100%;
-//   margin: 10px;
-// }
 
 //輪播
-
 .slider-bg {
   overflow: hidden;
   width: 100%;
 
   h2 {
     padding: 10px 0 0 10px;
-    color:$primary;
+    color: $primary;
     font-weight: 300;
     margin: 0 0 0 20px;
   }
@@ -195,10 +252,12 @@ main{
 
   a {
     display: block;
-    // border:1px solid red;
-    color: rgb(77, 77, 77);
+    color: $dark;
     text-decoration: none;
-    padding: 20px 0;
+    padding: 10px 0;
+    @include font(1);
+    font-weight: 300;
+
 
     h4 {
       padding: 10px 0;
@@ -221,46 +280,138 @@ main{
   left: 0;
 }
 
-
 @include media(1200px) {
+  .mall_content {
+
+    .mall_content_right {
+      width: 80%;
+
+    }
+  }
+
+
   .price_btn {
-    margin-top: 40px;
-  
+    margin-top: 10px;
+
     .product_price {
       color: $price;
       display: inline-block;
       vertical-align: bottom;
       width: 20%;
       margin-right: 30px;
-  
+
       .price_sale {
         font-weight: bolder;
         @include font(6);
       }
-  
+
       span:nth-child(1) {
         font-weight: bolder;
       }
-  
+
       span:nth-child(2) {
         margin-left: 5px;
         font-weight: bolder;
       }
     }
-  
+
     .mall_bBtn_all {
       display: inline-block;
       width: 100%;
       vertical-align: middle;
- 
+      // margin: 5px 0;
     }
   }
 }
 
-@include media(992px) {
-  
-}
 
 @include media(767px) {
+  .mall_content {
 
+    .mall_content_right {
+      // border: 1px solid blue;
+      width: 100%;
+      margin: 0 auto;
+      align-content: space-evenly;
+
+      .cart_bg {
+        margin: 5px 0px;
+      }
+
+      .mall_poduct_cart {
+        //商品卡片
+        margin: 0 auto 0;
+
+        .mall_poduct_content {
+          //卡片內容
+          flex-wrap: wrap;
+
+
+          .product_img {
+            //商品圖
+            width: 50%;
+            margin: 0 auto;
+            padding: 0px;
+
+            .big_pic {
+              width: 100%;
+
+              .b_img {
+                width: 100%;
+                padding: 10px;
+              }
+            }
+          }
+
+          .product_text {
+            //商品文字
+            width: 90%;
+            padding: 0px;
+            margin: 0 auto;
+
+            p {
+              @include font(5);
+            }
+
+            ul.product_features {
+              margin: 10px 0 0 20px;
+
+              >li {
+                @include font(1);
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+  .price_btn {
+    margin-top: 20px;
+
+    .mall_bBtn_all {
+
+
+      .mall_bBtn {
+        @include baseBtn(100%, 50px, 10px);
+      }
+    }
+  }
+
+  // #slider {}
+
+  .slider-bg {
+
+    h2 {
+      padding: 5px 0 0 0;
+
+    }
+  }
+
+  .item a {
+    padding: 5px 0;
+  }
 }
