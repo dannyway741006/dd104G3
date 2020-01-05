@@ -1,365 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="../css/main.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="app">
-      <div id="threeJs"></div>
-      <header>
-        <div class="header">
-          <div class="logo">
-            <a href="">
-              <img src="../img/logo.svg" alt="logo" />
-            </a>
-          </div>
-          <div class="nav_hamburger">
-            <div class="navBtn">
-              <div class="navBtn_btn">
-                <p>MENU</p>
-                <div>
-                  <span />
-                </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
+    rel="stylesheet" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div id="threeJs"></div>
+    <header>
+      <div class="header">
+        <div class="logo">
+          <a href="">
+            <img src="../img/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <div class="nav_hamburger">
+          <div class="navBtn">
+            <div class="navBtn_btn">
+              <p>MENU</p>
+              <div>
+                <span />
               </div>
             </div>
           </div>
         </div>
-        <nav class="nav_bar">
-          <div class="logo">
-            <a href="">
-              <img src="../img/logo.svg" alt="logo" />
-            </a>
+      </div>
+      <nav class="nav_bar">
+        <div class="logo">
+          <a href="">
+            <img src="../img/logo.svg" alt="logo" />
+          </a>
+        </div>
+        <ul class="nav_list">
+          <li>
+            <div>
+              <img src="../img/staff-poket.svg" alt="pm" />
+            </div>
+            <p>專案管理<br /><span>Project management</span></p>
+          </li>
+          <li class="active">
+            <div>
+              <img src="../img/time-left.d4d509fa.svg" alt="clock" />
+            </div>
+            <p>番茄鐘<br /><span>Clock</span></p>
+          </li>
+          <li>
+            <div>
+              <img src="../img/shopping-bag.c63fa553.svg" alt="shop" />
+            </div>
+            <p>商城<br /><span>Shop</span></p>
+          </li>
+        </ul>
+        <div class="user_status">
+          <div class="user_shot">
+            <div>
+              <img src="../img/user.9c173fc0.svg" alt="member" />
+            </div>
+            <p>USER_Master Pocket</p>
           </div>
-          <ul class="nav_list">
+          <div class="status">
+            <div>會員中心</div>
+            <div>登出</div>
+          </div>
+        </div>
+        <div class="page_info">
+          <div class="title">
+            <p>鈴聲</p>
+          </div>
+          <ul class="page_info_list setting_bell">
             <li>
               <div>
-                <img src="../img/staff-poket.svg" alt="pm" />
+                <img src="../img/check.svg" alt="check" width="20" />
               </div>
-              <p>專案管理<br /><span>Project management</span></p>
-            </li>
-            <li class="active">
-              <div>
-                <img src="../img/time-left.d4d509fa.svg" alt="clock" />
-              </div>
-              <p>番茄鐘<br /><span>Clock</span></p>
+              <p>Primary_1Primary_1Primary_1Primary_1</p>
             </li>
             <li>
               <div>
-                <img src="../img/shopping-bag.c63fa553.svg" alt="shop" />
+                <img src="../img/uncheck.svg" alt="check" width="20" />
               </div>
-              <p>商城<br /><span>Shop</span></p>
+              <p>Primary_2</p>
+            </li>
+            <li>
+              <div>
+                <img src="../img/uncheck.svg" alt="check" width="20" />
+              </div>
+              <p>Primary_3</p>
+            </li>
+            <li>
+              <div>
+                <img src="../img/uncheck.svg" alt="check" width="20" />
+              </div>
+              <p>Primary_4</p>
+            </li>
+            <li>
+              <div>
+                <img src="../img/uncheck.svg" alt="check" width="20" />
+              </div>
+              <p>Primary_5</p>
             </li>
           </ul>
-          <div class="user_status">
-            <div class="user_shot">
-              <div>
-                <img src="../img/user.9c173fc0.svg" alt="member" />
+          <div class="title">
+            <p>新建專案</p>
+          </div>
+          <div class="setting_project">
+            <div>
+              <p>專案名稱 Project</p>
+              <input type="text" />
+              <p>專案專屬色 Color</p>
+              <div class="colors">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
-              <p>USER_Master Pocket</p>
-            </div>
-            <div class="status">
-              <div>會員中心</div>
-              <div>登出</div>
+              <button>建立專案</button>
             </div>
           </div>
-          <div class="page_info">
-            <div class="title">
-              <p>鈴聲</p>
-            </div>
-            <ul class="page_info_list setting_bell">
-              <li>
-                <div>
-                  <img src="../img/check.svg" alt="check" width="20" />
-                </div>
-                <p>Primary_1Primary_1Primary_1Primary_1</p>
-              </li>
-              <li>
-                <div>
-                  <img src="../img/uncheck.svg" alt="check" width="20" />
-                </div>
-                <p>Primary_2</p>
-              </li>
-              <li>
-                <div>
-                  <img src="../img/uncheck.svg" alt="check" width="20" />
-                </div>
-                <p>Primary_3</p>
-              </li>
-              <li>
-                <div>
-                  <img src="../img/uncheck.svg" alt="check" width="20" />
-                </div>
-                <p>Primary_4</p>
-              </li>
-              <li>
-                <div>
-                  <img src="../img/uncheck.svg" alt="check" width="20" />
-                </div>
-                <p>Primary_5</p>
-              </li>
-            </ul>
-            <div class="title">
-              <p>新建專案</p>
-            </div>
-            <div class="setting_project">
-              <div>
-                <p>專案名稱 Project</p>
-                <input type="text" />
-                <p>專案專屬色 Color</p>
-                <div class="colors">
-                  <span class="active"></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <button>建立專案</button>
-              </div>
-            </div>
-            <div class="title">
-              <p>時間設定</p>
-            </div>
-            <div class="setting_timer">
-              <p>Work</p>
-              <div>
-                <label>
-                  <input type="number" />
-                  <p>分</p>
-                </label>
-                <label>
-                  <input type="number" />
-                  <p>秒</p>
-                </label>
-                <button>確定</button>
-              </div>
-            </div>
-            <div class="setting_timer">
-              <p>Break</p>
-              <div>
-                <label>
-                  <input type="number" />
-                  <p>分</p>
-                </label>
-                <label>
-                  <input type="number" />
-                  <p>秒</p>
-                </label>
-                <button>確定</button>
-              </div>
-            </div>
-            <div class="title">
-              <p>專案</p>
-            </div>
-            <ul class="page_info_list setting_pm">
-              <li>
-                <p><span></span>專案1專案1專案1專案1專案1專案1專案1</p>
-                <img src="../img/check.svg" alt="check" width="20" />
-              </li>
-              <li>
-                <p><span></span>專案2</p>
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-              </li>
-              <li>
-                <p><span></span>專案2</p>
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-              </li>
-              <li>
-                <p><span></span>專案2</p>
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-              </li>
-              <li>
-                <p><span></span>專案2</p>
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" />
-              </li>
-            </ul>
-            <div class="setting_bookmark">
-              <p>已完成專案</p>
-            </div>
-            <div class="search_bar">
+          <div class="title">
+            <p>時間設定</p>
+          </div>
+          <div class="setting_timer">
+            <p>Work</p>
+            <div>
               <label>
-                <img src="../img/icon/search.svg" alt="search" />
-                <input type="text" placeholder="Search Somethings..." />
+                <input type="number" />
+                <p>分</p>
               </label>
+              <label>
+                <input type="number" />
+                <p>秒</p>
+              </label>
+              <button>確定</button>
             </div>
-            <div class="title">
-              <p>商品分類</p>
-            </div>
-            <ul class="page_info_list setting_shop">
-              <li>
-                <p>分類分類分類分類分類分類分類分類</p>
-              </li>
-              <li>
-                <p>分類</p>
-              </li>
-              <li>
-                <p>分類</p>
-              </li>
-            </ul>
           </div>
-        </nav>
-      </header>
-      <main>
-        <div class="content">
-          <!-- 內容 -->
-          <!-- 卡片(有header) -->
-          <!-- @include card($width: auto, $height: auto, $header: true, $color: $primary) -->
+          <div class="setting_timer">
+            <p>Break</p>
+            <div>
+              <label>
+                <input type="number" />
+                <p>分</p>
+              </label>
+              <label>
+                <input type="number" />
+                <p>秒</p>
+              </label>
+              <button>確定</button>
+            </div>
+          </div>
+          <div class="title">
+            <p>專案</p>
+          </div>
+          <ul class="page_info_list setting_pm">
+            <li>
+              <p><span></span>專案1專案1專案1專案1專案1專案1專案1</p>
+              <img src="../img/check.svg" alt="check" width="20" />
+            </li>
+            <li>
+              <p><span></span>專案2</p>
+              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
+            </li>
+            <li>
+              <p><span></span>專案2</p>
+              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
+            </li>
+            <li>
+              <p><span></span>專案2</p>
+              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
+            </li>
+            <li>
+              <p><span></span>專案2</p>
+              <img src="../img/uncheck.svg" alt="uncheck" width="20" />
+            </li>
+          </ul>
+          <div class="setting_bookmark">
+            <p>已完成專案</p>
+          </div>
+          <div class="search_bar">
+            <label>
+              <img src="../img/icon/search.svg" alt="search" />
+              <input type="text" placeholder="Search Somethings..." />
+            </label>
+          </div>
+          <div class="title">
+            <p>商品分類</p>
+          </div>
+          <ul class="page_info_list setting_shop">
+            <li>
+              <p>分類分類分類分類分類分類分類分類</p>
+            </li>
+            <li>
+              <p>分類</p>
+            </li>
+            <li>
+              <p>分類</p>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="content">
+        <!-- 內容 -->
+        <!-- 卡片(有header) -->
+        <!-- @include card($width: auto, $height: auto, $header: true, $color: $primary) -->
 
-          <!-- 
+        <!-- 
           .card_box {
             @include card(500px, 500px, true, $primary);
           } 
           -->
-          <!-- <div class="card_box">
+        <!-- <div class="card_box">
             <div class="card_header">123</div>
             <div class="card_content">456</div>
           </div> -->
-          <!-- 卡片(沒header) -->
-          <!-- 
+        <!-- 卡片(沒header) -->
+        <!-- 
           .card_box {
             @include card(500px, 500px, false);
           } 
           -->
-          <!-- <div class="card_box">
+        <!-- <div class="card_box">
             <div class="card_content">456</div>
           </div> -->
-          <div class="cart_page active">
-            <div class="cart_title">
-              <h1>Cart</h1>
-            </div>
-            <div class="cart_list">
-              <div class="cart_product">
-                <div class="cart_product_img">
-                  <img src="./img/cart_img/bag/bag1.jpg" alt="">
-                </div>
-                <div class="cart_product_message">
-                  <p>Cow皮革修身商務包</p>
-                  <h3>$4500</h3>
-                  <p>商品介紹 : 免費口袋2,拉鍊口袋1</p>
-                  <p>尺寸 : 26mm x 35mm x 14mm</p>
-                </div>
-                <div class="cart_product_qty">
-                  <button class="cart_cut_product"> - </button>
-                  <p>0</p>
-                  <button class="cart_add_product"> + </button>
-                </div>
-    
-    
-                <div></div>
+        <div class="cart_page active">
+          <div class="cart_title">
+            <h1>Cart</h1>
+          </div>
+          <div class="cart_list">
+            <div class="cart_product">
+              <div class="cart_product_img">
+                <img src="./img/cart_img/bag/bag1.jpg" alt="">
               </div>
-              <div class="cart_product">
-                <div class="cart_product_img">
-                  <img src="./img/cart_img/bag/bag1.jpg" alt="">
-                </div>
-                <div class="cart_product_message">
-                  <p>Cow皮革修身商務包</p>
-                  <h3>$4500</h3>
-                  <p>商品介紹 : 免費口袋2,拉鍊口袋1</p>
-                  <p>尺寸 : 26mm x 35mm x 14mm</p>
-                </div>
-                <div class="cart_product_qty">
-                  <button class="cart_cut_product"> - </button>
-                  <p>0</p>
-                  <button class="cart_add_product"> + </button>
-                </div>
-    
-    
-                <div></div>
+              <div class="cart_product_message">
+                <p>Cow皮革修身商務包</p>
+                <h3>$4500</h3>
+                <p>商品介紹 : 免費口袋2,拉鍊口袋1</p>
+                <p>尺寸 : 26mm x 35mm x 14mm</p>
               </div>
-              <div class="cart_product">
-                <div class="cart_product_img">
-                  <img src="./img/cart_img/bag/bag1.jpg" alt="">
-                </div>
-                <div class="cart_product_message">
-                  <p>Cow皮革修身商務包</p>
-                  <h3>$4500</h3>
-                  <p>商品介紹 : 免費口袋2,拉鍊口袋1</p>
-                  <p>尺寸 : 26mm x 35mm x 14mm</p>
-                </div>
-                <div class="cart_product_qty">
-                  <button class="cart_cut_product"> - </button>
-                  <p>0</p>
-                  <button class="cart_add_product"> + </button>
-                </div>
-    
-    
-                <div></div>
+              <div class="cart_product_qty">
+                <button class="cart_cut_product"> - </button>
+                <p>0</p>
+                <button class="cart_add_product"> + </button>
               </div>
-              <div class="cart_product">
-                <div class="cart_product_img">
-                  <img src="./img/cart_img/bag/bag1.jpg" alt="">
-                </div>
-                <div class="cart_product_message">
-                  <p>Cow皮革修身商務包</p>
-                  <h3>$4500</h3>
-                  <p>商品介紹 : 免費口袋2,拉鍊口袋1</p>
-                  <p>尺寸 : 26mm x 35mm x 14mm</p>
-                </div>
-                <div class="cart_product_qty">
-                  <button class="cart_cut_product"> - </button>
-                  <p>0</p>
-                  <button class="cart_add_product"> + </button>
-                </div>
-    
-    
-                <div></div>
-              </div>
-              <!-- 動態新增的內容 -->
+
+
               <div></div>
             </div>
-            <div class="cart_total">
-              <div class="cart_summary">
-                <h2>Cart Summary</h2>
-                <p>Total</p>
-                <h3>$4500</h3>
+            <div class="cart_product">
+              <div class="cart_product_img">
+                <img src="./img/cart_img/bag/bag1.jpg" alt="">
               </div>
-              <div class="cart_account">
-                <div class="cart_credit_card">
-    
-                </div>
+              <div class="cart_product_message">
+                <p>Cow皮革修身商務包</p>
+                <h3>$4500</h3>
+                <p>商品介紹 : 免費口袋2,拉鍊口袋1</p>
+                <p>尺寸 : 26mm x 35mm x 14mm</p>
+              </div>
+              <div class="cart_product_qty">
+                <button class="cart_cut_product"> - </button>
+                <p>0</p>
+                <button class="cart_add_product"> + </button>
+              </div>
+
+
+              <div></div>
+            </div>
+            <div class="cart_product">
+              <div class="cart_product_img">
+                <img src="./img/cart_img/bag/bag1.jpg" alt="">
+              </div>
+              <div class="cart_product_message">
+                <p>Cow皮革修身商務包</p>
+                <h3>$4500</h3>
+                <p>商品介紹 : 免費口袋2,拉鍊口袋1</p>
+                <p>尺寸 : 26mm x 35mm x 14mm</p>
+              </div>
+              <div class="cart_product_qty">
+                <button class="cart_cut_product"> - </button>
+                <p>0</p>
+                <button class="cart_add_product"> + </button>
+              </div>
+
+
+              <div></div>
+            </div>
+            <div class="cart_product">
+              <div class="cart_product_img">
+                <img src="./img/cart_img/bag/bag1.jpg" alt="">
+              </div>
+              <div class="cart_product_message">
+                <p>Cow皮革修身商務包</p>
+                <h3>$4500</h3>
+                <p>商品介紹 : 免費口袋2,拉鍊口袋1</p>
+                <p>尺寸 : 26mm x 35mm x 14mm</p>
+              </div>
+              <div class="cart_product_qty">
+                <button class="cart_cut_product"> - </button>
+                <p>0</p>
+                <button class="cart_add_product"> + </button>
+              </div>
+
+
+              <div></div>
+            </div>
+            <!-- 動態新增的內容 -->
+            <div></div>
+          </div>
+          <div class="cart_total">
+            <div class="cart_summary">
+              <h2>Cart Summary</h2>
+              <p>Total</p>
+              <h3>$4500</h3>
+            </div>
+            <div class="cart_account">
+              <div class="cart_credit_card">
+
+              </div>
+              <form action="">
                 <div class="cart_credit_card_mes">
                   <p class="cart_card_text">CARD NUMBER</p>
-                  <div class="cart_numbox">
+                  <div class="cart_numbox1">
                     <input type="text" class="cart_inputnum1">
                     <input type="text" class="cart_inputnum1">
                     <input type="text" class="cart_inputnum1">
                     <input type="text" class="cart_inputnum1">
                   </div>
                   <p class="cart_card_text">CARD HOLDER</p>
-                  <div class="cart_numbox">
+                  <div class="cart_numbox1">
                     <input type="text" class="cart_inputnum2">
                   </div>
-                  <p class="cart_card_text">EXPIRATION DATE</p>
-                  <select name="" id="">
-                    <option value="">2020</option>
-                    <option value="">2021</option>
-                    <option value="">2022</option>
-                    <option value="">2023</option>
-                    <option value="">2024</option>
-                    <option value="">2025</option>
-                  </select>
+                  <div class="cart_numbox2">
+                    <div class="cart_select_box">
+                      <p class="cart_card_text">EXPIRATION DATE</p>
+                      <select name="" id="">
+                        <option value=""></option>
+                        <option value="">01</option>
+                        <option value="">01</option>
+                        <option value="">02</option>
+                        <option value="">03</option>
+                        <option value="">04</option>
+                        <option value="">05</option>
+                        <option value="">06</option>
+                        <option value="">07</option>
+                        <option value="">08</option>
+                        <option value="">09</option>
+                        <option value="">10</option>
+                        <option value="">11</option>
+                        <option value="">12</option>
+                      </select>
+                      <select name="" id="">
+                        <option value=""></option>
+                        <option value="">2020</option>
+                        <option value="">2021</option>
+                        <option value="">2022</option>
+                        <option value="">2023</option>
+                        <option value="">2024</option>
+                        <option value="">2025</option>
+                        <option value="">2026</option>
+                        <option value="">2027</option>
+                      </select>
+                    </div>
+                    <div class="cart_numbox3">
+                      <p class="cart_card_text">CCV</p>
+                      <input type="text" class="cart_inputnum2">
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <div class="cart_submit">
+                  <button type="submit">送出訂單</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
+  </div>
 
-    <script src="../js/lib/three.min.js"></script>
-    <script type="x-shader/x-fragment" id="fragmentshader">
-      uniform vec3 color;
+  <script src="../js/lib/three.min.js"></script>
+  <script type="x-shader/x-fragment" id="fragmentshader">
+    uniform vec3 color;
         uniform sampler2D texture;
         varying float opacity;
         varying vec3 vColor;
@@ -368,13 +401,14 @@
             gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
         }
     </script>
-    <script src="../js/background.js"></script>
-    <script>
-      const container = document.getElementById("app");
-      const hamburger = document.querySelector(".nav_hamburger");
-      hamburger.addEventListener("click", () =>
-        container.classList.toggle("nav_open")
-      );
-    </script>
-  </body>
+  <script src="../js/background.js"></script>
+  <script>
+    const container = document.getElementById("app");
+    const hamburger = document.querySelector(".nav_hamburger");
+    hamburger.addEventListener("click", () =>
+      container.classList.toggle("nav_open")
+    );
+  </script>
+</body>
+
 </html>
