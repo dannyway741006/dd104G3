@@ -228,7 +228,10 @@
           <div class="card_light_box" id="card_light_box" :class="{opneLight: opened}">
             <div class="card_header_title">
               <h1 id="card_title">團專衝刺</h1>
-              <div @click="opened = false"><img src="./img/card_img/cancel_w.svg" alt=""></div>
+              <div @click="opened = false">
+               
+                <img src="./img/card_img/cancel_w.svg" alt="">
+              </div>
             </div>
 
             <div class="lightbox_content">
@@ -237,17 +240,17 @@
                   <h3>新增至卡片</h3>
                   <hr />
                   <div class="first_right_member" @click.stop="openmember(),member_switch =! member_switch"
-                    :class="{click_light_two :member_switch}">
+                    :class="{click_light_two : member_switch}">
                     <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
                     成員
                   </div>
-                  <div class="wave" @click.stop="opendate(),calandar_switch =! calandar_switch"
+                  <!-- <div class="wave" @click.stop="opendate(),calandar_switch =! calandar_switch"
                     :class="{click_light :calandar_switch}">
                     <img src="./img/calendar.e1ea5ef5.svg" alt="" style="width: 20px;" />
                     到期日
-                  </div>
+                  </div> -->
                   <div @click.stop="opentodo(),todo_switch =! todo_switch" class="todogo"
-                    :class="{click_light_three :todo_switch}">
+                    :class="{click_light_three : todo_switch}">
                     <img src="./img/content.22f4a956.svg" alt="" style="width: 20px;" />
                     待辦清單
                   </div>
@@ -275,12 +278,11 @@
 
 
                   <!-- 新增日曆跳窗 -->
-                  <transition name="fade" mode="out-in">
+                  <!-- <transition name="fade" mode="out-in">
                     <div class="calendar_lightbox" @click.stop="" v-show="showCalender">
                       <h3>更改到期日</h3>
                       <p class="day_date">日期</p>
                       <div class="calendar_lightbox_content">
-                        <!-- 手刻日立 -->
                         <div class="calendar" id='inCalender' ref='inCalender'>
                           <div class="calendar_header">
                             <button class="prev">
@@ -300,7 +302,7 @@
 
                       </div>
                     </div>
-                  </transition>
+                  </transition> -->
 
                   <!-- 上船附件跳窗 -->
                   <transition name="fade" mode="out-in">
@@ -432,17 +434,18 @@
                           @click="show_test =! show_test"></div>
                     </div>
                     <div class="todo_progress_bar">
-                      <p>0%</p>
+                      <p>{{progress_bar_length}}%</p>
                       <div class="progress_bar">
-                        <span :style="{width:test_length+'%'}"></span>
+                        <span :style="{width:progress_bar_length+'%'}"></span>
                       </div>
                     </div>
                     <!-- 新增的卡片細項 -->
                     <div>
                       <div class="card_check_item" v-for="(item,index) in todo_test" :key="index">
-                        <div  @click="item.test_status = !item.test_status,item.test_text =! item.test_text">
-                          <img src="./img/uncheck.svg" alt="" v-if="item.test_status" @click.stop="addprogress">
-                          <img src="./img/check.svg" alt="" v-else  @click.stop="removeprogress">
+                        <div @click="item.test_status = !item.test_status,item.test_text =! item.test_text">
+                          <img src="./img/check.svg" alt=""  v-if="item.test_status">
+                          <img src="./img/uncheck.svg" alt="" v-else>
+                        
                         </div>
                         <p :class="{lineThrough:item.test_text}">{{item.test_title}}</p>
                         <div><img src="./img/icon/time-left.svg" alt=""></div>
@@ -503,9 +506,10 @@
 
                         <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
                           <div @click="item.status = !item.status,item.text =!item.text">
-                            <img src="./img/uncheck.svg" alt="" v-if="item.status"
-                              @click="changeprogressbar(bigindex,index)">
-                            <img src="./img/check.svg" alt="" v-else>
+                         
+                            <img src="./img/check.svg" alt="" v-if="item.status">
+                            <img src="./img/uncheck.svg" alt="" v-else 
+                            >
                           </div>
                           <p :class="{lineThrough:item.text}">{{item.content}}</p>
                           <div><img src="./img/icon/time-left.svg" alt=""></div>
