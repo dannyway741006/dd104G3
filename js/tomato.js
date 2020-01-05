@@ -1,19 +1,20 @@
 var app = new Vue({
-    el:'#tomatoContent',
+    el:'#app',
     data:{
         newTodo:'',
-        countdownTime:'5:00',
+        countdownTime:'1:00',
         start_time: '',
         end_time:'',
         now_time:'',
-        isRest:false,
-        countDownTimer:'',
+        stoping:false,
+        countTomato:null,
+        t:'',
         todos:[
             {
                 id:'mask1',
                 title:'任務1',
                 complete:false,
-                isPlay: false,
+                runstatus:0,
             },
         ],
     },
@@ -25,85 +26,40 @@ var app = new Vue({
             if(!value){
                 return;
             }
-            this.todos.push({
-                id:timestamp,
-                title:value,
-                complete:false,
-                isPlay: false,
-            })
+            var task = {     
+                    id:timestamp,
+                    title:value,
+                    complete:false,
+                    runstatus:0,
+            }
+            this.todos.push(task)
             this.newTodo="";
         },
         removeTodo(key){
             this.todos.splice(key,1)    
         },
-        changePlay(key){  
-        if(this.todos[key].isPlay){
-            this.todos[key].isPlay = !this.todos[key].isPlay;
-        }else{
-            this.todos.forEach(item => {
-                item.isPlay = false;
-            });
-            this.todos[key].isPlay = true;
-            this.countDown();
-        }
+        pauseTomato(item){
+            
         },
-         countDown(){
-            var setMin = this.isRest ? 3 : 2;
-            if(this.start_time == '' && this.end_time==''){
-                this.start_time = new Date();
-                this.end_time = new Date();
-                this.end_time.setMinutes(this.start_time.getMinutes() + setMin);
-                console.log(this.end_time)
-                this.countDownTimer = setTimeout(() => {
-                    this.runCountDown();
-                }, 10);
-            }
+        startTomato(item){
+          
         },
-        runCountDown(){
-            this.now_time = new Date();
-            var timeGap = this.end_time-this.now_time;
-            console.log(timeGap);
-            var sec = timeGap % (60 * 1000);
-            // console.log(sec);
-            if(sec.toString().length > 3){
-                sec = sec.toString().length > 4?sec.toString().substr(0,2):sec.toString().substr(0,1);
-                sec = '0'+ sec;
-                console.log(sec);
-            }else{
-                sec = '00';
-            }
-            var min ='0'+  Math.floor(timeGap / (60 * 1000));
-            console.log(min);
-            this.countdownTime = min +':'+sec.substr(-2);
-            //迴圈
-            if (this.countdownTime !== '00:00') {
-                this.t = setTimeout(() => {
-                    this.runCountDown();
-                }, 10);
-            } else if (this.countdownTime === '00:00') {
-                if (!this.isRest) {
-                    var vm = this;
-                    this.isRest = true;
-                    vm.runCountDown();
-                } else {
-                    this.isRest = false;
+        runCountDown(key){
 
-                }
-            }
-        }
+        },
     },
 });
 
 
-let taskLi = document.querySelectorAll(".taskLi");
-for (var i = 0; i < taskLi.length; i++) {
-    taskLi[i].addEventListener("click", function () {
-        for(var i = 0;i< taskLi.length; i++){
-            taskLi[i].classList.remove("active");
-        }   
-        this.classList.add("active");
-    });
-}
+// let taskLi = document.querySelectorAll(".taskLi");
+// for (var i = 0; i < taskLi.length; i++) {
+//     taskLi[i].addEventListener("click", function () {
+//         for(var i = 0;i< taskLi.length; i++){
+//             taskLi[i].classList.remove("active");
+//         }   
+//         this.classList.add("active");
+//     });
+// }
 
 //todolist切換
 var todoList = document.querySelector('.todoList')
