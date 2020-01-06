@@ -324,72 +324,103 @@
               <p>Total</p>
               <h3>$4500</h3>
             </div>
-            <div class="cart_account">
-              <div class="cart_credit_card">
-
-              </div>
-              <form action="">
-                <div class="cart_credit_card_mes">
-                  <p class="cart_card_text">CARD NUMBER</p>
-                  <div class="cart_numbox1">
-                    <input type="text" class="cart_inputnum1">
-                    <input type="text" class="cart_inputnum1">
-                    <input type="text" class="cart_inputnum1">
-                    <input type="text" class="cart_inputnum1">
+            <div id="cart">
+              <div class="cart_account">
+                <div class="cart_credit_card">
+                  <div class="cart_card_number">
+                    <p>{{cardNum1}} {{cardNum2}} {{cardNum3}} {{cardNum4}}</p>
                   </div>
-                  <p class="cart_card_text">CARD HOLDER</p>
-                  <div class="cart_numbox1">
-                    <input type="text" class="cart_inputnum2">
-                  </div>
-                  <div class="cart_numbox2">
-                    <div class="cart_select_box">
-                      <p class="cart_card_text">EXPIRATION DATE</p>
-                      <select name="" id="">
-                        <option value=""></option>
-                        <option value="">01</option>
-                        <option value="">01</option>
-                        <option value="">02</option>
-                        <option value="">03</option>
-                        <option value="">04</option>
-                        <option value="">05</option>
-                        <option value="">06</option>
-                        <option value="">07</option>
-                        <option value="">08</option>
-                        <option value="">09</option>
-                        <option value="">10</option>
-                        <option value="">11</option>
-                        <option value="">12</option>
-                      </select>
-                      <select name="" id="">
-                        <option value=""></option>
-                        <option value="">2020</option>
-                        <option value="">2021</option>
-                        <option value="">2022</option>
-                        <option value="">2023</option>
-                        <option value="">2024</option>
-                        <option value="">2025</option>
-                        <option value="">2026</option>
-                        <option value="">2027</option>
-                      </select>
+                </div>
+                <form action="">
+                  <div class="cart_credit_card_mes">
+                    <p class="cart_card_text">CARD NUMBER</p>
+                    <div class="cart_numbox1">
+                      <input type="text" id="cardNum1" class="cart_inputnum1" maxlength="4" v-model="cardNum1">
+                      <input type="text" id="cardNum2" class="cart_inputnum1" maxlength="4" v-model="cardNum2">
+                      <input type="text" id="cardNum3" class="cart_inputnum1" maxlength="4" v-model="cardNum3">
+                      <input type="text" id="cardNum4" class="cart_inputnum1" maxlength="4" v-model="cardNum4">
                     </div>
-                    <div class="cart_numbox3">
-                      <p class="cart_card_text">CCV</p>
+                    <p class="cart_card_text">CARD HOLDER</p>
+                    <div class="cart_numbox1">
                       <input type="text" class="cart_inputnum2">
-                      </p>
+                    </div>
+                    <div class="cart_numbox2">
+                      <div class="cart_select_box">
+                        <p class="cart_card_text">EXPIRATION DATE</p>
+                        <select name="" id="">
+                          <option value=""></option>
+                          <option value="">01</option>
+                          <option value="">01</option>
+                          <option value="">02</option>
+                          <option value="">03</option>
+                          <option value="">04</option>
+                          <option value="">05</option>
+                          <option value="">06</option>
+                          <option value="">07</option>
+                          <option value="">08</option>
+                          <option value="">09</option>
+                          <option value="">10</option>
+                          <option value="">11</option>
+                          <option value="">12</option>
+                        </select>
+                        <select name="" id="">
+                          <option value=""></option>
+                          <option value="">2020</option>
+                          <option value="">2021</option>
+                          <option value="">2022</option>
+                          <option value="">2023</option>
+                          <option value="">2024</option>
+                          <option value="">2025</option>
+                          <option value="">2026</option>
+                          <option value="">2027</option>
+                        </select>
+                      </div>
+                      <div class="cart_numbox3">
+                        <p class="cart_card_text">CCV</p>
+                        <input type="text" class="cart_inputnum2">
+                        </p>
+                      </div>
+                    </div>
+                    <div class="cart_submit">
+                      <button type="submit">送出訂單</button>
                     </div>
                   </div>
-                </div>
-                <div class="cart_submit">
-                  <button type="submit">送出訂單</button>
-                </div>
-              </form>
+
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </main>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#cart',
+      data: {
+        cardNum1: '',
+        cardNum2: '',
+        cardNum3: '',
+        cardNum4: '',
+      },
+      methods: {
+        setCardNum1(e) {
+          this.cardNum1 = e.target.value;
+        },
+        setCardNum2(e) {
+          this.cardNum2 = e.target.value;
+        },
+        setCardNum3(e) {
+          this.cardNum3 = e.target.value;
+        },
+        setCardNum4(e) {
+          this.cardNum4 = e.target.value;
+        },
+      }
+    });
+  </script>
+  <script src="./js/cart.js"></script>
   <script src="../js/lib/three.min.js"></script>
   <script type="x-shader/x-fragment" id="fragmentshader">
     uniform vec3 color;
