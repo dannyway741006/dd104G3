@@ -59,102 +59,101 @@ var main_content = new Vue({
     history_page: null,
 
 
-
+    targetCardInfo: null,
     //卡片背面
     opened: false,
-    isactive: true,
-    onactive: false,
-    classObject: {
-      active: false,
-      // error:true,
-    },
-    text: '未完成',
+    // isactive: true,
+    // onactive: false,
+    // classObject: {
+    //   active: false,
+      // },
+    // text: '未完成',
 
-    showselect: true,
+    // showselect: true,
 
-    deleteline: false,
+    // deleteline: false,
 
-    todo_lightbox_switch: false,
+    // todo_lightbox_switch: false,
 
-    todo_list_content_detail: [],
-    todo_lightbox_input_title: '',
+    // todo_list_content_detail: [],
+    // todo_lightbox_input_title: '',
 
-    card_detail_lightbox: false,
-
-
-
-    calandar_switch: false,
-
-    file_switch: false,
-
-    filebox: [],
-    sourced: '',
-
-    card_meber_switch: false,
-
-    i: '',
-    showCalender: false,
-
-    calandar_switch: false,
-    member_switch: false,
-    todo_switch: false,
-    fileder_switch: false,
-
-    //一開始就出現的todolist
-    show_test: true,
-    todo_test: [],
-    test_message: '',
-
-    text_card_length: false,
-
-    test_length: '',
+    // card_detail_lightbox: false,
 
 
 
-    time2: null,
+    // calandar_switch: false,
 
-    progress_mount: [],
+    // file_switch: false,
 
-    targetCardInfo: null,
+    // filebox: [],
+    // sourced: '',
+
+    // card_meber_switch: false,
+
+    // i: '',
+    // showCalender: false,
+
+    // calandar_switch: false,
+    // member_switch: false,
+    // todo_switch: false,
+    // fileder_switch: false,
+
+    // //一開始就出現的todolist
+    // show_test: true,
+    // todo_test: [],
+    // test_message: '',
+
+    // text_card_length: false,
+
+    // test_length: '',
 
 
-    //顯示成員
-    memebergo: [{
-        member_name: '王曉明',
-        userId: 'user3456',
-        src: './img/program_img/program_member_1.png',
-        check: '',
-        uncolor: false,
-      },
-      {
-        member_name: '楊小梅',
-        userId: 'user4756',
-        src: "./img/program_img/program_member_2.png",
-        check: '',
-        uncolor: false,
-      },
-      {
-        member_name: '張大千',
-        userId: 'user1234',
-        src: './img/program_img/program_member_3.png',
-        check: '',
-        uncolor: false,
-      },
-      {
-        member_name: '陳小羽',
-        userId: 'user456',
-        src: './img/card_img/878378-XXL.jpg',
-        check: '',
-        uncolor: false,
-      },
-    ],
 
-    //member的去向
-    member_in: [],
+    // time2: null,
 
-    showcheck: false,
+    // progress_mount: [],
 
-    member_inout: [],
+    
+
+
+    // //顯示成員
+    // memebergo: [{
+    //     member_name: '王曉明',
+    //     userId: 'user3456',
+    //     src: './img/program_img/program_member_1.png',
+    //     check: '',
+    //     uncolor: false,
+    //   },
+    //   {
+    //     member_name: '楊小梅',
+    //     userId: 'user4756',
+    //     src: "./img/program_img/program_member_2.png",
+    //     check: '',
+    //     uncolor: false,
+    //   },
+    //   {
+    //     member_name: '張大千',
+    //     userId: 'user1234',
+    //     src: './img/program_img/program_member_3.png',
+    //     check: '',
+    //     uncolor: false,
+    //   },
+    //   {
+    //     member_name: '陳小羽',
+    //     userId: 'user456',
+    //     src: './img/card_img/878378-XXL.jpg',
+    //     check: '',
+    //     uncolor: false,
+    //   },
+    // ],
+
+    // //member的去向
+    // member_in: [],
+
+    // showcheck: false,
+
+    // member_inout: [],
 
 
   },
@@ -286,11 +285,10 @@ var main_content = new Vue({
         cardIndex
       }
       this.opened = !this.opened;
-      // console.log(this.programs[index].cards[this.programs[index].cards.length - 1]);
-      // console.log(this.$refs.calendarBody)
-      if(!this.$refs.calendarBody.hasChildNodes()){
-        calender(this.$refs.inCalender);
-      }
+   
+      // if(!this.$refs.calendarBody.hasChildNodes()){
+      //   calender(this.$refs.inCalender);
+      // }
       
     },
     //抓卡片位置
@@ -493,15 +491,17 @@ var main_content = new Vue({
       this.calendar_btn = false;
 
       //卡片背面
-      this.calandar_switch = false;
-      this.todo_lightbox_switch = false;
-      this.file_switch = false;
-      this.card_meber_switch = false;
+      // this.calandar_switch = false;
+      // this.todo_lightbox_switch = false;
+      // this.file_switch = false;
+      // this.card_meber_switch = false;
 
-      this.showCalender = false;
-      this.member_switch = false;
-      this.todo_switch = false;
-      this.fileder_switch = false;
+      // this.showCalender = false;
+      // this.member_switch = false;
+      // this.todo_switch = false;
+      // this.fileder_switch = false;
+
+
       // console.log(this.programs.length - 1)
       if (this.programs.length == 0) {
         // console.log(this.programs.length-1)
@@ -527,25 +527,9 @@ var main_content = new Vue({
 
 
   },
-  watch: {
 
-  },
 });
 
 
 
 
-
-
-//拖曳
-// $(drag);
-
-// function drag() {
-//   $(".cards_list_todo,.cards_list_doing,.cards_list_done")
-//     .sortable({
-//       connectWith: ".cards_list",
-//       stack: ".cards_column_body .cards_list"
-//       // revert:true,
-//     })
-//     .disableSelection();
-// }
