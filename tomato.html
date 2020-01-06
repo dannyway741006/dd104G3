@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="../css/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>番茄鐘</title>
   </head>
   <body>
     <div id="app">
@@ -140,7 +141,7 @@
           </div>
         </nav>
       </header>
-      <main>       
+      <main>
         <div class="content tomatoContent" id="tomatoContent">
           <!-- 內容 -->
           <div class="tomatoTimer">
@@ -156,13 +157,13 @@
                 <circle r="40%" cx="50%" cy="50%" />
                 <circle id="bar" r="40%" cx="50%" cy="50%" />
                 <circle id="outside" r="45%" cx="50%" cy="50%" />
-                <text id="timer" x="50%" y="50%"> {{countdownTime}} </text>
+                <text id="timer" x="50%" y="50%"> {{viewTime}} </text>
               </svg>
             </div>
             <div class="clockControl">
               <div class="switch">
-                <div class="work" @click="isRest=false">work</div>
-                <div class="rest" @click="isRest=true">rest</div>
+                <div class="work" :class="{'active': working}" @click="working=true">work</div>
+                <div class="rest" :class="{'active': !working}" @click="working=false">rest</div>
               </div>
             </div>
           </div>
@@ -188,12 +189,12 @@
                           <p>25:00</p>
                         </div>
                         <div class="status">
-                          <div class="playPause" @click='changePlay(key)' :key="item.id">
-                            <div v-if='!item.isPlay' class="play">
+                          <div class="playPause"  :key="item.id">
+                            <div v-if='item.runstatus===0' @click='startTomato(item)' class="play">
                               <img src="./img/play.svg" alt="" width="25px">
                               <img src="./img/play_c.svg" alt="" width="25px" class="play">
                             </div>
-                            <div v-else class="play pause">
+                            <div v-if='item.runstatus===1' @click='pauseTomato(item)' class="play pause">
                               <img src="./img/pause.svg" alt="">
                               <img src="./img/pause_c.svg" alt="">
                             </div>
@@ -269,6 +270,9 @@
                  <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
                 </div>
                 <h2>統計圖表</h2>
+              </div>
+              <div class="analyChart">
+                <canvas id="statChart"></canvas>
               </div>
             </div>    
           </div>
