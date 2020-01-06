@@ -346,13 +346,15 @@ var vm = new Vue({
       }else{
          return Math.round((100/length)*this.progerss.length);
       }
-      
     },
-    inner_progress(index){
-      console.log(index);
-      return  this.todo_list_content_detail[index].lists.filter(item=>{
-        return item.status;
-      })
+    inner_progress(detailIndex){
+      // console.log(this.todo_list_content_detail[0].lists);
+      let indexx=this.todo_list_content_detail.findIndex(x => x.title === this.todo_lightbox_input_title);
+      return  this.todo_list_content_detail[indexx].lists;
+      // .lists
+      // .filter(item=>{
+      //   return item.status;
+      // });
     },
     // inner_progress_bar(index){
     //   let length=this.todo_list_content_detail[index].lists.length;
