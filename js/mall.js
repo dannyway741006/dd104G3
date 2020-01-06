@@ -91,3 +91,17 @@ if (cartCount.textContent === 0) {
 // });
 
 
+
+
+
+$('#mall_btn01').click(function(){
+  $.ajax({
+      url: 'mall_test.html', 
+      type: 'GET',
+      dataType: 'html',
+      success: function(data){
+        console.log(data)
+          $('main').html(data);
+      },    
+  });
+});
