@@ -1,14 +1,17 @@
 var app = new Vue({
     el:'#app',
     data:{
+        //todolist 頁面切換
+        toTrello:false,
+        toStat:false,
         newTodo:'',
-        // viewTime:'5:00',
+        //todolist 頁面切換結束
         timer:10,
         //要跑的時間
         myTimer:null,
         //計時器
         countDownTimer:'',
-        currentTomato:null,
+        currentTomato:{},
         //現在再跑的任務,
         working:true,
         todos:[
@@ -17,22 +20,29 @@ var app = new Vue({
                 title:'任務1',
                 runstatus:0,
                 currentTime:10,
+                complete:false,
             },
             {
                 id:'mask2',
                 title:'任務2',
                 runstatus:0,
                 currentTime:10,
+                complete:false,
             },
         ],
     },
     watch:{
-        timer:function(){
+        timer(){
             //如果timer發生變化
             if(this.currentTomato){
                 //如果有正在執行的任務
                  this.currentTomato.currentTime = this.timer;	
             } 
+        },
+        working(){
+            clearTimeout(this.mytimer); 
+            this.currentTomato.runstatus = 0;
+            this.timer = this.working? 10:15;
         }
     },
     computed: {
@@ -43,7 +53,7 @@ var app = new Vue({
             // } 
             let [mini,second] = [parseInt(this.timer/60).toString().padStart(2,'0'),(this.timer%60).toString().padStart(2,'0')];
             return `${mini}:${second}`
-        } 
+        },
     },
     methods: {
         addTodo(){
@@ -58,6 +68,7 @@ var app = new Vue({
                 title:value,
                 runstatus:0,
                 currentTime:10,
+                complete:false,
             }
             this.todos.push(task)
             this.newTodo="";
@@ -65,6 +76,10 @@ var app = new Vue({
         removeTodo(key){
             this.todos.splice(key,1)    
         },
+        // restMode(){
+        //     clearTimeout(this.mytimer);
+        //     this.currentTomato.runstatus = 0;
+        // },
         pauseTomato(item){
             
             item.runstatus = 0;
@@ -72,20 +87,24 @@ var app = new Vue({
             console.log('暫停')
         },
         startTomato(item){ 
-            if(this.currentTomato && this.currentTomato.runstatus == 1){   
+             if(this.currentTomato && this.currentTomato.runstatus == 1){   
                 this.currentTomato.runstatus = 0; //this.currentTomato.currentTime = 10;      
                 console.log('1')
                 clearTimeout(this.mytimer);
             }
             else if(this.currentTomato&&item.id != this.currentTomato.id){
+                //點擊不同li
                 console.log('3')
+                this.working = true;
                 this.currentTomato.currentTime = 10;
                 this.currentTomato = item;
                 item.runstatus =1;
                 this.countDown(this.currentTomato.currentTime)
             }
-            else{       
+            else{
+                //一開始沒有任務      
                 console.log('2')
+                item.currentTime = this.timer;
                 this.currentTomato = item;
                 item.runstatus =1;
                 console.log(this.currentTomato.currentTime)
@@ -110,6 +129,7 @@ var app = new Vue({
             }else{
                 this.currentTomato.runstatus = 0;
                 this.timer = 10;
+                this.working = !this.working;
             }
             }
             
@@ -162,36 +182,3 @@ var ctx = document.getElementById("statChart");
       }
     }
   });
-
-// let taskLi = document.querySelectorAll(".taskLi");
-// for (var i = 0; i < taskLi.length; i++) {
-//     taskLi[i].addEventListener("click", function () {
-//         for(var i = 0;i< taskLi.length; i++){
-//             taskLi[i].classList.remove("active");
-//         }   
-//         this.classList.add("active");
-//     });
-// }
-
-//todolist切換
-var todoList = document.querySelector('.todoList')
-var todoStat = document.querySelector('.todo-stat')
-var ToTrello = document.querySelector('.moveToTrello');
-var backToCus = document.querySelector('.backToCus');
-var ToStat = document.querySelector('.moveToStat');
-var backTrello = document.querySelector('.backToTrello');
-var todoStat = document.querySelector('.todo-stat');
-
-ToTrello.addEventListener('click',function(){
-    todoList.classList.add('toTrello')
-})
-backToCus.addEventListener('click',function(){
-    todoList.classList.remove('toTrello')
-})
-ToStat.addEventListener('click',function(){
-    todoStat.classList.add('active')
-})
-backTrello.addEventListener('click',function(){
-    todoStat.classList.remove('active')
-})
-//todolist切換---結束
