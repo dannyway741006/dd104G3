@@ -1,19 +1,21 @@
 // @import "../../node_modules/vue2-datepicker/scss/index.scss";
 // $default-color: #555;
 // $primary-color: #81c7d4;
-.mask{
+.mask {
   opacity: 0;
-  @include positionfixed(-1,0,0);
+  @include positionfixed(-1, 0, 0);
   width: 100%;
   height: 100%;
-  background-color: rgb(0,0,0);
- 
-  &.masked{
-   opacity: 0.3;
-   z-index: 9;
+  background-color: rgb(0, 0, 0);
+  z-index: -2;
+
+  &.masked {
+    opacity: 0.3;
+    z-index: 9;
     // display: none;
   }
 }
+
 .card_light_box {
   position: absolute;
   left: 50%;
@@ -29,14 +31,15 @@
   padding-bottom: 15px;
   transition: opacity 0.3s;
   // opacity: 0;
-  z-index:10;
+  z-index: 10;
+
   &.opneLight {
     opacity: 1;
     // display: block;
     z-index: 10001;
-   font-size: 16px;
-   letter-spacing: 0.8px;
-   line-height: 20px;
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    line-height: 20px;
 
 
   }
@@ -54,15 +57,15 @@
     }
 
     div {
+      // @include closeBtn($insideTagName:p);
+   width: 20px;
+   height: 20px;
       position: absolute;
-      right: 15px;
+      right: 11px;
       top: 11px;
-      width: 20px;
-      height: 20px;
       cursor: pointer;
       border-radius: 50%;
       transition: all 0.3s;
-
       &:hover {
         background-color: white;
 
@@ -89,7 +92,7 @@
     flex-direction: column;
     width: 25%;
     // height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
     // border-right: 1px solid #5395de;
     padding-left: 31px;
     padding-top: 25px;
@@ -99,67 +102,78 @@
     .second_right,
     .first_right {
       transition: all 0.3s;
-
       .todogo,
       .first_right_member,
       .second_right_deletecard,
-      div:nth-child(4),
-      div:nth-child(5),
-      div:nth-child(6) {
+      .upfile,
+      .wave // div:nth-child(5),
+
+      // div:nth-child(6) 
+        {
         width: 90%;
         margin: 10px 0px;
         padding: 10px;
 
         &:hover {
           background-color: #cee0ff;
+          
           // color:$primary ;
           cursor: pointer;
 
           img {
-            filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+            // filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+            filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
+
           }
         }
       }
     }
-   .wave{
-     &.click_light{
-      background-color: #cee0ff;
 
-      img {
-        filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+    .wave {
+      &.click_light {
+        background-color: #cee0ff;
+
+        img {
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
+        }
       }
     }
-   }
 
-   .first_right_member{
-     &.click_light_two{
-      background-color: #cee0ff;
-    
+    .first_right_member {
+      &.click_light_two {
+        background-color: #cee0ff;
 
-      img {
-        filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+
+        img {
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
+        }
       }
     }
-   }
 
-   .todogo{
-     &.click_light_three{
-      background-color: #cee0ff;
-   
-      img {
-        filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+    .todogo {
+      &.click_light_three {
+        background-color: #cee0ff;
+
+        img {
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
+        }
       }
     }
-   }
 
-   .upfile{
-     &.click_light_four{
-      background-color: #cee0ff;
-      img {
-        filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+    .upfile {
+      &.click_light_four {
+        background-color: #cee0ff;
+
+        img {
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
+        }
       }
     }
-   }
 
 
     hr {
@@ -208,23 +222,73 @@
         }
 
         img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
 
         }
       }
 
-      .memimg .card_member {
-        display: inline-block;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 5px;
-        vertical-align: middle;
+      .memimg {
+        margin-left: 25px;
+        .add_member_to_card {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 2px solid rgb(160, 153, 153);
+          vertical-align: middle;
+          cursor: pointer;
+          position: relative;
+          transition: all 0.3s;
 
-        img {
-          width: 100%;
+          .memeimg {
+            @include positionCenter();
+            width: 80%;
+            height: 80%;
+            filter: invert(59%) sepia(1%) saturate(2619%) hue-rotate(354deg) brightness(108%) contrast(84%);
+          }
 
+          &:hover {
+            border-color: #81c7d4;
+            .memeimg {
+              filter: invert(96%) sepia(58%) saturate(3512%) hue-rotate(161deg) brightness(100%) contrast(80%);
+            }
+          }
+
+          .member_plus_follow {
+            position: absolute;
+           top: 35px;
+           left:0px;
+           
+          }
+        }
+        .show_dote_member{
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 2px solid rgb(160, 153, 153);
+          vertical-align: middle;
+          position: relative;
+          span{
+            @include positionCenter();
+
+          }
+        }
+
+        .card_member {
+          display: inline-block;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 5px;
+          vertical-align: middle;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
       }
     }
@@ -245,7 +309,8 @@
         }
 
         img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
       }
 
@@ -284,7 +349,8 @@
           transition: background-color 0.3s;
           background-color: $danger;
           color: #fff;
-           padding: 2.5px 5px;
+          padding: 2.5px 5px;
+
           &.active {
             background: $success;
           }
@@ -342,15 +408,44 @@
         padding: 8px 0px;
         margin-bottom: 4px;
         position: relative;
-
+        
         h3 {
           margin-left: 10px;
           @include font(1, 20px);
           font-weight: 600;
+          cursor: pointer;
+          width: 80%;
+          word-break: break-word;
+          display: -webkit-box;
+          -webkit-box-orient:vertical;
+          -webkit-line-clamp: 10;
+          overflow: hidden;
         }
-
+      .change_title{
+        margin-left: 15px;
+        width: 75%;
+        textarea{
+          @include font(0,20px);
+          color: #777;
+          padding: 5px;
+          border: 1px solid #777;
+          margin: 5px 0;
+          border-radius: 10px;
+          width:100%;
+          max-height: 162px;
+          min-height: 54px;
+          background-color: white;
+          outline: none;
+        }
+        .concernbutton{
+          button{
+            @include baseBtn(70px,auto,5px);
+          }
+        }
+      }
         .cardtitle_img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
 
         .all_card_todo_delete {
@@ -406,6 +501,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       margin-bottom: 10px;
+
       &:hover {
 
         div:nth-child(3),
@@ -415,7 +511,7 @@
       }
 
       div:first-child {
-     
+
 
         img {
           width: 20px;
@@ -427,9 +523,10 @@
       p {
         margin-left: 15px;
         @include font(0, 20px);
-         overflow: hidden;
-         text-overflow: ellipsis;
-         width: 60%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 60%;
+
         &.lineThrough {
           text-decoration: line-through;
         }
@@ -496,29 +593,34 @@
         display: inline-block;
         width: 100%;
         position: relative;
-         img{
-           cursor: pointer;
-         }
+
+        img {
+          cursor: pointer;
+        }
+
         input {
           @include btnReset();
           background-color: $primary;
           @include font(0, 20px);
           color: #fff;
           padding: 3px;
-          border-radius: 10px;
+          border-radius: 5px;
           border: 2px solid $primary;
           transition: all 0.3s;
           width: 110px;
           padding: 5px 25px 5px 5px;
-            &.addlength{
-              width:250px;
-              &::placeholder {
-                text-align: center;
-              }
+
+          &.addlength {
+            width: 250px;
+
+            &::placeholder {
+              text-align: center;
             }
+          }
+
           &::placeholder {
             color: white;
-            
+
           }
 
 
@@ -547,57 +649,67 @@
           font-weight: 600;
         }
 
-       .file_title_img img {
-          filter: invert(54%) sepia(10%) saturate(3742%) hue-rotate(174deg) brightness(79%) contrast(94%);
+        .file_title_img img {
+filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+
         }
       }
-       ul{
-         color: #666;
-         list-style-position: inside;
-         list-style-type: disc;
-         @include font(0,20px);
-           li{
-             position: relative;
-             margin-bottom: 5px;
-             transition: all 0.3s;
-             margin-left: 10px;
-             &:hover{
-               div{
-                 opacity: 1;
-               }
-             }
-             a{
-               color: #666;
-               text-decoration: none;
-             }
-             div{
-               cursor: pointer;
-               width: 30px;
-               height: 30px;
-               @include  positionCenter(y);
-               right:5.4%;
-               opacity: 0;
-               transition: all 0.3s;
-               &:hover{
-                filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
 
-               }
-               img{
-                // @include  positionCenter();
-                width: 21px;
-                height: 21px;
-                  
-               }
-             }
-           }
-       }
+      ul {
+        color: #666;
+        list-style-position: inside;
+        list-style-type: disc;
+        @include font(0, 20px);
+
+        li {
+          position: relative;
+          margin-bottom: 5px;
+          transition: all 0.3s;
+          margin-left: 10px;
+
+          &:hover {
+            div {
+              opacity: 1;
+            }
+          }
+
+          a {
+            color: #666;
+            text-decoration: none;
+          }
+
+          div {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            @include positionCenter(y);
+            right: 5.4%;
+            opacity: 0;
+            transition: all 0.3s;
+
+            &:hover {
+              filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
+
+            }
+
+            img {
+              // @include  positionCenter();
+              width: 21px;
+              height: 21px;
+
+            }
+          }
+        }
+      }
+
       .card_upload_file {
         padding-left: 25px;
         margin-top: 10px;
+
         form {
           text-align: left;
           margin-top: 10px;
-      
+
           .upfile_content {
             display: inline-block;
             @include font(0, 20px);
@@ -606,9 +718,9 @@
             padding: 5px;
             background-color: $primary;
             position: relative;
-             border-radius: 5px;
-          
-      
+            border-radius: 5px;
+
+
             input {
               position: fixed;
               opacity: 0;
@@ -632,7 +744,7 @@
   position: fixed;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
-  top:299px;
+  top: 243px;
   z-index: 9999999;
 
   // &.opentodo_lightbox {
@@ -670,8 +782,8 @@
       margin-top: 5px;
       // border-radius: 5px;
       transition: all 0.3s;
-      @include baseBtn(auto,auto,10px);
-       
+      @include baseBtn(auto, auto, 10px);
+
     }
   }
 }
@@ -736,7 +848,7 @@
   padding: 15px;
   width: 200px;
   position: fixed;
-  top:240px;
+  top: 243px;
   box-shadow: 3px 3px 6px 0px $shadow;
 
   border: 1px solid rgba(0, 0, 0, .1);
@@ -793,6 +905,7 @@
   .calendar_body {
     width: 100%;
     margin-top: 5px;
+
     td {
       width: 30%;
       text-align: center;
@@ -835,11 +948,12 @@
   padding: 15px;
   width: 200px;
   position: fixed;
-  top:353px;
+  top: 297px;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
   border: 1px solid rgba(0, 0, 0, .1);
   z-index: 9999999;
+
   //  &.openfile{
   //    display: block;
   //  }
@@ -853,50 +967,53 @@
 
     .upfile_content {
       display: inline-block;
-            @include font(0, 20px);
-            color: #fff;
-            cursor: pointer;
-            padding: 5px;
-            background-color: $primary;
-            position: relative;
-             border-radius: 5px;
-          
-      
-            input {
-              position: fixed;
-              opacity: 0;
-              visibility: hidden;
-            }
+      @include font(0, 20px);
+      color: #fff;
+      cursor: pointer;
+      padding: 5px;
+      background-color: $primary;
+      position: relative;
+      border-radius: 5px;
+
+
+      input {
+        position: fixed;
+        opacity: 0;
+        visibility: hidden;
+      }
     }
   }
 }
 
 //成員跳窗
-.card_member_lightbox{
+.card_member_lightbox {
   background-color: white;
   border-radius: 10px;
   padding: 15px;
   width: 250px;
   position: fixed;
-  top:185px;
+  top: 186px;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
   border: 1px solid rgba(0, 0, 0, .1);
   z-index: 9999999;
+
   // &.open_card_mem{
   //   display: block;
   // }
-  h3{
-    @include font(1,20px);
+  h3 {
+    @include font(1, 30px);
     text-align: start;
   }
-  h4{
-    @include font(0,20px);
+
+  h4 {
+    @include font(0, 30px);
     text-align: start;
     font-weight: 400;
   }
-  label{
-    input{
+
+  label {
+    input {
       @include font(1, 20px);
       outline: none;
       background-color: transparent;
@@ -906,60 +1023,87 @@
       border-radius: 10px;
       width: 100%;
       margin: 5px 0;
+
+      &::placeholder {
+        @include font(0, 20px);
+      }
     }
   }
-  ul{
+
+  ul {
     list-style: none;
-    li{
+
+    li {
       margin: 15px 0px;
       cursor: pointer;
-      .card_member_message{
-         display: flex;
+
+      .card_member_message {
+        display: flex;
         position: relative;
-        div:first-child{
+        margin: 7px 0px;
+
+        .card_memberId {
+          color: #777;
+          margin-left: 7px;
+        }
+
+        &.mem_addcolor {
+          color: $radioActive;
+
+          .card_memberId {
+            color: $radioActive;
+            // margin-left: 7px;
+          }
+        }
+
+        div:first-child {
           width: 35px;
           height: 35px;
-           border-radius: 50%;
-           overflow: hidden;
-           vertical-align: middle;
+          border-radius: 50%;
+          overflow: hidden;
+          vertical-align: middle;
 
-           img{
-              vertical-align: middle;
+          img {
+            vertical-align: middle;
             width: 35px;
             height: 35px;
             margin-right: 0;
-           }
-          
-         }
-         span.card_member_name{
+          }
+
+        }
+
+        span.card_member_name {
           @include positionCenter(y);
           left: 20%;
-         }
-         div:last-child{
+        }
+
+        div:last-child {
           width: 20px;
           height: 20px;
-           border-radius: 50%;
-           overflow: hidden;
-           vertical-align: middle;
-            @include positionCenter(y);
-            right: 4%;
-           img{
+          border-radius: 50%;
+          overflow: hidden;
+          vertical-align: middle;
+          @include positionCenter(y);
+          right: 4%;
+
+          img {
             vertical-align: middle;
-          width: 20px;
-          height: 20px;
-          margin-right: 0;
-         }
-         }
+            width: 20px;
+            height: 20px;
+            margin-right: 0;
+          }
+        }
       }
     }
   }
 }
 
 // 卡片動畫效果
-.fade-enter-active, 
+.fade-enter-active,
 .fade-leave-active {
   transition: all .3s ease;
 }
+
 .fade-enter {
   transform: translateX(-50%);
   opacity: 0;
@@ -980,47 +1124,55 @@
   }
 }
 
-@include media(670px) {
+@include media(748px) {
   .card_light_box {
-   height: 100%;
-   width: 100%;
+    height: 100%;
+    width: 100%;
     transform: translate(0%, 0%);
-  top: 0;
-  left: 0;
+    top: 0;
+    left: 0;
+
     .lightbox_content {
       flex-direction: column;
       margin-top: 0px;
-       overflow-y: scroll;
-       max-height:calc(100vh - 100px);
+      overflow-y: scroll;
+      max-height: 100vh;
+      height: 82vh;
+
       .left_aside {
         width: 100%;
         border: none;
-        .first_right,.second_right{
+
+        .first_right,
+        .second_right {
+
           .todogo,
-            .first_right_member,
-            .second_right_deletecard,
-            div:nth-child(4),
-            div:nth-child(5),
-            div:nth-child(6){
-              width: 40%;
-            }
-            .card_member_lightbox{
-              top: 167px;
-            }
-            }
+          .first_right_member,
+          .second_right_deletecard,
+          .upfile,
+          .wave {
+            width: 40%;
+          }
+
+          .card_member_lightbox {
+            top: 167px;
+          }
+        }
+
         hr {
           width: 90%;
         }
 
         .calendar_lightbox {
-          top: 220px;
+          top: 221px;
         }
 
         .todo_lightbox {
-          top:278px;
+          top: 223px;
         }
-        .file_lightbox{
-          top: 333px;
+
+        .file_lightbox {
+          top: 277px;
         }
       }
 
@@ -1036,6 +1188,7 @@
 
 @media screen and (max-width:503px) {
   .card_light_box {
+
     // .left_aside{
     //   .first_right,.second_right{
     // .todogo,
@@ -1049,7 +1202,7 @@
     //   }
     //   }
     .lightbox_content {
-  
+
       .right_aside {
         .card_todo_content {
           .card_check_item {
@@ -1080,5 +1233,3 @@
 //     }
 //   }
 // }
-
-

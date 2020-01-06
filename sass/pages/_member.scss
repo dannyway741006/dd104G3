@@ -1,135 +1,525 @@
-// ========側邊欄=======================
-.memberitem {
+// test card=========================
+.content {
+  background-color: $white;
+  border-radius: $radius;
+}
+
+.member_content {
   width: 100%;
   height: 100%;
-  // border: 1px solid red;
-  overflow: hidden;
+  position: relative;
 
-  .personal_photo {
-    width: 100%;
-    height: 110;
-    //border: 1px solid gold;
+  .terms_word {
+    overflow: hidden;
 
-    .picrange {
-      width: 100%;
-      height: 120px;
-      // border: 1px solid rgb(0, 0, 0);
+    .terms_all {
+      width: 300%;
+      height: 100%;
+      // border: 1px solid gold;
       display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      position: absolute;
+      // overflow: hidden;
+      transition: all 1s;
 
-      .range {
-        width: 80px;
-        height: 80px;
-        border: 1px solid rgb(209, 209, 209);
-        border-radius: 100%;
-        overflow: hidden;
-        position: relative;
-
-        #acceptImg {
-          width: 100%;
-          height: 100%;
-          object-position: center;
-          object-fit: fill;
-        }
-      }
-    }
-
-    #userName {
-      // border: 1px solid gray;
-      width: 100%;
-      height: 30px;
-      text-align: center;
-      line-height: 40px;
-      color: $dark;
-    }
-
-    #membericon {
-      width: 100%;
-      height: 30px;
-      // border: 1px solid black;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 10%;
-      position: relative;
-
-      .up_memberpic {
+      .terms1 {
         width: 100%;
         height: 100%;
+        // border: 1px solid rebeccapurple;
+        background-color: rebeccapurple;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
 
-        .double_mem {
-          width: 30%;
-          height: 100%;
+        .terms_box1 {
           // border: 1px solid red;
-          position: relative;
-          left: 95%;
-          top: 15%;
-          @include hoverIcon(25px);
+          width: 75%;
+          height: 100%;
+          padding-top: 60px;
 
-          img {
-            cursor: pointer;
+          .terms_box1_title {
+            // border: 1px solid goldenrod;
+            width: 100%;
+            height: 50px;
+            display: flex;
+
+            &.active {
+              .terms_title_member {
+
+                h3 {
+                  color: white;
+                }
+
+                .terms_title_ani1 {
+                  left: 0;
+                }
+              }
+
+              .terms_title_privacy {
+                h3 {
+                  color: $primary;
+                }
+                .terms_title_ani2 {
+                  right: 100%;
+                }
+              }
+            }
+
+            .terms_title_member {
+              width: 50%;
+              height: 100%;
+              margin-right: 10px;
+              // border: 1px solid fuchsia;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              position: relative;
+              overflow: hidden;
+              border-radius: $radius $radius 0 0; 
+              box-shadow: 1px 1px 3px $shadow;
+
+              h3 {
+                position: absolute;
+                z-index: 5;
+                color: $primary;
+              }
+
+              .terms_title_ani1 {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: $primary;
+                top: 0;
+                left: 100%;
+                transition: all 0.3s;
+                // z-index: -1;
+              }
+
+
+            }
+
+            .terms_title_privacy {
+              margin-left: 10px;
+              width: 50%;
+              height: 100%;
+              // border: 1px solid rgb(44, 46, 189);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              position: relative;
+              overflow: hidden;
+              border-radius: $radius $radius 0 0;
+              box-shadow: 1px 1px 3px $shadow;
+
+              h3 {
+                position: absolute;
+                z-index: 5;
+                color: rgb(255, 255, 255);
+              }
+
+              .terms_title_ani2 {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: $primary;
+                top: 0;
+                right: 0%;
+                transition: all 0.3s;
+                // z-index: -1;
+              }
+            }
           }
+
+          .terms_box1_content {
+            // border: 1px solid green;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+            h4{
+              color:$price;
+            }
+
+            .terms_content1 {
+              // border: 1px solid rgb(22, 45, 75);
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              transition: all 0.3s;
+              visibility: hidden;
+              position: absolute;
+              top: 0;
+              left: 0;
+              transform: scaleX(0);
+              transform-origin: right;
+              overflow: scroll;
+              padding:60px 40px;
+              ul ,li{
+                list-style-type: cjk-ideographic;
+                color:$price;
+                ol{
+                  padding-left:40px;
+                }
+                ol,li{
+                  list-style-type: decimal; 
+                  color: $price;
+                  ul{
+                    padding-left: 40px;
+
+                  }
+                  ul li{
+                    list-style-type: upper-alpha;
+                  }
+                }
+              }
+            }
+
+
+            .terms_content2 {
+              // border: 1px solid rgb(230, 22, 57);
+              width: 100%;
+              height: 100%;
+              transition: all 0.3s;
+              opacity: 1;
+              visibility: visible;
+              position: absolute;
+              top: 0px;
+              left: 0;
+              transform-origin: left;
+              overflow: scroll;
+              padding:60px 40px;
+               ul ,li{
+                list-style-type: cjk-ideographic;
+       color: $price;
+                ul{
+                  padding-left:40px;
+               
+                }
+                ol,li{
+                  list-style-type: decimal; 
+                  color: $price;
+                  ul{
+                    padding-left: 40px;
+                  }
+                  ul li{
+                    list-style-type: upper-alpha;
+                  }
+                }
+              }
+            }
+
+            &.active {
+              .terms_content1 {
+                transform: scaleX(1);
+                opacity: 1;
+                visibility: visible;
+              }
+
+              .terms_content2 {
+                transform: scaleX(0);
+                opacity: 0;
+                visibility: hidden;
+              }
+            }
+          }
+
+        }
+      }
+      .terms_change {
+        background-color: rgb(255, 255, 255);
+        opacity: 1;
+        transition: all 0.4s;
+      }
+
+      .terms2 {
+        width: 100%;
+        height: 100%;
+        border: 1px solid rgb(2, 0, 3);
+        // background-color: black;
+        .terms_box2{
+          padding-top: 60px;
+        }
+      }
+
+      .terms3 {
+        width: 100%;
+        height: 100%;
+        // border: 1px solid rgb(149, 235, 109);
+        background-color: cadetblue;
+      }
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  input[type="radio"]+.terms_word1 {
+    width: 100%;
+    height: calc(100% - 60px);
+    // border: 1px solid rgb(226, 165, 185);
+    border-radius: 10px;
+    position: absolute;
+    background-color: rgb(219, 185, 185);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: top center;
+    transform: scale(0);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 1px 1px 3px $shadow;
+    top: 0;
+    left: 0;
+    z-index: 5;
+
+    .terms_close_box {
+      width: 100%;
+      height: 60px;
+      // border: 1px solid green;
+      position: absolute;
+      z-index: 10;
+      display: flex;
+      .terms_top_content1{
+        width: 92%;
+        height: 100%;
+        // border: 1px solid black;
+      }
+      .terms_top_content2{
+        width: 8%;
+        height: 100%;
+        // border:1px solid royalblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .terms_close {
+        @include hoverIcon(30px);
+        cursor: pointer;
+        transform: rotate(45deg);
+        border: 1px solid $primary;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        transition: all 0.3s;
+        position: absolute;
+        z-index: 99;
+     
+
+        &::after {
+          content: '';
+          position: absolute;
+          border-radius: 100%;
+          width: 100%;
+          height: 100%;
+          transition: all 0.3s;
+          top: -4%;
+          left: -4%;
+          opacity: 0;
+        }
+
+        &:hover::after {
+          transform: scale(1.3);
+          border: 1px solid $primary;
+          opacity: 1;
+
+        }
+
+        &:hover {
+          transform: rotate(135deg);
+          background-color: $primary;
         }
       }
     }
   }
 
-  .line {
-    border: 0.2px solid rgb(226, 224, 224);
-    width: 90%;
-    margin-left: 5%;
-    box-shadow: 0 0 0.5px 0.3px rgb(206, 201, 201);
-    margin-bottom: 30px;
+  input[type="radio"]:checked+.terms_word {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
   }
 
-  .slide_list {
-    display: none;
+  .terms_word2 {
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+
+  }
+
+
+  .member_order_bottom {
+    width: 100%;
+    height: 50px;
+    // border: 1px solid rgb(66, 75, 48);
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px $shadow;
+    margin-top: 20px;
+    text-align: right;
+    vertical-align: middle;
+    line-height: 50px;
+
+    span {
+      cursor: pointer;
+      padding: 0 2%;
+      color: $primary;
+      @include font(0);
+
+      &:nth-last-of-type(1) {
+        padding-right: 4%;
+      }
+    }
   }
 }
 
-// ========member_內容=============================
-.memberContent {
+.memberTitle {
   // border: 1px solid black;
   width: 100%;
-  height: 90vh;
+  height: 50px;
+  display: flex;
+  // align-items: center;
+  // border: 1px solid palevioletred;
+  color: $white;
+
+  .member_title_one {
+    width: 38%;
+    height: 100%;
+    border-radius: $radius $radius 0 0;
+    box-shadow: 1px 1px 3px $shadow;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+
+    .testh2 {
+      color: $primary;
+    }
+  }
+}
+
+.member_order_title {
+  width: 60%;
+  height: 100%;
+  // border: 1px solid yellowgreen;
+  border-radius: $radius $radius 0 0;
+  box-shadow: 1px 1px 3px $shadow;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  padding-left: 20px;
+  color: $primary;
+  // background-color: $abyss;
+  margin-left: 20px;
+}
 
-  #memcon1 {
-    width: 45%;
-    height: 90%;
+.member_all_box {
+  width: 100%;
+  height: 83.5%;
+  max-height: 1000px;
+  min-height: 500px;
+  // border: 1px solid green;
+  display: flex;
+
+  .memberContent {
+    width: 40%;
+    height: 100%;
+
+    .member_img {
+      width: 100%;
+      height: 150px;
+      // border: 1px solid pink;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      box-shadow: 1px 1px 3px $shadow;
+      border-radius: $radius;
+
+      .up_member_icon {
+        // border: 1px solid black;
+        @include hoverIcon(25px);
+        @include baseBtn(40px, 40px, 100%);
+        left: -80%;
+        margin-top: 190%;
+
+        img {
+          cursor: pointer;
+          border-radius: 5px;
+        }
+      }
+
+      .member_img_box {
+        width: 120px;
+        height: 120px;
+        // border: 1px solid blue;
+        border-radius: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 1px 1px 3px $shadow;
+        margin-left: 4.5%;
+
+        img {
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+    }
+  }
+
+  .member_info {
+    margin-top: 20px;
+    width: 100%;
+    height: calc(100% - 190px);
+    // border: 1px solid palevioletred;
+    box-shadow: 1px 1px 3px $shadow;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px rgb(228, 228, 228);
-
-    h3 {
-      // border: 1px solid red;
-      width: 100%;
-      height: 10%;
-      color: $dark;
-      padding: 10px 0 0 20px;
-    }
-
-    ul {
-      // border: 1px solid black;
-      width: 100%;
-      height: 90%;
-      padding-top: 30px;
-    }
+    background-color: $white;
+    padding-top: 5%;
 
     .con1_info {
       text-align: center;
-      @include font(0, 50px);
+      @include font(1, 50px);
+      margin-top: 10px;
 
       .memberbtn {
         @include baseBtn;
-        margin-top: 9%;
+        margin-top: 10%;
+      }
+
+      .line_box {
+        position: relative;
+        // border: 1px solid gray;
+        padding-bottom: 10px;
       }
 
       li {
         list-style: none;
-    
+        margin-bottom: 5px;
+      }
+
+      .text_word:focus {
+        padding: 5px 14px 4px;
+        transition: 0.3s;
+
+      }
+
+      .text_word:focus~.upbox {
+        transition: 0.3s;
+        height: 38px;
+        border-radius: 5px;
+        z-index: 1;
+      }
+
+      .text_word~.upbox {
+        position: absolute;
+        height: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        transition: 0.3s;
+        z-index: -1;
+        // border: 1px solid red;
+        background: $primary;
       }
     }
 
@@ -141,198 +531,438 @@
     }
 
     input {
-      border-bottom-style: solid;
-      border-width: 1px;
       width: 60%;
-      border-color: rgb(155, 155, 155);
-      @include font;
-      // background-color: aqua;
-      
-    }
-  }
-
-  #memcon2 {
-    width: 45%;
-    height: 90%;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgb(228, 228, 228);
-
-    h3 {
-      width: 100%;
-      height: 10%;
-      color: $dark;
-      padding: 10px 0 0 20px;
-      // border: 1px solid red;
-    }
-
-    #oder {
-      width: 100%;
-      height: 90%;
-      // border: 1px solid blue;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      padding-top: 40px;
-
-      .table_oder {
-        width: 95%;
-        // border: 1px solid #000000;
-        border-collapse: collapse;
-      }
-
-      th {
-        @include font;
-        font-weight: 100;
-        color: $dark;
-        border-bottom: #d8d8d8 solid;
-        border-width: 0.5px;
-        height: 30px;
-        // border: 1px solid red;
-
-        .delete_oder {
-          position: relative;
-          @include hoverIcon(17px);
-          left: 10px;
-        }
-      }
-    }
-  }
-
-  // ============light_box============================
-  .mem_mask {
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(194, 194, 194, 0.3);
-    position: fixed;
-    z-index: 10000;
-    left: 0%;
-    top: 0%;
-    transition: all 0.5s;
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .memlibox {
-    width: 0px;
-    height: 0px;
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    z-index: 10001;
-    left: 0%;
-    top: 0%;
-    left: calc((100%) / 2);
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgb(255, 208, 208);
-    opacity: 0;
-    visibility: hidden;
-
-    .light_box_title {
-      width: 100%;
-      height: 16%;
-      display: flex;
-      // border: 1px solid red;
-      @include hoverIcon(15);
-
-      img {
-        top: 8.5%;
-        left: 94.5%;
-      }
-    } 
-
-    .light_box_content {
-      width: 100%;
-      height: 60%;
-      // border: 1px solid red;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: $dark;
-    }
-
-    .memlibtn {
-      width: 100%;
-      height: 25%;
-      // border: 1px solid gold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .btn_close {
-        @include baseBtn;
-        margin: 0 10% 2%;
-      }
-    }
-  }
-
-  .active_for_memlibox {
-    animation-duration: 1s;
-    animation-name: boxrotate;
-    animation-fill-mode: forwards;
-
-  }
-
-  .closeani {
-    animation-duration: 1.5s;
-    animation-name: closeani;
-    animation-fill-mode: forwards;
-  }
-
-  .active_for_mask {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  @keyframes boxrotate {
-    from {
-      transform: rotate(0deg);
-      width: 0px;
-      height: 0px;
-      opacity: 0;
-    }
-
-    to {
-      transform: rotate(720deg);
-      top: calc((100% - 220px) / 2);
-      left: calc((100% - 350px) / 2);
-      visibility: visible;
-      opacity: 1;
-      width: 350px;
-      height: 220px;
-    }
-  }
-
-  @keyframes closeani {
-    from {
-      transform: rotate(0deg);
-      top: calc((100% - 220px) / 2);
-      left: calc((100% - 350px) / 2);
-      opacity: 1;
-      visibility: visible;
-      width: 350px;
-      height: 220px;
-    }
-
-    to {
-      transform: rotate(720deg);
-      top: calc((100%) / 2);
-      left: 92%;
-      visibility: hidden;
-      opacity: 0;
-      width: 0px;
-      height: 0px;
-      display: none;
+      border: 0;
+      padding: 5px 0 4px;
+      border: 1px solid transparent;
+      border-bottom-color: rgb(149, 149, 149);
+      transition: 0.3s;
+      @include font(2);
+      position: relative;
+      z-index: 4;
     }
   }
 }
 
-@include media(1024px) {
-  .memberitem .personal_photo .slide_list {
-    display: block;
+.member_order_content {
+  width: 65%;
+  height: 100%;
+  // border: 1px solid saddlebrown;
+  padding-left: 20px;
+
+
+
+  .order_group {
+    width: 100%;
+    height: calc((100% - 160px)/2);
+    margin-top: 20px;
+    // border: 1px solid rgb(90, 110, 175);
+    box-shadow: 1px 1px 3px $shadow;
+    border-radius: 10px;
+    padding: 10px;
+
+    table {
+      width: 100%;
+      color: $dark;
+      border-collapse: collapse;
+
+      .table_oder_top {
+        @include font(1);
+        border-bottom: $gray solid;
+        border-bottom-width: 2px;
+
+        th {
+          font-weight: 100;
+          height: 40px;
+          color: $gray;
+        }
+      }
+
+      tr td {
+        color: $primary;
+        padding: 10px 0;
+        font-weight: 400;
+        border-bottom: #d8d8d8 solid;
+        border-bottom-width: 1px;
+
+        label {
+          cursor: pointer;
+        }
+      }
+
+      tr,
+      th,
+      td {
+        width: calc((100%)/3);
+        text-align: center;
+      }
+
+      .th3_box {
+        .checkall1 {
+          cursor: pointer;
+
+          input[type="checkbox"] {
+            display: none;
+
+            &+label::before {
+              content: "";
+              display: inline-block;
+              width: 15px;
+              height: 15px;
+              background-image: url("/img/unchecked_d.9558e11b.svg");
+              background-size: contain;
+              margin-right: 4px;
+              position: relative;
+              top: 2px;
+            }
+
+            &:checked+label::before {
+              background-image: url("/img/checked_d.721738d0.svg");
+            }
+          }
+        }
+
+        .checkall {
+          cursor: pointer;
+
+          input[type="checkbox"] {
+            display: none;
+
+            &+label::before {
+              content: "";
+              display: inline-block;
+              width: 15px;
+              height: 15px;
+              background-image: url("/img/unchecked_d.9558e11b.svg");
+              background-size: contain;
+              margin-right: 4px;
+              position: relative;
+              top: 2px;
+            }
+
+            &:checked+label::before {
+              background-image: url("/img/checked_d.721738d0.svg");
+            }
+          }
+        }
+
+        .allcheck {
+          cursor: pointer;
+
+          input[type="checkbox"] {
+            display: none;
+
+            &+label::before {
+              content: "";
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              background-image: url("/img/unchecked_d.9558e11b.svg");
+              background-size: contain;
+              margin-right: -4px;
+              position: relative;
+              top: 2px;
+            }
+
+            &:checked+label::before {
+              background-image: url("/img/checked_d.721738d0.svg");
+            }
+          }
+        }
+
+        .delete_pointer {
+          cursor: pointer;
+
+
+          #allcheck {
+            cursor: pointer;
+
+          }
+        }
+      }
+    }
+
+    .delete_oder {
+      position: relative;
+      @include hoverIcon(17px);
+      padding-left: 25px;
+
+    }
   }
 
-  .memberContent {
+  .order_details {
+    width: 100%;
+
+    height: calc((100% - ((100% - 160px)/2)) - 40px);
+    margin-top: 20px;
+    // border: 1px solid rgb(90, 110, 175);
+    box-shadow: 1px 1px 3px $shadow;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .order_infomation {
+      width: 100%;
+      height: 100%;
+      // border: 1px solid palevioletred;
+      border-radius: 10px;
+      position: absolute;
+      background-color: $white;
+      opacity: 0;
+      visibility: hidden;
+      transform-origin: top center;
+      transform: scale(0);
+      border-radius: 10px;
+      transition: all 0.5s ease-in-out;
+
+      .order_group1 {
+        width: 100%;
+        height: 100%;
+        // margin-top: 10px;
+        // border: 1px solid rgb(90, 110, 175);
+        box-shadow: 1px 1px 3px $shadow;
+        border-radius: 10px;
+        padding: 10px;
+
+        tr td {
+          color: $primary;
+          padding: 10px 0;
+          font-weight: 400;
+          border-bottom: #d8d8d8 solid;
+          border-bottom-width: 1px;
+          text-align: center;
+        }
+
+        .table_order {
+          width: 100%;
+          color: $dark;
+          border-collapse: collapse;
+
+          .table_order_top1 {
+            @include font(1);
+            border-bottom: $gray solid;
+            border-bottom-width: 2px;
+          }
+        }
+      }
+    }
+
+    input[type="radio"]:checked+.order_infomation {
+      transform: scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// ============light box========================
+.mem_mask {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(194, 194, 194, 0.3);
+  position: fixed;
+  z-index: 10000;
+  left: 0%;
+  top: 0%;
+  transition: all 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.memlibox {
+  width: 0px;
+  height: 0px;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  z-index: 10001;
+  left: 0%;
+  top: 0%;
+  left: calc((100%) / 2);
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgb(255, 208, 208);
+  opacity: 0;
+  visibility: hidden;
+
+  .light_box_title {
+    width: 100%;
+    height: 16%;
+    display: flex;
+    // border: 1px solid red;
+    @include hoverIcon(15);
+
+    img {
+      top: 8.5%;
+      left: 94.5%;
+    }
+  }
+
+  .light_box_content {
+    width: 100%;
+    height: 60%;
+    // border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $dark;
+  }
+
+  .memlibtn {
+    width: 100%;
+    height: 25%;
+    // border: 1px solid gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .btn_close {
+      @include baseBtn;
+      margin: 0 10% 2%;
+    }
+  }
+}
+
+.active_for_memlibox {
+  animation-duration: 0.3s;
+  animation-name: boxrotate;
+  animation-fill-mode: forwards;
+
+}
+
+.closeani {
+  animation-duration: 0.3s;
+  animation-name: closeani;
+  animation-fill-mode: forwards;
+}
+
+.active_for_mask {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes boxrotate {
+  from {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+  }
+
+  to {
+    top: calc((100% - 220px) / 2);
+    left: calc((100% - 350px) / 2);
+    visibility: visible;
+    opacity: 1;
+    width: 350px;
+    height: 220px;
+  }
+}
+
+@keyframes closeani {
+  from {
+    top: calc((100% - 220px) / 2);
+    left: calc((100% - 350px) / 2);
+    opacity: 1;
+    visibility: visible;
+    width: 350px;
+    height: 220px;
+  }
+
+  to {
+    top: calc((100%) / 2);
+    left: 92%;
+    visibility: hidden;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
+}
+
+// ===========rwd width 768px====================
+@include media(768px) {
+  .memberTitle .member_title1 {
+    position: relative;
+    overflow: hidden;
+    width: 48%;
+    // background-color: $primary;
+
+    .testh2 {
+      position: absolute;
+      z-index: 2;
+    }
+
+    &.active {
+      background-color: $primary;
+
+      .testh2 {
+        color: $white;
+      }
+    }
+
+    .member_ani1 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: $primary;
+      top: 0;
+      left: 100%;
+      transition: all 0.3s;
+    }
+
+    .for_member_ani1 {
+      left: 0;
+    }
+
+    .colorchangeForH2 {
+      color: $white;
+    }
+  }
+
+  // ===========================================
+  .member_title_two {
+    position: relative;
+    overflow: hidden;
+
+
+    .testh3 {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .member_ani2 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: $primary;
+      top: 0;
+      right: 100%;
+      transition: all 0.3s;
+    }
+
+    .for_member_ani2 {
+      right: 0;
+    }
+
+    .colorchangeForH3 {
+      color: $white;
+    }
+  }
+
+  .member_all_box {
     display: block;
     position: relative;
+    width: 100%;
+
+    .member_order_content {
+      padding-left: 0px;
+    }
+
+    .active #memcon2 {
+      padding-left: 0;
+
+    }
+
 
     &.active {
       #memcon2 {
@@ -350,10 +980,10 @@
 
     #memcon1,
     #memcon2 {
-      width: 90%;
+      width: 100%;
       position: absolute;
-      top: 5%;
-      left: 5%;
+      // top: 5%;
+      // left: 5%;
       transition: all 0.3s;
     }
 
@@ -368,80 +998,42 @@
       transform-origin: left;
     }
   }
-}
 
-@include media(576px) {
-  .memberContent {
-    #memcon2 {
-      width: 99%;
-      position: absolute;
-      top: 5%;
-      left: 0.5%;
-      transition: all 0.3s;
-    }
-
-    #memcon1 {
-      width: 99%;
-      top: 5%;
-      left: 0.5%;
-    }
+  .memberTitle .member_order_title {
+    width: 50%;
   }
 }
 
-@include media(420px) {
-  .memberContent #memcon2 #oder th {
-    &:nth-last-of-type(1) {
-      text-align: left;
-      padding-left: 10%;
-    }
-
-    &:nth-last-of-type(2) {
-      width: 14%;
-    }
-
-    &:nth-last-of-type(3) {
-      width: 14%;
-    }
+@include media(413px) {
+  .member_all_box .memberContent {
+    min-height: 620px;
   }
-  @keyframes boxrotate {
-    from {
-      transform: rotate(0deg);
-      width: 0px;
-      height: 0px;
-      opacity: 0;
+
+  .member_all_box .memberContent .memberTitle_content {
+    height: 120px;
+
+    .member_img .member_img_box {
+      width: 100px;
+      height: 100px;
+      padding-top: 5px;
+
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+      }
     }
 
-    to {
-      transform: rotate(720deg);
-      top: calc((100% - 190px) / 2);
-      left: calc((100% - 320px) / 2);
-      visibility: visible;
-      opacity: 1;
-      width: 320px;
-      height: 190px;
+    .member_img .up_member_icon {
+      top: 31%;
     }
   }
 
-  @keyframes closeani {
-    from {
-      transform: rotate(0deg);
-      top: calc((100% - 190px) / 2);
-      left: calc((100% - 320px) / 2);
-      opacity: 1;
-      visibility: visible;
-      width: 320px;
-      height: 190px;
-    }
+  .member_all_box .memberContent .member_info {
+    padding-top: 0px;
 
-    to {
-      transform: rotate(720deg);
-      top: calc((100%) / 2);
-      left: 100%;
-      visibility: hidden;
-      opacity: 0;
-      width: 0px;
-      height: 0px;
-      display: none;
+    .con1_info li {
+      margin-bottom: 0;
     }
   }
 }
