@@ -494,9 +494,9 @@
                             src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
                       </div>
                       <div class="todo_progress_bar">
-                        <p>0%</p>
+                        <p>{{inner_progress_bar(detailIndex)}}%</p>
                         <div class="progress_bar">
-                          <span :style="{width:0+'%'}"></span>
+                          <span :style="{width:inner_progress_bar(detailIndex)+'%'}"></span>
                         </div>
                       </div>
                       <!-- 新增的卡片細項 -->
@@ -512,7 +512,7 @@
                             >
                           </div>
                           <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                          <div><img src="./img/icon/time-left.svg" alt=""></div>
+                          <div><img src="./img/icon/time-left.svg" alt=""  @click="calltomato()"></div>
                           <div><img src="./img/card_img/delete.0df56913.svg" alt=""
                               @click="delete_todo_title(detailIndex,index)"></div>
                         </div>
@@ -560,6 +560,9 @@
                           <p>上傳附件</p>
                           <input type="file" multiple>
                         </label>
+
+
+
                       </form>
                     </div>
                   </div>
