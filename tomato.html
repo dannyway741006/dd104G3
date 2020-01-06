@@ -167,12 +167,12 @@
               </div>
             </div>
           </div>
-          <div class="todo-stat">
-            <div class="todoList">
+          <div class="todo-stat" :class="{'active':toStat}">
+            <div class="todoList" :class="{'toTrello':toTrello}">
               <div class="custom" id="todoCon1">
                 <div class="todoHead">
                   <h2>自訂任務</h2>
-                  <div class="changeTodo moveToTrello">
+                  <div class="changeTodo moveToTrello" @click="toTrello=!toTrello" >
                     <img src="./img/icon/arrow-point-to-right.svg" alt="">
                     <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
                   </div>
@@ -189,7 +189,7 @@
                           <p>25:00</p>
                         </div>
                         <div class="status">
-                          <div class="playPause"  :key="item.id">
+                          <div class="playPause" :key="item.id">
                             <div v-if='item.runstatus===0' @click='startTomato(item)' class="play">
                               <img src="./img/play.svg" alt="" width="25px">
                               <img src="./img/play_c.svg" alt="" width="25px" class="play">
@@ -216,12 +216,12 @@
               </div>
               <div class="fromTrello" id="todoCon2">
                 <div class="todoHead">
-                  <div class="changeTodo backToCus">
+                  <div class="changeTodo backToCus" @click="toTrello=!toTrello">
                    <img src="./img/icon/arrow-point-to-left.svg" alt="">
                    <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
                   </div>
                   <h2>行事曆任務</h2>
-                    <div class="changeTodo moveToStat">
+                    <div class="changeTodo moveToStat" @click="toStat=!toStat">
                       <img src="./img/icon/arrow-point-to-right.svg" alt="">
                       <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
                     </div>
@@ -265,7 +265,7 @@
             </div>
             <div class="stat">
               <div class="statHead">
-                <div class="changeTodo backToTrello">
+                <div class="changeTodo backToTrello" @click="toStat=!toStat">
                  <img src="./img/icon/arrow-point-to-left.svg" alt="">
                  <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
                 </div>

@@ -91,3 +91,63 @@ if (cartCount.textContent === 0) {
 // });
 
 
+
+
+/* jq Ajax撈html 失敗 */
+// $('#mall_btn01').click(function(){
+//   $.ajax({
+//       url: 'mall_test.html', 
+//       type: 'GET',
+//       dataType: 'html',
+//       success: function(data){
+//         console.log(data)
+//           $('main').html(data);
+//       },    
+//   });
+// });
+
+
+
+
+// js撈php資料
+
+
+
+function showProduct(data){
+
+  let html = data;
+  document.querySelector("main").innerHTML = html;
+}
+
+
+
+let mallBtn01 = document.querySelector('#mall_btn01');
+
+function getProduct(){
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function(){
+    if(xhr.status == 200){
+      showProduct(xhr.responseText);
+    }else{
+      alert(xhr.status);
+    }
+  }
+  var url = "mall.php";
+  xhr.open("Get",url,true);
+  xhr.send(null);
+}
+
+mallBtn01.addEventListener("click",getProduct)
+
+
+
+
+
+
+
+
+
+
+
+console.log(mallBtn01)
+
