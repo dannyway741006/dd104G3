@@ -62,6 +62,8 @@ var main_content = new Vue({
     targetCardInfo: null,
     //卡片背面
     opened: false,
+    open_history_card:false,
+   
     // isactive: true,
     // onactive: false,
     // classObject: {
