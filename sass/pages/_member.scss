@@ -236,10 +236,14 @@
         width: 100%;
         height: 100%;
         border: 1px solid rgb(2, 0, 3);
-        // background-color: black;
+  
         .terms_box2{
-          padding-top: 60px;
+          width: 100%;
+          height: 100%;
+  background-color: grey;
+  padding-top:60px;
         }
+       
       }
 
       .terms3 {
@@ -247,13 +251,17 @@
         height: 100%;
         // border: 1px solid rgb(149, 235, 109);
         background-color: cadetblue;
+        .terms_box3{
+          width: 100%;
+          height: 100%;
+          border: 1px solid blue;
+          
+        }
       }
     }
   }
 
-  input {
-    display: none;
-  }
+  
 
   input[type="radio"]+.terms_word1 {
     width: 100%;
@@ -377,8 +385,6 @@
   width: 100%;
   height: 50px;
   display: flex;
-  // align-items: center;
-  // border: 1px solid palevioletred;
   color: $white;
 
   .member_title_one {
