@@ -335,10 +335,10 @@
                   <div class="cart_credit_card_mes">
                     <p class="cart_card_text">CARD NUMBER</p>
                     <div class="cart_numbox1">
-                      <input type="text" id="cardNum1" class="cart_inputnum1" maxlength="4" v-model="cardNum1">
-                      <input type="text" id="cardNum2" class="cart_inputnum1" maxlength="4" v-model="cardNum2">
-                      <input type="text" id="cardNum3" class="cart_inputnum1" maxlength="4" v-model="cardNum3">
-                      <input type="text" id="cardNum4" class="cart_inputnum1" maxlength="4" v-model="cardNum4">
+                      <input type="text" class="cart_inputnum1" maxlength="4" v-model="cardNum1">
+                      <input type="text" class="cart_inputnum1" maxlength="4" v-model="cardNum2">
+                      <input type="text" class="cart_inputnum1" maxlength="4" v-model="cardNum3">
+                      <input type="text" class="cart_inputnum1" maxlength="4" v-model="cardNum4">
                     </div>
                     <p class="cart_card_text">CARD HOLDER</p>
                     <div class="cart_numbox1">
@@ -377,15 +377,30 @@
                       </div>
                       <div class="cart_numbox3">
                         <p class="cart_card_text">CCV</p>
-                        <input type="text" class="cart_inputnum2">
+                        <input type="text" class="cart_inputnum2" maxlength="3">
                         </p>
+                      </div>
+                    </div>
+                    <div class="cart_recipient">
+                      <div class="cart_recipient_info">
+                        <div class="cart_recipient_info_text">
+                          <p>姓名</p>
+                          <input type="text" class="cart_inputnum3">
+                        </div>
+                        <div class="cart_recipient_info_text">
+                          <p>電話</p>
+                          <input type="text" class="cart_inputnum3">
+                        </div>
+                      </div>
+                      <div class="cart_recipient_info_add">
+                        <p>收件地址</p>
+                        <input type="text" class="cart_inputnum2">
                       </div>
                     </div>
                     <div class="cart_submit">
                       <button type="submit">送出訂單</button>
                     </div>
                   </div>
-
                 </form>
               </div>
             </div>

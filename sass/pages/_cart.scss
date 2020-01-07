@@ -42,7 +42,7 @@
       justify-content: flex-start;
       align-items: center;
       position: relative;
-      left:-110%;
+      left: -110%;
       opacity: 0;
 
       .cart_product_img {
@@ -159,7 +159,7 @@
       border-radius: 10px;
 
       .cart_card_text {
-        padding: 10px 0px;
+        padding: 10px 0px 0px;
         @include font(0, 18px);
       }
 
@@ -213,17 +213,70 @@
         }
       }
 
+      .cart_recipient {
+        width: 100%;
+
+        .cart_recipient_info {
+          width: 100%;
+          // border: 1px solid blue;
+          display: flex;
+          justify-content: space-between;
+
+          .cart_recipient_info_text {
+            width: 50%;
+            padding: 10px 0px 0px;
+
+            p {
+              @include font(0, 18px);
+            }
+
+            .cart_inputnum3 {
+              @include inputReset;
+              border: 1px solid #ddd;
+              width: 100%;
+              height: 30px;
+              margin-bottom: 15px;
+              border-radius: 5px;
+            }
+          }
+
+          .cart_recipient_info_text:nth-child(1) {
+            padding-right: 10px;
+          }
+
+          .cart_recipient_info_text:nth-child(2) {
+            padding-left: 10px;
+          }
+        }
+
+        .cart_recipient_info_add{
+          width: 100%;
+          padding: 10px 0px 0px;
+          p{
+            @include font(0, 18px);
+          }
+          .cart_inputnum2{
+            @include inputReset;
+            border: 1px solid #ddd;
+            width: 100%;
+            height: 30px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+          }
+        }
+      }
+
       .cart_submit {
         width: 100%;
-        border: 1px solid red;
-        height: 50px;
+        // border: 1px solid red;
+        height: 40px;
         margin-top: 10px;
         border-radius: 10px;
         background-color: #999;
 
         button {
           width: 100%;
-          height: 48px;
+          height: 38px;
           @include btnReset;
         }
       }
