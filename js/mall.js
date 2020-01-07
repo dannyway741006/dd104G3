@@ -109,6 +109,15 @@ if (cartCount.textContent === 0) {
 
 
 
+
+
+
+
+
+
+
+
+
 // js撈php資料
 function showProduct(data){
   // let html = data;
@@ -130,24 +139,7 @@ function getProduct(){
   // var url = "../mall_data.php?product_type=1";
   // xhr.open("Get",url,true);
   // xhr.send(null);
-<<<<<<< HEAD
-  fetch('../mall_data.php?product_type=1').then(res=>res.text()).then(json=>console.log(json))
-=======
   fetch('./mall_data.php?product_type=1').then(res=>res.json()).then(json=>console.log(json))
->>>>>>> nicole
 }
 
 mallBtn01.addEventListener("click",getProduct)
-
-
-
-
-
-
-
-
-
-
-
-console.log(mallBtn01)
-
