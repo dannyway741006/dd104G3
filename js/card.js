@@ -127,6 +127,7 @@ var vm = new Vue({
     showname:false,
     test_title_name:true,
 
+   
   },
   methods: {
     changeimg() {
@@ -304,7 +305,27 @@ var vm = new Vue({
      
     }
     },
+    //將資料丟入蕃茄鐘
+    calltomato(detailIndex,index){
+      alert("已加入蕃茄鐘");
+    },
 
+    inner_progress(detailIndex){
+      return  this.todo_list_content_detail[detailIndex].lists.filter(item =>{
+        return item.status;
+      });
+    },
+    inner_progress_bar(detailIndex){
+      let length=this.todo_list_content_detail[detailIndex].lists.length;
+      
+      if(length==0){
+        return 0;
+      }else{
+        console.log(length);
+        // console.log(inner_progress());
+         return Math.round((100/length)*this.inner_progress.length);
+      }
+    },
   },
 
   mounted() {
@@ -347,23 +368,20 @@ var vm = new Vue({
          return Math.round((100/length)*this.progerss.length);
       }
     },
-    inner_progress(detailIndex){
-      // console.log(this.todo_list_content_detail[0].lists);
-      let indexx=this.todo_list_content_detail.findIndex(x => x.title === this.todo_lightbox_input_title);
-      return  this.todo_list_content_detail[indexx].lists;
-      // .lists
-      // .filter(item=>{
-      //   return item.status;
-      // });
-    },
+    // inner_progress(detailIndex){
+    //   return  this.todo_list_content_detail[detailIndex].lists.filter(item=>{
+    //     return item.status;
+    //   });
+    // },
     // inner_progress_bar(index){
-    //   let length=this.todo_list_content_detail[index].lists.length;
+    //   let length=this.todo_list_content_detail[0].lists.length;
     //   if(length==0){
     //     return 0;
     //   }else{
     //      return Math.round((100/length)*this.inner_progress.length);
     //   }
     // },
+
     showmember_select(){
       if(this.member_input.length){
         return this.memebergo.filter(item=>{
