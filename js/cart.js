@@ -5,7 +5,10 @@ window.addEventListener('load', () => {
     cardNum1[i].addEventListener('input', (e) => {
       if (e.target.value.length == 4) {
         e.target.nextElementSibling.focus();
-      }
+      }else if(e.target.value.length == 0){
+        e.target.previousElementSibling.focus();
+      };
+      return;
     });
   }
 });
