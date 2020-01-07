@@ -110,31 +110,27 @@ if (cartCount.textContent === 0) {
 
 
 // js撈php資料
-
-
-
 function showProduct(data){
-
-  let html = data;
-  document.querySelector("main").innerHTML = html;
+  // let html = data;
+  // document.querySelector("main").innerHTML = html;
+  console.log(data)
 }
-
-
 
 let mallBtn01 = document.querySelector('#mall_btn01');
 
 function getProduct(){
-  var xhr = new XMLHttpRequest();
-  xhr.onload = function(){
-    if(xhr.status == 200){
-      showProduct(xhr.responseText);
-    }else{
-      alert(xhr.status);
-    }
-  }
-  var url = "mall.php";
-  xhr.open("Get",url,true);
-  xhr.send(null);
+  // var xhr = new XMLHttpRequest();
+  // xhr.onload = function(){
+  //   if(xhr.status == 200){
+  //     showProduct(xhr.response);
+  //   }else{
+  //     alert(xhr.status);
+  //   }
+  // }
+  // var url = "../mall_data.php?product_type=1";
+  // xhr.open("Get",url,true);
+  // xhr.send(null);
+  fetch('./mall_data.php?product_type=1').then(res=>res.json()).then(json=>console.log(json))
 }
 
 mallBtn01.addEventListener("click",getProduct)
