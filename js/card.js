@@ -17,7 +17,7 @@
 //   mask.style.zIndex="0";
 //    light_box.style.display="none";
 //  });
-
+// Vue.component('draggable', draggable);
 var vm = new Vue({
   el: "#content",
   data: {
@@ -321,8 +321,8 @@ var vm = new Vue({
         return 0;
       }else{
         // console.log(index);
-        console.log(this.inner_progress);
-         return Math.round((100/length)*this.inner_progress.length);
+        console.log(this.inner_progress(detailIndex));
+         return Math.round((100/length)*this.inner_progress(detailIndex).length);
       }
     },
   },
@@ -367,19 +367,7 @@ var vm = new Vue({
          return Math.round((100/length)*this.progerss.length);
       }
     },
-    // inner_progress(detailIndex){
-    //   return  this.todo_list_content_detail[detailIndex].lists.filter(item=>{
-    //     return item.status;
-    //   });
-    // },
-    // inner_progress_bar(index){
-    //   let length=this.todo_list_content_detail[0].lists.length;
-    //   if(length==0){
-    //     return 0;
-    //   }else{
-    //      return Math.round((100/length)*this.inner_progress.length);
-    //   }
-    // },
+
 
     showmember_select(){
       if(this.member_input.length){
@@ -405,6 +393,7 @@ var vm = new Vue({
     }
   },
   components: {
-    DatePicker
+    DatePicker,
   },
+  
 })
