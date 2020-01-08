@@ -91,12 +91,12 @@
               <li id="mall_btn01">
                 <button name="product_type" type="button" id="product_type" value="1" class="mall_btn">
                   公事包
-              </button>
+                </button>
               </li>
               <li id="mall_btn02">
                 <p>識別證</p>
               </li>
-              <li id="mall_btn03">  
+              <li id="mall_btn03">
                 <p>名片夾</p>
               </li>
             </ul>
@@ -109,10 +109,12 @@
       <div class="content">
         <div class="mall_content" id="mall_content">
           <div class="mall_content_right">
-            <div class="cart_bg">
-              <img src="./img/icon/shopping-cart_on_gray.svg" alt="">
-              <div class="mall_cart_cir">0</div>
-            </div>
+            <a href="./cart.html">
+              <div class="cart_bg">
+                <img src="./img/icon/shopping-cart_on_gray.svg" alt="">
+                <div class="mall_cart_cir">0</div>
+              </div>
+            </a>
             <div class="mall_poduct_cart">
               <div class="mall_poduct_content">
                 <div class="product_img">
@@ -123,17 +125,17 @@
 
                 <div class="product_text">
 
-                  <p>纖巧商務包</p>
+                  <p class="product_title">纖巧商務包</p>
 
                   <ul class="product_features">
-                    <li>絨毛內裡 保護電腦不刮傷</li>
-                    <li>凹形邊緣護墊 有效吸收抵禦衝擊</li>
+                    <li class="product_features_text1">絨毛內裡 保護電腦不刮傷</li>
+                    <li class="product_features_text2">凹形邊緣護墊 有效吸收抵禦衝擊</li>
                   </ul>
 
 
                   <div class="price_btn">
                     <div class="product_price">
-                      <span>$</span><span class="price_sale">1,200</span>
+                      <span>$</span><span class="price_sale">1200</span>
                     </div>
                     <div class="mall_bBtn_all">
                       <select name="mall_color" id="mall_color">
@@ -165,7 +167,7 @@
               <section id="slider">
                 <div class="custom1 owl-carousel owl-theme">
                   <div class="item">
-                    <a href="#" class="item_list">
+                    <a href="./mall_c1_p2.html" class="item_list">
                       <h4><img src="./img/mall_img/101_sbg.jpg" alt=""></h4>
                       <div>纖巧商務包</div>
                     </a>
@@ -197,7 +199,7 @@
       </div>
     </main>
   </div>
-
+  <script src="./js/mallstorage.js"></script>
   <script src="./js/lib/three.min.js"></script>
   <script type="x-shader/x-fragment" id="fragmentshader">
     uniform vec3 color;
