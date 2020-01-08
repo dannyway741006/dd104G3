@@ -166,9 +166,9 @@ var main_content = new Vue({
     members: true,
     showhideMember: false,
 
-    change_name: '待辦事項',
-    showname: false,
-    test_title_name: true,
+    // change_name: '待辦事項',
+    // showname: false,
+    // test_title_name: true,
 
   },
   methods: {
@@ -334,33 +334,51 @@ var main_content = new Vue({
 
     //卡片背面
 
+    //最小子項目勾選 卡片顯示進度
+    // card_progress(detailIndex) {
+
+      // for (i = 0; i <= detailIndex; i++) {
+      // console.log('dd')
+      // return this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
+      //   return item.status;
+      // });
+      // }
+    // },
+    // card_progress_sum(detailIndex) {
+      // console.log(list_sum)
+      // let list_sum = 0;
+      // for (i = 0; i <= detailIndex; i++) {
+
+      //   list_sum = list_sum + this.card_progress(i).length;
+      // }
+      // return list_sum;
+
+      // let length = this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.length;
+      //   if (length == 0) {
+      //     return 0;
+      //   } else {
+      //     return Math.round((100 / length) * this.card_progress(detailIndex).length);
+      //   }
+    // },
+
+
+
+
     //勾選未完成->已完成
     check_dateline() {
       console.log(this.programs[this.page].cards[this.card_no].dateline);
       if (this.programs[this.page].cards[this.card_no].dateline == false) { //未完成框框
         this.programs[this.page].cards[this.card_no].dateline = true;
         this.programs[this.page].cards[this.card_no].dateline_text = '完成';
-        // this.classObject.active = true;
+
       } else {
         this.programs[this.page].cards[this.card_no].dateline = false;
         this.programs[this.page].cards[this.card_no].dateline_text = '未完成';
-        // this.classObject.active = false;
+
       }
-
-
 
     },
 
-
-    showSelect() {
-      if (this.showselect) {
-        this.showselect = false;
-        this.deleteline = true;
-      } else {
-        this.showselect = true;
-        this.deleteline = false;
-      }
-    },
 
     // 增加待辦清單項目
     todo_list_add(index) {
@@ -371,8 +389,10 @@ var main_content = new Vue({
           card_length: false,
           lists: [],
           status: false,
-          showname:false,
-          test_title_name:true,
+
+          //改變待辦事項標題 
+          showname: false,
+          test_title_name: true,
 
           //改變待辦事項標題
 
@@ -425,7 +445,7 @@ var main_content = new Vue({
       );
       this.programs[this.page].cards[this.card_no].filebox.push({
         name: file.name,
-        source: this.files(e),
+        source: this.programs[this.page].cards[this.card_no].sourced,
       });
 
     },
@@ -441,12 +461,7 @@ var main_content = new Vue({
       this.fileder_switch = false;
       this.todo_switch = false;
     },
-    // opendate() {
-    //   this.card_meber_switch = false;
-    //   this.showCalender = true;
-    //   this.todo_lightbox_switch = false;
-    //   this.file_switch = false;
-    // },
+
     opentodo() {
       this.card_meber_switch = false;
       // this.calandar_switch = false;
@@ -471,8 +486,8 @@ var main_content = new Vue({
       this.add_card_meber_switch = true;
 
     },
-    del_file(index) {
-      this.filebox.splice(index, 1);
+    delete_file(index) {
+      this.programs[this.page].cards[this.card_no].filebox.splice(index, 1);
     },
     //成員進入
     member_outin(index) {
@@ -500,13 +515,15 @@ var main_content = new Vue({
       alert("已加入蕃茄鐘");
     },
 
+    //最小子項目進度條
     inner_progress(detailIndex) {
       return this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
         return item.status;
       });
     },
     inner_progress_bar(detailIndex) {
-
+console.log(detailIndex)
+console.log(this.inner_progress(detailIndex))
       let length = this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.length;
       if (length == 0) {
         return 0;
@@ -609,12 +626,11 @@ var main_content = new Vue({
       //  this.addmemberswitch=false;
       //  this.fileder_switch = false;
       //  this.member_input='';
-      //  this.showname =false;
-      //  this.test_title_name =true;
+      this.showname = false;
+      this.test_title_name = true;
 
       //  this.todo_lightbox_input_title = '';
       //  this.test_message = '';
-
 
       // console.log(this.programs.length - 1)
       if (this.programs.length == 0) {
