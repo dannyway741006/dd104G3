@@ -369,10 +369,10 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
           border-radius: 5px;
           padding: 0 5px;
           transition: background-color 0.3s;
-          background-color: $danger;
+          
           color: #fff;
           padding: 2.5px 5px;
-
+          background: $danger;
           &.calandarcolor {
             background: $success;
           }
@@ -458,6 +458,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
           min-height: 54px;
           background-color: white;
           outline: none;
+          resize:vertical;
         }
         .concernbutton{
           button{
