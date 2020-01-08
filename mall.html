@@ -129,21 +129,22 @@
 
                 <div class="product_text">
 
-                  <p>纖巧商務包</p>
+                  <p id="product_name"></p>
 
                   <ul class="product_features">
-                    <li>絨毛內裡 保護電腦不刮傷</li>
-                    <li>凹形邊緣護墊 有效吸收抵禦衝擊</li>
+                    <!-- <li>絨毛內裡 保護電腦不刮傷</li>
+                    <li>凹形邊緣護墊 有效吸收抵禦衝擊</li> -->
+                   
                   </ul>
 
 
                   <div class="price_btn">
                     <div class="product_price">
-                      <span>$</span><span class="price_sale">1,200</span>
+                      <span>$</span><span class="price_sale" id="product_price"></span>
                     </div>
-                    <div class="mall_bBtn_all">
+                    <div class="mall_bBtn_all" id="mall_bBtn_all">
                       <select name="mall_color" id="mall_color">
-                        <option value="101_black">典雅黑</option>
+                    <!--     <option value="101_black">典雅黑</option> -->
                         <option value="101_brown">駝棕色</option>
                         <option value="101_blue">孔雀藍</option>
                         <option value="101_white">白米色</option>
@@ -215,6 +216,7 @@
             gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
         }
     </script>
+
   <script src="./js/background.js"></script>
   <script>
     const container = document.getElementById("app");
@@ -223,7 +225,7 @@
       container.classList.toggle("nav_open")
     );
   </script>
-
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script> -->
   <!--Mall商城主要js-->
   <script src="./js/mall.js"></script>
 
@@ -231,6 +233,8 @@
   <script src="./js/owlcarousel/owl.carousel.min.js"></script>
   <script src="./js/owlcarousel/jquery.min.js"></script>
 
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
   <!-- 放大鏡 -->
   <!-- <script>
     $(".big_pic img").blowup({

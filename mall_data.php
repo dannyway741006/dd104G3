@@ -11,7 +11,7 @@ try{
     echo "{}";
   }else{ //找得到
     //取回一筆資料
-    $productRow = $product->fetchObject();
+    $productRow = $product->fetchAll(PDO::FETCH_ASSOC);
     // $memRow = $member->fetchObject();  //$memRow->memName
     //送出json字串
     echo json_encode($productRow);
