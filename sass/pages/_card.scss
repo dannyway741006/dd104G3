@@ -53,18 +53,28 @@
     min-height: 45px;
     text-align: center;
     h1 {
-
+      background-color: $programcolor1;
       @include font(5, 50px);
       // @include positionCenter();
       color: white;
-      word-break: break-word;
-      display: -webkit-box;
-      -webkit-box-orient:vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      width: 80%;
-      margin: 0 auto;
+    
+      input{
+        background-color: inherit;
+        border: none;
+        outline: none;
+        text-align: center;
+        color: white;
+        @include font(5, 50px);
+        word-break: break-word;
+        display: -webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 80%;
+        margin: 0 auto;
+        font-weight: 600;
+      }
     }
 
     div {
@@ -215,7 +225,7 @@
   width: 70%;
   overflow-y: scroll;
   max-height: 600px;
-
+  min-height: 600px;
   .memberRight {
     padding-left: 30px;
 
