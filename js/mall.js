@@ -109,15 +109,6 @@ if (cartCount.textContent === 0) {
 
 
 
-
-
-
-
-
-
-
-
-
 // js撈php資料
 function showProduct(data){
   // let html = data;
@@ -143,3 +134,16 @@ function getProduct(){
 }
 
 mallBtn01.addEventListener("click",getProduct)
+
+
+
+
+
+
+
+
+
+
+
+console.log(mallBtn01)
+
