@@ -88,7 +88,6 @@ function selectAll(event) {
 }
 allcheck.addEventListener('click',function(){
 if(change_word1.innerHTML.match("全選/")){
-  change_word1.innerHTML.style = "color:red";
   change_word1.innerHTML = "取消/";
 }else{
   change_word1.innerHTML = "全選/";

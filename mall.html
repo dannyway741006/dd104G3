@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -23,7 +23,7 @@
       <div class="header">
         <div class="logo">
           <a href="">
-            <img src="../img/logo.svg" alt="logo" />
+            <img src="./img/logo.svg" alt="logo" />
           </a>
         </div>
         <div class="nav_hamburger">
@@ -40,25 +40,25 @@
       <nav class="nav_bar">
         <div class="logo">
           <a href="">
-            <img src="../img/logo.svg" alt="logo" />
+            <img src="./img/logo.svg" alt="logo" />
           </a>
         </div>
         <ul class="nav_list">
           <li>
             <div>
-              <img src="../img/staff-poket.svg" alt="pm" />
+              <img src="./img/staff-poket.svg" alt="pm" />
             </div>
             <p>專案管理<br /><span>Project management</span></p>
           </li>
           <li>
             <div>
-              <img src="../img/time-left.d4d509fa.svg" alt="clock" />
+              <img src="./img/time-left.d4d509fa.svg" alt="clock" />
             </div>
             <p>番茄鐘<br /><span>Clock</span></p>
           </li>
           <li class="active">
             <div>
-              <img src="../img/shopping-bag.c63fa553.svg" alt="shop" />
+              <img src="./img/shopping-bag.c63fa553.svg" alt="shop" />
             </div>
             <p>商城<br /><span>Shop</span></p>
           </li>
@@ -66,7 +66,7 @@
         <div class="user_status">
           <div class="user_shot">
             <div>
-              <img src="../img/user.9c173fc0.svg" alt="member" />
+              <img src="./img/user.9c173fc0.svg" alt="member" />
             </div>
             <p>USER_Master Pocket</p>
           </div>
@@ -79,24 +79,29 @@
 
           <div class="search_bar">
             <label>
-              <img src="../img/icon/search.svg" alt="search" />
-              <input type="text" placeholder="Search Somethings..." />
+              <img src="./img/icon/search.svg" alt="search" />
+              <input type="text" placeholder="Search Somethings.." />
             </label>
           </div>
           <div class="title">
             <p>商品分類</p>
           </div>
-          <ul class="page_info_list setting_shop">
-            <li id="mall_btn01">
-              <p>公事包</p>
-            </li>
-            <li id="mall_btn02">
-              <p>識別證</p>
-            </li>
-            <li id="mall_btn03">
-              <p>名片夾</p>
-            </li>
-          </ul>
+          <form action="">
+            <ul class="page_info_list setting_shop">
+              <li id="mall_btn01">
+                <button name="product_type" type="button" id="product_type" value="1" class="mall_btn">
+                  公事包
+              </button>
+              </li>
+              <li id="mall_btn02">
+                <p>識別證</p>
+              </li>
+              <li id="mall_btn03">  
+                <p>名片夾</p>
+              </li>
+            </ul>
+          </form>
+
         </div>
       </nav>
     </header>
@@ -153,7 +158,7 @@
                 </div>
               </div>
             </div>
-         
+
             <!-- 輪播  -->
             <div class="slider-bg">
               <h2>其它商品</h2>
@@ -183,7 +188,7 @@
                       <div>迷你手提袋</div>
                     </a>
                   </div>
-          
+
                 </div>
               </section>
             </div>
@@ -193,7 +198,7 @@
     </main>
   </div>
 
-  <script src="../js/lib/three.min.js"></script>
+  <script src="./js/lib/three.min.js"></script>
   <script type="x-shader/x-fragment" id="fragmentshader">
     uniform vec3 color;
         uniform sampler2D texture;
@@ -204,7 +209,7 @@
             gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
         }
     </script>
-  <script src="../js/background.js"></script>
+  <script src="./js/background.js"></script>
   <script>
     const container = document.getElementById("app");
     const hamburger = document.querySelector(".nav_hamburger");

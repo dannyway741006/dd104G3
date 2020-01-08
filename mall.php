@@ -1,31 +1,4 @@
-<?php
-try{
-  require_once("connects.php");
-  $sql = "select * from `mall_product` where mall_product=:mall_product,";
-  $product = $pdo->prepare($sql);
-  $product->bindValue(":mall_product", $_GET["mall_product"]);
-  $product->execute();
-  
-  if( $product->rowCount() == 0 ){ //找不到
-    //傳回空的JSON字串
-    echo "{}";
-  }else{ //找得到
-    //取回一筆資料
-    $productRow = $product->fetch(PDO::FETCH_ASSOC);
-    // $memRow = $member->fetchObject();  //$memRow->memName
-    //送出json字串
-    echo json_encode($productRow);
-    
-    // PDO::FETCH_ASSOC 返回以欄位名稱作為索引鍵(key)的陣列(array)
-    // PDO::FETCH_NUM 返回以數字作為索引鍵(key)的陣列(array)，由0開始編號
-    // PDO::FETCH_BOTH 返回 FETCH_ASSOC 和 FETCH_NUM 的結果，兩個都會列出
-    // PDO::FETCH_CLASS 返回一個物件，以欄位名稱設定屬性，並把設值給該屬性
-  }	
-  
-}catch(PDOException $e){
-  echo $e->getMessage();
-}
-?>
+
 
 <div class="content">
         <div class="mall_content" id="mall_content">
@@ -44,7 +17,7 @@ try{
 
                 <div class="product_text">
                   <p $>纖巧商務包</p>
-                  <p>纖巧商務包</p>
+                  <p>哈囉</p>
 
                   <ul class="product_features">
                     <li>絨毛內裡 保護電腦不刮傷</li>

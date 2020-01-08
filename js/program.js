@@ -294,12 +294,13 @@ var main_content = new Vue({
     },
     //打開卡片本人
     open_card_func(programIndex, cardIndex) {
-      this.targetCardInfo = {
-        programIndex,
-        cardIndex
-      }
+      // this.targetCardInfo = {
+      //   programIndex,
+      //   cardIndex
+      // }
       this.opened = !this.opened;
-
+      var vm = this;
+      console.log(vm.programs)
       // if(!this.$refs.calendarBody.hasChildNodes()){
       //   calender(this.$refs.inCalender);
       // }
@@ -342,22 +343,21 @@ var main_content = new Vue({
 
     // 增加待辦清單項目
     todo_list_add() {
-
-      // todo_lightbox_input_title: '',
-
+      // console.log(this.targetCardInfo.programIndex);
+      // console.log(this.targetCardInfo.cardIndex)
+      // console.log(this.programs[this.targetCardInfo.programIndex].cards[this.targetCardInfo.cardIndex])
       if (this.todo_lightbox_input_title.length) {
-        this.programs[programIndex].cards[cardIndex].todo_list_content_detail.push({
+        this.programs[this.targetCardInfo.programIndex].cards[this.targetCardInfo.cardIndex].todo_list_content_detail.push({
           title: this.todo_lightbox_input_title,
+                    
           
-          
-          
-          test: '',
+          // test: '',
           // 將卡片細節塞入該陣列裡面
           lists: [],
           // progress_bar_length:'',
-          card_length: false,
-          showname: false,
-          test_title_name: true,
+          // card_length: false,
+          // showname: false,
+          // test_title_name: true,
         });
 
         this.todo_lightbox_input_title = '';
