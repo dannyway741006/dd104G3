@@ -114,20 +114,20 @@ var vm = new Vue({
 
     member_inout: [],
 
-    member_input:'',
+    member_input: '',
 
-    addmemberswitch:false,
-    add_card_meber_switch:false,
+    addmemberswitch: false,
+    add_card_meber_switch: false,
     // members:'',
     // memeshoww:member_inout.length,
-    members:true,
-    showhideMember:false,
+    members: true,
+    showhideMember: false,
 
-    change_name:'待辦事項',
-    showname:false,
-    test_title_name:true,
+    change_name: '待辦事項',
+    showname: false,
+    test_title_name: true,
 
-   
+
   },
   methods: {
     changeimg() {
@@ -163,8 +163,8 @@ var vm = new Vue({
           lists: [],
           // progress_bar_length:'',
           card_length: false,
-          showname:false,
-          test_title_name:true,
+          showname: false,
+          test_title_name: true,
         });
 
         this.todo_lightbox_input_title = '';
@@ -199,7 +199,7 @@ var vm = new Vue({
 
     },
     delte_test_detail(index) {
-      this.todo_test.splice(index, 1); 
+      this.todo_test.splice(index, 1);
     },
     deletecard_todo(detailIndex) {
       this.todo_list_content_detail.splice(detailIndex, 1);
@@ -210,26 +210,21 @@ var vm = new Vue({
     //   console.log(item);
     // },
 
-
-    fileSelected(e) {
-      let file = e.target.files[0];
-      // let file = e.target.files.item(0);
-      // console.log(file);
-      this.file_switch = false;
+  fileserach(e){
+  
+    let file = e.target.files[0];
       let readFile = new FileReader();
-
-      // console.log(readFile);
-
       readFile.readAsDataURL(file);
-      readFile.addEventListener('load',
-        function file(e) {
-          this.sourced = e.target.result;
-        }
-      );
-
+      return  e.target.result;
+     
+  },
+    fileSelected(e) {
+      console.log(this.fileserach(e));
+      let file = e.target.files[0];
+ this.file_switch = false;
       this.filebox.push({
         name: file.name,
-        source: this.sourced,
+        source: this.fileserach(e),
       });
 
     },
@@ -240,14 +235,14 @@ var vm = new Vue({
       // this.todo_list_content_detail[detailIndex].lists.splice(index, 1);
     },
 
- 
+
     openmember() {
       this.card_meber_switch = true;
       // this.calandar_switch = false;
       this.todo_lightbox_switch = false;
       this.file_switch = false;
-      this.fileder_switch=false;
-      this.todo_switch=false;
+      this.fileder_switch = false;
+      this.todo_switch = false;
     },
     // opendate() {
     //   this.card_meber_switch = false;
@@ -260,24 +255,24 @@ var vm = new Vue({
       // this.calandar_switch = false;
       this.todo_lightbox_switch = true;
       this.file_switch = false;
-      this.fileder_switch=false;
-      this.member_switch=false;
+      this.fileder_switch = false;
+      this.member_switch = false;
     },
     openfile() {
       this.card_meber_switch = false;
       // this.calandar_switch = false;
       this.todo_lightbox_switch = false;
       this.file_switch = true;
-      this.todo_switch=false;
-      this.member_switch=false;
+      this.todo_switch = false;
+      this.member_switch = false;
     },
-    openaddmember(){
+    openaddmember() {
       this.card_meber_switch = false;
       this.calandar_switch = false;
       this.todo_lightbox_switch = false;
       this.file_switch = false;
-      this.add_card_meber_switch=true;
-    
+      this.add_card_meber_switch = true;
+
     },
     del_file(index) {
       this.filebox.splice(index, 1);
@@ -287,42 +282,41 @@ var vm = new Vue({
       if (this.showmember_select[index].check == '') {
         this.showmember_select[index].uncolor = true;
         this.showmember_select[index].check = "./img/checked_member.svg";
-     
+
         console.log(this.member_inout);
-        if (this.member_inout.map(x =>x.source).indexOf(this.showmember_select[index].src) === -1 ) {
+        if (this.member_inout.map(x => x.source).indexOf(this.showmember_select[index].src) === -1) {
           this.member_inout.push({
-               source:this.showmember_select[index].src, 
-          }
-          ) 
+            source: this.showmember_select[index].src,
+          })
         }
-    
+
       } else {
         this.showmember_select[index].check = '';
         this.showmember_select[index].uncolor = false;
-      let findIndex= this.member_inout.findIndex(item=>item.source === this.showmember_select[index].src);
-        this.member_inout.splice(findIndex,1);
-       console.log(index);
-    }
+        let findIndex = this.member_inout.findIndex(item => item.source === this.showmember_select[index].src);
+        this.member_inout.splice(findIndex, 1);
+        console.log(index);
+      }
     },
     //將資料丟入蕃茄鐘
-    calltomato(detailIndex,index){
+    calltomato(detailIndex, index) {
       alert("已加入蕃茄鐘");
     },
 
-    inner_progress(detailIndex){
-      return  this.todo_list_content_detail[detailIndex].lists.filter(item =>{
+    inner_progress(detailIndex) {
+      return this.todo_list_content_detail[detailIndex].lists.filter(item => {
         return item.status;
       });
     },
-    inner_progress_bar(detailIndex){
-      
-      let length=this.todo_list_content_detail[detailIndex].lists.length;   
-      if(length==0){
+    inner_progress_bar(detailIndex) {
+
+      let length = this.todo_list_content_detail[detailIndex].lists.length;
+      if (length == 0) {
         return 0;
-      }else{
+      } else {
         // console.log(index);
         console.log(this.inner_progress(detailIndex));
-         return Math.round((100/length)*this.inner_progress(detailIndex).length);
+        return Math.round((100 / length) * this.inner_progress(detailIndex).length);
       }
     },
   },
@@ -333,67 +327,78 @@ var vm = new Vue({
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.card_meber_switch = false;
-      this.add_card_meber_switch=false;
+      this.add_card_meber_switch = false;
 
       // this.showCalender = false;
       this.member_switch = false;
-      this.addmemberswitch=false;
+      this.addmemberswitch = false;
       this.todo_switch = false;
       this.fileder_switch = false;
-      this.member_input='';
-      this.showname =false;
-      this.test_title_name =true;
+      this.member_input = '';
+      this.showname = false;
+      this.test_title_name = true;
 
       this.todo_lightbox_input_title = '';
       //抓不到index = =
       // this.todo_list_content_detail[detailIndex].test ='';
       this.test_message = '';
-    // console.log(this.todo_list_content_detail);
+      // console.log(this.todo_list_content_detail);
     });
     // calender(this.$refs.inCalender);
   },
   computed: {
-  
-    progerss(){
-      return this.todo_test.filter(todo=>{
+
+    progerss() {
+      return this.todo_test.filter(todo => {
         return todo.test_status;
       });
     },
-    progress_bar_length(){
-      let length=this.todo_test.length;
-      if(length==0){
+    progress_bar_length() {
+      let length = this.todo_test.length;
+      if (length == 0) {
         return 0;
-      }else{
-         return Math.round((100/length)*this.progerss.length);
+      } else {
+        return Math.round((100 / length) * this.progerss.length);
       }
     },
 
 
-    showmember_select(){
-      if(this.member_input.length){
-        return this.memebergo.filter(item=>{
-          let content=item.userId.toLowerCase();
-          let name=item.member_name;
-          let realcontent=content.concat(name);
-          let keyword=this.member_input.toLowerCase();
-          return  realcontent.indexOf(keyword) !=-1;
+    showmember_select() {
+      if (this.member_input.length) {
+        return this.memebergo.filter(item => {
+          let content = item.userId.toLowerCase();
+          let name = item.member_name;
+          let realcontent = content.concat(name);
+          let keyword = this.member_input.toLowerCase();
+          return realcontent.indexOf(keyword) != -1;
         })
-      }else{
+      } else {
         return this.memebergo;
       }
     },
-    hidemembers(){
-      if(this.member_inout.length>3){
-        this.showhideMember=true;
-      }else{
-        this.showhideMember=false;
+    hidemembers() {
+      if (this.member_inout.length > 3) {
+        this.showhideMember = true;
+      } else {
+        this.showhideMember = false;
       }
-      let member_length= this.member_inout.length;
-      return member_length-3;
+      let member_length = this.member_inout.length;
+      return member_length - 3;
     }
   },
   components: {
     DatePicker,
   },
-  
+
 })
+
+// let file=e.target.files[0];
+
+// let readFile = new FileReader();
+// readFile.readAsDataURL(file);
+// readFile.addEventListener('load',
+//   function file(e) {
+//     this.sourced = e.target.result;
+//     return;
+//   }
+// );
