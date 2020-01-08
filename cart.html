@@ -239,9 +239,30 @@
             <h1>Cart</h1>
           </div>
           <div class="cart_list">
-            <div class="cart_product">
+
+            <!-- <div class="cart_product">
               <div class="cart_product_img">
                 <img src="./img/cart_img/bag/bag1.jpg" alt="">
+              </div>
+              <div class="cart_product_message">
+                <p>Cow皮革修身商務包</p>
+                <h3>$4500</h3>
+                <p>商品介紹 : 免費口袋2,拉鍊口袋1</p>
+                <p>尺寸 : 26mm x 35mm x 14mm</p>
+              </div>
+              <div class="cart_product_qty">
+                <button class="cart_cut_product" @click="cartProduct--"> - </button>
+                <p>{{cartProduct}}</p>
+                <button class="cart_add_product" @click="cartProduct++"> + </button>
+              </div>
+
+
+              <div></div>
+            </div>
+
+            <div class="cart_product">
+              <div class="cart_product_img">
+                <img src="https://fakeimg.pl/300/" alt="">
               </div>
               <div class="cart_product_message">
                 <p>Cow皮革修身商務包</p>
@@ -260,7 +281,7 @@
             </div>
             <div class="cart_product">
               <div class="cart_product_img">
-                <img src="./img/cart_img/bag/bag1.jpg" alt="">
+                <img src="https://fakeimg.pl/300/" alt="">
               </div>
               <div class="cart_product_message">
                 <p>Cow皮革修身商務包</p>
@@ -279,7 +300,7 @@
             </div>
             <div class="cart_product">
               <div class="cart_product_img">
-                <img src="./img/cart_img/bag/bag1.jpg" alt="">
+                <img src="https://fakeimg.pl/300/" alt="">
               </div>
               <div class="cart_product_message">
                 <p>Cow皮革修身商務包</p>
@@ -298,7 +319,7 @@
             </div>
             <div class="cart_product">
               <div class="cart_product_img">
-                <img src="./img/cart_img/bag/bag1.jpg" alt="">
+                <img src="https://fakeimg.pl/300/" alt="">
               </div>
               <div class="cart_product_message">
                 <p>Cow皮革修身商務包</p>
@@ -314,15 +335,15 @@
 
 
               <div></div>
-            </div>
+            </div> -->
             <!-- 動態新增的內容 -->
-            <div></div>
+            <!-- <div></div> -->
           </div>
           <div class="cart_total">
             <div class="cart_summary">
               <h2>Cart Summary</h2>
               <p>Total</p>
-              <h3>$4500</h3>
+              <h3 class="cart_price_total">$4500</h3>
             </div>
             <div class="cart_account">
               <div class="cart_credit_card">
@@ -389,7 +410,38 @@
       </div>
     </main>
   </div>
+<<<<<<< HEAD
 
+=======
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '.cart_page',
+      data: {
+        cartProduct: 1,
+        cardNum1: '',
+        cardNum2: '',
+        cardNum3: '',
+        cardNum4: '',
+      },
+      methods: {
+        setCardNum1(e) {
+          this.cardNum1 = e.target.value;
+        },
+        setCardNum2(e) {
+          this.cardNum2 = e.target.value;
+        },
+        setCardNum3(e) {
+          this.cardNum3 = e.target.value;
+        },
+        setCardNum4(e) {
+          this.cardNum4 = e.target.value;
+        },
+      }
+    });
+  </script>
+  <script src="./js/cart.js"></script>
+>>>>>>> yenjen
   <script src="../js/lib/three.min.js"></script>
   <script type="x-shader/x-fragment" id="fragmentshader">
     uniform vec3 color;

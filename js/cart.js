@@ -1,27 +1,87 @@
 window.addEventListener('load', () => {
-  //---欄位focus---//
+  //***---欄位focus---***//
   let cardNum1 = document.querySelectorAll('.cart_inputnum1');
   for (let i = 0; i < cardNum1.length; i++) {
     cardNum1[i].addEventListener('input', (e) => {
       if (e.target.value.length == 4) {
         e.target.nextElementSibling.focus();
-      }else if(e.target.value.length == 0){
+      } else if (e.target.value.length == 0) {
         e.target.previousElementSibling.focus();
       };
-      return;
     });
+  };
+
+  //***---從storage取出資料到購物車---***//
+  let storage = sessionStorage;
+
+  //--先把myCartList取出來--//
+  let getMyCartList = storage.getItem(`myCartList`);
+  let cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
+  // console.log(cartProducts);
+
+  let total = 0;
+  for (let key in cartProducts) {
+    //--跑迴圈將每一項點選的商品取出來--//
+    let productInfo = storage.getItem(cartProducts[key]).split('|');
+    //--將以選購商品金額加總--//
+    total += (parseInt(productInfo[3]) * parseInt(productInfo[6]));
+    // console.log(productInfo);
+
+    //--將取出的資料寫進HTML結構中--//
+    let addProduct = document.createElement('div');
+    document.querySelector('.cart_list').appendChild(addProduct).innerHTML = `
+    <div class="cart_product">
+      <div class="cart_product_img">
+        <img src="${productInfo[0]}" alt="">
+      </div>
+      <div class="cart_product_message">
+        <p>${productInfo[1]}</p>
+        <h3>${productInfo[3]}</h3>
+        <p>商品介紹 : ${productInfo[4]}</p>
+        <p>商品介紹 : ${productInfo[5]}</p>
+      </div>
+      <div class="cart_product_qty">
+        <button class="cart_cut_product"> - </button>
+        <p>${productInfo[6]}</p>
+        <button class="cart_add_product"> + </button>
+      </div>
+    </div>`;
   }
+  //--把加總後的金額寫進總計欄--//
+  document.querySelector('.cart_price_total').textContent = total;
+
+  //***---購物車商品滑入特效---***///
+  let cartProduct = document.querySelectorAll('.cart_product');
+  for (let j = 0; j < cartProduct.length; j++) {
+    window.setTimeout(() => {
+      cartProduct[j].setAttribute('style', 'opacity:1;left:0%;transition:all .8s;')
+    }, 200 * j);
+  }
+
+
+
 });
 
-let cartProduct = document.querySelectorAll('.cart_product');
-for (let j = 0; j < cartProduct.length; j++) {
-  window.setTimeout(() => {
-    cartProduct[j].setAttribute('style', 'opacity:1;left:0%;transition:all .8s;')
-  }, 200* j);
-}
 
 
-
+// let cartStr = `
+//   <div class="cart_product">
+//   <div class="cart_product_img">
+//     <img src="${productInfo[0]}" alt="">
+//   </div>
+//   <div class="cart_product_message">
+//     <p>${productInfo[1]}</p>
+//     <h3>${productInfo[3]}</h3>
+//     <p>商品介紹 : ${productInfo[4]}/p>
+//     <p>商品介紹 : ${productInfo[5]}</p>
+//   </div>
+//   <div class="cart_product_qty">
+//     <button class="cart_cut_product"> - </button>
+//     <p>${productInfo[5]}</p>
+//     <button class="cart_add_product"> + </button>
+//   </div>
+// </div>
+//   `;
 
 
 
