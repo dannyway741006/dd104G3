@@ -115,8 +115,8 @@
   /*定义滚动条高宽及背景
  高宽分别对应横竖滚动条的尺寸*/
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 7px;
+    height: 7px;
     background-color: #F5F5F5;
   }
 
@@ -124,15 +124,15 @@
   内阴影+圆角*/
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    border-radius: 7px;
     background-color: #F5F5F5;
   }
 
   /*定义滑块
   内阴影+圆角*/
   ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px $primary;
+    border-radius: 7px;
+    -webkit-box-shadow: inset 0 0 6px $radioActive;
     background-color: $white;
   }
 
@@ -140,12 +140,12 @@
   .invite_list {
     // border: 1px solid red;
     // max-width: 400px;
-    @include card(auto, auto, false);
+    // @include card(auto, auto, false);
     display: inline-block;
     position: relative;
     background-color: $white;
-    // border-radius: 10px;
-    // box-shadow: 1px 1px 3px $shadow;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px $shadow;
     padding: 20px;
 
 
@@ -224,22 +224,23 @@
   //卡片區
   .cards_column_all {
     // @include card(auto, auto, false);
-    border: 1px solid red;
+    // border: 1px solid red;
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: scroll;
+    overflow-x: auto;
     max-width: 970px;
     background-color: $white;
     border-radius: 10px;
     box-shadow: 1px 1px 3px $shadow;
     margin-top: 20px;
-
+padding-top: 20px;
+padding-bottom: 20px;
     // display: inline-block;
 
     .cards_column {
       // display: inline-block;
-      border: 1px solid blue;
-      height: calc(90vh - 130px);
+      // border: 1px solid blue;
+      height: calc(90vh - 170px);
 
       min-width: 300px;
       max-width: 300px;
@@ -397,7 +398,7 @@
           min-height: 100%;
           max-height: 100%;
           // border: 1px solid rgb(255, 72, 72);
-          overflow-y: scroll;
+          overflow-y: auto;
 
           &.cards_list_todo {
             min-height: calc(100% - 105px);
@@ -510,7 +511,7 @@
 
   //行事曆、聊天按鈕bar
   .cal-chat_all_bar {
-    border: 1px solid red;
+    // border: 1px solid red;
     position: absolute;
     right: 0;
     bottom: 10px;
