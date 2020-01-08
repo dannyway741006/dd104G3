@@ -302,7 +302,6 @@ var vm = new Vue({
       let findIndex= this.member_inout.findIndex(item=>item.source === this.showmember_select[index].src);
         this.member_inout.splice(findIndex,1);
        console.log(index);
-     
     }
     },
     //將資料丟入蕃茄鐘
@@ -316,13 +315,13 @@ var vm = new Vue({
       });
     },
     inner_progress_bar(detailIndex){
-      let length=this.todo_list_content_detail[detailIndex].lists.length;
       
+      let length=this.todo_list_content_detail[detailIndex].lists.length;   
       if(length==0){
         return 0;
       }else{
-        console.log(length);
-        // console.log(inner_progress());
+        // console.log(index);
+        console.log(this.inner_progress);
          return Math.round((100/length)*this.inner_progress.length);
       }
     },
