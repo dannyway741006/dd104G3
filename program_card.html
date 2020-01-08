@@ -225,7 +225,8 @@
               點擊後出現燈窗
             </button>
           </div>
-          <div class="card_light_box" id="card_light_box" :class="{opneLight: opened}">
+          <transition name="horizentalfade">
+          <div class="card_light_box" id="card_light_box" v-show="opened">
             <div class="card_header_title">
               <h1 id="card_title">團專衝刺</h1>
               <div @click="opened = false">
@@ -409,7 +410,7 @@
                         <img src="./img/check.svg" alt="" v-show="onactive" @click="onchangeimg">
                       </div>
                       <!-- hover時顏色好像改不了 -->
-                      <!-- <p><date-picker v-model="time2" valueType="format"/></p> -->
+                      <p><date-picker v-model="time2" valueType="format"/></p>
 
                       <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
                       <span :class="classObject">{{text}}</span>
@@ -448,8 +449,10 @@
                         
                         </div>
                         <p :class="{lineThrough:item.test_text}">{{item.test_title}}</p>
+                        
                         <div><img src="./img/icon/time-left.svg" alt=""></div>
                         <div><img src="./img/card_img/delete.0df56913.svg" alt="" @click="delte_test_detail(index)">
+                        
                         </div>
 
                       </div>
@@ -474,6 +477,7 @@
 
 
                   <!-- 新增出來的待辦清單 -->
+                  <draggable v-model="todo_list_content_detail" name="drag">
                   <transition-group name="fade" tag="div">
                     <div class="card_todo_content" v-for="(item,detailIndex) in todo_list_content_detail"
                       :key="detailIndex">
@@ -501,9 +505,8 @@
                       </div>
                       <!-- 新增的卡片細項 -->
 
-
+                      <draggable v-model="item.lists" :options = "{animation:500}">
                       <transition-group name="fade" tag="div">
-
                         <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
                           <div @click="item.status = !item.status,item.text =!item.text">
                          
@@ -518,7 +521,7 @@
                         </div>
 
                       </transition-group>
-
+                    </draggable>
 
                       <div class="card_add_button">
 
@@ -535,7 +538,7 @@
 
                     </div>
                   </transition-group>
-
+                </draggable>
 
 
 
@@ -571,7 +574,9 @@
               </div>
             </div>
           </div>
+        </transition>
         </div>
+        
       </div>
 
     </main>
@@ -601,6 +606,8 @@
   <script src="./node_modules/vue2-datepicker/index.min.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
   <script src="./js/card.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
 
 </body>
 
