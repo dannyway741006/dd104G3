@@ -232,6 +232,8 @@ var main_content = new Vue({
           //上傳檔案
           filebox: [],
           // sourced:'',
+          // //增加項目focus變長
+          // card_length:false,
         });
         this.card_name = "";
         this.cards_list_card_input_box = false;
@@ -365,8 +367,15 @@ var main_content = new Vue({
       if (this.todoListTitle !== null) {
         this.programs[this.page].cards[index].todo_list_content_detail.push({
           title: this.todoListTitle,
+          //增加項目focus變長
+          card_length: false,
           lists: [],
-          status: false
+          status: false,
+          showname:false,
+          test_title_name:true,
+
+          //改變待辦事項標題
+
         })
         this.todoListTitle = null;
         this.todo_lightbox_switch = false;
@@ -378,7 +387,7 @@ var main_content = new Vue({
 
     // 刪除待辦清單項目
     deletecard_todo(detailIndex) {
-      this.todo_list_content_detail.splice(detailIndex, 1);
+      this.programs[this.page].cards[this.card_no].todo_list_content_detail.splice(detailIndex, 1);
     },
     // 增加最小子項目
     add_card_detail(detailIndex) {
@@ -395,12 +404,14 @@ var main_content = new Vue({
       } else {}
 
     },
+    // 刪除最小子項目
+    delete_todo_title(detailIndex, index) {
+      this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.splice(index, 1, );
 
-
+    },
     fileSelected(e) {
       let file = e.target.files[0];
-      // let file = e.target.files.item(0);
-      // console.log(file);
+
       this.file_switch = false;
       let readFile = new FileReader();
 
@@ -419,11 +430,7 @@ var main_content = new Vue({
 
     },
 
-    delete_todo_title(detailIndex, index) {
-      this.todo_list_content_detail[detailIndex].lists.splice(index, 1, );
 
-      // this.todo_list_content_detail[detailIndex].lists.splice(index, 1);
-    },
 
 
     openmember() {
@@ -489,7 +496,24 @@ var main_content = new Vue({
 
       }
     },
+    calltomato(detailIndex, index) {
+      alert("已加入蕃茄鐘");
+    },
 
+    inner_progress(detailIndex) {
+      return this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
+        return item.status;
+      });
+    },
+    inner_progress_bar(detailIndex) {
+
+      let length = this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.length;
+      if (length == 0) {
+        return 0;
+      } else {
+        return Math.round((100 / length) * this.inner_progress(detailIndex).length);
+      }
+    },
 
   },
 
