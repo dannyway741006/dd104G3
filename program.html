@@ -216,7 +216,7 @@
 
 
                     <div class="cards_list_card" v-for="(item, cardIndex) in item.cards" :key="cardIndex"
-                      @click="open_card_func(index, cardIndex),card_no=cardIndex" @mouseup="catch_card_position()">
+                      @click="open_card_func(),card_no=cardIndex" @mouseup="catch_card_position()">
                       <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
                       <p>{{item.card_name}}</p>
                       <div class="cards_list_card_icon_bar">
@@ -461,7 +461,7 @@
             <div class="card_light_box" id="card_light_box" v-show="opened" v-for="(item,cardIndex) in nowProgram.cards"
               :key="cardIndex">
               <div class="card_header_title" :style='{backgroundColor: programs[page].color}'>
-                <h1 id="card_title">{{item.card_name}}</h1>
+                <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
 
                 
 
@@ -685,7 +685,7 @@
                       <ul>
                         <li v-for="(item,cardIndex) in item.filebox">
                           <a :href="item.source" :download="item.name">{{item.name}}</a>
-                          <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="del_file(index)">
+                          <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="delete_file(index)">
                           </div>
                         </li>
                       </ul>

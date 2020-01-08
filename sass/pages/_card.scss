@@ -53,7 +53,7 @@
     min-height: 45px;
     text-align: center;
     h1 {
-      background-color: $programcolor1;
+      // background-color: $programcolor1;
       @include font(5, 50px);
       // @include positionCenter();
       color: white;
