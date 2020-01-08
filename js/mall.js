@@ -130,7 +130,8 @@ function getProduct(){
   // var url = "../mall_data.php?product_type=1";
   // xhr.open("Get",url,true);
   // xhr.send(null);
-  fetch('./mall_data.php?product_type=1').then(res=>res.json()).then(json=>console.log(json))
+  // fetch('./mall_data.php?product_type=1').then(res=>res.json()).then(json=>console.log(json))
+  fetch('./mall_data.php').then(res=>res.json()).then(json=>console.log(json))
 }
 
 mallBtn01.addEventListener("click",getProduct)
