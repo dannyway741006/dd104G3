@@ -180,19 +180,17 @@ var main_content = new Vue({
           changeimage: false, //uncheck
           color: this.selectColor,
           show_complete_info_box: false,
-          // cards: [],
-          // card_name: "",
 
           cards: [],
 
-
+    
         });
         this.program_name = "";
         this.selectColor = null;
         this.click_complete_btn = false;
         // console.log(this.page);
         // console.log(this.programs.length-1);
-        this.page = this.programs.length - 1;
+        this.page = this.programs.length - 1; 
       } else {
         alert('請填寫專案名稱及選擇專案專屬色')
       }
@@ -330,28 +328,29 @@ var main_content = new Vue({
       // console.log(this.programs[this.page])
       this.programs[this.page].cards.splice(index, 1);
       this.opened = !this.opened;
+      this.card_no=-1;
     },
 
     //卡片背面
 
     //最小子項目勾選 卡片顯示進度
-    // card_progress(detailIndex) {
+    card_progress(detailIndex) {
 
-      // for (i = 0; i <= detailIndex; i++) {
-      // console.log('dd')
-      // return this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
-      //   return item.status;
-      // });
-      // }
-    // },
-    // card_progress_sum(detailIndex) {
-      // console.log(list_sum)
-      // let list_sum = 0;
-      // for (i = 0; i <= detailIndex; i++) {
+      for (i = 0; i <= detailIndex; i++) {
+      console.log('dd')
+      return this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
+        return item.status;
+      });
+      }
+    },
+    card_progress_sum(detailIndex) {
+      console.log(list_sum)
+      let list_sum = 0;
+      for (i = 0; i <= detailIndex; i++) {
 
-      //   list_sum = list_sum + this.card_progress(i).length;
-      // }
-      // return list_sum;
+        list_sum = list_sum + this.card_progress(i).length;
+      }
+      return list_sum;
 
       // let length = this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.length;
       //   if (length == 0) {
@@ -359,7 +358,7 @@ var main_content = new Vue({
       //   } else {
       //     return Math.round((100 / length) * this.card_progress(detailIndex).length);
       //   }
-    // },
+    },
 
 
 
@@ -522,8 +521,8 @@ var main_content = new Vue({
       });
     },
     inner_progress_bar(detailIndex) {
-console.log(detailIndex)
-console.log(this.inner_progress(detailIndex))
+// console.log(detailIndex)
+// console.log(this.inner_progress(detailIndex))
       let length = this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.length;
       if (length == 0) {
         return 0;
