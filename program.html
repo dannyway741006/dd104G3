@@ -170,11 +170,9 @@
             :key="index">
 
             <div class="invite_list">
-              <div class="program_member"><img src="./img/program_img/program_member_1.png" alt=""></div>
-              <div class="program_member"><img src="./img/program_img/program_member_2.png" alt=""></div>
-              <div class="program_member"><img src="./img/program_img/program_member_3.png" alt=""></div>
-
-              <div class="program_member_more">+4</div>
+              <div class="program_member" v-for="(item,index) in program_member_show" v-show="index < 3"><img :src="item.src" alt=""></div>
+            
+              <div class="program_member_more" v-show="programs[page].hideMember_sum">+{{programs_member_hidenum}}</div>
               <button class="invite_btn" @click.stop='invite_add_member_box = !invite_add_member_box'>邀請</button>
               <transition name="fade" mode="out-in">
                 <div class="invite_add_member_box" v-show="invite_add_member_box" @click.stop="">
@@ -228,7 +226,7 @@
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
                                 alt="">
                             </div>
-                            <span>0/0</span>
+                            <span>0/0</span> <!--{{inner_progress_bar(detailIndex)}} -->
                           </div>
                         </div>
                       </div>
@@ -525,7 +523,7 @@
                         <h3>成員</h3>
                         <br>
                         <label for="">
-                          <input type="text" placeholder="搜尋成員" v-model.trim="member_input">
+                          <input type="text" placeholder="搜尋成員" v-model.trim="item.member_input">
                         </label>
                         <h4>看版成員</h4>
                         <ul>
@@ -563,9 +561,9 @@
                         <h3>成員</h3>
                       </div>
                       <div class="memimg">
-                        <div class="card_member" v-for="(item,index) in member_inout" v-show="index < 3"><img
+                        <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"><img
                             :src="item.source" alt=""></div>
-                        <div class="show_dote_member" v-show="showhideMember"><span>+{{hidemembers}}</span></div>
+                        <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                         <div class="add_member_to_card"
                           @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
                           <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg">
@@ -577,7 +575,7 @@
                               <h3>成員</h3>
                               <br>
                               <label for="">
-                                <input type="text" placeholder="搜尋成員" v-model.trim="member_input">
+                                <input type="text" placeholder="搜尋成員" v-model.trim="item.member_input">
                               </label>
                               <h4>看版成員</h4>
                               <ul>
