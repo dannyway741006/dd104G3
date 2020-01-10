@@ -215,18 +215,32 @@ var vm = new Vue({
       let file = e.target.files[0];
       let readFile = new FileReader();
       readFile.readAsDataURL(file);
-      return this.e.target.result;
- 
+      readFile.addEventListener('load',
+        function file(e) {
+          let a = e.target.result;
+          console.log(a);
+          return a;
+        }
+      );
     },
     fileSelected(e) {
-      console.log(this.fileserach(e));
+
       let file = e.target.files[0];
+      // let readFile = new FileReader();
+      // readFile.readAsDataURL(file);
+      // readFile.addEventListener('load',
+      //   function file(e) {
+      //     let a = e.target.result;
+      //     console.log(a);
+      //     return a;
+      //   }
+      // );
       this.file_switch = false;
       this.filebox.push({
         name: file.name,
         source: this.fileserach(e),
       });
-
+      console.log(this.filebox.source);
     },
 
     delete_todo_title(detailIndex, index) {
