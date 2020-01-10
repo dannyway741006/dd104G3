@@ -130,16 +130,25 @@ function mall_content() {
   product_name
 
 
-  var sbg_arr = [];
-  // var sbg_str = [];
-  var product_num = mall_data[0]["product_num"];
-  sbg_arr.push(mall_data[0]["product_slide_img"]);
-  for (var i in mall_data) {
-    if (product_num !== mall_data[i]["product_num"] ) {
-      sbg_arr.push(mall_data[i]["product_slide_img"]);
-      product_num = mall_data[i]["product_num"];
-    };
-  }
+  // var sbg_arr = [];
+  // // var sbg_str = [];
+  // var product_num = mall_data[0]["product_num"];
+  // sbg_arr.push(mall_data[0]["product_slide_img"]);
+  // for (var i in mall_data) {
+  //   if (product_num !== mall_data[i]["product_num"] ) {
+  //     sbg_arr.push(mall_data[i]["product_slide_img"]);
+  //     product_num = mall_data[i]["product_num"];
+  //   };
+  // }
+
+
+
+
+
+
+
+
+
   // console.log(sbg_arr);
   var owl_img_list = document.querySelectorAll(".owl_img");
   for (i = 0; i < owl_img_list.length; i++) {
