@@ -108,9 +108,9 @@ var vm = new Vue({
     ],
 
     //member的去向
-    member_in: [],
+    // member_in: [],
 
-    showcheck: false,
+    // showcheck: false,
 
     member_inout: [],
 
@@ -210,18 +210,18 @@ var vm = new Vue({
     //   console.log(item);
     // },
 
-  fileserach(e){
-  
-    let file = e.target.files[0];
+    fileserach(e) {
+
+      let file = e.target.files[0];
       let readFile = new FileReader();
       readFile.readAsDataURL(file);
-      return  e.target.result;
-     
-  },
+      return this.e.target.result;
+ 
+    },
     fileSelected(e) {
       console.log(this.fileserach(e));
       let file = e.target.files[0];
- this.file_switch = false;
+      this.file_switch = false;
       this.filebox.push({
         name: file.name,
         source: this.fileserach(e),
