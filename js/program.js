@@ -56,7 +56,7 @@ var main_content = new Vue({
     calendar_btn: false,
 
     page: -1,
-    history_page: null,
+    history_page: -1,
 
     card_no: null,
 
@@ -143,7 +143,7 @@ var main_content = new Vue({
               member_name: '王曉明',
               userId: 'user3456',
               src: './img/program_img/program_member_1.png',
-              },
+            },
             {
               member_name: '楊小梅',
               userId: 'user4756',
@@ -198,12 +198,12 @@ var main_content = new Vue({
     },
     add_card(index) {
       //  console.log(index);
-     
+
       if (this.card_name !== "") {
         this.programs[index].cards.push({
           card_name: this.card_name,
 
-          card_member:[{
+          card_member: [{
               member_name: '王曉明',
               userId: 'user3456',
               src: './img/program_img/program_member_1.png',
@@ -258,7 +258,7 @@ var main_content = new Vue({
         this.add_cards_btn = false;
         this.add_cards_btn_div = true;
       } else {}
-      
+
       // console.log(this.$refs)
     },
     //完成專案跳窗提醒
@@ -266,11 +266,11 @@ var main_content = new Vue({
       this.complete_info_box = !this.complete_info_box;
       this.programs[index].show_complete_info_box = true;
     },
-   //刪除專案跳窗提醒
-   delete_info_func(index) {
-    this.delete_info_box = !this.delete_info_box;
-    this.history_programs[index].show_delete_info_box = true;
-  },
+    //刪除專案跳窗提醒
+    delete_info_func(index) {
+      this.delete_info_box = !this.delete_info_box;
+      this.history_programs[index].show_delete_info_box = true;
+    },
 
     //完成專案
     program_complete_func(index) {
@@ -292,6 +292,10 @@ var main_content = new Vue({
     //刪除專案
     delete_program(index) {
       this.history_programs.splice(index, 1)
+      this.history_page = index - 1;
+      if (this.history_programs.length != 0 && this.history_page == -1) {
+        this.history_page = 0;
+      }
     },
 
     // 日曆部分
@@ -546,7 +550,7 @@ var main_content = new Vue({
         return Math.round((100 / length) * this.inner_progress(detailIndex).length);
       }
     },
-    
+
   },
 
   computed: {
@@ -588,7 +592,7 @@ var main_content = new Vue({
         this.programs[this.page].hideMember_sum = false;
       }
     },
-  
+
     showmember_select() {
       if (this.programs[this.page].cards[this.card_no].member_input.length) {
         return this.programs[this.page].cards[this.card_no].card_member.filter(item => {

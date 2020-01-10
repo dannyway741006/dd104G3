@@ -163,6 +163,7 @@
         <!-- 內容 -->
 
         <div id="no_program_screen" v-if="click_complete_btn==false && page==-1">快來建立新專案吧!</div>
+        <div id="no_program_screen" v-if="click_complete_btn==true && history_page==-1">您沒有已完成專案喔!</div>
 
         <!-- 現有專案 -->
         <transition-group name="fade" mode="out-in">
