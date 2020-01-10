@@ -552,13 +552,13 @@ padding-bottom: 20px;
 }
 
 //確認刪除專案燈箱
-.complete_info_mask {
+.complete_info_mask,.delete_info_mask {
   @include positionfixed(10, 0, 0);
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
 
-  .complete_info_box {
+  .complete_info_box,.delete_info_box {
     @include card(auto, auto, false);
     @include positionCenter;
     background-color: $white;
