@@ -107,7 +107,7 @@
             <transition-group name="fade" mode="out-in" tag="div">
               <li v-for="(item,index) in history_programs" :key="index" @click="history_page=index">
                 <p><span :style='{backgroundColor: item.color}'></span>{{item.program_names}}</p>
-                <img src="../img/delete.0df56913.svg" alt="uncheck" width="20" @click.stop='delete_program(index)' />
+                <img src="../img/delete.0df56913.svg" alt="uncheck" width="20" @click.stop='delete_info_func(index)' />
 
               </li>
             </transition-group>
@@ -170,8 +170,9 @@
             :key="index">
 
             <div class="invite_list">
-              <div class="program_member" v-for="(item,index) in program_member_show" v-show="index < 3"><img :src="item.src" alt=""></div>
-            
+              <div class="program_member" v-for="(item,index) in program_member_show" v-show="index < 3"><img
+                  :src="item.src" alt=""></div>
+
               <div class="program_member_more" v-show="programs[page].hideMember_sum">+{{programs_member_hidenum}}</div>
               <button class="invite_btn" @click.stop='invite_add_member_box = !invite_add_member_box'>邀請</button>
               <transition name="fade" mode="out-in">
@@ -226,7 +227,8 @@
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
                                 alt="">
                             </div>
-                            <span>0/0</span> <!--{{inner_progress_bar(detailIndex)}} -->
+                            <span>0/0</span>
+                            <!--{{card_progress_sum(detailIndex)}} -->
                           </div>
                         </div>
                       </div>
@@ -438,7 +440,7 @@
         </transition-group>
 
 
-
+        <!-- 確認完成專案跳窗 -->
         <div class="complete_info_mask"
           @click.stop="complete_info_box = !complete_info_box;programs[index].show_complete_info_box=false"
           v-for="(item,index) in programs" v-if="programs[index].show_complete_info_box==true">
@@ -451,17 +453,29 @@
           </div>
         </div>
 
+        <!-- 確認刪除專案跳窗 -->
+        <div class="delete_info_mask"
+          @click.stop="delete_info_box = !delete_info_box;history_programs[index].show_delete_info_box=false"
+          v-for="(item,index) in history_programs" v-if="history_programs[index].show_delete_info_box==true">
+          <div class="complete_info_box" @click.stop="">
+            <p>確定要刪除{{item.program_names}}專案嗎?<br>
+              刪除專案後就無法找回專案了喔!</p>
+            <button @click="delete_program(index)">確定</button>
+            <button
+              @click="delete_info_box=!delete_info_box;history_programs[index].show_delete_info_box=false">返回</button>
+          </div>
+        </div>
 
         <!-- 現有卡片背面 -->
         <div class="mask" :class="{masked: opened}" @click="card_no=-1;opened =! opened"> </div>
         <div v-if='nowProgram'>
           <transition-group name="horizentalfade">
-            <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"   v-for="(item,cardIndex) in nowProgram.cards"
-              :key="cardIndex">
+            <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
+              v-for="(item,cardIndex) in nowProgram.cards" :key="cardIndex">
               <div class="card_header_title" :style='{backgroundColor: programs[page].color}'>
                 <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
 
-                
+
 
                 <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
               </div>
@@ -621,7 +635,8 @@
                         <div class="todo_title">
                           <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
                           </div>
-                          <h3 @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name" v-show="item.test_title_name">{{item.title}}</h3>
+                          <h3 @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
+                            v-show="item.test_title_name">{{item.title}}</h3>
                           <div class="change_title" v-show="item.showname" @click.stop="">
                             <textarea name="" v-model.trim="item.title"></textarea>
                             <div class="concernbutton"
@@ -640,19 +655,19 @@
                         </div>
                         <!-- 新增的卡片細項 -->
 
-                        <draggable v-model="item.lists" :options = "{animation:500}">
-                        <transition-group name="fade" tag="div">
-                          <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                            <div @click="item.status = !item.status,item.text =!item.text">
-                              <img src="./img/check.svg" alt="" v-if="item.status">
-                              <img src="./img/uncheck.svg" alt="" v-else>
+                        <draggable v-model="item.lists" :options="{animation:500}">
+                          <transition-group name="fade" tag="div">
+                            <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
+                              <div @click="item.status = !item.status,item.text =!item.text">
+                                <img src="./img/check.svg" alt="" v-if="item.status">
+                                <img src="./img/uncheck.svg" alt="" v-else>
+                              </div>
+                              <p :class="{lineThrough:item.text}">{{item.content}}</p>
+                              <div><img src="./img/icon/time-left.svg" alt="" @click="calltomato"></div>
+                              <div><img src="./img/card_img/delete.0df56913.svg" alt=""
+                                  @click="delete_todo_title(detailIndex,index)"></div>
                             </div>
-                            <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                            <div><img src="./img/icon/time-left.svg" alt="" @click="calltomato"></div>
-                            <div><img src="./img/card_img/delete.0df56913.svg" alt=""
-                                @click="delete_todo_title(detailIndex,index)"></div>
-                          </div>
-                        </transition-group>
+                          </transition-group>
                         </draggable>
 
 
@@ -683,7 +698,8 @@
                       <ul>
                         <li v-for="(item,cardIndex) in item.filebox">
                           <a :href="item.source" :download="item.name">{{item.name}}</a>
-                          <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="delete_file(index)">
+                          <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                              @click="delete_file(index)">
                           </div>
                         </li>
                       </ul>

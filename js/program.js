@@ -29,6 +29,7 @@ var main_content = new Vue({
     program_setting_choose_color_item: [],
 
     complete_info_box: false,
+    delete_info_box: false,
 
     program_text_btn: false,
 
@@ -59,7 +60,7 @@ var main_content = new Vue({
 
     card_no: null,
 
-    targetCardInfo: null,
+    // detailIndex:null,
     //卡片背面
     opened: false,
     open_history_card: false,
@@ -118,9 +119,6 @@ var main_content = new Vue({
 
 
 
-    // member_inout: [],
-
-    // member_input: '',
 
     addmemberswitch: false,
     add_card_meber_switch: false,
@@ -138,7 +136,7 @@ var main_content = new Vue({
           changeimage: false, //uncheck
           color: this.selectColor,
           show_complete_info_box: false,
-
+          show_delete_info_box: false,
           //專案成員
           hideMember_sum: false,
           program_memeber: [{
@@ -268,7 +266,11 @@ var main_content = new Vue({
       this.complete_info_box = !this.complete_info_box;
       this.programs[index].show_complete_info_box = true;
     },
-
+   //刪除專案跳窗提醒
+   delete_info_func(index) {
+    this.delete_info_box = !this.delete_info_box;
+    this.history_programs[index].show_delete_info_box = true;
+  },
 
     //完成專案
     program_complete_func(index) {
@@ -484,9 +486,9 @@ var main_content = new Vue({
     },
     //成員進入
     member_outin(index) {
-      console.log(this.showmember_select[index])
+      // console.log(this.showmember_select[index])
       if (this.showmember_select[index].check == '') {
-        console.log(index);
+        // console.log(index);
         this.showmember_select[index].uncolor = true;
         this.showmember_select[index].check = "./img/checked_member.svg";
 
@@ -544,7 +546,7 @@ var main_content = new Vue({
         return Math.round((100 / length) * this.inner_progress(detailIndex).length);
       }
     },
-     
+    
   },
 
   computed: {
