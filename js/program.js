@@ -84,7 +84,7 @@ var main_content = new Vue({
 
     calandar_switch: false,
 
-    file_switch: false,
+    // file_switch: false,
 
     card_meber_switch: false,
 
@@ -249,6 +249,7 @@ var main_content = new Vue({
 
           //上傳檔案
           filebox: [],
+          file_switch: false,
           // sourced:'',
           // //增加項目focus變長
           // card_length:false,
@@ -428,25 +429,30 @@ var main_content = new Vue({
       this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.splice(index, 1, );
 
     },
-    fileSelected(e) {
+    //卡片內上傳檔案
+    filesearch(e) {
+
       let file = e.target.files[0];
-
-      this.file_switch = false;
       let readFile = new FileReader();
-
-      console.log(readFile);
-
       readFile.readAsDataURL(file);
       readFile.addEventListener('load',
-        function files(e) {
-          this.programs[this.page].cards[this.card_no].sourced = e.target.result;
+        function file(e) {
+          let a = e.target.result;
+          console.log(a);
+          return a;
         }
       );
+    },
+    fileSelected(e) {
+
+      let file = e.target.files[0];
+
+      this.programs[this.page].cards[this.card_no].file_switch = false;
       this.programs[this.page].cards[this.card_no].filebox.push({
         name: file.name,
-        source: this.programs[this.page].cards[this.card_no].sourced,
+        source: this.filesearch(e),
       });
-
+      console.log(this.filebox.source);
     },
 
 
