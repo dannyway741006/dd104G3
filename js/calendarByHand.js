@@ -2,7 +2,7 @@ new Vue({
   el: "#calendar",
   data() {
     return {
-      today:{
+      handcalendar_today:{
         year:0,
         month:0,
         date:0,
@@ -25,10 +25,10 @@ new Vue({
     setToday(){
       // console.log("123");
       const date = new Date()
-      this.today.year = this.calendar.year = date.getFullYear()
-      this.today.month = this.calendar.month = date.getMonth() // 0~11
-      this.today.date = this.calendar.date = date.getDate()
-      this.today.day = this.calendar.day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()]
+      this.handcalendar_today.year = this.calendar.year = date.getFullYear()
+      this.handcalendar_today.month = this.calendar.month = date.getMonth() // 0~11
+      this.handcalendar_today.date = this.calendar.date = date.getDate()
+      this.handcalendar_today.day = this.calendar.day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()]
       this.calendar.week=["January", "February", "March", "April", "May", "June", "July","August","Septemper","October","November","December"][new Date().getMonth()]
     },
     adjustYear(fix){
@@ -55,15 +55,7 @@ new Vue({
     }
   },
   computed:{
-    // monthFirstDay(){
-    //   const date = new Date(this.calendar.year,this.calendar.month,1)
-    //   return {
-    //     year:date.getFullYear(),// this.calendar.year
-    //     month:date.getMonth(),// this.calendar.month
-    //     date:date.getDate(),// 1
-    //     day:date.getDay(),
-    //   }
-    // },
+  
     calendarFirstDay(){
       const mDate = new Date(this.calendar.year,this.calendar.month,1)
       const date = new Date(this.calendar.year,this.calendar.month,1 - mDate.getDay())
