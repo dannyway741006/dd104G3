@@ -159,3 +159,4 @@ function mall_content() {
 
 window.addEventListener("load", getProduct);
 mallBtn01.addEventListener("click", getProduct);
+
