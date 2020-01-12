@@ -699,7 +699,7 @@
         <!-- <div class="mask" :class="{masked: opened}" @click="history_card_no=-1;opened =! opened"> </div> -->
         <div v-if='historyProgram'>
           <transition-group name="horizentalfade">
-            <div class="card_light_box" id="card_light_box" v-if="history_card_no==cardIndex"
+            <div class="card_light_box history_card_light_box" id="card_light_box" v-if="history_card_no==cardIndex"
               v-for="(item,cardIndex) in historyProgram.cards" :key="cardIndex">
               <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].color}'>
                 <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
@@ -808,9 +808,9 @@
                           :key="index"><img :src="item.source" alt=""></div>
                         <div class="show_dote_member" v-show="item.showhideMember"><span>+{{history_hidemembers}}</span>
                         </div>
-                        <div class="add_member_to_card"
+                        <!-- <div class="add_member_to_card"
                           @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
-                          <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg">
+                          <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg"> -->
 
 
                           <!-- <transition name="fade" mode="out-in">
@@ -835,7 +835,7 @@
                         </ul>
                       </div>
                     </transition> -->
-                        </div>
+                        <!-- </div> -->
                       </div>
                     </div>
 
@@ -846,8 +846,8 @@
                       </div>
                       <div class="calendar_status">
                         <div class="calendar_img">
-                          <img src="./img/check.svg" alt="" v-if="item.dateline" @click="check_dateline">
-                          <img src="./img/uncheck.svg" alt="" v-else @click="check_dateline">
+                          <img src="./img/check.svg" alt="" v-if="item.dateline">
+                          <img src="./img/uncheck.svg" alt="" v-else>
 
                         </div>
                         <!-- hover時顏色好像改不了 -->
@@ -865,22 +865,21 @@
                         <div class="todo_title">
                           <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
                           </div>
-                          <h3 @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
-                            v-show="item.test_title_name">{{item.title}}</h3>
-                          <div class="change_title" v-show="item.showname" @click.stop="">
+                          <h3 v-show="item.test_title_name">{{item.title}}</h3>
+                          <!-- <div class="change_title" v-show="item.showname" @click.stop="">
                             <textarea name="" v-model.trim="item.title"></textarea>
                             <div class="concernbutton"
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name">
                               <button>確定</button></div>
-                          </div>
+                          </div> -->
 
-                          <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
-                              src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
+                          <!-- <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
+                              src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div> -->
                         </div>
                         <div class="todo_progress_bar">
-                          <p>{{inner_progress_bar(detailIndex)}}%</p>
+                          <p>{{history_inner_progress_bar(detailIndex)}}%</p>
                           <div class="progress_bar">
-                            <span :style="{width:inner_progress_bar(detailIndex)+'%'}"></span>
+                            <span :style="{width:history_inner_progress_bar(detailIndex)+'%'}"></span>
                           </div>
                         </div>
                         <!-- 新增的卡片細項 -->
@@ -893,9 +892,9 @@
                                 <img src="./img/uncheck.svg" alt="" v-else>
                               </div>
                               <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                              <div><img src="./img/icon/time-left.svg" alt="" @click="calltomato"></div>
+                              <!-- <div><img src="./img/icon/time-left.svg" alt="" @click="calltomato"></div>
                               <div><img src="./img/card_img/delete.0df56913.svg" alt=""
-                                  @click="delete_todo_title(detailIndex,index)"></div>
+                                  @click="delete_todo_title(detailIndex,index)"></div> -->
                             </div>
                           </transition-group>
                         </draggable>

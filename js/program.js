@@ -557,7 +557,21 @@ var main_content = new Vue({
         return Math.round((100 / length) * this.inner_progress(detailIndex).length);
       }
     },
-
+    history_inner_progress(detailIndex) {
+      return this.history_programs[this.history_page].cards[this.history_card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
+        return item.status;
+      });
+    },
+    history_inner_progress_bar(detailIndex) {
+      // console.log(detailIndex)
+      // console.log(this.inner_progress(detailIndex))
+      let length = this.history_programs[this.history_page].cards[this.history_card_no].todo_list_content_detail[detailIndex].lists.length;
+      if (length == 0) {
+        return 0;
+      } else {
+        return Math.round((100 / length) * this.history_inner_progress(detailIndex).length);
+      }
+    },
   },
 
   computed: {
@@ -703,7 +717,15 @@ var main_content = new Vue({
       $(".cards_list_todo,.cards_list_doing,.cards_list_done")
         .sortable({
           connectWith: ".cards_list",
-          stack: ".cards_column_body .cards_list"
+          stack: ".cards_column_body .cards_list",
+          // helper: "original"
+          placeholder: 'dragging',
+          start: function (event, ui) {
+            ui.item.toggleClass("dragging");
+          },
+          stop: function (event, ui) {
+            ui.item.toggleClass("dragging");
+          }
           // revert:true,
         })
         .disableSelection();
