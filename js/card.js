@@ -213,8 +213,7 @@ var vm = new Vue({
     fileserach(e) {
 
       let file = e.target.files[0];
-      // let file = e.target.files.item(0);
-      // console.log(file);
+ 
 
       let readFile = new FileReader();
       readFile.readAsDataURL(file);
