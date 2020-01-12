@@ -61,6 +61,7 @@ var main_content = new Vue({
         card_no: null,
         history_card_no: null,
 
+
         // detailIndex:null,
         //卡片背面
         opened: false,
@@ -130,6 +131,7 @@ var main_content = new Vue({
 
         //todo_list_content_detail_index
         todo_list_content_detail_no: null,
+        cd_no: null,
     },
     methods: {
         //新增專案
@@ -401,7 +403,7 @@ var main_content = new Vue({
 
                     //改變待辦事項標題
 
-                    test:'',
+                    test: '',
                 })
                 this.todoListTitle = null;
                 this.todo_lightbox_switch = false;
@@ -417,7 +419,7 @@ var main_content = new Vue({
         },
         // 增加最小子項目
         add_card_detail(detailIndex) {
-            if ( this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
+            if (this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
                 // console.log(this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists);
                 this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.push({
 
@@ -532,25 +534,71 @@ var main_content = new Vue({
             alert("已加入蕃茄鐘");
         },
         //最小子項目勾選 卡片顯示進度
-        card_progress(detailIndex) {
+        //  card_progress() {
 
-            for (i = 0; i <= detailIndex; i++) {
-                console.log('dd')
-                return this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
-                    return item.status;
-                });
+        //     let card_progress_return=0;
+        //     if (this.detail_no != null && this.card_no != -1) {
+        //       for (i = 0; i <= this.detail_no; i++) {//this.detail_no有問題
+
+        //         card_progress_return=this.programs[this.page].cards[this.card_no].todo_list_content_detail[this.detail_no].lists.filter(item => {
+        //           return item.status;
+        //         });
+        //         return card_progress_return
+        //       }
+        //     } else {
+        //       return card_progress_return
+        //     }
+        //   },
+        capro() {
+            let total_length = 0;
+            // console.log(this.card_no);
+            //   console.log(cardIndex);
+            //再產生一組卡片編號
+            if (this.card_no == null) {
+                return 0;
+            } else {
+                for (i = 0; i < this.programs[this.page].cards[this.cd_no].todo_list_content_detail.length; i++) {
+                    total_length = total_length + this.programs[this.page].cards[this.cd_no].todo_list_content_detail[i].lists.length;
+                }
+                return total_length;
             }
         },
-        card_progress_sum(detailIndex) {
-            console.log(list_sum)
-            let list_sum = 0;
-            for (i = 0; i <= detailIndex; i++) {
-
-                list_sum = list_sum + this.card_progress(i).length;
+        checkpro() {
+            // console.log(this.card_no);
+            if (this.card_no == null) {
+                return 0;
+            } else {
+                for (i = 0; i < this.programs[this.page].cards[this.cd_no].todo_list_content_detail.length; i++) {
+                   console.log(i);
+                    return this.programs[this.page].cards[this.cd_no].todo_list_content_detail[i].lists.filter(item => {
+                        return item.status;
+                    })
+                }
             }
-            return list_sum;
         },
-        //最小子項目進度條
+
+        //   abc(){
+        //     if(this.card_no==null){
+        //         return 0;
+        //     }else if(this.cd_no != null){
+        //         return  this.checkpro().length;
+        //     }
+
+        //   },
+        //   card_progress_checked() {
+
+        //     let list_sum = 0;
+        //     if (this.detail_no != null) {
+        //       for (i = 0; i <= this.detail_no; i++) {
+        //         list_sum = list_sum + this.card_progress(i).length;
+
+        //       }
+        //     } else {}
+
+        //     return list_sum;
+
+        //   },
+        //         //最小子項目進度條
         inner_progress(detailIndex) {
             return this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
                 return item.status;
@@ -596,6 +644,7 @@ var main_content = new Vue({
             }
             return data
         },
+
         //專案成員
         program_member_show() {
             return this.programs[this.page].program_memeber;
@@ -689,22 +738,22 @@ var main_content = new Vue({
             this.calendar_btn = false;
 
             //卡片背面
-            if (this.page >=0 && this.card_no >=0){
-                this.programs[this.page].cards[this.card_no].member_input = "";
-            }
-            
+            // if (this.page >=0 && this.card_no >=0){
+            //     this.programs[this.page].cards[this.card_no].member_input = "";
+            // }
+
             this.todo_lightbox_switch = false;
             this.file_switch = false;
             this.card_meber_switch = false;
             this.add_card_meber_switch = false;
             this.member_switch = false;
             this.todo_switch = false;
-            this.todoListTitle='';
-           
+            this.todoListTitle = '';
+
             //  this.addmemberswitch=false;
             //  this.fileder_switch = false;
-          
-        
+
+
 
             this.fileder_switch = false;
             // console.log(this.programs.length - 1)
