@@ -228,7 +228,7 @@
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
                                 alt="">
                             </div>
-                            <span>0/0</span>
+                            <span>{{card_progress_checked()}}/0</span>
                             <!--{{card_progress_sum(detailIndex)}} -->
                           </div>
                         </div>
@@ -606,7 +606,7 @@
                     <!-- 新增出來的待辦清單 -->
                     <transition-group name="fade" tag="div">
                       <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
-                        :key="detailIndex">
+                        :key="detailIndex" @change="detail_no=detailIndex">
                         <div class="todo_title">
                           <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
                           </div>
@@ -703,8 +703,6 @@
               v-for="(item,cardIndex) in historyProgram.cards" :key="cardIndex">
               <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].color}'>
                 <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
-
-
 
                 <div @click="opened = false;history_card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
               </div>

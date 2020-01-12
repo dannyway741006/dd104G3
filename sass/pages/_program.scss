@@ -416,10 +416,16 @@
           .cards_list_card {
 
             /* styles during drag */
-            &.dragging {
+            &.ui-sortable-helper{
               transform: rotate(5deg) scale(0.9);
               box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
             }
+            // &.dragging {
+            //   transform: rotate(5deg) scale(0.9);
+            //   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+            //   border:1px solid red;
+            // }
+          
 
             // border: 1px solid $gray;
             box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
@@ -599,15 +605,14 @@
   }
 
   #program_main .cards_column_all .cards_column {
-    height: calc(95vh - 215px);
+    height: calc(95vh - 254px);
   }
-
 }
 
 @include media(479px) {
 
   #program_main .cards_column_all .cards_column {
-    height: calc(95vh - 190px);
+    height: calc(95vh - 231px);
   }
 
 

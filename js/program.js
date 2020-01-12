@@ -61,7 +61,7 @@ var main_content = new Vue({
     card_no: null,
     history_card_no: null,
 
-    // detailIndex:null,
+    detail_no: null,
     //卡片背面
     opened: false,
     open_history_card: false,
@@ -344,6 +344,15 @@ var main_content = new Vue({
     },
     //抓卡片位置
     catch_card_position() {
+
+      $('.cards_list').sortable({
+        update: function (event, ui) {
+          console.log(this);
+          // this.parent('.cards_list').attr('id');
+        }
+      });
+
+
       // console.log(this.programs[index].cards[cardIndex].card_name.parent('.cards_list').attr('id'));
       // console.log($(this));
       // console.log(this);
@@ -375,7 +384,6 @@ var main_content = new Vue({
       } else {
         this.programs[this.page].cards[this.card_no].dateline = false;
         this.programs[this.page].cards[this.card_no].dateline_text = '未完成';
-
       }
 
     },
@@ -522,22 +530,32 @@ var main_content = new Vue({
       alert("已加入蕃茄鐘");
     },
     //最小子項目勾選 卡片顯示進度
-    card_progress(detailIndex) {
-
-      for (i = 0; i <= detailIndex; i++) {
-        console.log('dd')
-        return this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
-          return item.status;
-        });
+    card_progress() {
+      // console.log('2')
+      let card_progress_return=0;
+      if (this.detail_no != null && this.card_no != -1) {
+        for (i = 0; i <= this.detail_no; i++) {//this.detail_no有問題
+          // console.log('i:',i)
+          card_progress_return=this.programs[this.page].cards[this.card_no].todo_list_content_detail[this.detail_no].lists.filter(item => {
+            return item.status;
+          });
+          return card_progress_return
+        }
+      } else {
+        return card_progress_return
       }
+
     },
-    card_progress_sum(detailIndex) {
-      console.log(list_sum)
+    card_progress_checked() {
+      // console.log('qq')
       let list_sum = 0;
-      for (i = 0; i <= detailIndex; i++) {
+      if (this.detail_no != null) {
+        for (i = 0; i <= this.detail_no; i++) {
+          list_sum = list_sum + this.card_progress(i).length;
+          console.log(list_sum)
+        }
+      } else {}
 
-        list_sum = list_sum + this.card_progress(i).length;
-      }
       return list_sum;
 
     },
@@ -663,13 +681,6 @@ var main_content = new Vue({
     },
     nowProgram() {
       return this.programs[this.page]
-      // if (this.click_complete_btn == true) { //已完成專案畫面
-      //   return this.programs[this.page]
-
-      // } else {
-      //   return this.history_programs[this.page]
-      //   // return this.history_programs[this.history_page]
-      // }
     },
     historyProgram() {
       if (this.history_page == -1) {
@@ -719,13 +730,14 @@ var main_content = new Vue({
           connectWith: ".cards_list",
           stack: ".cards_column_body .cards_list",
           // helper: "original"
-          placeholder: 'dragging',
-          start: function (event, ui) {
-            ui.item.toggleClass("dragging");
-          },
-          stop: function (event, ui) {
-            ui.item.toggleClass("dragging");
-          }
+          // placeholder: 'dragging',
+          // start: function (event, ui) {
+          //   ui.item.toggleClass("dragging");
+          // },
+          // stop: function (event, ui) {
+          //   ui.item.toggleClass("dragging");
+          // },
+          // scroll:true,
           // revert:true,
         })
         .disableSelection();
