@@ -552,7 +552,7 @@ var main_content = new Vue({
       if (this.detail_no != null) {
         for (i = 0; i <= this.detail_no; i++) {
           list_sum = list_sum + this.card_progress(i).length;
-          console.log(list_sum)
+          // console.log(list_sum)
         }
       } else {}
 
