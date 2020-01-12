@@ -69,7 +69,7 @@ var vm = new Vue({
 
     test_length: '',
 
-
+   imagee:'',
 
     time2: null,
 
@@ -213,34 +213,24 @@ var vm = new Vue({
     fileserach(e) {
 
       let file = e.target.files[0];
+      // let file = e.target.files.item(0);
+      // console.log(file);
+
       let readFile = new FileReader();
       readFile.readAsDataURL(file);
-      readFile.addEventListener('load',
-        function file(e) {
-          let a = e.target.result;
-          console.log(a);
-          return a;
-        }
-      );
+  
+      readFile.addEventListener('load',this.fileSelected);
     },
     fileSelected(e) {
+      // let file = e.target.files[0];
+      this.imagee = e.target.result;
 
-      let file = e.target.files[0];
-      // let readFile = new FileReader();
-      // readFile.readAsDataURL(file);
-      // readFile.addEventListener('load',
-      //   function file(e) {
-      //     let a = e.target.result;
-      //     console.log(a);
-      //     return a;
-      //   }
-      // );
-      this.file_switch = false;
-      this.filebox.push({
-        name: file.name,
-        source: this.fileserach(e),
-      });
-      console.log(this.filebox.source);
+     console.log(this.imagee);
+      // this.file_switch = false;
+      // this.filebox.push({
+      //   name: file.name,
+      //   source:this.imagee,
+      // });
     },
 
     delete_todo_title(detailIndex, index) {
@@ -358,7 +348,7 @@ var vm = new Vue({
       this.test_message = '';
       // console.log(this.todo_list_content_detail);
     });
-    // calender(this.$refs.inCalender);
+   
   },
   computed: {
 
