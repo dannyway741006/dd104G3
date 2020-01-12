@@ -761,6 +761,34 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
 
   }
 }
+//完成卡片後的CSS
+.history_card_light_box{
+  .right_aside{
+    width: 100%;
+    h3{
+      cursor: default;
+    }
+    .card_todo_content{
+      .todo_title{
+        h3{
+          cursor: default;
+        }
+      }
+    }
+    .card_file{
+      .card_upload_file{
+        form{
+          .upfile_content{
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
 
 //待辦清單燈箱
 .todo_lightbox {
