@@ -597,7 +597,7 @@
                         </div>
                         <!-- hover時顏色好像改不了 -->
                         <p>
-                          <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm' value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期"/>
+                          <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm' value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="pushtocalsender" />
                         </p>
                         <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                       </div>

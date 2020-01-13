@@ -595,9 +595,14 @@ z-index: 100;
 
 
 @include media(1023px) {
-  #app.nav_open main.pro_main {
-    opacity: 1;
-}
+
+  .nav_bar .page_info .page_info_list.setting_pm li img{
+  &.nav_hamburger{
+    
+  }
+  }
+
+ 
 
   #program_main {
     width: 95%;

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,OAAO,AAAC,CACN,OAAO,CAAE,YAAY,CAStB,AAVD,AAGE,OAHK,CAGL,CAAC,AAAC,CACA,SAAS,CAAE,IAAI,CACf,OAAO,CAAE,KAAK,CACd,MAAM,CAAE,OAAO,CACf,KAAK,CATK,OAAO,CAUjB,eAAe,CAAE,IAAI,CACtB",
+    "sources": [
+        "../black/gentelella/vendors/starrr/src/starrr.scss"
+    ],
+    "names": [],
+    "file": "starrr.min.css"
+}
