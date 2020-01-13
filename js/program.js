@@ -758,14 +758,3 @@ var main_content = new Vue({
   },
 });
 
-
-
-// const container = document.getElementById("app");
-// const complete_program_uncheckImg = document.getElementById("complete_program_uncheckImg");
-// console.log(complete_program_uncheckImg)
-// console.log('1111')
-// complete_program_uncheckImg.addEventListener("click", () =>
-//   container.classList.toggle("nav_open")
-// );
-
-// complete_program_uncheckImg
