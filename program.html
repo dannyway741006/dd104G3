@@ -121,7 +121,7 @@
             </li> -->
 
             <!-- <transition name="fade" mode="out-in"> -->
-              <!-- <li @click="page=1">
+            <!-- <li @click="page=1">
                 <p><span></span>專案1</p>
                 <img src="../img/uncheck.svg" alt="uncheck" width="20" @click.stop='program_complete_func()' />
               </li> -->
@@ -222,7 +222,7 @@
                       <div class="cards_list_card_icon_bar">
                         <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                             src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                        <span>{{item.calendar_date}}</span>
+                        <span>{{showcalendarpanel(cardIndex)}}</span>
                         <div class="cards_list_card_icon_right">
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
@@ -380,7 +380,7 @@
                       <div class="cards_list_card_icon_bar">
                         <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                             src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                        <span>{{item.calendar_date}}</span>
+                        <span>{{history_showcalendarpanel(cardIndex)}}</span>
                         <div class="cards_list_card_icon_right">
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
@@ -617,9 +617,6 @@
                           <div class="change_title" v-show="item.showname" @click.stop="">
                             <textarea name="" v-model.trim="item.title"
                               @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name"></textarea>
-                            <!-- <div class="concernbutton"
-                              @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name">
-                              <button>確定</button></div> -->
                           </div>
 
                           <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
@@ -761,7 +758,7 @@
                           <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
                           </div>
                           <h3 v-show="item.test_title_name">{{item.title}}</h3>
-                        
+
                         </div>
                         <div class="todo_progress_bar">
                           <p>{{history_inner_progress_bar(detailIndex)}}%</p>
@@ -774,14 +771,12 @@
                         <draggable v-model="item.lists" :options="{animation:500}">
                           <transition-group name="fade" tag="div">
                             <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                              <div @click="item.status = !item.status,item.text =!item.text">
+                              <div>
                                 <img src="./img/check.svg" alt="" v-if="item.status">
                                 <img src="./img/uncheck.svg" alt="" v-else>
                               </div>
                               <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                              <!-- <div><img src="./img/icon/time-left.svg" alt="" @click="calltomato"></div>
-                              <div><img src="./img/card_img/delete.0df56913.svg" alt=""
-                                  @click="delete_todo_title(detailIndex,index)"></div> -->
+                            
                             </div>
                           </transition-group>
                         </draggable>
@@ -805,21 +800,12 @@
                         <transition-group name="fade">
                           <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
                             <a :href="item.source" :download="item.name">{{item.name}}</a>
-                            <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="delete_file()">
-                            </div>
+                            <!-- <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="delete_file()"> -->
+                            <!-- </div> -->
                           </li>
                         </transition-group>
                       </ul>
-                      <!-- <div class="card_upload_file"> -->
-                        <!-- 上傳的內容 -->
-                        <!-- <form method="post" enctype="multipart/form-data">
-                          <label class="upfile_content"
-                            :style='{backgroundColor: history_programs[history_page].color}'>
-                            <p>上傳附件</p>
-                            <input type="file" @change="filesearch" multiple>
-                          </label>
-                        </form>
-                      </div> -->
+                    
                     </div>
                   </div>
                 </div>
@@ -859,7 +845,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
   <script src="./node_modules/vue2-datepicker/index.min.js"></script>
 
-  
+
   <script src="./js/calender.js"></script>
   <script src="./js/program.js"></script>
   <script>
