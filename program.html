@@ -761,15 +761,7 @@
                           <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
                           </div>
                           <h3 v-show="item.test_title_name">{{item.title}}</h3>
-                          <!-- <div class="change_title" v-show="item.showname" @click.stop="">
-                            <textarea name="" v-model.trim="item.title"></textarea>
-                            <div class="concernbutton"
-                              @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name">
-                              <button>確定</button></div>
-                          </div> -->
-
-                          <!-- <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
-                              src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div> -->
+                        
                         </div>
                         <div class="todo_progress_bar">
                           <p>{{history_inner_progress_bar(detailIndex)}}%</p>
@@ -818,16 +810,16 @@
                           </li>
                         </transition-group>
                       </ul>
-                      <div class="card_upload_file">
+                      <!-- <div class="card_upload_file"> -->
                         <!-- 上傳的內容 -->
-                        <form method="post" enctype="multipart/form-data">
+                        <!-- <form method="post" enctype="multipart/form-data">
                           <label class="upfile_content"
                             :style='{backgroundColor: history_programs[history_page].color}'>
                             <p>上傳附件</p>
                             <input type="file" @change="filesearch" multiple>
                           </label>
                         </form>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
