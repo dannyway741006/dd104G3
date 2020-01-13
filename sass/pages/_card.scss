@@ -1,9 +1,10 @@
 // @import "../../node_modules/vue2-datepicker/scss/index.scss";
 // $default-color: #555;
 // $primary-color: #81c7d4;
-.today{
+.today {
   background-color: transparent;
 }
+
 .mask {
   opacity: 0;
   @include positionfixed(-1, 0, 0);
@@ -12,6 +13,7 @@
   background-color: rgb(0, 0, 0);
   z-index: -2;
   transition: opacity 0.3s;
+
   &.masked {
     opacity: 0.3;
     z-index: 9;
@@ -35,7 +37,8 @@
   transition: opacity 0.3s;
   // opacity: 0;
   // z-index: -1;
- z-index: 999;
+  z-index: 999;
+
   &.opneLight {
     opacity: 1;
     // display: block;
@@ -52,13 +55,14 @@
     background-color: $programcolor1;
     min-height: 45px;
     text-align: center;
+
     h1 {
       // background-color: $programcolor1;
       @include font(5, 50px);
       // @include positionCenter();
       color: white;
-    
-      input{
+
+      input {
         background-color: inherit;
         border: none;
         outline: none;
@@ -67,7 +71,7 @@
         @include font(5, 50px);
         word-break: break-word;
         display: -webkit-box;
-        -webkit-box-orient:vertical;
+        -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -79,14 +83,15 @@
 
     div {
       // @include closeBtn($insideTagName:p);
-   width: 20px;
-   height: 20px;
+      width: 20px;
+      height: 20px;
       position: absolute;
       right: 11px;
       top: 11px;
       cursor: pointer;
       border-radius: 50%;
       transition: all 0.3s;
+
       &:hover {
         background-color: white;
 
@@ -138,7 +143,7 @@
 
         &:hover {
           background-color: #cee0ff;
-          
+
           // color:$primary ;
           cursor: pointer;
 
@@ -226,6 +231,7 @@
   overflow-y: scroll;
   max-height: 600px;
   min-height: 600px;
+
   .memberRight {
     padding-left: 30px;
 
@@ -244,7 +250,7 @@
         }
 
         img {
-filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
 
 
         }
@@ -252,6 +258,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
 
       .memimg {
         margin-left: 25px;
+
         .add_member_to_card {
           display: inline-block;
           width: 30px;
@@ -272,6 +279,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
 
           &:hover {
             border-color: #81c7d4;
+
             .memeimg {
               filter: invert(96%) sepia(58%) saturate(3512%) hue-rotate(161deg) brightness(100%) contrast(80%);
             }
@@ -279,12 +287,13 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
 
           .member_plus_follow {
             position: absolute;
-           top: 35px;
-           left:0px;
-           
+            top: 35px;
+            left: 0px;
+
           }
         }
-        .show_dote_member{
+
+        .show_dote_member {
           display: inline-block;
           width: 30px;
           height: 30px;
@@ -292,7 +301,8 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
           border: 2px solid rgb(160, 153, 153);
           vertical-align: middle;
           position: relative;
-          span{
+
+          span {
             @include positionCenter();
 
           }
@@ -331,7 +341,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
         }
 
         img {
-filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
 
         }
       }
@@ -339,13 +349,13 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
       .calendar_status {
         padding: 5px 25px;
         display: flex;
-        cursor: pointer;
         @include font(0, 20px);
         align-items: center;
 
         .calendar_img {
           width: 25px;
           padding-right: 5px;
+          cursor: pointer;
 
           img {
             width: 100%;
@@ -355,7 +365,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
         p:nth-child(2) {
           &:hover {
             color: $primary;
-            cursor: pointer;
+
           }
         }
 
@@ -369,10 +379,11 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
           border-radius: 5px;
           padding: 0 5px;
           transition: background-color 0.3s;
-          
+
           color: #fff;
           padding: 2.5px 5px;
           background: $danger;
+
           &.calandarcolor {
             background: $success;
           }
@@ -380,7 +391,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
       }
     }
 
-   
+
 
     //新版待辦清單
     .card_todo_content {
@@ -392,7 +403,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
         padding: 8px 0px;
         margin-bottom: 4px;
         position: relative;
-        
+
         h3 {
           margin-left: 10px;
           @include font(1, 20px);
@@ -401,35 +412,39 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
           width: 80%;
           word-break: break-word;
           display: -webkit-box;
-          -webkit-box-orient:vertical;
+          -webkit-box-orient: vertical;
           -webkit-line-clamp: 10;
           overflow: hidden;
         }
-      .change_title{
-        margin-left: 15px;
-        width: 75%;
-        textarea{
-          @include font(0,20px);
-          color: #777;
-          padding: 5px;
-          border: 1px solid #777;
-          margin: 5px 0;
-          border-radius: 10px;
-          width:100%;
-          max-height: 162px;
-          min-height: 54px;
-          background-color: white;
-          outline: none;
-          resize:vertical;
-        }
-        .concernbutton{
-          button{
-            @include baseBtn(70px,auto,5px);
+
+        .change_title {
+          margin-left: 15px;
+          width: 75%;
+
+          textarea {
+            @include font(0, 20px);
+            color: #777;
+            padding: 5px;
+            border: 1px solid #777;
+            margin: 5px 0;
+            border-radius: 10px;
+            width: 100%;
+            max-height: 162px;
+            min-height: 54px;
+            background-color: white;
+            outline: none;
+            resize: vertical;
+          }
+
+          .concernbutton {
+            button {
+              @include baseBtn(70px, auto, 5px);
+            }
           }
         }
-      }
+
         .cardtitle_img {
-filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
 
         }
 
@@ -487,13 +502,15 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
       text-overflow: ellipsis;
       margin-bottom: 10px;
       cursor: pointer;
+
       // transition: all  1s ease;
       &:hover {
 
-        div:nth-child(3){
+        div:nth-child(3) {
           opacity: 1;
           right: 10%;
         }
+
         div:nth-child(4) {
           opacity: 1;
           right: 0;
@@ -536,7 +553,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
         right: -20%;
         opacity: 0;
         transition: all 0.3s;
-        
+
         img {
           width: 100%;
           cursor: pointer;
@@ -639,7 +656,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
         }
 
         .file_title_img img {
-filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
+          filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%) contrast(86%);
 
         }
       }
@@ -649,22 +666,27 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
         list-style-position: inside;
         list-style-type: disc;
         @include font(0, 20px);
+
         li {
           position: relative;
-          margin-bottom: 5px;
+          margin-bottom: 15px;
           margin-left: 10px;
-          a{
+          
+          a {
             display: inline-block;
             width: calc(100% - 30px - 10%);
             transition: all 0.3s;
           }
-          div{
+
+          div {
             transition: all 0.3s;
           }
+
           &:hover {
-            a{
+            a {
               color: $primary;
             }
+
             div {
               opacity: 1;
             }
@@ -731,24 +753,28 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
 
   }
 }
+
 //完成卡片後的CSS
-.history_card_light_box{
-  .right_aside{
+.history_card_light_box {
+  .right_aside {
     width: 100%;
-    h3{
+
+    h3 {
       cursor: default;
     }
-    .card_todo_content{
-      .todo_title{
-        h3{
+
+    .card_todo_content {
+      .todo_title {
+        h3 {
           cursor: default;
         }
       }
     }
-    .card_file{
-      .card_upload_file{
-        form{
-          .upfile_content{
+
+    .card_file {
+      .card_upload_file {
+        form {
+          .upfile_content {
             cursor: default;
           }
         }
@@ -1145,12 +1171,12 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
 }
 
 .horizentalfade-enter {
-  transform: translate(-350%,-50%);
+  transform: translate(-350%, -50%);
   opacity: 0;
 }
 
 .horizentalfade-leave-to {
-  transform: translate(-350%,-50%);
+  transform: translate(-350%, -50%);
   opacity: 0;
 }
 
@@ -1245,7 +1271,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
       .right_aside {
         .card_todo_content {
           .card_check_item {
-            
+
             div:nth-child(3) {
               margin-left: 50%;
             }
