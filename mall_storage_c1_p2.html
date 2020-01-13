@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="./css/owlcarousel/owl.carousel.min.css">
   <link rel="stylesheet" href="./css/owlcarousel/owl.theme.default.css">
 
@@ -105,50 +106,39 @@
           <div class="mall_content_right">
             <div class="cart_bg">
               <img src="./img/icon/shopping-cart_on_gray.svg" alt="">
-              <div class="mall_cart_cir">1</div>
+              <div class="mall_cart_cir">0</div>
             </div>
             <div class="mall_poduct_cart">
               <div class="mall_poduct_content">
                 <div class="product_img">
                   <div class="big_pic">
-                    <img class="b_img" src="img/mall_img/p1_black.png" alt="">
+                    <img class="b_img" src="img/mall_img/c1_p2_black.png" alt="">
                   </div>
                 </div>
 
                 <div class="product_text">
 
-                  <p>纖巧商務包（三角洲）</p>
+                  <p class="product_title">纖巧商務包（三角洲）</p>
 
                   <ul class="product_features">
-                    <li>絨毛內裡 保護電腦不刮傷</li>
-                    <li>凹形邊緣護墊 有效吸收抵禦衝擊</li>
+                    <li class="product_features_text1">絨毛內裡 保護電腦不刮傷</li>
+                    <li class="product_features_text2">凹形邊緣護墊 有效吸收抵禦衝擊</li>
                   </ul>
 
 
                   <div class="price_btn">
                     <div class="product_price">
-                      <span>$</span><span class="price_sale">1,200</span>
+                      <span>$</span><span class="price_sale">699</span>
                     </div>
                     <div class="mall_bBtn_all">
-
-<!-- 
-                      <div class="radio_style">
-                        <input type="radio" id="brown" name="color" value="brown">
-                        <label for="brown"">駝棕色</label>
-                        
-                            <input type="radio" id="blue" name="color" value="blue">
-                          <label for="blue">孔雀藍</label>
-
-                          <input type="radio" id="white" name="color" value="white">
-                          <label for="white">白米色</label>
-                      </div> -->
-                      <select name="mall_amount1" id="mall_amount1">
-                        <option value="brown">駝棕色</option>
-                        <option value="blue">孔雀藍</option>
-                        <option value="white">白米色</option>
+                      <select name="mall_color" id="mall_color">
+                        <option value="c1_p2_black">典雅黑</option>
+                        <option value="c1_p2_brown">駝棕色</option>
+                        <option value="c1_p2_blue">孔雀藍</option>
+                        <option value="c1_p2_pink">櫻花粉</option>
                       </select>
 
-                      <select name="mall_amount2" id="mall_amount2">
+                      <select name="mall_amount" id="mall_amount">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -156,9 +146,6 @@
 
                       <button class="mall_bBtn" value="Submit">加入購物車</button>
 
-                      <!-- <button class="mall_bBtn_cir" value="Submit"> -->
-                      <!-- <img src="./img/icon/shopping-cart_on_w.svg" alt="" width="80%"> -->
-                      <!-- </button> -->
                     </div>
                   </div>
 
@@ -166,8 +153,7 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="line"></div> -->
-
+         
             <!-- 輪播  -->
             <div class="slider-bg">
               <h2>其它商品</h2>
@@ -175,40 +161,29 @@
                 <div class="custom1 owl-carousel owl-theme">
                   <div class="item">
                     <a href="#" class="item_list">
-                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
-                      <div>商品品名</div>
+                      <h4><img src="./img/mall_img/mall_bg_sm_01.jpg" alt=""></h4>
+                      <div>纖巧商務包</div>
                     </a>
                   </div>
                   <div class="item">
                     <a href="#" class="item_list">
-                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
-                      <div>商品品名</div>
+                      <h4><img src="./img/mall_img/mall_bg_sm_02.jpg" alt=""></h4>
+                      <div>迷你單肩包</div>
                     </a>
                   </div>
                   <div class="item">
                     <a href="#" class="item_list">
-                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
-                      <div>商品品名</div>
+                      <h4><img src="./img/mall_img/mall_bg_sm_03.jpg" alt=""></h4>
+                      <div>手拿包</div>
                     </a>
                   </div>
                   <div class="item">
                     <a href="#" class="item_list">
-                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
-                      <div>商品品名</div>
+                      <h4><img src="./img/mall_img/mall_bg_sm_04.jpg" alt=""></h4>
+                      <div>迷你手提袋</div>
                     </a>
                   </div>
-                  <div class="item">
-                    <a href="#" class="item_list">
-                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
-                      <div>商品品名</div>
-                    </a>
-                  </div>
-                  <div class="item">
-                    <a href="#" class="item_list">
-                      <h4><img src="./img/mall_img/mall_bg_sm.jpg" alt=""></h4>
-                      <div>商品品名</div>
-                    </a>
-                  </div>
+          
                 </div>
               </section>
             </div>
@@ -217,7 +192,7 @@
       </div>
     </main>
   </div>
-
+  <script src="./js/mallstorage.js"></script>
   <script src="../js/lib/three.min.js"></script>
   <script type="x-shader/x-fragment" id="fragmentshader">
     uniform vec3 color;
@@ -238,8 +213,12 @@
     );
   </script>
 
+  <!--Mall商城主要js-->
   <script src="./js/mall.js"></script>
 
+  <!--貓頭鷹跑馬燈的JS-->
+  <script src="./js/owlcarousel/owl.carousel.min.js"></script>
+  <script src="./js/owlcarousel/jquery.min.js"></script>
 
   <!-- 放大鏡 -->
   <!-- <script>
@@ -248,53 +227,10 @@
     });
   </script> -->
 
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
   <!-- niceSelect下拉選單 -->
-  <script src="./js/nice_select/jquery.js"></script>
-  <script src="./js/nice_select/jquery.nice-select.js"></script>
+  <!-- <script src="./js/nice_select/jquery.js"></script>
+  <script src="./js/nice_select/jquery.nice-select.js"></script> -->
 
-  <!--啟用貓頭鷹/niceSelect下拉-->
-  <script>
-    $(document).ready(function ($) {
-      $('#mall_amount1').niceSelect();
-      $('#mall_amount2').niceSelect();
-
-      $('.custom1').owlCarousel({
-        // animateOut: 'slideOutDown',
-        // animateIn: 'flipInY',
-        items: 3,
-        margin: 30,
-        stagePadding: 30,
-        smartSpeed: 450,
-        loop: true,
-        autoplay: true, //自動輪播
-        autoplayTimeout: 4500, // 輪播速度
-        dots: true,
-        // nav: true,
-
-        responsive: {
-          768: {
-            items: 3
-          },
-
-          480: {
-            items: 2
-          },
-
-          0: {
-            items: 2
-          }
-
-        }
-
-
-      });
-    });
-  </script>
-
-  <!--貓頭鷹跑馬燈的JS-->
-  <script src="./js/owlcarousel/owl.carousel.min.js"></script>
-  <script src="./js/owlcarousel/jquery.min.js"></script>
 </body>
 
 </html>

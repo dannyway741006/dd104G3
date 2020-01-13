@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  // color: $dark;
+  color: $dark;
   color: $fontColorBlack;
   display: flex;
   flex-wrap: wrap;
@@ -13,7 +13,6 @@
     margin: 0px;
     padding: 0px 10px;
     box-sizing: border-box;
-    // border: 1px solid seagreen;
 
     h1 {
       @include font(5, 50px);
@@ -27,7 +26,6 @@
     padding: 10px;
     border-radius: 20px;
     box-shadow: 1px 1px 3px $shadow;
-    // border: 1px solid red;
   }
 
   .cart_list {
@@ -43,6 +41,9 @@
       background-image: linear-gradient(30deg, rgba(129, 199, 212, 0.15), rgba(248, 195, 205, 0.15));
       justify-content: flex-start;
       align-items: center;
+      position: relative;
+      left: -110%;
+      opacity: 0;
 
       .cart_product_img {
         width: 30%;
@@ -100,8 +101,10 @@
 
 .cart_total {
   width: calc(40% - 20px);
+  min-width: 360px;
   margin-left: 10px;
   box-sizing: border-box;
+  overflow: scroll;
 
   .cart_summary {
     width: 100%;
@@ -125,16 +128,29 @@
 
   .cart_account {
     width: 100%;
-    padding: 10px;
+    // padding: 10px;
     margin-top: 10px;
     border-radius: 10px;
 
     .cart_credit_card {
-      background-color: darkred;
+      background-color: #e2655d;
       width: 340px;
       height: 212.5px;
-      border-radius: 10px;
+      border-radius: 15px;
       margin: auto;
+      position: relative;
+
+      .cart_card_number {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        padding: 0px 20px;
+        position: absolute;
+        top: 80px;
+        @include font(3, 50px);
+        color: white;
+        // border: 1px solid whitesmoke;
+      }
     }
 
     .cart_credit_card_mes {
@@ -143,7 +159,7 @@
       border-radius: 10px;
 
       .cart_card_text {
-        padding: 10px 0px;
+        padding: 10px 0px 0px;
         @include font(0, 18px);
       }
 
@@ -196,19 +212,73 @@
           }
         }
       }
-    }
 
-    .cart_submit {
-      width: 100%;
-      // border: 1px solid red;
-      height: 50px;
-      margin-top: 10px;
-      border-radius: 10px;
-      background-color: #999;
-      button {
+      .cart_recipient {
         width: 100%;
-        height: 48px;
-        @include btnReset;
+
+        .cart_recipient_info {
+          width: 100%;
+          // border: 1px solid blue;
+          display: flex;
+          justify-content: space-between;
+
+          .cart_recipient_info_text {
+            width: 50%;
+            padding: 10px 0px 0px;
+
+            p {
+              @include font(0, 18px);
+            }
+
+            .cart_inputnum3 {
+              @include inputReset;
+              border: 1px solid #ddd;
+              width: 100%;
+              height: 30px;
+              margin-bottom: 15px;
+              border-radius: 5px;
+            }
+          }
+
+          .cart_recipient_info_text:nth-child(1) {
+            padding-right: 10px;
+          }
+
+          .cart_recipient_info_text:nth-child(2) {
+            padding-left: 10px;
+          }
+        }
+
+        .cart_recipient_info_add{
+          width: 100%;
+          padding: 10px 0px 0px;
+          p{
+            @include font(0, 18px);
+          }
+          .cart_inputnum2{
+            @include inputReset;
+            border: 1px solid #ddd;
+            width: 100%;
+            height: 30px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      .cart_submit {
+        width: 100%;
+        // border: 1px solid red;
+        height: 40px;
+        margin-top: 10px;
+        border-radius: 10px;
+        background-color: #999;
+
+        button {
+          width: 100%;
+          height: 38px;
+          @include btnReset;
+        }
       }
     }
   }

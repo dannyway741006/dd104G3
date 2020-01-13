@@ -1,6 +1,9 @@
 // @import "../../node_modules/vue2-datepicker/scss/index.scss";
 // $default-color: #555;
 // $primary-color: #81c7d4;
+.today{
+  background-color: transparent;
+}
 .mask {
   opacity: 0;
   @include positionfixed(-1, 0, 0);
@@ -8,7 +11,7 @@
   height: 100%;
   background-color: rgb(0, 0, 0);
   z-index: -2;
-
+  transition: opacity 0.3s;
   &.masked {
     opacity: 0.3;
     z-index: 9;
@@ -30,13 +33,13 @@
   overflow: hidden;
   padding-bottom: 15px;
   transition: opacity 0.3s;
-  opacity: 0;
-  z-index: -1;
-
+  // opacity: 0;
+  // z-index: -1;
+ z-index: 999;
   &.opneLight {
     opacity: 1;
     // display: block;
-    z-index: 10001;
+    // z-index: 10001;
     font-size: 16px;
     letter-spacing: 0.8px;
     line-height: 20px;
@@ -45,15 +48,33 @@
   }
 
   .card_header_title {
-    position: relative;
+    // position: relative;
     background-color: $programcolor1;
-    height: 45px;
-
+    min-height: 45px;
+    text-align: center;
     h1 {
-
+      // background-color: $programcolor1;
       @include font(5, 50px);
-      @include positionCenter();
+      // @include positionCenter();
       color: white;
+    
+      input{
+        background-color: inherit;
+        border: none;
+        outline: none;
+        text-align: center;
+        color: white;
+        @include font(5, 50px);
+        word-break: break-word;
+        display: -webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 80%;
+        margin: 0 auto;
+        font-weight: 600;
+      }
     }
 
     div {
@@ -204,7 +225,7 @@
   width: 70%;
   overflow-y: scroll;
   max-height: 600px;
-
+  min-height: 600px;
   .memberRight {
     padding-left: 30px;
 
@@ -348,11 +369,11 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
           border-radius: 5px;
           padding: 0 5px;
           transition: background-color 0.3s;
-          background-color: $danger;
+          
           color: #fff;
           padding: 2.5px 5px;
-
-          &.active {
+          background: $danger;
+          &.calandarcolor {
             background: $success;
           }
         }
@@ -437,6 +458,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
           min-height: 54px;
           background-color: white;
           outline: none;
+          resize:vertical;
         }
         .concernbutton{
           button{
@@ -502,12 +524,17 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
       overflow: hidden;
       text-overflow: ellipsis;
       margin-bottom: 10px;
-
+      cursor: pointer;
+      // transition: all  1s ease;
       &:hover {
 
-        div:nth-child(3),
+        div:nth-child(3){
+          opacity: 1;
+          right: 10%;
+        }
         div:nth-child(4) {
           opacity: 1;
+          right: 0;
         }
       }
 
@@ -544,10 +571,10 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
         // }
         // pointer-events: none;
         position: absolute;
-        right: 10%;
+        right: -20%;
         opacity: 0;
         transition: all 0.3s;
-
+        
         img {
           width: 100%;
           cursor: pointer;
@@ -569,7 +596,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
         //   clear: both;
         // }
         position: absolute;
-        right: 0;
+        right: -10%;
         opacity: 0;
         transition: all 0.3s;
 
@@ -606,10 +633,9 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
           color: #fff;
           padding: 3px;
           border-radius: 5px;
-          border: 2px solid $primary;
           transition: all 0.3s;
           width: 110px;
-          padding: 5px 25px 5px 5px;
+          padding: 7px 27px 7px 7px;
 
           &.addlength {
             width: 250px;
@@ -735,6 +761,34 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
 
   }
 }
+//完成卡片後的CSS
+.history_card_light_box{
+  .right_aside{
+    width: 100%;
+    h3{
+      cursor: default;
+    }
+    .card_todo_content{
+      .todo_title{
+        h3{
+          cursor: default;
+        }
+      }
+    }
+    .card_file{
+      .card_upload_file{
+        form{
+          .upfile_content{
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
 
 //待辦清單燈箱
 .todo_lightbox {
@@ -745,7 +799,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
   position: fixed;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
-  top: 243px;
+  top: 247px;
   z-index: 9999999;
 
   // &.opentodo_lightbox {
@@ -949,7 +1003,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
   padding: 15px;
   width: 200px;
   position: fixed;
-  top: 297px;
+  top: 302px;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
   border: 1px solid rgba(0, 0, 0, .1);
@@ -993,7 +1047,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
   padding: 15px;
   width: 250px;
   position: fixed;
-  top: 186px;
+  top: 193px;
   box-shadow: 3px 3px 6px 0px $shadow;
   // display: none;
   border: 1px solid rgba(0, 0, 0, .1);
@@ -1115,6 +1169,20 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
   opacity: 0;
 }
 
+.horizentalfade-enter-active,
+.horizentalfade-leave-active {
+  transition: all .3s ease;
+}
+
+.horizentalfade-enter {
+  transform: translate(-350%,-50%);
+  opacity: 0;
+}
+
+.horizentalfade-leave-to {
+  transform: translate(-350%,-50%);
+  opacity: 0;
+}
 
 //卡片rwd
 @include media(850px) {
@@ -1156,7 +1224,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
           }
 
           .card_member_lightbox {
-            top: 167px;
+            top: 172px;
           }
         }
 
@@ -1169,11 +1237,11 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
         }
 
         .todo_lightbox {
-          top: 223px;
+          top: 228px;
         }
 
         .file_lightbox {
-          top: 277px;
+          top: 282px;
         }
       }
 
@@ -1207,6 +1275,7 @@ filter: invert(99%) sepia(34%) saturate(6645%) hue-rotate(162deg) brightness(88%
       .right_aside {
         .card_todo_content {
           .card_check_item {
+            
             div:nth-child(3) {
               margin-left: 50%;
             }

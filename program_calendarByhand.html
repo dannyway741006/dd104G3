@@ -235,8 +235,7 @@
               
               <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg" alt=""
                   width="20"></div>
-    
-            
+       
             </div>
            
             <div class="calendar">
@@ -251,31 +250,14 @@
               </div>
               <div class="week" v-for="i in 5">
                 <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
-                       today:calendarMonth[(i-1)*7+j-1].year === today.year && calendarMonth[(i-1)*7+j-1].month === today.month && calendarMonth[(i-1)*7+j-1].date === today.date,
+                       handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
                        other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
                       }">
                 </div>
               </div>
             </div>
           </div>
-          <!-- 
-          .card_box {
-            @include card(500px, 500px, true, $primary);
-          } 
-          -->
-          <!-- <div class="card_box">
-            <div class="card_header">123</div>
-            <div class="card_content">456</div>
-          </div> -->
-          <!-- 卡片(沒header) -->
-          <!-- 
-          .card_box {
-            @include card(500px, 500px, false);
-          } 
-          -->
-          <!-- <div class="card_box">
-            <div class="card_content">456</div>
-          </div> -->
+      
         </div>
       </main>
     </div>
