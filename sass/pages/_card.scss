@@ -769,8 +769,16 @@
           cursor: default;
         }
       }
+      .card_check_item{
+        cursor: default;
+        img{
+          cursor: default;
+        }
+      }
     }
-
+    .calendar_img{
+      cursor: default;
+    }
     .card_file {
       .card_upload_file {
         form {

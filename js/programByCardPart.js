@@ -590,13 +590,16 @@ var main_content = new Vue({
                 return Math.round((100 / length) * this.history_inner_progress(detailIndex).length);
             }
         },
-        showcalendarpanel(index) {
-            if (this.programs[this.page].cards[index].calendar_date == null) {
+        showcalendarpanel(cardIndex) {
+            if (this.programs[this.page].cards[cardIndex].calendar_date == null) {
                 return '未設定';
             } else {
-                return this.programs[this.page].cards[index].calendar_date;
+                return this.programs[this.page].cards[cardIndex].calendar_date;
             }
         },
+        pushtocalsender(){
+
+        }
     },
 
     computed: {
