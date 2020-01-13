@@ -409,8 +409,6 @@ var main_content = new Vue({
                 this.todo_lightbox_switch = false;
                 this.todo_switch = false;
             } else {};
-
-
         },
 
         // 刪除待辦清單項目
