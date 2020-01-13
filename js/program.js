@@ -239,7 +239,6 @@ var main_content = new Vue({
           //卡片內會員顯示
           showhideMember: false,
           member_input: "",
-
           member_inout: [],
 
 
@@ -248,7 +247,8 @@ var main_content = new Vue({
           //calendar
           dateline: false,
           dateline_text: "未完成",
-
+          calendar_date:'未設定',
+          
           //上傳檔案
           filebox: [],
           file_switch: false,
@@ -438,15 +438,20 @@ var main_content = new Vue({
     },
     //卡片內上傳檔案
     filesearch(e) {
-      this.file = e.target.files[0];
-      // console.log(this.file);
-      let readFile = new FileReader();
-      readFile.readAsDataURL(this.file);
-      this.file_switch = false;
-      readFile.addEventListener('loadend', this.fileSelected);
+      if( e.target.files.length>0){
+        this.file = e.target.files[0];
+        // console.log(this.file);
+        let readFile = new FileReader();
+        readFile.readAsDataURL(this.file);
+        this.file_switch = false;
+        readFile.addEventListener('loadend', this.fileSelected);
 
+      }
 
     },
+
+    //卡片內上傳檔案
+
     fileSelected(e) {
       this.programs[this.page].cards[this.card_no].file_result = e.target.result;
       this.programs[this.page].cards[this.card_no].filebox.push({
