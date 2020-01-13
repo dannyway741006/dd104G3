@@ -222,7 +222,7 @@
                       <div class="cards_list_card_icon_bar">
                         <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                             src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                        <span>未設定</span>
+                        <span>{{item.calendar_date}}</span>
                         <div class="cards_list_card_icon_right">
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
@@ -289,17 +289,17 @@
                   </div>
                 </h1>
                 <div class="calendar_date_midtitle">
-             
-                  <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg" alt=""
-                      width="20"></div>
-                      <div>{{calendar.week}}</div>
+
+                  <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg"
+                      alt="" width="20"></div>
+                  <div>{{calendar.week}}</div>
                   <div>{{calendar.year}}</div>
-                  
-                  <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg" alt=""
-                      width="20"></div>
-           
+
+                  <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
+                      alt="" width="20"></div>
+
                 </div>
-               
+
                 <div class="calendar">
                   <div class="weekDay">
                     <div style="color: red;">Sunday</div>
@@ -596,8 +596,9 @@
 
                         </div>
                         <!-- hover時顏色好像改不了 -->
-                        <p><date-picker v-model="time2" type="datetime" start='12:00' format='YYYY-MM-DD HH:mm'   /></p>
-                        <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
+                        <p>
+                          <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm' value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期"/>
+                        </p>
                         <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                       </div>
                     </div>
@@ -672,8 +673,8 @@
                         <h3>附件</h3>
                       </div>
                       <ul>
-                        <transition-group name="fade" tag="div">
-                          <li v-for="(item,cardIndex) in item.filebox">
+                        <transition-group name="fade">
+                          <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
                             <a :href="item.source" :download="item.name">{{item.name}}</a>
                             <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="delete_file()">
                             </div>
@@ -682,10 +683,10 @@
                       </ul>
                       <div class="card_upload_file">
                         <!-- 上傳的內容 -->
-                        <form method="post" enctype="multipart/form-data" @change="filesearch">
+                        <form method="post" enctype="multipart/form-data">
                           <label class="upfile_content" :style='{backgroundColor: programs[page].color}'>
                             <p>上傳附件</p>
-                            <input type="file" multiple>
+                            <input type="file" @change="filesearch" multiple>
                           </label>
                         </form>
                       </div>
@@ -851,7 +852,9 @@
 
                         </div>
                         <!-- hover時顏色好像改不了 -->
-                        <!-- <p><date-picker v-model="time2" valueType="format"/></p> -->
+                        <p>
+                          <date-picker v-model="time2" type="datetime" start='12:00' format='YYYY-MM-DD HH:mm' />
+                        </p>
                         <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
                         <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                       </div>
