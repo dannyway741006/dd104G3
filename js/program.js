@@ -535,14 +535,24 @@ var main_content = new Vue({
         prev += item.lists.filter(list => list.status).length
         return prev
       }, 0)
-
+    },
+    history_card_progress_checked(index) {
+      return this.history_programs[this.history_page].cards[index].todo_list_content_detail.reduce((prev, item) => {
+        prev += item.lists.filter(list => list.status).length
+        return prev
+      }, 0)
     },
     card_progress_sum(index) {
       return this.programs[this.page].cards[index].todo_list_content_detail.reduce((prev, item) => {
         prev += item.lists.length
         return prev
       }, 0)
-
+    },
+    history_card_progress_sum(index) {
+      return this.history_programs[this.history_page].cards[index].todo_list_content_detail.reduce((prev, item) => {
+        prev += item.lists.length
+        return prev
+      }, 0)
     },
     //最小子項目進度條
     inner_progress(detailIndex) {

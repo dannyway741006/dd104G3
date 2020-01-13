@@ -380,13 +380,13 @@
                       <div class="cards_list_card_icon_bar">
                         <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                             src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                        <span>未設定</span>
+                        <span>{{item.calendar_date}}</span>
                         <div class="cards_list_card_icon_right">
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
                                 alt="">
                             </div>
-                            <span>0/0</span>
+                            <span>{{history_card_progress_checked(cardIndex)}}/{{history_card_progress_sum(index)}}</span>
                           </div>
                         </div>
                       </div>
@@ -597,7 +597,8 @@
                         </div>
                         <!-- hover時顏色好像改不了 -->
                         <p>
-                          <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm' value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期"/>
+                          <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm'
+                            value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" />
                         </p>
                         <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                       </div>
@@ -711,89 +712,7 @@
               </div>
 
               <div class="lightbox_content">
-                <!-- <div class="left_aside">
-            <div class="first_right">
-              <h3>新增至卡片</h3>
-              <hr />
-              <div class="first_right_member" @click.stop="openmember(),member_switch =! member_switch"
-                :class="{click_light_two : member_switch}">
-                <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
-                成員
-              </div>
 
-              <div @click.stop="opentodo(),todo_switch =! todo_switch" class="todogo"
-                :class="{click_light_three : todo_switch}">
-                <img src="./img/content.22f4a956.svg" alt="" style="width: 20px;" />
-                待辦清單
-              </div>
-
-              <div @click.stop="openfile(),fileder_switch =! fileder_switch" class="upfile"
-                :class="{click_light_four : fileder_switch}">
-                <img src="./img/card_img/paperclip.cf9c8806.svg" alt="" style="width: 20px;" />
-                上傳附件
-              </div> -->
-
-                <!-- 新增待辦清單跳窗 -->
-                <!-- <transition name="fade" mode="out-in">
-                <div class="todo_lightbox" v-show="todo_lightbox_switch" @click.stop="">
-                  <label>
-                    <p>待辦清單標題</p> -->
-                <!-- 讓燈箱的字和標題同步 -->
-                <!-- <input type="text" class="todo_lightbox_input" v-model.trim="todoListTitle"
-                      @keyup.13="todo_list_add(cardIndex)">
-                  </label>
-                  <div class="todo_lightbox_botton" @click="todo_list_add(cardIndex)">
-                    <button>新增</button>
-                  </div>
-                </div>
-              </transition> -->
-
-                <!-- 上船附件跳窗 -->
-                <!-- <transition name="fade" mode="out-in">
-                <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="fileSelected">
-                  <h3>上傳檔案</h3>
-                  <form method="post" enctype="multipart/form-data">
-                    <label class="upfile_content">
-                      <p>上傳附件</p>
-                      <input type="file" multiple id="upFile">
-                    </label>
-                  </form>
-                </div>
-              </transition> -->
-
-                <!-- 新增成員跳窗 -->
-                <!-- <transition name="fade" mode="out-in">
-                <div class="card_member_lightbox" v-show="card_meber_switch" @click.stop="">
-                  <h3>成員</h3>
-                  <br>
-                  <label for="">
-                    <input type="text" placeholder="搜尋成員" v-model.trim="item.member_input">
-                  </label>
-                  <h4>看版成員</h4>
-                  <ul>
-                    <li>
-                      <div class="card_member_message" v-for="(item,index) in showmember_select"
-                        @click.stop="history_member_outin(index)" :class="{mem_addcolor: item.uncolor}">
-                        <div><img :src="item.src" alt=""></div>
-                        <span class="card_member_name">{{item.member_name}}<span
-                            class="card_memberId">{{item.userId}}</span></span>
-                        <div><img :src="item.check" alt=""></div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </transition> -->
-                <!-- </div> -->
-
-                <!-- <div class="second_right">
-              <h3>卡片動作</h3>
-              <hr />
-              <div class="second_right_deletecard" @click="delete_card()">
-                <img src="./img/card_img/delete.0df56913.svg" alt="" style="width: 20px;" />
-                刪除卡片
-              </div>
-            </div> -->
-                <!-- </div> -->
                 <div class="right_aside">
                   <div class="memberRight">
                     <div class="card_memver_head">
@@ -809,34 +728,7 @@
                           :key="index"><img :src="item.source" alt=""></div>
                         <div class="show_dote_member" v-show="item.showhideMember"><span>+{{history_hidemembers}}</span>
                         </div>
-                        <!-- <div class="add_member_to_card"
-                          @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
-                          <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg"> -->
 
-
-                        <!-- <transition name="fade" mode="out-in">
-                      <div class="card_member_lightbox member_plus_follow" v-show="add_card_meber_switch"
-                        @click.stop="">
-                        <h3>成員</h3>
-                        <br>
-                        <label for="">
-                          <input type="text" placeholder="搜尋成員" v-model.trim="item.member_input">
-                        </label>
-                        <h4>看版成員</h4>
-                        <ul>
-                          <li>
-                            <div class="card_member_message" v-for="(item,index) in showmember_select"
-                              @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
-                              <div><img :src="item.src" alt=""></div>
-                              <span class="card_member_name">{{item.member_name}}<span
-                                  class="card_memberId">{{item.userId}}</span></span>
-                              <div><img :src="item.check" alt=""></div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </transition> -->
-                        <!-- </div> -->
                       </div>
                     </div>
 
@@ -853,9 +745,9 @@
                         </div>
                         <!-- hover時顏色好像改不了 -->
                         <p>
-                          <date-picker v-model="time2" type="datetime" start='12:00' format='YYYY-MM-DD HH:mm' />
+                          <!-- <date-picker v-model="time2" type="datetime" start='12:00' format='YYYY-MM-DD HH:mm' /> -->
+                          {{history_programs[history_page].cards[history_card_no].calendar_date}}
                         </p>
-                        <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
                         <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                       </div>
                     </div>
@@ -903,17 +795,7 @@
                         </draggable>
 
 
-                        <!-- <div class="card_add_button">
-                    <label for="">
-                      <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
-                        @keyup.enter="add_card_detail(detailIndex)"
-                        :style='{backgroundColor: history_programs[history_page].color}' v-model.trim="test"
-                        @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
-                        @blur="item.card_length =! item.card_length">
-                      <img src="./img/card_img/plus_write.svg" alt="" width="14"
-                        @mousedown="add_card_detail(detailIndex)">
-                    </label>
-                  </div> -->
+
                       </div>
                     </transition-group>
 
@@ -927,21 +809,22 @@
                         </div>
                         <h3>附件</h3>
                       </div>
-                      <!-- <ul>
-                  <li v-for="(item,cardIndex) in item.filebox">
-                    <a :href="item.source" :download="item.name">{{item.name}}</a>
-                    <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
-                        @click="delete_file(index)">
-                    </div>
-                  </li>
-                </ul> -->
+                      <ul>
+                        <transition-group name="fade">
+                          <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
+                            <a :href="item.source" :download="item.name">{{item.name}}</a>
+                            <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="delete_file()">
+                            </div>
+                          </li>
+                        </transition-group>
+                      </ul>
                       <div class="card_upload_file">
                         <!-- 上傳的內容 -->
-                        <form method="post" enctype="multipart/form-data" @change="fileSelected">
+                        <form method="post" enctype="multipart/form-data">
                           <label class="upfile_content"
                             :style='{backgroundColor: history_programs[history_page].color}'>
                             <p>上傳附件</p>
-                            <input type="file" multiple>
+                            <input type="file" @change="filesearch" multiple>
                           </label>
                         </form>
                       </div>
