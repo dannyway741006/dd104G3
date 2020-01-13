@@ -222,13 +222,13 @@
                       <div class="cards_list_card_icon_bar">
                         <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                             src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                        <span>未設定</span>
+                        <span>{{item.calendar_date}}</span>
                         <div class="cards_list_card_icon_right">
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
                                 alt="">
                             </div>
-                            <span>{{card_progress_checked()}}/0</span>
+                            <span>{{card_progress_checked(cardIndex)}}/{{card_progress_sum(cardIndex)}}</span>
                             <!--{{card_progress_sum(detailIndex)}} -->
                           </div>
                         </div>
@@ -277,7 +277,7 @@
               </div>
             </div>
             <transition name="fade" mode="out-in">
-              <div id="calendar" v-cloak v-show="calendar_btn" @click.stop="">
+              <div id="calendar" v-show="calendar_btn" @click.stop="">
                 <h1 class="calendar_date_title">
                   <div class="mont_date">{{calendar.date}}</div>
                   <div>
@@ -292,29 +292,29 @@
 
                   <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg"
                       alt="" width="20"></div>
-                  <div>{{calendar.year}}</div>
                   <div>{{calendar.week}}</div>
+                  <div>{{calendar.year}}</div>
+
                   <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
                       alt="" width="20"></div>
-
 
                 </div>
 
                 <div class="calendar">
                   <div class="weekDay">
-                    <div style="color: #eb7a77;">Sun</div>
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div style="color: #eb7a77;">Sat</div>
+                    <div style="color: red;">Sunday</div>
+                    <div>Monday</div>
+                    <div>Tuesday</div>
+                    <div>Wednesday</div>
+                    <div>Thursday</div>
+                    <div>Friday</div>
+                    <div style="color: red;">Saturday</div>
                   </div>
                   <div class="week" v-for="i in 5">
                     <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
-                                 today:calendarMonth[(i-1)*7+j-1].year === today.year && calendarMonth[(i-1)*7+j-1].month === today.month && calendarMonth[(i-1)*7+j-1].date === today.date,
-                                 other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
-                                }">
+                           handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
+                           other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
+                          }">
                     </div>
                   </div>
                 </div>
@@ -371,7 +371,7 @@
                 <div class="cards_column_body cards_column_body_done">
                   <div class="cards_list cards_list_done">
 
-                    
+
                     <div class="cards_list_card" v-for="(item,cardIndex) in item.cards" :key="cardIndex"
                       @click="open_card_func(),history_card_no=cardIndex">
                       <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].color}'>
@@ -391,7 +391,7 @@
                         </div>
                       </div>
                     </div>
-                  
+
 
                   </div>
                 </div>
@@ -495,7 +495,7 @@
 
                     <!-- 上船附件跳窗 -->
                     <transition name="fade" mode="out-in">
-                      <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="fileSelected">
+                      <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="filesearch">
                         <h3>上傳檔案</h3>
                         <form method="post" enctype="multipart/form-data">
                           <label class="upfile_content">
@@ -596,8 +596,9 @@
 
                         </div>
                         <!-- hover時顏色好像改不了 -->
-                        <!-- <p><date-picker v-model="time2" valueType="format"/></p> -->
-                        <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
+                        <p>
+                          <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm' value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期"/>
+                        </p>
                         <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                       </div>
                     </div>
@@ -613,10 +614,11 @@
                           <h3 @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
                             v-show="item.test_title_name">{{item.title}}</h3>
                           <div class="change_title" v-show="item.showname" @click.stop="">
-                            <textarea name="" v-model.trim="item.title"></textarea>
-                            <div class="concernbutton"
+                            <textarea name="" v-model.trim="item.title"
+                              @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name"></textarea>
+                            <!-- <div class="concernbutton"
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name">
-                              <button>確定</button></div>
+                              <button>確定</button></div> -->
                           </div>
 
                           <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
@@ -650,9 +652,9 @@
                           <label for="">
                             <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
                               @keyup.enter="add_card_detail(detailIndex)"
-                              :style='{backgroundColor: programs[page].color}' v-model.trim="test"
+                              :style='{backgroundColor: programs[page].color}' v-model.trim="item.test"
                               @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
-                              @blur="item.card_length =! item.card_length">
+                              @blur="item.card_length =! item.card_length,item.test=''">
                             <img src="./img/card_img/plus_write.svg" alt="" width="14"
                               @mousedown="add_card_detail(detailIndex)">
                           </label>
@@ -671,19 +673,20 @@
                         <h3>附件</h3>
                       </div>
                       <ul>
-                        <li v-for="(item,cardIndex) in item.filebox">
-                          <a :href="item.source" :download="item.name">{{item.name}}</a>
-                          <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
-                              @click="delete_file(index)">
-                          </div>
-                        </li>
+                        <transition-group name="fade">
+                          <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
+                            <a :href="item.source" :download="item.name">{{item.name}}</a>
+                            <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="delete_file()">
+                            </div>
+                          </li>
+                        </transition-group>
                       </ul>
                       <div class="card_upload_file">
                         <!-- 上傳的內容 -->
-                        <form method="post" enctype="multipart/form-data" @change="fileSelected">
+                        <form method="post" enctype="multipart/form-data">
                           <label class="upfile_content" :style='{backgroundColor: programs[page].color}'>
                             <p>上傳附件</p>
-                            <input type="file" multiple>
+                            <input type="file" @change="filesearch" multiple>
                           </label>
                         </form>
                       </div>
@@ -811,7 +814,7 @@
                           <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg"> -->
 
 
-                          <!-- <transition name="fade" mode="out-in">
+                        <!-- <transition name="fade" mode="out-in">
                       <div class="card_member_lightbox member_plus_follow" v-show="add_card_meber_switch"
                         @click.stop="">
                         <h3>成員</h3>
@@ -849,7 +852,9 @@
 
                         </div>
                         <!-- hover時顏色好像改不了 -->
-                        <!-- <p><date-picker v-model="time2" valueType="format"/></p> -->
+                        <p>
+                          <date-picker v-model="time2" type="datetime" start='12:00' format='YYYY-MM-DD HH:mm' />
+                        </p>
                         <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
                         <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                       </div>

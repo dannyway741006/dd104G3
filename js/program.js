@@ -37,7 +37,7 @@ var main_content = new Vue({
 
     // calendar_btn:false,
     // 日曆部分
-    today: {
+    handcalendar_today: {
       year: 0,
       month: 0,
       date: 0,
@@ -62,6 +62,8 @@ var main_content = new Vue({
     history_card_no: null,
 
     detail_no: null,
+
+
     //卡片背面
     opened: false,
     open_history_card: false,
@@ -89,7 +91,7 @@ var main_content = new Vue({
 
     card_meber_switch: false,
 
-    i: '',
+    // i: '',
     showCalender: false,
 
     calandar_switch: false,
@@ -115,14 +117,13 @@ var main_content = new Vue({
 
 
 
-    //member的去向
-
-
-
-
+    //卡片背面member燈箱
 
     addmemberswitch: false,
     add_card_meber_switch: false,
+
+    //file
+    file: '',
 
 
 
@@ -238,7 +239,6 @@ var main_content = new Vue({
           //卡片內會員顯示
           showhideMember: false,
           member_input: "",
-
           member_inout: [],
 
 
@@ -247,7 +247,8 @@ var main_content = new Vue({
           //calendar
           dateline: false,
           dateline_text: "未完成",
-
+          calendar_date:'未設定',
+          
           //上傳檔案
           filebox: [],
           file_switch: false,
@@ -302,11 +303,12 @@ var main_content = new Vue({
 
     // 日曆部分
     setToday() {
+      // console.log("123");
       const date = new Date()
-      this.today.year = this.calendar.year = date.getFullYear()
-      this.today.month = this.calendar.month = date.getMonth() // 0~11
-      this.today.date = this.calendar.date = date.getDate()
-      this.today.day = this.calendar.day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()]
+      this.handcalendar_today.year = this.calendar.year = date.getFullYear()
+      this.handcalendar_today.month = this.calendar.month = date.getMonth() // 0~11
+      this.handcalendar_today.date = this.calendar.date = date.getDate()
+      this.handcalendar_today.day = this.calendar.day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()]
       this.calendar.week = ["January", "February", "March", "April", "May", "June", "July", "August", "Septemper", "October", "November", "December"][new Date().getMonth()]
     },
     adjustYear(fix) {
@@ -395,9 +397,7 @@ var main_content = new Vue({
         this.programs[this.page].cards[index].todo_list_content_detail.push({
           title: this.todoListTitle,
           //增加項目focus變長
-          card_length: false,
           lists: [],
-          status: false,
 
           //改變待辦事項標題 
           showname: false,
@@ -405,13 +405,12 @@ var main_content = new Vue({
 
           //改變待辦事項標題
 
+          test: '',
         })
         this.todoListTitle = null;
         this.todo_lightbox_switch = false;
         this.todo_switch = false;
       } else {};
-
-
     },
 
     // 刪除待辦清單項目
@@ -420,18 +419,17 @@ var main_content = new Vue({
     },
     // 增加最小子項目
     add_card_detail(detailIndex) {
-      if (this.test !== "") {
+      if (this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
         // console.log(this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists);
         this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists.push({
 
-          content: this.test,
+          content: this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].test,
           status: false,
           text: false,
         });
-        this.test = '';
+        this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].test = '';
         this.card_detail_lightbox = false;
       } else {}
-
     },
     // 刪除最小子項目
     delete_todo_title(detailIndex, index) {
@@ -440,31 +438,28 @@ var main_content = new Vue({
     },
     //卡片內上傳檔案
     filesearch(e) {
+      if( e.target.files.length>0){
+        this.file = e.target.files[0];
+        // console.log(this.file);
+        let readFile = new FileReader();
+        readFile.readAsDataURL(this.file);
+        this.file_switch = false;
+        readFile.addEventListener('loadend', this.fileSelected);
 
-      let file = e.target.files[0];
-      let readFile = new FileReader();
-      readFile.readAsDataURL(file);
-      readFile.addEventListener('load',
-        function file(e) {
-          let a = e.target.result;
-          console.log(a);
-          return a;
-        }
-      );
+      }
+
     },
+
+    //卡片內上傳檔案
+
     fileSelected(e) {
-
-      let file = e.target.files[0];
-
-      this.programs[this.page].cards[this.card_no].file_switch = false;
+      this.programs[this.page].cards[this.card_no].file_result = e.target.result;
       this.programs[this.page].cards[this.card_no].filebox.push({
-        name: file.name,
-        source: this.filesearch(e),
+        name: this.file.name,
+        source: this.programs[this.page].cards[this.card_no].file_result,
       });
-      console.log(this.filebox.source);
+
     },
-
-
 
 
     openmember() {
@@ -474,6 +469,7 @@ var main_content = new Vue({
       this.file_switch = false;
       this.fileder_switch = false;
       this.todo_switch = false;
+      this.add_card_meber_switch = false;
     },
 
     opentodo() {
@@ -483,6 +479,7 @@ var main_content = new Vue({
       this.file_switch = false;
       this.fileder_switch = false;
       this.member_switch = false;
+      this.add_card_meber_switch = false;
     },
     openfile() {
       this.card_meber_switch = false;
@@ -491,6 +488,7 @@ var main_content = new Vue({
       this.file_switch = true;
       this.todo_switch = false;
       this.member_switch = false;
+      this.add_card_meber_switch = false;
     },
     openaddmember() {
       this.card_meber_switch = false;
@@ -498,7 +496,9 @@ var main_content = new Vue({
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.add_card_meber_switch = true;
-
+      this.member_switch = false;
+      this.todo_switch = false;
+      this.fileder_switch = false;
     },
     delete_file(index) {
       this.programs[this.page].cards[this.card_no].filebox.splice(index, 1);
@@ -530,33 +530,18 @@ var main_content = new Vue({
       alert("已加入蕃茄鐘");
     },
     //最小子項目勾選 卡片顯示進度
-    card_progress() {
-      // console.log('2')
-      let card_progress_return=0;
-      if (this.detail_no != null && this.card_no != -1) {
-        for (i = 0; i <= this.detail_no; i++) {//this.detail_no有問題
-          // console.log('i:',i)
-          card_progress_return=this.programs[this.page].cards[this.card_no].todo_list_content_detail[this.detail_no].lists.filter(item => {
-            return item.status;
-          });
-          return card_progress_return
-        }
-      } else {
-        return card_progress_return
-      }
+    card_progress_checked(index) {
+      return this.programs[this.page].cards[index].todo_list_content_detail.reduce((prev, item) => {
+        prev += item.lists.filter(list => list.status).length
+        return prev
+      }, 0)
 
     },
-    card_progress_checked() {
-      // console.log('qq')
-      let list_sum = 0;
-      if (this.detail_no != null) {
-        for (i = 0; i <= this.detail_no; i++) {
-          list_sum = list_sum + this.card_progress(i).length;
-          // console.log(list_sum)
-        }
-      } else {}
-
-      return list_sum;
+    card_progress_sum(index) {
+      return this.programs[this.page].cards[index].todo_list_content_detail.reduce((prev, item) => {
+        prev += item.lists.length
+        return prev
+      }, 0)
 
     },
     //最小子項目進度條
@@ -703,21 +688,20 @@ var main_content = new Vue({
       this.setting_btn = false;
       this.add_cards_btn = false;
       this.calendar_btn = false;
-
       //卡片背面
-      this.member_input = "";
+      if (this.page >= 0 && this.card_no >= 0) {
+        this.programs[this.page].cards[this.card_no].member_input = "";
+      }
+
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.card_meber_switch = false;
       this.add_card_meber_switch = false;
       this.member_switch = false;
       this.todo_switch = false;
+      this.todoListTitle = '';
+      this.fileder_switch = false;
 
-      this.test = "";
-      //  this.addmemberswitch=false;
-      //  this.fileder_switch = false;
-      this.showname = false;
-      this.test_title_name = true;
 
       // console.log(this.programs.length - 1)
       if (this.programs.length == 0) {
