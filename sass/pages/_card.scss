@@ -758,7 +758,7 @@
 .history_card_light_box {
   .right_aside {
     width: 100%;
-
+.memberRight{
     h3 {
       cursor: default;
     }
@@ -775,10 +775,26 @@
           cursor: default;
         }
       }
+     
     }
-    .calendar_img{
+    .calendar{
+      .calendar_status{
+        p:nth-child(2):hover{
+           color: black;
+           cursor: default;
+        }
+        span:nth-child(3){
+          cursor: default;
+        }
+            .calendar_img{
       cursor: default;
     }
+      }
+  
+    }
+
+    
+    
     .card_file {
       .card_upload_file {
         form {
@@ -789,7 +805,7 @@
       }
     }
   }
-
+}
 }
 
 
