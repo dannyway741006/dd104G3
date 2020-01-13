@@ -438,14 +438,24 @@ var main_content = new Vue({
       },
       //卡片內上傳檔案
       filesearch(e) {
-        if( e.target.files.length>0){
-          this.file = e.target.files[0];
-          // console.log(this.file);
-          let readFile = new FileReader();
-          readFile.readAsDataURL(this.file);
-          this.file_switch = false;
-          readFile.addEventListener('loadend', this.fileSelected);
-  
+        // if( e.target.files.length>0){
+        //   this.file = e.target.files[0];
+        //   let readFile = new FileReader();
+        //   readFile.readAsDataURL(this.file);
+        //   this.file_switch = false;
+        //   readFile.addEventListener('loadend', this.fileSelected);
+        // }
+        if(e.target.files.length>0){
+            this.file = e.target.files;
+            for( let i=0; i<files.length; i++){
+                //-------------取得檔名
+                let readFile = new FileReader();
+                readFile.addEventListener('loadend', this.fileSelected);
+                // this.programs[this.page].cards[this.card_no].filebox.push({
+                //     name:this.file[i].name
+                // });	
+            }
+            readFile.readAsDataURL(this.file[i]);
         }
   
       },
