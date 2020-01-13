@@ -247,8 +247,8 @@ var main_content = new Vue({
           //calendar
           dateline: false,
           dateline_text: "未完成",
-          calendar_date:'未設定',
-          
+          calendar_date: '未設定',
+
           //上傳檔案
           filebox: [],
           file_switch: false,
@@ -268,11 +268,16 @@ var main_content = new Vue({
     complete_info_func(index) {
       this.complete_info_box = !this.complete_info_box;
       this.programs[index].show_complete_info_box = true;
+
+      container.classList.remove("nav_open")
+
     },
     //刪除專案跳窗提醒
     delete_info_func(index) {
       this.delete_info_box = !this.delete_info_box;
       this.history_programs[index].show_delete_info_box = true;
+
+      container.classList.remove("nav_open")
     },
 
     //完成專案
@@ -291,6 +296,9 @@ var main_content = new Vue({
       this.history_page = this.history_programs.length - 1;
 
       // this.show_complete_info_box =true;
+
+
+
     },
     //刪除專案
     delete_program(index) {
@@ -438,7 +446,7 @@ var main_content = new Vue({
     },
     //卡片內上傳檔案
     filesearch(e) {
-      if( e.target.files.length>0){
+      if (e.target.files.length > 0) {
         this.file = e.target.files[0];
         // console.log(this.file);
         let readFile = new FileReader();
@@ -737,14 +745,27 @@ var main_content = new Vue({
         .disableSelection();
 
 
-
     });
 
     // 日曆部分
     this.setToday()
+
+
 
   },
   components: {
     DatePicker
   },
 });
+
+
+
+// const container = document.getElementById("app");
+// const complete_program_uncheckImg = document.getElementById("complete_program_uncheckImg");
+// console.log(complete_program_uncheckImg)
+// console.log('1111')
+// complete_program_uncheckImg.addEventListener("click", () =>
+//   container.classList.toggle("nav_open")
+// );
+
+// complete_program_uncheckImg
