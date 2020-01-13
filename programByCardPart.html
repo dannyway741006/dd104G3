@@ -216,19 +216,19 @@
 
 
                     <div class="cards_list_card" v-for="(item, cardIndex) in item.cards" :key="cardIndex"
-                      @click.stop="open_card_func(),card_no=cardIndex,cd_no=cardIndex" @mouseup="catch_card_position()">
+                      @click.stop="open_card_func(),card_no=cardIndex" @mouseup="catch_card_position()" >
                       <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
                       <p>{{item.card_name}}</p>
                       <div class="cards_list_card_icon_bar">
                         <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                             src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                        <span>未設定</span>
+                        <span>{{datapicker}}</span>
                         <div class="cards_list_card_icon_right">
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
                                 alt="">
                             </div>
-                            <span>{{checkpro()}}/{{capro()}}</span>
+                            <span>{{checkpro(cardIndex)}}/{{capro(cardIndex)}}</span>
                             <!--{{card_progress_sum(detailIndex)}} -->
                           </div>
                         </div>
@@ -596,7 +596,7 @@
 
                         </div>
                         <!-- hover時顏色好像改不了 -->
-                        <!-- <p><date-picker v-model="time2" valueType="format"/></p> -->
+                        <p><date-picker v-model="time2" valueType="format"/></p>
                         <img src="./img/card_img/down-arrow.4172a7ec.svg" alt="" style="width: 15px;height: 15px;">
                         <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                       </div>
@@ -613,7 +613,7 @@
                           <h3 @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
                             v-show="item.test_title_name">{{item.title}}</h3>
                           <div class="change_title" v-show="item.showname" @click.stop="">
-                            <textarea name="" v-model.trim="item.title" @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name"></textarea>
+                            <textarea v-model.trim="item.title" @blur.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"  autofocus="autofocus"></textarea>
                             <!-- <div class="concernbutton"
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name">
                               <button>確定</button></div> -->

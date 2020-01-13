@@ -131,7 +131,7 @@ var main_content = new Vue({
 
         //todo_list_content_detail_index
         todo_list_content_detail_no: null,
-        cd_no: null,
+        // date:'',
     },
     methods: {
         //新增專案
@@ -260,6 +260,8 @@ var main_content = new Vue({
                     // sourced:'',
                     // //增加項目focus變長
                     // card_length:false,
+                    cd_no: null,
+
                 });
                 this.card_name = "";
                 this.cards_list_card_input_box = false;
@@ -549,7 +551,7 @@ var main_content = new Vue({
         //       return card_progress_return
         //     }
         //   },
-        capro() {
+        capro(cardIndex) {
             let total_length = 0;
             // console.log(this.card_no);
             //   console.log(cardIndex);
@@ -557,22 +559,20 @@ var main_content = new Vue({
             if (this.card_no == null) {
                 return 0;
             } else {
-                for (i = 0; i < this.programs[this.page].cards[this.cd_no].todo_list_content_detail.length; i++) {
-                    total_length = total_length + this.programs[this.page].cards[this.cd_no].todo_list_content_detail[i].lists.length;
+                for (i = 0; i < this.programs[this.page].cards[cardIndex].todo_list_content_detail.length; i++) {
+                    total_length = total_length + this.programs[this.page].cards[cardIndex].todo_list_content_detail[i].lists.length;
                 }
                 return total_length;
             }
         },
-        checkpro() {
-            // console.log(this.card_no);
+        checkpro(cardIndex) {
             if (this.card_no == null) {
                 return 0;
             } else {
-                for (i = 0; i < this.programs[this.page].cards[this.cd_no].todo_list_content_detail.length; i++) {
-                   console.log(i);
-                    return this.programs[this.page].cards[this.cd_no].todo_list_content_detail[i].lists.filter(item => {
+                for (i = 0; i < this.programs[this.page].cards[cardIndex].todo_list_content_detail.length; i++) {
+                    return this.programs[this.page].cards[cardIndex].todo_list_content_detail[i].lists.filter(item => {
                         return item.status;
-                    })
+                    }).length
                 }
             }
         },
@@ -738,9 +738,9 @@ var main_content = new Vue({
             this.calendar_btn = false;
 
             //卡片背面
-            // if (this.page >=0 && this.card_no >=0){
-            //     this.programs[this.page].cards[this.card_no].member_input = "";
-            // }
+            if (this.page >=0 && this.card_no >=0){
+                this.programs[this.page].cards[this.card_no].member_input = "";
+            }
 
             this.todo_lightbox_switch = false;
             this.file_switch = false;
