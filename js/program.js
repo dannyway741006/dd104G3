@@ -447,26 +447,26 @@ var main_content = new Vue({
     //卡片內上傳檔案
     filesearch(e) {
       if (e.target.files.length > 0) {
-        this.file = e.target.files[0];
-        // console.log(this.file);
-        let readFile = new FileReader();
-        readFile.readAsDataURL(this.file);
+        this.file = e.target.files;
         this.file_switch = false;
-        readFile.addEventListener('loadend', this.fileSelected);
-
+        this.fileder_switch = false;
+        for (let i = 0; i < this.file.length; i++) {
+          //-------------取得檔名
+          let readFile = new FileReader();
+          console.log(this.programs)
+          let pro_card = this.programs[this.page].cards[this.card_no];
+          let file = this.file[i].name;
+          readFile.addEventListener("loadend", function (e) {
+            console.log(pro_card)
+            pro_card.file_result = readFile.result;
+            pro_card.filebox.push({
+              name: file,
+              source: pro_card.file_result,
+            });
+          });
+          readFile.readAsDataURL(this.file[i]);
+        }
       }
-
-    },
-
-    //卡片內上傳檔案
-
-    fileSelected(e) {
-      this.programs[this.page].cards[this.card_no].file_result = e.target.result;
-      this.programs[this.page].cards[this.card_no].filebox.push({
-        name: this.file.name,
-        source: this.programs[this.page].cards[this.card_no].file_result,
-      });
-
     },
 
 
@@ -591,6 +591,20 @@ var main_content = new Vue({
         return 0;
       } else {
         return Math.round((100 / length) * this.history_inner_progress(detailIndex).length);
+      }
+    },
+    showcalendarpanel(cardIndex) {
+      if (this.programs[this.page].cards[cardIndex].calendar_date == null) {
+        return '未設定';
+      } else {
+        return this.programs[this.page].cards[cardIndex].calendar_date;
+      }
+    },
+    history_showcalendarpanel(cardIndex) {
+      if (this.history_programs[this.history_page].cards[cardIndex].calendar_date == null) {
+        return '未設定';
+      } else {
+        return this.history_programs[this.history_page].cards[cardIndex].calendar_date;
       }
     },
   },
@@ -757,4 +771,3 @@ var main_content = new Vue({
     DatePicker
   },
 });
-
