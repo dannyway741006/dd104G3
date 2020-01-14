@@ -36,18 +36,19 @@ window.addEventListener('load', () => {
       </div>
       <div class="cart_product_message">
         <p>${productInfo[1]}</p>
-        <h3>${productInfo[3]}</h3>
+        <h3 class="cart_product_price">${productInfo[3]}</h3>
         <p>商品介紹 : ${productInfo[4]}</p>
         <p>商品介紹 : ${productInfo[5]}</p>
       </div>
       <div class="cart_product_qty">
         <button class="cart_cut_product"> - </button>
-        <p>${productInfo[6]}</p>
+        <p class="cart_product_number">${productInfo[6]}</p>
         <button class="cart_add_product"> + </button>
       </div>
     </div>`;
+
   }
-  //--把加總後的金額寫進總計欄--//
+  //--秀出初始加總後的金額並寫進總計欄--//
   document.querySelector('.cart_price_total').textContent = total;
 
   //***---購物車商品滑入特效---***///
@@ -58,32 +59,48 @@ window.addEventListener('load', () => {
     }, 200 * j);
   }
 
+  let cutProductBtn = document.querySelectorAll('.cart_cut_product');
+  let addProductBtn = document.querySelectorAll('.cart_add_product');
+  let productNumber = document.querySelectorAll('.cart_product_number');
+  let newPrice = document.querySelector('.cart_product_price');
+  let newTotal = 0;
+  let test = 0;
+  let productValue;
+  for (let k = 0; k < cartProduct.length; k++) {
+    productValue = parseInt(productNumber[k].textContent);
+    cutProductBtn[k].addEventListener('click', () => {
+      if (productValue == 1) {
+        confirm('確定刪除商品嗎？');
+        cartProduct[k].parentNode.removeChild(cartProduct[k]);
+      } else {
+        productValue--;
+        productNumber[k].textContent = productValue;
+        // console.log(productValue);
+      }
+    });
+    addProductBtn[k].addEventListener('click', () => {
+      productValue++;
+      productNumber[k].textContent = productValue;
+      // console.log(productValue);
+    });
 
+    // test = productValue;
+    // console.log(test);
 
+  }
+  // console.log(productValue);
 });
 
-
-
-// let cartStr = `
-//   <div class="cart_product">
-//   <div class="cart_product_img">
-//     <img src="${productInfo[0]}" alt="">
-//   </div>
-//   <div class="cart_product_message">
-//     <p>${productInfo[1]}</p>
-//     <h3>${productInfo[3]}</h3>
-//     <p>商品介紹 : ${productInfo[4]}/p>
-//     <p>商品介紹 : ${productInfo[5]}</p>
-//   </div>
-//   <div class="cart_product_qty">
-//     <button class="cart_cut_product"> - </button>
-//     <p>${productInfo[5]}</p>
-//     <button class="cart_add_product"> + </button>
-//   </div>
-// </div>
-//   `;
-
-
+let test = document.querySelector('.cart_price_total');
+for (let z = 0; z < test.length; z++) {
+  test[z].addEventListener('click', () => {
+    // console.log(productValue);
+    let test2 = document.querySelectorAll('.cart_product_number');
+    test3 = parseInt(test2[z].textContent);
+    console.log(test3);
+  })
+  
+}
 
 
 // //---開關購物車
