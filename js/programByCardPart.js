@@ -162,7 +162,7 @@ var main_content = new Vue({
 
 
                     cards: [],
-
+                   
 
                 });
                 this.program_name = "";
@@ -345,12 +345,12 @@ var main_content = new Vue({
         //抓卡片位置
         catch_card_position() {
 
-            $('.cards_list').sortable({
-                update: function (event, ui) {
-                    console.log(this);
-                    // this.parent('.cards_list').attr('id');
-                }
-            });
+            // $('.cards_list').sortable({
+            //     update: function (event, ui) {
+            //         console.log(this);
+            //         // this.parent('.cards_list').attr('id');
+            //     }
+            // });
 
 
             // console.log(this.programs[index].cards[cardIndex].card_name.parent('.cards_list').attr('id'));
@@ -597,8 +597,14 @@ var main_content = new Vue({
                 return this.programs[this.page].cards[cardIndex].calendar_date;
             }
         },
-        pushtocalsender(){
+        pushtocalsender(cardIndex){
+           if(this.showcalendarpanel(cardIndex)!='未設定'){
+            console.log(this.programs[this.page].cards[cardIndex].calendar_date);
 
+           }
+        },
+        dragList(e){
+            console.log(e)
         }
     },
 
@@ -734,22 +740,12 @@ var main_content = new Vue({
                 this.page = -1
             };
             //拖曳
-            $(".cards_list_todo,.cards_list_doing,.cards_list_done")
-                .sortable({
-                    connectWith: ".cards_list",
-                    stack: ".cards_column_body .cards_list",
-                    // helper: "original"
-                    // placeholder: 'dragging',
-                    // start: function (event, ui) {
-                    //   ui.item.toggleClass("dragging");
-                    // },
-                    // stop: function (event, ui) {
-                    //   ui.item.toggleClass("dragging");
-                    // },
-                    // scroll:true,
-                    // revert:true,
-                })
-                .disableSelection();
+            // $(".cards_list_todo,.cards_list_doing,.cards_list_done")
+            //     .sortable({
+            //         connectWith: ".cards_list",
+             
+            //     })
+            //     .disableSelection();
 
 
 
@@ -760,6 +756,6 @@ var main_content = new Vue({
 
     },
     components: {
-        DatePicker
+        DatePicker,
     },
 });
