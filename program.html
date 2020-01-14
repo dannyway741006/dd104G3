@@ -211,30 +211,31 @@
                     </transition>
                   </div>
 
-                  <div class="cards_list cards_list_todo" id="cards_list_todo">
+                  <div class="cards_list cards_list_todo" id="cards_list_todo" v-for="item in item.card_list_todo">
 
+<draggable  v-model="item.cards" v-bind="dragOptions">
 
-
-                    <div class="cards_list_card" v-for="(item, cardIndex) in item.cards" :key="cardIndex"
+                    <div class="cards_list_card" v-for="(item, cardIndex) in item.cards" :key="cardIndex.value"
                       @click.stop="open_card_func(),card_no=cardIndex" @mouseup="catch_card_position()">
                       <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
                       <p>{{item.card_name}}</p>
                       <div class="cards_list_card_icon_bar">
                         <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                             src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                        <span>{{showcalendarpanel(cardIndex)}}</span>
+                        <!-- <span>{{showcalendarpanel(cardIndex)}}</span> -->
+                        <span>0</span>
                         <div class="cards_list_card_icon_right">
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
                                 alt="">
                             </div>
-                            <span>{{card_progress_checked(cardIndex)}}/{{card_progress_sum(cardIndex)}}</span>
-                            <!--{{card_progress_sum(detailIndex)}} -->
+                            <!-- <span>{{card_progress_checked(cardIndex)}}/{{card_progress_sum(cardIndex)}}</span> -->
+                            <span>0/0</span>
                           </div>
                         </div>
                       </div>
                     </div>
-
+                  </draggable>
 
                   </div>
 
@@ -244,10 +245,10 @@
               <div class="cards_column doing_column">
                 <div class="cards_column_head" :style='{backgroundColor: item.color}'>進行中</div>
                 <div class="cards_column_body cards_column_body_doing">
-                  <div class="cards_list cards_list_doing" id="cards_list_doing">
+                  <div class="cards_list cards_list_doing" id="cards_list_doing" v-for="item in item.card_list_doing">
+                    <draggable  v-model="item.cards" v-bind="dragOptions">
 
-
-
+                    </draggable>
                   </div>
                 </div>
 
@@ -256,8 +257,10 @@
               <div class="cards_column done_column">
                 <div class="cards_column_head" :style='{backgroundColor: item.color}'>已完成</div>
                 <div class="cards_column_body cards_column_body_done">
-                  <div class="cards_list cards_list_done" id="cards_list_done">
+                  <div class="cards_list cards_list_done" id="cards_list_done" v-for="item in item.card_list_done">
+                    <draggable  v-model="item.cards" v-bind="dragOptions">
 
+                    </draggable>
                   </div>
                 </div>
 
@@ -444,256 +447,267 @@
         <!-- 現有卡片背面 -->
         <div class="mask" :class="{masked: opened}" @click="card_no=-1;history_card_no=-1;opened =! opened"> </div>
         <div v-if='nowProgram'>
-          <transition-group name="horizentalfade">
-            <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
-              v-for="(item,cardIndex) in nowProgram.cards" :key="cardIndex">
-              <div class="card_header_title" :style='{backgroundColor: programs[page].color}'>
-                <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
+          <div v-for="(item,card_list_index) in nowProgram.card_list_todo">
+            <transition-group name="horizentalfade">
+              <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
+                v-for="(item,cardIndex) in item.cards" :key="cardIndex">
+                <div class="card_header_title" :style='{backgroundColor: programs[page].color}'>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
 
 
 
-                <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
-              </div>
-
-              <div class="lightbox_content">
-                <div class="left_aside">
-                  <div class="first_right">
-                    <h3>新增至卡片</h3>
-                    <hr />
-                    <div class="first_right_member" @click.stop="openmember(),member_switch =! member_switch"
-                      :class="{click_light_two : member_switch}">
-                      <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
-                      成員
-                    </div>
-
-                    <div @click.stop="opentodo(),todo_switch =! todo_switch" class="todogo"
-                      :class="{click_light_three : todo_switch}">
-                      <img src="./img/content.22f4a956.svg" alt="" style="width: 20px;" />
-                      待辦清單
-                    </div>
-
-                    <div @click.stop="openfile(),fileder_switch =! fileder_switch" class="upfile"
-                      :class="{click_light_four : fileder_switch}">
-                      <img src="./img/card_img/paperclip.cf9c8806.svg" alt="" style="width: 20px;" />
-                      上傳附件
-                    </div>
-
-                    <!-- 新增待辦清單跳窗 -->
-                    <transition name="fade" mode="out-in">
-                      <div class="todo_lightbox" v-show="todo_lightbox_switch" @click.stop="">
-                        <label>
-                          <p>待辦清單標題</p>
-                          <!-- 讓燈箱的字和標題同步 -->
-                          <input type="text" class="todo_lightbox_input" v-model.trim="todoListTitle"
-                            @keyup.13="todo_list_add(cardIndex)">
-                        </label>
-                        <div class="todo_lightbox_botton" @click="todo_list_add(cardIndex)">
-                          <button>新增</button>
-                        </div>
-                      </div>
-                    </transition>
-
-                    <!-- 上船附件跳窗 -->
-                    <transition name="fade" mode="out-in">
-                      <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="filesearch">
-                        <h3>上傳檔案</h3>
-                        <form method="post" enctype="multipart/form-data">
-                          <label class="upfile_content">
-                            <p>上傳附件</p>
-                            <input type="file" multiple id="upFile">
-                          </label>
-                        </form>
-                      </div>
-                    </transition>
-
-                    <!-- 新增成員跳窗 -->
-                    <transition name="fade" mode="out-in">
-                      <div class="card_member_lightbox" v-show="card_meber_switch" @click.stop="">
-                        <h3>成員</h3>
-                        <br>
-                        <label for="">
-                          <input type="text" placeholder="搜尋成員" v-model.trim="item.member_input">
-                        </label>
-                        <h4>看版成員</h4>
-                        <ul>
-                          <li>
-                            <div class="card_member_message" v-for="(item,index) in showmember_select"
-                              @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
-                              <div><img :src="item.src" alt=""></div>
-                              <span class="card_member_name">{{item.member_name}}<span
-                                  class="card_memberId">{{item.userId}}</span></span>
-                              <div><img :src="item.check" alt=""></div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </transition>
-                  </div>
-
-                  <div class="second_right">
-                    <h3>卡片動作</h3>
-                    <hr />
-                    <div class="second_right_deletecard" @click="delete_card()">
-                      <img src="./img/card_img/delete.0df56913.svg" alt="" style="width: 20px;" />
-                      刪除卡片
-                    </div>
-                  </div>
+                  <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
-                <div class="right_aside">
-                  <div class="memberRight">
-                    <div class="card_memver_head">
-                      <div class="card_member_title">
-                        <div>
-                          <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt=""
-                            style="width: 20px;" />
-                        </div>
-                        <h3>成員</h3>
+
+                <div class="lightbox_content">
+                  <div class="left_aside">
+                    <div class="first_right">
+                      <h3>新增至卡片</h3>
+                      <hr />
+                      <div class="first_right_member" @click.stop="openmember(),member_switch =! member_switch"
+                        :class="{click_light_two : member_switch}">
+                        <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
+                        成員
                       </div>
-                      <div class="memimg">
-                        <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"><img
-                            :src="item.source" alt=""></div>
-                        <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
-                        <div class="add_member_to_card"
-                          @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
-                          <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg">
 
-
-                          <transition name="fade" mode="out-in">
-                            <div class="card_member_lightbox member_plus_follow" v-show="add_card_meber_switch"
-                              @click.stop="">
-                              <h3>成員</h3>
-                              <br>
-                              <label for="">
-                                <input type="text" placeholder="搜尋成員" v-model.trim="item.member_input">
-                              </label>
-                              <h4>看版成員</h4>
-                              <ul>
-                                <li>
-                                  <div class="card_member_message" v-for="(item,index) in showmember_select"
-                                    @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
-                                    <div><img :src="item.src" alt=""></div>
-                                    <span class="card_member_name">{{item.member_name}}<span
-                                        class="card_memberId">{{item.userId}}</span></span>
-                                    <div><img :src="item.check" alt=""></div>
-                                  </div>
-                                </li>
-                              </ul>
-                            </div>
-                          </transition>
-                        </div>
+                      <div @click.stop="opentodo(),todo_switch =! todo_switch" class="todogo"
+                        :class="{click_light_three : todo_switch}">
+                        <img src="./img/content.22f4a956.svg" alt="" style="width: 20px;" />
+                        待辦清單
                       </div>
-                    </div>
 
-                    <div class="calendar">
-                      <div class="calendar_title">
-                        <div><img src="./img/calendar.e1ea5ef5.svg" alt="" style="width: 20px;" /></div>
-                        <h3>到期日</h3>
+                      <div @click.stop="openfile(),fileder_switch =! fileder_switch" class="upfile"
+                        :class="{click_light_four : fileder_switch}">
+                        <img src="./img/card_img/paperclip.cf9c8806.svg" alt="" style="width: 20px;" />
+                        上傳附件
                       </div>
-                      <div class="calendar_status">
-                        <div class="calendar_img">
-                          <img src="./img/check.svg" alt="" v-if="item.dateline" @click="check_dateline">
-                          <img src="./img/uncheck.svg" alt="" v-else @click="check_dateline">
 
-                        </div>
-                        <!-- hover時顏色好像改不了 -->
-                        <p>
-                          <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm'
-                            value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" />
-                        </p>
-                        <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
-                      </div>
-                    </div>
-
-
-                    <!-- 新增出來的待辦清單 -->
-                    <transition-group name="fade" tag="div">
-                      <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
-                        :key="detailIndex" @change="detail_no=detailIndex">
-                        <div class="todo_title">
-                          <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
-                          </div>
-                          <h3 @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
-                            v-show="item.test_title_name">{{item.title}}</h3>
-                          <div class="change_title" v-show="item.showname" @click.stop="">
-                            <textarea name="" v-model.trim="item.title"
-                              @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name"></textarea>
-                          </div>
-
-                          <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
-                              src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
-                        </div>
-                        <div class="todo_progress_bar">
-                          <p>{{inner_progress_bar(detailIndex)}}%</p>
-                          <div class="progress_bar">
-                            <span :style="{width:inner_progress_bar(detailIndex)+'%'}"></span>
-                          </div>
-                        </div>
-                        <!-- 新增的卡片細項 -->
-
-                        <draggable v-model="item.lists" :options="{animation:500}">
-                          <transition-group name="fade" tag="div">
-                            <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                              <div @click="item.status = !item.status,item.text =!item.text">
-                                <img src="./img/check.svg" alt="" v-if="item.status">
-                                <img src="./img/uncheck.svg" alt="" v-else>
-                              </div>
-                              <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                              <div><img src="./img/icon/time-left.svg" alt="" @click="calltomato"></div>
-                              <div><img src="./img/card_img/delete.0df56913.svg" alt=""
-                                  @click="delete_todo_title(detailIndex,index)"></div>
-                            </div>
-                          </transition-group>
-                        </draggable>
-
-
-                        <div class="card_add_button">
-                          <label for="">
-                            <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
-                              @keyup.enter="add_card_detail(detailIndex)"
-                              :style='{backgroundColor: programs[page].color}' v-model.trim="item.test"
-                              @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
-                              @blur="item.card_length =! item.card_length,item.test=''">
-                            <img src="./img/card_img/plus_write.svg" alt="" width="14"
-                              @mousedown="add_card_detail(detailIndex)">
+                      <!-- 新增待辦清單跳窗 -->
+                      <transition name="fade" mode="out-in">
+                        <div class="todo_lightbox" v-show="todo_lightbox_switch" @click.stop="">
+                          <label>
+                            <p>待辦清單標題</p>
+                            <!-- 讓燈箱的字和標題同步 -->
+                            <input type="text" class="todo_lightbox_input" v-model.trim="todoListTitle"
+                              @keyup.13="todo_list_add(cardIndex)">
                           </label>
+                          <div class="todo_lightbox_botton" @click="todo_list_add(cardIndex)">
+                            <button>新增</button>
+                          </div>
                         </div>
+                      </transition>
+
+                      <!-- 上船附件跳窗 -->
+                      <transition name="fade" mode="out-in">
+                        <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="filesearch">
+                          <h3>上傳檔案</h3>
+                          <form method="post" enctype="multipart/form-data">
+                            <label class="upfile_content">
+                              <p>上傳附件</p>
+                              <input type="file" multiple id="upFile">
+                            </label>
+                          </form>
+                        </div>
+                      </transition>
+
+                      <!-- 新增成員跳窗 -->
+                      <transition name="fade" mode="out-in">
+                        <div class="card_member_lightbox" v-show="card_meber_switch" @click.stop="">
+                          <h3>成員</h3>
+                          <br>
+                          <label for="">
+                            <input type="text" placeholder="搜尋成員" v-model.trim="item.member_input">
+                          </label>
+                          <h4>看版成員</h4>
+                          <ul>
+                            <li>
+                              <div class="card_member_message" v-for="(item,index) in showmember_select"
+                                @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                                <div><img :src="item.src" alt=""></div>
+                                <span class="card_member_name">{{item.member_name}}<span
+                                    class="card_memberId">{{item.userId}}</span></span>
+                                <div><img :src="item.check" alt=""></div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </transition>
+                    </div>
+
+                    <div class="second_right">
+                      <h3>卡片動作</h3>
+                      <hr />
+                      <div class="second_right_deletecard" @click="delete_card()">
+                        <img src="./img/card_img/delete.0df56913.svg" alt="" style="width: 20px;" />
+                        刪除卡片
+                      </div>
+                    </div>
+                  </div>
+                  <div class="right_aside">
+                    <div class="memberRight">
+                      <div class="card_memver_head">
+                        <div class="card_member_title">
+                          <div>
+                            <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt=""
+                              style="width: 20px;" />
+                          </div>
+                          <h3>成員</h3>
+                        </div>
+                        <div class="memimg">
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"><img
+                              :src="item.source" alt=""></div>
+                          <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
+                          <div class="add_member_to_card"
+                            @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
+                            <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg">
+
+
+                            <transition name="fade" mode="out-in">
+                              <div class="card_member_lightbox member_plus_follow" v-show="add_card_meber_switch"
+                                @click.stop="">
+                                <h3>成員</h3>
+                                <br>
+                                <label for="">
+                                  <input type="text" placeholder="搜尋成員" v-model.trim="item.member_input">
+                                </label>
+                                <h4>看版成員</h4>
+                                <ul>
+                                  <li>
+                                    <div class="card_member_message" v-for="(item,index) in showmember_select"
+                                      @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                                      <div><img :src="item.src" alt=""></div>
+                                      <span class="card_member_name">{{item.member_name}}<span
+                                          class="card_memberId">{{item.userId}}</span></span>
+                                      <div><img :src="item.check" alt=""></div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </transition>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="calendar">
+                        <div class="calendar_title">
+                          <div><img src="./img/calendar.e1ea5ef5.svg" alt="" style="width: 20px;" /></div>
+                          <h3>到期日</h3>
+                        </div>
+                        <div class="calendar_status">
+                          <div class="calendar_img">
+                            <img src="./img/check.svg" alt="" v-if="item.dateline" @click="check_dateline">
+                            <img src="./img/uncheck.svg" alt="" v-else @click="check_dateline">
+
+                          </div>
+                          <!-- hover時顏色好像改不了 -->
+                          <p>
+                            <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm'
+                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" />
+                          </p>
+                          <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
+                        </div>
+                      </div>
+
+
+                      <!-- 新增出來的待辦清單 -->
+                      <transition-group name="fade" tag="div">
+                        <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
+                          :key="detailIndex" @change="detail_no=detailIndex">
+                          <div class="todo_title">
+                            <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
+                            </div>
+                            <h3
+                              @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
+                              v-show="item.test_title_name">{{item.title}}</h3>
+                            <div class="change_title" v-show="item.showname" @click.stop="">
+                              <textarea name="" v-model.trim="item.title"
+                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name"></textarea>
+                            </div>
+
+                            <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
+                                src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
+                          </div>
+                          <div class="todo_progress_bar">
+                            <p>{{inner_progress_bar(detailIndex)}}%</p>
+                            <div class="progress_bar">
+                              <span :style="{width:inner_progress_bar(detailIndex)+'%'}"></span>
+                            </div>
+                          </div>
+                          <!-- 新增的卡片細項 -->
+
+                          <draggable v-model="item.lists" :options="{animation:500}">
+                            <transition-group name="fade" tag="div">
+                              <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
+                                <div @click="item.status = !item.status,item.text =!item.text">
+                                  <img src="./img/check.svg" alt="" v-if="item.status">
+                                  <img src="./img/uncheck.svg" alt="" v-else>
+                                </div>
+                                <p :class="{lineThrough:item.text}">{{item.content}}</p>
+                                <div><img src="./img/icon/time-left.svg" alt="" @click="calltomato"></div>
+                                <div><img src="./img/card_img/delete.0df56913.svg" alt=""
+                                    @click="delete_todo_title(detailIndex,index)"></div>
+                              </div>
+                            </transition-group>
+                          </draggable>
+
+
+                          <div class="card_add_button">
+                            <label for="">
+                              <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
+                                @keyup.enter="add_card_detail(detailIndex)"
+                                :style='{backgroundColor: programs[page].color}' v-model.trim="item.test"
+                                @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
+                                @blur="item.card_length =! item.card_length,item.test=''">
+                              <img src="./img/card_img/plus_write.svg" alt="" width="14"
+                                @mousedown="add_card_detail(detailIndex)">
+                            </label>
+                          </div>
+                        </div>
+<<<<<<< HEAD
                       </div>
                     </transition-group>
               
+=======
+                      </transition-group>
+
+>>>>>>> 9fa075be9bd2e7d42c83daa18e681b62d6ee2098
 
 
 
-                    <!-- 上傳附件 -->
-                    <div class="card_file">
-                      <div class="card_file_title">
-                        <div class="file_title_img"><img src="./img/card_img/paperclip.cf9c8806.svg" alt="" width="20">
+                      <!-- 上傳附件 -->
+                      <div class="card_file">
+                        <div class="card_file_title">
+                          <div class="file_title_img"><img src="./img/card_img/paperclip.cf9c8806.svg" alt=""
+                              width="20">
+                          </div>
+                          <h3>附件</h3>
                         </div>
-                        <h3>附件</h3>
-                      </div>
-                      <ul>
-                        <transition-group name="fade">
-                          <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
-                            <a :href="item.source" :download="item.name">{{item.name}}</a>
-                            <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="delete_file()">
-                            </div>
-                          </li>
-                        </transition-group>
-                      </ul>
-                      <div class="card_upload_file">
-                        <!-- 上傳的內容 -->
-                        <form method="post" enctype="multipart/form-data">
-                          <label class="upfile_content" :style='{backgroundColor: programs[page].color}'>
-                            <p>上傳附件</p>
-                            <input type="file" @change="filesearch" multiple>
-                          </label>
-                        </form>
+                        <ul>
+                          <transition-group name="fade">
+                            <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
+                              <a :href="item.source" :download="item.name">{{item.name}}</a>
+                              <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                                  @click="delete_file()">
+                              </div>
+                            </li>
+                          </transition-group>
+                        </ul>
+                        <div class="card_upload_file">
+                          <!-- 上傳的內容 -->
+                          <form method="post" enctype="multipart/form-data">
+                            <label class="upfile_content" :style='{backgroundColor: programs[page].color}'>
+                              <p>上傳附件</p>
+                              <input type="file" @change="filesearch" multiple>
+                            </label>
+                          </form>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </transition-group>
+            </transition-group>
+          </div>
         </div>
 
         <!-- 已完成卡片背面 -->
@@ -776,7 +790,7 @@
                                 <img src="./img/uncheck.svg" alt="" v-else>
                               </div>
                               <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                            
+
                             </div>
                           </transition-group>
                         </draggable>
@@ -805,7 +819,7 @@
                           </li>
                         </transition-group>
                       </ul>
-                    
+
                     </div>
                   </div>
                 </div>
@@ -839,7 +853,7 @@
     </script>
   <script src="../js/background.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script> -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>

@@ -163,8 +163,10 @@ var main_content = new Vue({
             },
           ],
 
+          card_list_todo: [{cards:[]}],
+          card_list_doing: [{cards:[]}],
+          card_list_done: [{cards:[]}],
 
-          cards: [],
 
 
         });
@@ -202,59 +204,65 @@ var main_content = new Vue({
       //  console.log(index);
 
       if (this.card_name !== "") {
-        this.programs[index].cards.push({
-          card_name: this.card_name,
+        this.programs[index].card_list_todo[0].cards.push({
+          
+            card_name: this.card_name,
 
-          card_member: [{
-              member_name: '王曉明',
-              userId: 'user3456',
-              src: './img/program_img/program_member_1.png',
-              check: '',
-              uncolor: false,
-            },
-            {
-              member_name: '楊小梅',
-              userId: 'user4756',
-              src: "./img/program_img/program_member_2.png",
-              check: '',
-              uncolor: false,
-            },
-            {
-              member_name: '張大千',
-              userId: 'user1234',
-              src: './img/program_img/program_member_3.png',
-              check: '',
-              uncolor: false,
-            },
-            {
-              member_name: '陳小羽',
-              userId: 'user456',
-              src: './img/card_img/878378-XXL.jpg',
-              check: '',
-              uncolor: false,
-            },
-          ],
+            card_member: [{
+                member_name: '王曉明',
+                userId: 'user3456',
+                src: './img/program_img/program_member_1.png',
+                check: '',
+                uncolor: false,
+              },
+              {
+                member_name: '楊小梅',
+                userId: 'user4756',
+                src: "./img/program_img/program_member_2.png",
+                check: '',
+                uncolor: false,
+              },
+              {
+                member_name: '張大千',
+                userId: 'user1234',
+                src: './img/program_img/program_member_3.png',
+                check: '',
+                uncolor: false,
+              },
+              {
+                member_name: '陳小羽',
+                userId: 'user456',
+                src: './img/card_img/878378-XXL.jpg',
+                check: '',
+                uncolor: false,
+              },
+            ],
+  
+  
+            //卡片內會員顯示
+            showhideMember: false,
+            member_input: "",
+            member_inout: [],
+  
+  
+            todo_list_content_detail: [],
+  
+            //calendar
+            dateline: false,
+            dateline_text: "未完成",
+            calendar_date: '未設定',
+  
+            //上傳檔案
+            filebox: [],
+            file_switch: false,
+            // sourced:'',
+            // //增加項目focus變長
+            // card_length:false,
+          
+    
 
 
-          //卡片內會員顯示
-          showhideMember: false,
-          member_input: "",
-          member_inout: [],
-
-
-          todo_list_content_detail: [],
-
-          //calendar
-          dateline: false,
-          dateline_text: "未完成",
-          calendar_date: '未設定',
-
-          //上傳檔案
-          filebox: [],
-          file_switch: false,
-          // sourced:'',
-          // //增加項目focus變長
-          // card_length:false,
+        
         });
         this.card_name = "";
         this.cards_list_card_input_box = false;
@@ -353,14 +361,14 @@ var main_content = new Vue({
 
     },
     //抓卡片位置
-    catch_card_position() {
+    // catch_card_position() {
 
-      $('.cards_list').sortable({
-        update: function (event, ui) {
-          console.log(this);
-          // this.parent('.cards_list').attr('id');
-        }
-      });
+    //   $('.cards_list').sortable({
+    //     update: function (event, ui) {
+    //       console.log(this);
+    //       // this.parent('.cards_list').attr('id');
+    //     }
+    //   });
 
 
       // console.log(this.programs[index].cards[cardIndex].card_name.parent('.cards_list').attr('id'));
@@ -371,7 +379,7 @@ var main_content = new Vue({
 
       // console.log(this.parentNode)
 
-    },
+    // },
 
     //刪除卡片
     delete_card(index) {
@@ -661,9 +669,22 @@ var main_content = new Vue({
         pro_page.hideMember_sum = false;
       }
     },
+    dragOptions(){
+      return {
+        draggable:"cards_list_card",
+        animation: 500,//动画时间
+        group: "cards_list",//分组用的，同一组的不同list可以相互拖动
+        // disabled: false,//定义是否此sortable对象是否可用，为true时sortable对象不能拖放排序等功能
+        // ghostClass: "sortable-ghost",  // 设置拖动元素的class的占位符的类名。
+        // chosenClass: "sortable-chosen", // 目标被选中时添加css样式
+        // dragClass: "dragClass",//目标拖动过程中添加css样式
+        // fallbackClass: "sortable-fallback", //当forceFallback设置为true时，拖放过程中鼠标附着单元的样式
+        scroll: false, //当排序的容器是个可滚动的区域，拖放可以引起区域滚动
+      };
 
-    showmember_select() {
-      if (this.programs[this.page].cards[this.card_no].member_input.length) {
+    },
+    showmember_select(step) {
+      if (this.programs[this.page][step].cards[this.card_no].member_input.length) {
         return this.programs[this.page].cards[this.card_no].card_member.filter(item => {
           let content = item.userId.toLowerCase();
           let name = item.member_name;
@@ -721,7 +742,11 @@ var main_content = new Vue({
       this.add_cards_btn = false;
       this.calendar_btn = false;
       //卡片背面
+<<<<<<< HEAD
       if (this.page >= 0 && this.card_no == 0) {
+=======
+      if (this.page >= 0 && this.card_no == 0 && this.card_no > 0) {
+>>>>>>> 9fa075be9bd2e7d42c83daa18e681b62d6ee2098
         this.programs[this.page].cards[this.card_no].member_input = "";
       }
 
@@ -741,22 +766,24 @@ var main_content = new Vue({
         this.page = -1
       };
       //拖曳
-      $(".cards_list_todo,.cards_list_doing,.cards_list_done")
-        .sortable({
-          connectWith: ".cards_list",
-          stack: ".cards_column_body .cards_list",
-          // helper: "original"
-          // placeholder: 'dragging',
-          // start: function (event, ui) {
-          //   ui.item.toggleClass("dragging");
-          // },
-          // stop: function (event, ui) {
-          //   ui.item.toggleClass("dragging");
-          // },
-          // scroll:true,
-          // revert:true,
-        })
-        .disableSelection();
+      // $(".cards_list_todo,.cards_list_doing,.cards_list_done")
+      //   .sortable({
+      //     connectWith: ".cards_list",
+      //     stack: ".cards_column_body .cards_list",
+      //     // helper: "original"
+      //     placeholder: 'dragging',
+      //     // start: function (event, ui) {
+      //     //   ui.item.toggleClass("dragging");
+      //     // },
+      //     // stop: function (event, ui) {
+      //     //   ui.item.toggleClass("dragging");
+      //     // },
+      //     scroll: true,
+      //     scrollSensitivity: 100,
+      //     // opacity:0.6,
+      //     // revert:true,
+      //   })
+      //   .disableSelection();
 
 
     });
