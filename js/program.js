@@ -124,6 +124,7 @@ var main_content = new Vue({
 
     //file
     file: '',
+    todo_type: null
 
 
 
@@ -163,9 +164,9 @@ var main_content = new Vue({
             },
           ],
 
-          card_list_todo: [{cards:[]}],
-          card_list_doing: [{cards:[]}],
-          card_list_done: [{cards:[]}],
+          card_list_todo: [{cards:[], type:'card_list_todo'}],
+          card_list_doing: [{cards:[], type:'card_list_doing'}],
+          card_list_done: [{cards:[], type:'card_list_done'}],
 
 
 
@@ -525,16 +526,16 @@ var main_content = new Vue({
         this.showmember_select[index].check = "./img/checked_member.svg";
 
         // console.log(this.member_inout);
-        if (pro_page.cards[this.card_no].member_inout.map(x => x.source).indexOf(this.showmember_select[index].src) === -1) {
-          pro_page.cards[this.card_no].member_inout.push({
+        if (pro_page[this.todo_type][0].cards[this.card_no].member_inout.map(x => x.source).indexOf(this.showmember_select[index].src) === -1) {
+          pro_page[this.todo_type][0].cards[this.card_no].member_inout.push({
             source: this.showmember_select[index].src,
           })
         }
       } else {
         this.showmember_select[index].check = '';
         this.showmember_select[index].uncolor = false;
-        let findIndex = pro_page.cards[this.card_no].member_inout.findIndex(item => item.source === this.showmember_select[index].src);
-        pro_page.cards[this.card_no].member_inout.splice(findIndex, 1);
+        let findIndex = pro_page[this.todo_type][0].cards[this.card_no].member_inout.findIndex(item => item.source === this.showmember_select[index].src);
+        pro_page[this.todo_type][0].cards[this.card_no].member_inout.splice(findIndex, 1);
 
       }
     },
@@ -598,7 +599,7 @@ var main_content = new Vue({
         return Math.round((100 / length) * this.history_inner_progress(detailIndex).length);
       }
     },
-    showcalendarpanel(cardIndex) {
+    showcalendarpanel(card_list,cardIndex) {
       if (this.programs[this.page].cards[cardIndex].calendar_date == null) {
         return '未設定';
       } else {
@@ -680,28 +681,28 @@ var main_content = new Vue({
       };
 
     },
-    showmember_select(step) {
-      if (this.programs[this.page][step].cards[this.card_no].member_input.length) {
-        return this.programs[this.page].cards[this.card_no].card_member.filter(item => {
+    showmember_select() {
+      if (this.programs[this.page][this.todo_type][0].cards[this.card_no].member_input.length) {
+        return this.programs[this.page][this.todo_type][0].cards[this.card_no].card_member.filter(item => {
           let content = item.userId.toLowerCase();
           let name = item.member_name;
           let realcontent = content.concat(name);
-          let keyword = this.programs[this.page].cards[this.card_no].member_input.toLowerCase();
+          let keyword = this.programs[this.page][this.todo_type][0].cards[this.card_no].member_input.toLowerCase();
           return realcontent.indexOf(keyword) != -1;
         })
       } else {
-        return this.programs[this.page].cards[this.card_no].card_member;
+        return this.programs[this.page][this.todo_type][0].cards[this.card_no].card_member;
       }
     },
 
     hidemembers() {
       let pro_page = this.programs[this.page];
-      if (pro_page.cards[this.card_no].member_inout.length > 3) {
-        pro_page.cards[this.card_no].showhideMember = true;
-        let member_length = pro_page.cards[this.card_no].member_inout.length;
+      if (pro_page[this.todo_type][0].cards[this.card_no].member_inout.length > 3) {
+        pro_page[this.todo_type][0].cards[this.card_no].showhideMember = true;
+        let member_length = pro_page[this.todo_type][0].cards[this.card_no].member_inout.length;
         return member_length - 3;
       } else {
-        pro_page.cards[this.card_no].showhideMember = false;
+        pro_page[this.todo_type][0].cards[this.card_no].showhideMember = false;
       }
     },
     history_hidemembers() {
@@ -739,11 +740,7 @@ var main_content = new Vue({
       this.add_cards_btn = false;
       this.calendar_btn = false;
       //卡片背面
-<<<<<<< HEAD
-      if (this.page >= 0 && this.card_no == 0) {
-=======
       if (this.page >= 0 && this.card_no == 0 && this.card_no > 0) {
->>>>>>> 9fa075be9bd2e7d42c83daa18e681b62d6ee2098
         this.programs[this.page].cards[this.card_no].member_input = "";
       }
 
