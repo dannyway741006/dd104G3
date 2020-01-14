@@ -721,7 +721,7 @@ var main_content = new Vue({
       this.add_cards_btn = false;
       this.calendar_btn = false;
       //卡片背面
-      if (this.page >= 0 && this.card_no >= 0) {
+      if (this.page >= 0 && this.card_no == 0) {
         this.programs[this.page].cards[this.card_no].member_input = "";
       }
 
