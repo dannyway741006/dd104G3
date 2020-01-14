@@ -258,9 +258,6 @@ var main_content = new Vue({
             // sourced:'',
             // //增加項目focus變長
             // card_length:false,
-          
-    
-
 
         
         });
