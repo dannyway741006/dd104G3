@@ -321,12 +321,12 @@
                     <div>Friday</div>
                     <div style="color: red;">Saturday</div>
                   </div>
-                  <div class="week" v-for="i in 5">
+                  <div class="week" v-for="i in 6">
                     <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
                            handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
                            other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
-                          }">
-
+                          }">1
+                      <!-- {{pullcalendarday}} -->
                     </div>
                   </div>
                 </div>
