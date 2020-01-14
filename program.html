@@ -213,7 +213,8 @@
 
                   <div class="cards_list cards_list_todo" id="cards_list_todo" v-for="listitem in item.card_list_todo">
 
-                    <draggable v-model="item.cards" :options="{group:'cards_list',animation: 500,scroll:true}" style="border: 1px solid red;">
+                    <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
+                      style="border: 1px solid red;">
 
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
@@ -245,9 +246,31 @@
               <div class="cards_column doing_column">
                 <div class="cards_column_head" :style='{backgroundColor: item.color}'>進行中</div>
                 <div class="cards_column_body cards_column_body_doing">
-                  <div class="cards_list cards_list_doing" id="cards_list_doing" v-for="item in item.card_list_doing">
-                    <draggable v-model="item.cards" :options="{group:'cards_list',animation: 500,scroll:true}" style="border: 1px solid red;">
-                     
+                  <div class="cards_list cards_list_doing" id="cards_list_doing"
+                    v-for="listitem in item.card_list_doing">
+                    <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
+                      style="border: 1px solid red;">
+
+                      <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
+                        @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
+                        <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
+                        <p>{{item.card_name}}</p>
+                        <div class="cards_list_card_icon_bar">
+                          <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                              src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                          <!-- <span>{{showcalendarpanel(card_list_todo,cardIndex)}}</span> -->
+                          <span>0</span>
+                          <div class="cards_list_card_icon_right">
+                            <div class="cards_list_card_icon_right">
+                              <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
+                                  alt="">
+                              </div>
+                              <!-- <span>{{card_progress_checked(cardIndex)}}/{{card_progress_sum(cardIndex)}}</span> -->
+                              <span>0/0</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </draggable>
                   </div>
                 </div>
@@ -258,7 +281,8 @@
                 <div class="cards_column_head" :style='{backgroundColor: item.color}'>已完成</div>
                 <div class="cards_column_body cards_column_body_done">
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="item in item.card_list_done">
-                    <draggable v-model="item.cards" :options="{group:'cards_list',animation: 500,scroll:true}" style="border: 1px solid red;">
+                    <draggable v-model="item.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
+                      style="border: 1px solid red;">
 
                     </draggable>
                   </div>
