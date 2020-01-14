@@ -14,6 +14,7 @@
   <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any" />
 
   <link href="./css/back.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- <link href="./vendors/pace-progress/css/pace.min.css" rel="stylesheet"> -->
   <!-- Global site tag (gtag.js) - Google Analytics-->
   <script>
@@ -221,97 +222,150 @@
               <div class="bd-example">
                 <p class="h4">商城商品管理</p>
               </div>
-              <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-
-            </div>
-          </div>
-        </div>
 
 
 
+              <form action="">
 
-        <!-- 商城訂單管理 -->
-        <div class="animated fadeIn backTable">
-          <div class="card">
-            <div class="card-body">
-              <div class="bd-example">
-                <p class="h4">商城訂單管理</p>
+         
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home" onclick="checkId();">商品管理</a></li>
+              
+                <li><a data-toggle="tab" href="#menu1">新增商品</a></li>
+
+
+              </ul>
+            </form>
+              <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+               
+                  <!-- <h3>商品管理</h3> -->
+                  <!-- <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">商品編號</th>
+                        <th scope="col">同商品編號</th>
+                        <th scope="col">商品名稱</th>
+                        <th scope="col">商品價格</th>
+                        <th scope="col">商品圖片路徑</th>
+                        <th scope="col">商品顏色</th>
+                        <th scope="col">商品說明</th>
+                        <th scope="col">商品類別</th>
+                        <th scope="col">商品背景</th>
+                        <th scope="col">商品輪播圖</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                      </tr>
+                    </tbody>
+                  </table> -->
+                  <div id="back_product">
+
+                  </div>
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                  <h3>新增商品</h3>
+
+                </div>
+
               </div>
-              <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
-
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
       </div>
-    </main>
+
+
+
+
+      <!-- 商城訂單管理 -->
+      <div class="animated fadeIn backTable">
+        <div class="card">
+          <div class="card-body">
+            <div class="bd-example">
+              <p class="h4">商城訂單管理</p>
+            </div>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </main>
 
 
 
@@ -324,6 +378,46 @@
   </footer>
 
 
+  <script src="./js/back.js"></script>
+
+
+
+  <script>
+  
+  function checkId() {
+  let xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("load" = function () {
+    if (xhr.status == 200) {
+      document.getElementById("back_product").innerHTML = xhr.responseText;
+    } else {
+      alert(xhr.status);
+    }
+  })
+
+  //設定好所要連結的程式
+  let url = "../php/mall/back_product.php";
+  xhr.open("post",url, true);
+  
+  //送出資料
+  xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+  xhr.send();
+}
+  
+  
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script>
     var navItem = document.querySelectorAll(".nav-item");
@@ -331,16 +425,18 @@
 
     backTable[0].style.display = "block";
     for (var i = 0; i < navItem.length; i++) {
-      navItem[i].addEventListener("click", function () {
+      navItem[i].addEventListener("click", function() {
         for (var j = 0; j < backTable.length; j++) {
-        backTable[j].style.display = "none";
-      }
+          backTable[j].style.display = "none";
+        }
         var backNum = this.id.substr((this.id.length) - 1) - 1;
         backTable[`${backNum}`].style.display = "block";
       })
 
     }
   </script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>
