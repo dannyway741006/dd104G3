@@ -2,9 +2,9 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "../back_2/scss/style.scss",
-        "../back_2/scss/_variables.scss",
-        "../back_2/scss/_custom.scss"
+        "../black/scss/style.scss",
+        "../black/scss/_variables.scss",
+        "../black/scss/_custom.scss"
     ],
     "names": [],
     "file": "style.min.css"
