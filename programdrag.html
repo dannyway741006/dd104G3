@@ -244,7 +244,7 @@
               <div class="cards_column doing_column">
                 <div class="cards_column_head" :style='{backgroundColor: item.color}'>進行中</div>
                 <div class="cards_column_body cards_column_body_doing">
-                  <div class="cards_list cards_list_doing" id="cards_list_doing" v-for="item in item.card_list_doing">
+                  <div class="cards_list cards_list_doing" id="cards_list_doing" v-for="listitem in item.card_list_doing">
                    
                       <draggable v-model="item.cards" :options="{ group:'cards_list',animation:500}">
 

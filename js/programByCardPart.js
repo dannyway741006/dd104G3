@@ -124,7 +124,9 @@ var main_content = new Vue({
 
         //file
         file: '',
-
+        
+        //date
+        calender_date:[],
     },
     methods: {
         //新增專案
@@ -599,13 +601,24 @@ var main_content = new Vue({
         },
         pushtocalsender(cardIndex){
            if(this.showcalendarpanel(cardIndex)!='未設定'){
-            console.log(this.programs[this.page].cards[cardIndex].calendar_date);
+            console.log(this.programs[this.page].cards[cardIndex].calendar_date.substring(0,10).split("-"));
+             console.log(this.calendarMonth[41].year)
+            //  console.log(year)
+            let arr=this.programs[this.page].cards[cardIndex].calendar_date.substring(0,10).split("-");
+            let year=arr[0];
+            let month=arr[1];
+            let date=arr[2];
+            console.log(year)
+            for(let i=0;i<42;i++){
+               if(year==this.calendarMonth[i].year && month==this.calendarMonth[i].month && date==this.calendarMonth[i].date){
+                // this.pullcalendarday=1;
 
+            } 
+            }
+          
            }
         },
-        dragList(e){
-            console.log(e)
-        }
+      
     },
 
     computed: {
@@ -630,7 +643,7 @@ var main_content = new Vue({
                     month: date.getMonth(),
                     date: date.getDate(),
                     day: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()],
-
+                    programdate:[''+(date.getFullYear()),(date.getMonth()+1)<10 ? '0'+ (date.getMonth()+1) : ''+(date.getMonth()+1),(date.getDate())<10 ? '0'+(date.getDate()):''+(date.getDate())]
                 })
             }
             return data
