@@ -213,7 +213,8 @@
                   <div class="cards_list cards_list_todo" id="cards_list_todo">
 
 
-                    <draggable v-model="item.cards" :options="{group:'people',animation:500,sort:true}" style="height: 500px;border: 1px solid red;">
+                    <draggable v-model="item.cards" :options="{group:'people',animation:500,sort:true}"
+                      style="height: 500px;border: 1px solid red;">
                       <div class="cards_list_card" v-for="(item, cardIndex) in item.cards" :key="cardIndex"
                         @click.stop="open_card_func(),card_no=cardIndex" @mouseup="catch_card_position()">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
@@ -234,7 +235,7 @@
                         </div>
                       </div>
                     </draggable>
-                    
+
                   </div>
 
                 </div>
@@ -248,8 +249,9 @@
 
 
                   <div class="cards_list cards_list_doing" id="cards_list_doing">
-                    <draggable v-model="item.cards" :options="{group:'people',animation:500,sort:true}"  style="height: 500px;border: 1px solid red;">
-                    
+                    <draggable v-model="item.cards" :options="{group:'people',animation:500,sort:true}"
+                      style="height: 500px;border: 1px solid red;">
+
                     </draggable>
                   </div>
 
@@ -263,8 +265,9 @@
                 <div class="cards_column_body cards_column_body_done">
 
                   <div class="cards_list cards_list_done" id="cards_list_done">
-                    <draggable v-model="item.cards" :options="{group:'people',animation:500,sort:true}"  style="height: 500px;border: 1px solid red;">
-                     
+                    <draggable v-model="item.cards" :options="{group:'people',animation:500,sort:true}"
+                      style="height: 500px;border: 1px solid red;">
+
 
                     </draggable>
 
@@ -324,9 +327,15 @@
                   <div class="week" v-for="i in 6">
                     <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
                            handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
-                           other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
-                          }">1
-                      <!-- {{pullcalendarday}} -->
+                           other:calendarMonth[(i-1)*7+j-1].month !== calendar.month,
+                          }">
+                      <div v-for="item in todolist_cal"  v-if="todolist_date.year && calendarMonth[(i-1)*7+j-1].month+1 == todolist_date.month  && calendarMonth[(i-1)*7+j-1].date == todolist_date.date">
+                        <!-- <div
+                         "> -->
+                                  
+                          {{item}}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -619,63 +628,64 @@
 
                     <!-- 新增出來的待辦清單 -->
                     <draggable v-model="item.todo_list_content_detail" :options="{animation:500,scroll:true,}">
-                    <transition-group name="fade" tag="div">
-                      <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
-                        :key="detailIndex" @change="detail_no=detailIndex">
-                        <div class="todo_title">
-                          <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
-                          </div>
-                          <h3 @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
-                            v-show="item.test_title_name">{{item.title}}</h3>
-                          <div class="change_title" v-show="item.showname" @click.stop="">
-                            <textarea name="" v-model.trim="item.title"
-                              @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name"></textarea>
-                            <!-- <div class="concernbutton"
+                      <transition-group name="fade" tag="div">
+                        <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
+                          :key="detailIndex" @change="detail_no=detailIndex">
+                          <div class="todo_title">
+                            <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
+                            </div>
+                            <h3
+                              @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
+                              v-show="item.test_title_name">{{item.title}}</h3>
+                            <div class="change_title" v-show="item.showname" @click.stop="">
+                              <textarea name="" v-model.trim="item.title"
+                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name"></textarea>
+                              <!-- <div class="concernbutton"
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name">
                               <button>確定</button></div> -->
-                          </div>
-
-                          <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
-                              src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
-                        </div>
-                        <div class="todo_progress_bar">
-                          <p>{{inner_progress_bar(detailIndex)}}%</p>
-                          <div class="progress_bar">
-                            <span :style="{width:inner_progress_bar(detailIndex)+'%'}"></span>
-                          </div>
-                        </div>
-                        <!-- 新增的卡片細項 -->
-
-                        <draggable v-model="item.lists" :options="{animation:500}">
-                          <transition-group name="fade" tag="div">
-                            <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                              <div @click="item.status = !item.status,item.text =!item.text">
-                                <img src="./img/check.svg" alt="" v-if="item.status">
-                                <img src="./img/uncheck.svg" alt="" v-else>
-                              </div>
-                              <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                              <div><img src="./img/icon/time-left.svg" alt="" @click="calltomato"></div>
-                              <div><img src="./img/card_img/delete.0df56913.svg" alt=""
-                                  @click="delete_todo_title(detailIndex,index)"></div>
                             </div>
-                          </transition-group>
-                        </draggable>
+
+                            <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
+                                src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
+                          </div>
+                          <div class="todo_progress_bar">
+                            <p>{{inner_progress_bar(detailIndex)}}%</p>
+                            <div class="progress_bar">
+                              <span :style="{width:inner_progress_bar(detailIndex)+'%'}"></span>
+                            </div>
+                          </div>
+                          <!-- 新增的卡片細項 -->
+
+                          <draggable v-model="item.lists" :options="{animation:500}">
+                            <transition-group name="fade" tag="div">
+                              <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
+                                <div @click="item.status = !item.status,item.text =!item.text">
+                                  <img src="./img/check.svg" alt="" v-if="item.status">
+                                  <img src="./img/uncheck.svg" alt="" v-else>
+                                </div>
+                                <p :class="{lineThrough:item.text}">{{item.content}}</p>
+                                <div><img src="./img/icon/time-left.svg" alt="" @click="calltomato"></div>
+                                <div><img src="./img/card_img/delete.0df56913.svg" alt=""
+                                    @click="delete_todo_title(detailIndex,index)"></div>
+                              </div>
+                            </transition-group>
+                          </draggable>
 
 
-                        <div class="card_add_button">
-                          <label for="">
-                            <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
-                              @keyup.enter="add_card_detail(detailIndex)"
-                              :style='{backgroundColor: programs[page].color}' v-model.trim="item.test"
-                              @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
-                              @blur="item.card_length =! item.card_length,item.test=''">
-                            <img src="./img/card_img/plus_write.svg" alt="" width="14"
-                              @mousedown="add_card_detail(detailIndex)">
-                          </label>
+                          <div class="card_add_button">
+                            <label for="">
+                              <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
+                                @keyup.enter="add_card_detail(detailIndex)"
+                                :style='{backgroundColor: programs[page].color}' v-model.trim="item.test"
+                                @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
+                                @blur="item.card_length =! item.card_length,item.test=''">
+                              <img src="./img/card_img/plus_write.svg" alt="" width="14"
+                                @mousedown="add_card_detail(detailIndex)">
+                            </label>
+                          </div>
                         </div>
-                      </div>
-                    </transition-group>
-                  </draggable>
+                      </transition-group>
+                    </draggable>
 
 
 
@@ -690,7 +700,8 @@
                         <transition-group name="fade">
                           <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
                             <a :href="item.source" :download="item.name">{{item.name}}</a>
-                            <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20" @click="delete_file()">
+                            <div><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                                @click="delete_file(cardIndex)">
                             </div>
                           </li>
                         </transition-group>

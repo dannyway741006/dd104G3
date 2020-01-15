@@ -30,6 +30,10 @@ new Vue({
       this.handcalendar_today.date = this.calendar.date = date.getDate()
       this.handcalendar_today.day = this.calendar.day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()]
       this.calendar.week=["January", "February", "March", "April", "May", "June", "July","August","Septemper","October","November","December"][new Date().getMonth()]
+    console.log( date.getFullYear())
+    console.log( this.handcalendar_today.month)
+    console.log(this.handcalendar_today.date)
+
     },
     adjustYear(fix){
       this.calendar.year += fix
