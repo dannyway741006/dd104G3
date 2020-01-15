@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
+
   <title>Document</title>
 </head>
 
@@ -20,7 +21,7 @@
       <div class="header">
         <div class="logo">
           <a href="">
-            <img src="./img/logo.svg"  />
+            <img src="./img/logo.svg" />
           </a>
         </div>
         <div class="nav_hamburger">
@@ -346,11 +347,12 @@
                            handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
                            other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
                           }">
-                          <div v-for="item in todolist_cal"  v-if="todolist_date.year && calendarMonth[(i-1)*7+j-1].month+1 == todolist_date.month  && calendarMonth[(i-1)*7+j-1].date == todolist_date.date">
-                      
-                                  
-                            {{item}}
-                          </div>
+                      <!-- <div v-for="item in todolist_cal"
+                        v-if="todolist_date.year && calendarMonth[(i-1)*7+j-1].month+1 == todolist_date.month  && calendarMonth[(i-1)*7+j-1].date == todolist_date.date">
+
+
+                        {{item}}
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -1621,10 +1623,10 @@
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
   <script src="./node_modules/vue2-datepicker/index.min.js"></script>
-
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <script src="./js/calender.js"></script>
-  <script src="./js/program.js"></script>
+  <script src="./js/programByCardPart.js"></script>
   <script>
     const container = document.getElementById("app");
     const hamburger = document.querySelector(".nav_hamburger");
