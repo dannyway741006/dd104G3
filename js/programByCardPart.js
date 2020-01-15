@@ -135,6 +135,7 @@ var main_content = new Vue({
         // calender_date: [],
     },
     methods: {
+        
         //新增專案
         add_program() {
             if (this.program_name !== "" && this.selectColor) {
@@ -773,15 +774,7 @@ var main_content = new Vue({
                 // console.log(this.programs.length-1)
                 this.page = -1
             };
-            //拖曳
-            // $(".cards_list_todo,.cards_list_doing,.cards_list_done")
-            //     .sortable({
-            //         connectWith: ".cards_list",
-
-            //     })
-            //     .disableSelection();
-
-
+          
 
         });
 
