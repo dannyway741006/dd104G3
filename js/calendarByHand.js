@@ -77,7 +77,7 @@ new Vue({
           month:date.getMonth(),
           date:date.getDate(),
           day:["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()],
-
+          programdate:[date.getFullYear(),date.getMonth(),date.getDate()]
         })
       }
       return data
