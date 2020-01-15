@@ -1,6 +1,6 @@
 <?php
   try{
-    require_once('../pdo.php');
+    require_once('./connect.php');
     $sql = 'insert into `program` (mem_no,  pro_col, pro_title) values (:mem_no, :pro_col, :pro_title)';
     $res = $pdo->prepare($sql);
     $res->bindParam(':mem_no', $_POST['mem_no']);

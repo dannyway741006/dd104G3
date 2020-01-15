@@ -1,6 +1,6 @@
 <?php
   try{
-    require_once('../pdo.php');
+    require_once('./connect.php');
     $sql = "select p.pro_no, pro_col, card_no, card_name, card_date, card_type, card_sta 
     FROM `card` c 
     LEFT JOIN `member` m on (m.mem_no = :mem_no) 

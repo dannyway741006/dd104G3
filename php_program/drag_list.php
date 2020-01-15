@@ -1,6 +1,6 @@
 <?php
   try {
-    require_once('../pdo.php');
+    require_once('./connect.php');
     $sql = "update `card` set card_type = :card_type 
     where pro_no = :pro_no and card_no = :card_no";
     $res = $pdo->prepare($sql);
