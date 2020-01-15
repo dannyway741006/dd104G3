@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
     let ProductImg = document.querySelector('.b_img').getAttribute('src');
     console.log(ProductImg);
     //--撈商品名稱--//
-    let productTitle = document.querySelector('.product_title').textContent;
+    let productTitle = document.querySelector('.product_name').textContent;
     console.log(productTitle);
     //--撈商品說明--//
     let productFeaturesText1 = document.querySelector('.product_features_text1').textContent;
