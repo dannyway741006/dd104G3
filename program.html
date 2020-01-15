@@ -77,19 +77,24 @@
           <div class="title">
             <p>新建專案</p>
           </div>
-          <div class="setting_project">
-            <div>
-              <p class="setting_project_title1">專案名稱 Project</p>
-              <input type="text" v-model.trim="program_name" />
-              <p class="setting_project_title2">專案專屬色 Color</p>
-              <div class="colors">
-                <span class="new_program_choose_color_item" v-for='color in colors' @click.stop='selectColor = color'
-                  :class='{new_program_choose_color_item_checked: selectColor === color}'
-                  :style='{backgroundColor: color}'></span>
+          <form action="create_program.php" method="post">
+            <div class="setting_project">
+              <div>
+                <p class="setting_project_title1">專案名稱 Project</p>
+                <input type="text" v-model.trim="program_name" name="pro_title"/>
+                <p class="setting_project_title2">專案專屬色 Color</p>
+                <div class="colors">
+                  <span class="new_program_choose_color_item" v-for='color in colors' @click.stop='selectColor = color'
+                    :class='{new_program_choose_color_item_checked: selectColor === color}'
+                    :style='{backgroundColor: color}' :value=color.color >
+                    <input type="text" name="pro_col" :value=color.color style="display: none;">
+                  </span>
+                </div>
+                
+                <button @click.prevent="add_program()" type="submit">建立專案</button>
               </div>
-              <button @click="add_program()">建立專案</button>
             </div>
-          </div>
+          </form>
           <div class="title">
             <transition name="fade" mode="out-in">
               <p v-if="click_complete_btn">已完成專案</p>
@@ -165,7 +170,8 @@
                 <div class="invite_add_member_box" v-show="invite_add_member_box" @click.stop="">
                   <p>輸入會員帳號</p>
                   <form action="">
-                    <input type="text" class="invite_add_member_addr" id="invite_add_member_addr" v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member">
+                    <input type="text" class="invite_add_member_addr" id="invite_add_member_addr"
+                      v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member">
                   </form>
                 </div>
               </transition>
