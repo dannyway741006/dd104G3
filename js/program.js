@@ -151,6 +151,9 @@ var main_content = new Vue({
           show_delete_info_box: false,
           //專案成員
           hideMember_sum: false,
+
+
+          
           program_memeber: [{
               member_name: '王曉明',
               userId: 'user3456',
