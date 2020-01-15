@@ -127,10 +127,10 @@ var main_content = new Vue({
     todo_type: null,
 
 
-    window_width:0
-     
-    
-    
+    window_width: 0,
+
+
+
   },
   created() {
     window.addEventListener('resize', this.handleResize)
@@ -142,6 +142,18 @@ var main_content = new Vue({
   methods: {
     //新增專案
     add_program() {
+      
+      axios
+        .get('php_program/push_member.php')
+        .then((res) => {
+          var pro_mem_Arr = res.data;
+          console.log(pro_mem_Arr[0].mem_name)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+
+
       if (this.program_name !== "" && this.selectColor) {
         this.programs.push({
           program_names: this.program_name,
@@ -150,22 +162,21 @@ var main_content = new Vue({
           show_complete_info_box: false,
           show_delete_info_box: false,
           //專案成員
+          invite_add_member_addr:'',
+
           hideMember_sum: false,
-
-
-          
           program_memeber: [{
-              member_name: '王曉明',
+              member_name: '詹小鴨',
               userId: 'user3456',
               src: './img/program_img/program_member_1.png',
             },
             {
-              member_name: '楊小梅',
+              member_name: '王小億',
               userId: 'user4756',
               src: "./img/program_img/program_member_2.png",
             },
             {
-              member_name: '張大千',
+              member_name: '張彤彤',
               userId: 'user1234',
               src: './img/program_img/program_member_3.png',
             },
@@ -189,8 +200,6 @@ var main_content = new Vue({
             type: 'card_list_done'
           }],
 
-
-
         });
         this.program_name = "";
         this.selectColor = null;
@@ -201,8 +210,26 @@ var main_content = new Vue({
       } else {
         alert('請填寫專案名稱及選擇專案專屬色')
       }
+    
+
+
 
     },
+
+//邀請專案成員
+invite_add_member(){
+  if(document.getElementById('invite_add_member_addr').value==pro_mem_Arr[0].mem_id){
+
+  };
+  for(i=0;i<pro_mem_Arr.length;i++){
+    if(this.invite_add_member_addr==pro_mem_Arr[0].mem_id){
+      
+    }
+
+  }
+},
+
+
     //切換現有-已完成專案
     change_watched_text() {
       if (this.click_complete_btn == false) { //已完成專案畫面
@@ -225,71 +252,84 @@ var main_content = new Vue({
     add_card(index) {
       //  console.log(index);
 
-      if (this.card_name !== "") {
-        this.programs[index].card_list_todo[0].cards.push({
+      axios
+        .get('php_program/push_member.php')
+        .then((res) => {
+          var pro_mem_Arr = res.data;
+          console.log(pro_mem_Arr[0].mem_name)
 
-          card_name: this.card_name,
+          if (this.card_name !== "") {
+            this.programs[index].card_list_todo[0].cards.push({
 
-          card_member: [{
-              member_name: '王曉明',
-              userId: 'user3456',
-              src: './img/program_img/program_member_1.png',
-              check: '',
-              uncolor: false,
-            },
-            {
-              member_name: '楊小梅',
-              userId: 'user4756',
-              src: "./img/program_img/program_member_2.png",
-              check: '',
-              uncolor: false,
-            },
-            {
-              member_name: '張大千',
-              userId: 'user1234',
-              src: './img/program_img/program_member_3.png',
-              check: '',
-              uncolor: false,
-            },
-            {
-              member_name: '陳小羽',
-              userId: 'user456',
-              src: './img/card_img/878378-XXL.jpg',
-              check: '',
-              uncolor: false,
-            },
-          ],
+              card_name: this.card_name,
 
-
-          //卡片內會員顯示
-          showhideMember: false,
-          member_input: "",
-          member_inout: [],
-
-
-          todo_list_content_detail: [],
-
-          //calendar
-          dateline: false,
-          dateline_text: "未完成",
-          calendar_date: '未設定',
-
-          //上傳檔案
-          filebox: [],
-          file_switch: false,
-          // sourced:'',
-          // //增加項目focus變長
-          // card_length:false,
+              card_member: [{
+                  member_name:  pro_mem_Arr[0].mem_name,
+                  userId: 'user3456',
+                  src: './img/program_img/program_member_1.png',
+                  check: '',
+                  uncolor: false,
+                },
+                {
+                  member_name: '楊小梅',
+                  userId: 'user4756',
+                  src: "./img/program_img/program_member_2.png",
+                  check: '',
+                  uncolor: false,
+                },
+                {
+                  member_name: '張彤彤',
+                  userId: 'user1234',
+                  src: './img/program_img/program_member_3.png',
+                  check: '',
+                  uncolor: false,
+                },
+                {
+                  member_name: '陳小羽',
+                  userId: 'user456',
+                  src: './img/card_img/878378-XXL.jpg',
+                  check: '',
+                  uncolor: false,
+                },
+              ],
 
 
-        });
-        this.card_name = "";
-        this.cards_list_card_input_box = false;
-        this.add_cards_btn = false;
-        this.add_cards_btn_div = true;
-      } else {}
+              //卡片內會員顯示
+              showhideMember: false,
+              member_input: "",
+              member_inout: [],
 
-      // console.log(this.$refs)
+
+              todo_list_content_detail: [],
+
+              //calendar
+              dateline: false,
+              dateline_text: "未完成",
+              calendar_date: '未設定',
+
+              //上傳檔案
+              filebox: [],
+              file_switch: false,
+              // sourced:'',
+              // //增加項目focus變長
+              // card_length:false,
+
+
+            });
+            this.card_name = "";
+            this.cards_list_card_input_box = false;
+            this.add_cards_btn = false;
+            this.add_cards_btn_div = true;
+          } else {}
+
+
+
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+
+
     },
     //完成專案跳窗提醒
     complete_info_func(index) {
@@ -668,7 +708,7 @@ var main_content = new Vue({
     todo_showcalendarpanel(cardIndex) {
       // console.log(this.programs[this.page].card_list_todo[0].type)
       if ([this.todo_type][0] != null && this.programs[this.page].card_list_todo[0].cards.length != 0) {
-      // if ([this.todo_type][0] == this.programs[this.page].card_list_todo[0].type && this.programs[this.page].card_list_todo[0].cards.length != 0) {
+        // if ([this.todo_type][0] == this.programs[this.page].card_list_todo[0].type && this.programs[this.page].card_list_todo[0].cards.length != 0) {
         // console.log(this.programs[this.page][this.todo_type][0].cards)
         if (this.programs[this.page].card_list_todo[0].cards[cardIndex].calendar_date == null) {
           return '未設定';
@@ -682,7 +722,7 @@ var main_content = new Vue({
     doing_showcalendarpanel(cardIndex) {
       // console.log([this.doing_type][0])
       if ([this.todo_type][0] != null && this.programs[this.page].card_list_todo[0].cards.length != 0) {
-      // if ([this.todo_type][0] == this.programs[this.page].card_list_doing[0].type && this.programs[this.page].card_list_doing[0].cards.length != 0) {
+        // if ([this.todo_type][0] == this.programs[this.page].card_list_doing[0].type && this.programs[this.page].card_list_doing[0].cards.length != 0) {
         // console.log(this.programs[this.page][this.doing_type][0].cards)
         if (this.programs[this.page].card_list_doing[0].cards[cardIndex].calendar_date == null) {
           return '未設定';
@@ -696,7 +736,7 @@ var main_content = new Vue({
     done_showcalendarpanel(cardIndex) {
       // console.log([this.done_type][0])
       if ([this.todo_type][0] != null && this.programs[this.page].card_list_todo[0].cards.length != 0) {
-      // if ([this.todo_type][0] == this.programs[this.page].card_list_done[0].type && this.programs[this.page].card_list_done[0].cards.length != 0) {
+        // if ([this.todo_type][0] == this.programs[this.page].card_list_done[0].type && this.programs[this.page].card_list_done[0].cards.length != 0) {
         // console.log(this.programs[this.page][this.done_type][0].cards)
         if (this.programs[this.page].card_list_done[0].cards[cardIndex].calendar_date == null) {
           return '未設定';
@@ -780,14 +820,13 @@ var main_content = new Vue({
       this.todo_switch = false;
       this.fileder_switch = false;
     },
-    handleResize(){
+    handleResize() {
       this.window_width = window.innerWidth;
-      if(this.window_width >= 700) {
+      if (this.window_width >= 700) {
         return true;
-    }
-    else {
+      } else {
         return false;
-    }
+      }
     }
   },
 
@@ -923,25 +962,8 @@ var main_content = new Vue({
         // console.log(this.programs.length-1)
         this.page = -1
       };
-      //拖曳
-      // $(".cards_list_todo,.cards_list_doing,.cards_list_done")
-      //   .sortable({
-      //     connectWith: ".cards_list",
-      //     stack: ".cards_column_body .cards_list",
-      //     // helper: "original"
-      //     placeholder: 'dragging',
-      //     // start: function (event, ui) {
-      //     //   ui.item.toggleClass("dragging");
-      //     // },
-      //     // stop: function (event, ui) {
-      //     //   ui.item.toggleClass("dragging");
-      //     // },
-      //     scroll: true,
-      //     scrollSensitivity: 100,
-      //     // opacity:0.6,
-      //     // revert:true,
-      //   })
-      //   .disableSelection();
+
+
 
 
     });
@@ -950,8 +972,8 @@ var main_content = new Vue({
     this.setToday()
 
 
-
   },
+
   components: {
     DatePicker
   },

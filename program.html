@@ -165,7 +165,7 @@
                 <div class="invite_add_member_box" v-show="invite_add_member_box" @click.stop="">
                   <p>輸入會員帳號</p>
                   <form action="">
-                    <input type="email" class="invite_add_member_addr">
+                    <input type="text" class="invite_add_member_addr" id="invite_add_member_addr" v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member">
                   </form>
                 </div>
               </transition>

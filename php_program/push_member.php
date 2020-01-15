@@ -10,7 +10,7 @@
       echo "{}";
     }else{ //找得到
       //取回一筆資料
-      $memRow = $member->fetch(PDO::FETCH_ASSOC);
+      $memRow = $member->fetchAll(PDO::FETCH_ASSOC);
       // $memRow = $member->fetchObject();  //$memRow->memName
       //送出json字串
       echo json_encode( $memRow);
