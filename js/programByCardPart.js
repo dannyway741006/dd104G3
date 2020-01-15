@@ -51,6 +51,12 @@ var main_content = new Vue({
             week: ["January", "February", "March", "April", "May", "June", "July", "August", "Septemper", "October", "November", "December"][new Date().getMonth()],
 
         },
+        todolist_date: {
+            year: 0,
+            month: 0,
+            date: 0,
+        },
+        todolist_cal: [],
         // 日曆部分--結束
 
         calendar_btn: false,
@@ -124,9 +130,9 @@ var main_content = new Vue({
 
         //file
         file: '',
-        
+
         //date
-        calender_date:[],
+        // calender_date: [],
     },
     methods: {
         //新增專案
@@ -164,7 +170,7 @@ var main_content = new Vue({
 
 
                     cards: [],
-                   
+
 
                 });
                 this.program_name = "";
@@ -255,6 +261,12 @@ var main_content = new Vue({
                     // sourced:'',
                     // //增加項目focus變長
                     // card_length:false,
+
+                    // todolist_date:{
+                    //     year: 0,
+                    //     month: 0,
+                    //     date: 0,
+                    // },
                 });
                 this.card_name = "";
                 this.cards_list_card_input_box = false;
@@ -448,15 +460,15 @@ var main_content = new Vue({
             if (e.target.files.length > 0) {
                 this.file = e.target.files;
                 this.file_switch = false;
-                this.fileder_switch=false;
+                this.fileder_switch = false;
                 for (let i = 0; i < this.file.length; i++) {
                     //-------------取得檔名
                     //    let file= this.file[i];
                     let readFile = new FileReader();
                     console.log(this.programs)
-                    let pro_card=this.programs[this.page].cards[this.card_no];
-                    let file=this.file[i].name;
-                    readFile.addEventListener("loadend",function(e){
+                    let pro_card = this.programs[this.page].cards[this.card_no];
+                    let file = this.file[i].name;
+                    readFile.addEventListener("loadend", function (e) {
                         console.log(pro_card)
                         pro_card.file_result = readFile.result;
                         pro_card.filebox.push({
@@ -517,8 +529,8 @@ var main_content = new Vue({
             this.todo_switch = false;
             this.fileder_switch = false;
         },
-        delete_file(index) {
-            this.programs[this.page].cards[this.card_no].filebox.splice(index, 1);
+        delete_file(cardIndex) {
+            this.programs[this.page].cards[this.card_no].filebox.splice(cardIndex, 1);
         },
         //成員進入
         member_outin(index) {
@@ -593,32 +605,41 @@ var main_content = new Vue({
             }
         },
         showcalendarpanel(cardIndex) {
+
             if (this.programs[this.page].cards[cardIndex].calendar_date == null) {
                 return '未設定';
             } else {
                 return this.programs[this.page].cards[cardIndex].calendar_date;
             }
-        },
-        pushtocalsender(cardIndex){
-           if(this.showcalendarpanel(cardIndex)!='未設定'){
-            console.log(this.programs[this.page].cards[cardIndex].calendar_date.substring(0,10).split("-"));
-             console.log(this.calendarMonth[41].year)
-            //  console.log(year)
-            let arr=this.programs[this.page].cards[cardIndex].calendar_date.substring(0,10).split("-");
-            let year=arr[0];
-            let month=arr[1];
-            let date=arr[2];
-            console.log(year)
-            for(let i=0;i<42;i++){
-               if(year==this.calendarMonth[i].year && month==this.calendarMonth[i].month && date==this.calendarMonth[i].date){
-                // this.pullcalendarday=1;
 
-            } 
-            }
-          
-           }
+
         },
-      
+        pushtocalsender(cardIndex) {
+
+            console.log(this.todolist_cal)
+            if (this.showcalendarpanel(cardIndex) != '未設定') {
+                let arr = this.programs[this.page].cards[cardIndex].calendar_date.substring(0, 10).split("-");
+                let year = arr[0];
+                let month = arr[1];
+                let date = arr[2];
+                this.todolist_date.year = year;
+                this.todolist_date.month = month;
+                this.todolist_date.date = date;
+                for (i = 1; i < 7; i++) {
+                    for (j = 1; j < 8; j++) {
+                        let cl_year = this.calendarMonth[(i - 1) * 7 + j - 1].year;
+                        let cl_month = this.calendarMonth[(i - 1) * 7 + j - 1].month+1;
+                        let cl_date = this.calendarMonth[(i - 1) * 7 + j - 1].date;
+                        if (this.todolist_date.year == cl_year && this.todolist_date.month == cl_month && this.todolist_date.date == cl_date) {
+                            this.todolist_cal.push(1);             
+                        }
+                    }
+                }
+
+            }
+
+        },
+
     },
 
     computed: {
@@ -643,7 +664,7 @@ var main_content = new Vue({
                     month: date.getMonth(),
                     date: date.getDate(),
                     day: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][date.getDay()],
-                    programdate:[''+(date.getFullYear()),(date.getMonth()+1)<10 ? '0'+ (date.getMonth()+1) : ''+(date.getMonth()+1),(date.getDate())<10 ? '0'+(date.getDate()):''+(date.getDate())]
+                    programdate: ['' + (date.getFullYear()), (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) : '' + (date.getMonth() + 1), (date.getDate()) < 10 ? '0' + (date.getDate()) : '' + (date.getDate())]
                 })
             }
             return data
@@ -756,7 +777,7 @@ var main_content = new Vue({
             // $(".cards_list_todo,.cards_list_doing,.cards_list_done")
             //     .sortable({
             //         connectWith: ".cards_list",
-             
+
             //     })
             //     .disableSelection();
 
