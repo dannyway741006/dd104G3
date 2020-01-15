@@ -1,6 +1,6 @@
 <?php
 try {
-  require_once('../pdo.php');
+  require_once('./connect.php');
   $sql = "select c.card_no, c.pro_no, card_name, DATE_FORMAT(`card_date`, '%Y-%m-%d %H:%i') AS `card_date`, card_type, card_sta, t.todo_no, todo_title, file_no, file_name, file_src, todo_cont_no, todo_cont, todo_cont_sta, todo_cont_clock, todo_timer 
   from `card` c
   LEFT JOIN `todo` t on c.pro_no = t.pro_no AND c.card_no = t.card_no 
