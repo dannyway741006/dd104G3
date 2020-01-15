@@ -142,92 +142,110 @@ var main_content = new Vue({
   methods: {
     //新增專案
     add_program() {
-      
+
       axios
         .get('php_program/push_member.php')
         .then((res) => {
           var pro_mem_Arr = res.data;
-          console.log(pro_mem_Arr[0].mem_name)
+
+
+          if (this.program_name !== "" && this.selectColor) {
+            this.programs.push({
+              program_names: this.program_name,
+              changeimage: false, //uncheck
+              color: this.selectColor,
+              show_complete_info_box: false,
+              show_delete_info_box: false,
+              //專案成員
+              invite_add_member_addr: '',
+
+              hideMember_sum: false,
+
+              program_memeber: [{
+                member_name: pro_mem_Arr[0].mem_name,
+                    userId: pro_mem_Arr[0].mem_id,
+                    src: pro_mem_Arr[0].headshot,
+              }],
+              // program_memeber: [{
+              //     member_name: '詹小鴨',
+              //     userId: 'user3456',
+              //     src: './img/program_img/program_member_1.png',
+              //   },
+              //   {
+              //     member_name: '王小憶',
+              //     userId: 'user4756',
+              //     src: "./img/program_img/program_member_2.png",
+              //   },
+              //   {
+              //     member_name: '張彤彤+100',
+              //     userId: 'user1234',
+              //     src: './img/program_img/program_member_3.png',
+              //   },
+              //   {
+              //     member_name: '陳小羽',
+              //     userId: 'user456',
+              //     src: './img/card_img/878378-XXL.jpg',
+              //   },
+              // ],
+
+              card_list_todo: [{
+                cards: [],
+                type: 'card_list_todo'
+              }],
+              card_list_doing: [{
+                cards: [],
+                type: 'card_list_doing'
+              }],
+              card_list_done: [{
+                cards: [],
+                type: 'card_list_done'
+              }],
+
+            });
+            this.program_name = "";
+            this.selectColor = null;
+            this.click_complete_btn = false;
+            // console.log(this.page);
+            // console.log(this.programs.length-1);
+            this.page = this.programs.length - 1;
+          } else {
+            alert('請填寫專案名稱及選擇專案專屬色')
+          }
+
         })
         .catch((error) => {
           console.log(error)
         })
 
 
-      if (this.program_name !== "" && this.selectColor) {
-        this.programs.push({
-          program_names: this.program_name,
-          changeimage: false, //uncheck
-          color: this.selectColor,
-          show_complete_info_box: false,
-          show_delete_info_box: false,
-          //專案成員
-          invite_add_member_addr:'',
-
-          hideMember_sum: false,
-          program_memeber: [{
-              member_name: '詹小鴨',
-              userId: 'user3456',
-              src: './img/program_img/program_member_1.png',
-            },
-            {
-              member_name: '王小億',
-              userId: 'user4756',
-              src: "./img/program_img/program_member_2.png",
-            },
-            {
-              member_name: '張彤彤',
-              userId: 'user1234',
-              src: './img/program_img/program_member_3.png',
-            },
-            {
-              member_name: '陳小羽',
-              userId: 'user456',
-              src: './img/card_img/878378-XXL.jpg',
-            },
-          ],
-
-          card_list_todo: [{
-            cards: [],
-            type: 'card_list_todo'
-          }],
-          card_list_doing: [{
-            cards: [],
-            type: 'card_list_doing'
-          }],
-          card_list_done: [{
-            cards: [],
-            type: 'card_list_done'
-          }],
-
-        });
-        this.program_name = "";
-        this.selectColor = null;
-        this.click_complete_btn = false;
-        // console.log(this.page);
-        // console.log(this.programs.length-1);
-        this.page = this.programs.length - 1;
-      } else {
-        alert('請填寫專案名稱及選擇專案專屬色')
-      }
-    
-
-
-
     },
 
-//邀請專案成員
-invite_add_member(){
-  if(document.getElementById('invite_add_member_addr').value==pro_mem_Arr[0].mem_id){
+    //邀請專案成員
+    invite_add_member() {
+      // if(document.getElementById('invite_add_member_addr').value==pro_mem_Arr[0].mem_id){};
+      for (i = 0; i < pro_mem_Arr.length; i++) {
+        if (this.invite_add_member_addr == pro_mem_Arr[0].mem_id) {
+          axios
+            .get('php_program/push_member.php')
+            .then((res) => {
+              var pro_mem_Arr = res.data;
+              // console.log(pro_mem_Arr[0].mem_name)
+              this.programs[this.page].program_memeber.push({
 
-  };
-  for(i=0;i<pro_mem_Arr.length;i++){
-    if(this.invite_add_member_addr==pro_mem_Arr[0].mem_id){
-      
-    }
+                member_name: pro_mem_Arr[i].mem_name,
+                userId: pro_mem_Arr[i].mem_id,
+                src: pro_mem_Arr[i].headshot,
+              })
 
-  }
-},
+
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+        }
+
+      }
+    },
 
 
     //切換現有-已完成專案
@@ -264,7 +282,7 @@ invite_add_member(){
               card_name: this.card_name,
 
               card_member: [{
-                  member_name:  pro_mem_Arr[0].mem_name,
+                  member_name: pro_mem_Arr[0].mem_name,
                   userId: 'user3456',
                   src: './img/program_img/program_member_1.png',
                   check: '',
