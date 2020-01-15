@@ -324,14 +324,23 @@
                 </div>
 
                 <div class="calendar">
-                  <div class="weekDay">
-                    <div style="color: red;">Sunday</div>
+                  <div class="weekDay" v-if="handleResize()">
+                    <div style="color: #eb7a77;">Sunday</div>
                     <div>Monday</div>
                     <div>Tuesday</div>
                     <div>Wednesday</div>
                     <div>Thursday</div>
                     <div>Friday</div>
-                    <div style="color: red;">Saturday</div>
+                    <div style="color: #eb7a77;">Saturday</div>
+                  </div>
+                  <div class="weekDay" v-else>
+                    <div style="color: #eb7a77;">Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div style="color: #eb7a77;">Sat</div>
                   </div>
                   <div class="week" v-for="i in 5">
                     <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{

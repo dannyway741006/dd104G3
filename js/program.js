@@ -124,11 +124,20 @@ var main_content = new Vue({
 
     //file
     file: '',
-    todo_type: null
+    todo_type: null,
 
 
-
-
+    window_width:0
+     
+    
+    
+  },
+  created() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     //新增專案
@@ -768,7 +777,15 @@ var main_content = new Vue({
       this.todo_switch = false;
       this.fileder_switch = false;
     },
-
+    handleResize(){
+      this.window_width = window.innerWidth;
+      if(this.window_width >= 700) {
+        return true;
+    }
+    else {
+        return false;
+    }
+    }
   },
 
   computed: {
@@ -871,6 +888,7 @@ var main_content = new Vue({
     },
 
   },
+
 
   mounted() {
     document.addEventListener("click", () => {
