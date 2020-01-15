@@ -20,7 +20,7 @@
       <div class="header">
         <div class="logo">
           <a href="">
-            <img src="../img/logo.svg"  />
+            <img src="./img/logo.svg"  />
           </a>
         </div>
         <div class="nav_hamburger">
@@ -99,15 +99,15 @@
           </div>
 
           <ul v-if="click_complete_btn" class="page_info_list setting_pm history_program">
-            <li>
+            <!-- <li>
               <p><span></span>已完成專案1</p>
-              <img src="../img/delete.0df56913.svg" alt="uncheck" width="20" />
-            </li>
+              <img src="./img/delete.0df56913.svg" alt="uncheck" width="20" />
+            </li> -->
 
             <transition-group name="fade" mode="out-in" tag="div">
               <li v-for="(item,index) in history_programs" :key="index" @click="history_page=index;close_humberger()">
                 <p><span :style='{backgroundColor: item.color}'></span>{{item.program_names}}</p>
-                <img src="../img/delete.0df56913.svg" alt="uncheck" width="20" @click.stop='delete_info_func(index)' />
+                <img src="./img/delete.0df56913.svg" alt="uncheck" width="20" @click.stop='delete_info_func(index)' />
 
               </li>
             </transition-group>
@@ -116,20 +116,20 @@
 
           <ul v-else class="page_info_list setting_pm having_program">
 
-            <transition name="fade" mode="out-in">
+            <!-- <transition name="fade" mode="out-in">
               <li @click="page=-1">
                 <p><span></span>專案0</p>
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" @click.stop='program_complete_func()' />
+                <img src="./img/uncheck.svg" alt="uncheck" width="20" @click.stop='program_complete_func()' />
               </li>
-            </transition>
+            </transition> -->
 
 
 
             <transition-group name="fade" mode="out-in" tag="div">
               <li v-for="(item,index) in programs" :key="index" @click="page=index;close_humberger()">
                 <p><span :style='{backgroundColor: item.color}'></span>{{item.program_names}}</p>
-                <img src="../img/check.svg" alt="check" width="20" v-if='item.changeimage' />
-                <img src="../img/uncheck.svg" alt="uncheck" width="20" v-else @click.stop="complete_info_func(index)" />
+                <img src="./img/check.svg" alt="check" width="20" v-if='item.changeimage' />
+                <img src="./img/uncheck.svg" alt="uncheck" width="20" v-else @click.stop="complete_info_func(index)" />
               </li>
             </transition-group>
 
@@ -1590,7 +1590,7 @@
   </main>
   </div>
 
-  <script src="../js/lib/three.min.js"></script>
+  <script src="./js/lib/three.min.js"></script>
   <script type="x-shader/x-fragment" id="fragmentshader">
     uniform vec3 color;
         uniform sampler2D texture;
@@ -1601,7 +1601,7 @@
             gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
         }
     </script>
-  <script src="../js/background.js"></script>
+  <script src="./js/background.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script> -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
