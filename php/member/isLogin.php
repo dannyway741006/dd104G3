@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require_once('../pdo.php');
+  require_once('../mem_connect.php');
   if(isset($_SESSION['mem_no'])){
     $member = array(
       'mem_no'=>$_SESSION['mem_no'], 'mem_id'=>$_SESSION['mem_id'], 

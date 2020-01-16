@@ -19,7 +19,7 @@ function logout() {
     }
 
   }
-  xhr.open("post", "logout.php", true);
+  xhr.open("post", "./php/member/logout.php", true);
   xhr.send(null)
 }
 
@@ -47,7 +47,7 @@ function sendForm() {
     // console.log(xhr.responseText);
     showMemInfo(xhr.responseText); //顯示登入者資訊
   }
-  xhr.open("post", "login.php", true);
+  xhr.open("post", "./php/member/login.php", true);
   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
   let data_info = `mem_id=${memId}&mem_psw=${memPsw}`;
   xhr.send(data_info);
@@ -72,7 +72,7 @@ function getLoginInfo() {
     }
 
   }
-  xhr.open("post", "isLogin.php", true);
+  xhr.open("post", "./php/member/login.php", true);
   xhr.send(null)
 }
 

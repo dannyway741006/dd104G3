@@ -19,7 +19,7 @@ function logout() {
     }
 
   }
-  xhr.open("post", "logout.php", true);
+  xhr.open("post", "./php/member/logout.php", true);
   xhr.send(null)
 }
 
@@ -47,7 +47,7 @@ function sendForm() {
     // console.log(xhr.responseText);
     showMemInfo(xhr.responseText); //顯示登入者資訊
   }
-  xhr.open("post", "login.php", true);
+  xhr.open("post", "./php/member/login.php", true);
   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
   let data_info = `mem_id=${memId}&mem_psw=${memPsw}`;
   xhr.send(data_info);
@@ -72,7 +72,7 @@ function getLoginInfo() {
     }
 
   }
-  xhr.open("post", "isLogin.php", true);
+  xhr.open("post", "./php/member/isLogin.php", true);
   xhr.send(null)
 }
 
@@ -169,7 +169,7 @@ function test2() {
       }
     });
   }
-  xhr.open("get", "order_mem.php", true);
+  xhr.open("get", "./php/member/order_mem.php", true);
   xhr.send(null);
 }
  // ======================input 全選/取消===========================
@@ -211,36 +211,36 @@ function order_temp(cret_date, order_no, str, i) {
   return str
 
 }
-function test3() {
-  let xhr = new XMLHttpRequest();
-  // let divLogin = document.getElementById("divLogin");
-  console.log('a');
-  xhr.onload = function () {
-    member = JSON.parse(xhr.responseText);
-    // console.log(member);
-    let str = "";
-    for (i = 0; i < member.length; i++) {
-      str = order_temp(member[i].product_no, member[i].product_amout,member[i].product_price, str, i)
-    }
-str =`
-<input type="radio" id=""order_box${i + 1}"" name="gallery" hidden="" checked="checked" />
-<div class="order_infomation">
-  <div class="order_group1">
-    <table class="table_order">
-      <tr class="table_order_top1">
-        <th>商品</th>
-        <th>數量</th>
-        <th>價格</th>
-      </tr>
-      <tr>
-        <th>${product_no}</th>
-        <th>${product_amout}</th>
-        <th>${product_price}</th>
-      </tr>
-    </table>
-  </div>
-</div>
-`
+// function test3() {
+//   let xhr = new XMLHttpRequest();
+//   // let divLogin = document.getElementById("divLogin");
+//   console.log('a');
+//   xhr.onload = function () {
+//     member = JSON.parse(xhr.responseText);
+//     // console.log(member);
+//     let str = "";
+//     for (i = 0; i < member.length; i++) {
+//       str = order_temp(member[i].product_no, member[i].product_amout,member[i].product_price, str, i)
+//     }
+// str =`
+// <input type="radio" id=""order_box${i + 1}"" name="gallery" hidden="" checked="checked" />
+// <div class="order_infomation">
+//   <div class="order_group1">
+//     <table class="table_order">
+//       <tr class="table_order_top1">
+//         <th>商品</th>
+//         <th>數量</th>
+//         <th>價格</th>
+//       </tr>
+//       <tr>
+//         <th>${product_no}</th>
+//         <th>${product_amout}</th>
+//         <th>${product_price}</th>
+//       </tr>
+//     </table>
+//   </div>
+// </div>
+// `
 
 // ================member update===============================
 function mem_update() {
@@ -254,7 +254,7 @@ console.log(member)
     console.log(xhr.responseText);
     // showMemInfo(xhr.responseText); //顯示登入者資訊
   }
-  xhr.open("post", "member_update.php", true);
+  xhr.open("post", "./php/member/member_update.php", true);
   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
   let data_info = `mem_no=${member[0].mem_no}&mem_name=${memname}&mem_addr=${memaddr}&mem_tel=${memtel}
   &mem_email=${mememail}`;
@@ -266,7 +266,7 @@ window.addEventListener("load", function () {
   // mem_update();
   getLoginInfo();
   test2();
-  test3();
+  // test3();
 
   //===設定spanLogin.onclick 事件處理程序是 showLoginForm
   $id("divLogin").onclick = logout;
