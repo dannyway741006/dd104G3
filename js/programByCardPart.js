@@ -141,7 +141,21 @@ var main_content = new Vue({
     },
     methods: {
         //新增專案
+
+
         add_program() {
+       
+            $.ajax({
+                url:'create_program.php',
+                data:{}, //json不用
+                type:'GET',  
+                dataType:'json',
+                success:function(data){
+                   $('#feedback').html(`<h1 style="color:steelblue;">${data[0].Note}</h1>`);
+    
+                }
+          });
+
             if (this.program_name !== "" && this.selectColor) {
                 this.programs.push({
                     program_names: this.program_name,
