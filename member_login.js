@@ -47,14 +47,8 @@ let mem_mask = document.getElementById("mem_mask");
 let liclose = document.getElementById("liclose");
 let memlibox = document.getElementById("memlibox");
 let imgClose = document.getElementById("light_box_title");
-let open_sign_ligh = document.getElementById("open_sign_ligh");
-open_sign_ligh1.addEventListener('click', function () {
-  mem_mask.classList.add('active_for_mask');
-  memlibox.classList.add('active_for_memlibox');
-  memlibox.classList.remove('closeani');
-});
 
-open_sign_ligh.addEventListener("click", function () {
+open_sign_ligh1.addEventListener('click', function () {
   mem_mask.classList.add('active_for_mask');
   memlibox.classList.add('active_for_memlibox');
   memlibox.classList.remove('closeani');
@@ -74,7 +68,6 @@ imgClose.addEventListener('click', function () {
   mem_mask.classList.remove('active_for_mask');
   memlibox.classList.add('closeani');
 });
-
 // ===================member_change_img====================================
 function showImg(thisimg) {
   let file = thisimg.files[0];
@@ -90,4 +83,6 @@ function showImg(thisimg) {
   }
 }
 
+
+// =============================test==================
 

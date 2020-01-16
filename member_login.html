@@ -63,11 +63,11 @@
             <div>
               <img src="../img/user.9c173fc0.svg" alt="member" />
             </div>
-            <p>USER_Master Pocket</p>
+            <p id="memName">&nbsp;</p>
           </div>
           <div class="status">
-            <div class="member_change0"><a href="./member.html">會員中心</a></div>
-            <div class="change">登入</div>
+            <div class="member_change0"><a href="member.html">會員中心</a></div>
+            <div class="change" id="divLogin">登入</div>
           </div>
         </div>
 
@@ -87,7 +87,7 @@
           </div>
           <div class="memlibtn">
             <button id="liclose" class="btn_close">取 消</button>
-            <button id="enter_delete" class="btn_close">確 定</button>
+            <button  class="btn_close" >確 定</button>
           </div>
         </div>
         <!-- ==================light box end=================================        -->
@@ -173,13 +173,13 @@
                     </li>
                   </ul>
                   <div class="sign_up_btn">
-                    <button id="open_sign_ligh">Sign Up</button>
+                    <button id="open_sign_ligh1">Sign Up</button>
                   </div>
                 </div>
               </div>
             </form>
             <!-- =================sign in===========================             -->
-            <form action="#" class="mem_login_in_send" id="mem_login_in_send">
+            <div  class="mem_login_in_send" id="mem_login_in_send">
               <div class="sign_in_input">
                 <h2>Sign In</h2>
                 <div class="sign_in_all">
@@ -187,8 +187,7 @@
                     <li>
                       <div>
                         <label for="" class="for_in_info_ani">
-
-                          <input type="text" name="" placeholder="請輸入帳號" autocomplete="off" class="text_info_in">
+                          <input type="text" name="memId" placeholder="請輸入帳號" autocomplete="off" class="text_info_in" id="memId">
                           <span class="in_info_ani"></span>
                           <p>Account</p>
                         </label>
@@ -198,7 +197,7 @@
                     <li>
                       <div>
                         <label for="" class="for_in_info_ani">
-                          <input type="password" name="" placeholder="請輸入帳號" autocomplete="off" class="text_info_in">
+                          <input type="password" name="memPsw" placeholder="請輸入帳號" autocomplete="off" class="text_info_in" id="memPsw">
                           <span class="in_info_ani"></span>
                           <p>Password</p>
                         </label>
@@ -207,11 +206,11 @@
                     </li>
                   </ul>
                   <div class="sign_in_btn">
-                    <button id="open_sign_ligh1">Sign In</button>
+                    <button id="btnLogin">Sign In</button>
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -230,6 +229,8 @@
         }
     </script>
   <script src="../js/background.js"></script>
+  <script src="member_login.js"></script>
+  <script src="member_php.js"></script>
   <script>
     const container = document.getElementById("app");
     const hamburger = document.querySelector(".nav_hamburger");
@@ -237,7 +238,7 @@
       container.classList.toggle("nav_open")
     );
   </script>
-  <script src="./js/member_login.js"></script>
+ 
 </body>
 
 </html>

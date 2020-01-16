@@ -63,11 +63,13 @@
             <div>
               <img src="../img/user.9c173fc0.svg" alt="member" />
             </div>
-            <p>USER_Master Pocket</p>
+            <p id="memName">&nbsp;</p>
           </div>
           <div class="status">
             <div class="active">會員中心</div>
-            <div><a href="./member_login.html">登入</a></div>
+
+            <div> <a href="./member_login.html" id="divLogin">登出</a></div>
+
           </div>
         </div>
       </nav>
@@ -300,32 +302,11 @@
               </div>
               <div id="terms2" class="terms2">
                 <div class="terms_box2">
-                  <div class="terms_box2_left">
-                    <form action="">
-                      <ul>
-                        <li>
-                          <input type="text">
-                        </li>
-                        <li>
-                          <input type="text">
-                        </li>
-                        <li>
-                          <input type="text">
-                        </li>
-                        <li>
-                          <input type="text">
-                        </li>
-                        <li>
-                          <input type="text">
-                        </li>
-                      </ul>
-                    </form>
-                  </div>
-                  <div class="terms_box2_right">
-
-
-                  </div>
-
+                  <input type="text">
+                  <input type="text">
+                  <input type="text">
+                  <input type="text">
+                  <input type="text">
                 </div>
               </div>
               <div id="terms3" class="terms3">
@@ -368,44 +349,45 @@
               </div>
 
               <div class="member_info">
-                <form action="" method="POST" autocomplete="on">
+                <form action="" method="POST" autocomplete="off">
                   <ul class="con1_info">
                     <li>
                       <p>帳號：</p>
                       <label for="" class="line_box">
-                        <input type="text" autocomplete="off" class="text_word">
+                        <input type="text" autocomplete="off" class="text_word" id="memName1" value="">
                         <span class="upbox" id="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>姓名：</p>
                       <label for="" class="line_box">
-                        <input type="text" autocomplete="off" class="text_word">
+                        <input type="text" autocomplete="off" class="text_word" value="" id="memName2">
                         <span class="upbox" id="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>信箱：</p>
                       <label for="" class="line_box">
-                        <input type="email" autocomplete="off" class="text_word">
+                        <input type="email" autocomplete="off" class="text_word" value="" id="memName3">
                         <span class="upbox" id="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>電話：</p>
                       <label for="" class="line_box">
-                        <input type="number" autocomplete="off" class="text_word">
+                        <input type="number" autocomplete="off" class="text_word" value="" id="memName4">
                         <span class="upbox" id="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>住址：</p>
                       <label for="" class="line_box">
-                        <input type="text" autocomplete="off" class="text_word">
+                        <input type="text" autocomplete="off" class="text_word" id="memName6" value="">
                         <span class="upbox" id="upbox"></span>
                       </label>
                     </li>
                     <button type="button" class="memberbtn" id="memberbtn">確認修改</button>
+                    <button type="button" id="update_member">test修改</button>
                   </ul>
                 </form>
               </div>
@@ -431,7 +413,7 @@
                 <form action="">
                   <table class="table_oder">
                     <tr class="table_oder_top">
-                      <th>購買日期</th>
+                      <th>購買日期</th><button id="test_delete" type="button">test delete</button>
                       <th>訂單編號</th>
                       <th>
                         <div class="th3_box">
@@ -450,7 +432,6 @@
                           </label>
                         </div>
                       </th>
-                      <!-- ====================================================== -->
                     </tr>
                     <tr>
                       <td> <label for="order_box1">2019/09/12 </label></td>
@@ -460,7 +441,7 @@
                           <span class="checkall">
                             <input type="checkbox" class="checks" id="checkall">
                             <label for="checkall"></label>
-                            <label for="allchecks=" delete_pointer">
+                            <label for="allchecks" class="delete_pointer">
                               <span>/</span>
                             </label>
                           </span>
@@ -512,8 +493,7 @@
                     </table>
                   </div>
                 </div>
-                <input type="radio" id="order_box2" name="gallery" hidden="" checked="checked" />
-
+                <!-- <input type="radio" id="order_box2" name="gallery" hidden="" checked="checked" />
                 <div class="order_infomation">
                   <div class="order_group1">
                     <table class="table_order">
@@ -529,8 +509,7 @@
                       </tr>
                     </table>
                   </div>
-
-                </div>
+                </div> -->
                 <!-- =============================================================================================             -->
                 <div class="details_img">
                   <img src="./img/member_img/folder-open-solid.svg" alt="" width="150">
@@ -546,7 +525,7 @@
             </spen>
             <span id="for_terms_content2">
               <label for="member_terms">
-                <span id="for_terms_box1">隱私權</span>
+                <span id="for_terms_box1">隱私權政策</span>
               </label>
             </span>
             <span>
@@ -586,7 +565,8 @@
       container.classList.toggle("nav_open")
     );
   </script>
-  <script src="./js/member.js"></script>
+  <script src="member.js"></script>
+  <script src="member_php1.js"></script>
 </body>
 
 </html>
