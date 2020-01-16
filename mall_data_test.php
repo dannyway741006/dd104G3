@@ -1,6 +1,6 @@
 <?php
 try{
-  require_once("connect.php");
+  require_once("connect_nicole.php");
   $sql = "select * from `mall_product` where product_type=:product_type";
   $product = $pdo->prepare($sql);
   $product->bindValue(":product_type", $_GET["product_type"]);

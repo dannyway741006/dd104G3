@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../black/scss/style.scss",
+        "../black/scss/_variables.scss",
+        "../black/scss/_custom.scss"
+    ],
+    "names": [],
+    "file": "style.css"
+}

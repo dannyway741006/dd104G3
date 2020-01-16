@@ -1,12 +1,14 @@
 node_modules
 .vscode
-<<<<<<< HEAD
 css/main.css
 css/main.css.map
 css/main.min.css
 css/main.min.css.map
+style/main.css
+style/main.css.map
+style/main.min.css
+style/main.min.css.map
 .json
-=======
 main.css
 main.css.map
 main.min.css
@@ -21,4 +23,18 @@ mall_product_notecover.html
 mall_product.html
 mall_item_notecover.html
 mall_product_notecover-v3
->>>>>>> d5ff8c722c227c7bb0701c31e57f104badd694cb
+
+php_program/connect.php
+
+
+
+
+
+
+
+
+
+
+
+
+

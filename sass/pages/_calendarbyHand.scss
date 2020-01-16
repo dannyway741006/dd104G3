@@ -10,7 +10,7 @@
   // position: absolute;
   // bottom: 10px;
   // right: 0;
-  border: 1px solid blue;
+  // border: 1px solid blue;
   background-color: $white;
   @include font(0);
   width: 100%;
@@ -125,7 +125,7 @@
     div:nth-child(1),
     div:last-child {
       &:before {
-        color: red;
+        color: #eb7a77;
       }
     }
   }
@@ -138,6 +138,13 @@
     color: #fff;
   }
 }
+
+// .todolist_date{
+//   background-color: rgba(20, 81, 92, 0.6);
+//   &:before {
+//     color:black;
+//   }
+// }
 
 .other {
   color: #bbb;

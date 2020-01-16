@@ -52,16 +52,24 @@ $(document).ready(function ($) {
 // js撈php資料
 // $sql = "select * from `mall_product` where product_type=:product_type and product_num=:product_num";
 
-// let mallBtn01 = document.querySelector('#mall_btn01');
+var mallBtn01 = document.querySelector('#mall_btn01'); //主按鈕類別1
+var mallBtn02 = document.querySelector('#mall_btn02'); //主按鈕類別2
+var mallBtn03 = document.querySelector('#mall_btn03'); //主按鈕類別3
+
+
+
+
+
 let mall_data, mall_type, mall_num;
 
 async function getProduct() {
-  // fetch('./mall_data.php?product_type=1').then(res=>res.json()).then(json=>console.log(json))
-  // mall_data = await fetch('./mall_data_test.php?product_type=1&product_num=101')
-  mall_data = await fetch('./mall_data_test.php?product_type=1')
+  mall_color.innerHTML = ''; //下拉選單按鈕預設
+  let mallType = this.dataset ? this.dataset.type : 1;
+  mall_data = await fetch('./mall_data_test.php?product_type=' + mallType)
     .then(res => res.json())
     .then(json => json)
   // console.log(mall_data);
+
   mall_content();
 }
 
@@ -70,6 +78,7 @@ async function getProduct() {
 
 function mall_content() {
   //預設
+
   var product_name = document.querySelector('#product_name');
   var product_features = document.getElementsByClassName('product_features')[0];
   var product_price = document.querySelector("#product_price");
@@ -86,11 +95,10 @@ function mall_content() {
     // console.log(thisJpg);
     // console.log(thisJpg.substring(0, 3));
 
-    //商品背景圖
-    var mallBg = document.querySelector('.mall_content');
-    mallBg.style.backgroundImage = `url(./img/mall_img/${thisJpg.substring(0,3)}_bg.jpg)`
 
-    console.log(mallBg.style.backgroundImage);
+    // console.log(mallBg.style.backgroundImage);
+
+
 
 
 
@@ -106,6 +114,26 @@ function mall_content() {
 
       if (thisJpg.substring(0, 3) == mall_data[i].product_num) {
         // console.log(mall_data[i].product_name)
+
+        //商品背景圖
+        var mallBg = document.querySelector('.mall_content');
+        // mallBg.style.backgroundImage = `url(./img/mall_img/${thisJpg.substring(0,3)}_bg.jpg)`;
+        //  console.log( thisJpg.substring(0,3))
+        mallBg.style.backgroundImage = `url(./img/mall_img/${thisJpg.substring(0,3)}_bg.jpg)`;
+        // console.log(mallBg.style.backgroundImage)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // //商品基本資料
         product_name = document.querySelector('#product_name');
@@ -160,6 +188,23 @@ function mall_content() {
     // console.log( product_name.textContent)
 
 
+
+  }
+
+
+
+ 
+
+
+
+
+  // 預設背景圖
+  var mallBg = document.querySelector('.mall_content');
+  for (var i in mall_data) {
+    if (mall_data[i]["product_num"] == mall_data[0]["product_num"]) {
+      mallBg.style.backgroundImage = "url(./"+ mall_data[0]["product_bg_src"];
+      console.log(mallBg.style.backgroundImage)
+    }
 
   }
 
@@ -275,8 +320,8 @@ function mall_content() {
 
 
 window.addEventListener("load", getProduct);
-// mallBtn01.addEventListener("click", getProduct);
-
+mallBtn01.addEventListener("click", getProduct);
+mallBtn02.addEventListener("click", getProduct);
 
 
 

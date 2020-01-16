@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AEMA,AAAA,IAAI,AAAA,CACF,WAAW,CAAC,qDAAqD,CAClE,AAED,AAAA,SAAS,AAAA,CACP,MAAM,CAAE,OAAO,CAChB,AACD,AAAA,QAAQ,CAAC,SAAS,AAAA,MAAM,AAAC,CACvB,KAAK,CAAE,IAAI,CACX,UAAU,CAAE,OAAO,CACpB,AAKD,AAAA,UAAU,AAAA,CACR,OAAO,CAAE,IAAI,CACd",
+    "sources": [
+        "../sass/back.scss",
+        "../sass/_variables.scss",
+        "../sass/_backpage.scss"
+    ],
+    "names": [],
+    "file": "back.min.css"
+}
