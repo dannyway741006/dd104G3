@@ -68,7 +68,7 @@ async function getProduct() {
   mall_data = await fetch('./mall_data_test.php?product_type=' + mallType)
     .then(res => res.json())
     .then(json => json)
-  // console.log(mall_data);
+  console.log(mall_data);
 
   mall_content();
 }

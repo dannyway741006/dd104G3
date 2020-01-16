@@ -14,9 +14,86 @@
   <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any" />
 
   <link href="./css/back.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <!-- <link href="./vendors/pace-progress/css/pace.min.css" rel="stylesheet"> -->
   <!-- Global site tag (gtag.js) - Google Analytics-->
+
+  <style>
+    .rwd-table {
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .rwd-table tr:nth-of-type(2n) {
+      background: rgb(233, 239, 240);
+    }
+
+    .rwd-table th,
+    .rwd-table td {
+      margin: 0.5em 1em;
+    }
+
+    .rwd-table {
+      min-width: 100%;
+    }
+
+    .rwd-table th {
+      display: none;
+    }
+
+    .rwd-table td {
+      display: block;
+    }
+
+    .rwd-table td:before {
+      content: attr(data-th) " : ";
+      font-weight: bold;
+      width: 7.5em;
+      display: inline-block;
+    }
+
+    .rwd-table th,
+    .rwd-table td {
+      text-align: left;
+    }
+
+    .rwd-table th,
+    .rwd-table td:before {
+      color: #38bace;
+      font-weight: bold;
+    }
+
+    @media (min-width: 768px) {
+      .rwd-table td:before {
+        display: none;
+      }
+
+      .rwd-table th,
+      .rwd-table td {
+        display: table-cell;
+        padding: 0.25em 0.5em;
+      }
+
+      .rwd-table th:first-child,
+      .rwd-table td:first-child {
+        padding-left: 0;
+      }
+
+      .rwd-table th:last-child,
+      .rwd-table td:last-child {
+        padding-right: 0;
+      }
+
+      .rwd-table th,
+      .rwd-table td {
+        padding: 1em !important;
+      }
+    }
+  </style>
+
+
+
+
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -29,6 +106,16 @@
     // Bootstrap ID
     gtag('config', 'UA-118965717-5');
   </script>
+
+
+
+
+
+
+
+
+
+
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
@@ -42,12 +129,17 @@
     </a>
 
     <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
-      <span class="navbar-toggler-icon"></span>
+      <!-- <span class="navbar-toggler-icon"></span> -->
     </button>
     <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon" id="navBtn"></span>
     </button>
   </header>
+
+
+
+
+
   <div class="app-body">
     <div class="sidebar">
       <nav class="sidebar-nav">
@@ -123,6 +215,7 @@
             </div>
           </div>
         </div>
+
 
 
 
@@ -213,10 +306,8 @@
           </div>
         </div>
 
-
-
         <!-- 商城商品管理 -->
-        <div class="animated fadeIn backTable">
+        <!-- <div class="animated fadeIn backTable">
           <div class="card">
             <div class="card-body">
               <div class="bd-example">
@@ -227,20 +318,20 @@
 
               <form action="">
 
-         
-              <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home" onclick="checkId();">商品管理</a></li>
-              
-                <li><a data-toggle="tab" href="#menu1">新增商品</a></li>
+
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#home" onclick="checkId();">商品管理</a></li>
+
+                  <li><a data-toggle="tab" href="#menu1">新增商品</a></li>
 
 
-              </ul>
-            </form>
+                </ul>
+              </form>
               <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
-               
+
                   <!-- <h3>商品管理</h3> -->
-                  <!-- <table class="table">
+        <!-- <table class="table">
                     <thead class="thead-dark">
                       <tr>
                         <th scope="col">商品編號</th>
@@ -270,7 +361,7 @@
                       </tr>
                     </tbody>
                   </table> -->
-                  <div id="back_product">
+        <!-- <div id="back_product">
 
                   </div>
                 </div>
@@ -280,92 +371,223 @@
                 </div>
 
               </div>
+            </div> -->
+
+
+
+        <div class="animated fadeIn backTable">
+          <div class="card">
+            <div class="card-body">
+              <div class="bd-example">
+                <p class="h4">商城商品管理</p>
+              </div>
+
+
+              <table class="table rwd-table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>商品編號</th>
+                    <th>商品名稱</th>
+                    <th>商品價格</th>
+                    <th>商品圖片路徑</th>
+                    <th>商品顏色</th>
+                    <th>商品說明</th>
+                    <th>商品類別</th>
+                    <th>商品背景</th>
+                    <th>商品輪播圖</th>
+                    <th>設定</th>
+                  </tr>
+                </thead>
+                <tbody id="back_product">
+                  <!-- <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                  </tr> -->
+                </tbody>
+              </table>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
         </div>
-      </div>
 
 
+        <!--    商城單筆修改資料表 -->
 
 
-      <!-- 商城訂單管理 -->
-      <div class="animated fadeIn backTable">
-        <div class="card">
-          <div class="card-body">
-            <div class="bd-example">
-              <p class="h4">商城訂單管理</p>
+        <!--   跳窗 -->
+        <div class="lightBox_content" id="lightBox_content">
+          <div class="animated fadeIn ">
+            <div class="card">
+              <div class="card-body">
+                <div class="bd-example">
+                  <p class="h4">商城單筆修改</p>
+                </div>
+                <form action="./php/mall/back_product_edit.php" method="post"  enctype="multipart/form-data">
+                  <table class="table">
+                    <thead class="thead-dark" id="back_product_input">
+
+                      <!-- <tr>
+                      <th>商品編號</th>
+                      <td>123</td>
+                    </tr>
+                    <tr>
+                      <th>商品名稱</th>
+                      <td>123</td>
+                    </tr>
+                    <tr>
+                      <th>商品價格</th>
+                      <td>123</td>
+                    </tr>
+                    <tr>
+                      <th>商品圖片路徑</th>
+                      <td>123</td>
+                    </tr>
+                    <tr>
+                      <th>商品顏色</th>
+                      <td>123</td>
+                    </tr>
+                    <tr>
+                      <th>商品說明</th>
+                      <td>123</td>
+                    </tr>
+                    <tr>
+                      <th>商品類別</th>
+                      <td>123</td>
+                    </tr>
+                    <tr>
+                      <th>商品背景</th>
+                      <td>123</td>
+                    </tr>
+                    <tr>
+                      <th>商品輪播圖</th>
+                      <td>123</td>
+                    </tr>
+                    <tr>
+                      <th>設定</th>
+                      <td>123</td>
+                    </tr> -->
+
+                    </thead>
+                    <tbody>
+                      <!-- 
+                    <form action="prodUpdateToDb.php" method="post"> -->
+                      <!-- <tr>
+                      <th><input type="text"></th>
+                      <th>商品名稱</th>
+                      <th>商品價格</th>
+                      <th>商品圖片路徑</th>
+                      <th>商品顏色</th>
+                      <th>商品說明</th>
+                      <th>商品類別</th>
+                      <th>商品背景</th>
+                      <th>商品輪播圖</th>
+                      <th>設定</th>
+                    </tr>  -->
+
+                      <!-- </form> -->
+
+                    </tbody>
+                  </table>
+                </form>
+              </div>
             </div>
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+          </div>
 
+        </div>
+
+
+
+
+
+        <!-- =========================light box===================================== -->
+
+
+        <!-- <div class="light_box_title" id="light_box_title">
+                  <img src="./img/member_img/times-solid.svg" alt="" width="15">
+                  <img src="./img/member_img/times-solid1.svg" alt="" width="15">
+                </div> -->
+
+        <!-- ==============放內容=====================================           -->
+        <!-- <p>確定刪除所有訂單記錄？</p>
+                  <input type="text"> -->
+        <!-- ================放內容 end=====================================           -->
+        <!-- </div>
+                <div class="memlibtn">
+                  <button id="liclose" class="btn_close">取 消</button>
+                  <button id="enter_delete" class="btn_close">確 定</button>
+                </div>
+              </div> -->
+        <!-- ========================light box end===============================================       -->
+
+        <!-- <button type="button" class="memberbtn" id="memberbtn">test light box</button> -->
+
+
+
+
+
+
+
+
+
+        <!-- 商城訂單管理 -->
+        <div class="animated fadeIn backTable">
+          <div class="card">
+            <div class="card-body">
+              <div class="bd-example">
+                <p class="h4">商城訂單管理</p>
+              </div>
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
       </div>
-
-
-
-
-
-
-
-
-
-
-  </div>
-  </main>
+    </main>
 
 
 
@@ -382,30 +604,6 @@
 
 
 
-  <script>
-  
-  function checkId() {
-  let xhr = new XMLHttpRequest();
-
-  xhr.addEventListener("load" = function () {
-    if (xhr.status == 200) {
-      document.getElementById("back_product").innerHTML = xhr.responseText;
-    } else {
-      alert(xhr.status);
-    }
-  })
-
-  //設定好所要連結的程式
-  let url = "../php/mall/back_product.php";
-  xhr.open("post",url, true);
-  
-  //送出資料
-  xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-  xhr.send();
-}
-  
-  
-  </script>
 
 
 
@@ -413,30 +611,8 @@
 
 
 
-
-
-
-
-
-
-  <script>
-    var navItem = document.querySelectorAll(".nav-item");
-    var backTable = document.querySelectorAll(".backTable");
-
-    backTable[0].style.display = "block";
-    for (var i = 0; i < navItem.length; i++) {
-      navItem[i].addEventListener("click", function() {
-        for (var j = 0; j < backTable.length; j++) {
-          backTable[j].style.display = "none";
-        }
-        var backNum = this.id.substr((this.id.length) - 1) - 1;
-        backTable[`${backNum}`].style.display = "block";
-      })
-
-    }
-  </script>
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 </body>
 
 </html>
