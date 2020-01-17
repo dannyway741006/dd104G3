@@ -512,10 +512,12 @@ var main_content = new Vue({
 
           console.log(vm.programs[index]);
 
-          vm.history_programs.push(vm.programs[index])
-// for(i=0;i<vm.programs.length;i++){
-//   if(vm.programs[i].)
-// }
+
+          for (i = 0; i < vm.programs.length; i++) {
+            if (pro_sta == 1) {
+              vm.history_programs.push(vm.programs[i])
+            }
+          }
 
 
         },
