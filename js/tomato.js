@@ -36,6 +36,16 @@ var app = new Vue({
                 complete:false,
             },
         ],
+        trelloTodos:[
+            {
+                id:'mask2',
+                title:'新任務trello',
+                runstatus:0,
+                currentTime:this.workTime,
+                totalTime:0,
+                complete:false,
+            },
+        ],
         rings:[
             {
              ringName:'鈴聲1',
@@ -55,6 +65,16 @@ var app = new Vue({
         ],
         
     },
+    mounted() {
+        if (localStorage.getItem('todos')) {
+            try {
+              this.todos = JSON.parse(localStorage.getItem('todos'));
+            //   console.log()
+            } catch(e) {
+              localStorage.removeItem('todos');
+            }
+          }
+    },
     watch:{
         timer(){
             //如果timer發生變化
@@ -71,7 +91,6 @@ var app = new Vue({
             this.timer = this.working? this.workTime:this.restTime;
             this.dashOffSet=290*Math.PI;
         },
-
     },
     computed: {
         viewTime:function(){
@@ -80,6 +99,7 @@ var app = new Vue({
         },
     },
     methods: {
+
         setTime(){
             //設定時間
             this.workmin = this.workmin?this.workmin:0;
@@ -111,7 +131,9 @@ var app = new Vue({
                 complete:false,
             }
             this.todos.push(task)
+            // localStorage.todos = this.todos;
             this.newTodo="";
+            this.savelocal()
         },
         removeTodo(item,key){
             var index = myChart.data.labels.indexOf(item.title)
@@ -123,12 +145,18 @@ var app = new Vue({
                 myChart.update();   
             }   
             this.todos.splice(key,1);
-            
+            this.savelocal()
         },
+        savelocal() {
+            //加到localstorage
+            const parsed = JSON.stringify(this.todos);
+            localStorage.setItem('todos', parsed);
+          },
         pauseTomato(item){   
             //暫停
             item.runstatus = 0;
             clearTimeout(this.mytimer);
+            this.savelocal()
         },
         startTomato(item){
             if(item.complete){
@@ -193,6 +221,7 @@ var app = new Vue({
                 this.timer = this.workTime;
                 this.working = !this.working;
                 this.totalTimer-=!this.working?1:0
+                this.savelocal()
             }
             }
         ,totalTime(timer){
@@ -205,13 +234,17 @@ var app = new Vue({
             myChart.data.labels.push(item.title)
             myChart.data.datasets[0].data.push(item.totalTime)
             myChart.update();
+            // item.complete=!item.complete
+            // this.savelocal()
             }else{
                 // console.log(item.index)
                 var index = myChart.data.labels.indexOf(item.title)
                 console.log(index)
                 myChart.data.labels.splice(index,1);
                 myChart.data.datasets[0].data.splice(index,1);
-                myChart.update();
+                // myChart.update();
+                // item.complete=!item.complete
+            this.savelocal()
                 // console.log(text)
             }
             
