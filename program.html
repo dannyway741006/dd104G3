@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="./node_modules/vue2-datepicker/index.css">
   <link rel="stylesheet" href="./css/main.css" />
+  <link rel=icon href=favicon.ico>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
   <title>Document</title>
@@ -530,7 +531,7 @@
         </div>
 
         <!-- 現有卡片背面 -->
-        <div class="mask" :class="{masked: opened}" @click="card_no=-1;history_card_no=-1;opened =! opened"></div>
+        <div class="mask" :class="{masked: opened}" @click="card_no=-1;history_card_no=-1;opened =! opened,editcard()"></div>
         <div v-if='nowProgram'>
 
           <!-- card_list_todo -->
@@ -793,7 +794,7 @@
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
 
-                  <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
+                  <div @click="opened = false;card_no=-1,editcard()"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
 
                 <div class="lightbox_content">
@@ -1044,7 +1045,7 @@
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
 
-                  <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
+                  <div @click="opened = false;card_no=-1,editcard()"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
 
                 <div class="lightbox_content">
@@ -1639,17 +1640,14 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
-    <script src="./node_modules/vue2-datepicker/index.min.js"></script>
-    
-    
-    <script src="./js/program.js"></script>
-<<<<<<< HEAD
-    <script src="./js/layout.js"></script>
+    <script src="./js/lib/index.min.js"></script>
+        
     <script src="./js/background.js"></script>
-    <!-- <script src="./js/calender.js"></script> -->
-=======
-    <script src="./js/layout.js" type="module"></script>
->>>>>>> yang
+    <script src="./js/layout.js"></script>
+
+    <script src="./js/program.js"></script>
+
+
 </body>
 
 </html>
