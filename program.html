@@ -530,7 +530,7 @@
         </div>
 
         <!-- 現有卡片背面 -->
-        <div class="mask" :class="{masked: opened}" @click="card_no=-1;history_card_no=-1;opened =! opened"></div>
+        <div class="mask" :class="{masked: opened}" @click="card_no=-1;history_card_no=-1;opened =! opened,editcard()"></div>
         <div v-if='nowProgram'>
 
           <!-- card_list_todo -->
@@ -793,7 +793,7 @@
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
 
-                  <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
+                  <div @click="opened = false;card_no=-1,editcard()"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
 
                 <div class="lightbox_content">
@@ -1044,7 +1044,7 @@
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
 
-                  <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
+                  <div @click="opened = false;card_no=-1,editcard()"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
 
                 <div class="lightbox_content">
@@ -1642,8 +1642,12 @@
     <script src="./node_modules/vue2-datepicker/index.min.js"></script>
     
     
+<<<<<<< HEAD
     <script src="./js/program.js"></script>
 <<<<<<< HEAD
+=======
+    <script src="./js/programByCardPart.js"></script>
+>>>>>>> practice
     <script src="./js/layout.js"></script>
     <script src="./js/background.js"></script>
     <!-- <script src="./js/calender.js"></script> -->
