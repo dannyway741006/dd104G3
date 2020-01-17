@@ -242,9 +242,9 @@ var app = new Vue({
                 console.log(index)
                 myChart.data.labels.splice(index,1);
                 myChart.data.datasets[0].data.splice(index,1);
-                // myChart.update();
+                myChart.update();
                 // item.complete=!item.complete
-            this.savelocal()
+                // this.savelocal()
                 // console.log(text)
             }
             
