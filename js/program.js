@@ -1119,27 +1119,3 @@ var main_content = new Vue({
   },
 });
 
-
-
-// window.onload = function () {
-  // let xhr = new XMLHttpRequest();
-  // xhr.onload = function () {
-  //   // console.log(xhr.responseText);
-  //   result = JSON.parse(xhr.responseText);
-  //   console.log(result)
-  //   if (result.status == "success") {
-      
-  //     main_content.programs = result.data;
-  //     console.log(main_content.programs)
-      
-  //     // console.log(result.data[20]);
-  //   }
-  // }
-  // xhr.open("post", './php/pm/get_program_list.php', true);
-  // //送出資料
-  // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  // let data_info = "mem_no=1";
-  // xhr.send(data_info);
-// }
-
-
