@@ -169,8 +169,8 @@ function test2() {
 window.addEventListener("load", function() {
   //-------------------------檢查是否已登入
   // mem_update();
-  getLoginInfo();
-  test2();
+  // getLoginInfo();
+  // test2();
   // test3();
 
   //===設定spanLogin.onclick 事件處理程序是 showLoginForm
