@@ -5,7 +5,7 @@
     text-decoration: none;
     color: $dark;
     transition: all 0.1s;
-    div{
+    div {
       width: 30%;
     }
 
@@ -13,8 +13,6 @@
       color: $white;
     }
   }
-
-
 }
 
 // test card=========================
@@ -63,7 +61,6 @@
 
             &.active {
               .terms_title_member {
-
                 h3 {
                   color: white;
                 }
@@ -114,8 +111,6 @@
                 transition: all 0.3s;
                 // z-index: -1;
               }
-
-
             }
 
             .terms_title_privacy {
@@ -192,7 +187,6 @@
 
                   ul {
                     padding-left: 40px;
-
                   }
 
                   ul li {
@@ -201,7 +195,6 @@
                 }
               }
             }
-
 
             .terms_content2 {
               border: 1px solid rgb(230, 22, 57);
@@ -224,7 +217,6 @@
 
                 ul {
                   padding-left: 40px;
-
                 }
 
                 ol,
@@ -257,7 +249,6 @@
               }
             }
           }
-
         }
       }
 
@@ -293,7 +284,6 @@
             width: 40%;
             height: 100%;
             border: 1px solid green;
-
           }
         }
       }
@@ -308,15 +298,12 @@
           width: 100%;
           height: 100%;
           border: 1px solid blue;
-
         }
       }
     }
   }
 
-
-
-  input[type="radio"]+.terms_word1 {
+  input[type="radio"] + .terms_word1 {
     width: 100%;
     height: calc(100% - 60px);
     // border: 1px solid rgb(226, 165, 185);
@@ -369,9 +356,8 @@
         position: absolute;
         z-index: 99;
 
-
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           border-radius: 100%;
           width: 100%;
@@ -380,8 +366,6 @@
           top: -3%;
           left: -3%;
           opacity: 0;
-
-
         }
 
         &:hover::after {
@@ -398,7 +382,7 @@
     }
   }
 
-  input[type="radio"]:checked+.terms_word {
+  input[type="radio"]:checked + .terms_word {
     transform: scale(1);
     opacity: 1;
     visibility: visible;
@@ -408,9 +392,7 @@
     transform: scale(0);
     opacity: 0;
     visibility: hidden;
-
   }
-
 
   .member_order_bottom {
     width: 100%;
@@ -560,17 +542,16 @@
       .text_word:focus {
         padding: 3px 10px 0px;
         transition: 0.3s;
-
       }
 
-      .text_word:focus~.upbox {
+      .text_word:focus ~ .upbox {
         transition: 0.3s;
         height: 35px;
         border-radius: 5px;
         z-index: 1;
       }
 
-      .text_word~.upbox {
+      .text_word ~ .upbox {
         position: absolute;
         height: 0;
         bottom: 3px;
@@ -609,8 +590,6 @@
   height: 100%;
   // border: 1px solid saddlebrown;
   padding-left: 20px;
-
-
 
   .order_group {
     width: 100%;
@@ -653,7 +632,7 @@
       tr,
       th,
       td {
-        width: calc((100%)/3);
+        width: calc((100%) / 3);
         text-align: center;
       }
 
@@ -664,20 +643,20 @@
           input[type="checkbox"] {
             display: none;
 
-            &+label::before {
+            & + label::before {
               content: "";
               display: inline-block;
               width: 15px;
               height: 15px;
-              background-image: url("/img/unchecked_d.9558e11b.svg");
+              background-image: url("../img/unchecked_d.3b5daaa1.svg");
               background-size: contain;
               margin-right: 4px;
               position: relative;
               top: 2px;
             }
 
-            &:checked+label::before {
-              background-image: url("/img/checked_d.721738d0.svg");
+            &:checked + label::before {
+              background-image: url("../img/checked_d.83ea7245.svg");
             }
           }
         }
@@ -688,20 +667,20 @@
           input[type="checkbox"] {
             display: none;
 
-            &+label::before {
+            & + label::before {
               content: "";
               display: inline-block;
               width: 15px;
               height: 15px;
-              background-image: url("/img/unchecked_d.9558e11b.svg");
+              background-image: url("../img/unchecked_d.3b5daaa1.svg");
               background-size: contain;
               margin-right: 4px;
               position: relative;
               top: 2px;
             }
 
-            &:checked+label::before {
-              background-image: url("/img/checked_d.721738d0.svg");
+            &:checked + label::before {
+              background-image: url("../img/checked_d.83ea7245.svg");
             }
           }
         }
@@ -712,20 +691,20 @@
           input[type="checkbox"] {
             display: none;
 
-            &+label::before {
+            & + label::before {
               content: "";
               display: inline-block;
               width: 20px;
               height: 20px;
-              background-image: url("/img/unchecked_d.9558e11b.svg");
+              background-image: url("../img/unchecked_d.3b5daaa1.svg");
               background-size: contain;
               margin-right: -4px;
               position: relative;
               top: 2px;
             }
 
-            &:checked+label::before {
-              background-image: url("/img/checked_d.721738d0.svg");
+            &:checked + label::before {
+              background-image: url("../img/checked_d.83ea7245.svg");
             }
           }
         }
@@ -733,10 +712,8 @@
         .delete_pointer {
           cursor: pointer;
 
-
           #allcheck {
             cursor: pointer;
-
           }
         }
       }
@@ -746,7 +723,6 @@
       position: relative;
       @include hoverIcon(17px);
       padding-left: 25px;
-
     }
   }
 
@@ -808,7 +784,7 @@
       }
     }
 
-    input[type="radio"]:checked+.order_infomation {
+    input[type="radio"]:checked + .order_infomation {
       transform: scale(1);
       opacity: 1;
       visibility: visible;
@@ -886,7 +862,6 @@
   animation-duration: 0.3s;
   animation-name: boxrotate;
   animation-fill-mode: forwards;
-
 }
 
 .closeani {
@@ -940,7 +915,6 @@
 
 // ===========rwd width 768px====================
 @include media(768px) {
-
   .memberTitle .member_title1 {
     position: relative;
     overflow: hidden;
@@ -997,7 +971,6 @@
     position: relative;
     overflow: hidden;
 
-
     .testh3 {
       position: absolute;
       z-index: 2;
@@ -1033,9 +1006,7 @@
 
     .active #memcon2 {
       padding-left: 0;
-
     }
-
 
     &.active {
       #memcon2 {
@@ -1125,7 +1096,6 @@
   .member_content .member_order_bottom {
     margin-top: 10px;
     text-align: center;
-
   }
 
   .member_content .member_order_bottom span:nth-last-of-type(1) {
@@ -1151,7 +1121,12 @@
     @include font(0);
   }
 
-  .member_order_content .order_details .order_infomation .order_group1 .table_order .table_order_top1 {
+  .member_order_content
+    .order_details
+    .order_infomation
+    .order_group1
+    .table_order
+    .table_order_top1 {
     @include font(0);
   }
 }
@@ -1167,7 +1142,7 @@
     margin-bottom: 2%;
   }
 
-  .member_content input[type="radio"]+.terms_word1 {
+  .member_content input[type="radio"] + .terms_word1 {
     height: calc(100% - 90px);
   }
 
@@ -1176,7 +1151,6 @@
     @include font(0);
     letter-spacing: 0px;
   }
-
 }
 
 // =================rwd 325px========================
@@ -1227,7 +1201,6 @@
   .member_content .member_order_bottom {
     margin-top: 10px;
     text-align: center;
-
   }
 
   .member_content .member_order_bottom span:nth-last-of-type(1) {
@@ -1254,17 +1227,21 @@
     @include font(0);
   }
 
-  .member_order_content .order_details .order_infomation .order_group1 .table_order .table_order_top1 {
+  .member_order_content
+    .order_details
+    .order_infomation
+    .order_group1
+    .table_order
+    .table_order_top1 {
     @include font(0);
   }
 
-  .member_content input[type="radio"]+.terms_word1 {
+  .member_content input[type="radio"] + .terms_word1 {
     height: calc(100% - 190px);
   }
 
   .member_all_box .memberContent .member_img .up_member_icon {
     margin-top: 100%;
-
   }
 
   .member_all_box .member_info .con1_info .memberbtn {
