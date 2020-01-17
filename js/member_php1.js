@@ -4,54 +4,7 @@ function $id(id) {
 //--------------------全域變數
 let member = {};
 
-//--------------------logout
-function logout() {
-  let xhr = new XMLHttpRequest();
 
-  xhr.onload = function () {
-    member = JSON.parse(xhr.responseText);
-    // console.log(member)
-    if (member.status === 'success') {
-      divLogin.innerHTML = "登入";
-      $id("memName").innerHTML = "&nbsp;";
-      $id("memId").value = "";
-      $id("memPsw").value = "";
-    }
-
-  }
-  xhr.open("post", "./php/member/logout.php", true);
-  xhr.send(null)
-}
-
-//--------------------顯示登入者資訊
-function showMemInfo(jsonStr) {
-
-  member = JSON.parse(jsonStr);
-  // console.log(member)
-  if (member.status === 'success') {
-    $id("memName").innerText = member.data.mem_id;
-    $id("divLogin").innerHTML = "登出";//登入bar面版上 spanLogin 的字改成登出
-
-  } else {
-    alert("帳密錯誤");
-  }
-}
-
-// --------------------到server端做登入
-function sendForm() {
-  var memId = $id("memId").value;
-  var memPsw = $id("memPsw").value;
-  //-------------使用ajax方法到Server端資料
-  let xhr = new XMLHttpRequest();
-  xhr.onload = function () {
-    // console.log(xhr.responseText);
-    showMemInfo(xhr.responseText); //顯示登入者資訊
-  }
-  xhr.open("post", "./php/member/login.php", true);
-  xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-  let data_info = `mem_id=${memId}&mem_psw=${memPsw}`;
-  xhr.send(data_info);
-}
 
 // -------------------------取得登入資訊
 function getLoginInfo() {
@@ -59,15 +12,15 @@ function getLoginInfo() {
 
   xhr.onload = function () {
     member = JSON.parse(xhr.responseText);
-    console.log("a");
+    console.log(member);
     if (member.status === 'success') {
-      $id("memName").innerText = member.data.mem_id;
-      $id("divLogin").innerHTML = "登出";//登入bar面版上 spanLogin 的字改成登出
+
+      //登入bar面版上 spanLogin 的字改成登出
       $id("memName1").value = member.data.mem_id;
       $id("memName2").value = member.data.mem_name;
       $id("memName3").value = member.data.mem_email;
       $id("memName4").value = member.data.mem_tel;
-      $id("memName6").value = member.data.mem_addr;
+      $id("memName5").value = member.data.mem_addr;
 
     }
 
@@ -81,10 +34,10 @@ function getLoginInfo() {
 function test2() {
   let xhr = new XMLHttpRequest();
   // let divLogin = document.getElementById("divLogin");
-  console.log('a');
+  // console.log(member);
   xhr.onload = function () {
     member = JSON.parse(xhr.responseText);
-    // console.log(member);
+    console.log("a");
     let str = "";
     for (i = 0; i < member.length; i++) {
       str = order_temp(member[i].cret_date, member[i].order_no, str, i)
@@ -149,7 +102,7 @@ function test2() {
 
 
     // ===================================================================
-   
+
     let allcheck = document.getElementById("allcheck");
     let change_word1 = document.getElementById("change_word1");
 
@@ -172,19 +125,7 @@ function test2() {
   xhr.open("get", "./php/member/order_mem.php", true);
   xhr.send(null);
 }
- // ======================input 全選/取消===========================
-//  let change_word1 = document.getElementById("change_word1");
 
-// function order_delete(){
-// if(change_word1.innerHTML.match("取消/")){
-//   let test_delete = document.getElementById("test_delete");
-//   test_delete.addEventListener("click",function(){
-//     let memName5 = getElementById("memName5");
-//     memName5.remove(memName5.innerHTML);
-//   });
-// }
-// };
-// ========================input 全選/取消 end===========================================
 function order_temp(cret_date, order_no, str, i) {
   str += ` 
   <tr>
@@ -211,6 +152,101 @@ function order_temp(cret_date, order_no, str, i) {
   return str
 
 }
+
+// ================member update===============================
+function mem_update() {
+  let memname = $id("memName2").value;
+  let mememail = $id("memName3").value;
+  let memtel = $id("memName4").value;
+  let memaddr = $id("memName5").value;
+
+  let xhr = new XMLHttpRequest();
+  xhr.onload = function () {
+    console.log(xhr.responseText);
+    // showMemInfo(xhr.responseText); //顯示登入者資訊
+    console.log(member)
+  }
+  xhr.open("post", "./php/member/member_update.php", true);
+  xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+  let data_info = `mem_no=${member[0].mem_no}&mem_name=${memname}&mem_addr=${memaddr}&mem_tel=${memtel}
+  &mem_email=${mememail}`;
+  xhr.send(data_info);
+}
+
+window.addEventListener("load", function () {
+  //-------------------------檢查是否已登入
+  // mem_update();
+  getLoginInfo();
+  test2();
+  // test3();
+
+  //===設定spanLogin.onclick 事件處理程序是 showLoginForm
+  // $id("divLogin").onclick = logout;
+  //===設定btnLogin.onclick 事件處理程序是 sendForm
+
+  $id("update_member").onclick = mem_update;
+  //===設定btnLoginCancel.onclick 事件處理程序是 cancelLogin
+  // $id("liclose").onclick = cancelLogin;  
+});
+
+
+
+
+
+
+
+
+
+
+// //--------------------logout
+// function logout() {
+//   let xhr = new XMLHttpRequest();
+
+//   xhr.onload = function () {
+//     member = JSON.parse(xhr.responseText);
+//     // console.log(member)
+//     if (member.status === 'success') {
+//       divLogin.innerHTML = "登入";
+//       // $id("memName").innerHTML = "&nbsp;";
+//       $id("memId").value = "";
+//       $id("memPsw").value = "";
+//     }
+
+//   }
+//   xhr.open("post", "./php/member/logout.php", true);
+//   xhr.send(null)
+// }
+
+//--------------------顯示登入者資訊
+// function showMemInfo(jsonStr) {
+
+//   member = JSON.parse(jsonStr);
+//   // console.log(member)
+//   if (member.status === 'success') {
+//     // $id("memName").innerText = member.data.mem_id;
+//     // $id("divLogin").innerHTML = "登出";//登入bar面版上 spanLogin 的字改成登出
+
+//   } else {
+//     alert("帳密錯誤");
+//   }
+// }
+
+// // --------------------到server端做登入
+// function sendForm() {
+//   var memId = $id("memId").value;
+//   var memPsw = $id("memPsw").value;
+//   //-------------使用ajax方法到Server端資料
+//   let xhr = new XMLHttpRequest();
+//   xhr.onload = function () {
+//     // console.log(xhr.responseText);
+//     showMemInfo(xhr.responseText); //顯示登入者資訊
+//   }
+//   xhr.open("post", "./php/member/login.php", true);
+//   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+//   let data_info = `mem_id=${memId}&mem_psw=${memPsw}`;
+//   xhr.send(data_info);
+// }
+
 // function test3() {
 //   let xhr = new XMLHttpRequest();
 //   // let divLogin = document.getElementById("divLogin");
@@ -241,38 +277,16 @@ function order_temp(cret_date, order_no, str, i) {
 //   </div>
 // </div>
 // `
+// ======================input 全選/取消===========================
+// let change_word1 = document.getElementById("change_word1");
 
-// ================member update===============================
-function mem_update() {
-  let memname = $id("memName2").value;
-  let mememail = $id("memName3").value;
-  let memtel = $id("memName4").value;
-  let memaddr = $id("memName6").value;
-console.log(member)
-  let xhr = new XMLHttpRequest();
-  xhr.onload = function () {
-    console.log(xhr.responseText);
-    // showMemInfo(xhr.responseText); //顯示登入者資訊
-  }
-  xhr.open("post", "./php/member/member_update.php", true);
-  xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-  let data_info = `mem_no=${member[0].mem_no}&mem_name=${memname}&mem_addr=${memaddr}&mem_tel=${memtel}
-  &mem_email=${mememail}`;
-  xhr.send(data_info);
-}
-
-window.addEventListener("load", function () {
-  //-------------------------檢查是否已登入
-  // mem_update();
-  getLoginInfo();
-  test2();
-  // test3();
-
-  //===設定spanLogin.onclick 事件處理程序是 showLoginForm
-  $id("divLogin").onclick = logout;
-  //===設定btnLogin.onclick 事件處理程序是 sendForm
-
-  $id("update_member").onclick = mem_update;
-  //===設定btnLoginCancel.onclick 事件處理程序是 cancelLogin
-  // $id("liclose").onclick = cancelLogin;  
-});
+// function order_delete() {
+//   if (change_word1.innerHTML.match("取消/")) {
+//     let test_delete = document.getElementById("test_delete");
+//     test_delete.addEventListener("click", function () {
+//       let memName5 = getElementById("memName5");
+//       memName5.remove(memName5.innerHTML);
+//     });
+//   }
+// };
+// ========================input 全選/取消 end===========================================
