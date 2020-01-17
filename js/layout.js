@@ -1,3 +1,4 @@
+import background from "./background.js";
 const container = document.getElementById("app");
 const hamburger = document.querySelector(".nav_hamburger");
 let MEMBER_INFO = {};
@@ -44,4 +45,5 @@ let MEMBER_INFO = {};
   }
   await checkLogin();
   setListClass();
+  background();
 })();
