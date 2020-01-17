@@ -77,21 +77,20 @@
           <div class="title">
             <p>新建專案</p>
           </div>
-          <form action="create_program.php" method="post">
+          <form method="">
             <div class="setting_project">
               <div>
                 <p class="setting_project_title1">專案名稱 Project</p>
-                <input type="text" v-model.trim="program_name" name="pro_title"/>
+                <input type="text" v-model.trim="pro_title" name="pro_title" id="pro_title" />
                 <p class="setting_project_title2">專案專屬色 Color</p>
                 <div class="colors">
-                  <span class="new_program_choose_color_item" v-for='color in colors' @click.stop='selectColor = color'
-                    :class='{new_program_choose_color_item_checked: selectColor === color}'
-                    :style='{backgroundColor: color}' :value=color.color >
-                    <input type="text" name="pro_col" :value=color.color style="display: none;">
+                  <span class="new_program_choose_color_item" v-for='pro_col in colors' @click.stop='selectColor = pro_col'
+                    :class='{new_program_choose_color_item_checked: selectColor === pro_col}'
+                    :style='{backgroundColor: pro_col}' :value=pro_col.pro_col>
                   </span>
                 </div>
-                
-                <button @click.prevent="add_program()" type="submit">建立專案</button>
+
+                <button @click.prevent="add_program()" type="button">建立專案</button>
               </div>
             </div>
           </form>
@@ -111,7 +110,7 @@
 
             <transition-group name="fade" mode="out-in" tag="div">
               <li v-for="(item,index) in history_programs" :key="index" @click="history_page=index;close_humberger()">
-                <p><span :style='{backgroundColor: item.color}'></span>{{item.program_names}}</p>
+                <p><span :style='{backgroundColor: item.pro_col}'></span>{{item.pro_title}}</p>
                 <img src="./img/delete.0df56913.svg" alt="uncheck" width="20" @click.stop='delete_info_func(index)' />
 
               </li>
@@ -131,8 +130,8 @@
 
 
             <transition-group name="fade" mode="out-in" tag="div">
-              <li v-for="(item,index) in programs" :key="index" @click="page=index;close_humberger()">
-                <p><span :style='{backgroundColor: item.color}'></span>{{item.program_names}}</p>
+              <li v-for="(item,index) in programs" :key="index" @click="show_cards(index),page=index;close_humberger()">
+                <p><span :style='{backgroundColor:item.pro_col}'></span>{{item.pro_title}}</p>
                 <img src="./img/check.svg" alt="check" width="20" v-if='item.changeimage' />
                 <img src="./img/uncheck.svg" alt="uncheck" width="20" v-else @click.stop="complete_info_func(index)" />
               </li>
@@ -180,7 +179,7 @@
 
             <div class="cards_column_all" id="cards_column_all">
               <div class="cards_column todo_column">
-                <div class="cards_column_head" :style='{backgroundColor: item.color}'>待辦事項</div>
+                <div class="cards_column_head" :style='{backgroundColor: item.pro_col}'>待辦事項</div>
 
                 <div class="cards_column_body cards_column_body_todo">
                   <div class="add_card_input_box_all">
@@ -208,7 +207,7 @@
                       style="min-height:330px;height:54vh">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
-                        <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
+                        <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
                         <p>{{item.card_name}}</p>
                         <div class="cards_list_card_icon_bar">
                           <div class="cards_list_card_icon cards_list_card_calendaricon"><img
@@ -232,7 +231,7 @@
               </div>
 
               <div class="cards_column doing_column">
-                <div class="cards_column_head" :style='{backgroundColor: item.color}'>進行中</div>
+                <div class="cards_column_head" :style='{backgroundColor: item.pro_col}'>進行中</div>
                 <div class="cards_column_body cards_column_body_doing">
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
                     v-for="listitem in item.card_list_doing">
@@ -240,7 +239,7 @@
                       style="min-height:435px;height:65vh">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
-                        <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
+                        <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
                         <p>{{item.card_name}}</p>
                         <div class="cards_list_card_icon_bar">
                           <div class="cards_list_card_icon cards_list_card_calendaricon"><img
@@ -263,14 +262,14 @@
               </div>
 
               <div class="cards_column done_column">
-                <div class="cards_column_head" :style='{backgroundColor: item.color}'>已完成</div>
+                <div class="cards_column_head" :style='{backgroundColor: item.pro_col}'>已完成</div>
                 <div class="cards_column_body cards_column_body_done">
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="listitem in item.card_list_done">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
                       style="min-height:435px;height:65vh">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex"
                         @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
-                        <div class="cards_list_card_color" :style='{backgroundColor: programs[index].color}'></div>
+                        <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
                         <p>{{item.card_name}}</p>
                         <div class="cards_list_card_icon_bar">
                           <div class="cards_list_card_icon cards_list_card_calendaricon"><img
@@ -378,7 +377,7 @@
 
             <div class="cards_column_all" id="cards_column_all">
               <div class="cards_column todo_column">
-                <div class="cards_column_head" :style='{backgroundColor: item.color}'>待辦事項</div>
+                <div class="cards_column_head" :style='{backgroundColor: item.pro_col}'>待辦事項</div>
                 <div class="cards_column_body cards_column_body_todo">
 
                   <div class="cards_list cards_list_todo history" id="cards_list_todo"
@@ -388,7 +387,7 @@
                       style="min-height:435px;height:65vh">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(),history_card_no=cardIndex,todo_type=listitem.type">
-                        <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].color}'>
+                        <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
                         </div>
                         <p>{{item.card_name}}</p>
                         <div class="cards_list_card_icon_bar">
@@ -413,7 +412,7 @@
               </div>
 
               <div class="cards_column doing_column">
-                <div class="cards_column_head" :style='{backgroundColor: item.color}'>進行中</div>
+                <div class="cards_column_head" :style='{backgroundColor: item.pro_col}'>進行中</div>
                 <div class="cards_column_body cards_column_body_doing">
 
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
@@ -422,7 +421,7 @@
                       style="min-height:435px;height:65vh"> -->
                     <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                       @click.stop="open_card_func(),history_card_no=cardIndex,todo_type=listitem.type">
-                      <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].color}'>
+                      <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
                       </div>
                       <p>{{item.card_name}}</p>
                       <div class="cards_list_card_icon_bar">
@@ -446,7 +445,7 @@
               </div>
 
               <div class="cards_column done_column">
-                <div class="cards_column_head" :style='{backgroundColor: item.color}'>已完成</div>
+                <div class="cards_column_head" :style='{backgroundColor: item.pro_col}'>已完成</div>
                 <div class="cards_column_body cards_column_body_done">
 
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="listitem in item.card_list_done">
@@ -454,7 +453,7 @@
                       style="min-height:435px;height:65vh"> -->
                     <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex"
                       @click.stop="open_card_func(),history_card_no=cardIndex,todo_type=listitem.type">
-                      <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].color}'>
+                      <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
                       </div>
                       <p>{{item.card_name}}</p>
                       <div class="cards_list_card_icon_bar">
@@ -496,7 +495,7 @@
           @click.stop="complete_info_box = !complete_info_box;programs[index].show_complete_info_box=false"
           v-for="(item,index) in programs" v-if="programs[index].show_complete_info_box==true">
           <div class="complete_info_box" @click.stop="">
-            <p>確定要完成{{item.program_names}}專案嗎?<br>
+            <p>確定要完成{{item.pro_title}}專案嗎?<br>
               完成專案後就無法再回到現有專案了喔!</p>
             <button @click="program_complete_func(index)">確定</button>
             <button
@@ -509,7 +508,7 @@
           @click.stop="delete_info_box = !delete_info_box;history_programs[index].show_delete_info_box=false"
           v-for="(item,index) in history_programs" v-if="history_programs[index].show_delete_info_box==true">
           <div class="complete_info_box" @click.stop="">
-            <p>確定要刪除{{item.program_names}}專案嗎?<br>
+            <p>確定要刪除{{item.pro_title}}專案嗎?<br>
               刪除專案後就無法找回專案了喔!</p>
             <button @click="delete_program(index)">確定</button>
             <button
@@ -526,7 +525,7 @@
             <transition-group name="horizentalfade">
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
-                <div class="card_header_title" :style='{backgroundColor: programs[page].color}'>
+                <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
@@ -725,7 +724,7 @@
                             <label for="">
                               <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
                                 @keyup.enter="add_card_detail(detailIndex)"
-                                :style='{backgroundColor: programs[page].color}' v-model.trim="item.test"
+                                :style='{backgroundColor: programs[page].pro_col}' v-model.trim="item.test"
                                 @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
                                 @blur="item.card_length =! item.card_length,item.test=''">
                               <img src="./img/card_img/plus_write.svg" alt="" width="14"
@@ -756,7 +755,7 @@
                         <div class="card_upload_file">
                           <!-- 上傳的內容 -->
                           <form method="post" enctype="multipart/form-data">
-                            <label class="upfile_content" :style='{backgroundColor: programs[page].color}'>
+                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
                               <p>上傳附件</p>
                               <input type="file" @change="filesearch" multiple>
                             </label>
@@ -775,7 +774,7 @@
             <transition-group name="horizentalfade">
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
-                <div class="card_header_title" :style='{backgroundColor: programs[page].color}'>
+                <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
@@ -974,7 +973,7 @@
                             <label for="">
                               <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
                                 @keyup.enter="add_card_detail(detailIndex)"
-                                :style='{backgroundColor: programs[page].color}' v-model.trim="item.test"
+                                :style='{backgroundColor: programs[page].pro_col}' v-model.trim="item.test"
                                 @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
                                 @blur="item.card_length =! item.card_length,item.test=''">
                               <img src="./img/card_img/plus_write.svg" alt="" width="14"
@@ -1005,7 +1004,7 @@
                         <div class="card_upload_file">
                           <!-- 上傳的內容 -->
                           <form method="post" enctype="multipart/form-data">
-                            <label class="upfile_content" :style='{backgroundColor: programs[page].color}'>
+                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
                               <p>上傳附件</p>
                               <input type="file" @change="filesearch" multiple>
                             </label>
@@ -1024,7 +1023,7 @@
             <transition-group name="horizentalfade">
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
-                <div class="card_header_title" :style='{backgroundColor: programs[page].color}'>
+                <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
@@ -1223,7 +1222,7 @@
                             <label for="">
                               <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
                                 @keyup.enter="add_card_detail(detailIndex)"
-                                :style='{backgroundColor: programs[page].color}' v-model.trim="item.test"
+                                :style='{backgroundColor: programs[page].pro_col}' v-model.trim="item.test"
                                 @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
                                 @blur="item.card_length =! item.card_length,item.test=''">
                               <img src="./img/card_img/plus_write.svg" alt="" width="14"
@@ -1254,7 +1253,7 @@
                         <div class="card_upload_file">
                           <!-- 上傳的內容 -->
                           <form method="post" enctype="multipart/form-data">
-                            <label class="upfile_content" :style='{backgroundColor: programs[page].color}'>
+                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
                               <p>上傳附件</p>
                               <input type="file" @change="filesearch" multiple>
                             </label>
@@ -1278,7 +1277,7 @@
             <transition-group name="horizentalfade">
               <div class="card_light_box history_card_light_box" id="card_light_box" v-if="history_card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
-                <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].color}'>
+                <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
                   <div @click="opened = false;history_card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -1384,7 +1383,7 @@
             <transition-group name="horizentalfade">
               <div class="card_light_box history_card_light_box" id="card_light_box" v-if="history_card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
-                <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].color}'>
+                <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
                   <div @click="opened = false;history_card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -1489,7 +1488,7 @@
             <transition-group name="horizentalfade">
               <div class="card_light_box history_card_light_box" id="card_light_box" v-if="history_card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
-                <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].color}'>
+                <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].pro_col}'>
                   <h1 id="card_title"><input type="text" v-model.trim="item.card_name"></h1>
                   <div @click="opened = false;history_card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>

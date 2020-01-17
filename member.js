@@ -39,7 +39,7 @@ function showImg(thisimg) {
     acceptImg.style.display = "block";
   }
 }
-// ======================member_all_order=================
+// ======================light box=================
 
 let delet_btn = document.getElementById("delet_btn");
 let mem_mask = document.getElementById("mem_mask");
@@ -158,3 +158,5 @@ for_terms_content2.addEventListener('click' ,function(){
   terms_content1.classList.remove("active");
   term_box1_title.classList.remove("active");
 });
+
+
