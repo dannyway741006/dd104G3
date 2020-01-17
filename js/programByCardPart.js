@@ -361,10 +361,30 @@ var main_content = new Vue({
          console.log(data[0])
           // let ary = new Array();
           // for(x in obj) ary[ary.length]=x;
-          vm.programs[index].card_list_todo.push(data[0]);
-          vm.programs[index].card_list_doing.push(data[1]);
-          vm.programs[index].card_list_done.push(data[2]);
-          console.log(vm.programs);
+          vm.programs[index].card_list_todo[0]=data[0];
+          vm.programs[index].card_list_doing[0]=data[1];
+          vm.programs[index].card_list_done[0]=data[2];
+          console.log( vm.programs[index].card_list_todo[0]);
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+    },
+
+    editcard(){
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/edit_done.php",
+        "data": {
+          "card_no":this.programs[index].card_list_todo[0].cards[this.card_no].card_no,
+          "pro_no": this.programs[index].pro_no,
+      
+        },
+        "cache": false,
+        "success": function (data) {
+       
         },
         "error": function (data) {
           console.log(data);
@@ -403,8 +423,6 @@ var main_content = new Vue({
       this.history_page = this.history_programs.length - 1;
 
       // this.show_complete_info_box =true;
-
-
 
     },
     //刪除專案
@@ -450,6 +468,7 @@ var main_content = new Vue({
     //打開卡片本人
     open_card_func() {
       this.opened = !this.opened;
+ 
     },
 
     //刪除卡片
@@ -626,6 +645,7 @@ var main_content = new Vue({
     //最小子項目勾選 卡片顯示進度 已勾項目
     todo_card_progress_checked(index) {
       if ([this.todo_type][0] != null) {
+        console.log(this.programs[this.page].card_list_todo[0].cards[index].todo_list_content_detail)
         return this.programs[this.page].card_list_todo[0].cards[index].todo_list_content_detail.reduce((prev, item) => {
           prev += item.lists.filter(list => list.status).length
           return prev
