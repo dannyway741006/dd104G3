@@ -26,14 +26,15 @@ let storage = sessionStorage;
 //--先把myCartList取出來--//
 let getMyCartList = storage.getItem(`myCartList`);
 let cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
-// console.log(cartProducts);
+console.log(cartProducts);
 
 let total = 0;
 for (let key in cartProducts) {
   //--跑迴圈將每一項點選的商品取出來--//
-  let productInfo = storage.getItem(cartProducts[key]).split('|');
+  let productInfo = storage.getItem(cartProducts[key]).split(',');
+  // console.log(productInfo);
   //--將以選購商品金額加總--//
-  total += (parseInt(productInfo[3]) * parseInt(productInfo[6]));
+  total += (parseInt(productInfo[3]) * parseInt(productInfo[5]));
   // console.log(productInfo);
 
   //--將取出的資料寫進HTML結構中--//
@@ -44,14 +45,13 @@ for (let key in cartProducts) {
         <img src="${productInfo[0]}" alt="">
       </div>
       <div class="cart_product_message">
-        <p>${productInfo[1]}</p>
-        <h3 class="cart_product_price">${productInfo[3]}</h3>
+        <p>${productInfo[1]}${productInfo[2]}</p>
+        <span>$</span><span class="cart_product_price">${productInfo[3]}</span>
         <p>商品介紹 : ${productInfo[4]}</p>
-        <p>商品介紹 : ${productInfo[5]}</p>
       </div>
       <div class="cart_product_qty">
         <button class="cart_cut_product"> - </button>
-        <p class="cart_product_number">${productInfo[6]}</p>
+        <p class="cart_product_number">${productInfo[5]}</p>
         <button class="cart_add_product"> + </button>
       </div>
     </div>`;
@@ -68,14 +68,22 @@ let productNumber = document.querySelectorAll('.cart_product_number');
 for (let k = 0; k < cartProduct.length; k++) {
   let productValue = parseInt(productNumber[k].textContent);
   cutProductBtn[k].addEventListener('click', () => {
+    
     if (productValue == 1) {
       confirm('確定刪除商品嗎？');
       cartProduct[k].parentNode.removeChild(cartProduct[k]);
+      
+      storage.removeItem(cartProducts[k]);
+      storage[`myCartList`] = storage[`myCartList`].replace(`${cartProducts[k]},`);
+      ////////------------上面這個有問題-------------//////////
+
     } else {
       productValue--;
       productNumber[k].textContent = productValue;
+      console.log(cartProducts[k]);
     }
   });
+  // console.log(cartProducts[k]);
   addProductBtn[k].addEventListener('click', () => {
     productValue++;
     productNumber[k].textContent = productValue;
@@ -107,3 +115,4 @@ for (let i = 0; i < cartProduct.length; i++) {
     cartNewTotal.textContent = newTotal;
   });
 }
+
