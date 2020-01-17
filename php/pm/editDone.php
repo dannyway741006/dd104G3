@@ -54,6 +54,33 @@ try {
       }
     }
   }
+  if ($data['files']){
+    foreach ($data['files'] as $file){
+      if(isset($file['type'])){
+        $upload_dir = '../../pmFiles//';
+        if(!file_exists($upload_dir)) mkdir($upload_dir);
+  
+        $fileData = $file['src'];
+        $fileData = str_replace("data:{$file['type']};base64,", '', $fileData);
+        $base64 = base64_decode($fileData);
+        $nowDate = date('Ymd_Gis');
+        $fileName = "$nowDate{$file['name']}";
+        $uploadFile = $upload_dir . $fileName;
+        
+        file_put_contents($uploadFile, $base64);
+      }
+      $fileSrc = isset($fileName) ? "./pmFiles/".$fileName : $file['src'];
+      $sql = 'insert into `card_file` 
+        (card_no, pro_no, file_name, file_src) values
+        (:card_no, :pro_no, :file_name, :file_src)';
+      $res = $pdo->prepare($sql);
+      $res->bindParam(':card_no', $data['id']);
+      $res->bindParam(':pro_no', $pro_no);
+      $res->bindParam(':file_name', $file['name']);
+      $res->bindParam(':file_src', $fileSrc);
+      $res->execute();
+    }
+  }
   echo json_encode(['status' => 'success', 'content' => '編輯完成']);
 } catch (PDOException $e) {
   echo $e->getLine();
