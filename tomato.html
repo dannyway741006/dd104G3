@@ -76,36 +76,14 @@
               <p>鈴聲</p>
             </div>
             <ul class="page_info_list setting_bell">
-              <li>
+              <li v-for="ring in rings" :key='ring.id' @click='ring.checked=!ring.checked'>
                 <div>
-                  <img src="../img/check.svg" alt="check" width="20" />
+                  <img src="../img/uncheck.svg" alt="check" width="20" / v-if="!ring.checked">
+                  <img src="../img/check.svg" alt="check" width="20" / v-if="ring.checked">
                 </div>
-                <p>Primary_</p>
+                <p> {{ring.ringName}} </p>
               </li>
-              <li>
-                <div>
-                  <img src="../img/uncheck.svg" alt="check" width="20" />
-                </div>
-                <p>Primary_2</p>
-              </li>
-              <li>
-                <div>
-                  <img src="../img/uncheck.svg" alt="check" width="20" />
-                </div>
-                <p>Primary_3</p>
-              </li>
-              <li>
-                <div>
-                  <img src="../img/uncheck.svg" alt="check" width="20" />
-                </div>
-                <p>Primary_4</p>
-              </li>
-              <li>
-                <div>
-                  <img src="../img/uncheck.svg" alt="check" width="20" />
-                </div>
-                <p>Primary_5</p>
-              </li>
+
             </ul>
             <div class="title">
               <p>時間設定</p>
@@ -114,28 +92,28 @@
               <p>Work</p>
               <div>
                 <label>
-                  <input type="number" />
+                  <input type="number" v-model="workmin"/>
                   <p>分</p>
                 </label>
                 <label>
-                  <input type="number" />
+                  <input type="number" v-model="worksec"/>
                   <p>秒</p>
                 </label>
-                <button>確定</button>
+                <!-- <button @click="setWorkTime">確定</button> -->
               </div>
             </div>
             <div class="setting_timer">
               <p>Break</p>
               <div>
                 <label>
-                  <input type="number" />
+                  <input type="number" v-model="restmin"/>
                   <p>分</p>
                 </label>
                 <label>
-                  <input type="number" />
+                  <input type="number" v-model="restsec"/>
                   <p>秒</p>
                 </label>
-                <button>確定</button>
+                <button @click="setTime">確定</button>
               </div>
             </div>
           </div>
@@ -149,13 +127,15 @@
               <svg id="svg" width="30vw" height="30vw" viewPort="0 0 155 155" version="1.1"
                 xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                  <linearGradient id="gradient" :class="{'rest':!working}" x1="0" x2="0" y1="0" y2="1">
                     <stop offset="0%" />
                     <stop offset="100%" />
                   </linearGradient>
                 </defs>
                 <circle r="40%" cx="50%" cy="50%" />
-                <circle id="bar" r="40%" cx="50%" cy="50%" />
+                <circle id="bar" r="40%" cx="50%" cy="50%" :stroke-dashoffset='dashOffSet'
+                :stroke-dasharray='dasharray'
+                 />
                 <circle id="outside" r="45%" cx="50%" cy="50%" />
                 <text id="timer" x="50%" y="50%"> {{viewTime}} </text>
               </svg>
@@ -179,14 +159,14 @@
                 </div>
                   <transition-group name='fade' tag="ul">
                     <li class="todoLi" :key='item.id' v-for="(item,key) in todos">
-                      <div class="todoColor"></div>
+                      <div class="todoColor" :class="{'doing':item.runstatus,'rest':!working}"></div>
                       <div class="title">
                         <p> {{ item.title }} </p>
                       </div>
                       <div class="info">
                         <div class="infoTimer">
                           <img src="./img/time-left_c.0dbb2869.svg" alt="" width="20px">
-                          <p>25:00</p>
+                          <p> {{totalTime(item.totalTime)}} </p>
                         </div>
                         <div class="status">
                           <div class="playPause" :key="item.id">
@@ -200,11 +180,11 @@
                             </div>
                           </div>
                           <div class="checkBtn">
-                            <input type="checkbox" id="b0"/ v-model="item.complete">
+                            <input type="checkbox" id="b0"/ v-model="item.complete" @click="editChart(item,key)">
                            <img src="../img/check.svg" alt="" width="20px" class="complete">
                            <img src="../img/uncheck.svg" alt="" width="20px" class="uncomplete">
                           </div>
-                          <div class="delete" @click="removeTodo(key)">
+                          <div class="delete" @click="removeTodo(item,key)">
                             <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
                             <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
                           </div>
