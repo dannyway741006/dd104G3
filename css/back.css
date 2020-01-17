@@ -1,0 +1,34 @@
+@charset "UTF-8";
+body {
+  font-family: "微軟正黑體", "Montserrat", "Noto Sans TC", sans-serif;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.sidebar .nav-link:hover {
+  color: #fff;
+  background: #5fbfce;
+}
+
+.backTable {
+  display: none;
+}
+
+.mall_modify,
+.mall_delete {
+  color: #5fbfce;
+  cursor: pointer;
+}
+
+.lightBox_content {
+  width: 100%;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 999;
+  display: none;
+}
+/*# sourceMappingURL=back.css.map */

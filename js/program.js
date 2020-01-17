@@ -234,49 +234,49 @@ var main_content = new Vue({
 
     //邀請專案成員
     invite_add_member() {
-      alert ("in")
+      alert("in")
       // if(document.getElementById('invite_add_member_addr').value==pro_mem_Arr[0].mem_id){};
       // for (i = 0; i < pro_mem_Arr.length; i++) {
       //   if (this.invite_add_member_addr == pro_mem_Arr[0].mem_id) {
-          // axios
-          //   .get('php_program/push_member.php')
-          //   .then((res) => {
-          //     var pro_mem_Arr = res.data;
-          //     // console.log(pro_mem_Arr[0].mem_name)
-          //     this.programs[this.page].program_memeber.push({
+      // axios
+      //   .get('php_program/push_member.php')
+      //   .then((res) => {
+      //     var pro_mem_Arr = res.data;
+      //     // console.log(pro_mem_Arr[0].mem_name)
+      //     this.programs[this.page].program_memeber.push({
 
-          //       member_name: pro_mem_Arr[i].mem_name,
-          //       userId: pro_mem_Arr[i].mem_id,
-          //       src: pro_mem_Arr[i].headshot,
-          //     })
-
-
-          //   })
-          //   .catch((error) => {
-          //     console.log(error)
-          //   })
-          $.ajax({
-            "type": "POST",
-            "dataType": "json",
-            "url": "./php/pm/push_member.php",
-            "data": {
-              "mem_no": 1,
-              "pro_no": this.programs[index].pro_no
-            },
-            "cache": false,
-            "success": function (data) {
-              console.log(data);
-            alert (data)
+      //       member_name: pro_mem_Arr[i].mem_name,
+      //       userId: pro_mem_Arr[i].mem_id,
+      //       src: pro_mem_Arr[i].headshot,
+      //     })
 
 
-            },
-            "error": function (data) {
-              console.log(data);
-              alert (data)
-            }
-          });
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //   })
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/push_member.php",
+        "data": {
+          "mem_no": 1,
+          "pro_no": this.programs[index].pro_no
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+          alert(data)
 
-        // }
+
+        },
+        "error": function (data) {
+          console.log(data);
+          alert(data)
+        }
+      });
+
+      // }
 
       // }
     },
@@ -423,42 +423,47 @@ var main_content = new Vue({
       });
     },
 
-    catch_card_position({$event: {added}, type},) {
+    catch_card_position({
+      $event: {
+        added
+      },
+      type
+    }, ) {
       // console.log(added)
-      if(added){
+      if (added) {
         // console.log(type.type)
         // console.log(added.element.card_no)
 
         let curCardNo = added.element.card_no;
-  
+
         let curType;
-        if(type.type=="card_list_todo"){
-          curType=0;
-        }else if(type.type=="card_list_doing"){
-          curType=1;
-        }else{
-          curType=2;
-        }  
-        
+        if (type.type == "card_list_todo") {
+          curType = 0;
+        } else if (type.type == "card_list_doing") {
+          curType = 1;
+        } else {
+          curType = 2;
+        }
+
         $.ajax({
           "type": "POST",
           "dataType": "json",
           "url": "./php/pm/drag_list.php",
           "data": {
-            "card_type":curType,
+            "card_type": curType,
             "card_no": curCardNo,
           },
           "cache": false,
           "success": function (data) {
             console.log(data);
             // console.log(e.type);
-  
+
           },
           "error": function (data) {
             console.log(data);
           }
         });
-        
+
       }
     },
 
@@ -483,33 +488,36 @@ var main_content = new Vue({
     program_complete_func(index) {
       this.programs[index].changeimage = !this.programs[index].changeimage
 
-      this.history_programs.push(this.programs[index])
-
+      // this.history_programs.push(this.programs[index])
       this.page = index - 1;
       this.programs.splice(index, 1);
-
       if (this.programs.length != 0 && this.page == -1) {
         this.page = 0;
       }
-      // console.log(this.history_page=this.history_programs.length);
       this.history_page = this.history_programs.length - 1;
 
-      // this.show_complete_info_box =true;
+
       const vm = this;
       $.ajax({
         "type": "POST",
         "dataType": "json",
         "url": "./php/pm/complete_program.php",
         "data": {
-          "pro_sta":1,
+          "pro_sta": 1,
           "pro_no": vm.programs[index].pro_no
         },
         "cache": false,
         "success": function (data) {
           console.log(data);
 
-          console.log(vm.programs);
-  
+          console.log(vm.programs[index]);
+
+          vm.history_programs.push(vm.programs[index])
+// for(i=0;i<vm.programs.length;i++){
+//   if(vm.programs[i].)
+// }
+
+
         },
         "error": function (data) {
           console.log(data);
