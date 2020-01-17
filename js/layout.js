@@ -1,10 +1,11 @@
+const container = document.getElementById("app");
+const hamburger = document.querySelector(".nav_hamburger");
 let MEMBER_INFO = {};
 (function() {
-  const container = document.getElementById("app");
-  const hamburger = document.querySelector(".nav_hamburger");
   const userStatus = document.querySelector(".status");
   const userName = document.getElementById("mem_id");
   const userLogout = document.getElementById("mem_logout");
+  let nowPage = null;
   hamburger.addEventListener("click", () =>
     container.classList.toggle("nav_open")
   );
@@ -24,7 +25,7 @@ let MEMBER_INFO = {};
   function logOut() {
     fetch("./php/member/logout.php")
       .then(res => res.json())
-      .then(json => (location.href = "./member_login.html"))
+      .then(json => location.replace("./member_login.html"))
       .catch(err => console.log(err));
   }
   window.addEventListener("load", checkLogin);
