@@ -1,10 +1,11 @@
 <?php
   try{
-    require_once('../mem_connect.php');
+    require_once('../pdo.php');
+    $jsonData = json_decode(file_get_contents('php://input'), true);
     $sql = 'select * from `member` where mem_id = :mem_id && mem_psw = :mem_psw';
     $res = $pdo->prepare($sql);
-    $res->bindParam(':mem_id', $_POST['mem_id']);
-    $res->bindParam(':mem_psw', $_POST['mem_psw']);
+    $res->bindParam(':mem_id', $jsonData['mem_id']);
+    $res->bindParam(':mem_psw', $jsonData['mem_psw']);
     $res->execute();
 
     if($res->rowCount()){
