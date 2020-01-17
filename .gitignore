@@ -24,8 +24,13 @@ mall_product.html
 mall_item_notecover.html
 mall_product_notecover-v3
 
+<<<<<<< HEAD
 php/pdo.php
 
+=======
+
+php/pdo.php
+>>>>>>> practice
 
 
 
