@@ -508,8 +508,8 @@ var main_content = new Vue({
         "success": function (data) {
           console.log(data);
 
-          console.log(vm.programs);
-  
+          console.log(vm.programs[index]);
+  // for()
         },
         "error": function (data) {
           console.log(data);
