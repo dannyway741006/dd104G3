@@ -21,16 +21,16 @@
           'hideMember_sum'=>'false',
           'program_memeber'=>[],
           'card_list_todo'=>[
-            'cards'=> [],
-            'type'=> 'card_list_todo'
+            // 'cards'=> [],
+            // 'type'=> 'card_list_todo'
           ],
           'card_list_doing'=>[
-            'cards'=> [],
-            'type'=> 'card_list_doing'
+            // 'cards'=> [],
+            // 'type'=> 'card_list_doing'
           ],
           'card_list_done'=>[
-            'cards'=> [],
-            'type'=> 'card_list_done'
+            // 'cards'=> [],
+            // 'type'=> 'card_list_done'
           ],
           'pro_sta'=>$project['pro_sta']
         ];
