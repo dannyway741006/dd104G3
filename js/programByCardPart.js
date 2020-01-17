@@ -410,8 +410,8 @@ var main_content = new Vue({
         "success": function (data) {
           // console.log(data);
           // console.log(vm.programs[index].card_list_todo.cards);
-          // console.log(data);
-
+          console.log(data);
+         console.log(vm.programs[index].card_list_todo)
           vm.programs[index].card_list_todo.push(data[0]);
           vm.programs[index].card_list_doing.push(data[1]);
           vm.programs[index].card_list_done.push(data[2]);
