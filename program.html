@@ -84,6 +84,77 @@
             </div>
           </div>
         </div>
+        <div class="page_info" id="program_aside">
+          <div class="title">
+            <p>新建專案</p>
+          </div>
+          <form method="">
+            <div class="setting_project">
+              <div>
+                <p class="setting_project_title1">專案名稱 Project</p>
+                <input type="text" v-model.trim="pro_title" name="pro_title" id="pro_title" maxlength="50"/>
+                <p class="setting_project_title2">專案專屬色 Color</p>
+                <div class="colors">
+                  <span class="new_program_choose_color_item" v-for='pro_col in colors' @click.stop='selectColor = pro_col'
+                    :class='{new_program_choose_color_item_checked: selectColor === pro_col}'
+                    :style='{backgroundColor: pro_col}' :value=pro_col.pro_col>
+                  </span>
+                </div>
+
+                <button @click.prevent="add_program()" type="button">建立專案</button>
+              </div>
+            </div>
+          </form>
+          <div class="title">
+            <transition name="fade" mode="out-in">
+              <p v-if="click_complete_btn">已完成專案</p>
+              <p v-else>現有專案</p>
+            </transition>
+
+          </div>
+
+          <ul v-if="click_complete_btn" class="page_info_list setting_pm history_program">
+            <!-- <li>
+              <p><span></span>已完成專案1</p>
+              <img src="./img/delete.0df56913.svg" alt="uncheck" width="20" />
+            </li> -->
+
+            <transition-group name="fade" mode="out-in" tag="div">
+              <li v-for="(item,index) in history_programs" :key="index" @click="history_page=index;close_humberger()">
+                <p><span :style='{backgroundColor: item.pro_col}'></span>{{item.pro_title}}</p>
+                <img src="./img/delete.0df56913.svg" alt="uncheck" width="20" @click.stop='delete_info_func(index)' />
+
+              </li>
+            </transition-group>
+          </ul>
+
+
+          <ul v-else class="page_info_list setting_pm having_program">
+
+            <!-- <transition name="fade" mode="out-in">
+              <li @click="page=-1">
+                <p><span></span>專案0</p>
+                <img src="./img/uncheck.svg" alt="uncheck" width="20" @click.stop='program_complete_func()' />
+              </li>
+            </transition> -->
+
+
+
+            <transition-group name="fade" mode="out-in" tag="div">
+              <li v-for="(item,index) in programs" :key="index" @click="show_cards(index),page=index;close_humberger()">
+                <p><span :style='{backgroundColor:item.pro_col}'></span>{{item.pro_title}}</p>
+                <img src="./img/check.svg" alt="check" width="20" v-if='item.changeimage' />
+                <img src="./img/uncheck.svg" alt="uncheck" width="20" v-else @click.stop="complete_info_func(index)" />
+              </li>
+            </transition-group>
+
+          </ul>
+
+          <div class="setting_bookmark" @click='change_watched_text'>
+            <p v-if="click_complete_btn">現有專案</p>
+            <p v-else>已完成專案</p>
+          </div>
+        </div>
       </nav>
     </header>
     <main>
