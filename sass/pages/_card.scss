@@ -553,12 +553,14 @@
         right: -20%;
         opacity: 0;
         transition: all 0.3s;
-
+      
         img {
           width: 100%;
           cursor: pointer;
           transition: all 0.3s;
-
+          &.add_to_tomato{
+            filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
+           }
           &:hover {
             filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
 
