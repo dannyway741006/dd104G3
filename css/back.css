@@ -1,10 +1,6 @@
 @charset "UTF-8";
 body {
-<<<<<<< HEAD
-  font-family: "微軟正黑體","Montserrat", "Noto Sans TC", sans-serif;
-=======
   font-family: "微軟正黑體", "Montserrat", "Noto Sans TC", sans-serif;
->>>>>>> nicole
 }
 
 .nav-item {
@@ -17,8 +13,6 @@ body {
 }
 
 .backTable {
-<<<<<<< HEAD
-=======
   display: none;
 }
 
@@ -35,7 +29,5 @@ body {
       -ms-flex-align: center;
           align-items: center;
   z-index: 999;
->>>>>>> nicole
   display: none;
 }
-/*# sourceMappingURL=back.css.map */
