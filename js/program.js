@@ -207,7 +207,7 @@ var main_content = new Vue({
         this.page = this.programs.length - 1;
 
 
-        $.post('./php_program/create_program.php', {
+        $.post('./php/pm/create_program.php', {
           pro_title: this.programs[this.page].pro_title,
           pro_col: this.programs[this.page].pro_col,
         }, function (res) {
@@ -320,7 +320,7 @@ var main_content = new Vue({
         $.ajax({
           "type": "POST",
           "dataType": "json",
-          "url": "./php_program/push_card.php",
+          "url": "./php/pm/push_card.php",
           "data": {
             "type" : "add_card",
             "pro_no": this.programs[index].pro_no, 
@@ -357,7 +357,7 @@ var main_content = new Vue({
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php_program/get_program.php",
+        "url": "./php/pm/get_program.php",
         "data": {
           "pro_no": this.programs[index].pro_no
         },  
@@ -488,7 +488,7 @@ var main_content = new Vue({
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php_program/push_card.php",
+        "url": "./php/pm/push_card.php",
         "data": {
           "type" : "add_todo",
         },  
@@ -1067,7 +1067,7 @@ var main_content = new Vue({
 
 
     // $.ajax({
-    //   url: './php_program/get_program_list.php',
+    //   url: './php/pm/get_program_list.php',
     //   data: {},
     //   dataType: "json",
     //   type: "post",
@@ -1085,7 +1085,7 @@ var main_content = new Vue({
     //     let pro_title=this.programs[this.page].pro_title;
     //     let pro_col=this.programs[this.page].color;
     //     // let mem_no=
-    //     pro_data = await fetch('./php_program/get_program_list.php?pro_title=' + pro_title + 'pro_col='+pro_col)
+    //     pro_data = await fetch('./php/pm/get_program_list.php?pro_title=' + pro_title + 'pro_col='+pro_col)
     //       .then(res => res.json())
     //       .then(json => json)
     //     console.log(pro_data);
@@ -1105,7 +1105,7 @@ var main_content = new Vue({
         // console.log(result.data[20]);
       }
     }
-    xhr.open("post", './php_program/get_program_list.php', true);
+    xhr.open("post", './php/pm/get_program_list.php', true);
     //送出資料
     xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
     let data_info = "mem_no=1";
@@ -1135,7 +1135,7 @@ var main_content = new Vue({
   //     // console.log(result.data[20]);
   //   }
   // }
-  // xhr.open("post", './php_program/get_program_list.php', true);
+  // xhr.open("post", './php/pm/get_program_list.php', true);
   // //送出資料
   // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
   // let data_info = "mem_no=1";
