@@ -2,10 +2,10 @@ const container = document.getElementById("app");
 const hamburger = document.querySelector(".nav_hamburger");
 let MEMBER_INFO = {};
 (function() {
+  const navLists = document.querySelectorAll(".nav_list > li");
   const userStatus = document.querySelector(".status");
   const userName = document.getElementById("mem_id");
   const userLogout = document.getElementById("mem_logout");
-  let nowPage = null;
   hamburger.addEventListener("click", () =>
     container.classList.toggle("nav_open")
   );
@@ -28,5 +28,5 @@ let MEMBER_INFO = {};
       .then(json => location.replace("./member_login.html"))
       .catch(err => console.log(err));
   }
-  window.addEventListener("load", checkLogin);
+  checkLogin();
 })();
