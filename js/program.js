@@ -365,7 +365,8 @@ var main_content = new Vue({
         "success": function (data) { 
           // console.log(data);
           // console.log(vm.programs[index].card_list_todo.cards);
-          
+          console.log(data);
+
             // let ary = new Array();
             // for(x in obj) ary[ary.length]=x;
             vm.programs[index].card_list_todo[0] = data[0];
