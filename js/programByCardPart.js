@@ -422,7 +422,7 @@ var main_content = new Vue({
         }
       });
     },
-    editcard() {
+    editcard(index) {
       $.ajax({
         "type": "POST",
         "dataType": "json",
