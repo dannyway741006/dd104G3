@@ -35,6 +35,8 @@ var main_content = new Vue({
 
     add_cards_btn: false,
 
+    card_name:"",
+
     // calendar_btn:false,
     // 日曆部分
     handcalendar_today: {
