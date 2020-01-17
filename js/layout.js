@@ -1,7 +1,8 @@
+const container = document.getElementById("app");
+const hamburger = document.querySelector(".nav_hamburger");
 let MEMBER_INFO = {};
-(function() {
-  const container = document.getElementById("app");
-  const hamburger = document.querySelector(".nav_hamburger");
+(async function() {
+  const navLists = document.querySelectorAll(".nav_list > li");
   const userStatus = document.querySelector(".status");
   const userName = document.getElementById("mem_id");
   const userLogout = document.getElementById("mem_logout");
@@ -10,22 +11,37 @@ let MEMBER_INFO = {};
   );
   userLogout.addEventListener("click", logOut);
   function checkLogin() {
-    fetch("./php/member/isLogin.php")
-      .then(res => res.json())
-      .then(json => {
-        if (json.status === "success") {
-          MEMBER_INFO = json.data;
-          userStatus.classList.add("logout");
-          userName.innerText = json.data.mem_name || json.data.mem_id;
-        }
-      })
-      .catch(err => console.log(err));
+    return new Promise(resolve => {
+      fetch("./php/member/isLogin.php")
+        .then(res => res.json())
+        .then(json => {
+          if (json.status === "success") {
+            MEMBER_INFO = json.data;
+            userStatus.classList.add("logout");
+            userName.innerText = json.data.mem_name || json.data.mem_id;
+            resolve();
+          }
+        })
+        .catch(err => console.log(err));
+    });
   }
   function logOut() {
     fetch("./php/member/logout.php")
       .then(res => res.json())
-      .then(json => (location.href = "./member_login.html"))
+      .then(json => location.replace("./member_login.html"))
       .catch(err => console.log(err));
   }
-  window.addEventListener("load", checkLogin);
+  function setListClass() {
+    const locationHref = location.href
+      .split("/")
+      .pop()
+      .split(".")
+      .shift();
+    const currentList = [...navLists].find(
+      dom => dom.dataset.name === locationHref
+    );
+    if (currentList) currentList.classList.add("active");
+  }
+  await checkLogin();
+  setListClass();
 })();
