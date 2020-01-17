@@ -1,4 +1,3 @@
-window.addEventListener('load', () => {
   //***---商品寫入storage---***//
   let storage = sessionStorage;
   if (storage['myCartList'] == null) {
@@ -46,4 +45,27 @@ window.addEventListener('load', () => {
     };
     storage.setItem(`${productTitle}` + `${mallcolor}`, `${ProductImg}|${productTitle}|${mallcolor}|${priceSale}|${productFeaturesText1}|${productFeaturesText2}|${mallAmount}`);
   });
-});
+
+  mallAddProduct.addEventListener('click', () => {
+    let getMyCartList = storage.getItem(`myCartList`);
+    let cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
+    let addCartNum = document.querySelector('.mall_cart_cir');
+    addCartNum.textContent = cartProducts.length;
+    if (addCartNum.textContent === 0) {
+      addCartNum.style.display = "none";
+    } else {
+      addCartNum.style.display = "block";
+    }
+  });
+
+  window.addEventListener('load',()=>{
+    let getMyCartList = storage.getItem(`myCartList`);
+    let cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
+    let addCartNum = document.querySelector('.mall_cart_cir');
+    if (cartProducts == "") {
+      addCartNum.style.display = "none";
+    } else {
+      addCartNum.style.display = "block";
+    }
+     addCartNum.textContent = cartProducts.length;
+  });

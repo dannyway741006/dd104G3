@@ -456,6 +456,8 @@ var main_content = new Vue({
                     content: this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test,
                     status: false,
                     text: false,
+
+                    tomato_color:false,
                 });
                 this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test = '';
                 this.card_detail_lightbox = false;

@@ -44,7 +44,7 @@ function sendForm() {
   //-------------使用ajax方法到Server端資料
   let xhr = new XMLHttpRequest();
   xhr.onload = function() {
-    // console.log(xhr.responseText);
+    console.log(xhr.responseText);
     showMemInfo(xhr.responseText); //顯示登入者資訊
   };
   xhr.open("post", "./php/member/login.php", true);
