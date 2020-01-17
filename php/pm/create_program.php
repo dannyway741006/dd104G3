@@ -1,11 +1,7 @@
 <?php
   session_start();
   try{
-<<<<<<< HEAD
-    require_once('./php_program/connect.php');
-=======
     require_once('../pdo.php');
->>>>>>> cho
     $sql = 'insert into `program` (mem_no,  pro_col, pro_title) values (:mem_no, :pro_col, :pro_title)';
     $res = $pdo->prepare($sql);
 
