@@ -1,17 +1,18 @@
 // 購物車數字
-let cartCount = document.querySelector('.mall_cart_cir');
-let mallBtn = document.querySelector('.mall_bBtn');
-let count = 0;
+// let cartCount = document.querySelector('.mall_cart_cir');
+// // let mallBtn = document.querySelector('.mall_bBtn');
+// let count = 0;
 
-if (cartCount.textContent === 0) {
-  cartCount.style.display = "none";
-} else {
-  mallBtn.addEventListener('click', function () {
-    cartCount.style.display = "block";
-    count++;
-    cartCount.textContent = count;
-  })
-}
+// if (cartCount.textContent === 0) {
+//   cartCount.style.display = "none";
+// } 
+// else {
+//   // mallBtn.addEventListener('click', function () {
+//     cartCount.style.display = "block";
+//   //   count++;
+//   //   cartCount.textContent = count;
+//   // })
+// }
 
 
 /* jQuery*/
