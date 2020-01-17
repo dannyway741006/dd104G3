@@ -1,6 +1,6 @@
 <?php
 try {
-  require_once('./connect.php');
+  require_once('../pdo.php');
   session_start();
   $_SESSION['mem_no'] = 1;//test
   switch($_POST['type'])

@@ -2,7 +2,7 @@
 // session_start();
 // $_SESSION['mem_no'] = 1;//test
 try {
-  require_once('./connect.php');
+  require_once('../pdo.php');
   $sql = "select  c.card_no, 
                   c.pro_no, 
                   jp.pro_mem_no_string, 
