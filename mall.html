@@ -22,7 +22,7 @@
     <header>
       <div class="header">
         <div class="logo">
-          <a href="">
+          <a href="./index.html">
             <img src="./img/logo.svg" alt="logo" />
           </a>
         </div>
@@ -39,28 +39,34 @@
       </div>
       <nav class="nav_bar">
         <div class="logo">
-          <a href="">
+          <a href="./index.html">
             <img src="./img/logo.svg" alt="logo" />
           </a>
         </div>
         <ul class="nav_list">
           <li>
-            <div>
-              <img src="./img/staff-poket.svg" alt="pm" />
-            </div>
-            <p>專案管理<br /><span>Project management</span></p>
+            <a href="./program.html">
+              <div>
+                <img src="./img/staff-poket.svg" alt="pm" />
+              </div>
+              <p>專案管理<br /><span>Project management</span></p>
+            </a>
           </li>
           <li>
-            <div>
-              <img src="./img/time-left.d4d509fa.svg" alt="clock" />
-            </div>
-            <p>番茄鐘<br /><span>Clock</span></p>
+            <a href="./tomato.html">
+              <div>
+                <img src="./img/time-left.d4d509fa.svg" alt="clock" />
+              </div>
+              <p>番茄鐘<br /><span>Clock</span></p>
+            </a>
           </li>
-          <li class="active">
-            <div>
-              <img src="./img/shopping-bag.c63fa553.svg" alt="shop" />
-            </div>
-            <p>商城<br /><span>Shop</span></p>
+          <li>
+            <a href="./mall.html">
+              <div>
+                <img src="./img/shopping-bag.c63fa553.svg" alt="shop" />
+              </div>
+              <p>商城<br /><span>Shop</span></p>
+            </a>
           </li>
         </ul>
         <div class="user_status">
@@ -68,11 +74,18 @@
             <div>
               <img src="./img/user.9c173fc0.svg" alt="member" />
             </div>
-            <p>USER_Master Pocket</p>
+            <p id="mem_id">尚未登入</p>
           </div>
           <div class="status">
-            <div>會員中心</div>
-            <div>登出</div>
+            <div id="login">
+              <div>
+                <a href="./member.html">會員中心</a>
+              </div>
+              <div id="mem_logout">登出</div>
+            </div>
+            <div id="logout">
+              <a href="./member_login.html">登入</a>
+            </div>
           </div>
         </div>
         <div class="page_info">
@@ -214,14 +227,8 @@
         }
     </script>
 
-  <script src="./js/background.js"></script>
-  <script>
-    const container = document.getElementById("app");
-    const hamburger = document.querySelector(".nav_hamburger");
-    hamburger.addEventListener("click", () =>
-      container.classList.toggle("nav_open")
-    );
-  </script>
+    <script src="./js/background.js"></script>
+    <script src="./js/layout.js"></script>
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script> -->
   <!--Mall商城主要js-->
   <script src="./js/mall.js"></script>
