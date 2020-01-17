@@ -248,41 +248,41 @@
                       <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
                     </div>
                 </div>
-                <!-- <ul>
-                  <li class="todoLi">
-                    <div class="todoColor"></div>
+                <ul>
+                  <li class="todoLi" :key='item.id' v-for="(item,key) in trelloTodos">
+                    <div class="todoColor" :class="{'doing':item.runstatus,'rest':!working}"></div>
                     <div class="title">
-                      <p>任務1</p>
+                      <p> {{ item.title }} </p>
                     </div>
                     <div class="info">
                       <div class="infoTimer">
                         <img src="./img/time-left_c.0dbb2869.svg" alt="" width="20px">
-                        <p>25:00</p>
+                        <p> {{totalTime(item.totalTime)}} </p>
                       </div>
                       <div class="status">
-                        <div class="playPause">
-                          <div class="play">
+                        <div class="playPause" :key="item.id">
+                          <div v-if='item.runstatus===0' @click='startTomato(item)' class="play">
                             <img src="./img/play.svg" alt="" width="25px">
                             <img src="./img/play_c.svg" alt="" width="25px" class="play">
                           </div>
-                          <div class="play pause">
-                            <img src="./img/pause_c.svg" alt="">
+                          <div v-if='item.runstatus===1' @click='pauseTomato(item)' class="play pause">
                             <img src="./img/pause.svg" alt="">
+                            <img src="./img/pause_c.svg" alt="">
                           </div>
                         </div>
                         <div class="checkBtn">
-                          <input type="checkbox" id="b0" />
+                          <input type="checkbox" id="b0"/ v-model="item.complete" @click="editChart(item,key)">
                          <img src="./img/check.svg" alt="" width="20px" class="complete">
                          <img src="./img/uncheck.svg" alt="" width="20px" class="uncomplete">
                         </div>
-                        <div class="delete">
+                        <div class="delete" @click="removeTodo(item,key)">
                           <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
                           <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
                         </div>
                       </div>
                     </div>
                   </li>
-                </ul> -->
+                </ul>
               </div>
             </div>
             <div class="stat">
