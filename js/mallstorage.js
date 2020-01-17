@@ -15,8 +15,8 @@
     //--撈商品說明--//
     let productFeaturesText1 = document.querySelector('.product_features_text1').textContent;
     console.log(productFeaturesText1);
-    let productFeaturesText2 = document.querySelector('.product_features_text2').textContent;
-    console.log(productFeaturesText2);
+    // let productFeaturesText2 = document.querySelector('.product_features_text2').textContent;
+    // console.log(productFeaturesText2);
     //--撈商品價格--//
     let priceSale = document.querySelector('.price_sale').textContent;
     console.log(priceSale);
@@ -43,7 +43,7 @@
     if (storage[`${productTitle}` + `${mallcolor}`] == null) {
       storage[`${productTitle}` + `${mallcolor}`] = '';
     };
-    storage.setItem(`${productTitle}` + `${mallcolor}`, `${ProductImg}|${productTitle}|${mallcolor}|${priceSale}|${productFeaturesText1}|${productFeaturesText2}|${mallAmount}`);
+    storage.setItem(`${productTitle}` + `${mallcolor}`, `${ProductImg},${productTitle},${mallcolor},${priceSale},${productFeaturesText1},${mallAmount}`);
   });
 
   mallAddProduct.addEventListener('click', () => {
