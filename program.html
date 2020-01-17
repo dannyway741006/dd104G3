@@ -183,7 +183,7 @@
                   <p>輸入會員帳號</p>
                   <form action="">
                     <input type="text" class="invite_add_member_addr" id="invite_add_member_addr"
-                      v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member" maxlength="50">
+                      v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member()" maxlength="50">
                   </form>
                 </div>
               </transition>
@@ -217,7 +217,7 @@
                   <div class="cards_list cards_list_todo" id="cards_list_todo" v-for="listitem in item.card_list_todo">
 
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:330px;height:54vh">
+                      style="min-height:330px;height:54vh" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-if="item.card_name" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
@@ -249,9 +249,9 @@
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
                     v-for="listitem in item.card_list_doing">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh">
+                      style="min-height:435px;height:65vh"  @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
-                        @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type" @change="">
+                        @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
                         <p>{{item.card_name}}</p>
                         <div class="cards_list_card_icon_bar">
@@ -279,7 +279,7 @@
                 <div class="cards_column_body cards_column_body_done">
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="listitem in item.card_list_done">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh">
+                      style="min-height:435px;height:65vh" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex"
                         @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
@@ -1642,10 +1642,10 @@
     <script src="./node_modules/vue2-datepicker/index.min.js"></script>
     
     
-    <script src="./js/calender.js"></script>
     <script src="./js/program.js"></script>
     <script src="./js/layout.js"></script>
     <script src="./js/background.js"></script>
+    <!-- <script src="./js/calender.js"></script> -->
 </body>
 
 </html>
