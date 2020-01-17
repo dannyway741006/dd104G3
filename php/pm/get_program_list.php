@@ -1,6 +1,6 @@
 <?php
   try{
-    require_once('./connect.php');
+    require_once('../pdo.php');
     $sql = 'select * from `program` where mem_no = :mem_no';
     $res = $pdo->prepare($sql);
     // $res->bindParam(':mem_no', $_POST['mem_no']);

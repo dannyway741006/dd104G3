@@ -1,6 +1,6 @@
 <?php
 try {
-  require_once('./connect.php');
+  require_once('../pdo.php');
   $jsonData = json_decode(file_get_contents('php://input'), true);
   $pro_no = $jsonData['projectId'];
   $card_type = $jsonData['step'];
