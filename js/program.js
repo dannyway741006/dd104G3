@@ -361,9 +361,9 @@ var main_content = new Vue({
 
           // let ary = new Array();
           // for(x in obj) ary[ary.length]=x;
-          vm.programs[index].card_list_todo[0] = data[0];
-          vm.programs[index].card_list_doing[0] = data[1];
-          vm.programs[index].card_list_done[0] = data[2];
+          vm.programs[index].card_list_todo.push(data[0]);
+          vm.programs[index].card_list_doing.push(data[1]);
+          vm.programs[index].card_list_done.push(data[2]);
           console.log(vm.programs);
         },
         "error": function (data) {
