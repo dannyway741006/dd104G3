@@ -68,11 +68,11 @@ let productNumber = document.querySelectorAll('.cart_product_number');
 for (let k = 0; k < cartProduct.length; k++) {
   let productValue = parseInt(productNumber[k].textContent);
   cutProductBtn[k].addEventListener('click', () => {
-    
+
     if (productValue == 1) {
       confirm('確定刪除商品嗎？');
       cartProduct[k].parentNode.removeChild(cartProduct[k]);
-      
+
       storage.removeItem(cartProducts[k]);
       storage[`myCartList`] = storage[`myCartList`].replace(`${cartProducts[k]},`);
       ////////------------上面這個有問題-------------//////////
@@ -116,3 +116,40 @@ for (let i = 0; i < cartProduct.length; i++) {
   });
 }
 
+let cartSubmit = document.querySelector('.cart_submit');
+cartSubmit.addEventListener('click', () => {
+
+  //產生XMLHttpRequest物件
+  let xhr = new XMLHttpRequest();
+  //註冊callback function 
+  xhr.onload = function () {
+    if (xhr.status == 200) {
+      // document.querySelector("#idMsg").textContent = xhr.responseText;
+      // console.log("----", xhr.responseText)
+    } else {
+      alert(xhr.statusText);
+    }
+  }
+
+  console.log(cartProduct.length);
+  for (let o = 0; o < cartProduct.length; o++) {
+    let aaa = document.querySelectorAll(".cart_product_price");
+    let url = "cart.php";
+    xhr.open("POST", url, true);
+    //送出資料
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    let sendProductPrice = "product_price=" + aaa[o].innerHTML;
+    xhr.send(sendProductPrice);
+  }
+
+
+
+  // alert(sendProductPrice);
+
+  // let url = "cart.php?product_price=" + document.querySelector(".cart_price_total").innerText;
+  // console.log(url)
+  // xhr.open("GET", url, true);
+  // //送出資料
+  // xhr.send(null);
+
+})
