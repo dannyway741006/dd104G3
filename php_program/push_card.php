@@ -23,7 +23,8 @@ try {
       $join->bindValue(':mem_no', $_SESSION["mem_no"]);
       $join->bindValue(':card_no', $lastCardId);
       $join->execute();
-      require_once('get_program.php');
+      // require_once('get_program.php');
+      echo json_encode(['status' => 'success', 'content' => '新建成功']);
       break;
     case "add_todo":
       if ($data['content']) {

@@ -130,7 +130,7 @@
 
 
             <transition-group name="fade" mode="out-in" tag="div">
-              <li v-for="(item,index) in programs" :key="index" @click="page=index;close_humberger()">
+              <li v-for="(item,index) in programs" :key="index" @click="show_cards(index),page=index;close_humberger()">
                 <p><span :style='{backgroundColor:item.pro_col}'></span>{{item.pro_title}}</p>
                 <img src="./img/check.svg" alt="check" width="20" v-if='item.changeimage' />
                 <img src="./img/uncheck.svg" alt="uncheck" width="20" v-else @click.stop="complete_info_func(index)" />
