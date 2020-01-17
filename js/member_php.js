@@ -9,6 +9,7 @@ function showMemInfo(jsonStr) {
   const userStatus = document.querySelector(".status");
   const userName = document.getElementById("mem_id");
   member = JSON.parse(jsonStr);
+  console.log("aaaaa");
   if (member.status === "success") {
     MEMBER_INFO = member.data;
     userStatus.classList.add("logout");
@@ -36,41 +37,39 @@ function sendForm() {
 }
 
 
-function getLoginInfo() {
-  let xhr = new XMLHttpRequest();
+// function getLoginInfo() {
+//   let xhr = new XMLHttpRequest();
 
-  xhr.onload = function () {
-    member = JSON.parse(xhr.responseText);
-    console.log(member);
-    if (member.status === 'success') {
-      // $id("memName").innerText = member.data.mem_id;
-      $id("divLogin").innerHTML = "登出";//登入bar面版上 spanLogin 的字改成登出
-      $id("memName1").value = member.data.mem_id;
-      $id("memName2").value = member.data.mem_name;
-      $id("memName3").value = member.data.mem_email;
-      $id("memName4").value = member.data.mem_tel;
-      $id("memName6").value = member.data.mem_addr;
+//   xhr.onload = function() {
+//     member = JSON.parse(xhr.responseText);
+//     console.log("aaa");
+//     if (member.status === 'success') {
 
-    }
+//       //登入bar面版上 spanLogin 的字改成登出
+//       $id("memName1").value = member.data.mem_id;
+//       $id("memName2").value = member.data.mem_name;
+//       $id("memName3").value = member.data.mem_email;
+//       $id("memName4").value = member.data.mem_tel;
+//       $id("memName5").value = member.data.mem_addr;
 
-  }
-  xhr.open("post", "./php/member/isLogin.php", true);
-  xhr.send(null)
-}
+//     }
+//   };
+//   xhr.open("post", "./php/member/isLogin.php", true);
+//   xhr.send(null);
+// }
 
+// window.addEventListener("load", function () {
+//   //-------------------------檢查是否已登入
+//   // mem_update();
+//   getLoginInfo();
+//   // test2();
+//   // test3();
 
-window.addEventListener("load", function () {
-  //-------------------------檢查是否已登入
-  // mem_update();
-  getLoginInfo();
-  // test2();
-  // test3();
+//   //===設定spanLogin.onclick 事件處理程序是 showLoginForm
+//   // $id("divLogin").onclick = logout;
+//   //===設定btnLogin.onclick 事件處理程序是 sendForm
 
-  //===設定spanLogin.onclick 事件處理程序是 showLoginForm
-  // $id("divLogin").onclick = logout;
-  //===設定btnLogin.onclick 事件處理程序是 sendForm
-
-  // $id("update_member").onclick = mem_update;
-  //===設定btnLoginCancel.onclick 事件處理程序是 cancelLogin
-  // $id("liclose").onclick = cancelLogin;  
-});
+//   // $id("update_member").onclick = mem_update;
+//   //===設定btnLoginCancel.onclick 事件處理程序是 cancelLogin
+//   // $id("liclose").onclick = cancelLogin;  
+// });

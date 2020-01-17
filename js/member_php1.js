@@ -5,12 +5,11 @@ function $id(id) {
 let member = {};
 
 
-
 // -------------------------取得登入資訊
 function getLoginInfo() {
   let xhr = new XMLHttpRequest();
 
-  xhr.onload = function () {
+  xhr.onload = function() {
     member = JSON.parse(xhr.responseText);
     console.log(member);
     if (member.status === 'success') {
@@ -23,27 +22,25 @@ function getLoginInfo() {
       $id("memName5").value = member.data.mem_addr;
 
     }
-
-  }
+  };
   xhr.open("post", "./php/member/isLogin.php", true);
-  xhr.send(null)
+  xhr.send(null);
 }
-
-
 
 function test2() {
   let xhr = new XMLHttpRequest();
   // let divLogin = document.getElementById("divLogin");
-  // console.log(member);
+  console.log(member);
   xhr.onload = function () {
     member = JSON.parse(xhr.responseText);
     console.log("a");
     let str = "";
     for (i = 0; i < member.length; i++) {
-      str = order_temp(member[i].cret_date, member[i].order_no, str, i)
+      str = order_temp(member[i].cret_date, member[i].order_no, str, i);
     }
 
-    str = `
+    str =
+      `
 <tr class="table_oder_top">
                       <th>購買日期</th>
                       <th>訂單編號</th>
@@ -64,7 +61,7 @@ function test2() {
                           </label>
                         </div>
                       </th>
-                    </tr>`+ str;
+                    </tr>` + str;
     document.getElementsByClassName("table_oder")[0].innerHTML = str;
 
     let delet_btn = document.getElementById("delet_btn");
@@ -73,107 +70,103 @@ function test2() {
     let memlibox = document.getElementById("memlibox");
     let imgClose = document.getElementById("light_box_title");
     let memberbtn = document.getElementById("memberbtn");
-    delet_btn.addEventListener('click', function () {
-      mem_mask.classList.add('active_for_mask');
-      memlibox.classList.add('active_for_memlibox');
-      memlibox.classList.remove('closeani');
+    delet_btn.addEventListener("click", function() {
+      mem_mask.classList.add("active_for_mask");
+      memlibox.classList.add("active_for_memlibox");
+      memlibox.classList.remove("closeani");
     });
 
-    memberbtn.addEventListener("click", function () {
-      mem_mask.classList.add('active_for_mask');
-      memlibox.classList.add('active_for_memlibox');
-      memlibox.classList.remove('closeani');
+    memberbtn.addEventListener("click", function() {
+      mem_mask.classList.add("active_for_mask");
+      memlibox.classList.add("active_for_memlibox");
+      memlibox.classList.remove("closeani");
     });
 
-    liclose.addEventListener('click', function () {
-      mem_mask.classList.remove('active_for_mask');
-      memlibox.classList.add('closeani');
+    liclose.addEventListener("click", function() {
+      mem_mask.classList.remove("active_for_mask");
+      memlibox.classList.add("closeani");
     });
 
-    mem_mask.addEventListener('click', function () {
-      mem_mask.classList.remove('active_for_mask');
-      memlibox.classList.add('closeani');
+    mem_mask.addEventListener("click", function() {
+      mem_mask.classList.remove("active_for_mask");
+      memlibox.classList.add("closeani");
     });
 
-    imgClose.addEventListener('click', function () {
-      mem_mask.classList.remove('active_for_mask');
-      memlibox.classList.add('closeani');
+    imgClose.addEventListener("click", function() {
+      mem_mask.classList.remove("active_for_mask");
+      memlibox.classList.add("closeani");
     });
-
 
     // ===================================================================
 
     let allcheck = document.getElementById("allcheck");
     let change_word1 = document.getElementById("change_word1");
 
-
     function selectAll(event) {
-      const allCheckBox = document.getElementsByClassName('checks');
+      const allCheckBox = document.getElementsByClassName("checks");
 
       for (var i = 0; i < allCheckBox.length; i++) {
         allCheckBox[i].checked = event.target.checked;
       }
     }
-    allcheck.addEventListener('click', function () {
+    allcheck.addEventListener("click", function() {
       if (change_word1.innerHTML.match("全選/")) {
         change_word1.innerHTML = "取消/";
       } else {
         change_word1.innerHTML = "全選/";
       }
     });
-  }
+  };
   xhr.open("get", "./php/member/order_mem.php", true);
   xhr.send(null);
 }
-
-function order_temp(cret_date, order_no, str, i) {
-  str += ` 
-  <tr>
-  <td > <label for="order_box${i + 1}" id="memName5">${cret_date}</label></td>
-  <td><label for="order_box${i + 1}">${order_no}</label></td>
-  <td>
-    <div class="th3_box">
-      <span class="checkall">
-        <input type="checkbox" class="checks" id="checkall${i = 0 ? '' : i}">
-        <label for="checkall${i = 0 ? '' : i}"></label>
-        <label for="${i == 0 ? "" : i}" class="delete_pointer">
-          <span>/</span>
-        </label>
-      </span>
-      <span class="delete_oder id="delet_btn">
-        <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
-        <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
-      </span>
-    </div>
-  </td>
-</tr>
-<tr>
-  `
-  return str
-
-}
+// function order_temp(cret_date, order_no, str, i) {
+//   str += ` 
+//   <tr>
+//   <td > <label for="order_box${i + 1}" id="memName5">${cret_date}</label></td>
+//   <td><label for="order_box${i + 1}">${order_no}</label></td>
+//   <td>
+//     <div class="th3_box">
+//       <span class="checkall">
+//         <input type="checkbox" class="checks" id="checkall${(i = 0 ? "" : i)}">
+//         <label for="checkall${(i = 0 ? "" : i)}"></label>
+//         <label for="${i == 0 ? "" : i}" class="delete_pointer">
+//           <span>/</span>
+//         </label>
+//       </span>
+//       <span class="delete_oder id="delet_btn">
+//         <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
+//         <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
+//       </span>
+//     </div>
+//   </td>
+// </tr>
+// <tr>
+//   `;
+//   return str;
+// }
 
 // ================member update===============================
-function mem_update() {
-  let memname = $id("memName2").value;
-  let mememail = $id("memName3").value;
-  let memtel = $id("memName4").value;
-  let memaddr = $id("memName5").value;
+// function mem_update() {
+//   let memname = $id("memName2").value;
+//   let mememail = $id("memName3").value;
+//   let memtel = $id("memName4").value;
+//   let memaddr = $id("memName5").value;
 
-  let xhr = new XMLHttpRequest();
-  xhr.onload = function () {
-    console.log(xhr.responseText);
-    // showMemInfo(xhr.responseText); //顯示登入者資訊
-    console.log(member)
-  }
-  xhr.open("post", "./php/member/member_update.php", true);
-  xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-  let data_info = `mem_no=${member[0].mem_no}&mem_name=${memname}&mem_addr=${memaddr}&mem_tel=${memtel}
-  &mem_email=${mememail}`;
-  xhr.send(data_info);
-}
+//   let xhr = new XMLHttpRequest();
+//   xhr.onload = function() {
+//     console.log(xhr.responseText);
+//     // showMemInfo(xhr.responseText); //顯示登入者資訊
+//     console.log(member)
+//   }
+//   xhr.open("post", "./php/member/member_update.php", true);
+//   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+//   let data_info = `mem_no=${member[0].mem_no}&mem_name=${memname}&mem_addr=${memaddr}&mem_tel=${memtel}
+//   &mem_email=${mememail}`;
+//   xhr.send(data_info);
+// }
 
-window.addEventListener("load", function () {
+window.addEventListener("load", function() {
   //-------------------------檢查是否已登入
   // mem_update();
   getLoginInfo();

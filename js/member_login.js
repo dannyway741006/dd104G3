@@ -1,8 +1,4 @@
-window.addEventListener("load", function() {
-  setTimeout(() => {
-    console.log(MEMBER_INFO);
-  }, 1000);
-});
+
 let login_sw1 = document.getElementById("login_sw1");
 let mem_login_btn = document.getElementById("mem_login_btn");
 let mem_sign_btn = document.getElementById("mem_sign_btn");
