@@ -1,6 +1,6 @@
 <?php
   try{
-    require_once('./connect.php');
+    require_once('../pdo.php');
     $sql = "select * from `member`";
     $member = $pdo->prepare($sql);
     $member->execute();

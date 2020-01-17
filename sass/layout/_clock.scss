@@ -3,16 +3,16 @@
   justify-content: center;
   #svg {
     max-width: 350px;
-    min-width: 160px;
+    min-width: 315px;
     max-height: 350px;
-    min-height: 160px;
+    min-height: 315px;
     circle {
       stroke-linecap: round;
       fill: transparent;
       stroke: $white;
       stroke-width: 4px;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 0;
+      // stroke-dasharray: 1000;
+      // stroke-dashoffset: 0;
       transition: stroke-dashoffset 1s linear;
     }
     #gradient {
@@ -24,11 +24,22 @@
           stop-color: $third;
         }
       }
+      &.rest{
+        stop {
+          &:nth-of-type(1) {
+            stop-color: $red;
+          }
+          &:nth-of-type(2) {
+            stop-color: $third;
+          }
+        }
+      }
     }
+    
     #bar {
       fill: rgba($white, 0.5);
       stroke: url(#gradient);
-      stroke-dashoffset: 400;
+      // stroke-dashoffset: 400;
     }
     #outside {
       stroke: $primary;
