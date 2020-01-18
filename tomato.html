@@ -41,7 +41,11 @@
             </a>
           </div>
           <ul class="nav_list">
+<<<<<<< HEAD
             <li data-name="program">
+=======
+            <li>
+>>>>>>> tomato
               <a href="./program.html">
                 <div>
                   <img src="./img/staff-poket.svg" alt="pm" />
@@ -220,7 +224,7 @@
                       <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
                     </div>
                 </div>
-                <ul>
+                <transition-group name='fade' tag="ul">
                   <li class="todoLi" :key='item.id' v-for="(item,key) in trelloTodos">
                     <div class="todoColor" :class="{'doing':item.runstatus,'rest':!working}"></div>
                     <div class="title">
@@ -247,14 +251,14 @@
                          <img src="./img/check.svg" alt="" width="20px" class="complete">
                          <img src="./img/uncheck.svg" alt="" width="20px" class="uncomplete">
                         </div>
-                        <div class="delete" @click="removeTodo(item,key)">
+                        <div class="delete" @click="removeTodo(item,key,1)">
                           <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
                           <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
                         </div>
                       </div>
                     </div>
                   </li>
-                </ul>
+                </transition-group>
               </div>
             </div>
             <div class="stat">

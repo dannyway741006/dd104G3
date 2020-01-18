@@ -37,15 +37,16 @@ var app = new Vue({
             },
         ],
         trelloTodos:[
-            {
-                id:'mask2',
-                title:'新任務trello',
-                runstatus:0,
-                currentTime:this.workTime,
-                totalTime:0,
-                complete:false,
-            },
+            // {
+            //     id:'mask2',
+            //     title:'新任務trello',
+            //     runstatus:0,
+            //     currentTime:this.workTime,
+            //     totalTime:0,
+            //     complete:false,
+            // },
         ],
+        allTodos:[],
         rings:[
             {
              ringName:'鈴聲1',
@@ -74,6 +75,16 @@ var app = new Vue({
               localStorage.removeItem('todos');
             }
           }
+        //   console.log(MEMBER_INFO)
+        fetch('./php/clock/getTodo.php')
+        .then((res)=>res.json())
+        .then(json=>{
+            json.data.forEach(data=>{
+                data.currentTime = this.workTime
+            })
+            this.trelloTodos = json.data
+            console.log(json.data)
+        });
     },
     watch:{
         timer(){
@@ -101,6 +112,7 @@ var app = new Vue({
     methods: {
 
         setTime(){
+            console.log(MEMBER_INFO)
             //設定時間
             this.workmin = this.workmin?this.workmin:0;
             this.worksec = this.worksec?this.worksec:0;
@@ -135,7 +147,7 @@ var app = new Vue({
             this.newTodo="";
             this.savelocal()
         },
-        removeTodo(item,key){
+        removeTodo(item,key,list){
             var index = myChart.data.labels.indexOf(item.title)
             console.log(index)
             if(index!=-1){
@@ -144,7 +156,11 @@ var app = new Vue({
                 myChart.data.datasets[0].data.splice(index,1);
                 myChart.update();   
             }   
-            this.todos.splice(key,1);
+            if(!list){
+                this.todos.splice(key,1);
+            }else {
+                this.trelloTodos.splice(key,1);
+            }
             this.savelocal()
         },
         savelocal() {
@@ -156,7 +172,11 @@ var app = new Vue({
             //暫停
             item.runstatus = 0;
             clearTimeout(this.mytimer);
-            this.savelocal()
+            this.savelocal();
+            fetch('./php/clock/recordTime.php',{
+                method:'POST',
+                body:new URLSearchParams(`timer=${this.currentTomato.totalTime}&todo_cont_no=${this.currentTomato.id}`)
+            });
         },
         startTomato(item){
             if(item.complete){
@@ -221,7 +241,11 @@ var app = new Vue({
                 this.timer = this.workTime;
                 this.working = !this.working;
                 this.totalTimer-=!this.working?1:0
-                this.savelocal()
+                this.savelocal();
+                fetch('./php/clock/recordTime.php',{
+                    method:'POST',
+                    body:new URLSearchParams(`timer=${this.currentTomato.totalTime}&todo_cont_no=${this.currentTomato.id}`)
+                })
             }
             }
         ,totalTime(timer){
@@ -242,9 +266,9 @@ var app = new Vue({
                 console.log(index)
                 myChart.data.labels.splice(index,1);
                 myChart.data.datasets[0].data.splice(index,1);
-                // myChart.update();
+                myChart.update();
                 // item.complete=!item.complete
-            this.savelocal()
+                // this.savelocal()
                 // console.log(text)
             }
             
