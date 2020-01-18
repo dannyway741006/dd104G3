@@ -1,22 +1,10 @@
 // 購物車數字
 // let cartCount = document.querySelector('.mall_cart_cir');
-<<<<<<< HEAD
 // let mallBtn = document.querySelector('.mall_bBtn');
-=======
-// // let mallBtn = document.querySelector('.mall_bBtn');
->>>>>>> 4bad01b5bd0f5cd741cf074adae0ddee6b5dad1b
 // let count = 0;
 
 // if (cartCount.textContent === 0) {
 //   cartCount.style.display = "none";
-<<<<<<< HEAD
-// } else {
-//   mallBtn.addEventListener('click', function () {
-//     cartCount.style.display = "block";
-//     count++;
-//     cartCount.textContent = count;
-//   })
-=======
 // } 
 // else {
 //   // mallBtn.addEventListener('click', function () {
@@ -24,7 +12,6 @@
 //   //   count++;
 //   //   cartCount.textContent = count;
 //   // })
->>>>>>> 4bad01b5bd0f5cd741cf074adae0ddee6b5dad1b
 // }
 
 
