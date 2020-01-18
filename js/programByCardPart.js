@@ -349,7 +349,8 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            // console.log(data);
+            console.log("123");
+            
             vm.show_cards(index);
             // vm.programs[index].card_list_todo[0].cards.push({
 
@@ -409,7 +410,7 @@ var main_content = new Vue({
         },
         "cache": false,
         "success": function (data) {
-          console.log(index)
+          console.log(vm.programs[index])
           // console.log(data);
           // console.log(vm.programs[index].card_list_todo.cards);
           // console.log(data);
