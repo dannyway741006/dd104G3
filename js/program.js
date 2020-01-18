@@ -286,13 +286,15 @@ var main_content = new Vue({
     change_watched_text() {
       if (this.click_complete_btn == false) { //已完成專案畫面
         this.click_complete_btn = true;
+
       } else { //現有專案畫面
         this.click_complete_btn = false;
+
       }
     },
-    //rwd時點選關閉漢堡
+    //rwd時點選關閉漢堡---------------------------打開它
     close_humberger() {
-      container.classList.remove("nav_open")
+      // container.classList.remove("nav_open")
     },
 
     //新增卡片
@@ -472,29 +474,21 @@ var main_content = new Vue({
     complete_info_func(index) {
       this.complete_info_box = !this.complete_info_box;
       this.programs[index].show_complete_info_box = true;
-
-      container.classList.remove("nav_open")
+      //-------------------------------打開它
+      // container.classList.remove("nav_open")
 
     },
     //刪除專案跳窗提醒
     delete_info_func(index) {
       this.delete_info_box = !this.delete_info_box;
       this.history_programs[index].show_delete_info_box = true;
-
-      container.classList.remove("nav_open")
+      //-------------------------------打開它
+      // container.classList.remove("nav_open")
     },
 
     //完成專案
     program_complete_func(index) {
       this.programs[index].changeimage = !this.programs[index].changeimage
-
-      // this.history_programs.push(this.programs[index])
-      this.page = index - 1;
-      this.programs.splice(index, 1);
-      if (this.programs.length != 0 && this.page == -1) {
-        this.page = 0;
-      }
-      this.history_page = this.history_programs.length - 1;
 
 
       const vm = this;
@@ -510,22 +504,20 @@ var main_content = new Vue({
         "success": function (data) {
           console.log(data);
 
-          console.log(vm.programs[index]);
-
-
-          for (i = 0; i < vm.programs.length; i++) {
-            if (pro_sta == 1) {
-              vm.history_programs.push(vm.programs[i])
-            }
-          }
-
-
         },
         "error": function (data) {
           console.log(data);
         }
       });
-      // this.show_cards(index);
+
+      // this.history_programs.push(this.programs[index])
+      this.page = index - 1;
+      this.programs.splice(index, 1);
+      if (this.programs.length != 0 && this.page == -1) {
+        this.page = 0;
+      }
+      this.history_page = this.history_programs.length - 1;
+
 
     },
     //刪除專案
@@ -1213,11 +1205,13 @@ var main_content = new Vue({
       result = JSON.parse(xhr.responseText);
       console.log(result)
       if (result.status == "success") {
+        main_content.programs = result.data.filter(item => item.pro_sta === "0")
+        main_content.history_programs = result.data.filter(item => item.pro_sta === "1")
 
-        main_content.programs = result.data;
-        // console.log(main_content.programs)
+        console.log(main_content.programs)
 
         // console.log(result.data[20]);
+
       }
     }
     xhr.open("post", './php/pm/get_program_list.php', true);
