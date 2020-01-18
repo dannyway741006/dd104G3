@@ -560,7 +560,7 @@ var main_content = new Vue({
       this.opened = !this.opened;
     },
 
-    // editcard() {
+    editcard() {
     // const vm = this;
     // console.log(vm.programs[index])
     // $.ajax({
@@ -581,7 +581,7 @@ var main_content = new Vue({
     //     console.log(data);
     //   }
     // });
-    // },
+    },
 
     //刪除卡片
     delete_card(index) {
