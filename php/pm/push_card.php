@@ -2,9 +2,8 @@
 try {
   require_once('../pdo.php');
   session_start();
-  $_SESSION['mem_no'] = 1;//test
-  switch($_POST['type'])
-  {
+  $_SESSION['mem_no'] = 1; //test
+  switch ($_POST['type']) {
     case "add_card":
       $pro_no = $_POST['pro_no'];
       $card_name = $_POST['card_name'];
@@ -19,12 +18,16 @@ try {
       $sql = "insert into `person_in_charge` 
       (mem_no, card_no) values 
       (:mem_no, :card_no)";
-      $join = $pdo->prepare( $sql );
+      $join = $pdo->prepare($sql);
       $join->bindValue(':mem_no', $_SESSION["mem_no"]);
       $join->bindValue(':card_no', $lastCardId);
       $join->execute();
       // require_once('get_program.php');
       echo json_encode(['status' => 'success', 'content' => '新建成功']);
+
+      break;
+    case "update_card":
+      
       break;
     case "add_todo":
       if ($data['content']) {
@@ -58,6 +61,24 @@ try {
         }
       }
       break;
+    case "add_file":
+      $pro_no = $_POST['pro_no'];
+      $card_no=$_POST['card_no'];
+      $todo_no=1;   //不知道為什麼要綁這個
+      $file_name=$_POST['file_name'];
+      $file_src=
+      $pdo->beginTransaction();
+      $sql = "INSERT INTO `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, :file_src)";
+      $files = $pdo->prepare($sql);
+      $files->bindValue(":pro_no", $_POST["pname"]);
+      $files->bindValue(":card_no", $_POST["price"]);
+      $files->bindValue(":todo_no", 1);
+      $files->bindValue(":file_name", $_POST["pages"]);
+      $files->bindValue(":file_src", $_POST["pages"]);
+      $files->execute();
+
+      //取得自動創號的key值
+      $psn = $pdo->lastInsertId();
   }
 
 

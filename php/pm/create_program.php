@@ -18,7 +18,7 @@
     $join->bindValue(1, $_SESSION["mem_no"]);
     $join->execute();
 
-    echo json_encode(['status'=>'success', 'content'=>'新建成功', 'data'=>$lastId]);
+    echo $lastId;
   }catch(PDOException $e){
     echo $e->getLine();
     echo $e->getMessage();
