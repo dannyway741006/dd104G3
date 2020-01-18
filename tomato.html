@@ -18,13 +18,8 @@
       <header>
         <div class="header">
           <div class="logo">
-<<<<<<< HEAD
-            <a href="">
-              <img src="./img/logo.svg" alt="logo" />
-=======
             <a href="./index.html">
-              <img src="../img/logo.svg" alt="logo" />
->>>>>>> yang
+              <img src="./img/logo.svg" alt="logo" />
             </a>
           </div>
           <div class="nav_hamburger">
@@ -40,35 +35,12 @@
         </div>
         <nav class="nav_bar">
           <div class="logo">
-<<<<<<< HEAD
-            <a href="">
-              <img src="./img/logo.svg" alt="logo" />
-=======
             <a href="./index.html">
-              <img src="../img/logo.svg" alt="logo" />
->>>>>>> yang
+              <img src="./img/logo.svg" alt="logo" />
             </a>
           </div>
           <ul class="nav_list">
             <li>
-<<<<<<< HEAD
-              <div>
-                <img src="./img/staff-poket.svg" alt="pm" />
-              </div>
-              <p>專案管理<br /><span>Project management</span></p>
-            </li>
-            <li class="active">
-              <div>
-                <img src="./img/time-left.d4d509fa.svg" alt="clock" />
-              </div>
-              <p>番茄鐘<br /><span>Clock</span></p>
-            </li>
-            <li>
-              <div>
-                <img src="./img/shopping-bag.c63fa553.svg" alt="shop" />
-              </div>
-              <p>商城<br /><span>Shop</span></p>
-=======
               <a href="./program.html">
                 <div>
                   <img src="./img/staff-poket.svg" alt="pm" />
@@ -91,7 +63,6 @@
                 </div>
                 <p>商城<br /><span>Shop</span></p>
               </a>
->>>>>>> yang
             </li>
           </ul>
           <div class="user_status">
@@ -248,7 +219,7 @@
                       <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
                     </div>
                 </div>
-                <ul>
+                <transition-group name='fade' tag="ul">
                   <li class="todoLi" :key='item.id' v-for="(item,key) in trelloTodos">
                     <div class="todoColor" :class="{'doing':item.runstatus,'rest':!working}"></div>
                     <div class="title">
@@ -275,14 +246,14 @@
                          <img src="./img/check.svg" alt="" width="20px" class="complete">
                          <img src="./img/uncheck.svg" alt="" width="20px" class="uncomplete">
                         </div>
-                        <div class="delete" @click="removeTodo(item,key)">
+                        <div class="delete" @click="removeTodo(item,key,1)">
                           <img src="img/delete.0df56913.svg" alt="" width="20px" class="deleteimg">
                           <img src="img/delete_on.70d3ed1f.svg" alt="" width="20px" class="ondeleteimg">
                         </div>
                       </div>
                     </div>
                   </li>
-                </ul>
+                </transition-group>
               </div>
             </div>
             <div class="stat">
