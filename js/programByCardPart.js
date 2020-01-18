@@ -409,7 +409,7 @@ var main_content = new Vue({
         },
         "cache": false,
         "success": function (data) {
-          console.log(index)
+          // console.log(this.programs[index].pro_no)
           // console.log(data);
           // console.log(vm.programs[index].card_list_todo.cards);
           // console.log(data);
@@ -417,13 +417,7 @@ var main_content = new Vue({
           vm.programs[index].card_list_todo.splice(0, 1, data[0])
           vm.programs[index].card_list_doing.splice(0, 1, data[1])
           vm.programs[index].card_list_done.splice(0, 1, data[2])
-          // vm.programs[index].card_list_todo=[]
-          // vm.programs[index].card_list_doing=[]
-          // vm.programs[index].card_list_done=[]
-          // vm.programs[index].card_list_todo.push(data[0]);
-          // vm.programs[index].card_list_doing.push(data[1]);
-          // vm.programs[index].card_list_done.push(data[2]);
-          // console.log(vm.programs);
+
         },
         "error": function (data) {
           console.log(data);
@@ -502,7 +496,7 @@ var main_content = new Vue({
       this.complete_info_box = !this.complete_info_box;
       this.programs[index].show_complete_info_box = true;
 
-      container.classList.remove("nav_open")
+      // container.classList.remove("nav_open")
 
     },
     //刪除專案跳窗提醒
@@ -517,18 +511,7 @@ var main_content = new Vue({
     program_complete_func(index) {
       this.programs[index].changeimage = !this.programs[index].changeimage
 
-      this.history_programs.push(this.programs[index])
 
-      this.page = index - 1;
-      this.programs.splice(index, 1);
-
-      if (this.programs.length != 0 && this.page == -1) {
-        this.page = 0;
-      }
-      // console.log(this.history_page=this.history_programs.length);
-      this.history_page = this.history_programs.length - 1;
-
-      // this.show_complete_info_box =true;
       const vm = this;
       $.ajax({
         "type": "POST",
@@ -541,15 +524,21 @@ var main_content = new Vue({
         "cache": false,
         "success": function (data) {
           console.log(data);
-
-          console.log(vm.programs);
-
+         vm.history_programs.push(this.programs[index])
         },
         "error": function (data) {
           console.log(data);
         }
       });
-      // this.show_cards(index);
+
+
+      this.page = index - 1;
+      this.programs.splice(index, 1);
+      if (this.programs.length != 0 && this.page == -1) {
+        this.page = 0;
+      }
+      this.history_page = this.history_programs.length - 1;
+
 
     },
     //刪除專案
@@ -1231,17 +1220,18 @@ var main_content = new Vue({
     //   }else{};
     // };
 
+
     let xhr = new XMLHttpRequest();
     xhr.onload = function () {
       // console.log(xhr.responseText);
       result = JSON.parse(xhr.responseText);
       console.log(result)
       if (result.status == "success") {
+        main_content.programs = result.data.filter(item => item.pro_sta === "0")
+        main_content.history_programs = result.data.filter(item => item.pro_sta === "1")
 
-        main_content.programs = result.data;
-        // console.log(main_content.programs)
+        console.log(main_content.programs)
 
-        // console.log(result.data[20]);
       }
     }
     xhr.open("post", './php/pm/get_program_list.php', true);
