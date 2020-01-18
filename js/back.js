@@ -48,14 +48,46 @@ for (var i = 0; i < navItem.length; i++) {
 
 //mall
 
-
-var lightBoxContent = document.getElementById("lightBox_content");
-
 var back_product_input = document.getElementById("back_product_input");
+var mall_add = document.querySelector(".mall_add");
+
+
+
+function mallAdd(){
+  var lightBoxContentAdd = document.getElementById("lightBox_content_add");
+  lightBoxContentAdd.style.display = "block";
+  backTable[3].style.display = "none";
+  var trStrAdd;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
 
 function mall_alert() {
+  var lightBoxContent = document.getElementById("lightBox_content");
   var trStrS;
-  console.log(this.id.substr(3))
+  // console.log(this.id.substr(3))
   lightBoxContent.style.display = "block";
   backTable[3].style.display = "none";
 
@@ -64,7 +96,6 @@ function mall_alert() {
   for (var i = 0; i < mallProductObj.length; i++) {
     if (mallProductObj[i].product_no == this.id.substr(3)) {
       // console.log(mallProductObj[i].product_no)
-    
       trStrS += `<th>商品編號</th>`
       trStrS += `<td>${mallProductObj[i].product_no}<input type="hidden" name="product_no" value="${mallProductObj[i].product_no}"></td>`
       trStrS += `</tr>`
@@ -74,7 +105,9 @@ function mall_alert() {
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th>商品圖片</th>`
-      trStrS += `<td><input type="file" name="product_src"></input></td>`
+      trStrS += `<td><input type="file" name="product_src"></input>
+      <input type="hidden" name="product_src_hidden" value="${mallProductObj[i].product_src}">
+      </td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th>商品顏色</th>`
@@ -89,48 +122,30 @@ function mall_alert() {
       trStrS += `<td>${mallProductObj[i].product_type}</td>`
       trStrS += `</tr>`
       trStrS += `<th>商品背景</th>`
-      trStrS += `<td><input type="file" name="product_bg_src"></input></td>`
+      trStrS += `<td><input type="file" name="product_bg_src"></input>
+      <input type="hidden" name="product_bg_hidden" value="${mallProductObj[i].product_bg_src}">
+      </td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th>商品輪播圖</th>`
-      trStrS += `<td><input type="file" name="product_slide_img"></input></td>`
+      trStrS += `<td><input type="file" name="product_slide_img"></input>
+      <input type="hidden" name="product_slide_hidden" value="${mallProductObj[i].product_slide_img}">
+      </td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th colspan="2" style="text-align: center;background-color: #fff;border-bottom: none;border-color:#c8ced3;"><input type="submit" name="submit">送出</th>`
       trStrS += `</tr>`
-    
-  
+
       trStrS = trStrS.substring(9);
       back_product_input.innerHTML = trStrS;
     }
-
-
   }
-
-
-
 }
-
-
-// for (i = 0; i < mallProductObj.length; i++) {
-//   console.log(this.mallProductObj[i])
-// }
-
-
-
-
-// function mall_modify() {
-
-
-// }
-
 
 
 function mallList() {
   let xhr = new XMLHttpRequest();
-
   xhr.onload = function () {
-
     if (xhr.status == 200) {
       mallProductObj = JSON.parse(xhr.responseText);
       // document.getElementById("back_product").innerHTML = xhr.responseText;
@@ -144,96 +159,30 @@ function mallList() {
         trStr += `<td data-th="商品價格">${mallProductObj[i].product_price}</td>`;
         trStr += `<td data-th="商品圖片" style='word-break:break-all'"><img width="100" src="${mallProductObj[i].product_src}"></td>`;
         trStr += `<td data-th="商品顏色">${mallProductObj[i].product_color}</td>`;
-        trStr += `<td data-th="商品說明" style='word-break:break-all'>${mallProductObj[i].product_desc}</td>`;
+        trStr += `<td data-th="商品說明" style='word-break:break-all;width:25%'>${mallProductObj[i].product_desc}</td>`;
         trStr += `<td data-th="商品類別" style='word-break:break-all'>${mallProductObj[i].product_type}</td>`;
         trStr += `<td data-th="商品背景" style='word-break:break-all'"><img width="100" src="${mallProductObj[i].product_bg_src}"></td>`;
         trStr += `<td data-th="商品輪播圖" style='word-break:break-all'"><img width="100" src="${mallProductObj[i].product_slide_img}"></td>`;
-        trStr += `<td data-th="設定"><p class="mall_modify" id="pdu${mallProductObj[i].product_no}">編輯</p>/<p class="mall_edit">下架</p>`;
-        /*經典之處，要將主鍵對應的值以json的形式進行傳遞，才能在後臺使用*/
-        // trStr  = "<td><a href='#'style='text-decoration:none' onclick='Delete(\"" 123"\")'>刪除</a><td>";
+        trStr += `<td data-th="設定"><span class="mall_modify" id="pdu${mallProductObj[i].product_no}">編輯</span> / <span class="mall_edit">下架</span>`;
         trStr += '</tr>';
 
       }
       document.getElementById("back_product").innerHTML = trStr;
-      // console.log(trStr);
-      // console.log(mallProductObj[0]["product_price"]);
-
     } else {
       alert(xhr.status);
     }
-
-
     for (var i = 0; i < mallProductObj.length; i++) {
       var mallModify = document.querySelectorAll('.mall_modify');
       mallModify[i].addEventListener('click', mall_alert);
     }
-
-
   }
 
   //設定好所要連結的程式
   let url = "./php/mall/back_product.php";
   xhr.open("get", url, true);
-
-  //送出資料
-  // xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
   xhr.send(null);
 }
 
 
-
-
-
-
-
-
+mall_add.addEventListener("click",mallAdd,false)
 window.addEventListener("load", mallList, false);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//跳窗
-
-
-// let mem_mask = document.getElementById("mem_mask");
-// let liclose = document.getElementById("liclose");
-// let memlibox = document.getElementById("memlibox");
-// let imgClose = document.getElementById("light_box_title");
-// let memberbtn = document.getElementById("memberbtn");
-
-
-// memberbtn.addEventListener("click", function () {
-//   mem_mask.classList.add('c');
-//   memlibox.classList.add('active_for_memlibox');
-//   memlibox.classList.remove('closeani');
-// });
-
-// liclose.addEventListener('click', function () {
-//   mem_mask.classList.remove('active_for_mask');
-//   memlibox.classList.add('closeani');
-// });
-
-// mem_mask.addEventListener('click', function () {
-//   mem_mask.classList.remove('active_for_mask');
-//   memlibox.classList.add('closeani');
-// });
-
-// imgClose.addEventListener('click', function () {
-//   mem_mask.classList.remove('active_for_mask');
-//   memlibox.classList.add('closeani');
-// });
