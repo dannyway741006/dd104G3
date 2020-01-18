@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
+  <link rel=icon href=favicon.ico>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="./css/owlcarousel/owl.carousel.min.css">
@@ -44,7 +45,7 @@
           </a>
         </div>
         <ul class="nav_list">
-          <li>
+          <li data-name="program">
             <a href="./program.html">
               <div>
                 <img src="./img/staff-poket.svg" alt="pm" />
@@ -52,7 +53,7 @@
               <p>專案管理<br /><span>Project management</span></p>
             </a>
           </li>
-          <li>
+          <li data-name="tomato">
             <a href="./tomato.html">
               <div>
                 <img src="./img/time-left.d4d509fa.svg" alt="clock" />
@@ -60,7 +61,7 @@
               <p>番茄鐘<br /><span>Clock</span></p>
             </a>
           </li>
-          <li>
+          <li data-name="mall">
             <a href="./mall.html">
               <div>
                 <img src="./img/shopping-bag.c63fa553.svg" alt="shop" />
@@ -230,8 +231,7 @@
         }
     </script>
 
-    <script src="./js/background.js"></script>
-    <script src="./js/layout.js"></script>
+    <script src="./js/layout.js" type="module"></script>
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script> -->
   <!--Mall商城主要js-->
   <script src="./js/mall.js"></script>
