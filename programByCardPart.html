@@ -727,7 +727,7 @@
                                   <img src="./img/uncheck.svg" alt="" v-else>
                                 </div>
                                 <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color" :class="{add_to_tomato : item.tomato_color}"></div>
+                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color,calltomato()" :class="{add_to_tomato : item.tomato_color}"></div>
                                 <div><img src="./img/card_img/delete.0df56913.svg" alt=""
                                     @click="delete_todo_title(detailIndex,index)"></div>
                               </div>
@@ -979,7 +979,7 @@
                                   <img src="./img/uncheck.svg" alt="" v-else>
                                 </div>
                                 <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color" :class="{add_to_tomato : item.tomato_color}"></div>
+                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color,calltomato()" :class="{add_to_tomato : item.tomato_color}"></div>
                                 <div><img src="./img/card_img/delete.0df56913.svg" alt=""
                                     @click="delete_todo_title(detailIndex,index)"></div>
                               </div>
@@ -1230,7 +1230,7 @@
                                   <img src="./img/uncheck.svg" alt="" v-else>
                                 </div>
                                 <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color" :class="{add_to_tomato : item.tomato_color}"></div>
+                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color,calltomato()" :class="{add_to_tomato : item.tomato_color}"></div>
                                 <div><img src="./img/card_img/delete.0df56913.svg" alt=""
                                     @click="delete_todo_title(detailIndex,index)"></div>
                               </div>

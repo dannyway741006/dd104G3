@@ -308,11 +308,11 @@ var main_content = new Vue({
       //  console.log(index);
 
 
-      console.log(this);
+      console.log(vm.programs[index]);
       // var obj = Object.keys(this.programs[index].card_list_todo).map(function(_) { return this.programs[index].card_list_todo[_]; });
-      // this.programs[index].card_list_todo.cards.push({
+      // vm.programs[index].card_list_todo[0].cards.push({
 
-      //   card_name: this.card_name,
+      //   card_name: vm.card_name,
       //   card_member: [],
 
       //   //卡片內會員顯示
@@ -331,13 +331,13 @@ var main_content = new Vue({
       //   //上傳檔案
       //   filebox: [],
       //   file_switch: false,
-      //   // sourced:'',
+      //   sourced:'',
       //   // //增加項目focus變長
-      //   // card_length:false,
+      //   card_length:false,
 
 
       // });
-      // console.log(this.programs[index].card_list_todo);
+      // console.log(vm.programs[index].card_list_todo);
       if (vm.card_name !== "") {
         $.ajax({
           "type": "POST",
@@ -352,7 +352,33 @@ var main_content = new Vue({
           "success": function (data) {
             // console.log(data);
             vm.show_cards(index);
+            // vm.programs[index].card_list_todo[0].cards.push({
 
+            //   card_name: vm.card_name,
+            //   card_member: [],
+
+            //   //卡片內會員顯示
+            //   showhideMember: false,
+            //   member_input: "",
+            //   member_inout: [],
+
+
+            //   todo_list_content_detail: [],
+
+            //   //calendar
+            //   dateline: false,
+            //   dateline_text: "未完成",
+            //   calendar_date: '未設定',
+
+            //   //上傳檔案
+            //   filebox: [],
+            //   file_switch: false,
+            //   sourced: '',
+            //   //增加項目focus變長
+            //   card_length: false,
+
+
+            // });
 
           },
           "error": function (data) {
@@ -360,33 +386,6 @@ var main_content = new Vue({
           }
         });
 
-        // this.programs[index].card_list_todo.cards.push({
-
-        //   card_name: this.card_name,
-        //   card_member: [],
-
-        //   //卡片內會員顯示
-        //   showhideMember: false,
-        //   member_input: "",
-        //   member_inout: [],
-
-
-        //   todo_list_content_detail: [],
-
-        //   //calendar
-        //   dateline: false,
-        //   dateline_text: "未完成",
-        //   calendar_date: '未設定',
-
-        //   //上傳檔案
-        //   filebox: [],
-        //   file_switch: false,
-        //   // sourced:'',
-        //   // //增加項目focus變長
-        //   // card_length:false,
-
-
-        // });
 
       } else {}
       this.card_name = "";
@@ -401,6 +400,7 @@ var main_content = new Vue({
 
     show_cards(index) {
       const vm = this;
+      // console.log("123")
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -410,14 +410,37 @@ var main_content = new Vue({
         },
         "cache": false,
         "success": function (data) {
+          console.log(index)
           // console.log(data);
           // console.log(vm.programs[index].card_list_todo.cards);
           // console.log(data);
+          // console.log(vm.programs[index].card_list_todo)
+          vm.programs[index].card_list_todo.splice(0, 1, data[0])
+          vm.programs[index].card_list_doing.splice(0, 1, data[1])
+          vm.programs[index].card_list_done.splice(0, 1, data[2])
+      
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+    },
+    editcard() {
+      const vm = this;
+      console.log(vm.programs[index])
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/edit_done.php",
+        "data": {
+          // "card_no": this.programs[this.page].card_list_todo[0].cards[cardIndex].card_no,
+          // "pro_no": this.programs[this.page].pro_no,
+          "type": "add_file",
+          "pro_no": this.programs[index].pro_no,
+        },
+        "cache": false,
+        "success": function (data) {
 
-          vm.programs[index].card_list_todo.push(data[0]);
-          vm.programs[index].card_list_doing.push(data[1]);
-          vm.programs[index].card_list_done.push(data[2]);
-          // console.log(vm.programs);
         },
         "error": function (data) {
           console.log(data);
