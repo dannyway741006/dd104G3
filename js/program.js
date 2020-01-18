@@ -522,11 +522,37 @@ var main_content = new Vue({
     },
     //刪除專案
     delete_program(index) {
-      this.history_programs.splice(index, 1)
+
+      
+
+
+      const vm = this;
+
+      console.log(vm.history_programs)
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/delete_program.php",
+        "data": {
+          "pro_no": vm.history_programs[index].pro_no
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+          vm.history_programs.splice(index, 1)
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+
+
+
       this.history_page = index - 1;
       if (this.history_programs.length != 0 && this.history_page == -1) {
         this.history_page = 0;
       }
+
     },
 
     // 日曆部分
@@ -1172,33 +1198,6 @@ var main_content = new Vue({
     // 日曆部分
     this.setToday();
 
-
-    // $.ajax({
-    //   url: './php/pm/get_program_list.php',
-    //   data: {},
-    //   dataType: "json",
-    //   type: "post",
-    //   success: function (data) {
-    //   },
-    // })
-
-
-
-    // async function getPrograms() {
-    //   console.log(this.programs)
-    //   if (this.programs.length != 0) {
-    //     console.log('2211')
-    //     // let pro_title = this.dataset ? this.dataset.type : 1;
-    //     let pro_title=this.programs[this.page].pro_title;
-    //     let pro_col=this.programs[this.page].color;
-    //     // let mem_no=
-    //     pro_data = await fetch('./php/pm/get_program_list.php?pro_title=' + pro_title + 'pro_col='+pro_col)
-    //       .then(res => res.json())
-    //       .then(json => json)
-    //     console.log(pro_data);
-    //   }else{};
-    // };
-
     let xhr = new XMLHttpRequest();
     xhr.onload = function () {
       // console.log(xhr.responseText);
@@ -1209,8 +1208,6 @@ var main_content = new Vue({
         main_content.history_programs = result.data.filter(item => item.pro_sta === "1")
 
         console.log(main_content.programs)
-
-        // console.log(result.data[20]);
 
       }
     }
