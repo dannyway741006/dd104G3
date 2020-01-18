@@ -1,7 +1,10 @@
 <?php
 try {
   require_once('../pdo.php');
+  session_start();
+  //讀取text/xml檔案
   $jsonData = json_decode(file_get_contents('php://input'), true);
+  
   $pro_no = $jsonData['projectId'];
   $card_type = $jsonData['step'];
   $data = $jsonData['card'];

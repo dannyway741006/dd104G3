@@ -4,54 +4,6 @@ function $id(id) {
 //--------------------全域變數
 let member = {};
 
-//--------------------logout
-function logout() {
-  let xhr = new XMLHttpRequest();
-
-  xhr.onload = function () {
-    member = JSON.parse(xhr.responseText);
-    // console.log(member)
-    if (member.status === 'success') {
-      divLogin.innerHTML = "登入";
-      $id("memName").innerHTML = "&nbsp;";
-      $id("memId").value = "";
-      $id("memPsw").value = "";
-    }
-
-  }
-  xhr.open("post", "./php/member/logout.php", true);
-  xhr.send(null)
-}
-
-//--------------------顯示登入者資訊
-function showMemInfo(jsonStr) {
-
-  member = JSON.parse(jsonStr);
-  // console.log(member)
-  if (member.status === 'success') {
-    $id("memName").innerText = member.data.mem_id;
-    $id("divLogin").innerHTML = "登出";//登入bar面版上 spanLogin 的字改成登出
-
-  } else {
-    alert("帳密錯誤");
-  }
-}
-
-// --------------------到server端做登入
-function sendForm() {
-  var memId = $id("memId").value;
-  var memPsw = $id("memPsw").value;
-  //-------------使用ajax方法到Server端資料
-  let xhr = new XMLHttpRequest();
-  xhr.onload = function () {
-    // console.log(xhr.responseText);
-    showMemInfo(xhr.responseText); //顯示登入者資訊
-  }
-  xhr.open("post", "./php/member/login.php", true);
-  xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-  let data_info = `mem_id=${memId}&mem_psw=${memPsw}`;
-  xhr.send(data_info);
-}
 
 // -------------------------取得登入資訊
 function getLoginInfo() {
@@ -59,38 +11,81 @@ function getLoginInfo() {
 
   xhr.onload = function () {
     member = JSON.parse(xhr.responseText);
-    console.log("a");
+    console.log(member);
     if (member.status === 'success') {
-      $id("memName").innerText = member.data.mem_id;
-      $id("divLogin").innerHTML = "登出";//登入bar面版上 spanLogin 的字改成登出
+
+      //登入bar面版上 spanLogin 的字改成登出
       $id("memName1").value = member.data.mem_id;
       $id("memName2").value = member.data.mem_name;
       $id("memName3").value = member.data.mem_email;
       $id("memName4").value = member.data.mem_tel;
-      $id("memName6").value = member.data.mem_addr;
+      $id("memName5").value = member.data.mem_addr;
 
     }
-
-  }
+  };
   xhr.open("post", "./php/member/isLogin.php", true);
-  xhr.send(null)
+  xhr.send(null);
 }
 
+function test3() {
+  let xhr = new XMLHttpRequest();
+  // let divLogin = document.getElementById("divLogin");
+  let str = "";
+  xhr.onload = function () {
+    member = JSON.parse(xhr.responseText);
+    console.log("aaa");
+
+    for (i = 0; i < member.length; i++) {
+      str = order_temp1(member[i].product_no, member[i].product_amout, member[i].product_price, str, i);
+    }
+
+    str = `
+      <input type="radio" id="order_box${i + 1}" name="gallery" hidden="" checked="checked" />
+      <div class="order_infomation">
+        <div class="order_group1">
+          <table class="table_order table_order_special">
+            <tr class="table_order_top1">
+              <th>商品</th>
+              <th>數量</th>
+              <th>價格</th>
+            </tr>` + str;
+    document.getElementsByClassName("order_details")[0].innerHTML = str;
+  };
+  xhr.open("get", "./php/member/order_mem.php", true);
+  xhr.send(null);
+};
+function order_temp1(product_no, product_amout, product_price, str) {
+  str += ` 
+        <tr>
+           <th>${product_no}</th>
+           <th>${product_amout}</th>
+           <th>${product_price}</th>
+         </tr>
+        </table>
+       </div>
+                </div>
+                <div class="details_img">
+                  <img src="./img/member_img/folder-open-solid.svg" alt="" width="150">
+                </div>
+      `;
+  return str;
+}
 
 
 function test2() {
   let xhr = new XMLHttpRequest();
   // let divLogin = document.getElementById("divLogin");
-  console.log('a');
+
   xhr.onload = function () {
     member = JSON.parse(xhr.responseText);
     // console.log(member);
     let str = "";
     for (i = 0; i < member.length; i++) {
-      str = order_temp(member[i].cret_date, member[i].order_no, str, i)
+      str = order_temp(member[i].cret_date, member[i].order_no, str, i);
     }
 
-    str = `
+    str =
+      `
 <tr class="table_oder_top">
                       <th>購買日期</th>
                       <th>訂單編號</th>
@@ -111,80 +106,65 @@ function test2() {
                           </label>
                         </div>
                       </th>
-                    </tr>`+ str;
+                    </tr>` + str;
     document.getElementsByClassName("table_oder")[0].innerHTML = str;
-
     let delet_btn = document.getElementById("delet_btn");
     let mem_mask = document.getElementById("mem_mask");
     let liclose = document.getElementById("liclose");
     let memlibox = document.getElementById("memlibox");
     let imgClose = document.getElementById("light_box_title");
     let memberbtn = document.getElementById("memberbtn");
-    delet_btn.addEventListener('click', function () {
-      mem_mask.classList.add('active_for_mask');
-      memlibox.classList.add('active_for_memlibox');
-      memlibox.classList.remove('closeani');
+    delet_btn.addEventListener("click", function () {
+      mem_mask.classList.add("active_for_mask");
+      memlibox.classList.add("active_for_memlibox");
+      memlibox.classList.remove("closeani");
     });
 
     memberbtn.addEventListener("click", function () {
-      mem_mask.classList.add('active_for_mask');
-      memlibox.classList.add('active_for_memlibox');
-      memlibox.classList.remove('closeani');
+      mem_mask.classList.add("active_for_mask");
+      memlibox.classList.add("active_for_memlibox");
+      memlibox.classList.remove("closeani");
     });
 
-    liclose.addEventListener('click', function () {
-      mem_mask.classList.remove('active_for_mask');
-      memlibox.classList.add('closeani');
+    liclose.addEventListener("click", function () {
+      mem_mask.classList.remove("active_for_mask");
+      memlibox.classList.add("closeani");
     });
 
-    mem_mask.addEventListener('click', function () {
-      mem_mask.classList.remove('active_for_mask');
-      memlibox.classList.add('closeani');
+    mem_mask.addEventListener("click", function () {
+      mem_mask.classList.remove("active_for_mask");
+      memlibox.classList.add("closeani");
     });
 
-    imgClose.addEventListener('click', function () {
-      mem_mask.classList.remove('active_for_mask');
-      memlibox.classList.add('closeani');
+    imgClose.addEventListener("click", function () {
+      mem_mask.classList.remove("active_for_mask");
+      memlibox.classList.add("closeani");
     });
-
 
     // ===================================================================
-   
+
     let allcheck = document.getElementById("allcheck");
     let change_word1 = document.getElementById("change_word1");
 
-
     function selectAll(event) {
-      const allCheckBox = document.getElementsByClassName('checks');
+      const allCheckBox = document.getElementsByClassName("checks");
 
       for (var i = 0; i < allCheckBox.length; i++) {
         allCheckBox[i].checked = event.target.checked;
       }
     }
-    allcheck.addEventListener('click', function () {
+    allcheck.addEventListener("click", function () {
       if (change_word1.innerHTML.match("全選/")) {
         change_word1.innerHTML = "取消/";
       } else {
         change_word1.innerHTML = "全選/";
       }
     });
-  }
+  };
   xhr.open("get", "./php/member/order_mem.php", true);
   xhr.send(null);
-}
- // ======================input 全選/取消===========================
-//  let change_word1 = document.getElementById("change_word1");
+};
 
-// function order_delete(){
-// if(change_word1.innerHTML.match("取消/")){
-//   let test_delete = document.getElementById("test_delete");
-//   test_delete.addEventListener("click",function(){
-//     let memName5 = getElementById("memName5");
-//     memName5.remove(memName5.innerHTML);
-//   });
-// }
-// };
-// ========================input 全選/取消 end===========================================
 function order_temp(cret_date, order_no, str, i) {
   str += ` 
   <tr>
@@ -193,8 +173,8 @@ function order_temp(cret_date, order_no, str, i) {
   <td>
     <div class="th3_box">
       <span class="checkall">
-        <input type="checkbox" class="checks" id="checkall${i = 0 ? '' : i}">
-        <label for="checkall${i = 0 ? '' : i}"></label>
+        <input type="checkbox" class="checks" id="checkall${(i = 0 ? "" : i)}">
+        <label for="checkall${(i = 0 ? "" : i)}"></label>
         <label for="${i == 0 ? "" : i}" class="delete_pointer">
           <span>/</span>
         </label>
@@ -207,52 +187,22 @@ function order_temp(cret_date, order_no, str, i) {
   </td>
 </tr>
 <tr>
-  `
-  return str
-
+  `;
+  return str;
 }
-// function test3() {
-//   let xhr = new XMLHttpRequest();
-//   // let divLogin = document.getElementById("divLogin");
-//   console.log('a');
-//   xhr.onload = function () {
-//     member = JSON.parse(xhr.responseText);
-//     // console.log(member);
-//     let str = "";
-//     for (i = 0; i < member.length; i++) {
-//       str = order_temp(member[i].product_no, member[i].product_amout,member[i].product_price, str, i)
-//     }
-// str =`
-// <input type="radio" id=""order_box${i + 1}"" name="gallery" hidden="" checked="checked" />
-// <div class="order_infomation">
-//   <div class="order_group1">
-//     <table class="table_order">
-//       <tr class="table_order_top1">
-//         <th>商品</th>
-//         <th>數量</th>
-//         <th>價格</th>
-//       </tr>
-//       <tr>
-//         <th>${product_no}</th>
-//         <th>${product_amout}</th>
-//         <th>${product_price}</th>
-//       </tr>
-//     </table>
-//   </div>
-// </div>
-// `
 
 // ================member update===============================
 function mem_update() {
   let memname = $id("memName2").value;
   let mememail = $id("memName3").value;
   let memtel = $id("memName4").value;
-  let memaddr = $id("memName6").value;
-console.log(member)
+  let memaddr = $id("memName5").value;
+
   let xhr = new XMLHttpRequest();
   xhr.onload = function () {
     console.log(xhr.responseText);
     // showMemInfo(xhr.responseText); //顯示登入者資訊
+    console.log(member)
   }
   xhr.open("post", "./php/member/member_update.php", true);
   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
@@ -264,15 +214,123 @@ console.log(member)
 window.addEventListener("load", function () {
   //-------------------------檢查是否已登入
   // mem_update();
+<<<<<<< HEAD
   getLoginInfo();
   test2();
+  test3();
+=======
+  // getLoginInfo();
+  // test2();
   // test3();
+>>>>>>> be7336874ffd48d789bf3c8591b2c253dc662450
 
   //===設定spanLogin.onclick 事件處理程序是 showLoginForm
-  $id("divLogin").onclick = logout;
+  // $id("divLogin").onclick = logout;
   //===設定btnLogin.onclick 事件處理程序是 sendForm
 
   $id("update_member").onclick = mem_update;
   //===設定btnLoginCancel.onclick 事件處理程序是 cancelLogin
   // $id("liclose").onclick = cancelLogin;  
 });
+
+
+
+
+
+
+
+
+
+
+      // //--------------------logout
+      // function logout() {
+      //   let xhr = new XMLHttpRequest();
+
+      //   xhr.onload = function () {
+      //     member = JSON.parse(xhr.responseText);
+      //     // console.log(member)
+      //     if (member.status === 'success') {
+      //       divLogin.innerHTML = "登入";
+      //       // $id("memName").innerHTML = "&nbsp;";
+      //       $id("memId").value = "";
+      //       $id("memPsw").value = "";
+      //     }
+
+      //   }
+      //   xhr.open("post", "./php/member/logout.php", true);
+      //   xhr.send(null)
+      // }
+
+      //--------------------顯示登入者資訊
+      // function showMemInfo(jsonStr) {
+
+      //   member = JSON.parse(jsonStr);
+      //   // console.log(member)
+      //   if (member.status === 'success') {
+      //     // $id("memName").innerText = member.data.mem_id;
+      //     // $id("divLogin").innerHTML = "登出";//登入bar面版上 spanLogin 的字改成登出
+
+      //   } else {
+      //     alert("帳密錯誤");
+      //   }
+      // }
+
+      // // --------------------到server端做登入
+      // function sendForm() {
+      //   var memId = $id("memId").value;
+      //   var memPsw = $id("memPsw").value;
+      //   //-------------使用ajax方法到Server端資料
+      //   let xhr = new XMLHttpRequest();
+      //   xhr.onload = function () {
+      //     // console.log(xhr.responseText);
+      //     showMemInfo(xhr.responseText); //顯示登入者資訊
+      //   }
+      //   xhr.open("post", "./php/member/login.php", true);
+      //   xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      //   let data_info = `mem_id=${memId}&mem_psw=${memPsw}`;
+      //   xhr.send(data_info);
+      // }
+
+      // function test3() {
+      //   let xhr = new XMLHttpRequest();
+      //   // let divLogin = document.getElementById("divLogin");
+      //   console.log('a');
+      //   xhr.onload = function () {
+      //     member = JSON.parse(xhr.responseText);
+      //     // console.log(member);
+      //     let str = "";
+      //     for (i = 0; i < member.length; i++) {
+      //       str = order_temp(member[i].product_no, member[i].product_amout,member[i].product_price, str, i)
+      //     }
+      // str =`
+      // <input type="radio" id=""order_box${i + 1}"" name="gallery" hidden="" checked="checked" />
+      // <div class="order_infomation">
+      //   <div class="order_group1">
+      //     <table class="table_order">
+      //       <tr class="table_order_top1">
+      //         <th>商品</th>
+      //         <th>數量</th>
+      //         <th>價格</th>
+      //       </tr>
+      //       <tr>
+      //         <th>${product_no}</th>
+      //         <th>${product_amout}</th>
+      //         <th>${product_price}</th>
+      //       </tr>
+      //     </table>
+      //   </div>
+      // </div>
+      // `
+      // ======================input 全選/取消===========================
+      // let change_word1 = document.getElementById("change_word1");
+
+      // function order_delete() {
+      //   if (change_word1.innerHTML.match("取消/")) {
+      //     let test_delete = document.getElementById("test_delete");
+      //     test_delete.addEventListener("click", function () {
+      //       let memName5 = getElementById("memName5");
+      //       memName5.remove(memName5.innerHTML);
+      //     });
+      //   }
+      // };
+      // ========================input 全選/取消 end===========================================

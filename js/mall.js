@@ -5,12 +5,22 @@
 
 // if (cartCount.textContent === 0) {
 //   cartCount.style.display = "none";
+<<<<<<< HEAD
 // } else {
 //   mallBtn.addEventListener('click', function () {
 //     cartCount.style.display = "block";
 //     count++;
 //     cartCount.textContent = count;
 //   })
+=======
+// } 
+// else {
+//   // mallBtn.addEventListener('click', function () {
+//     cartCount.style.display = "block";
+//   //   count++;
+//   //   cartCount.textContent = count;
+//   // })
+>>>>>>> dev
 // }
 
 
@@ -68,6 +78,7 @@ async function getProduct() {
   mall_data = await fetch('./mall_data_test.php?product_type=' + mallType)
     .then(res => res.json())
     .then(json => json)
+    .catch(err=>console.log(err))
   console.log(mall_data);
 
   mall_content();
