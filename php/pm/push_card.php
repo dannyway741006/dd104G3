@@ -25,6 +25,10 @@ try {
       $join->execute();
       // require_once('get_program.php');
       echo json_encode(['status' => 'success', 'content' => '新建成功']);
+
+      break;
+    case "update_card":
+      
       break;
     case "add_todo":
       if ($data['content']) {
