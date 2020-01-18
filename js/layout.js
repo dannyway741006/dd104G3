@@ -17,10 +17,9 @@ let MEMBER_INFO = {};
         .then(res => res.json())
         .then(json => {
           if (json.status === "success") {
-            MEMBER_INFO = json.data;
             userStatus.classList.add("logout");
             userName.innerText = json.data.mem_name || json.data.mem_id;
-            resolve();
+            resolve(json.data);
           }
         })
         .catch(err => console.log(err));
@@ -43,7 +42,7 @@ let MEMBER_INFO = {};
     );
     if (currentList) currentList.classList.add("active");
   }
-  await checkLogin();
+  MEMBER_INFO = await checkLogin();
   setListClass();
   background();
 })();

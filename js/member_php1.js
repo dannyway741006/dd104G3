@@ -5,6 +5,7 @@ function $id(id) {
 let member = {};
 
 
+
 // -------------------------取得登入資訊
 function getLoginInfo() {
   let xhr = new XMLHttpRequest();
@@ -214,15 +215,9 @@ function mem_update() {
 window.addEventListener("load", function () {
   //-------------------------檢查是否已登入
   // mem_update();
-<<<<<<< HEAD
-  getLoginInfo();
-  test2();
-  test3();
-=======
   // getLoginInfo();
   // test2();
   // test3();
->>>>>>> be7336874ffd48d789bf3c8591b2c253dc662450
 
   //===設定spanLogin.onclick 事件處理程序是 showLoginForm
   // $id("divLogin").onclick = logout;
