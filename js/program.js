@@ -130,6 +130,7 @@ var main_content = new Vue({
 
 
     window_width: 0,
+    userInfo: []
 
 
 
@@ -138,7 +139,7 @@ var main_content = new Vue({
     window.addEventListener('resize', this.handleResize)
     this.handleResize();
   },
-  destroyed() {
+  beforeDestroy() {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
@@ -244,52 +245,17 @@ var main_content = new Vue({
     },
 
     //邀請專案成員
-    invite_add_member() {
-      alert("in")
-      // if(document.getElementById('invite_add_member_addr').value==pro_mem_Arr[0].mem_id){};
-      // for (i = 0; i < pro_mem_Arr.length; i++) {
-      //   if (this.invite_add_member_addr == pro_mem_Arr[0].mem_id) {
-      // axios
-      //   .get('php_program/push_member.php')
-      //   .then((res) => {
-      //     var pro_mem_Arr = res.data;
-      //     // console.log(pro_mem_Arr[0].mem_name)
-      //     this.programs[this.page].program_memeber.push({
-
-      //       member_name: pro_mem_Arr[i].mem_name,
-      //       userId: pro_mem_Arr[i].mem_id,
-      //       src: pro_mem_Arr[i].headshot,
-      //     })
-
-
-      //   })
-      //   .catch((error) => {
-      //     console.log(error)
-      //   })
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/push_member.php",
-        "data": {
-          "mem_no": 1,
-          "pro_no": this.programs[index].pro_no
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
-          alert(data)
-
-
-        },
-        "error": function (data) {
-          console.log(data);
-          alert(data)
-        }
-      });
-
-      // }
-
-      // }
+    invite_add_member(program) {
+      console.log(program)
+      fetch('./php/pm/invite_member.php', {
+        method: 'POST',
+        body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&invite_id=${program.invite_add_member_addr}&pro_no=${program.pro_no}`)
+      })
+        .then(res=>res.json())
+        .then(json=>{
+          alert(json.content)
+        })
+        .catch(err=>console.log(err))
     },
 
 
@@ -305,7 +271,7 @@ var main_content = new Vue({
     },
     //rwd時點選關閉漢堡---------------------------打開它
     close_humberger() {
-      // container.classList.remove("nav_open")
+      container.classList.remove("nav_open")
     },
 
     //新增卡片
@@ -384,6 +350,7 @@ var main_content = new Vue({
     },
 
     show_cards(index) {
+      if(!this.programs.length) return
       const vm = this;
       // console.log("123")
       $.ajax({
@@ -461,7 +428,7 @@ var main_content = new Vue({
       this.complete_info_box = !this.complete_info_box;
       this.programs[index].show_complete_info_box = true;
       //-------------------------------打開它
-      // container.classList.remove("nav_open")
+      container.classList.remove("nav_open")
 
     },
     //刪除專案跳窗提醒
@@ -469,7 +436,7 @@ var main_content = new Vue({
       this.delete_info_box = !this.delete_info_box;
       this.history_programs[index].show_delete_info_box = true;
       //-------------------------------打開它
-      // container.classList.remove("nav_open")
+      container.classList.remove("nav_open")
     },
 
     //完成專案
@@ -1233,7 +1200,15 @@ var main_content = new Vue({
   },
 
 
-  mounted() {
+  async mounted () {
+    this.userInfo = await fetch("./php/member/isLogin.php")
+    .then(res => res.json())
+    .then(json => {
+      if (json.status === "success") {
+        return json.data
+      }
+    })
+    .catch(err => console.log(err));
     document.addEventListener("click", () => {
       this.open = false;
       this.add_cards_btn_div = true;
@@ -1290,9 +1265,9 @@ var main_content = new Vue({
     xhr.open("post", './php/pm/get_program_list.php', true);
     //送出資料
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    let data_info = "mem_no=1";
+    let data_info = `mem_no=${this.userInfo.mem_no}`;
     xhr.send(data_info);
-    // console.log(this);
+    // console.log(this)
   },
 
   components: {

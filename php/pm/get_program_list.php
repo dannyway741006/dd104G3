@@ -3,8 +3,7 @@ try {
   require_once('../pdo.php');
   $sql = 'select * from `program` where mem_no = :mem_no';
   $res = $pdo->prepare($sql);
-  // $res->bindParam(':mem_no', $_POST['mem_no']);
-  $res->bindValue(':mem_no', 1);
+  $res->bindParam(':mem_no', $_POST['mem_no']);
   $res->execute();
   if ($res->rowCount() !== 0) {
     $projects = $res->fetchAll(PDO::FETCH_ASSOC);
