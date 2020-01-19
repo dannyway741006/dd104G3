@@ -666,101 +666,201 @@ var main_content = new Vue({
       });
 
     },
-    // 增加待辦清單項目
-    todo_list_add(index) {
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "add_todo",
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
-          //   if (vm.card_name !== "") {
-          //     console.log(vm.programs[index].card_list_todo.cards);
-          //     vm.programs[index].card_list_todo.cards.push({
+   //改變卡片標題
+   change_card_title() {
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "update_card",
+        "card_name":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_name,
+        "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
 
-          //       card_name: vm.card_name,
-          //       card_member: [],
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
 
-          //       //卡片內會員顯示
-          //       showhideMember: false,
-          //       member_input: "",
-          //       member_inout: [],
+  // 增加待辦清單項目
+  todo_list_add(index) {
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "add_todo",
+        "pro_no": vm.programs[vm.page].pro_no,
+        "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+        "todo_title": vm.todoListTitle,
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
 
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+    if (this.todoListTitle.length) {
+      this.programs[this.page][this.todo_type][0].cards[index].todo_list_content_detail.push({
+        title: this.todoListTitle,
+        //增加項目focus變長
+        lists: [],
 
-          //       todo_list_content_detail: [],
+        //改變待辦事項標題 
+        showname: false,
+        test_title_name: true,
 
-          //       //calendar
-          //       dateline: false,
-          //       dateline_text: "未完成",
-          //       calendar_date: '未設定',
+        //改變待辦事項標題
+        test: '',
+      })
+      this.todoListTitle = null;
+      this.todo_lightbox_switch = false;
+      this.todo_switch = false;
+    } else {};
+  },
 
-          //       //上傳檔案
-          //       filebox: [],
-          //       file_switch: false,
-          //       // sourced:'',
-          //       // //增加項目focus變長
-          //       // card_length:false,
+  // 刪除待辦清單項目
+  deletecard_todo(detailIndex) {
+    this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail.splice(detailIndex, 1);
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "delete_todo",
+        // "todo_no":, 
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
 
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
 
-          //     });
-          //     vm.card_name = "";
-          //     vm.cards_list_card_input_box = false;
-          //     vm.add_cards_btn = false;
-          //     vm.add_cards_btn_div = true;
-          // } else {}
-        },
-        "error": function (data) {
-          console.log(data);
-        }
+  // 修改待辦清單項目
+  updatetodolist_title() {
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "update_todo",
+        "todo_title": vm.todoListTitle,
+        "todo_no":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,     
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
+
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
+
+  // 增加最小子項目
+  add_card_detail(detailIndex) {
+    const vm = this;
+    // console.log()
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "add_todo_content",
+        "pro_no": vm.programs[vm.page].pro_no,
+        "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+        "todo_no":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,     
+        "todo_cont": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].test,
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
+
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+
+    if (this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
+      // console.log(this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists);
+      this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.push({
+
+        content: this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test,
+        status: false,
+        text: false,
+        tomato_color: false,
       });
-      if (this.todoListTitle.length) {
-        this.programs[this.page][this.todo_type][0].cards[index].todo_list_content_detail.push({
-          title: this.todoListTitle,
-          //增加項目focus變長
-          lists: [],
+      this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test = '';
+      this.card_detail_lightbox = false;
+    } else {}
+  },
 
-          //改變待辦事項標題 
-          showname: false,
-          test_title_name: true,
+  // 刪除最小子項目
+  delete_todo_title(detailIndex, index) {
+    this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.splice(index, 1);
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "delete_todo_content",
+        // "todo_cont_no":,
 
-          //改變待辦事項標題
-          test: '',
-        })
-        this.todoListTitle = null;
-        this.todo_lightbox_switch = false;
-        this.todo_switch = false;
-      } else {};
-    },
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
 
-    // 刪除待辦清單項目
-    deletecard_todo(detailIndex) {
-      this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail.splice(detailIndex, 1);
-    },
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
 
-    // 增加最小子項目
-    add_card_detail(detailIndex) {
-      if (this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
-        // console.log(this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists);
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.push({
+  //修改子清單項目
+  update_list_sta() {
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "update_todo_content",
+        "todo_cont_sta": 1,
+        // "todo_cont_no":,
 
-          content: this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test,
-          status: false,
-          text: false,
-          tomato_color: false,
-        });
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test = '';
-        this.card_detail_lightbox = false;
-      } else {}
-    },
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
 
-    // 刪除最小子項目
-    delete_todo_title(detailIndex, index) {
-      this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.splice(index, 1);
-    },
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
 
 
     //卡片內上傳檔案
@@ -1332,8 +1432,9 @@ var main_content = new Vue({
     xhr.open("post", './php/pm/get_program_list.php', true);
     //送出資料
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    // let data_info = `mem_no=${this.userInfo.mem_no}`;
-    let data_info = `mem_no=1`;
+    console.log(this);
+    let data_info = `mem_no=${this.userInfo.mem_no}`;
+    // let data_info = `mem_no=1`;
     xhr.send(data_info);
     // console.log(this)
   },

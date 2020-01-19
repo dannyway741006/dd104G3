@@ -52,6 +52,16 @@ try {
     $prevCardId = null;
     $prevTodoId = null;
     foreach ($cards as $card) {
+      $todo_list_content_detail_arr = [];
+      $filebox_arr = [];
+      $dateline_text = '未完成';
+      $calendar_date = '未設定';
+      if($card['card_sta'] == 1) {
+        $dateline_text = '完成';
+      }
+      if($card['card_date'] !== null) {
+        $calendar_date = $card['card_date'];
+      }
       switch($card['card_type'])
       {
         case "0":
@@ -60,10 +70,11 @@ try {
             if($card['todo_title'] != NULL)
             {
               $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['title'] = $card['todo_title'];
+              $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['todo_no'] = $card['todo_no'];
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                array_push($step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'], array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta));
+                $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta);
               }else{
                 $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'] = array();
               }
@@ -73,7 +84,7 @@ try {
             }
             if($card['file_name'] != NULL)
             {
-              array_push($step0_arr[$card['card_no']]['filebox'], array("name"=> $card['file_name'], "source" => $card['file_src']));
+              $step0_arr[$card['card_no']]['filebox'][$card['file_no']] = array("file_no"=> $card['file_no'], "name"=> $card['file_name'], "source" => $card['file_src']);
             }
           }else{
             if($card["pro_mem_no_string"] != NULL)
@@ -90,30 +101,38 @@ try {
             }
             if($card['todo_title'] != NULL)
             {
-              $todo_list_content_detail_arr[0]['title'] = $card['todo_title'];
+              $todo_list_content_detail_arr[$card['todo_no']]['title'] = $card['todo_title'];
+              $todo_list_content_detail_arr[$card['todo_no']]['todo_no'] = $card['todo_no'];
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                $todo_list_content_detail_arr[0]['lists'][0] = array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
               }else{
-                $todo_list_content_detail_arr[0]['lists'] = [];
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }
-              $todo_list_content_detail_arr[0]['showname'] = false;
-              $todo_list_content_detail_arr[0]['test_title_name'] = true;
-              $todo_list_content_detail_arr[0]['test'] = '';
+              $todo_list_content_detail_arr[$card['todo_no']]['showname'] = false;
+              $todo_list_content_detail_arr[$card['todo_no']]['test_title_name'] = true;
+              $todo_list_content_detail_arr[$card['todo_no']]['test'] = '';
             }else{
               $todo_list_content_detail_arr = [];
             }
             if($card['file_name'] != NULL)
             {
-              $filebox_arr[0]['name'] = $card['file_name'];
-              $filebox_arr[0]['source'] = $card['file_src'];
+              $filebox_arr[$card['file_no']]['file_no'] = $card['file_no'];
+              $filebox_arr[$card['file_no']]['name'] = $card['file_name'];
+              $filebox_arr[$card['file_no']]['source'] = $card['file_src'];
             }else{
               $filebox_arr = [];
             }
             (int)$card['card_sta'] == 0 ? $card_sta = false: $card_sta = true;
-            $step0_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => $card_member_arr, "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => "未完成", "calendar_date" => "未設定", "filebox" => $filebox_arr, "file_switch" => false);
+            $step0_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => $card_member_arr, "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => $dateline_text, "calendar_date" => $calendar_date, "filebox" => $filebox_arr, "file_switch" => false);
           }
+          ksort($step0_arr[$card['card_no']]['todo_list_content_detail']);
+          if($card['todo_no'] != null)
+          {
+            ksort($step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists']);
+          }
+          ksort($step0_arr[$card['card_no']]['filebox']);
           break;
         case "1":
           if(isset($step1_arr[$card['card_no']]) == true)
@@ -121,10 +140,11 @@ try {
             if($card['todo_title'] != NULL)
             {
               $step1_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['title'] = $card['todo_title'];
+              $step1_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['todo_no'] = $card['todo_no'];
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                array_push($step1_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'], array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta));
+                $step1_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta);
               }else{
                 $step1_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'] = array();
               }
@@ -134,7 +154,7 @@ try {
             }
             if($card['file_name'] != NULL)
             {
-              array_push($step1_arr[$card['card_no']]['filebox'], array("name"=> $card['file_name'], "source" => $card['file_src']));
+              $step1_arr[$card['card_no']]['filebox'][$card['file_no']] = array("file_no"=> $card['file_no'], "name"=> $card['file_name'], "source" => $card['file_src']);
             }
           }else{
             if($card["pro_mem_no_string"] != NULL)
@@ -151,30 +171,38 @@ try {
             }
             if($card['todo_title'] != NULL)
             {
-              $todo_list_content_detail_arr[0]['title'] = $card['todo_title'];
+              $todo_list_content_detail_arr[$card['todo_no']]['title'] = $card['todo_title'];
+              $todo_list_content_detail_arr[$card['todo_no']]['todo_no'] = $card['todo_no'];
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                $todo_list_content_detail_arr[0]['lists'][0] = array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
               }else{
-                $todo_list_content_detail_arr[0]['lists'] = [];
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }
-              $todo_list_content_detail_arr[0]['showname'] = false;
-              $todo_list_content_detail_arr[0]['test_title_name'] = true;
-              $todo_list_content_detail_arr[0]['test'] = '';
+              $todo_list_content_detail_arr[$card['todo_no']]['showname'] = false;
+              $todo_list_content_detail_arr[$card['todo_no']]['test_title_name'] = true;
+              $todo_list_content_detail_arr[$card['todo_no']]['test'] = '';
             }else{
               $todo_list_content_detail_arr = [];
             }
             if($card['file_name'] != NULL)
             {
-              $filebox_arr[0]['name'] = $card['file_name'];
-              $filebox_arr[0]['source'] = $card['file_src'];
+              $filebox_arr[$card['file_no']]['file_no'] = $card['file_no'];
+              $filebox_arr[$card['file_no']]['name'] = $card['file_name'];
+              $filebox_arr[$card['file_no']]['source'] = $card['file_src'];
             }else{
               $filebox_arr = [];
             }
             (int)$card['card_sta'] == 0 ? $card_sta = false: $card_sta = true;
-            $step1_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => $card_member_arr, "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => "未完成", "calendar_date" => "未設定", "filebox" => $filebox_arr, "file_switch" => false);
+            $step1_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => $card_member_arr, "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => $dateline_text, "calendar_date" => $calendar_date, "filebox" => $filebox_arr, "file_switch" => false);
           }
+          ksort($step1_arr[$card['card_no']]['todo_list_content_detail']);
+          if($card['todo_no'] != null)
+          {
+            ksort($step1_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists']);
+          }
+          ksort($step1_arr[$card['card_no']]['filebox']);
           break;
         case "2":
           if(isset($step2_arr[$card['card_no']]) == true)
@@ -182,10 +210,11 @@ try {
             if($card['todo_title'] != NULL)
             {
               $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['title'] = $card['todo_title'];
+              $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['todo_no'] = $card['todo_no'];
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                array_push($step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'], array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta));
+                $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta);
               }else{
                 $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'] = array();
               }
@@ -195,7 +224,7 @@ try {
             }
             if($card['file_name'] != NULL)
             {
-              array_push($step2_arr[$card['card_no']]['filebox'], array("name"=> $card['file_name'], "source" => $card['file_src']));
+              $step2_arr[$card['card_no']]['filebox'][$card['file_no']] = array("file_no"=> $card['file_no'], "name"=> $card['file_name'], "source" => $card['file_src']);
             }
           }else{
             if($card["pro_mem_no_string"] != NULL)
@@ -212,30 +241,38 @@ try {
             }
             if($card['todo_title'] != NULL)
             {
-              $todo_list_content_detail_arr[0]['title'] = $card['todo_title'];
+              $todo_list_content_detail_arr[$card['todo_no']]['title'] = $card['todo_title'];
+              $todo_list_content_detail_arr[$card['todo_no']]['todo_no'] = $card['todo_no'];
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                $todo_list_content_detail_arr[0]['lists'][0] = array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
               }else{
-                $todo_list_content_detail_arr[0]['lists'] = [];
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }
-              $todo_list_content_detail_arr[0]['showname'] = false;
-              $todo_list_content_detail_arr[0]['test_title_name'] = true;
-              $todo_list_content_detail_arr[0]['test'] = '';
+              $todo_list_content_detail_arr[$card['todo_no']]['showname'] = false;
+              $todo_list_content_detail_arr[$card['todo_no']]['test_title_name'] = true;
+              $todo_list_content_detail_arr[$card['todo_no']]['test'] = '';
             }else{
               $todo_list_content_detail_arr = [];
             }
             if($card['file_name'] != NULL)
             {
-              $filebox_arr[0]['name'] = $card['file_name'];
-              $filebox_arr[0]['source'] = $card['file_src'];
+              $filebox_arr[$card['file_no']]['file_no'] = $card['file_no'];
+              $filebox_arr[$card['file_no']]['name'] = $card['file_name'];
+              $filebox_arr[$card['file_no']]['source'] = $card['file_src'];
             }else{
               $filebox_arr = [];
             }
             (int)$card['card_sta'] == 0 ? $card_sta = false: $card_sta = true;
-            $step2_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => $card_member_arr, "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => "未完成", "calendar_date" => "未設定", "filebox" => $filebox_arr, "file_switch" => false);
+            $step2_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => $card_member_arr, "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => $dateline_text, "calendar_date" => $calendar_date, "filebox" => $filebox_arr, "file_switch" => false);
           }
+          ksort($step2_arr[$card['card_no']]['todo_list_content_detail']);
+          if($card['todo_no'] != null)
+          {
+            ksort($step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists']);
+          }
+          ksort($step2_arr[$card['card_no']]['filebox']);
           break;
         default:
           break;
@@ -245,18 +282,81 @@ try {
     foreach($step0_arr as $card_no => $value)
     {
       $step0['cards'][$x] = $value;
+      $step0['cards'][$x]['todo_list_content_detail'] = [];
+      $y = 0;
+      foreach($value['todo_list_content_detail'] as $todo_no => $value2)
+      {
+        $step0['cards'][$x]['todo_list_content_detail'][$y] = $value2;
+        $step0['cards'][$x]['todo_list_content_detail'][$y]['lists'] = [];
+        $z = 0;
+        foreach($value2['lists'] as $todo_cont_no => $value3)
+        {
+          $step0['cards'][$x]['todo_list_content_detail'][$y]['lists'][$z] = $value3;
+          $z++;
+        }
+        $y++;
+      }
+      $step0['cards'][$x]['filebox'] = [];
+      $i = 0;
+      foreach($value['filebox'] as $file_no => $value2)
+      {
+        $step0['cards'][$x]['filebox'][$i] = $value2;
+        $i++;
+      }
       $x++;
     }
     $x = 0;
     foreach($step1_arr as $card_no => $value)
     {
       $step1['cards'][$x] = $value;
+      $step1['cards'][$x]['todo_list_content_detail'] = [];
+      $y = 0;
+      foreach($value['todo_list_content_detail'] as $todo_no => $value2)
+      {
+        $step1['cards'][$x]['todo_list_content_detail'][$y] = $value2;
+        $step1['cards'][$x]['todo_list_content_detail'][$y]['lists'] = [];
+        $z = 0;
+        foreach($value2['lists'] as $todo_cont_no => $value3)
+        {
+          $step1['cards'][$x]['todo_list_content_detail'][$y]['lists'][$z] = $value3;
+          $z++;
+        }
+        $y++;
+      }
+      $step1['cards'][$x]['filebox'] = [];
+      $i = 0;
+      foreach($value['filebox'] as $file_no => $value2)
+      {
+        $step1['cards'][$x]['filebox'][$i] = $value2;
+        $i++;
+      }
       $x++;
     }
     $x = 0;
     foreach($step2_arr as $card_no => $value)
     {
       $step2['cards'][$x] = $value;
+      $step2['cards'][$x]['todo_list_content_detail'] = [];
+      $y = 0;
+      foreach($value['todo_list_content_detail'] as $todo_no => $value2)
+      {
+        $step2['cards'][$x]['todo_list_content_detail'][$y] = $value2;
+        $step2['cards'][$x]['todo_list_content_detail'][$y]['lists'] = [];
+        $z = 0;
+        foreach($value2['lists'] as $todo_cont_no => $value3)
+        {
+          $step2['cards'][$x]['todo_list_content_detail'][$y]['lists'][$z] = $value3;
+          $z++;
+        }
+        $y++;
+      }
+      $step2['cards'][$x]['filebox'] = [];
+      $i = 0;
+      foreach($value['filebox'] as $file_no => $value2)
+      {
+        $step2['cards'][$x]['filebox'][$i] = $value2;
+        $i++;
+      }
       $x++;
     }
     
