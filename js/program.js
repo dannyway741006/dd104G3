@@ -149,7 +149,7 @@ var main_content = new Vue({
       // console.log(main_content.programs)
       if (this.pro_title !== "" && this.selectColor) {
         this.programs.push({
-          pro_no: "", 
+          pro_no: "",
           pro_title: this.pro_title,
           changeimage: false, //uncheck
           pro_col: this.selectColor,
@@ -203,9 +203,8 @@ var main_content = new Vue({
         // console.log(this.page);
         // console.log(this.programs.length-1);
         this.page = this.programs.length - 1;
+
         const vm = this;
-
-
         $.post('./php/pm/create_program.php', {
           pro_title: this.programs[this.page].pro_title,
           pro_col: this.programs[this.page].pro_col,
@@ -213,6 +212,28 @@ var main_content = new Vue({
           // console.log(res)
           vm.programs[vm.page].pro_no = res;
         })
+
+
+        // $.ajax({
+        //   "type": "POST",
+        //   "dataType": "json",
+        //   "url": "./php/pm/program.php",
+        //   "data": {
+        //     "type": "add_program",
+        //     "pro_title": vm.programs[vm.page].pro_title,
+        //     "pro_col": vm.programs[vm.page].pro_col,
+
+        //   },
+        //   "cache": false,
+        //   "success": function (data) {
+        //     console.log(data);
+        //     vm.programs[vm.page].pro_no = res;
+        //   },
+        //   "error": function (data) {
+        //     console.log(data);
+        //   }
+        // });
+
 
       } else {
         alert('請填寫專案名稱及選擇專案專屬色')
@@ -297,7 +318,6 @@ var main_content = new Vue({
       const vm = this;
       //  console.log(index);
 
-
       console.log(vm.programs[index]);
       // var obj = Object.keys(this.programs[index].card_list_todo).map(function(_) { return this.programs[index].card_list_todo[_]; });
 
@@ -316,7 +336,6 @@ var main_content = new Vue({
           "success": function (data) {
             // console.log(data);
             vm.show_cards(index);
-
 
           },
           "error": function (data) {
@@ -464,8 +483,9 @@ var main_content = new Vue({
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php/pm/complete_program.php",
+        "url": "./php/pm/program.php",
         "data": {
+          "type": "complete_program",
           "pro_sta": 1,
           "pro_no": vm.programs[index].pro_no
         },
@@ -501,8 +521,9 @@ var main_content = new Vue({
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php/pm/delete_program.php",
+        "url": "./php/pm/program.php",
         "data": {
+          "type": "delete_program",
           "pro_no": vm.history_programs[index].pro_no
         },
         "cache": false,
@@ -561,34 +582,59 @@ var main_content = new Vue({
     },
 
     editcard() {
-    // const vm = this;
-    // console.log(vm.programs[index])
-    // $.ajax({
-    //   "type": "POST",
-    //   "dataType": "json",
-    //   "url": "./php/pm/edit_done.php",
-    //   "data": {
-    //     // "card_no": this.programs[this.page].card_list_todo[0].cards[cardIndex].card_no,
-    //     // "pro_no": this.programs[this.page].pro_no,
-    //     "type": "add_file",
-    //     "pro_no": this.programs[index].pro_no,
-    //   },
-    //   "cache": false,
-    //   "success": function (data) {
+      // const vm = this;
+      // console.log(vm.programs[index])
+      // $.ajax({
+      //   "type": "POST",
+      //   "dataType": "json",
+      //   "url": "./php/pm/edit_done.php",
+      //   "data": {
+      //     // "card_no": this.programs[this.page].card_list_todo[0].cards[cardIndex].card_no,
+      //     // "pro_no": this.programs[this.page].pro_no,
+      //     "type": "add_file",
+      //     "pro_no": this.programs[index].pro_no,
+      //   },
+      //   "cache": false,
+      //   "success": function (data) {
 
-    //   },
-    //   "error": function (data) {
-    //     console.log(data);
-    //   }
-    // });
+      //   },
+      //   "error": function (data) {
+      //     console.log(data);
+      //   }
+      // });
     },
 
     //刪除卡片
     delete_card(index) {
-      // console.log(this.programs[this.page])
-      this.programs[this.page][this.todo_type][0].cards.splice(index, 1);
+
+      const vm = this;
+      // console.log(index)
+      // console.log(vm.programs[vm.page][vm.todo_type][0].cards[index].card_no)
+
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card.php",
+        "data": {
+          "type": "delete_card",
+          "card_no": vm.programs[vm.page][vm.todo_type][0].cards[index].card_no
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+          vm.programs[vm.page][vm.todo_type][0].cards.splice(index, 1);
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+
+
+      // this.programs[this.page][this.todo_type][0].cards.splice(index, 1);
       this.opened = !this.opened;
       this.card_no = null;
+
+
     },
 
 
@@ -617,7 +663,7 @@ var main_content = new Vue({
         },
         "cache": false,
         "success": function (data) {
-          // console.log(data);
+          console.log(data);
           //   if (vm.card_name !== "") {
           //     console.log(vm.programs[index].card_list_todo.cards);
           //     vm.programs[index].card_list_todo.cards.push({
@@ -712,14 +758,45 @@ var main_content = new Vue({
         for (let i = 0; i < this.file.length; i++) {
           //-------------取得檔名
           let readFile = new FileReader();
+          let pro = this.programs[this.page];
           let pro_card = this.programs[this.page][this.todo_type][0].cards[this.card_no];
-          let file = this.file[i].name;
+          let file_name = this.file[i].name;
           readFile.addEventListener("loadend", function (e) {
             pro_card.file_result = readFile.result;
             pro_card.filebox.push({
-              name: file,
+              name: file_name,
               source: pro_card.file_result,
             });
+
+            const vm = this;
+            // console.log(vm)
+            // console.log(vm.result)
+            // console.log(pro_card.filebox.length-1)
+            // console.log(pro_card.filebox[pro_card.filebox.length - 1].name)
+            // console.log(pro.pro_no)
+
+            $.ajax({
+              "type": "POST",
+              "dataType": "json",
+              "url": "./php/pm/push_card.php",
+              "data": {
+                "type": "add_file",
+                "pro_no": pro.pro_no,
+                "card_no": pro_card.card_no,
+                "todo_no":0,//不知道為什麼要綁這個
+                "file_src": vm.result,
+                "file_name": pro_card.filebox[pro_card.filebox.length - 1].name,
+              },
+              "cache": false,
+              "success": function (data) {
+                console.log(data);
+
+              },
+              "error": function (data) {
+                console.log(data);
+              }
+            });
+
           });
           readFile.readAsDataURL(this.file[i]);
         }
@@ -1198,16 +1275,14 @@ var main_content = new Vue({
       if (result.status == "success") {
         main_content.programs = result.data.filter(item => item.pro_sta === "0")
         main_content.history_programs = result.data.filter(item => item.pro_sta === "1")
-          if(main_content.programs.length > 0)
-          {
-            main_content.page = 0;
-            main_content.show_cards(main_content.page);
-          }
-          if(main_content.history_programs.length > 0)
-          {
-            main_content.history_page = 0;
-            main_content.show_cards(main_content.history_page);
-          }
+        if (main_content.programs.length > 0) {
+          main_content.page = 0;
+          main_content.show_cards(main_content.page);
+        }
+        if (main_content.history_programs.length > 0) {
+          main_content.history_page = 0;
+          main_content.show_cards(main_content.history_page);
+        }
         console.log(main_content.programs)
 
       }

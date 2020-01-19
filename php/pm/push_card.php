@@ -27,7 +27,7 @@ try {
 
       break;
     case "update_card":
-      
+
       break;
     case "add_todo":
       if ($data['content']) {
@@ -62,23 +62,25 @@ try {
       }
       break;
     case "add_file":
-      $pro_no = $_POST['pro_no'];
-      $card_no=$_POST['card_no'];
-      $todo_no=1;   //不知道為什麼要綁這個
-      $file_name=$_POST['file_name'];
-      $file_src=
-      $pdo->beginTransaction();
-      $sql = "INSERT INTO `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, :file_src)";
+      // $pro_no = $_POST['pro_no'];
+      // $card_no=$_POST['card_no'];
+      // $todo_no = 1;   //不知道為什麼要綁這個
+      // $file_name=$_POST['file_name'];
+      // $file_src='';
+      // $pdo->beginTransaction();
+      $sql = "insert INTO `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, :file_src)";
       $files = $pdo->prepare($sql);
-      $files->bindValue(":pro_no", $_POST["pname"]);
-      $files->bindValue(":card_no", $_POST["price"]);
-      $files->bindValue(":todo_no", 1);
-      $files->bindValue(":file_name", $_POST["pages"]);
-      $files->bindValue(":file_src", $_POST["pages"]);
+      $files->bindValue(":pro_no", $_POST["pro_no"]);
+      $files->bindValue(":card_no", $_POST["card_no"]);
+      $files->bindValue(":todo_no", 0);
+      $files->bindValue(":file_name", $_POST["file_name"]);
+      $files->bindValue(":file_src", $_POST["file_src"]);
       $files->execute();
 
       //取得自動創號的key值
       $psn = $pdo->lastInsertId();
+
+      echo json_encode(['status' => 'success', 'content' => '上傳檔案成功']);
   }
 
 
