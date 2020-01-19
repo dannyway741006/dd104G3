@@ -62,6 +62,7 @@ try {
       }
       break;
     case "add_file":
+<<<<<<< HEAD
       // $pro_no = $_POST['pro_no'];
       // $card_no=$_POST['card_no'];
       // $todo_no = 1;   //不知道為什麼要綁這個
@@ -75,13 +76,54 @@ try {
       $files->bindValue(":todo_no", 0);
       $files->bindValue(":file_name", $_POST["file_name"]);
       $files->bindValue(":file_src", $_POST["file_src"]);
+=======
+      $pro_no = $_POST['pro_no'];
+      $todo_no = 1;   //不知道為什麼要綁這個
+      $file_name = $_POST['file_name'];
+      $file_src = $_POST['file_src'];
+      $pdo->beginTransaction();
+      $sql = "INSERT INTO `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, :file_src)";
+      $files = $pdo->prepare($sql);
+      $files->bindValue(":pro_no",  $pro_no);
+      $files->bindValue(":card_no", $lastCardId);
+      $files->bindValue(":todo_no", 1);
+      $files->bindValue(":file_name", $file_name);
+      $files->bindValue(":file_src", $file_src);
+>>>>>>> practice
       $files->execute();
 
+
       //取得自動創號的key值
+<<<<<<< HEAD
       $psn = $pdo->lastInsertId();
 
       echo json_encode(['status' => 'success', 'content' => '上傳檔案成功']);
   }
+=======
+      $fileId = $pdo->lastInsertId();
+      if( file_exists("folder") === false){
+        mkdir("folder");
+      }
+      //將檔案copy到要放的路徑
+      $fileInfoArr = pathinfo($_FILES["upFile"]["name"]);
+      $fileName = "{$fileId}.{$fileInfoArr["extension"]}";  //8.gif
+
+      $from = $_FILES["upFile"]["tmp_name"];
+      $to = "folder/$fileName";
+      if(copy( $from, $to)===true){
+        //將檔案名稱寫回資料庫
+        $sql = "update `card_file` set image = :image where fileid = $fileId";
+        $products = $pdo->prepare($sql);
+        $products -> bindValue(":image", $fileName);
+        $products -> execute();
+        echo "新增成功~";
+        $pdo->commit();			
+      }else{
+        $pdo->rollBack();
+      }
+    }
+  
+>>>>>>> practice
 
 
   // echo json_encode(['status' => 'success', 'content' => '新建成功']);
