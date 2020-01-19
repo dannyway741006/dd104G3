@@ -177,7 +177,7 @@
                   :src="item.src" alt=""></div>
 
               <div class="program_member_more" v-show="programs[page].hideMember_sum">+{{programs_member_hidenum}}</div>
-              <button class="invite_btn" @click.stop='invite_add_member_box = !invite_add_member_box'>邀請</button>
+              <button class="invite_btn" @click.stop='show_invite_add_member_box()'>邀請</button>
               <transition name="fade" mode="out-in">
                 <div class="invite_add_member_box" v-show="invite_add_member_box" @click.stop="">
                   <p>輸入會員帳號</p>
