@@ -251,27 +251,37 @@
             <div id="cart">
               <div class="cart_account">
                 <div class="cart_credit_card">
+                  <div class="chip">
+                    <div class="chip-line"></div>
+                    <div class="chip-line"></div>
+                    <div class="chip-line"></div>
+                    <div class="chip-line"></div>
+                    <div class="chip-main"></div>
+                    </div>
                   <div class="cart_card_number">
                     <p>{{cardNum1}} {{cardNum2}} {{cardNum3}} {{cardNum4}}</p>
                   </div>
+                  <p class="card_valid_date">VALID DATE</p>
                 </div>
                 <form>
                   <div class="cart_credit_card_mes">
-                    <p class="cart_card_text">CARD NUMBER</p>
+                    <p class="cart_card_text">信用卡號碼</p>
                     <div class="cart_numbox1">
                       <input type="text" class="cart_inputnum1" maxlength="4" v-model="cardNum1">
                       <input type="text" class="cart_inputnum1" maxlength="4" v-model="cardNum2">
                       <input type="text" class="cart_inputnum1" maxlength="4" v-model="cardNum3">
                       <input type="text" class="cart_inputnum1" maxlength="4" v-model="cardNum4">
                     </div>
-                    <p class="cart_card_text">CARD HOLDER</p>
+                    <p class="cart_card_text">持卡人姓名</p>
                     <div class="cart_numbox1">
-                      <input type="text" class="cart_inputnum2">
+                      <input type="text" class="cart_inputnum2" placeholder="Card Holder's Name">
                     </div>
                     <div class="cart_numbox2">
                       <div class="cart_select_box">
-                        <p class="cart_card_text">EXPIRATION DATE</p>
-                        <select name="" id="">
+                        <p class="cart_card_text">卡片到期日</p>
+                        <input type="text" name="" id="cart_expiration_date1" placeholder="Month">
+                        <input type="text" name="" id="cart_expiration_date2" placeholder="Year">
+                        <!-- <select name="" id="">
                           <option value=""></option>
                           <option value="">01</option>
                           <option value="">01</option>
@@ -297,7 +307,7 @@
                           <option value="">2025</option>
                           <option value="">2026</option>
                           <option value="">2027</option>
-                        </select>
+                        </select> -->
                       </div>
                       <div class="cart_numbox3">
                         <p class="cart_card_text">CCV</p>
@@ -308,17 +318,17 @@
                     <div class="cart_recipient">
                       <div class="cart_recipient_info">
                         <div class="cart_recipient_info_text">
-                          <p>姓名</p>
-                          <input type="text" class="cart_inputnum3" id="receiver_name" >
+                          <p>收件人姓名</p>
+                          <input type="text" class="cart_inputnum3" id="receiver_name" placeholder="Name">
                         </div>
                         <div class="cart_recipient_info_text">
-                          <p>電話</p>
-                          <input type="text" class="cart_inputnum3" id="receiver_tel">
+                          <p>收件人電話</p>
+                          <input type="text" class="cart_inputnum3" id="receiver_tel" placeholder="Phone Number">
                         </div>
                       </div>
                       <div class="cart_recipient_info_add">
                         <p>收件地址</p>
-                        <input type="text" class="cart_inputnum2" id="ship_addr">
+                        <input type="text" class="cart_inputnum2" id="ship_addr" placeholder="Address">
                       </div>
                     </div>
                     <!-- 從訂定單過來要送到資料庫的資料 -->
