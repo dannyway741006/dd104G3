@@ -27,7 +27,7 @@ try {
     break;
     
     case "delete_card":
-      $sql = "delete `card` WHERE `card`.`card_no` = :card_no";
+      $sql = "delete from `card` WHERE `card_no` = :card_no";
       $res = $pdo->prepare($sql);
       $res->bindValue('card_no', $_POST['card_no']);
       $res->execute();
@@ -35,8 +35,26 @@ try {
       echo json_encode(['status' => 'success', 'content' => '刪除卡片']);
     break;
       
-    case "update_card":
+    case "check_dateline":
+      $sql = "update `card` set card_sta = :card_sta 
+      where card_no = :card_no";
+      $res = $pdo->prepare($sql);
+      $res->bindParam('card_sta', $_POST['card_sta']);
+      $res->bindParam('card_no', $_POST['card_no']);
+      $res->execute();
+    
+      echo json_encode(['status' => 'success', 'content' => '異動成功']);
+    break;
 
+    case "set_calendar_date":
+      $sql = "update `card` set card_date = :card_date 
+      where card_no = :card_no";
+      $res = $pdo->prepare($sql);
+      $res->bindParam('card_date', $_POST['card_date']);
+      $res->bindParam('card_no', $_POST['card_no']);
+      $res->execute();
+    
+      echo json_encode(['status' => 'success', 'content' => '異動成功']);
     break;
 
     case "add_todo":
@@ -93,6 +111,16 @@ try {
 
       echo json_encode(['status' => 'success', 'content' => '上傳檔案成功']);
     break;
+
+    case "delete_file":
+      $sql = "delete FROM `card_file` WHERE `card_file`.`file_no` = :file_no";
+      $res = $pdo->prepare($sql);
+      $res->bindValue('file_no', $_POST['file_no']);
+      $res->execute();
+    
+      echo json_encode(['status' => 'success', 'content' => '刪除檔案']);
+    break;
+
   }
 } catch (PDOException $e) {
   echo $e->getLine();
