@@ -33,6 +33,7 @@
     width: calc(60% - 10px);
     margin-right: 10px;
     overflow: auto;
+    transition: width .3s;
 
     .cart_product {
       margin-bottom: 20px;
@@ -65,7 +66,7 @@
           @include font(0, 18px);
         }
 
-        h3 {
+        span {
           @include font(3, 26px);
         }
       }
@@ -105,6 +106,7 @@
     margin-left: 10px;
     box-sizing: border-box;
     overflow: auto;
+    transition: width .3s;
 
     .cart_summary {
       width: 100%;
@@ -121,7 +123,7 @@
         @include font(3, 26px);
       }
 
-      h3 {
+      span {
         @include font(3, 30px);
       }
     }
@@ -139,17 +141,91 @@
         border-radius: 15px;
         margin: auto;
         position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 110%;
+          height: 110%;
+          top: 0;
+          left: -20px;
+          background: url(http://cdn.flaticon.com/svg/44/44386.svg) no-repeat center;
+          background-size: cover;
+          opacity: .05;
+        }
+
+        .chip {
+          position: relative;
+          top: 55px;
+          left: 23px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 46px;
+          height: 37px;
+          border-radius: 5px;
+          background-image: linear-gradient(to bottom left, #ffecc7, #d0b978);
+          overflow: hidden;
+
+          .chip-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: #333;
+          }
+
+          .chip-line:nth-child(1) {
+            top: 12px;
+          }
+
+          .chip-line:nth-child(2) {
+            top: 18px;
+          }
+
+          .chip-line:nth-child(3) {
+            top: 24px;
+          }
+
+          .chip-line:nth-child(4) {
+            left: 22px;
+            width: 1px;
+            height: 50px;
+          }
+
+          .chip-main {
+            width: 18px;
+            height: 22px;
+            border: 1px solid #333;
+            border-radius: 3px;
+            background-image: linear-gradient(to bottom left, #efdbab, #e1cb94);
+            z-index: 1;
+          }
+        }
 
         .cart_card_number {
           width: 100%;
           height: 50px;
-          line-height: 50px;
-          padding: 0px 20px;
-          position: absolute;
-          top: 80px;
-          @include font(3, 50px);
+          // line-height: 30px;
+          padding: 0px 25px;
+          margin-top: 50px;
+          // text-align: center;
+          // position: absolute;
+          // top: 80px;
+
+          P {
+            @include font(4, 30px);
+            color: white;
+            // border: 1px solid whitesmoke;
+          }
+        }
+
+        .card_valid_date {
+          @include font(0);
+          // font-size: 12px;
+          margin-top: 3px;
+          padding-left: 25px;
           color: white;
-          // border: 1px solid whitesmoke;
         }
       }
 
@@ -193,9 +269,13 @@
           .cart_select_box {
             width: 60%;
 
-            select {
+            #cart_expiration_date1,
+            #cart_expiration_date2 {
+              @include inputReset;
+              border-radius: 5px;
               width: 40%;
               height: 30px;
+              border: 1px solid #ddd;
             }
           }
 
@@ -282,41 +362,164 @@
 
 
 
+
 @include media(1420px) {
   .cart_page {
     overflow: auto;
-    flex-direction: column;
+
+    .cart_list,
+    .cart_total {
+      height: calc(100% -50px);
+      margin: 0px;
+
+    }
+
+    .cart_list {
+      width: calc(55% - 10px);
+      margin-right: 10px;
+      transition: all .5s;
+    }
+
+    .cart_total {
+      width: calc(45% - 10px);
+      margin-left: 10px;
+      transition: all .5s;
+    }
+  }
+}
+
+@include media(1312px) {
+  .cart_page {
+    overflow: auto;
+
+    .cart_list,
+    .cart_total {
+      height: calc(100% -50px);
+      margin: 0px;
+    }
+
+    .cart_list {
+      width: calc(50% - 10px);
+      margin-right: 10px;
+      transition: all .5s;
+    }
+
+    .cart_total {
+      width: calc(50% - 10px);
+      margin-left: 10px;
+      transition: all .5s;
+    }
+  }
+}
+
+@include media(1229px) {
+  .cart_page {
+    overflow: auto;
 
     .cart_list,
     .cart_total {
       width: calc(100% - 20px);
       margin: 10px;
       height: auto;
+      transition: all .3s;
+    }
+
+    .cart_list {
+      min-height: 200px;
     }
   }
 }
 
 @include media(1023px) {
   .cart_page {
-    flex-direction: row;
-    // height: 100%;
-    overflow: unset;
+    overflow: auto;
 
     .cart_list,
     .cart_total {
       height: calc(100% -50px);
       margin: 0px;
-      overflow: auto;
     }
 
     .cart_list {
-      width: calc(60% - 10px);
+      width: calc(55% - 10px);
       margin-right: 10px;
+      transition: all .5s;
     }
 
     .cart_total {
-      width: calc(40% - 20px);
+      width: calc(45% - 10px);
       margin-left: 10px;
+      transition: all .5s;
+    }
+  }
+}
+
+@include media(867px) {
+  .cart_page {
+    overflow: auto;
+
+    .cart_list,
+    .cart_total {
+      height: calc(100% -50px);
+      margin: 0px;
+    }
+
+    .cart_list {
+      width: calc(50% - 10px);
+      margin-right: 10px;
+      transition: all .5s;
+    }
+
+    .cart_total {
+      width: calc(50% - 10px);
+      margin-left: 10px;
+      transition: all .5s;
+    }
+  }
+}
+
+@include media(784px) {
+  .cart_page {
+    overflow: auto;
+
+    .cart_list,
+    .cart_total {
+      width: calc(100% - 20px);
+      margin: 10px;
+      height: auto;
+      transition: all .5s;
+    }
+  }
+}
+
+@include media(414px) {
+  .cart_page {
+
+    .cart_list {
+      // width: 100%;
+      margin: 0 auto !important;
+      padding: 0;
+
+      .cart_product {
+        width: 95%;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .cart_total {
+      margin: 0 auto;
+      padding: 0;
+      margin-top: 10px;
+
+      .cart_account {
+        .cart_credit_card {
+          width: 320px;
+          height: 200px;
+          margin: 0 auto;
+        }
+      }
     }
   }
 }

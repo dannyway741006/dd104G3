@@ -91,19 +91,24 @@ for (let k = 0; k < cartProduct.length; k++) {
 }
 
 //--計算調整後的購物車總金額--//
-let cartNewTotal = document.querySelector('.cart_price_total');
-let cartProductN = document.querySelectorAll('.cart_product');
-let newProductPrice = document.querySelectorAll('.cart_product_price');
-let newProductNumber = document.querySelectorAll('.cart_product_number');
-let newTotal = 0;
 for (let i = 0; i < cartProduct.length; i++) {
   cutProductBtn[i].addEventListener('click', () => {
+    let cartNewTotal = document.querySelector('.cart_price_total');
+    let cartProductN = document.querySelectorAll('.cart_product');
+    let newProductPrice = document.querySelectorAll('.cart_product_price');
+    let newProductNumber = document.querySelectorAll('.cart_product_number');
+    let newTotal = 0;
     for (let n = 0; n < cartProductN.length; n++) {
       newTotal += (parseInt(newProductPrice[n].textContent) * parseInt(newProductNumber[n].textContent));
     }
     cartNewTotal.textContent = newTotal;
   });
   addProductBtn[i].addEventListener('click', () => {
+    let cartNewTotal = document.querySelector('.cart_price_total');
+    let cartProductN = document.querySelectorAll('.cart_product');
+    let newProductPrice = document.querySelectorAll('.cart_product_price');
+    let newProductNumber = document.querySelectorAll('.cart_product_number');
+    let newTotal = 0;
     for (let n = 0; n < cartProductN.length; n++) {
       newTotal += (parseInt(newProductPrice[n].textContent) * parseInt(newProductNumber[n].textContent));
     }
