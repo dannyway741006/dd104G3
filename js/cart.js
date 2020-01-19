@@ -74,8 +74,8 @@ for (let k = 0; k < cartProduct.length; k++) {
       cartProduct[k].parentNode.removeChild(cartProduct[k]);
 
       storage.removeItem(cartProducts[k]);
-      storage[`myCartList`] = storage[`myCartList`].replace(`${cartProducts[k]},`);
-      ////////------------上面這個有問題-------------//////////
+      storage[`myCartList`] = storage[`myCartList`].replace(`${cartProducts[k]},`,'');
+      ////////------------搞定-------------//////////
 
     } else {
       productValue--;
