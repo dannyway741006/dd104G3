@@ -89,7 +89,7 @@ var main_content = new Vue({
 
     calandar_switch: false,
 
-    // file_switch: false,
+    file_switch: false,
 
     card_meber_switch: false,
 
@@ -326,7 +326,7 @@ var main_content = new Vue({
         $.ajax({
           "type": "POST",
           "dataType": "json",
-          "url": "./php/pm/push_card.php",
+          "url": "./php/pm/card_inner.php",
           "data": {
             "type": "add_card",
             "pro_no": vm.programs[index].pro_no,
@@ -363,7 +363,7 @@ var main_content = new Vue({
 
           //上傳檔案
           filebox: [],
-          file_switch: false,
+          // file_switch: false,
           sourced: '',
           //增加項目focus變長
           card_length: false,
@@ -478,8 +478,8 @@ var main_content = new Vue({
 
 
       const vm = this;
-      console.log(index);
-      console.log(vm.programs[index].pro_no);
+      // console.log(index);
+      // console.log(vm.programs[index].pro_no);
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -528,7 +528,7 @@ var main_content = new Vue({
         },
         "cache": false,
         "success": function (data) {
-          console.log(data);
+          // console.log(data);
           vm.history_programs.splice(index, 1)
         },
         "error": function (data) {
@@ -587,7 +587,6 @@ var main_content = new Vue({
 
     //刪除卡片
     delete_card(index) {
-
       const vm = this;
       // console.log(index)
       // console.log(vm.programs[vm.page][vm.todo_type][0].cards[index].card_no)
@@ -595,7 +594,7 @@ var main_content = new Vue({
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php/pm/card.php",
+        "url": "./php/pm/card_inner.php",
         "data": {
           "type": "delete_card",
           "card_no": vm.programs[vm.page][vm.todo_type][0].cards[index].card_no
@@ -614,7 +613,6 @@ var main_content = new Vue({
       // this.programs[this.page][this.todo_type][0].cards.splice(index, 1);
       this.opened = !this.opened;
       this.card_no = null;
-
 
     },
 
@@ -635,50 +633,21 @@ var main_content = new Vue({
 
     // 增加待辦清單項目
     todo_list_add(index) {
+      const vm=this;
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php/pm/push_card.php",
+        "url": "./php/pm/card_inner.php",
         "data": {
           "type": "add_todo",
+          "pro_no": vm.programs[vm.page].pro_no,
+          "card_no":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+          "todo_title":vm.todoListTitle,       
         },
         "cache": false,
         "success": function (data) {
           console.log(data);
-          //   if (vm.card_name !== "") {
-          //     console.log(vm.programs[index].card_list_todo.cards);
-          //     vm.programs[index].card_list_todo.cards.push({
-
-          //       card_name: vm.card_name,
-          //       card_member: [],
-
-          //       //卡片內會員顯示
-          //       showhideMember: false,
-          //       member_input: "",
-          //       member_inout: [],
-
-
-          //       todo_list_content_detail: [],
-
-          //       //calendar
-          //       dateline: false,
-          //       dateline_text: "未完成",
-          //       calendar_date: '未設定',
-
-          //       //上傳檔案
-          //       filebox: [],
-          //       file_switch: false,
-          //       // sourced:'',
-          //       // //增加項目focus變長
-          //       // card_length:false,
-
-
-          //     });
-          //     vm.card_name = "";
-          //     vm.cards_list_card_input_box = false;
-          //     vm.add_cards_btn = false;
-          //     vm.add_cards_btn_div = true;
-          // } else {}
+        
         },
         "error": function (data) {
           console.log(data);
@@ -706,10 +675,49 @@ var main_content = new Vue({
     // 刪除待辦清單項目
     deletecard_todo(detailIndex) {
       this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail.splice(detailIndex, 1);
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card_inner.php",
+        "data": {
+          "type": "delete_todo",
+          // "todo_no":, 
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+        
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
     },
 
     // 增加最小子項目
     add_card_detail(detailIndex) {
+      const vm=this;
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card_inner.php",
+        "data": {
+          "type": "add_todo_content",
+          "pro_no": vm.programs[vm.page].pro_no,
+          "card_no":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+          // "todo_no":,     
+          "todo_cont":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].test,  
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+        
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+
       if (this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
         // console.log(this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists);
         this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.push({
@@ -727,6 +735,25 @@ var main_content = new Vue({
     // 刪除最小子項目
     delete_todo_title(detailIndex, index) {
       this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.splice(index, 1);
+      const vm=this;
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card_inner.php",
+        "data": {
+          "type": "delete_todo_content",
+          // "todo_cont_no":,
+         
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+        
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
     },
 
 
@@ -742,7 +769,6 @@ var main_content = new Vue({
           let pro = this.programs[this.page];
           let pro_card = this.programs[this.page][this.todo_type][0].cards[this.card_no];
           let file_name = this.file[i].name;
-          console/log("122")
           readFile.addEventListener("loadend", function (e) {
             pro_card.file_result = readFile.result;
             pro_card.filebox.push({
@@ -756,28 +782,28 @@ var main_content = new Vue({
             // console.log(pro_card.filebox.length-1)
             // console.log(pro_card.filebox[pro_card.filebox.length - 1].name)
             // console.log(pro.pro_no)
-            console/log("122")
+
             $.ajax({
               "type": "POST",
               "dataType": "json",
-              "url": "./php/pm/push_card.php",
+              "url": "./php/pm/card_inner.php",
               "data": {
                 "type": "add_file",
                 "pro_no": pro.pro_no,
                 "card_no": pro_card.card_no,
                 "todo_no":0,//不知道為什麼要綁這個
-                "file_src":  pro_card.file_result,
-                "file_name": file_name,
+                "file_src":pro_card.filebox[pro_card.filebox.length-1].source,
+                "file_name":pro_card.filebox[pro_card.filebox.length-1].name,
               },
               "cache": false,
               "success": function (data) {
-                console/log("122")
                 console.log(data);
+                console.log(pro_card.filebox[pro_card.filebox.length-1].source)
+                // console.log()
 
               },
               "error": function (data) {
                 console.log(data);
-                console/log("122")
               }
             });
 
@@ -790,6 +816,27 @@ var main_content = new Vue({
     //卡片檔案刪除
     delete_file(cardIndex) {
       this.programs[this.page][this.todo_type][0].cards[this.card_no].filebox.splice(cardIndex, 1);
+    const vm=this;
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card_inner.php",
+        "data": {
+          "type": "add_file",
+          "file_no":vm.programs[vm.page].pro_no,
+         
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+          console.log(pro_card.filebox[pro_card.filebox.length-1].source)
+          // console.log()
+
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
     },
 
     //成員進入
@@ -1111,7 +1158,29 @@ var main_content = new Vue({
       } else {
         return false;
       }
-    }
+    },
+    change_calendar_date(){
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/get_MaturityCard.php",
+        "data": {
+          "type": "add_file",
+          "file_no":vm.programs[vm.page].pro_no,
+         
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+          console.log(pro_card.filebox[pro_card.filebox.length-1].source)
+          // console.log()
+
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+    },
   },
 
   computed: {
