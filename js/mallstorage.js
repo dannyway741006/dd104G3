@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+// window.addEventListener('load', () => {
+=======
+>>>>>>> 4bad01b5bd0f5cd741cf074adae0ddee6b5dad1b
   //***---商品寫入storage---***//
   let storage = sessionStorage;
   if (storage['myCartList'] == null) {
@@ -10,7 +14,7 @@
     let ProductImg = document.querySelector('.b_img').getAttribute('src');
     console.log(ProductImg);
     //--撈商品名稱--//
-    let productTitle = document.querySelector('.product_name').textContent;
+    let productTitle = document.querySelector('#product_name').textContent;
     console.log(productTitle);
     //--撈商品說明--//
     let productFeaturesText1 = document.querySelector('.product_features_text1').textContent;
@@ -43,6 +47,36 @@
     if (storage[`${productTitle}` + `${mallcolor}`] == null) {
       storage[`${productTitle}` + `${mallcolor}`] = '';
     };
+<<<<<<< HEAD
+    storage.setItem(`${productTitle}` + `${mallcolor}`, `${ProductImg}|${productTitle}|${mallcolor}|${priceSale}|${productFeaturesText1}|${mallAmount}`);
+  });
+// });
+
+
+mallAddProduct.addEventListener('click', () => {
+  let getMyCartList = storage.getItem(`myCartList`);
+  let cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
+  let addCartNum = document.querySelector('.mall_cart_cir');
+  addCartNum.textContent = cartProducts.length;
+  if (addCartNum.textContent === 0) {
+    addCartNum.style.display = "none";
+  } else {
+    addCartNum.style.display = "block";
+  }
+});
+
+window.addEventListener('load',()=>{
+  let getMyCartList = storage.getItem(`myCartList`);
+  let cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
+  let addCartNum = document.querySelector('.mall_cart_cir');
+  if (cartProducts == "") {
+    addCartNum.style.display = "none";
+  } else {
+    addCartNum.style.display = "block";
+  }
+   addCartNum.textContent = cartProducts.length;
+});
+=======
     storage.setItem(`${productTitle}` + `${mallcolor}`, `${ProductImg},${productTitle},${mallcolor},${priceSale},${productFeaturesText1},${mallAmount}`);
   });
 
@@ -69,3 +103,4 @@
     }
      addCartNum.textContent = cartProducts.length;
   });
+>>>>>>> 4bad01b5bd0f5cd741cf074adae0ddee6b5dad1b

@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
+  <link rel=icon href=favicon.ico>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="./css/owlcarousel/owl.carousel.min.css">
   <link rel="stylesheet" href="./css/owlcarousel/owl.theme.default.css">
 
-  <title>Document</title>
+  <title>職人口袋 | 商城</title>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
     <header>
       <div class="header">
         <div class="logo">
-          <a href="./index.html">
+          <a href="./home.html">
             <img src="./img/logo.svg" alt="logo" />
           </a>
         </div>
@@ -39,7 +40,7 @@
       </div>
       <nav class="nav_bar">
         <div class="logo">
-          <a href="./index.html">
+          <a href="./home.html">
             <img src="./img/logo.svg" alt="logo" />
           </a>
         </div>
@@ -128,7 +129,7 @@
             <div class="cart_bg">
         
                 <img src="./img/icon/shopping-cart_on_gray.svg" alt="">
-                <a href="cart.html">
+                <a href="./cart.html">
                 <div class="mall_cart_cir">0</div>
               </a>
             </div>
@@ -143,8 +144,11 @@
                 <div class="product_text">
                   <p id="product_name"></p>
                   <ul class="product_features">
-                    <!-- <li>絨毛內裡 保護電腦不刮傷</li>
-                    <li>凹形邊緣護墊 有效吸收抵禦衝擊</li> -->
+                    <li class="product_features_text1">
+
+                    </li>
+                    <!-- <li class="product_features_text1">絨毛內裡 保護電腦不刮傷</li> -->
+                    <!-- <li class="product_features_text2">凹形邊緣護墊 有效吸收抵禦衝擊</li> -->
                   </ul>
 
 
@@ -163,7 +167,7 @@
                       <select name="mall_amount" id="mall_amount">
                         <option value="1">1</option>
                         <option value="2">2</option>
-                        <option value="3">3</option>
+                        <options value="3">3</options>
                       </select>
 
                       <button class="mall_bBtn" value="Submit">加入購物車</button>
@@ -232,7 +236,7 @@
   <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script> -->
   <!--Mall商城主要js-->
   <script src="./js/mall.js"></script>
-
+  <script src="./js/mallstorage.js"></script>
   <!--貓頭鷹跑馬燈的JS-->
   <script src="./js/owlcarousel/owl.carousel.min.js"></script>
   <script src="./js/owlcarousel/jquery.min.js"></script>

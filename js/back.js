@@ -66,34 +66,34 @@ function mall_alert() {
       // console.log(mallProductObj[i].product_no)
     
       trStrS += `<th>商品編號</th>`
-      trStrS += `<td>${mallProductObj[i].product_no}</td>`
+      trStrS += `<td>${mallProductObj[i].product_no}<input type="hidden" name="product_no" value="${mallProductObj[i].product_no}"></td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th>商品價格</th>`
-      trStrS += `<td><input type="text" value="${mallProductObj[i].product_price}"></td>`
+      trStrS += `<td><input type="text" name="product_price" value="${mallProductObj[i].product_price}"></td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
-      trStrS += `<th>商品圖片路徑</th>`
-      trStrS += `<td><input type="file" name="productSrc"></input></td>`
+      trStrS += `<th>商品圖片</th>`
+      trStrS += `<td><input type="file" name="product_src"></input></td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th>商品顏色</th>`
-      trStrS += `<td><input type="text" style='width:100%' value="${mallProductObj[i].product_color}"></td>`
+      trStrS += `<td><input type="text" style='width:100%' name="product_color" value="${mallProductObj[i].product_color}"></td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th>商品說明</th>`
-      trStrS += `<td><input type="text" style='width:100%' value="${mallProductObj[i].product_desc}"></td>`
+      trStrS += `<td><input type="text" style='width:100%' name="product_desc" value="${mallProductObj[i].product_desc}"></td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th>商品類別</th>`
       trStrS += `<td>${mallProductObj[i].product_type}</td>`
       trStrS += `</tr>`
       trStrS += `<th>商品背景</th>`
-      trStrS += `<td><input type="file" name="productSrc"></input></td>`
+      trStrS += `<td><input type="file" name="product_bg_src"></input></td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th>商品輪播圖</th>`
-      trStrS += `<td><input type="file" name="productSrc"></input></td>`
+      trStrS += `<td><input type="file" name="product_slide_img"></input></td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
       trStrS += `<th colspan="2" style="text-align: center;background-color: #fff;border-bottom: none;border-color:#c8ced3;"><input type="submit" name="submit">送出</th>`
@@ -142,12 +142,12 @@ function mallList() {
 
         trStr += `<td data-th="商品名稱" style='word-break:break-all'>${mallProductObj[i].product_name}</td>`;
         trStr += `<td data-th="商品價格">${mallProductObj[i].product_price}</td>`;
-        trStr += `<td data-th="商品圖片路徑" style='word-break:break-all'">${mallProductObj[i].product_src}</td>`;
+        trStr += `<td data-th="商品圖片" style='word-break:break-all'"><img width="100" src="${mallProductObj[i].product_src}"></td>`;
         trStr += `<td data-th="商品顏色">${mallProductObj[i].product_color}</td>`;
         trStr += `<td data-th="商品說明" style='word-break:break-all'>${mallProductObj[i].product_desc}</td>`;
         trStr += `<td data-th="商品類別" style='word-break:break-all'>${mallProductObj[i].product_type}</td>`;
-        trStr += `<td data-th="商品背景" style='word-break:break-all'">${mallProductObj[i].product_bg_src}</td>`;
-        trStr += `<td data-th="商品輪播圖" style='word-break:break-all'">${mallProductObj[i].product_slide_img}</td>`;
+        trStr += `<td data-th="商品背景" style='word-break:break-all'"><img width="100" src="${mallProductObj[i].product_bg_src}"></td>`;
+        trStr += `<td data-th="商品輪播圖" style='word-break:break-all'"><img width="100" src="${mallProductObj[i].product_slide_img}"></td>`;
         trStr += `<td data-th="設定"><p class="mall_modify" id="pdu${mallProductObj[i].product_no}">編輯</p>/<p class="mall_edit">下架</p>`;
         /*經典之處，要將主鍵對應的值以json的形式進行傳遞，才能在後臺使用*/
         // trStr  = "<td><a href='#'style='text-decoration:none' onclick='Delete(\"" 123"\")'>刪除</a><td>";

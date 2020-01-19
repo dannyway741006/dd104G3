@@ -1,6 +1,6 @@
 // 購物車數字
 // let cartCount = document.querySelector('.mall_cart_cir');
-// // let mallBtn = document.querySelector('.mall_bBtn');
+// let mallBtn = document.querySelector('.mall_bBtn');
 // let count = 0;
 
 // if (cartCount.textContent === 0) {
@@ -69,6 +69,7 @@ async function getProduct() {
   mall_data = await fetch('./mall_data_test.php?product_type=' + mallType)
     .then(res => res.json())
     .then(json => json)
+    .catch(err=>console.log(err))
   console.log(mall_data);
 
   mall_content();
@@ -79,12 +80,13 @@ async function getProduct() {
 
 function mall_content() {
   //預設
-
+  var product_featuresLi = document.querySelector('.product_features_text1');
   var product_name = document.querySelector('#product_name');
   var product_features = document.getElementsByClassName('product_features')[0];
   var product_price = document.querySelector("#product_price");
   product_name.textContent = mall_data[0].product_name; //商品名字
-  product_features.innerHTML = mall_data[0].product_desc; //商品描述
+  product_featuresLi.innerHTML = mall_data[0].product_desc; //商品描述
+  
   product_price.textContent = mall_data[0].product_price; //商品價格
 
 
@@ -124,25 +126,18 @@ function mall_content() {
         // console.log(mallBg.style.backgroundImage)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         // //商品基本資料
         product_name = document.querySelector('#product_name');
         product_features = document.getElementsByClassName('product_features')[0];
+    
         product_price = document.querySelector("#product_price");
 
+       console.log(product_featuresLi)
         product_name.textContent = mall_data[i].product_name; //商品名字
-        product_features.innerHTML = mall_data[i].product_desc; //商品描述
+        // product_features.innerHTML = mall_data[i].product_desc; //商品描述
+        // product_featuresLi.innerHTML = mall_data[i].product_desc  //商品描述
+        // product_features.innerHTML = "12313123"; //商品描述
+        product_featuresLi.innerHTML = mall_data[i].product_desc;
         product_price.textContent = mall_data[i].product_price; //商品價格 
 
 

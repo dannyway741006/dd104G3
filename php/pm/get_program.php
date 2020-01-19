@@ -3,6 +3,12 @@
 // $_SESSION['mem_no'] = 1;//test
 try {
   require_once('../pdo.php');
+  $step0_arr = array(); //card_list_todo
+  $step1_arr = array(); //card_list_doing
+  $step2_arr = array(); //card_list_done
+  $step0 = array("cards" => array(), "type" => "card_list_todo"); //card_list_todo
+  $step1 = array("cards" => array(), "type" => "card_list_doing"); //card_list_doing
+  $step2 = array("cards" => array(), "type" => "card_list_done"); //card_list_done
   $sql = "select  c.card_no, 
                   c.pro_no, 
                   jp.pro_mem_no_string, 
@@ -43,12 +49,6 @@ try {
   $res->execute();
   if ($res->rowCount()) {
     $cards = $res->fetchAll(PDO::FETCH_ASSOC);
-    $step0_arr = array(); //card_list_todo
-    $step1_arr = array(); //card_list_doing
-    $step2_arr = array(); //card_list_done
-    $step0 = array("cards" => array(), "type" => "card_list_todo"); //card_list_todo
-    $step1 = array("cards" => array(), "type" => "card_list_doing"); //card_list_doing
-    $step2 = array("cards" => array(), "type" => "card_list_done"); //card_list_done
     $prevCardId = null;
     $prevTodoId = null;
     foreach ($cards as $card) {
@@ -262,10 +262,8 @@ try {
     
     // echo json_encode($step0_arr);
     // echo  json_decode(json_encode(array($step0, $step1, $step2)),true);
-    echo json_encode(array($step0, $step1, $step2));
-  } else {
-    echo json_encode(['status' => 'error', 'content' => '沒有資料']);
   }
+  echo json_encode(array($step0, $step1, $step2));
 } catch (PDOException $e) {
   echo $e->getLine();
   echo $e->getMessage();

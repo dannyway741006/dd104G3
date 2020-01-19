@@ -3,8 +3,8 @@
     require_once('../pdo.php');
     $sql = "select p.pro_no, pro_col, card_no, card_name, card_date, card_type, card_sta 
     FROM `card` c 
-    JOIN `member` m on (m.mem_no = :mem_no) 
-    JOIN `program` p on (c.pro_no = p.pro_no AND p.mem_no = m.mem_no) 
+    JOIN `join_program` j on (c.pro_no = j.pro_no AND j.mem_no = :mem_no)
+    JOIN `program` p on (c.pro_no = p.pro_no AND p.pro_sta = 0)
     WHERE card_date BETWEEN CURDATE() AND DATE_ADD(CURDATE() , INTERVAL 7 DAY) AND card_sta = 0";
     $res = $pdo->prepare($sql);
     $res->bindParam('mem_no', $_POST['mem_no']);

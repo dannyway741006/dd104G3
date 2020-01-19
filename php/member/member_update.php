@@ -1,6 +1,6 @@
 <?php
 
-require_once('../mem_connect.php');
+require_once('../pdo.php');
 
 try{
   //第二次進入本程式

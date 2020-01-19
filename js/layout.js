@@ -6,9 +6,7 @@ let MEMBER_INFO = {};
   const userStatus = document.querySelector(".status");
   const userName = document.getElementById("mem_id");
   const userLogout = document.getElementById("mem_logout");
-  hamburger.addEventListener("click", () =>
-    container.classList.toggle("nav_open")
-  );
+  hamburger.addEventListener("click", () => container.classList.toggle("nav_open"));
   userLogout.addEventListener("click", logOut);
   function checkLogin() {
     return new Promise(resolve => {
@@ -16,10 +14,9 @@ let MEMBER_INFO = {};
         .then(res => res.json())
         .then(json => {
           if (json.status === "success") {
-            MEMBER_INFO = json.data;
             userStatus.classList.add("logout");
             userName.innerText = json.data.mem_name || json.data.mem_id;
-            resolve();
+            resolve(json.data);
           }
         })
         .catch(err => console.log(err));
@@ -42,6 +39,7 @@ let MEMBER_INFO = {};
     );
     if (currentList) currentList.classList.add("active");
   }
-  await checkLogin();
+  background();
   setListClass();
+  MEMBER_INFO = await checkLogin();
 })();
