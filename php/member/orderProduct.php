@@ -1,13 +1,11 @@
 <?php
 try {
   require_once('../pdo.php');
-    $sql = 'select * 
-    FROM `member` m 
-    JOIN `orders` o ON (m.mem_no = o.mem_no) 
-    JOIN `order_item` oi ON (o.order_no = oi.order_no) 
-    where mem_no = :mem_no';
+    $sql = 'select * from `order_item` o
+    JOIN `mall_product` m on m.product_no = o.product_no 
+    where order_no	= :order_no';
     $res = $pdo->prepare($sql);
-    $res->bindParam(':mem_no', $_POST['mem_no']);
+    $res->bindParam(':order_no', $_POST['order_no']);
     $res->execute();
     if($res->rowCount()){
       $products = $res->fetchAll(PDO::FETCH_ASSOC);
