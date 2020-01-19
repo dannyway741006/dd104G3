@@ -326,7 +326,7 @@ var main_content = new Vue({
         $.ajax({
           "type": "POST",
           "dataType": "json",
-          "url": "./php/pm/push_card.php",
+          "url": "./php/pm/card.php",
           "data": {
             "type": "add_card",
             "pro_no": vm.programs[index].pro_no,
@@ -478,8 +478,8 @@ var main_content = new Vue({
 
 
       const vm = this;
-      console.log(index);
-      console.log(vm.programs[index].pro_no);
+      // console.log(index);
+      // console.log(vm.programs[index].pro_no);
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -528,7 +528,7 @@ var main_content = new Vue({
         },
         "cache": false,
         "success": function (data) {
-          console.log(data);
+          // console.log(data);
           vm.history_programs.splice(index, 1)
         },
         "error": function (data) {
@@ -657,7 +657,7 @@ var main_content = new Vue({
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php/pm/push_card.php",
+        "url": "./php/pm/card.php",
         "data": {
           "type": "add_todo",
         },
@@ -778,7 +778,7 @@ var main_content = new Vue({
             $.ajax({
               "type": "POST",
               "dataType": "json",
-              "url": "./php/pm/push_card.php",
+              "url": "./php/pm/card.php",
               "data": {
                 "type": "add_file",
                 "pro_no": pro.pro_no,
