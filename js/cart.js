@@ -129,7 +129,7 @@ cartSubmit.addEventListener('click', () => {
   let receiverTel = document.querySelector('#receiver_tel');
   let receiverName = document.querySelector('#receiver_name');
 
-  let url = "cart.php";
+  let url = "./php/order/order.php";
   xhr.open("POST", url, true);
   //送出資料
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

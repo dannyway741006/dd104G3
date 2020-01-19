@@ -44,11 +44,7 @@
     if (storage[`${productTitle}` + `${mallcolor}`] == null) {
       storage[`${productTitle}` + `${mallcolor}`] = '';
     };
-<<<<<<< HEAD
     storage.setItem(`${productTitle}` + `${mallcolor}`, `${ProductImg},${productTitle},${mallcolor},${priceSale},${productFeaturesText1},${mallAmount}`);
-=======
-    storage.setItem(`${productTitle}` + `${mallcolor}`, `${ProductImg}|${productTitle}|${mallcolor}|${priceSale}|${productFeaturesText1}|${mallAmount}`);
->>>>>>> dev
   });
 // });
 
