@@ -410,11 +410,7 @@ var main_content = new Vue({
         },
         "cache": false,
         "success": function (data) {
-<<<<<<< HEAD
-          // console.log(this.programs[index].pro_no)
-=======
           console.log(vm.programs[index])
->>>>>>> practice
           // console.log(data);
           // console.log(vm.programs[index].card_list_todo.cards);
           // console.log(data);
@@ -430,26 +426,26 @@ var main_content = new Vue({
       });
     },
     editcard() {
-      const vm = this;
-      console.log(vm.programs[index])
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/edit_done.php",
-        "data": {
-          // "card_no": this.programs[this.page].card_list_todo[0].cards[cardIndex].card_no,
-          // "pro_no": this.programs[this.page].pro_no,
-          "type": "add_file",
-          "pro_no": this.programs[index].pro_no,
-        },
-        "cache": false,
-        "success": function (data) {
+      // const vm = this;
+      // console.log(vm.programs[index])
+      // $.ajax({
+      //   "type": "POST",
+      //   "dataType": "json",
+      //   "url": "./php/pm/edit_done.php",
+      //   "data": {
+      //     // "card_no": this.programs[this.page].card_list_todo[0].cards[cardIndex].card_no,
+      //     // "pro_no": this.programs[this.page].pro_no,
+      //     "type": "add_file",
+      //     "pro_no": this.programs[index].pro_no,
+      //   },
+      //   "cache": false,
+      //   "success": function (data) {
 
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
+      //   },
+      //   "error": function (data) {
+      //     console.log(data);
+      //   }
+      // });
     },
     catch_card_position({
       $event: {
