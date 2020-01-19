@@ -26,7 +26,7 @@ let storage = sessionStorage;
 //--先把myCartList取出來--//
 let getMyCartList = storage.getItem(`myCartList`);
 let cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
-console.log(cartProducts);
+// console.log(cartProducts);
 
 let total = 0;
 for (let key in cartProducts) {
@@ -74,13 +74,13 @@ for (let k = 0; k < cartProduct.length; k++) {
       cartProduct[k].parentNode.removeChild(cartProduct[k]);
 
       storage.removeItem(cartProducts[k]);
-      storage[`myCartList`] = storage[`myCartList`].replace(`${cartProducts[k]},`,'');
+      storage[`myCartList`] = storage[`myCartList`].replace(`${cartProducts[k]},`, '');
       ////////------------搞定-------------//////////
 
     } else {
       productValue--;
       productNumber[k].textContent = productValue;
-      console.log(cartProducts[k]);
+      // console.log(cartProducts[k]);
     }
   });
   // console.log(cartProducts[k]);
@@ -91,24 +91,19 @@ for (let k = 0; k < cartProduct.length; k++) {
 }
 
 //--計算調整後的購物車總金額--//
+let cartNewTotal = document.querySelector('.cart_price_total');
+let cartProductN = document.querySelectorAll('.cart_product');
+let newProductPrice = document.querySelectorAll('.cart_product_price');
+let newProductNumber = document.querySelectorAll('.cart_product_number');
+let newTotal = 0;
 for (let i = 0; i < cartProduct.length; i++) {
   cutProductBtn[i].addEventListener('click', () => {
-    let cartNewTotal = document.querySelector('.cart_price_total');
-    let cartProductN = document.querySelectorAll('.cart_product');
-    let newProductPrice = document.querySelectorAll('.cart_product_price');
-    let newProductNumber = document.querySelectorAll('.cart_product_number');
-    let newTotal = 0;
     for (let n = 0; n < cartProductN.length; n++) {
       newTotal += (parseInt(newProductPrice[n].textContent) * parseInt(newProductNumber[n].textContent));
     }
     cartNewTotal.textContent = newTotal;
   });
   addProductBtn[i].addEventListener('click', () => {
-    let cartNewTotal = document.querySelector('.cart_price_total');
-    let cartProductN = document.querySelectorAll('.cart_product');
-    let newProductPrice = document.querySelectorAll('.cart_product_price');
-    let newProductNumber = document.querySelectorAll('.cart_product_number');
-    let newTotal = 0;
     for (let n = 0; n < cartProductN.length; n++) {
       newTotal += (parseInt(newProductPrice[n].textContent) * parseInt(newProductNumber[n].textContent));
     }
@@ -116,40 +111,41 @@ for (let i = 0; i < cartProduct.length; i++) {
   });
 }
 
+//產生XMLHttpRequest物件
+let xhr = new XMLHttpRequest();
 let cartSubmit = document.querySelector('.cart_submit');
 cartSubmit.addEventListener('click', () => {
-
-  //產生XMLHttpRequest物件
-  let xhr = new XMLHttpRequest();
   //註冊callback function 
   xhr.onload = function () {
     if (xhr.status == 200) {
       // document.querySelector("#idMsg").textContent = xhr.responseText;
-      // console.log("----", xhr.responseText)
+      console.log("----", xhr.responseText)
     } else {
       alert(xhr.statusText);
     }
   }
 
-  console.log(cartProduct.length);
-  for (let o = 0; o < cartProduct.length; o++) {
-    let aaa = document.querySelectorAll(".cart_product_price");
-    let url = "cart.php";
-    xhr.open("POST", url, true);
-    //送出資料
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    let sendProductPrice = "product_price=" + aaa[o].innerHTML;
-    xhr.send(sendProductPrice);
-  }
+  let shipAddr = document.querySelector('#ship_addr');
+  let receiverTel = document.querySelector('#receiver_tel');
+  let receiverName = document.querySelector('#receiver_name');
 
+  let url = "cart.php";
+  xhr.open("POST", url, true);
+  //送出資料
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  let sendProductPrice = `product_price=${cartNewTotal.textContent}&ship_addr=${shipAddr.value}&receiver_name=${receiverName.value}&receiver_tel=${receiverTel.value}`;
+  xhr.send(sendProductPrice);
+  console.log(sendProductPrice);
 
+  //成功送出資料後清除填入的資訊
+  shipAddr.value = "";
+  receiverTel.value = "";
+  receiverName.value = "";
 
-  // alert(sendProductPrice);
+  cartNewTotal.textContent = 0;
+  //成功送出資料後清除頁面商品
+  document.querySelector('.cart_list').innerHTML = "";
+  //成功送出資料後清除storage裡的資料
+  storage.clear();
 
-  // let url = "cart.php?product_price=" + document.querySelector(".cart_price_total").innerText;
-  // console.log(url)
-  // xhr.open("GET", url, true);
-  // //送出資料
-  // xhr.send(null);
-
-})
+});
