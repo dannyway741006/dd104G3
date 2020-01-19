@@ -37,7 +37,16 @@ try {
 
         case "update_card":
 
-            break;
+            $sql = "update `card` set card_name = :card_name 
+            where `card_no` = :card_no";
+          $res = $pdo->prepare($sql);
+          $res->bindParam(':card_name', $_POST['card_name']);
+          $res->bindParam(':card_no', $_POST['card_no']);
+          $res->execute();
+    
+          echo json_encode(['status' => 'success', 'content' => '修改卡片標題成功']);
+                break;
+          
 
         case "add_todo":
             $sql = 'insert into `todo` 
@@ -62,6 +71,20 @@ try {
             $res->execute();
             echo json_encode(['status' => 'success', 'content' => '刪除代辦事項']);
             break;
+
+        case "update_todo":
+
+          $sql = "update `todo` set pro_sta = :todo_title 
+        where todo_no = :todo_no";
+      $res = $pdo->prepare($sql);
+      $res->bindParam(':todo_title', $_POST['todo_title']);
+      $res->bindParam(':todo_no', $_POST['todo_no']);
+      $res->execute();
+
+      echo json_encode(['status' => 'success', 'content' => '修改清單標題成功']);
+            break;
+
+
 
         case "add_todo_content":
             $sql = 'insert into `todo_content` 
@@ -89,6 +112,19 @@ try {
                 $res->bindValue(':todo_cont_no', $_POST["todo_cont_no"]);
                 $res->execute();
                 echo json_encode(['status' => 'success', 'content' => '刪除待辦事項子項目']);
+                break;
+
+                
+            case "update_todo_content":
+
+                $sql = "update `todo_content` set todo_cont_sta = :todo_cont_sta 
+                where todo_cont_no = :todo_cont_no";
+                $res = $pdo->prepare($sql);
+                $res->bindParam(':todo_cont_sta', $_POST['todo_cont_sta']);
+                $res->bindParam(':todo_cont_no', $_POST['todo_cont_no']);
+                $res->execute();
+              
+                echo json_encode(['status' => 'success', 'content' => '更改子項目成功']);
                 break;
 
         case "add_file":

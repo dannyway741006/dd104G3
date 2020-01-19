@@ -248,14 +248,14 @@ var main_content = new Vue({
     invite_add_member(program) {
       console.log(program)
       fetch('./php/pm/invite_member.php', {
-        method: 'POST',
-        body: new URLSearchParams(`mem_no=1&invite_id=${program.invite_add_member_addr}&pro_no=${program.pro_no}`)
-      })
-        .then(res=>res.json())
-        .then(json=>{
+          method: 'POST',
+          body: new URLSearchParams(`mem_no=1&invite_id=${program.invite_add_member_addr}&pro_no=${program.pro_no}`)
+        })
+        .then(res => res.json())
+        .then(json => {
           alert(json.content)
         })
-        .catch(err=>console.log(err))
+        .catch(err => console.log(err))
     },
 
 
@@ -355,7 +355,7 @@ var main_content = new Vue({
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php/pm/get_program.php",
+        "url": "./php/pm/get_program_test.php",
         "data": {
           "pro_no": this.programs[index].pro_no
         },
@@ -646,7 +646,7 @@ var main_content = new Vue({
         "data": {
           "type": "set_calendar_date",
           "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-          "card_date":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date
+          "card_date": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date
         },
         "cache": false,
         "success": function (data) {
@@ -659,9 +659,32 @@ var main_content = new Vue({
       });
 
     },
+    //改變卡片標題
+    change_card_title() {
+      const vm = this;
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card_inner.php",
+        "data": {
+          "type": "update_card",
+          "card_name":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_name,
+          "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+    },
+
     // 增加待辦清單項目
     todo_list_add(index) {
-      const vm=this;
+      const vm = this;
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -669,13 +692,13 @@ var main_content = new Vue({
         "data": {
           "type": "add_todo",
           "pro_no": vm.programs[vm.page].pro_no,
-          "card_no":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-          "todo_title":vm.todoListTitle,       
+          "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+          "todo_title": vm.todoListTitle,
         },
         "cache": false,
         "success": function (data) {
           console.log(data);
-        
+
         },
         "error": function (data) {
           console.log(data);
@@ -714,7 +737,30 @@ var main_content = new Vue({
         "cache": false,
         "success": function (data) {
           console.log(data);
-        
+
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+    },
+
+    // 修改待辦清單項目
+    updatetodolist_title() {
+      const vm = this;
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card_inner.php",
+        "data": {
+          "type": "update_todo",
+          "todo_title": vm.todoListTitle,
+          // "todo_no":, 
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+
         },
         "error": function (data) {
           console.log(data);
@@ -724,7 +770,7 @@ var main_content = new Vue({
 
     // 增加最小子項目
     add_card_detail(detailIndex) {
-      const vm=this;
+      const vm = this;
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -732,14 +778,14 @@ var main_content = new Vue({
         "data": {
           "type": "add_todo_content",
           "pro_no": vm.programs[vm.page].pro_no,
-          "card_no":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+          "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
           // "todo_no":,     
-          "todo_cont":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].test,  
+          "todo_cont": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].test,
         },
         "cache": false,
         "success": function (data) {
           console.log(data);
-        
+
         },
         "error": function (data) {
           console.log(data);
@@ -763,7 +809,7 @@ var main_content = new Vue({
     // 刪除最小子項目
     delete_todo_title(detailIndex, index) {
       this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.splice(index, 1);
-      const vm=this;
+      const vm = this;
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -771,12 +817,12 @@ var main_content = new Vue({
         "data": {
           "type": "delete_todo_content",
           // "todo_cont_no":,
-         
+
         },
         "cache": false,
         "success": function (data) {
           console.log(data);
-        
+
         },
         "error": function (data) {
           console.log(data);
@@ -784,6 +830,29 @@ var main_content = new Vue({
       });
     },
 
+    //修改子清單項目
+    update_list_sta() {
+      const vm = this;
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card_inner.php",
+        "data": {
+          "type": "update_todo_content",
+          "todo_cont_sta": 1,
+          // "todo_cont_no":,
+
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+    },
 
     //卡片內上傳檔案
     filesearch(e) {
@@ -819,14 +888,14 @@ var main_content = new Vue({
                 "type": "add_file",
                 "pro_no": pro.pro_no,
                 "card_no": pro_card.card_no,
-                "todo_no":0,//不知道為什麼要綁這個
-                "file_src":pro_card.filebox[pro_card.filebox.length-1].source,
-                "file_name":pro_card.filebox[pro_card.filebox.length-1].name,
+                "todo_no": 0, //不知道為什麼要綁這個
+                "file_src": pro_card.filebox[pro_card.filebox.length - 1].source,
+                "file_name": pro_card.filebox[pro_card.filebox.length - 1].name,
               },
               "cache": false,
               "success": function (data) {
                 console.log(data);
-                console.log(pro_card.filebox[pro_card.filebox.length-1].source)
+                console.log(pro_card.filebox[pro_card.filebox.length - 1].source)
                 // console.log()
 
               },
@@ -844,20 +913,20 @@ var main_content = new Vue({
     //卡片檔案刪除
     delete_file(cardIndex) {
       this.programs[this.page][this.todo_type][0].cards[this.card_no].filebox.splice(cardIndex, 1);
-    const vm=this;
+      const vm = this;
       $.ajax({
         "type": "POST",
         "dataType": "json",
         "url": "./php/pm/card_inner.php",
         "data": {
           "type": "add_file",
-          "file_no":vm.programs[vm.page].pro_no,
-         
+          "file_no": vm.programs[vm.page].pro_no,
+
         },
         "cache": false,
         "success": function (data) {
           console.log(data);
-          console.log(pro_card.filebox[pro_card.filebox.length-1].source)
+          console.log(pro_card.filebox[pro_card.filebox.length - 1].source)
           // console.log()
 
         },
@@ -889,6 +958,7 @@ var main_content = new Vue({
 
     calltomato(detailIndex, index) {
       alert("已加入蕃茄鐘");
+      
     },
     //最小子項目勾選 卡片顯示進度 已勾項目
     todo_card_progress_checked(index) {
@@ -1293,15 +1363,15 @@ var main_content = new Vue({
   },
 
 
-  async mounted () {
+  async mounted() {
     this.userInfo = await fetch("./php/member/isLogin.php")
-    .then(res => res.json())
-    .then(json => {
-      if (json.status === "success") {
-        return json.data
-      }
-    })
-    .catch(err => console.log(err));
+      .then(res => res.json())
+      .then(json => {
+        if (json.status === "success") {
+          return json.data
+        }
+      })
+      .catch(err => console.log(err));
     document.addEventListener("click", () => {
       this.open = false;
       this.add_cards_btn_div = true;

@@ -183,7 +183,7 @@
                   <p>輸入會員帳號</p>
                   <input type="text" class="invite_add_member_addr"
                     v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member(item)" maxlength="50">
-                  <button @click='invite_add_member(item)'>送出</button>
+                  <button class="invite_add_member_btn" @click='invite_add_member(item)'>送出</button>
                 </div>
               </transition>
             </div>
@@ -538,7 +538,7 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title" ><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -703,7 +703,7 @@
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
                               v-show="item.test_title_name">{{item.title}}</h3>
                             <div class="change_title" v-show="item.showname" @click.stop="">
-                              <textarea name="" v-model.trim="item.title"
+                              <textarea name="" v-model.trim="item.title" @focus="updatetodolist_title"
                                 @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name" maxlength="50"></textarea>
                             </div>
 
@@ -721,7 +721,7 @@
                           <draggable v-model="item.lists" :options="{animation:500}">
                             <transition-group name="fade" tag="div">
                               <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                                <div @click="item.status = !item.status,item.text =!item.text">
+                                <div @click="item.status = !item.status,item.text =!item.text,update_list_sta()">
                                   <img src="./img/check.svg" alt="" v-if="item.status">
                                   <img src="./img/uncheck.svg" alt="" v-else>
                                 </div>
@@ -790,7 +790,7 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -955,7 +955,7 @@
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
                               v-show="item.test_title_name">{{item.title}}</h3>
                             <div class="change_title" v-show="item.showname" @click.stop="">
-                              <textarea name="" v-model.trim="item.title"
+                              <textarea name="" v-model.trim="item.title" @focus="updatetodolist_title"
                                 @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name" maxlength="50"></textarea>
                             </div>
 
@@ -973,7 +973,7 @@
                           <draggable v-model="item.lists" :options="{animation:500}">
                             <transition-group name="fade" tag="div">
                               <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                                <div @click="item.status = !item.status,item.text =!item.text">
+                                <div @click="item.status = !item.status,item.text =!item.text,update_list_sta()">
                                   <img src="./img/check.svg" alt="" v-if="item.status">
                                   <img src="./img/uncheck.svg" alt="" v-else>
                                 </div>
@@ -1041,7 +1041,7 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -1206,7 +1206,7 @@
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
                               v-show="item.test_title_name">{{item.title}}</h3>
                             <div class="change_title" v-show="item.showname" @click.stop="">
-                              <textarea name="" v-model.trim="item.title"
+                              <textarea name="" v-model.trim="item.title" @focus="updatetodolist_title" @focus="updatetodolist_title"
                                 @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name" maxlength="50"></textarea>
                             </div>
 
@@ -1224,7 +1224,7 @@
                           <draggable v-model="item.lists" :options="{animation:500}">
                             <transition-group name="fade" tag="div">
                               <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                                <div @click="item.status = !item.status,item.text =!item.text">
+                                <div @click="item.status = !item.status,item.text =!item.text,update_list_sta()">
                                   <img src="./img/check.svg" alt="" v-if="item.status">
                                   <img src="./img/uncheck.svg" alt="" v-else>
                                 </div>
@@ -1642,7 +1642,7 @@
     
     <script src="./js/programByCardPart.js"></script>
     <script src="./js/background.js"></script>
-    <!-- <script src="./js/layout.js"></script> -->
+    <script src="./js/layout.js"></script>
 
 
 </body>
