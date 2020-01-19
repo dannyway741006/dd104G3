@@ -1,4 +1,3 @@
-import background from "./background.js";
 const container = document.getElementById("app");
 const hamburger = document.querySelector(".nav_hamburger");
 let MEMBER_INFO = {};
@@ -7,9 +6,7 @@ let MEMBER_INFO = {};
   const userStatus = document.querySelector(".status");
   const userName = document.getElementById("mem_id");
   const userLogout = document.getElementById("mem_logout");
-  hamburger.addEventListener("click", () =>
-    container.classList.toggle("nav_open")
-  );
+  hamburger.addEventListener("click", () => container.classList.toggle("nav_open"));
   userLogout.addEventListener("click", logOut);
   function checkLogin() {
     return new Promise(resolve => {
@@ -42,7 +39,7 @@ let MEMBER_INFO = {};
     );
     if (currentList) currentList.classList.add("active");
   }
-  MEMBER_INFO = await checkLogin();
-  setListClass();
   background();
+  setListClass();
+  MEMBER_INFO = await checkLogin();
 })();

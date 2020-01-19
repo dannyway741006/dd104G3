@@ -1,4 +1,4 @@
-export default function background() {
+function background() {
   const textureLoader = new THREE.TextureLoader();
   const fluffy = textureLoader.load("./img/fluffy.png");
   class Particle {

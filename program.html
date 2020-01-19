@@ -181,10 +181,9 @@
               <transition name="fade" mode="out-in">
                 <div class="invite_add_member_box" v-show="invite_add_member_box" @click.stop="">
                   <p>輸入會員帳號</p>
-                  <form action="">
-                    <input type="text" class="invite_add_member_addr" id="invite_add_member_addr"
-                      v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member()" maxlength="50">
-                  </form>
+                  <input type="text" class="invite_add_member_addr"
+                    v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member(item)" maxlength="50">
+                  <button @click='invite_add_member(item)'>送出</button>
                 </div>
               </transition>
             </div>
@@ -1640,10 +1639,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
     <script src="./js/lib/index.min.js"></script>
-        
-    <script src="./js/layout.js" type="module"></script>
-
+    
     <script src="./js/program.js"></script>
+    <script src="./js/background.js"></script>
+    <script src="./js/layout.js"></script>
 
 
 </body>
