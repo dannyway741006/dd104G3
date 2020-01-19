@@ -1,8 +1,12 @@
 // If you want to override variables do it here
-@import "variables";
+
 
 // Import styles
 // @import "../node_modules/@coreui/coreui/scss/coreui";
+<<<<<<< HEAD
+=======
+@import "./pages/back/coreui.scss";
+>>>>>>> nicole
 
 // If you want to add something do it here
-@import "backpage";
+@import "././pages/back/backpage";

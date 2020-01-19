@@ -16,8 +16,7 @@ body {
   display: none;
 }
 
-.mall_modify,
-.mall_delete {
+.mall_modify, .mall_delete, .mall_add {
   color: #5fbfce;
   cursor: pointer;
 }
@@ -30,5 +29,10 @@ body {
           align-items: center;
   z-index: 999;
   display: none;
+}
+
+.mall_add {
+  float: right;
+  margin: 5px;
 }
 /*# sourceMappingURL=back.css.map */
