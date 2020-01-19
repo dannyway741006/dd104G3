@@ -257,7 +257,12 @@ var main_content = new Vue({
         })
         .catch(err=>console.log(err))
     },
-
+    //點擊邀請出現邀請的跳窗
+    show_invite_add_member_box(){
+      this.invite_add_member_box = !this.invite_add_member_box;
+      this.cards_list_card_input_box = false;
+      this.add_cards_btn_div=true;
+    },
 
     //切換現有-已完成專案
     change_watched_text() {
@@ -278,7 +283,8 @@ var main_content = new Vue({
     show_cards_list_card_input_box() {
       this.add_cards_btn_div = !this.add_cards_btn_div;
       this.cards_list_card_input_box = true;
-      add_cards_btn = true;
+      this.add_cards_btn = true;
+      this.invite_add_member_box = false;
     },
     add_card(index) {
       const vm = this;
@@ -1326,8 +1332,8 @@ var main_content = new Vue({
     xhr.open("post", './php/pm/get_program_list.php', true);
     //送出資料
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    let data_info = `mem_no=${this.userInfo.mem_no}`;
-    //  let data_info = `mem_no=1`;
+    // let data_info = `mem_no=${this.userInfo.mem_no}`;
+    let data_info = `mem_no=1`;
     xhr.send(data_info);
     // console.log(this)
   },
