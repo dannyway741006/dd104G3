@@ -39,20 +39,25 @@ $(document).ready(function ($) {
 var mallBtn01 = document.querySelector('#mall_btn01'); //主按鈕類別1
 var mallBtn02 = document.querySelector('#mall_btn02'); //主按鈕類別2
 var mallBtn03 = document.querySelector('#mall_btn03'); //主按鈕類別3
+const mallListBtn = document.querySelectorAll('.page_info_list > li');
 
 let mall_data, mall_type, mall_num;
 
 async function getProduct() {
   mall_color.innerHTML = ''; //下拉選單按鈕預設
   mallType = this.dataset ? this.dataset.type : 1;
-  // console.log(this.dataset)
-  mall_data = await fetch('./php/mall/mall_data.php?product_type=' + mallType)
+  mall_data = await fetch('./php/mall/mall_data.php', {
+    method: 'POST',
+    body: new URLSearchParams(`product_type=${mallType}`)
+  })
     .then(res => res.json())
-    .then(json => json)
+    .then(json => json.data)
     .catch(err=>console.log(err))
-  // console.log('./php/mall/mall_data.php?product_type=' + mallType);
-
-  mall_content();
+  if(mall_data)mall_content();
+  if(this.classList){
+    mallListBtn.forEach(dom=>dom.classList.remove('active'))
+    this.classList.add('active');
+  }
 }
 
 function mall_content() {
@@ -186,9 +191,7 @@ function mall_content() {
 
   }
 }
-
-
-window.addEventListener("load", getProduct);
+getProduct()
 mallBtn01.addEventListener("click", getProduct);
 mallBtn02.addEventListener("click", getProduct);
 mallBtn03.addEventListener("click", getProduct);

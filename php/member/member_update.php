@@ -1,25 +1,20 @@
 <?php
-
-require_once('../pdo.php');
-
-try{
-  //第二次進入本程式
-    $sql = "update `member` set mem_tel=:mem_tel, 
-    mem_email=:mem_email, 
-    mem_name=:mem_name,mem_addr=:mem_addr
-        where mem_no=:mem_no";
-    $products = $pdo->prepare( $sql );
-    $products->bindValue(":mem_no", $_POST["mem_no"]);
-    $products->bindValue(":mem_tel", $_POST["mem_tel"]);
-    $products->bindValue(":mem_email", $_POST["mem_email"]);
-    $products->bindValue(":mem_name", $_POST["mem_name"]);
-    $products->bindValue(":mem_addr", $_POST["mem_addr"]);
-
-    $products->execute();    
-  
-  
-}catch(PDOException $e){
-  $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
-  $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
-} 
-?>  
+  try{
+    require_once('../pdo.php');
+    $memName = $_POST['mem_name'] ? $_POST['mem_name'] : null;
+    $memTel = $_POST['mem_tel'] ? $_POST['mem_tel'] : null;
+    $memAddr = $_POST['mem_addr'] ? $_POST['mem_addr'] : null;
+    $sql = 'update `member` 
+    set mem_name = :mem_name, mem_tel = :mem_tel, mem_addr = :mem_addr
+    where mem_no = :mem_no';
+    $res = $pdo->prepare($sql);
+    $res->bindParam('mem_name', $memName);
+    $res->bindParam('mem_tel', $memTel);
+    $res->bindParam('mem_addr', $memAddr);
+    $res->bindParam('mem_no', $_POST['mem_no']);
+    $res->execute();
+    echo json_encode(['status'=>'success', 'content'=>'修改成功']);
+  }catch(PDOException $e){
+    echo $e->getLine();
+    echo $e->getMessage();
+  }
