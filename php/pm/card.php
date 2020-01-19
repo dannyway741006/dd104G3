@@ -56,39 +56,97 @@ try {
     
       echo json_encode(['status' => 'success', 'content' => '異動成功']);
     break;
+    case "update_card":
 
-    case "add_todo":
-      if ($data['content']) {
-        foreach ($data['content'] as $info) {
-          $sql = 'insert into `todo` 
-            (card_no, pro_no, todo_title) values
-            (:card_no, :pro_no, :todo_title)';
+      $sql = "update `card` set card_name = :card_name 
+      where `card_no` = :card_no";
+    $res = $pdo->prepare($sql);
+    $res->bindParam(':card_name', $_POST['card_name']);
+    $res->bindParam(':card_no', $_POST['card_no']);
+    $res->execute();
+
+    echo json_encode(['status' => 'success', 'content' => '修改卡片標題成功']);
+          break;
+    
+
+  case "add_todo":
+      $sql = 'insert into `todo` 
+    ( `todo_no`,`pro_no`,`card_no`,`todo_title`
+    ) values 
+    (null ,:pro_no, :card_no, :todo_title)';
+      $todos = $pdo->prepare($sql);
+      $todos->bindValue(":pro_no", $_POST["pro_no"]);
+      $todos->bindValue(":card_no", $_POST["card_no"]);
+      $todos->bindValue(":todo_title", $_POST["todo_title"]);
+      $todos->execute();
+      echo json_encode(['status' => 'success', 'content' => '更新待辦事項成功']);
+      $todos_id = $pdo->lastInsertId();
+
+
+      break;
+  case "delete_todo":
+
+      $sql = "delete FROM `todo` WHERE `todo_no` = :todo_no";
+      $res = $pdo->prepare($sql);
+      $res->bindValue(':todo_no', $_POST["todo_no"]);
+      $res->execute();
+      echo json_encode(['status' => 'success', 'content' => '刪除代辦事項']);
+      break;
+
+  case "update_todo":
+
+    $sql = "update `todo` set pro_sta = :todo_title 
+  where todo_no = :todo_no";
+$res = $pdo->prepare($sql);
+$res->bindParam(':todo_title', $_POST['todo_title']);
+$res->bindParam(':todo_no', $_POST['todo_no']);
+$res->execute();
+
+echo json_encode(['status' => 'success', 'content' => '修改清單標題成功']);
+      break;
+
+
+
+  case "add_todo_content":
+      $sql = 'insert into `todo_content` 
+        (`todo_cont_no`,`pro_no`,`card_no`,`todo_no`,`todo_cont`,`todo_cont_sta`,`todo_timer`,`todo_cont_clock`
+        ) values 
+        (null ,:pro_no, :card_no, :todo_no, :todo_cont, :todo_cont_sta, :todo_timer, :todo_cont_clock)';
+      $todos = $pdo->prepare($sql);
+      $todos->bindValue(":pro_no", $_POST["pro_no"]);
+      $todos->bindValue(":card_no", $_POST["card_no"]);
+      $todos->bindValue(":todo_no", $_POST["todo_no"]);
+      $todos->bindValue(":todo_cont", $_POST["todo_cont"]);
+      $todos->bindValue(":todo_cont_sta", 0);
+      $todos->bindValue(":todo_timer", 10);
+      $todos->bindValue(":todo_cont_clock", 0);
+      $todos->execute();
+      echo json_encode(['status' => 'success', 'content' => '更新待辦事項成功']);
+
+
+      break;
+
+      case "delete_todo_content":
+
+          $sql = "delete FROM `todo_content` WHERE `todo_cont_no` = :todo_cont_no";
           $res = $pdo->prepare($sql);
-          $res->bindParam(':card_no', $lastCardId);
-          $res->bindParam(':pro_no', $pro_no);
-          $res->bindParam(':todo_title', $info['title']);
+          $res->bindValue(':todo_cont_no', $_POST["todo_cont_no"]);
           $res->execute();
-          $lastId = $pdo->lastInsertId();
-          if ($info['lists']) {
-            foreach ($info['lists'] as $list) {
-              $listStatus = $list['status'] ? '1' : '0';
-              $isClock = $list['isClock'] ? '1' : '0';
-              $sql = 'insert into `todo_content` 
-                (todo_no, pro_no, card_no, todo_cont, todo_cont_sta, todo_cont_clock) values 
-                (:todo_no, :pro_no, :card_no, :todo_cont, :todo_cont_sta, :todo_cont_clock)';
-              $res = $pdo->prepare($sql);
-              $res->bindParam(':todo_no', $lastId);
-              $res->bindParam(':pro_no', $pro_no);
-              $res->bindParam(':card_no', $lastCardId);
-              $res->bindParam(':todo_cont', $list['content']);
-              $res->bindParam(':todo_cont_sta', $listStatus);
-              $res->bindParam(':todo_cont_clock', $isClock);
-              $res->execute();
-            }
-          }
-        }
-      }
-    break;
+          echo json_encode(['status' => 'success', 'content' => '刪除待辦事項子項目']);
+          break;
+
+          
+      case "update_todo_content":
+
+          $sql = "update `todo_content` set todo_cont_sta = :todo_cont_sta 
+          where todo_cont_no = :todo_cont_no";
+          $res = $pdo->prepare($sql);
+          $res->bindParam(':todo_cont_sta', $_POST['todo_cont_sta']);
+          $res->bindParam(':todo_cont_no', $_POST['todo_cont_no']);
+          $res->execute();
+        
+          echo json_encode(['status' => 'success', 'content' => '更改子項目成功']);
+          break;
 
     case "add_file":
       // $pro_no = $_POST['pro_no'];

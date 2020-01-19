@@ -538,7 +538,7 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -704,7 +704,7 @@
                               v-show="item.test_title_name">{{item.title}}</h3>
                             <div class="change_title" v-show="item.showname" @click.stop="">
                               <textarea name="" v-model.trim="item.title"
-                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name" maxlength="50"></textarea>
+                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title" maxlength="50"></textarea>
                             </div>
 
                             <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
@@ -790,7 +790,7 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -956,7 +956,7 @@
                               v-show="item.test_title_name">{{item.title}}</h3>
                             <div class="change_title" v-show="item.showname" @click.stop="">
                               <textarea name="" v-model.trim="item.title"
-                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name" maxlength="50"></textarea>
+                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title" maxlength="50"></textarea>
                             </div>
 
                             <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
@@ -1041,7 +1041,7 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -1207,7 +1207,7 @@
                               v-show="item.test_title_name">{{item.title}}</h3>
                             <div class="change_title" v-show="item.showname" @click.stop="">
                               <textarea name="" v-model.trim="item.title"
-                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name" maxlength="50"></textarea>
+                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title" maxlength="50"></textarea>
                             </div>
 
                             <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
