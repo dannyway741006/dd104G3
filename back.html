@@ -12,8 +12,11 @@
   <title>職人口袋後台</title>
 
   <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any" />
-
   <link href="./css/back.css" rel="stylesheet">
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <!-- <link href="./vendors/pace-progress/css/pace.min.css" rel="stylesheet"> -->
   <!-- Global site tag (gtag.js) - Google Analytics-->
@@ -91,9 +94,6 @@
     }
   </style>
 
-
-
-
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -106,15 +106,6 @@
     // Bootstrap ID
     gtag('config', 'UA-118965717-5');
   </script>
-
-
-
-
-
-
-
-
-
 
 </head>
 
@@ -135,10 +126,6 @@
       <span class="navbar-toggler-icon" id="navBtn"></span>
     </button>
   </header>
-
-
-
-
 
   <div class="app-body">
     <div class="sidebar">
@@ -380,10 +367,10 @@
             <div class="card-body">
               <div class="bd-example">
                 <p class="h4">商城商品管理</p>
-                
+
 
                 <div class="mall_add">新增商品</div>
-                 
+
                 <!-- <button>新增商品</button> -->
               </div>
 
@@ -434,14 +421,13 @@
                 <div class="bd-example">
                   <p class="h4">商城單筆修改</p>
                 </div>
-                <form action="./php/mall/back_product_edit.php" method="post"  enctype="multipart/form-data">
+                <form action="./php/mall/back_product_edit.php" method="post" enctype="multipart/form-data">
                   <table class="table">
                     <thead class="thead-dark" id="back_product_input">
 
                     </thead>
                     <tbody>
-                      <!-- 
-                    <form action="prodUpdateToDb.php" method="post"> -->
+
                       <!-- <tr>
                       <th><input type="text"></th>
                       <th>商品名稱</th>
@@ -455,8 +441,6 @@
                       <th>設定</th>
                     </tr>  -->
 
-                      <!-- </form> -->
-
                     </tbody>
                   </table>
                 </form>
@@ -465,38 +449,106 @@
           </div>
 
         </div>
-      
+
         <div class="lightBox_content" id="lightBox_content_add">
           <div class="animated fadeIn ">
             <div class="card">
               <div class="card-body">
                 <div class="bd-example">
-                  <p class="h4">商城新增</p>
+                  <p class="h4">新增商品</p>
                 </div>
-                <form action="./php/mall/back_product_edit.php" method="post"  enctype="multipart/form-data">
+                <form action="./php/mall/back_product_add.php" method="post" enctype="multipart/form-data">
                   <table class="table">
-                    <thead class="thead-dark" id="back_product_input">
+                    <thead class="thead-dark" id="back_product_add">
+
+                      <tr>
+                        <th>商品貨號</th>
+                        <td>
+                          <input type="text"" name=" product_no" value="" id="product_no_add">
+                          <input type="hidden" name="product_num" value="" id="product_num_add">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>商品名稱</th>
+                        <td><input type="text" name="product_name" value="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>商品價格</th>
+                        <td><input type="text" name="product_price" value="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>商品圖片</th>
+                        <td>
+                          <input type="file" name="product_src"></input>
+                          <input type="hidden" name="product_src_hidden" value="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>商品顏色</th>
+                        <td>
+                          <input type="text" style='width:100%' name="product_color" value="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>商品說明</th>
+                        <td>
+                          <input type="text" style='width:100%' name="product_desc" value="">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>商品類別</th>
+                        <td>
+                          <select name="product_type">
+                            　<option value="1">公事包</option>
+                            　<option value="2">識別證</option>
+                            　<option value="3">名片夾</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <th>商品背景</th>
+                      <td><input type="file" name="product_bg_src"></input>
+                        <input type="hidden" name="product_bg_hidden" value="">
+                      </td>
+                      </tr>
+                      <tr>
+                        <th>商品輪播圖</th>
+                        <td><input type="file" name="product_slide_img"></input>
+                          <input type="hidden" name="product_slide_hidden"
+                            value="${mallProductObj[i].product_slide_img}">
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th>首頁廣告狀態</th>
+                        <td>
+                          <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name="index_on" checked value="1">
+                            <input type="hidden" name="index_on" class="input_ad_hidden" value="0"/>
+                            <label class="custom-control-label" for="customSwitch1">開啟/關閉</label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>上下架狀態</th>
+                        <td>
+                          <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch2" name="product_on" checked value="1">
+                            <input type="hidden" name="product_on" class="input_pdu_hidden" value="0"/>
+                            <label class="custom-control-label" for="customSwitch2">開啟/關閉</label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th colspan="2"
+                          style="text-align: center;background-color: #fff;border-bottom: none;border-color:#c8ced3;">
+                          <input type="submit" name="submit" value="送出">
+                        </th>
+                      </tr>
 
                     </thead>
-                    <tbody>
-                      <!-- 
-                    <form action="prodUpdateToDb.php" method="post"> -->
-                      <!-- <tr>
-                      <th><input type="text"></th>
-                      <th>商品名稱</th>
-                      <th>商品價格</th>
-                      <th>商品圖片路徑</th>
-                      <th>商品顏色</th>
-                      <th>商品說明</th>
-                      <th>商品類別</th>
-                      <th>商品背景</th>
-                      <th>商品輪播圖</th>
-                      <th>設定</th>
-                    </tr>  -->
 
-                      <!-- </form> -->
-
-                    </tbody>
                   </table>
                 </form>
               </div>
@@ -504,8 +556,8 @@
           </div>
 
         </div>
-
-
+     
+   
 
 
         <!-- =========================light box===================================== -->

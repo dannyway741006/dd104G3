@@ -39,63 +39,87 @@ for (var i = 0; i < navItem.length; i++) {
     var backNum = this.id.substr((this.id.length) - 1) - 1;
     backTable[`${backNum}`].style.display = "block";
     lightBoxContent.style.display = "none";
-
+    lightBoxContentAdd.style.display = "none";
   })
 
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //mall
-
 var back_product_input = document.getElementById("back_product_input");
+var back_product_add = document.getElementById("back_product_add");
 var mall_add = document.querySelector(".mall_add");
+var lightBoxContentAdd = document.getElementById("lightBox_content_add");
+var lightBoxContent = document.getElementById("lightBox_content");
+var customSwitch1 = document.querySelector("#customSwitch1");
+var customSwitch2 = document.querySelector("#customSwitch2");
 
-
-
-function mallAdd(){
-  var lightBoxContentAdd = document.getElementById("lightBox_content_add");
+function mall_Add() { //新增商品表單
   lightBoxContentAdd.style.display = "block";
   backTable[3].style.display = "none";
-  var trStrAdd;
 
+  var input_ad_hidden = document.getElementsByClassName('input_ad_hidden')[0];
+  input_ad_hidden.disabled = false;
+  customSwitch1.addEventListener("change",function(){
+    if(customSwitch1.checked){
+      input_ad_hidden.disabled = true;
+    }else{
+      input_ad_hidden.disabled = false;
+    }
+    console.log(customSwitch1.value)
+  })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  var input_pdu_hidden = document.getElementsByClassName('input_pdu_hidden')[0];
+  input_pdu_hidden.disabled = false;
+  customSwitch2.addEventListener("change",function(){
+    if(customSwitch2.checked){
+     
+      input_pdu_hidden.disabled = true;
+      
+    }else{
+      input_pdu_hidden.disabled = false;
+      
+    }
+    console.log(customSwitch2.value)
+  })
 
 }
 
-
-function mall_alert() {
-  var lightBoxContent = document.getElementById("lightBox_content");
+function mall_edit() { //修改商品表單
   var trStrS;
-  // console.log(this.id.substr(3))
   lightBoxContent.style.display = "block";
   backTable[3].style.display = "none";
-
 
   back_product_input.innerHTML = "";
   for (var i = 0; i < mallProductObj.length; i++) {
     if (mallProductObj[i].product_no == this.id.substr(3)) {
       // console.log(mallProductObj[i].product_no)
+      trStrS += `<tr>`
       trStrS += `<th>商品編號</th>`
       trStrS += `<td>${mallProductObj[i].product_no}<input type="hidden" name="product_no" value="${mallProductObj[i].product_no}"></td>`
       trStrS += `</tr>`
@@ -133,7 +157,7 @@ function mall_alert() {
       </td>`
       trStrS += `</tr>`
       trStrS += `<tr>`
-      trStrS += `<th colspan="2" style="text-align: center;background-color: #fff;border-bottom: none;border-color:#c8ced3;"><input type="submit" name="submit">送出</th>`
+      trStrS += `<th colspan="2" style="text-align: center;background-color: #fff;border-bottom: none;border-color:#c8ced3;"><input type="submit" name="submit" value="送出"></th>`
       trStrS += `</tr>`
 
       trStrS = trStrS.substring(9);
@@ -163,7 +187,7 @@ function mallList() {
         trStr += `<td data-th="商品類別" style='word-break:break-all'>${mallProductObj[i].product_type}</td>`;
         trStr += `<td data-th="商品背景" style='word-break:break-all'"><img width="100" src="${mallProductObj[i].product_bg_src}"></td>`;
         trStr += `<td data-th="商品輪播圖" style='word-break:break-all'"><img width="100" src="${mallProductObj[i].product_slide_img}"></td>`;
-        trStr += `<td data-th="設定"><span class="mall_modify" id="pdu${mallProductObj[i].product_no}">編輯</span> / <span class="mall_edit">下架</span>`;
+        trStr += `<td data-th="設定"><span class="mall_modify" id="pdu${mallProductObj[i].product_no}">編輯</span>`;
         trStr += '</tr>';
 
       }
@@ -173,7 +197,7 @@ function mallList() {
     }
     for (var i = 0; i < mallProductObj.length; i++) {
       var mallModify = document.querySelectorAll('.mall_modify');
-      mallModify[i].addEventListener('click', mall_alert);
+      mallModify[i].addEventListener('click', mall_edit);
     }
   }
 
@@ -184,5 +208,12 @@ function mallList() {
 }
 
 
-mall_add.addEventListener("click",mallAdd,false)
+mall_add.addEventListener("click", mall_Add, false)
 window.addEventListener("load", mallList, false);
+
+
+//新增商品預設開關
+window.addEventListener("load",function(){
+  customSwitch1.checked = false;
+  customSwitch2.checked = false;
+})

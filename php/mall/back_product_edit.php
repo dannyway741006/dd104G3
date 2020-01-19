@@ -99,9 +99,9 @@ try {
   $product->bindValue(":product_bg_src", $fileName2);
   $product->bindValue(":product_slide_img", $fileName3);
   $product->execute();
-
-  echo "修改成功";
-  header("Location: ../../back.html");
+  echo "<script> {window.alert('修改成功');location.href='../../back.html'} </script>";
+  // echo "修改成功";
+  // header("Location: ../../back.html");
   
 } catch (PDOException $e) {
   $errMsg .= "錯誤原因 : " . $e->getMessage() . "<br>";
