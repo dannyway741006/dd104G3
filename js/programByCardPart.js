@@ -956,9 +956,29 @@ var main_content = new Vue({
       }
     },
 
-    calltomato(detailIndex, index) {
+    calltomato() {
       alert("已加入蕃茄鐘");
-      
+      const vm = this;
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card_inner.php",
+        "data": {
+          "type": "update_onload_tomato",
+          "todo_cont_clock": 1,
+          // "todo_cont_no":
+
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+         
+
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
     },
     //最小子項目勾選 卡片顯示進度 已勾項目
     todo_card_progress_checked(index) {
