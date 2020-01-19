@@ -215,6 +215,9 @@
         width: 100%;
         margin: 5px 0;
       }
+      button.invite_add_member_btn{
+        @include baseBtn(auto, auto, 10px);
+      }
     }
 
     //邀請成員區--結束

@@ -183,7 +183,7 @@
                   <p>輸入會員帳號</p>
                   <input type="text" class="invite_add_member_addr"
                     v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member(item)" maxlength="50">
-                  <button @click='invite_add_member(item)'>送出</button>
+                  <button class="invite_add_member_btn" @click='invite_add_member(item)'>送出</button>
                 </div>
               </transition>
             </div>
