@@ -1,20 +1,3 @@
-// 購物車數字
-// let cartCount = document.querySelector('.mall_cart_cir');
-// let mallBtn = document.querySelector('.mall_bBtn');
-// let count = 0;
-
-// if (cartCount.textContent === 0) {
-//   cartCount.style.display = "none";
-// } 
-// else {
-//   // mallBtn.addEventListener('click', function () {
-//     cartCount.style.display = "block";
-//   //   count++;
-//   //   cartCount.textContent = count;
-//   // })
-// }
-
-
 /* jQuery*/
 /* 啟用貓頭鷹/niceSelect下拉 */
 $(document).ready(function ($) {
@@ -57,26 +40,20 @@ var mallBtn01 = document.querySelector('#mall_btn01'); //主按鈕類別1
 var mallBtn02 = document.querySelector('#mall_btn02'); //主按鈕類別2
 var mallBtn03 = document.querySelector('#mall_btn03'); //主按鈕類別3
 
-
-
-
-
 let mall_data, mall_type, mall_num;
 
 async function getProduct() {
   mall_color.innerHTML = ''; //下拉選單按鈕預設
-  let mallType = this.dataset ? this.dataset.type : 1;
-  mall_data = await fetch('./mall_data_test.php?product_type=' + mallType)
+  mallType = this.dataset ? this.dataset.type : 1;
+  // console.log(this.dataset)
+  mall_data = await fetch('./php/mall/mall_data.php?product_type=' + mallType)
     .then(res => res.json())
     .then(json => json)
     .catch(err=>console.log(err))
-  console.log(mall_data);
+  // console.log('./php/mall/mall_data.php?product_type=' + mallType);
 
   mall_content();
 }
-
-
-
 
 function mall_content() {
   //預設
@@ -95,23 +72,6 @@ function mall_content() {
   function owlBtn() {
     mall_color.innerHTML = '';
     var thisJpg = this.src.substring(this.src.lastIndexOf("/") + 1);
-    // console.log(thisJpg);
-    // console.log(thisJpg.substring(0, 3));
-
-
-    // console.log(mallBg.style.backgroundImage);
-
-
-
-
-
-
-
-
-
-
-
-
 
     for (var i in mall_data) {
 
@@ -132,15 +92,13 @@ function mall_content() {
     
         product_price = document.querySelector("#product_price");
 
-       console.log(product_featuresLi)
+      //  console.log(product_featuresLi)
         product_name.textContent = mall_data[i].product_name; //商品名字
         // product_features.innerHTML = mall_data[i].product_desc; //商品描述
         // product_featuresLi.innerHTML = mall_data[i].product_desc  //商品描述
         // product_features.innerHTML = "12313123"; //商品描述
         product_featuresLi.innerHTML = mall_data[i].product_desc;
         product_price.textContent = mall_data[i].product_price; //商品價格 
-
-
 
         var sbgColorArr = [];
         sbgColorArr.push(mall_data[i]["product_color"]);
@@ -156,7 +114,6 @@ function mall_content() {
 
         mall_color_optionSingle.value = mall_data[i]["product_src"].substring(mall_option_value_first, mall_option_value_last);
 
-
         // // 下拉換圖
         var bImag = document.querySelector('.b_img');
         bImag.src = `img/mall_img/${document.querySelectorAll('#mall_color option')[0].value}.png`;
@@ -164,47 +121,19 @@ function mall_content() {
           let val = this.value;
           bImag.src = `img/mall_img/${val}.png`;
         })
-
-
       }
-
     }
-
-
-    // var dataThisNum = mall_data[thisJpg.charAt(2)];
-    // console.log(dataThisNum)
-    // //商品基本資料
-    // var product_name = document.querySelector('#product_name');
-    // var product_features = document.getElementsByClassName('product_features')[0];
-    // var product_price = document.querySelector("#product_price");
-    // product_name.textContent = mall_data[0].product_name; //商品名字
-    // product_features.innerHTML = mall_data[0].product_desc; //商品描述
-    // product_price.textContent = mall_data[0].product_price; //商品價格
-
-    // console.log( product_name.textContent)
-
-
-
   }
-
-
-
- 
-
-
-
 
   // 預設背景圖
   var mallBg = document.querySelector('.mall_content');
   for (var i in mall_data) {
     if (mall_data[i]["product_num"] == mall_data[0]["product_num"]) {
       mallBg.style.backgroundImage = "url(./"+ mall_data[0]["product_bg_src"];
-      console.log(mallBg.style.backgroundImage)
+      // console.log(mallBg.style.backgroundImage)
     }
 
   }
-
-
 
   // 預設第0個商品
   var sbgColorArr = [];
@@ -224,7 +153,6 @@ function mall_content() {
 
   }
 
-
   // // 下拉換圖預設
   var bImag = document.querySelector('.b_img');
   bImag.src = `img/mall_img/${document.querySelectorAll('#mall_color option')[0].value}.png`;
@@ -232,46 +160,6 @@ function mall_content() {
     let val = this.value;
     bImag.src = `img/mall_img/${val}.png`;
   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // //商品基本資料
-  // var product_name = document.querySelector('#product_name');
-  // var product_features = document.getElementsByClassName('product_features')[0];
-  // var product_price = document.querySelector("#product_price");
-  // product_name.textContent = mall_data[0].product_name; //商品名字
-  // product_features.innerHTML = mall_data[0].product_desc; //商品描述
-  // product_price.textContent = mall_data[0].product_price; //商品價格
-
-
-  // 預設下拉資料庫資料
-  // var sbgColorArr = [];
-
-  // for (var i in mall_data) {
-  //   if (mall_data[i]["product_num"] == mall_data[0]["product_num"]) {
-  //     sbgColorArr.push(mall_data[i]["product_color"]);
-
-  //     // 下拉選單 選項
-  //     var mall_color_option = document.createElement("option");
-  //     mall_color.appendChild(mall_color_option).textContent = `${sbgColorArr[i]}`;
-
-  //     // 下拉選單 Value
-  //     var mall_option_value_first = mall_data[i].product_src.lastIndexOf("/") + 1;
-  //     var mall_option_value_last = mall_data[i].product_src.lastIndexOf("png") - 1;
-  //     document.querySelectorAll("#mall_color option")[i].setAttribute("value", mall_data[i]["product_src"].substring(mall_option_value_first, mall_option_value_last));
-  //   }
-
-  // }
 
   // 預設輪播資料庫資料
   var sbg_arr = [];
@@ -297,41 +185,10 @@ function mall_content() {
     owl_img_list[i].addEventListener("click", owlBtn, false);
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
 window.addEventListener("load", getProduct);
 mallBtn01.addEventListener("click", getProduct);
 mallBtn02.addEventListener("click", getProduct);
-
-
-
-
-
-// var mall_bBtn_all = document.querySelector("#mall_bBtn_all");
-// var mall_color_option = document.createElement("option");
-// var mall_color = document.querySelector("#mall_color");
-// var mall_color_sql = mall_data[0].product_color;
-
-// 顏色
-// var mall_new_option = mall_color.appendChild(mall_color_option);
-// var mall_option_value_first = mall_data[0].product_src.lastIndexOf("/") + 1;
-// var mall_option_value_last = mall_data[0].product_src.lastIndexOf("png") - 1;
-// var mall_new_option_value = mall_data[0].product_src.substring(mall_option_value_first, mall_option_value_last);
-// mall_new_option.innerHTML = mall_color_sql;
-// mall_new_option.setAttribute("value", mall_new_option_value);
+mallBtn03.addEventListener("click", getProduct);
