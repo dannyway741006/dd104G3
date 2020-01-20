@@ -26,6 +26,7 @@ var app = new Vue({
         currentTotalTime:0,
         //現在再跑的任務,
         working:true,
+        userInfo: [],
         todos:[
             {
                 id:'mask1',
@@ -70,6 +71,31 @@ var app = new Vue({
         
     },
     mounted() {
+        fetch("./php/member/isLogin.php")
+        .then(res => res.json())
+        .then(json => {
+          if (json.status === "success") {
+            this.userInfo = json.data
+            fetch('./php/clock/getTodo.php',{
+                method:'POST',
+                body:new URLSearchParams(`mem_no=${this.userInfo.mem_no}`)
+            })
+            .then((res)=>res.json())
+            .then(json=>{
+                json.data.forEach(data=>{
+                    data.currentTime = this.workTime
+                    if(data.complete){
+                    myChart.data.labels.push(data.title)
+                    myChart.data.datasets[0].data.push(data.totalTime)
+                    myChart.update();
+                    }
+                })
+                this.trelloTodos = json.data
+                // console.log(json.data)
+            });
+          }
+        })
+        .catch(err => console.log(err));
         if (localStorage.getItem('todos')) {
             try {
               this.todos = JSON.parse(localStorage.getItem('todos'));
@@ -79,20 +105,6 @@ var app = new Vue({
             }
           }
         //   console.log(MEMBER_INFO)
-        fetch('./php/clock/getTodo.php')
-        .then((res)=>res.json())
-        .then(json=>{
-            json.data.forEach(data=>{
-                data.currentTime = this.workTime
-                if(data.complete){
-                myChart.data.labels.push(data.title)
-                myChart.data.datasets[0].data.push(data.totalTime)
-                myChart.update();
-                }
-            })
-            this.trelloTodos = json.data
-            // console.log(json.data)
-        });
     },
     watch:{
         timer(){
