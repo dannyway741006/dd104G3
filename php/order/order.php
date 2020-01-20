@@ -19,7 +19,7 @@ try {
   $pdo = new PDO($dsn, $user, $password, $options);
   // $_SESSION["mem_no"] = 1;
 
-  $sql = "insert into `test2` (`product_price`,`cret_date`,`ship_addr`,`receiver_name`,`receiver_tel`,`order_sta`) values (:product_price , CURDATE(),:ship_addr,:receiver_name,:receiver_tel,1)";
+  $sql = "insert into `test2` (`product_price`,`cret_date`,`ship_addr`,`receiver_name`,`receiver_tel`,`order_sta`) values (:product_price , NOW(),:ship_addr,:receiver_name,:receiver_tel,2)";
   $cart = $pdo->prepare($sql);
   $cart->bindValue(":product_price", $_REQUEST["product_price"]);
   $cart->bindValue(":ship_addr", $_REQUEST["ship_addr"]);
@@ -27,10 +27,11 @@ try {
   $cart->bindValue(":receiver_tel", $_REQUEST["receiver_tel"]);
   $cart->execute();
   
-  // echo $_REQUEST["product_price"];
-  // echo $_REQUEST["ship_addr"];
-  // echo $_REQUEST["receiver_name"];
-  // echo $_REQUEST["receiver_tel"];
+  echo $_REQUEST["product_price"];
+  echo $_REQUEST["ship_addr"];
+  echo $_REQUEST["receiver_name"];
+  echo $_REQUEST["receiver_tel"];
+  echo $_REQUEST["cret_date"];
 } catch (PDOException $e) {
   echo $e->getMessage();
 }
