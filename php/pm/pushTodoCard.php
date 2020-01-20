@@ -16,7 +16,7 @@ try {
   $res->bindParam(':card_sta', $cardStatus);
   $res->execute();
   $lastCardId = $pdo->lastInsertId();
-  if ($data['content']) {
+  if (isset($data['content'])) {
     foreach ($data['content'] as $info) {
       $sql = 'insert into `todo` 
         (card_no, pro_no, todo_title) values
@@ -27,7 +27,7 @@ try {
       $res->bindParam(':todo_title', $info['title']);
       $res->execute();
       $lastId = $pdo->lastInsertId();
-      if ($info['lists']) {
+      if (isset($info['lists'])) {
         foreach ($info['lists'] as $list) {
           $listStatus = $list['status'] ? '1' : '0';
           $isClock = $list['isClock'] ? '1' : '0';
@@ -46,7 +46,7 @@ try {
       }
     }
   }
-  if ($data['files']){
+  if (isset($data['files'])){
     $upload_dir = '../../pmFiles//';
     if(!file_exists($upload_dir)) mkdir($upload_dir);
     foreach ($data['files'] as $file){

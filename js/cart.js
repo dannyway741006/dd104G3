@@ -20,13 +20,21 @@ for (let i = 0; i < cardNum1.length; i++) {
   });
 };
 
+//---creditcard rotate---//
+// let creditCatdRotate = document.querySelector('#creditcardCCV');
+// creditCatdRotate.addEventListener('click',()=>
+// {
+//   document.querySelector('.creidcard_rotate').setAttribute('style', 'transform:rotateY(180deg);transition:.5s');
+  
+// })
+
 //***---從storage取出資料到購物車---***//
 let storage = sessionStorage;
 
 //--先把myCartList取出來--//
 let getMyCartList = storage.getItem(`myCartList`);
 let cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
-console.log(cartProducts);
+// console.log(cartProducts);
 
 let total = 0;
 for (let key in cartProducts) {
@@ -68,19 +76,19 @@ let productNumber = document.querySelectorAll('.cart_product_number');
 for (let k = 0; k < cartProduct.length; k++) {
   let productValue = parseInt(productNumber[k].textContent);
   cutProductBtn[k].addEventListener('click', () => {
-    
+
     if (productValue == 1) {
       confirm('確定刪除商品嗎？');
       cartProduct[k].parentNode.removeChild(cartProduct[k]);
-      
+
       storage.removeItem(cartProducts[k]);
-      storage[`myCartList`] = storage[`myCartList`].replace(`${cartProducts[k]},`);
-      ////////------------上面這個有問題-------------//////////
+      storage[`myCartList`] = storage[`myCartList`].replace(`${cartProducts[k]},`, '');
+      ////////------------搞定-------------//////////
 
     } else {
       productValue--;
       productNumber[k].textContent = productValue;
-      console.log(cartProducts[k]);
+      // console.log(cartProducts[k]);
     }
   });
   // console.log(cartProducts[k]);
@@ -116,3 +124,41 @@ for (let i = 0; i < cartProduct.length; i++) {
   });
 }
 
+//產生XMLHttpRequest物件
+let xhr = new XMLHttpRequest();
+let cartSubmit = document.querySelector('.cart_submit');
+cartSubmit.addEventListener('click', () => {
+  //註冊callback function 
+  xhr.onload = function () {
+    if (xhr.status == 200) {
+      // document.querySelector("#idMsg").textContent = xhr.responseText;
+      console.log("----", xhr.responseText)
+    } else {
+      alert(xhr.statusText);
+    }
+  }
+  let cartNewTotal = document.querySelector('.cart_price_total');
+  let shipAddr = document.querySelector('#ship_addr');
+  let receiverTel = document.querySelector('#receiver_tel');
+  let receiverName = document.querySelector('#receiver_name');
+
+  let url = "./php/order/order.php";
+  xhr.open("POST", url, true);
+  //送出資料
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  let sendProductPrice = `product_price=${cartNewTotal.textContent}&ship_addr=${shipAddr.value}&receiver_name=${receiverName.value}&receiver_tel=${receiverTel.value}`;
+  xhr.send(sendProductPrice);
+  console.log(sendProductPrice);
+
+  //成功送出資料後清除填入的資訊
+  shipAddr.value = "";
+  receiverTel.value = "";
+  receiverName.value = "";
+
+  cartNewTotal.textContent = 0;
+  //成功送出資料後清除頁面商品
+  document.querySelector('.cart_list').innerHTML = "";
+  //成功送出資料後清除storage裡的資料
+  storage.clear();
+
+});

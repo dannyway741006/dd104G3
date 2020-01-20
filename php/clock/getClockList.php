@@ -1,9 +1,10 @@
 <?php
 try {
   require_once('../pdo.php');
-  $sql = 'select * from `program` p 
-  LEFT JOIN `todo_content` t on p.pro_no = t.pro_no
-  WHERE p.mem_no = :mem_no AND t.todo_cont_clock = 1';
+  $sql = 'select * FROM `join_program` j 
+  JOIN `program` p on (j.pro_no = p.pro_no)
+  JOIN `todo_content` t on (p.pro_no = t.pro_no)
+  where j.mem_no = :mem_no AND pro_mem_inv = 1 AND pro_sta = 0 AND t.todo_cont_clock = 1';
   $res = $pdo->prepare($sql);
   $res->bindParam('mem_no', $_POST['mem_no']);
   $res->execute();

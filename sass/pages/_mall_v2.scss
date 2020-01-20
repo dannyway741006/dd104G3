@@ -244,8 +244,8 @@ option:hover {
       // outline: none;
       cursor: pointer;
       // @include font(1);
-      @include baseBtn(90%, 50px, 10px);
-      margin: 5px 0px;
+      @include baseBtn;
+      margin-left: 10px;
 
 
     }
@@ -444,7 +444,8 @@ option:hover {
 
 
       .mall_bBtn {
-        @include baseBtn(100%, 50px, 10px);
+        @include baseBtn;
+        margin-left: 10px;
       }
     }
   }

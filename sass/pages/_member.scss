@@ -1,3 +1,6 @@
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 .status {
   a {
     width: 30%;
@@ -479,7 +482,7 @@
       .up_member_icon {
         border: 1px solid black;
         @include hoverIcon(25px);
-        @include baseBtn(40px, 40px, 100%);
+        @include baseBtn(40px, 40px, 50%);
         left: -80%;
         margin-top: 190%;
 
@@ -492,7 +495,7 @@
       .member_img_box {
         width: 120px;
         height: 120px;
-        // border: 1px solid blue;
+        background-color: $dark;
         border-radius: 100%;
         overflow: hidden;
         display: flex;

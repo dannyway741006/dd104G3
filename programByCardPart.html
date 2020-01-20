@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="./node_modules/vue2-datepicker/index.css">
   <link rel="stylesheet" href="./css/main.css" />
+  <link rel=icon href=favicon.ico>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
-  <title>Document</title>
+  <title>職人口袋 | 專案管理</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <header>
       <div class="header">
         <div class="logo">
-          <a href="./index.html">
+          <a href="./home.html">
             <img src="./img/logo.svg" />
           </a>
         </div>
@@ -36,7 +36,7 @@
       </div>
       <nav class="nav_bar">
         <div class="logo">
-          <a href="./index.html">
+          <a href="./home.html">
             <img src="./img/logo.svg" alt="logo" />
           </a>
         </div>
@@ -181,10 +181,9 @@
               <transition name="fade" mode="out-in">
                 <div class="invite_add_member_box" v-show="invite_add_member_box" @click.stop="">
                   <p>輸入會員帳號</p>
-                  <form action="">
-                    <input type="text" class="invite_add_member_addr" id="invite_add_member_addr"
-                      v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member()" maxlength="50">
-                  </form>
+                  <input type="text" class="invite_add_member_addr"
+                    v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member(item)" maxlength="50">
+                  <button class="invite_add_member_btn" @click='invite_add_member(item)'>送出</button>
                 </div>
               </transition>
             </div>
@@ -530,7 +529,7 @@
         </div>
 
         <!-- 現有卡片背面 -->
-        <div class="mask" :class="{masked: opened}" @click="card_no=-1;history_card_no=-1;opened =! opened,editcard(index)()"></div>
+        <div class="mask" :class="{masked: opened}" @click="card_no=-1;history_card_no=-1;opened =! opened"></div>
         <div v-if='nowProgram'>
 
           <!-- card_list_todo -->
@@ -539,9 +538,9 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title" ><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
 
-                  <div @click="opened = false;card_no=-1,editcard(index)()"><img src="./img/card_img/cancel_w.svg" alt=""></div>
+                  <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
 
                 <div class="lightbox_content">
@@ -622,7 +621,7 @@
                     <div class="second_right">
                       <h3>卡片動作</h3>
                       <hr />
-                      <div class="second_right_deletecard" @click="delete_card()">
+                      <div class="second_right_deletecard" @click="delete_card(cardIndex)">
                         <img src="./img/card_img/delete.0df56913.svg" alt="" style="width: 20px;" />
                         刪除卡片
                       </div>
@@ -686,7 +685,7 @@
                           <!-- hover時顏色好像改不了 -->
                           <p>
                             <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm'
-                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" />
+                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="set_calendar_date"/>
                           </p>
                           <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                         </div>
@@ -704,7 +703,7 @@
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
                               v-show="item.test_title_name">{{item.title}}</h3>
                             <div class="change_title" v-show="item.showname" @click.stop="">
-                              <textarea name="" v-model.trim="item.title"
+                              <textarea name="" v-model.trim="item.title" @focus="updatetodolist_title"
                                 @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name" maxlength="50"></textarea>
                             </div>
 
@@ -722,12 +721,12 @@
                           <draggable v-model="item.lists" :options="{animation:500}">
                             <transition-group name="fade" tag="div">
                               <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                                <div @click="item.status = !item.status,item.text =!item.text">
+                                <div @click="item.status = !item.status,item.text =!item.text,update_list_sta()">
                                   <img src="./img/check.svg" alt="" v-if="item.status">
                                   <img src="./img/uncheck.svg" alt="" v-else>
                                 </div>
                                 <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color" :class="{add_to_tomato : item.tomato_color}"></div>
+                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color,calltomato()" :class="{add_to_tomato : item.tomato_color}"></div>
                                 <div><img src="./img/card_img/delete.0df56913.svg" alt=""
                                     @click="delete_todo_title(detailIndex,index)"></div>
                               </div>
@@ -791,9 +790,9 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
 
-                  <div @click="opened = false;card_no=-1,editcard(index)()"><img src="./img/card_img/cancel_w.svg" alt=""></div>
+                  <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
 
                 <div class="lightbox_content">
@@ -874,7 +873,7 @@
                     <div class="second_right">
                       <h3>卡片動作</h3>
                       <hr />
-                      <div class="second_right_deletecard" @click="delete_card()">
+                      <div class="second_right_deletecard" @click="delete_card(cardIndex)">
                         <img src="./img/card_img/delete.0df56913.svg" alt="" style="width: 20px;" />
                         刪除卡片
                       </div>
@@ -938,7 +937,7 @@
                           <!-- hover時顏色好像改不了 -->
                           <p>
                             <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm'
-                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" />
+                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="set_calendar_date"/>
                           </p>
                           <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                         </div>
@@ -956,7 +955,7 @@
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
                               v-show="item.test_title_name">{{item.title}}</h3>
                             <div class="change_title" v-show="item.showname" @click.stop="">
-                              <textarea name="" v-model.trim="item.title"
+                              <textarea name="" v-model.trim="item.title" @focus="updatetodolist_title"
                                 @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name" maxlength="50"></textarea>
                             </div>
 
@@ -974,12 +973,12 @@
                           <draggable v-model="item.lists" :options="{animation:500}">
                             <transition-group name="fade" tag="div">
                               <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                                <div @click="item.status = !item.status,item.text =!item.text">
+                                <div @click="item.status = !item.status,item.text =!item.text,update_list_sta()">
                                   <img src="./img/check.svg" alt="" v-if="item.status">
                                   <img src="./img/uncheck.svg" alt="" v-else>
                                 </div>
                                 <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color" :class="{add_to_tomato : item.tomato_color}"></div>
+                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color,calltomato()" :class="{add_to_tomato : item.tomato_color}"></div>
                                 <div><img src="./img/card_img/delete.0df56913.svg" alt=""
                                     @click="delete_todo_title(detailIndex,index)"></div>
                               </div>
@@ -1042,9 +1041,9 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
 
-                  <div @click="opened = false;card_no=-1,editcard(index)()"><img src="./img/card_img/cancel_w.svg" alt=""></div>
+                  <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
 
                 <div class="lightbox_content">
@@ -1125,7 +1124,7 @@
                     <div class="second_right">
                       <h3>卡片動作</h3>
                       <hr />
-                      <div class="second_right_deletecard" @click="delete_card()">
+                      <div class="second_right_deletecard" @click="delete_card(cardIndex)">
                         <img src="./img/card_img/delete.0df56913.svg" alt="" style="width: 20px;" />
                         刪除卡片
                       </div>
@@ -1189,7 +1188,7 @@
                           <!-- hover時顏色好像改不了 -->
                           <p>
                             <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm'
-                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" />
+                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="set_calendar_date"/>
                           </p>
                           <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                         </div>
@@ -1207,7 +1206,7 @@
                               @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
                               v-show="item.test_title_name">{{item.title}}</h3>
                             <div class="change_title" v-show="item.showname" @click.stop="">
-                              <textarea name="" v-model.trim="item.title"
+                              <textarea name="" v-model.trim="item.title" @focus="updatetodolist_title" @focus="updatetodolist_title"
                                 @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name" maxlength="50"></textarea>
                             </div>
 
@@ -1225,12 +1224,12 @@
                           <draggable v-model="item.lists" :options="{animation:500}">
                             <transition-group name="fade" tag="div">
                               <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                                <div @click="item.status = !item.status,item.text =!item.text">
+                                <div @click="item.status = !item.status,item.text =!item.text,update_list_sta()">
                                   <img src="./img/check.svg" alt="" v-if="item.status">
                                   <img src="./img/uncheck.svg" alt="" v-else>
                                 </div>
                                 <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color" :class="{add_to_tomato : item.tomato_color}"></div>
+                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color,calltomato()" :class="{add_to_tomato : item.tomato_color}"></div>
                                 <div><img src="./img/card_img/delete.0df56913.svg" alt=""
                                     @click="delete_todo_title(detailIndex,index)"></div>
                               </div>
@@ -1640,11 +1639,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
     <script src="./js/lib/index.min.js"></script>
-        
-    <script src="./js/background.js"></script>
-    <script src="./js/layout.js" type="module"></script>
-
+    
     <script src="./js/programByCardPart.js"></script>
+    <script src="./js/background.js"></script>
+    <script src="./js/layout.js"></script>
 
 
 </body>

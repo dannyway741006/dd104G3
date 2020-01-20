@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
-  <title>Document</title>
+  <title>職人口袋 | 會員中心</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
     <header>
       <div class="header">
         <div class="logo">
-          <a href="./index.html">
+          <a href="./home.html">
             <img src="./img/logo.svg" alt="logo" />
           </a>
         </div>
@@ -35,7 +35,7 @@
       </div>
       <nav class="nav_bar">
         <div class="logo">
-          <a href="./index.html">
+          <a href="./home.html">
             <img src="./img/logo.svg" alt="logo" />
           </a>
         </div>
@@ -348,58 +348,56 @@
               <div class="memberTitle_content">
                 <div class="member_img">
                   <div class="member_img_box">
-                    <img id="acceptImg" src="./img/member_img/user-tie-solid.svg" alt="" width="105px">
+                    <img id="acceptImg" src="./img/icon/user.9c173fc0.svg" alt="" width="105px">
                   </div>
                   <label class="up_memberpic">
                     <input type="file" name="file" onchange="showImg(this)" style="display: none;">
                     <div class="up_member_icon">
                       <img src="./img/member_img/camera.svg" alt="">
-                      <img src="./img/member_img/camera1.svg" alt="">
+                      <img src="./img/member_img/camera.svg" alt="">
                     </div>
                   </label>
                 </div>
               </div>
-
               <div class="member_info">
                 <form action="" method="POST" autocomplete="off">
                   <ul class="con1_info">
                     <li>
                       <p>帳號：</p>
                       <label for="" class="line_box">
-                        <input type="text" autocomplete="off" class="text_word" id="memName1" value="">
-                        <span class="upbox" id="upbox"></span>
+                        <input type="text" autocomplete="off" class="text_word" id="memId" disabled>
+                        <span class="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>姓名：</p>
                       <label for="" class="line_box">
-                        <input type="text" autocomplete="off" class="text_word" value="" id="memName2">
-                        <span class="upbox" id="upbox"></span>
+                        <input type="text" autocomplete="off" class="text_word" id="memName" placeholder="未設定">
+                        <span class="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>信箱：</p>
                       <label for="" class="line_box">
-                        <input type="email" autocomplete="off" class="text_word" value="" id="memName3">
-                        <span class="upbox" id="upbox"></span>
+                        <input type="email" autocomplete="off" class="text_word" id="memEmail">
+                        <span class="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>電話：</p>
                       <label for="" class="line_box">
-                        <input type="number" autocomplete="off" class="text_word" value="" id="memName4">
-                        <span class="upbox" id="upbox"></span>
+                        <input type="number" autocomplete="off" class="text_word" id="memPhone" placeholder="未設定">
+                        <span class="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>住址：</p>
                       <label for="" class="line_box">
-                        <input type="text" autocomplete="off" class="text_word" id="memName5" value="">
-                        <span class="upbox" id="upbox"></span>
+                        <input type="text" autocomplete="off" class="text_word" id="memAddr" placeholder="未設定">
+                        <span class="upbox"></span>
                       </label>
                     </li>
                     <button type="button" class="memberbtn" id="memberbtn">確認修改</button>
-                    <button type="button" id="update_member">test修改</button>
                   </ul>
                 </form>
               </div>
@@ -422,54 +420,52 @@
             <!-- ========================================================== -->
             <div class="member_order_content" id="memcon2">
               <div ng-app class="order_group">
-                <form action="">
-                  <table class="table_oder">
-                    <tr class="table_oder_top">
-                      <th>購買日期</th><button id="test_delete" type="button">test delete</button>
-                      <th>訂單編號</th>
-                      <th>
-                        <div class="th3_box">
-                          <span class="allcheck">
-                            <input type="checkbox" id="allcheck" onChange="selectAll.call(this, event);">
-                            <label for="allcheck" class="delete_pointer">
-                              <span id="change_word1">全選/</span>
-                            </label>
-                            <label id="delet_btn1" class="delete_all_oder">
-                              <input type="botton" name="botton" style="display: none;">
-                          </span>
-                          <span class="delete_oder" id="delet_btn">
-                            <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
-                            <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
-                          </span>
+                <table class="table_oder">
+                  <tr class="table_oder_top">
+                    <th>購買日期</th>
+                    <th>訂單編號</th>
+                    <th>
+                      <div class="th3_box">
+                        <span class="allcheck">
+                          <input type="checkbox" id="allcheck" onChange="selectAll.call(this, event);">
+                          <label for="allcheck" class="delete_pointer">
+                            <span id="change_word1">全選/</span>
                           </label>
-                        </div>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td> <label for="order_box1">2019/09/12 </label></td>
-                      <td><label for="order_box1">000000001</label></td>
-                      <td>
-                        <div class="th3_box">
-                          <span class="checkall">
-                            <input type="checkbox" class="checks" id="checkall">
-                            <label for="checkall"></label>
-                            <label for="allchecks" class="delete_pointer">
-                              <span>/</span>
-                            </label>
-                          </span>
-                          <span class="delete_oder" id="delet_btn">
-                            <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
-                            <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>
-                </form>
+                          <label id="delet_btn1" class="delete_all_oder">
+                            <input type="botton" name="botton" style="display: none;">
+                        </span>
+                        <span class="delete_oder" id="delet_btn">
+                          <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
+                          <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
+                        </span>
+                        </label>
+                      </div>
+                    </th>
+                  </tr>
+                  <!-- <tr>
+                    <td><label for="order_box1" id='cretDate'>2019/09/12 </label></td>
+                    <td><label for="order_box1" id="order_no">000000001</label></td>
+                    <td>
+                      <div class="th3_box">
+                        <span class="checkall">
+                          <input type="checkbox" class="checks" id="checkall">
+                          <label for="checkall"></label>
+                          <label for="allchecks" class="delete_pointer">
+                            <span>/</span>
+                          </label>
+                        </span>
+                        <span class="delete_oder" id="delet_btn">
+                          <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
+                          <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
+                        </span>
+                      </div>
+                    </td>
+                  </tr> -->
+                </table>
               </div>
               <div class="order_details">
                 <!-- ===============訂單內容雙向綁定====================================== -->
-                <!-- <input type="radio" id="order_box1" name="gallery" hidden="" checked="checked" />
+                <input type="radio" id="order_box1" name="gallery" hidden="" checked="checked" />
                 <div class="order_infomation">
                   <div class="order_group1">
                     <table class="table_order table_order_special">
@@ -478,18 +474,18 @@
                         <th>數量</th>
                         <th>價格</th>
                       </tr>
-                      <tr>
+                      <!-- <tr>
                         <th>${product_no}</th>
                         <th>${product_amout}</th>
                        <th>${product_price}</th>
-                      </tr>
+                      </tr> -->
                     </table>
                   </div>
                 </div>
-             =============================================================================================             -->
+             <!-- =============================================================================================  -->
                 <div class="details_img">
                   <img src="./img/member_img/folder-open-solid.svg" alt="" width="150">
-                </div> 
+                </div>
               </div>
             </div>
           </div>
@@ -533,9 +529,10 @@
             gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
         }
     </script>
-    <script src="./js/member.js"></script>
-    <script src="./js/member_php1.js"></script>
-    <script src="./js/layout.js" type="module"></script>
+  <script src="./js/background.js"></script>
+  <script src="./js/layout.js"></script>
+  <script src="./js/member.js"></script>
+  <script src="./js/member_php1.js"></script>
 </body>
 
 </html>

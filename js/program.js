@@ -89,7 +89,7 @@ var main_content = new Vue({
 
     calandar_switch: false,
 
-    // file_switch: false,
+    file_switch: false,
 
     card_meber_switch: false,
 
@@ -130,6 +130,7 @@ var main_content = new Vue({
 
 
     window_width: 0,
+    userInfo: []
 
 
 
@@ -138,22 +139,18 @@ var main_content = new Vue({
     window.addEventListener('resize', this.handleResize)
     this.handleResize();
   },
-  destroyed() {
+  beforeDestroy() {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     //新增專案
     add_program() {
 
-      // axios
-      //   .get('php_program/push_member.php')
-      //   .then((res) => {
-      //     var pro_mem_Arr = res.data;
-
       // console.log(this.programs)
       // console.log(main_content.programs)
       if (this.pro_title !== "" && this.selectColor) {
         this.programs.push({
+          pro_no: "",
           pro_title: this.pro_title,
           changeimage: false, //uncheck
           pro_col: this.selectColor,
@@ -208,79 +205,64 @@ var main_content = new Vue({
         // console.log(this.programs.length-1);
         this.page = this.programs.length - 1;
 
-
+        const vm = this;
         $.post('./php/pm/create_program.php', {
           pro_title: this.programs[this.page].pro_title,
           pro_col: this.programs[this.page].pro_col,
         }, function (res) {
           // console.log(res)
+          vm.programs[vm.page].pro_no = res;
         })
+
+
+        // $.ajax({
+        //   "type": "POST",
+        //   "dataType": "json",
+        //   "url": "./php/pm/program.php",
+        //   "data": {
+        //     "type": "add_program",
+        //     "pro_title": vm.programs[vm.page].pro_title,
+        //     "pro_col": vm.programs[vm.page].pro_col,
+
+        //   },
+        //   "cache": false,
+        //   "success": function (data) {
+        //     console.log(data);
+        //     vm.programs[vm.page].pro_no = res;
+        //   },
+        //   "error": function (data) {
+        //     console.log(data);
+        //   }
+        // });
+
 
       } else {
         alert('請填寫專案名稱及選擇專案專屬色')
       }
-
-      // })
-      // .catch((error) => {
-      //   console.log(error)
-      // })
-
-
-
 
 
 
     },
 
     //邀請專案成員
-    invite_add_member() {
-      alert("in")
-      // if(document.getElementById('invite_add_member_addr').value==pro_mem_Arr[0].mem_id){};
-      // for (i = 0; i < pro_mem_Arr.length; i++) {
-      //   if (this.invite_add_member_addr == pro_mem_Arr[0].mem_id) {
-      // axios
-      //   .get('php_program/push_member.php')
-      //   .then((res) => {
-      //     var pro_mem_Arr = res.data;
-      //     // console.log(pro_mem_Arr[0].mem_name)
-      //     this.programs[this.page].program_memeber.push({
-
-      //       member_name: pro_mem_Arr[i].mem_name,
-      //       userId: pro_mem_Arr[i].mem_id,
-      //       src: pro_mem_Arr[i].headshot,
-      //     })
-
-
-      //   })
-      //   .catch((error) => {
-      //     console.log(error)
-      //   })
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/push_member.php",
-        "data": {
-          "mem_no": 1,
-          "pro_no": this.programs[index].pro_no
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
-          alert(data)
-
-
-        },
-        "error": function (data) {
-          console.log(data);
-          alert(data)
-        }
-      });
-
-      // }
-
-      // }
+    invite_add_member(program) {
+      console.log(program)
+      fetch('./php/member/invite_member.php', {
+        method: 'POST',
+        body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&invite_id=${program.invite_add_member_addr}&pro_no=${program.pro_no}`)
+      })
+        .then(res=>res.json())
+        .then(json=>{
+          alert(json.content)
+        })
+        .catch(err=>console.log(err))
     },
-
+    //點擊邀請出現邀請的跳窗
+    show_invite_add_member_box(){
+      this.invite_add_member_box = !this.invite_add_member_box;
+      this.cards_list_card_input_box = false;
+      this.add_cards_btn_div=true;
+    },
 
     //切換現有-已完成專案
     change_watched_text() {
@@ -294,65 +276,38 @@ var main_content = new Vue({
     },
     //rwd時點選關閉漢堡---------------------------打開它
     close_humberger() {
-      // container.classList.remove("nav_open")
+      container.classList.remove("nav_open")
     },
 
     //新增卡片
     show_cards_list_card_input_box() {
       this.add_cards_btn_div = !this.add_cards_btn_div;
       this.cards_list_card_input_box = true;
-      add_cards_btn = true;
+      this.add_cards_btn = true;
+      this.invite_add_member_box = false;
     },
     add_card(index) {
       const vm = this;
       //  console.log(index);
 
-
-      console.log(this);
+      console.log(vm.programs[index]);
       // var obj = Object.keys(this.programs[index].card_list_todo).map(function(_) { return this.programs[index].card_list_todo[_]; });
-      // this.programs[index].card_list_todo.cards.push({
 
-      //   card_name: this.card_name,
-      //   card_member: [],
-
-      //   //卡片內會員顯示
-      //   showhideMember: false,
-      //   member_input: "",
-      //   member_inout: [],
-
-
-      //   todo_list_content_detail: [],
-
-      //   //calendar
-      //   dateline: false,
-      //   dateline_text: "未完成",
-      //   calendar_date: '未設定',
-
-      //   //上傳檔案
-      //   filebox: [],
-      //   file_switch: false,
-      //   // sourced:'',
-      //   // //增加項目focus變長
-      //   // card_length:false,
-
-
-      // });
-      // console.log(this.programs[index].card_list_todo);
+      // console.log(vm.programs[index].card_list_todo);
       if (vm.card_name !== "") {
         $.ajax({
           "type": "POST",
           "dataType": "json",
-          "url": "./php/pm/push_card.php",
+          "url": "./php/pm/card.php",
           "data": {
             "type": "add_card",
-            "pro_no": this.programs[index].pro_no,
-            "card_name": this.card_name
+            "pro_no": vm.programs[index].pro_no,
+            "card_name": vm.card_name
           },
           "cache": false,
           "success": function (data) {
             // console.log(data);
             vm.show_cards(index);
-
 
           },
           "error": function (data) {
@@ -360,33 +315,34 @@ var main_content = new Vue({
           }
         });
 
-        // this.programs[index].card_list_todo.cards.push({
+        vm.programs[index].card_list_todo[0].cards.push({
 
-        //   card_name: this.card_name,
-        //   card_member: [],
+          card_name: vm.card_name,
+          card_member: [],
 
-        //   //卡片內會員顯示
-        //   showhideMember: false,
-        //   member_input: "",
-        //   member_inout: [],
-
-
-        //   todo_list_content_detail: [],
-
-        //   //calendar
-        //   dateline: false,
-        //   dateline_text: "未完成",
-        //   calendar_date: '未設定',
-
-        //   //上傳檔案
-        //   filebox: [],
-        //   file_switch: false,
-        //   // sourced:'',
-        //   // //增加項目focus變長
-        //   // card_length:false,
+          //卡片內會員顯示
+          showhideMember: false,
+          member_input: "",
+          member_inout: [],
 
 
-        // });
+          todo_list_content_detail: [],
+
+          //calendar
+          dateline: false,
+          dateline_text: "未完成",
+          calendar_date: '未設定',
+
+          //上傳檔案
+          filebox: [],
+          // file_switch: false,
+          // sourced: '',
+          //增加項目focus變長
+          card_length: false,
+
+
+        });
+
 
       } else {}
       this.card_name = "";
@@ -400,7 +356,9 @@ var main_content = new Vue({
     },
 
     show_cards(index) {
+      if(!this.programs.length) return
       const vm = this;
+      // console.log("123")
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -410,14 +368,15 @@ var main_content = new Vue({
         },
         "cache": false,
         "success": function (data) {
+          // console.log(index)
           // console.log(data);
           // console.log(vm.programs[index].card_list_todo.cards);
           // console.log(data);
+          // console.log(vm.programs[index].card_list_todo)
+          vm.programs[index].card_list_todo.splice(0, 1, data[0])
+          vm.programs[index].card_list_doing.splice(0, 1, data[1])
+          vm.programs[index].card_list_done.splice(0, 1, data[2])
 
-          vm.programs[index].card_list_todo.push(data[0]);
-          vm.programs[index].card_list_doing.push(data[1]);
-          vm.programs[index].card_list_done.push(data[2]);
-          // console.log(vm.programs);
         },
         "error": function (data) {
           console.log(data);
@@ -475,7 +434,7 @@ var main_content = new Vue({
       this.complete_info_box = !this.complete_info_box;
       this.programs[index].show_complete_info_box = true;
       //-------------------------------打開它
-      // container.classList.remove("nav_open")
+      container.classList.remove("nav_open")
 
     },
     //刪除專案跳窗提醒
@@ -483,7 +442,7 @@ var main_content = new Vue({
       this.delete_info_box = !this.delete_info_box;
       this.history_programs[index].show_delete_info_box = true;
       //-------------------------------打開它
-      // container.classList.remove("nav_open")
+      container.classList.remove("nav_open")
     },
 
     //完成專案
@@ -492,11 +451,14 @@ var main_content = new Vue({
 
 
       const vm = this;
+      // console.log(index);
+      // console.log(vm.programs[index].pro_no);
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php/pm/complete_program.php",
+        "url": "./php/pm/program.php",
         "data": {
+          "type": "complete_program",
           "pro_sta": 1,
           "pro_no": vm.programs[index].pro_no
         },
@@ -510,7 +472,7 @@ var main_content = new Vue({
         }
       });
 
-      // this.history_programs.push(this.programs[index])
+      this.history_programs.push(this.programs[index])
       this.page = index - 1;
       this.programs.splice(index, 1);
       if (this.programs.length != 0 && this.page == -1) {
@@ -522,11 +484,38 @@ var main_content = new Vue({
     },
     //刪除專案
     delete_program(index) {
+
+
+
+
+      const vm = this;
+
+      console.log(vm.history_programs)
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/program.php",
+        "data": {
+          "type": "delete_program",
+          "pro_no": vm.history_programs[index].pro_no
+        },
+        "cache": false,
+        "success": function (data) {
+          // console.log(data);
+          // vm.history_programs.splice(index, 1)
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+
+
       this.history_programs.splice(index, 1)
       this.history_page = index - 1;
       if (this.history_programs.length != 0 && this.history_page == -1) {
         this.history_page = 0;
       }
+
     },
 
     // 日曆部分
@@ -567,10 +556,35 @@ var main_content = new Vue({
 
     //刪除卡片
     delete_card(index) {
-      // console.log(this.programs[this.page])
+
+      const vm = this;
+      // console.log(index)
+      // console.log(vm.programs[vm.page][vm.todo_type][0].cards[index].card_no)
+
+      $.ajax({
+        "type": "POST",
+        "dataType": "json",
+        "url": "./php/pm/card.php",
+        "data": {
+          "type": "delete_card",
+          "card_no": vm.programs[vm.page][vm.todo_type][0].cards[index].card_no
+        },
+        "cache": false,
+        "success": function (data) {
+          console.log(data);
+          // vm.programs[vm.page][vm.todo_type][0].cards.splice(index, 1);
+        },
+        "error": function (data) {
+          console.log(data);
+        }
+      });
+
+
       this.programs[this.page][this.todo_type][0].cards.splice(index, 1);
       this.opened = !this.opened;
       this.card_no = null;
+
+
     },
 
 
@@ -578,111 +592,275 @@ var main_content = new Vue({
     //勾選未完成->已完成
     check_dateline() {
       if (this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline == false) { //未完成框框
+
+        const vm = this;
+        // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no)
+
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "check_dateline",
+            "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+            "card_sta": 1
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
+
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
         this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = true;
         this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '完成';
 
       } else {
+
+        const vm = this;
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "check_dateline",
+            "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+            "card_sta": 0
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
+
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
         this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false;
         this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '未完成';
       }
-
     },
-
-    // 增加待辦清單項目
-    todo_list_add(index) {
+    //設定卡片時間
+    set_calendar_date() {
+      // console.log(this.programs[this.page][this.todo_type][0].cards[this.card_no].calendar_date)
+      const vm = this;
       $.ajax({
         "type": "POST",
         "dataType": "json",
-        "url": "./php/pm/push_card.php",
+        "url": "./php/pm/card.php",
         "data": {
-          "type": "add_todo",
+          "type": "set_calendar_date",
+          "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+          "card_date":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date
         },
         "cache": false,
         "success": function (data) {
-          // console.log(data);
-          //   if (vm.card_name !== "") {
-          //     console.log(vm.programs[index].card_list_todo.cards);
-          //     vm.programs[index].card_list_todo.cards.push({
+          console.log(data);
 
-          //       card_name: vm.card_name,
-          //       card_member: [],
-
-          //       //卡片內會員顯示
-          //       showhideMember: false,
-          //       member_input: "",
-          //       member_inout: [],
-
-
-          //       todo_list_content_detail: [],
-
-          //       //calendar
-          //       dateline: false,
-          //       dateline_text: "未完成",
-          //       calendar_date: '未設定',
-
-          //       //上傳檔案
-          //       filebox: [],
-          //       file_switch: false,
-          //       // sourced:'',
-          //       // //增加項目focus變長
-          //       // card_length:false,
-
-
-          //     });
-          //     vm.card_name = "";
-          //     vm.cards_list_card_input_box = false;
-          //     vm.add_cards_btn = false;
-          //     vm.add_cards_btn_div = true;
-          // } else {}
         },
         "error": function (data) {
           console.log(data);
         }
       });
-      if (this.todoListTitle.length) {
-        this.programs[this.page][this.todo_type][0].cards[index].todo_list_content_detail.push({
-          title: this.todoListTitle,
-          //增加項目focus變長
-          lists: [],
 
-          //改變待辦事項標題 
-          showname: false,
-          test_title_name: true,
-
-          //改變待辦事項標題
-          test: '',
-        })
-        this.todoListTitle = null;
-        this.todo_lightbox_switch = false;
-        this.todo_switch = false;
-      } else {};
     },
+   //改變卡片標題
+   change_card_title() {
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "update_card",
+        "card_name":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_name,
+        "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
 
-    // 刪除待辦清單項目
-    deletecard_todo(detailIndex) {
-      this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail.splice(detailIndex, 1);
-    },
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
 
-    // 增加最小子項目
-    add_card_detail(detailIndex) {
-      if (this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
-        // console.log(this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists);
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.push({
+  // 增加待辦清單項目
+  todo_list_add(index) {
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "add_todo",
+        "pro_no": vm.programs[vm.page].pro_no,
+        "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+        "todo_title": vm.todoListTitle,
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
 
-          content: this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test,
-          status: false,
-          text: false,
-          tomato_color: false,
-        });
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test = '';
-        this.card_detail_lightbox = false;
-      } else {}
-    },
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+    if (this.todoListTitle.length) {
+      this.programs[this.page][this.todo_type][0].cards[index].todo_list_content_detail.push({
+        title: this.todoListTitle,
+        //增加項目focus變長
+        lists: [],
 
-    // 刪除最小子項目
-    delete_todo_title(detailIndex, index) {
-      this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.splice(index, 1);
-    },
+        //改變待辦事項標題 
+        showname: false,
+        test_title_name: true,
+
+        //改變待辦事項標題
+        test: '',
+      })
+      this.todoListTitle = null;
+      this.todo_lightbox_switch = false;
+      this.todo_switch = false;
+    } else {};
+  },
+
+  // 刪除待辦清單項目
+  deletecard_todo(detailIndex) {
+    this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail.splice(detailIndex, 1);
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "delete_todo",
+        // "todo_no":, 
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
+
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
+
+  // 修改待辦清單項目
+  updatetodolist_title() {
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "update_todo",
+        "todo_title": vm.todoListTitle,
+        "todo_no":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,     
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
+
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
+
+  // 增加最小子項目
+  add_card_detail(detailIndex) {
+    const vm = this;
+    // console.log()
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "add_todo_content",
+        "pro_no": vm.programs[vm.page].pro_no,
+        "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+        "todo_no":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,     
+        "todo_cont": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].test,
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
+
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+
+    if (this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
+      // console.log(this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists);
+      this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.push({
+
+        content: this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test,
+        status: false,
+        text: false,
+        tomato_color: false,
+      });
+      this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test = '';
+      this.card_detail_lightbox = false;
+    } else {}
+  },
+
+  // 刪除最小子項目
+  delete_todo_title(detailIndex, index) {
+    this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.splice(index, 1);
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "delete_todo_content",
+        // "todo_cont_no":,
+
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
+
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
+
+  //修改子清單項目
+  update_list_sta() {
+    const vm = this;
+    $.ajax({
+      "type": "POST",
+      "dataType": "json",
+      "url": "./php/pm/card.php",
+      "data": {
+        "type": "update_todo_content",
+        "todo_cont_sta": 1,
+        // "todo_cont_no":,
+
+      },
+      "cache": false,
+      "success": function (data) {
+        console.log(data);
+
+      },
+      "error": function (data) {
+        console.log(data);
+      }
+    });
+  },
 
 
     //卡片內上傳檔案
@@ -694,14 +872,45 @@ var main_content = new Vue({
         for (let i = 0; i < this.file.length; i++) {
           //-------------取得檔名
           let readFile = new FileReader();
+          let pro = this.programs[this.page];
           let pro_card = this.programs[this.page][this.todo_type][0].cards[this.card_no];
-          let file = this.file[i].name;
+          let file_name = this.file[i].name;
           readFile.addEventListener("loadend", function (e) {
             pro_card.file_result = readFile.result;
             pro_card.filebox.push({
-              name: file,
+              name: file_name,
               source: pro_card.file_result,
             });
+
+            const vm = this;
+            // console.log(vm)
+            // console.log(vm.result)
+            // console.log(pro_card.filebox.length-1)
+            // console.log(pro_card.filebox[pro_card.filebox.length - 1].name)
+            // console.log(pro.pro_no)
+
+            $.ajax({
+              "type": "POST",
+              "dataType": "json",
+              "url": "./php/pm/card.php",
+              "data": {
+                "type": "add_file",
+                "pro_no": pro.pro_no,
+                "card_no": pro_card.card_no,
+                "todo_no": 0, //不知道為什麼要綁這個
+                "file_src": vm.result,
+                "file_name": pro_card.filebox[pro_card.filebox.length - 1].name,
+              },
+              "cache": false,
+              "success": function (data) {
+                console.log(data);
+
+              },
+              "error": function (data) {
+                console.log(data);
+              }
+            });
+
           });
           readFile.readAsDataURL(this.file[i]);
         }
@@ -709,8 +918,28 @@ var main_content = new Vue({
     },
 
     //卡片檔案刪除
-    delete_file(cardIndex) {
+    delete_file(index) {
       this.programs[this.page][this.todo_type][0].cards[this.card_no].filebox.splice(cardIndex, 1);
+      const vm = this;
+      console.log(index);
+      console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].filebox[index])
+      // $.ajax({
+      //   "type": "POST",
+      //   "dataType": "json",
+      //   "url": "./php/pm/card.php",
+      //   "data": {
+      //     "type": "delete_file",
+
+      //   },
+      //   "cache": false,
+      //   "success": function (data) {
+      //     console.log(data);
+      //     vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].filebox.splice(cardIndex, 1);
+      //   },
+      //   "error": function (data) {
+      //     console.log(data);
+      //   }
+      // });
     },
 
     //成員進入
@@ -1138,7 +1367,15 @@ var main_content = new Vue({
   },
 
 
-  mounted() {
+  async mounted () {
+    this.userInfo = await fetch("./php/member/isLogin.php")
+    .then(res => res.json())
+    .then(json => {
+      if (json.status === "success") {
+        return json.data
+      }
+    })
+    .catch(err => console.log(err));
     document.addEventListener("click", () => {
       this.open = false;
       this.add_cards_btn_div = true;
@@ -1172,33 +1409,6 @@ var main_content = new Vue({
     // 日曆部分
     this.setToday();
 
-
-    // $.ajax({
-    //   url: './php/pm/get_program_list.php',
-    //   data: {},
-    //   dataType: "json",
-    //   type: "post",
-    //   success: function (data) {
-    //   },
-    // })
-
-
-
-    // async function getPrograms() {
-    //   console.log(this.programs)
-    //   if (this.programs.length != 0) {
-    //     console.log('2211')
-    //     // let pro_title = this.dataset ? this.dataset.type : 1;
-    //     let pro_title=this.programs[this.page].pro_title;
-    //     let pro_col=this.programs[this.page].color;
-    //     // let mem_no=
-    //     pro_data = await fetch('./php/pm/get_program_list.php?pro_title=' + pro_title + 'pro_col='+pro_col)
-    //       .then(res => res.json())
-    //       .then(json => json)
-    //     console.log(pro_data);
-    //   }else{};
-    // };
-
     let xhr = new XMLHttpRequest();
     xhr.onload = function () {
       // console.log(xhr.responseText);
@@ -1207,20 +1417,26 @@ var main_content = new Vue({
       if (result.status == "success") {
         main_content.programs = result.data.filter(item => item.pro_sta === "0")
         main_content.history_programs = result.data.filter(item => item.pro_sta === "1")
-
+        if (main_content.programs.length > 0) {
+          main_content.page = 0;
+          main_content.show_cards(main_content.page);
+        }
+        if (main_content.history_programs.length > 0) {
+          main_content.history_page = 0;
+          main_content.show_cards(main_content.history_page);
+        }
         console.log(main_content.programs)
-
-        // console.log(result.data[20]);
 
       }
     }
     xhr.open("post", './php/pm/get_program_list.php', true);
     //送出資料
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    let data_info = "mem_no=1";
+    console.log(this);
+    let data_info = `mem_no=${this.userInfo.mem_no}`;
+    // let data_info = `mem_no=1`;
     xhr.send(data_info);
-
-
+    // console.log(this)
   },
 
   components: {
