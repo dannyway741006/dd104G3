@@ -134,26 +134,26 @@
       margin-top: 10px;
       border-radius: 10px;
 
-      .cart_credit_card,
-      .cart_credit_card_back {
+      .cart_credit_card {
         background-color: #e2655d;
         width: 340px;
         height: 212.5px;
         border-radius: 15px;
         margin: auto;
         overflow: hidden;
+        position: relative;
 
-        // &::after {
-        //   content: '';
-        //   position: absolute;
-        //   width: 110%;
-        //   height: 110%;
-        //   top: 0;
-        //   left: -20px;
-        //   background: url(http://cdn.flaticon.com/svg/44/44386.svg) no-repeat center;
-        //   background-size: cover;
-        //   opacity: .05;
-        // }
+        &::after {
+          content: '';
+          position: absolute;
+          width: 110%;
+          height: 110%;
+          top: 0;
+          left: -20px;
+          background: url(http://cdn.flaticon.com/svg/44/44386.svg) no-repeat center;
+          background-size: cover;
+          opacity: .05;
+        }
 
         .chip {
           position: relative;
@@ -235,6 +235,7 @@
           .cart_creidcard_inside {
             @include font(0);
             -webkit-transform: scale(0.6);
+            display: inline-block;
             margin-top: 3px;
             text-align: left;
             color: white;
