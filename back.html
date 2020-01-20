@@ -108,6 +108,16 @@
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+  <div class="login">
+    <div>
+      <h1>Login</h1>
+      <div>Account</div>
+      <input type="text" id="account">
+      <div>Password</div>
+      <input type="text" id="password">
+      <button id="loginSubmit">送出</button>
+    </div>
+  </div>
   <header class="app-header navbar">
     <!-- <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
       <span class="navbar-toggler-icon"></span>
@@ -552,7 +562,7 @@
                       <tr>
                         <th colspan="2"
                           style="text-align: center;background-color: #fff;border-bottom: none;border-color:#c8ced3;">
-                          <input type="submit" name="submit" value="送出">
+                          <input type="loginSubmit" name="loginSubmit" value="送出">
                         </th>
                       </tr>
 
@@ -731,6 +741,30 @@
 
       setInterval(getOrder(),5000);
     
+  </script>
+  <script>
+    (function(){
+      const acc = document.getElementById('account');
+      const psw = document.getElementById('password');
+      const login = document.getElementById('loginSubmit');
+      const mask = document.querySelector('.login');
+      let mgrInfo; 
+      login.addEventListener('click', async function(){
+        if(!acc.value || !psw.value) return
+        mgrInfo = await fetch('./php/member/backLogin.php', {
+          method: 'POST',
+          body: new URLSearchParams(`mgr_id=${acc.value}&mgr_psw=${psw.value}`)
+        }).then(res=>res.json())
+        .then(json=>{
+          if(json.status === 'success'){
+            mask.style.display = 'none'
+            return json.data
+          }
+        })
+        .catch(err=>console.log(err))
+      })
+    })()
+
   </script>
 
 

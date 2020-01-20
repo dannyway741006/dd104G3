@@ -1,5 +1,6 @@
 // If you want to override variables do it here
-
+@import "./base/_var";
+@import "./mixins/_mixin";
 
 // Import styles
 // @import "../node_modules/@coreui/coreui/scss/coreui";
@@ -7,3 +8,24 @@
 
 // If you want to add something do it here
 @import "././pages/back/backpage";
+.app {
+  >.login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($dark, 1);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    >div {
+      @include font(1);
+      color: $white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
