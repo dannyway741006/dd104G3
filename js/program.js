@@ -130,9 +130,10 @@ var main_content = new Vue({
 
 
     window_width: 0,
-    userInfo: []
+    userInfo: [],
 
-
+    calendar_day_click:false,
+    calendar_cards:[],
 
   },
 
@@ -1561,6 +1562,7 @@ var main_content = new Vue({
       this.todo_switch = false;
       this.todoListTitle = '';
       this.fileder_switch = false;
+      this.calendar_day_click=false;
 
       // console.log(this.programs.length - 1)
       if (this.programs.length == 0) {
