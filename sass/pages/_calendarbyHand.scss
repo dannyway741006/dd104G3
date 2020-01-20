@@ -113,7 +113,7 @@
       // border-right: 1px solid #ddd;
       box-shadow: 1px 1px 3px $shadow;
 
-      div {
+      .day{
         position: relative;
         flex: 1 1 0%;
         height: 7vw;
@@ -122,12 +122,29 @@
         // box-shadow: 1px 1px 3px $shadow;
         // border-left: 1px solid #ddd;
         &:before {
+          font-size: 12px;
           position: absolute;
           content: attr(data-date);
           top: 0;
           right: 0;
           display: block;
           width: 30px;
+        }
+        .calendar_date_cards{
+          // border:1px solid red;
+          font-size: 12px;
+          background-color: $danger;
+          color: $white;
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        // @include positionCente;
+          position: absolute;
+          top:50%;
+          left:50%;
+          transform: translate(-50%,-50%);
+          padding: 5px;
         }
       }
 
@@ -170,7 +187,7 @@
       // bottom: auto;
       // height: calc(85vh - 40px);
       .week {
-        div {
+        .day {
           height: 10vw;
         }
       }
@@ -179,4 +196,22 @@
   }
 }
 
-;
+@include media(700px) {
+  .calendar_mask {
+    #calendar {
+        .week {
+        .day {
+          .calendar_date_cards{
+            // border:1px solid red;
+            font-size: 8px;
+            width: 28px;
+            height: 28px;
+           
+            padding: 0px;
+          }
+        }
+      }
+    }
+
+  }
+}

@@ -670,6 +670,7 @@ var main_content = new Vue({
       {
         // console.log(date_text);
         // console.log((this.calendar_cards[date_text]).length);
+        console.log(this.calendar_cards[date_text])
         return (this.calendar_cards[date_text]).length;
       }else{
         return 0;
