@@ -4,10 +4,81 @@ try {
   session_start();
   switch ($_POST['type']) {
     case "push_calendar_cards":
-      $sql = "select * FROM `card` WHERE card_date is not null and pro_no=:pro_no";
+      $cards_arr = [];
+      $calendar_cards_arr = [];  //program_memeber
+      $calendar_cards_data_arr = [];  //program_memeber
+      $sql = " SELECT c.card_no, 
+                      c.pro_no, 
+                      c.card_name, 
+                      c.card_date, 
+                      p.pro_col, 
+                      tc.todo_cont_no, 
+                      tc.todo_cont_sta 
+              FROM `card` c 
+              LEFT JOIN `program` p ON c.pro_no=p.pro_no 
+              LEFT JOIN `todo_content` tc ON tc.card_no=c.card_no 
+              WHERE card_date is not null AND mem_no=:mem_no 
+              ORDER BY c.card_date, c.pro_no";
       $res = $pdo->prepare($sql);
-      $res->bindParam(':pro_no', $_POST['pro_no']);
+      $res->bindValue(':mem_no', $_SESSION["mem_no"]);
       $res->execute();
+      if ($res->rowCount()) {
+        $calendar_cards = $res->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($calendar_cards as $key => $card) {
+          $calendar_date_arr = explode(" ", $card["card_date"]);
+          $calendar_date = $calendar_date_arr[0];
+          if(isset($cards_arr[$card["card_no"]]) == FALSE)
+          {
+            $cards_arr[$card["card_no"]] = $key;
+            if($card["todo_cont_sta"] == 1)
+            {
+              $todo_cont_sta_checked = 1;
+            }else{
+              $todo_cont_sta_checked = 0;
+            }
+            if($card["todo_cont_sta"] == null)
+            {
+              $todo_cont_sta_sum = 0;
+            }else {
+              $todo_cont_sta_sum = 1;
+            }
+            $calendar_cards_arr[$calendar_date][$key] = [
+              "card_name" => $card["card_name"],
+              "card_date" => $card["card_date"],
+              "pro_col" => $card["pro_col"],
+              "pro_no" => $card["pro_no"],
+              "card_no" => $card["card_no"],
+              "todo_cont_sta_checked" => $todo_cont_sta_checked,
+              "todo_cont_sta_sum" => $todo_cont_sta_sum
+            ];
+          }else{
+            if($card["todo_cont_sta"] == 1)
+            {
+              $calendar_cards_arr[$calendar_date][$cards_arr[$card["card_no"]]]["todo_cont_sta_checked"] += 1;
+            }
+            if($card["todo_cont_sta"] == null)
+            {
+              $todo_cont_sta_sum = 0;
+            }else {
+              $calendar_cards_arr[$calendar_date][$cards_arr[$card["card_no"]]]["todo_cont_sta_sum"] += 1;
+            }
+              
+          }
+          ksort($calendar_cards_arr[$calendar_date]);
+        }
+        $calendar_cards_data_arr = $calendar_cards_arr;
+        foreach($calendar_cards_arr as $calendar_date => $value)
+        {
+          $x = 0;
+          $calendar_cards_data_arr[$calendar_date] = [];
+          foreach($value as $key => $value2)
+          {
+            $calendar_cards_data_arr[$calendar_date][$x] = $value2;
+            $x++;
+          }
+        }
+      }
+      echo json_encode($calendar_cards_data_arr);
     break;
   }
 } catch (PDOException $e) {
