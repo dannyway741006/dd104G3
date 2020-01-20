@@ -20,9 +20,12 @@ body {
   display: none;
 }
 
-.mall_modify,.mall_delete,.mall_add {
+.mall_modify,.mall_delete,.mall_add,.text_del {
   color: #5fbfce;
-  cursor: pointer;    
+  cursor: pointer; 
+  &:hover{
+    text-decoration:underline;
+  };
 }
 
 
