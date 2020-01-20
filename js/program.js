@@ -631,7 +631,6 @@ var main_content = new Vue({
     //打開卡片本人
     open_card_func(index, this_todo_type) {
       this.opened = !this.opened;
-      // console.log(this_todo_type);
       this.programs[this.page][this_todo_type][0].cards[index].card_member = this.programs[this.page].program_memeber;
     },
 
