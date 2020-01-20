@@ -502,34 +502,34 @@
                        handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
                        other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
                       }" @click.stop="calendar_day_click=!calendar_day_click">
-                  <div v-if="calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date) > 0">+ {{calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)}}</div>
+                  <div v-if="calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date) > 0" class="calendar_date_cards">+{{calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)}}</div>
                     </div>
                 </div>
               </div>
             </div>
           </transition>
           <!-- 日曆打開卡片們 -->
-          <transition name="horizentalfade" mode="out-in">
-            <div class="cal_card_list_box" v-show="calendar_day_click" @click.stop="">
+          <transition-group name="horizentalfade" mode="out-in">
+            <div class="cal_card_list_box" v-show="calendar_day_click" @click.stop="" v-for="(item,index) in calendar_cards" :key="index">
               <div class="cal_card_list">
 
                 <!-- <div class="cal_card" v-for="item in calendar_cards"> -->
                   <div class="cal_card">
-                  <div class="cal_card_color">
+                  <div class="cal_card_color" :style='{backgroundColor: item.pro_col}'>
                   </div>
                   <!-- <p>{{item.card_name}}</p> -->
-                  <p>card_name</p>
+                  <p>{{item.card_name}}</p>
                   <div class="cards_list_card_icon_bar">
                     <div class="cards_list_card_icon cards_list_card_calendaricon"><img
                         src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
                     <!-- <span>{{history_doing_showcalendarpanel(cardIndex)}}</span> -->
-                    <span>calendarpanel</span>
+                    <span>{{item.card_date}}</span>
                     <div class="cards_list_card_icon_right">
                       <div class="cards_list_card_icon_right">
                         <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg" alt="">
                         </div>
                         <!-- <span>{{history_doing_card_progress_checked(cardIndex)}}/{{history_doing_card_progress_sum(cardIndex)}}</span> -->
-                        <span>0/0</span>
+                        <span>{{item.todo_cont_sta_checked}}/{{item.todo_cont_sta_sum}}</span>
                       </div>
                     </div>
                   </div>
@@ -537,7 +537,7 @@
 
               </div>
             </div>
-          </transition>
+          </transition-group>
         </div>
 
 
