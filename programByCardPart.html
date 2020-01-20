@@ -317,59 +317,62 @@
                     src="./img/program_img/chat_white.svg" alt=""></button>
               </div> -->
             </div>
-            <transition name="fade" mode="out-in">
-              <div id="calendar" v-show="calendar_btn" @click.stop="">
-                <h1 class="calendar_date_title">
-                  <div class="mont_date">{{calendar.date}}</div>
-                  <div>
-                    <div>th</div>
-                    <div>{{calendar.day}}</div>
-                  </div>
-                  <div class="todaybutton">
-                    <button @click="setToday">Today</button>
-                  </div>
-                </h1>
-                <div class="calendar_date_midtitle">
+            <div class="calendar_mask" v-show="calendar_btn">
 
-                  <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg"
-                      alt="" width="20"></div>
-                  <div>{{calendar.week}}</div>
-                  <div>{{calendar.year}}</div>
+              <transition name="fade" mode="out-in">
+                <div id="calendar" v-show="calendar_btn" @click.stop="">
+                  <h1 class="calendar_date_title">
+                    <div class="mont_date">{{calendar.date}}</div>
+                    <div>
+                      <div>th</div>
+                      <div>{{calendar.day}}</div>
+                    </div>
+                    <div class="todaybutton">
+                      <button @click="setToday">Today</button>
+                    </div>
+                  </h1>
+                  <div class="calendar_date_midtitle">
 
-                  <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
-                      alt="" width="20"></div>
-                </div>
+                    <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg"
+                        alt="" width="20"></div>
+                    <div>{{calendar.week}}</div>
+                    <div>{{calendar.year}}</div>
 
-                <div class="calendar">
-                  <div class="weekDay" v-if="handleResize()">
-                    <div style="color: #eb7a77;">Sunday</div>
-                    <div>Monday</div>
-                    <div>Tuesday</div>
-                    <div>Wednesday</div>
-                    <div>Thursday</div>
-                    <div>Friday</div>
-                    <div style="color: #eb7a77;">Saturday</div>
+                    <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
+                        alt="" width="20"></div>
                   </div>
-                  <div class="weekDay" v-else>
-                    <div style="color: #eb7a77;">Sun</div>
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div style="color: #eb7a77;">Sat</div>
-                  </div>
-                  <div class="week" v-for="i in 5">
-                    <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
+
+                  <div class="calendar">
+                    <div class="weekDay" v-if="handleResize()">
+                      <div style="color: #eb7a77;">Sunday</div>
+                      <div>Monday</div>
+                      <div>Tuesday</div>
+                      <div>Wednesday</div>
+                      <div>Thursday</div>
+                      <div>Friday</div>
+                      <div style="color: #eb7a77;">Saturday</div>
+                    </div>
+                    <div class="weekDay" v-else>
+                      <div style="color: #eb7a77;">Sun</div>
+                      <div>Mon</div>
+                      <div>Tue</div>
+                      <div>Wed</div>
+                      <div>Thu</div>
+                      <div>Fri</div>
+                      <div style="color: #eb7a77;">Sat</div>
+                    </div>
+                    <div class="week" v-for="i in 5">
+                      <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
                            handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
                            other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
                           }">
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </transition>
-
+              </transition>
+            </div>
+            
           </div>
         </transition-group>
 
@@ -732,7 +735,7 @@
                                     <img src="./img/uncheck.svg" alt="" v-else @click="item.todo_cont_sta='0'">
                                   </div>
                                   <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                  <div  @click="item.tomato_color  = ! item.tomato_color">
+                                  <div @click="item.tomato_color  = ! item.tomato_color">
                                     <img src="./img/icon/clockPrimary.svg" alt="" v-if="item.tomato_color"
                                       @click="droptomato(detailIndex,index)">
                                     <img src="./img/icon/time-left.svg" alt="" v-else
@@ -994,7 +997,7 @@
                                     <img src="./img/uncheck.svg" alt="" v-else @click="item.todo_cont_sta='0'">
                                   </div>
                                   <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                  <div  @click="item.tomato_color  = ! item.tomato_color">
+                                  <div @click="item.tomato_color  = ! item.tomato_color">
                                     <img src="./img/icon/clockPrimary.svg" alt="" v-if="item.tomato_color"
                                       @click="droptomato(detailIndex,index)">
                                     <img src="./img/icon/time-left.svg" alt="" v-else
