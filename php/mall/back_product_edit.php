@@ -5,7 +5,7 @@
 $errMsg = "";
 //連線資料庫
 try {
-  require_once("connect_nicole.php");
+  require_once("../pdo.php");
 
   if ($_FILES['product_src']['error'] === 4) {
     // $from = $_POST["product_src_hidden"];

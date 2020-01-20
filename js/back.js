@@ -82,8 +82,19 @@ var customSwitch2 = document.querySelector("#customSwitch2");
 
 
 
+// function mall_del() { 
 
-
+// alert("del")
+// for (var i = 0; i < mallProductObj.length; i++) {
+//   if (mallProductObj[i].product_no == this.id.substr(3)) 
+  
+//     // console.log(mallProductObj[i].product_no)
+//     trStrS += `<tr>`
+//     trStrS += `<th>商品編號</th>`
+//     trStrS += `<td>${mallProductObj[i].product_no}<input type="hidden" name="product_no" value="${mallProductObj[i].product_no}"></td>`
+//   }
+ 
+// }//刪除單一商品表單
 
 
 
@@ -184,20 +195,49 @@ function mall_edit() { //修改商品表單
       trStrS += `</tr>`
 
 
+     
+
+      // trStrS += `<tr>`
+      // trStrS += `<th colspan="2" style="text-align: center;border-bottom: none;background-color: #fff;border-color:#c8ced3;color:#333" class="text_del">刪除此筆資料</th>`
+      // trStrS += `</tr>`
+
 
       trStrS = trStrS.substring(9);
       back_product_input.innerHTML = trStrS;
 
+      var text_del = document.getElementsByClassName('text_del')[0];
+      console.log(text_del.textContent);
+
+
+
+   
+      var delNum = mallProductObj[i].product_no;
+      var del_content = document.querySelector("#del_content input");
+        
+    
+      text_del.addEventListener("click",function(){
+         console.log(del_content)
+         del_content.value = delNum;
+      
+        // trStrS_del = `<input type="hidden" name="product_no" value="mallProductObj[${delNum}].product_no"></input>`;
+
+        // del_content.innerHTML = trStrS_del;
+    
+        
+       
+   
+        document.getElementById("delForm").submit();
+        
+      });
+
+
+
+
+
+
       var input_ad_edit_hidden = document.getElementsByClassName('input_ad_edit_hidden')[0];
       var ad_edit = document.getElementsByClassName('ad_edit')[0];
       console.log(ad_edit);
-      // console.log(ad_edit);
-      // if (mallProductObj[i].index_on == 1) {
-      //   customSwitch1_edit_0.checked = true;
-      // } else {
-      //   customSwitch1_edit_0.checked = false;
-      // }
-      // console.log(input_ad_edit_hidden)
 
       if (mallProductObj[i].index_on == 1) {
         ad_edit.checked = true
@@ -221,8 +261,6 @@ function mall_edit() { //修改商品表單
         }
        
       })
-
-
 
 
 
@@ -254,41 +292,7 @@ function mall_edit() { //修改商品表單
        
       })
 
-
-
-
-
-
-
-
-
-
-
-
-      
-      // if (mallProductObj[i].product_on == 1) {
-      //   document.getElementById(`customSwitch2_edit_${i}`).value == 1;
-      //   document.getElementById(`customSwitch2_edit_${i}`).checked = true;
-      // } else {
-      //   document.getElementById(`customSwitch2_edit_${i}`).value == 0;
-      //   document.getElementById(`customSwitch2_edit_${i}`).checked = false;
-      // }
-
-      // var input_pdu_edit_hidden = document.getElementsByClassName('input_pdu_edit_hidden')[0];
-
-      // document.getElementById(`customSwitch2_edit_${i}`).addEventListener("change", function () {
-      //   if (`customSwitch2_edit_${i}`.checked) {
-
-      //     input_pdu_edit_hidden.disabled = true;
-
-      //   } else {
-      //     input_pdu_edit_hidden.disabled = false;
-
-      //   }
-      //   console.log(`customSwitch2_edit_${i}`.value)
-      // })
-
-
+   
 
 
     }
@@ -324,16 +328,16 @@ function mallList() {
         <div class="custom-control custom-switch ">
           <input type="checkbox" class="custom-control-input mallSwitch1" name="index_on"  id="mallSwitch1_${i}" checked value="${mallProductObj[i].index_on}" disabled>
           <label class="custom-control-label" for="mallSwitch1_${i}" ></label>
-          <p>${mallProductObj[i].index_on}</p>
+        
         </div>
         
-        </td>`;
+        </td>`;  // <p>${mallProductObj[i].index_on}</p>
         trStr += `<td data-th="上下架狀態" style='word-break:break-all'">
         <div class="custom-control custom-switch">
           <input type="checkbox" class="custom-control-input mallSwitch2" id="mallSwitch2_${i}" name="product_on" checked value="${mallProductObj[i].product_on}" disabled>
           <label class="custom-control-label" for="mallSwitch2_${i}" ></label>
-          <p>${mallProductObj[i].product_on}</p>
-        </td>`;
+          <p>
+        </td>`;//${mallProductObj[i].product_on}</p>
 
 
         trStr += `<td data-th="設定"><span class="mall_modify" id="pdu${mallProductObj[i].product_no}">編輯</span>`;

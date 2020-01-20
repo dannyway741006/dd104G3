@@ -446,6 +446,13 @@
                     </tbody>
                   </table>
                 </form>
+                <p style="text-align: right;" class="text_del">刪除此筆資料</p> 
+                <form action="./php/mall/back_product_del.php" id="delForm">
+                <div id="del_content">
+                  <input type="hidden" name="product_no" value="" >
+                </div>
+                </form>
+              
               </div>
             </div>
           </div>
@@ -467,17 +474,17 @@
                         <th>商品貨號</th>
                         <td>
                           <input type="text"" name=" product_no" value="" id="product_no_add">
-                          <input type="hidden" name="product_num" value="" id="product_num_add">
+                          <input type="hidden" name="product_num" value="" id="product_num_add" required="required">
                         </td>
                       </tr>
                       <tr>
                         <th>商品名稱</th>
-                        <td><input type="text" name="product_name" value="">
+                        <td><input type="text" name="product_name" value="" required="required">
                         </td>
                       </tr>
                       <tr>
                         <th>商品價格</th>
-                        <td><input type="text" name="product_price" value="">
+                        <td><input type="text" name="product_price" value="" required="required">
                         </td>
                       </tr>
                       <tr>
@@ -490,13 +497,13 @@
                       <tr>
                         <th>商品顏色</th>
                         <td>
-                          <input type="text" style='width:100%' name="product_color" value="">
+                          <input type="text" style='width:100%' name="product_color" value="" required="required">
                         </td>
                       </tr>
                       <tr>
                         <th>商品說明</th>
                         <td>
-                          <input type="text" style='width:100%' name="product_desc" value="">
+                          <input type="text" style='width:100%' name="product_desc" value="" required="required">
                         </td>
                       </tr>
                       <tr>

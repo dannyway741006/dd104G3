@@ -1,6 +1,6 @@
 <?php
 try{
-  require_once("connect_nicole.php");
+  require_once("../pdo.php");
   $sql = "select * from `mall_product`";
 
   $product = $pdo->prepare($sql);
