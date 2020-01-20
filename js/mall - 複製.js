@@ -16,18 +16,15 @@ $(document).ready(function ($) {
 
     responsive: {
       768: {
-        items: 3,
-        dots: true,
+        items: 3
       },
 
       480: {
-        items: 2,
-        dots: false,
+        items: 2
       },
 
       0: {
-        items: 2,
-        dots: false,
+        items: 2
       }
 
     }
@@ -50,15 +47,15 @@ async function getProduct() {
   mall_color.innerHTML = ''; //下拉選單按鈕預設
   mallType = this.dataset ? this.dataset.type : 1;
   mall_data = await fetch('./php/mall/mall_data.php', {
-      method: 'POST',
-      body: new URLSearchParams(`product_type=${mallType}`)
-    })
+    method: 'POST',
+    body: new URLSearchParams(`product_type=${mallType}`)
+  })
     .then(res => res.json())
     .then(json => json.data)
-    .catch(err => console.log(err))
-  if (mall_data) mall_content();
-  if (this.classList) {
-    mallListBtn.forEach(dom => dom.classList.remove('active'))
+    .catch(err=>console.log(err))
+  if(mall_data)mall_content();
+  if(this.classList){
+    mallListBtn.forEach(dom=>dom.classList.remove('active'))
     this.classList.add('active');
   }
 }
@@ -67,45 +64,49 @@ function mall_content() {
   //預設
   var product_featuresLi = document.querySelector('.product_features_text1');
   var product_name = document.querySelector('#product_name');
-  // var product_features = document.getElementsByClassName('product_features')[0];
+  var product_features = document.getElementsByClassName('product_features')[0];
   var product_price = document.querySelector("#product_price");
-  var mall_color = document.querySelector('#mall_color');
-
   product_name.textContent = mall_data[0].product_name; //商品名字
   product_featuresLi.innerHTML = mall_data[0].product_desc; //商品描述
+  
   product_price.textContent = mall_data[0].product_price; //商品價格
 
 
+  var mall_color = document.querySelector('#mall_color');
 
   function owlBtn() {
     mall_color.innerHTML = '';
     var thisJpg = this.src.substring(this.src.lastIndexOf("/") + 1);
-    // console.log(thisJpg)
- 
-    var pro = '';
+
     for (var i in mall_data) {
+
       if (thisJpg.substring(0, 3) == mall_data[i].product_num) {
-        // if (pro == '') {
-        //   console.log(mall_data[i].product_bg_src)
-        //   var mallBg = document.querySelector('.mall_content');
-        //   mallBg.style.backgroundImage = `url(./${mall_data[i].product_bg_src})`;
-        //   pro = mall_data[i].product_no
-        // } 
+        // console.log(mall_data[i].product_name)
 
-        // 商品圖背景
+        //商品背景圖
         var mallBg = document.querySelector('.mall_content');
-        mallBg.style.backgroundImage = `url(./${mall_data[i].product_bg_src})`;
+        // mallBg.style.backgroundImage = `url(./img/mall_img/${thisJpg.substring(0,3)}_bg.jpg)`;
+        //  console.log( thisJpg.substring(0,3))
+        mallBg.style.backgroundImage = `url(./img/mall_img/${thisJpg.substring(0,3)}_bg.jpg)`;
+        // console.log(mallBg.style.backgroundImage)
 
-        // 商品基本資料
+
+        // //商品基本資料
+        product_name = document.querySelector('#product_name');
         product_features = document.getElementsByClassName('product_features')[0];
+    
         product_price = document.querySelector("#product_price");
+
+      //  console.log(product_featuresLi)
         product_name.textContent = mall_data[i].product_name; //商品名字
-        product_featuresLi.innerHTML = mall_data[i].product_desc; //商品描述
+        // product_features.innerHTML = mall_data[i].product_desc; //商品描述
+        // product_featuresLi.innerHTML = mall_data[i].product_desc  //商品描述
+        // product_features.innerHTML = "12313123"; //商品描述
+        product_featuresLi.innerHTML = mall_data[i].product_desc;
         product_price.textContent = mall_data[i].product_price; //商品價格 
 
         var sbgColorArr = [];
         sbgColorArr.push(mall_data[i]["product_color"]);
-
         // 下拉選單 選項
         var mall_color_option = document.createElement("option");
         var mall_color_optionSingle = mall_color.appendChild(mall_color_option);
@@ -113,15 +114,17 @@ function mall_content() {
         mall_color_optionSingle.textContent = `${sbgColorArr}`;
 
         // 下拉選單 Value
-        mall_color_optionSingle.value = mall_data[i].product_src;
-        console.log(mall_color_optionSingle.value)
+        var mall_option_value_first = mall_data[i].product_src.lastIndexOf("/") + 1;
+        var mall_option_value_last = mall_data[i].product_src.lastIndexOf("png") - 1;
+
+        mall_color_optionSingle.value = mall_data[i]["product_src"].substring(mall_option_value_first, mall_option_value_last);
 
         // // 下拉換圖
         var bImag = document.querySelector('.b_img');
-        bImag.src = `${document.querySelectorAll('#mall_color option')[0].value}`;
+        bImag.src = `img/mall_img/${document.querySelectorAll('#mall_color option')[0].value}.png`;
         mall_color.addEventListener('change', function () {
           let val = this.value;
-          bImag.src = val;
+          bImag.src = `img/mall_img/${val}.png`;
         })
       }
     }
@@ -131,8 +134,8 @@ function mall_content() {
   var mallBg = document.querySelector('.mall_content');
   for (var i in mall_data) {
     if (mall_data[i]["product_num"] == mall_data[0]["product_num"]) {
-      mallBg.style.backgroundImage = "url(./" + mall_data[0]["product_bg_src"];
-
+      mallBg.style.backgroundImage = "url(./"+ mall_data[0]["product_bg_src"];
+      // console.log(mallBg.style.backgroundImage)
     }
 
   }
@@ -148,17 +151,19 @@ function mall_content() {
       mall_color.appendChild(mall_color_option).textContent = `${sbgColorArr[i]}`;
 
       // 下拉選單 Value
-      document.querySelectorAll("#mall_color option")[i].setAttribute("value", mall_data[i]["product_src"]);
+      var mall_option_value_first = mall_data[i].product_src.lastIndexOf("/") + 1;
+      var mall_option_value_last = mall_data[i].product_src.lastIndexOf("png") - 1;
+      document.querySelectorAll("#mall_color option")[i].setAttribute("value", mall_data[i]["product_src"].substring(mall_option_value_first, mall_option_value_last));
     }
 
   }
 
   // // 下拉換圖預設
   var bImag = document.querySelector('.b_img');
-  bImag.src = `${document.querySelectorAll('#mall_color option')[0].value}`;
+  bImag.src = `img/mall_img/${document.querySelectorAll('#mall_color option')[0].value}.png`;
   mall_color.addEventListener('change', function () {
     let val = this.value;
-    bImag.src = val;
+    bImag.src = `img/mall_img/${val}.png`;
   })
 
   // 預設輪播資料庫資料

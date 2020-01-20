@@ -6,7 +6,7 @@ $errMsg = "";
 
 
 try {
-  require_once("connect_nicole.php");
+  require_once("../pdo.php");
 
     $_POST["product_num"] = substr($_POST["product_no"],0,3);
    

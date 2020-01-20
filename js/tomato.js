@@ -22,7 +22,7 @@ var app = new Vue({
         //計時器
         // countDownTimer:'',
         currentTomato:{},
-        currentRing:null,
+        currentRing:'',
         currentTotalTime:0,
         //現在再跑的任務,
         working:true,
@@ -37,30 +37,34 @@ var app = new Vue({
             },
         ],
         trelloTodos:[
-            {
-                id:'mask2',
-                title:'新任務trello',
-                runstatus:0,
-                currentTime:this.workTime,
-                totalTime:0,
-                complete:false,
-            },
+            // {
+            //     id:'mask2',
+            //     title:'新任務trello',
+            //     runstatus:0,
+            //     currentTime:this.workTime,
+            //     totalTime:0,
+            //     complete:false,
+            // },
         ],
+        allTodos:[],
         rings:[
             {
-             ringName:'鈴聲1',
-             checked:false,
+             ringName:'靜音',
+             checked:true,
              id:'ring1',
+             url:'',
             },
             {
-                ringName:'鈴聲2',
+                ringName:'鈴聲1',
                 checked:false,
                 id:'ring2',
+                url:'./audio/ring1.mp3'
             },
             {
                 ringName:'鈴聲2',
                 checked:false,
                 id:'ring3',
+                url:'./audio/ring2.mp3'
             },
         ],
         
@@ -74,6 +78,21 @@ var app = new Vue({
               localStorage.removeItem('todos');
             }
           }
+        //   console.log(MEMBER_INFO)
+        fetch('./php/clock/getTodo.php')
+        .then((res)=>res.json())
+        .then(json=>{
+            json.data.forEach(data=>{
+                data.currentTime = this.workTime
+                if(data.complete){
+                myChart.data.labels.push(data.title)
+                myChart.data.datasets[0].data.push(data.totalTime)
+                myChart.update();
+                }
+            })
+            this.trelloTodos = json.data
+            // console.log(json.data)
+        });
     },
     watch:{
         timer(){
@@ -99,8 +118,20 @@ var app = new Vue({
         },
     },
     methods: {
-
+        setRing(ring){
+            this.rings.forEach(ring => {
+                ring.checked=false;
+            });
+            ring.checked=true;
+            this.currentRing = ring.url;
+            this.playRing();
+        },
+        playRing(){
+            var sound = new Audio(this.currentRing);
+            sound.play();
+        },
         setTime(){
+            console.log(MEMBER_INFO)
             //設定時間
             this.workmin = this.workmin?this.workmin:0;
             this.worksec = this.worksec?this.worksec:0;
@@ -135,7 +166,7 @@ var app = new Vue({
             this.newTodo="";
             this.savelocal()
         },
-        removeTodo(item,key){
+        removeTodo(item,key,trello){
             var index = myChart.data.labels.indexOf(item.title)
             console.log(index)
             if(index!=-1){
@@ -144,7 +175,15 @@ var app = new Vue({
                 myChart.data.datasets[0].data.splice(index,1);
                 myChart.update();   
             }   
-            this.todos.splice(key,1);
+            if(!trello){
+                this.todos.splice(key,1);
+            }else {
+                fetch('./php/clock/removeTodo.php',{
+                    method:'POST',
+                    body:new URLSearchParams(`todo_cont_clock=${0}&todo_cont_no=${item.id}`)
+                });
+                this.trelloTodos.splice(key,1);
+            }
             this.savelocal()
         },
         savelocal() {
@@ -156,7 +195,11 @@ var app = new Vue({
             //暫停
             item.runstatus = 0;
             clearTimeout(this.mytimer);
-            this.savelocal()
+            this.savelocal();
+            fetch('./php/clock/recordTime.php',{
+                method:'POST',
+                body:new URLSearchParams(`timer=${this.currentTomato.totalTime}&todo_cont_no=${this.currentTomato.id}`)
+            });
         },
         startTomato(item){
             if(item.complete){
@@ -221,7 +264,12 @@ var app = new Vue({
                 this.timer = this.workTime;
                 this.working = !this.working;
                 this.totalTimer-=!this.working?1:0
-                this.savelocal()
+                this.savelocal();
+                this.playRing();
+                fetch('./php/clock/recordTime.php',{
+                    method:'POST',
+                    body:new URLSearchParams(`timer=${this.currentTomato.totalTime}&todo_cont_no=${this.currentTomato.id}`)
+                })
             }
             }
         ,totalTime(timer){
@@ -229,11 +277,17 @@ var app = new Vue({
             let [mini,second] = [parseInt(timer/60).toString().padStart(2,'0'),(timer%60).toString().padStart(2,'0')];
             return `${mini}:${second}`
         },
-        editChart(item){
+        editChart(item,trello){
             if(!item.complete){
             myChart.data.labels.push(item.title)
             myChart.data.datasets[0].data.push(item.totalTime)
             myChart.update();
+            if(trello){
+                fetch('./php/clock/editStatus.php',{
+                    method:'POST',
+                    body:new URLSearchParams(`todo_cont_sta=${item.complete=true?1:0}&todo_cont_no=${item.id}`)
+                });
+            }
             // item.complete=!item.complete
             // this.savelocal()
             }else{
@@ -242,9 +296,13 @@ var app = new Vue({
                 console.log(index)
                 myChart.data.labels.splice(index,1);
                 myChart.data.datasets[0].data.splice(index,1);
-                // myChart.update();
+                myChart.update();
+                fetch('./php/clock/editStatus.php',{
+                    method:'POST',
+                    body:new URLSearchParams(`todo_cont_sta=${item.complete=false?1:0}&todo_cont_no=${item.id}`)
+                });
                 // item.complete=!item.complete
-            this.savelocal()
+                // this.savelocal()
                 // console.log(text)
             }
             
@@ -256,10 +314,10 @@ var ctx = document.getElementById("statChart");
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["任務1", "任務2", "任務3", "任務4",],
+      labels: ["任務1", "任務2", "任務3"],
       datasets: [{
         label: '完成所花時間:秒',
-        data: [10, 8, 15, 3,],
+        data: [10, 8, 15],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

@@ -216,7 +216,7 @@
                   <div class="cards_list cards_list_todo" id="cards_list_todo" v-for="listitem in item.card_list_todo">
 
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:330px;height:54vh" @change="catch_card_position({$event, type: listitem})">
+                      style="min-height:310px" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-if="item.card_name" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
@@ -248,7 +248,7 @@
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
                     v-for="listitem in item.card_list_doing">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh"  @change="catch_card_position({$event, type: listitem})">
+                      style="min-height:420px"  @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
@@ -278,7 +278,7 @@
                 <div class="cards_column_body cards_column_body_done">
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="listitem in item.card_list_done">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh" @change="catch_card_position({$event, type: listitem})">
+                      style="min-height:420px" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex"
                         @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
@@ -396,7 +396,7 @@
                     v-for="listitem in item.card_list_todo">
 
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh">
+                      style="min-height:420px">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(cardIndex, listitem.type),history_card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
@@ -430,7 +430,7 @@
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
                     v-for="listitem in item.card_list_doing">
                     <!-- <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh"> -->
+                      style="min-height:420px"> -->
                     <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                       @click.stop="open_card_func(cardIndex, listitem.type),history_card_no=cardIndex,todo_type=listitem.type">
                       <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
@@ -462,7 +462,7 @@
 
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="listitem in item.card_list_done">
                     <!-- <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh"> -->
+                      style="min-height:420px"> -->
                     <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex"
                       @click.stop="open_card_func(cardIndex, listitem.type),history_card_no=cardIndex,todo_type=listitem.type">
                       <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>

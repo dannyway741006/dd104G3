@@ -58,23 +58,35 @@ function getOrderProduct(){
     .then(json=>order_temp1(json.data))
     .catch(err=>console.log(err))
 }
+function deleteOrder(){
+  let dom = document.querySelector(`#order_${this.dataset.index}`);
+  tableOrder.removeChild(dom)
+  fetch('./php/member/deleteItem.php',{
+    method: 'POST',
+    body: new URLSearchParams(`order_no=${this.dataset.order}`)
+  })
+    .then(res=>res.json())
+    .then(json=>alert(json.content))
+    .catch(err=>console.log(err))
+}
 
 function order_temp(data) {
-  data.forEach(info=>{
+  data.forEach((info, index)=>{
     let tr = document.createElement('tr');
+    tr.id = `order_${index}`
     tr.innerHTML = `
     <td class='cretDate'>${info.cret_date}</td>
     <td class="order_no">0000${info.order_no}</td>
     <td>
       <div class="th3_box">
         <span class="checkall">
-          <input type="checkbox" class="checks" id="checkall">
-          <label for="checkall"></label>
+          <input type="checkbox" class="checks" id="checkall_${index}">
+          <label for=checkall_${index}></label>
           <label for="allchecks" class="delete_pointer">
             <span>/</span>
           </label>
         </span>
-        <span class="delete_oder" id="delet_btn">
+        <span class="delete_oder" data-index=${index} data-order=${info.order_no}>
           <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
           <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
         </span>
@@ -84,6 +96,8 @@ function order_temp(data) {
     tableOrder.appendChild(tr)
     const getOrder = document.querySelectorAll('.table_oder .order_no');
     getOrder.forEach(dom=>dom.addEventListener('click', getOrderProduct))
+    const deleteBtn = document.querySelector(`#order_${index} .delete_oder`);
+    deleteBtn.addEventListener('click', deleteOrder)
   })
 }
 

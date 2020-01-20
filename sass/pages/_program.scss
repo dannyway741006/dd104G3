@@ -117,26 +117,11 @@
   //scroll bar
   /*定义滚动条高宽及背景
  高宽分别对应横竖滚动条的尺寸*/
-  ::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-    background-color: #F5F5F5;
-  }
-
-  /*定义滚动条轨道
-  内阴影+圆角*/
-  ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 7px;
-    background-color: #F5F5F5;
-  }
-
   /*定义滑块
+  
   内阴影+圆角*/
   ::-webkit-scrollbar-thumb {
-    border-radius: 7px;
-    -webkit-box-shadow: inset 0 0 6px $radioActive;
-    background-color: $white;
+    background-color: $gray;
   }
 
   //邀請成員區
@@ -181,7 +166,7 @@
     }
 
     .invite_btn {
-      @include baseBtn(70px, auto, 5px);
+      @include baseBtn;
       margin-left: 10px;
       vertical-align: middle;
     }
@@ -217,7 +202,7 @@
         margin: 5px 0;
       }
       button.invite_add_member_btn{
-        @include baseBtn(auto, auto, 10px);
+        @include baseBtn;
         margin-left:15px;
       }
     }

@@ -13,10 +13,8 @@
 
   <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any" />
   <link href="./css/back.css" rel="stylesheet">
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <!-- <link href="./vendors/pace-progress/css/pace.min.css" rel="stylesheet"> -->
   <!-- Global site tag (gtag.js) - Google Analytics-->
@@ -62,7 +60,7 @@
 
     .rwd-table th,
     .rwd-table td:before {
-      color: #38bace;
+      color: #c05a81;
       font-weight: bold;
     }
 
@@ -116,7 +114,7 @@
     </button> -->
     <a class="navbar-brand" href="index.html">
       <img class="navbar-brand-full" src="img/back_logo.svg" width="89" height="25" alt="CoreUI Logo">
-      <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">
+
     </a>
 
     <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
@@ -379,14 +377,16 @@
                 <thead class="thead-dark">
                   <tr>
                     <th>商品編號</th>
-                    <th>商品名稱</th>
+                    <th style="width: 8%;">商品名稱</th>
                     <th>商品價格</th>
                     <th>商品圖片</th>
                     <th>商品顏色</th>
-                    <th>商品說明</th>
+                    <th style="width: 15%;">商品說明</th>
                     <th>商品類別</th>
                     <th>商品背景</th>
                     <th>商品輪播圖</th>
+                    <th style="width: 8%;">首頁廣告狀態</th>
+                    <th style="width: 8%;">上下架狀態</th>
                     <th>設定</th>
                   </tr>
                 </thead>
@@ -444,6 +444,13 @@
                     </tbody>
                   </table>
                 </form>
+                <p style="text-align: right;" class="text_del">刪除此筆資料</p> 
+                <form action="./php/mall/back_product_del.php" id="delForm">
+                <div id="del_content">
+                  <input type="hidden" name="product_no" value="" >
+                </div>
+                </form>
+              
               </div>
             </div>
           </div>
@@ -465,17 +472,17 @@
                         <th>商品貨號</th>
                         <td>
                           <input type="text"" name=" product_no" value="" id="product_no_add">
-                          <input type="hidden" name="product_num" value="" id="product_num_add">
+                          <input type="hidden" name="product_num" value="" id="product_num_add" required="required">
                         </td>
                       </tr>
                       <tr>
                         <th>商品名稱</th>
-                        <td><input type="text" name="product_name" value="">
+                        <td><input type="text" name="product_name" value="" required="required">
                         </td>
                       </tr>
                       <tr>
                         <th>商品價格</th>
-                        <td><input type="text" name="product_price" value="">
+                        <td><input type="text" name="product_price" value="" required="required">
                         </td>
                       </tr>
                       <tr>
@@ -488,13 +495,13 @@
                       <tr>
                         <th>商品顏色</th>
                         <td>
-                          <input type="text" style='width:100%' name="product_color" value="">
+                          <input type="text" style='width:100%' name="product_color" value="" required="required">
                         </td>
                       </tr>
                       <tr>
                         <th>商品說明</th>
                         <td>
-                          <input type="text" style='width:100%' name="product_desc" value="">
+                          <input type="text" style='width:100%' name="product_desc" value="" required="required">
                         </td>
                       </tr>
                       <tr>
@@ -524,8 +531,9 @@
                         <th>首頁廣告狀態</th>
                         <td>
                           <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name="index_on" checked value="1">
-                            <input type="hidden" name="index_on" class="input_ad_hidden" value="0"/>
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name="index_on"
+                              checked value="1">
+                            <input type="hidden" name="index_on" class="input_ad_hidden" value="0" />
                             <label class="custom-control-label" for="customSwitch1">開啟/關閉</label>
                           </div>
                         </td>
@@ -534,8 +542,9 @@
                         <th>上下架狀態</th>
                         <td>
                           <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch2" name="product_on" checked value="1">
-                            <input type="hidden" name="product_on" class="input_pdu_hidden" value="0"/>
+                            <input type="checkbox" class="custom-control-input" id="customSwitch2" name="product_on"
+                              checked value="1">
+                            <input type="hidden" name="product_on" class="input_pdu_hidden" value="0" />
                             <label class="custom-control-label" for="customSwitch2">開啟/關閉</label>
                           </div>
                         </td>
@@ -556,8 +565,8 @@
           </div>
 
         </div>
-     
-   
+
+
 
 
         <!-- =========================light box===================================== -->
@@ -600,20 +609,38 @@
               <table class="table">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">訂單編號</th>
+                    <th scope="col">會員編號</th>
+                    <th scope="col">商品清單</th>
+                    <th scope="col">訂單金額</th>
+                    <th scope="col">成立時間</th>
+                    <th scope="col">出貨時間</th>
+                    <th scope="col">送達時間</th>
+                    <th scope="col">收件人姓名</th>
+                    <th scope="col">收件人地址</th>
+                    <th scope="col">收件人電話</th>
+                    <th scope="col">訂單狀態</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="back_orders_item">
                   <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
@@ -624,7 +651,7 @@
                     <td>Larry</td>
                     <td>the Bird</td>
                     <td>@twitter</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
 
@@ -632,8 +659,7 @@
           </div>
         </div>
 
-
-
+        
 
 
 
@@ -655,6 +681,57 @@
 
 
   <script src="./js/back.js"></script>
+  <script>
+
+    
+    let xhrOrder = new XMLHttpRequest();
+    window.addEventListener('load',getOrder());
+
+    function getOrder(){
+      xhrOrder.onload = function () {
+        if (xhrOrder.status == 200) {
+          showOrders(xhrOrder.responseText);
+        } else {
+          alert(xhrOrder.status);
+        }
+      }
+
+      let url = "./php/order/backorder.php";
+      xhrOrder.open("Get", url, true);
+      xhrOrder.send(null);
+    }
+    
+    function showOrders(ordersArr) {
+      let orders = JSON.parse(ordersArr).data;
+      let ordersList = "";
+      for (let i = 0; i < orders.length; i++) {
+        ordersList += `
+        <tr>
+          <td>${orders[i].order_no}</td>
+          <td>${orders[i].mem_no}</td>
+          <td>還沒取資料喔！！</td>
+          <td>${orders[i].product_price}</td>
+          <td>${orders[i].cret_date}</td>
+          <td>${orders[i].atr_date}</td>
+          <td>${orders[i].cel_date}</td>
+          <td>${orders[i].receiver_name}</td>
+          <td>${orders[i].ship_addr}</td>
+          <td>${orders[i].receiver_tel}</td>
+          <td>
+            <select class="OrderStatus">
+              <option value="1">1：訂單處理中</option>
+              <option value="2">2：商品已出貨</option>
+              <option value="3">3：訂單已完成</option>
+            </select>
+          </td>
+          </tr>`;
+        }
+        document.querySelector('.back_orders_item').innerHTML = ordersList;
+      }
+
+      setInterval(getOrder(),5000);
+    
+  </script>
 
 
 

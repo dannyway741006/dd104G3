@@ -6,6 +6,8 @@ try {
   $cardRes = $pdo->prepare($sql);
   $cardRes->bindParam('pro_no', $pro_no);
   $cardRes->execute();
+  $data = [];
+  $members = [];
   if($cardRes->rowCount()){
     $cards = $cardRes->fetchAll(PDO::FETCH_ASSOC);
     $cardInfo = [];
@@ -84,10 +86,18 @@ try {
       }
     }
     $data = [$step0, $step1, $step2];
-    echo json_encode(['status' => 'success', 'data' => $data]);
-  }else {
-    echo json_encode(['status' => 'error', 'content' => '查無資料']);
   }
+  $sql = 'select j.mem_no, m.mem_name, m.mem_id, headshot
+  from `join_program` j
+  JOIN `member` m on m.mem_no = j.mem_no AND pro_mem_inv = 1
+  where pro_no = :pro_no';
+  $memberRes = $pdo->prepare($sql);
+  $memberRes->bindParam('pro_no', $pro_no);
+  $memberRes->execute();
+  if($memberRes->rowCount()){
+    $members = $memberRes->fetchAll(PDO::FETCH_ASSOC);
+  }
+  echo json_encode(['status' => 'success', 'cards' => $data, 'member' => $members]);
 } catch (PDOException $e) {
   echo $e->getLine();
   echo $e->getMessage();

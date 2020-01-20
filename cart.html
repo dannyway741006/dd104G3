@@ -250,18 +250,30 @@
             </div>
             <div id="cart">
               <div class="cart_account">
-                <div class="cart_credit_card">
-                  <div class="chip">
-                    <div class="chip-line"></div>
-                    <div class="chip-line"></div>
-                    <div class="chip-line"></div>
-                    <div class="chip-line"></div>
-                    <div class="chip-main"></div>
+                <div class="creidcard_rotate">
+                  <div class="cart_credit_card">
+                    <div class="chip">
+                      <div class="chip-line"></div>
+                      <div class="chip-line"></div>
+                      <div class="chip-line"></div>
+                      <div class="chip-line"></div>
+                      <div class="chip-main"></div>
                     </div>
-                  <div class="cart_card_number">
-                    <p>{{cardNum1}} {{cardNum2}} {{cardNum3}} {{cardNum4}}</p>
+                    <div class="cart_card_number">
+                      <p>{{cardNum1}} {{cardNum2}} {{cardNum3}} {{cardNum4}}</p>
+                    </div>
+                    <div class="creidcard_text1">
+                      <p class="cart_creidcard_inside">Card Holder</p>
+                      <p class="cart_creidcard_inside_text">{{cardHolder}}<span></span></p>
+                    </div>
+                    <div class="creidcard_text2">
+                      <p class="cart_creidcard_inside">VALID DATE</p>
+                      <p class="cart_creidcard_inside_text"><span>{{cartMonth}} {{cartYear}}</span></p>
+                    </div>
                   </div>
-                  <p class="card_valid_date">VALID DATE</p>
+                  <!-- <div class="cart_credit_card_back">
+                    1111111111
+                  </div> -->
                 </div>
                 <form>
                   <div class="cart_credit_card_mes">
@@ -274,13 +286,16 @@
                     </div>
                     <p class="cart_card_text">持卡人姓名</p>
                     <div class="cart_numbox1">
-                      <input type="text" class="cart_inputnum2" placeholder="Card Holder's Name">
+                      <input type="text" class="cart_inputnum2" placeholder="Card Holder's Name" v-model="cardHolder"
+                        max="18">
                     </div>
                     <div class="cart_numbox2">
                       <div class="cart_select_box">
                         <p class="cart_card_text">卡片到期日</p>
-                        <input type="text" name="" id="cart_expiration_date1" placeholder="Month">
-                        <input type="text" name="" id="cart_expiration_date2" placeholder="Year">
+                        <input type="text" name="" id="cart_expiration_date1" placeholder="Month" v-model="cartMonth"
+                          maxlength="2">
+                        <input type="text" name="" id="cart_expiration_date2" placeholder="Year" v-model="cartYear"
+                          maxlength="2">
                         <!-- <select name="" id="">
                           <option value=""></option>
                           <option value="">01</option>
@@ -311,7 +326,7 @@
                       </div>
                       <div class="cart_numbox3">
                         <p class="cart_card_text">CCV</p>
-                        <input type="text" class="cart_inputnum2" maxlength="3">
+                        <input type="text" class="cart_inputnum2" maxlength="3" id="creditcardCCV">
                         </p>
                       </div>
                     </div>
@@ -357,6 +372,10 @@
         cardNum2: '',
         cardNum3: '',
         cardNum4: '',
+        cartMonth: '',
+        cartYear: '',
+        cardHolder: '',
+
       },
       methods: {
         setCardNum1(e) {
@@ -370,6 +389,15 @@
         },
         setCardNum4(e) {
           this.cardNum4 = e.target.value;
+        },
+        cartMonth(e) {
+          this.cartMonth = e.target.value;
+        },
+        cartYear(e) {
+          this.cartYear = e.target.value;
+        },
+        cardHolder(e) {
+          this.cardHolder = e.target.value;
         },
       }
     });

@@ -6,22 +6,22 @@
 /*------------------------- */
 
 
-.mall_btn{
-    position: relative;
-    height: 50px;
-    background-color: #e07c01;
-    width: 100%;
-    text-align: left;
-    outline-style: none;
-    outline-width: 0px;
-    border: none;
-    border-style: none;
-    text-shadow: none;
-    -webkit-appearance: none;
-    -webkit-user-select: text;
-    outline-color: transparent;
-    box-shadow: none;
-}
+// .mall_btn{
+//     position: relative;
+//     height: 50px;
+//     background-color: #e07c01;
+//     width: 100%;
+//     text-align: left;
+//     outline-style: none;
+//     outline-width: 0px;
+//     border: none;
+//     border-style: none;
+//     text-shadow: none;
+//     -webkit-appearance: none;
+//     -webkit-user-select: text;
+//     outline-color: transparent;
+//     box-shadow: none;
+// }
 
 
 
@@ -31,11 +31,13 @@ select {
   padding: 5px 5px;
   cursor: pointer;
   outline: none;
+  margin: 5px 10px 0 0;
 }
 
 select::-ms-expand {
   /* for IE 11 */
   display: none;
+  outline: none;
 }
 
 option {
@@ -44,13 +46,12 @@ option {
   padding: 5px;
   outline: none;
   border: none;
-  border: 1px solid green;
+  border:none;
 }
 
 option:hover {
   outline: none;
-  border: 1px solid green;
-
+  border:none;
 }
 
 
@@ -195,6 +196,9 @@ option:hover {
             >li {
               @include font(1);
               color: $dark;
+              width: 100%;
+              list-style: none;
+              margin-left: -18px;
             }
           }
         }
@@ -244,8 +248,16 @@ option:hover {
       // outline: none;
       cursor: pointer;
       // @include font(1);
-      @include baseBtn(90%, 50px, 10px);
-      margin: 5px 0px;
+<<<<<<< HEAD:sass/pages/_mall_v2.scss
+      @include baseBtn;
+      margin-left: 10px;
+=======
+      // @include baseBtn(90%, 50px, 10px);
+
+      @include baseBtn;
+      width:90%;
+      margin:10px 0 0;
+>>>>>>> nicole:sass/pages/_mall.scss
 
 
     }
@@ -389,7 +401,7 @@ option:hover {
       .mall_poduct_cart {
         //商品卡片
         margin: 0 auto 0;
-
+        margin: -30px auto 0;
         .mall_poduct_content {
           //卡片內容
           flex-wrap: wrap;
@@ -418,11 +430,11 @@ option:hover {
             margin: 0 auto;
 
             p {
-              @include font(5);
+              @include font(4);
             }
 
             ul.product_features {
-              margin: 10px 0 0 20px;
+              margin: 5px 0 0 20px;
 
               >li {
                 @include font(1);
@@ -444,7 +456,13 @@ option:hover {
 
 
       .mall_bBtn {
-        @include baseBtn(100%, 50px, 10px);
+        @include baseBtn;
+<<<<<<< HEAD:sass/pages/_mall_v2.scss
+        margin-left: 10px;
+=======
+        line-height: 60px;
+        width:100%;
+>>>>>>> nicole:sass/pages/_mall.scss
       }
     }
   }
@@ -461,5 +479,8 @@ option:hover {
 
   .item a {
     padding: 5px 0;
+  }
+  .item p {
+    @include font(0.5);
   }
 }
