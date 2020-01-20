@@ -46,12 +46,12 @@ option {
   padding: 5px;
   outline: none;
   border: none;
-  border:none;
+  border: none;
 }
 
 option:hover {
   outline: none;
-  border:none;
+  border: none;
 }
 
 
@@ -128,29 +128,33 @@ option:hover {
       height: 50px;
       top: 0;
       right: 0;
-      margin: 15px 30px;
+      margin: 10px 20px 0;
 
-      .mall_cart_cir {
-        background-color: $danger;
-        color: $white;
-        width: 18px;
-        height: 18px;
-        border-radius: 18px;
-        border: 2px solid $danger;
-        position: absolute;
-        top: 25px;
-        left: 30px;
-        text-align: center;
-        vertical-align: middle;
-        display: none;
+      a {
+        display: block;
+        width:5%;
 
+        .mall_cart_cir {
+          background-color: $danger;
+          color: $white;
+          width: 18px;
+          height: 18px;
+          border-radius: 18px;
+          border: 2px solid $danger;
+          position: absolute;
+          top: 25px;
+          left: 30px;
+          text-align: center;
+          vertical-align: middle;
+          display: none;
+
+        }
+
+        >img {
+          cursor: pointer;
+          width: 30px;
+        }
       }
-
-      >img {
-        cursor: pointer;
-        width: 30px;
-      }
-
     }
 
     .mall_poduct_cart {
@@ -251,8 +255,8 @@ option:hover {
       // @include baseBtn(90%, 50px, 10px);
 
       @include baseBtn;
-      width:90%;
-      margin:10px 0 0;
+      width: 90%;
+      margin: 10px 0 0;
 
 
     }
@@ -275,32 +279,6 @@ option:hover {
 
   }
 }
-
-
-
-
-// .mall_content_c1_p02 {
-//   background-image: url(../img/mall_img/mall_bg_02.jpg);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //輪播
 .slider-bg {
@@ -389,14 +367,11 @@ option:hover {
       margin: 0 auto;
       align-content: space-evenly;
 
-      .cart_bg {
-        margin: 5px 0px;
-      }
-
       .mall_poduct_cart {
         //商品卡片
         margin: 0 auto 0;
         margin: -30px auto 0;
+
         .mall_poduct_content {
           //卡片內容
           flex-wrap: wrap;
@@ -453,7 +428,7 @@ option:hover {
       .mall_bBtn {
         @include baseBtn;
         line-height: 60px;
-        width:100%;
+        width: 100%;
       }
     }
   }
@@ -471,6 +446,7 @@ option:hover {
   .item a {
     padding: 5px 0;
   }
+
   .item p {
     @include font(0.5);
   }
