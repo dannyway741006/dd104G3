@@ -20,6 +20,14 @@ for (let i = 0; i < cardNum1.length; i++) {
   });
 };
 
+//---creditcard rotate---//
+// let creditCatdRotate = document.querySelector('#creditcardCCV');
+// creditCatdRotate.addEventListener('click',()=>
+// {
+//   document.querySelector('.creidcard_rotate').setAttribute('style', 'transform:rotateY(180deg);transition:.5s');
+  
+// })
+
 //***---從storage取出資料到購物車---***//
 let storage = sessionStorage;
 
