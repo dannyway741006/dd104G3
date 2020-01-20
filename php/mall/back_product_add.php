@@ -14,21 +14,33 @@ try {
       $from = $_FILES['product_src']['tmp_name'];
       $to = "../../img/mall_img/" . $_FILES['product_src']['name'];
       $fileName1 =  "img/mall_img/" . $_FILES["product_src"]["name"];
-  
+      if (copy($from, $to)) {
+        echo "上傳成功 <br>";
+      } else {
+        echo "上傳失敗 <br>";
+      }
     }
   
     if ($_FILES['product_bg_src']['error'] === UPLOAD_ERR_OK) {
       $from = $_FILES['product_bg_src']['tmp_name'];
       $to = "../../img/mall_img/" . $_FILES['product_bg_src']['name'];
       $fileName2 =  "img/mall_img/" . $_FILES["product_bg_src"]["name"];
- 
+      if (copy($from, $to)) {
+        echo "上傳成功 <br>";
+      } else {
+        echo "上傳失敗 <br>";
+      }
     }
 
     if ($_FILES['product_slide_img']['error'] === UPLOAD_ERR_OK) {
       $from = $_FILES['product_slide_img']['tmp_name'];
       $to = "../../img/mall_img/" . $_FILES['product_slide_img']['name'];
       $fileName3 =  "img/mall_img/" . $_FILES["product_slide_img"]["name"];
-  
+      if (copy($from, $to)) {
+        echo "上傳成功 <br>";
+      } else {
+        echo "上傳失敗 <br>";
+      }
     }
     // mall_product
     // product_no=:product_no,product_name=:product_name,product_price=:product_price, product_src=:product_src,product_color=:product_color,product_desc=:product_desc,product_type=:product_type,product_bg_src=:product_bg_src,product_slide_img=:product_slide_img,index_on=:index_on,product_on=:product_on"
