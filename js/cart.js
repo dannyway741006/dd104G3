@@ -137,7 +137,7 @@ cartSubmit.addEventListener('click', () => {
       alert(xhr.statusText);
     }
   }
-
+  let cartNewTotal = document.querySelector('.cart_price_total');
   let shipAddr = document.querySelector('#ship_addr');
   let receiverTel = document.querySelector('#receiver_tel');
   let receiverName = document.querySelector('#receiver_name');
