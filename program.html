@@ -456,7 +456,7 @@
         <!-- 日曆最外層 -->
         <div class="calendar_mask" v-show="calendar_btn">
           <transition name="fade" mode="out-in">
-            <div id="calendar" v-show="calendar_btn" @click.stop="">
+            <div id="calendar" v-show="calendar_btn" @click.stop="calendar_click()">
               <h1 class="calendar_date_title">
                 <div class="mont_date">{{calendar.date}}</div>
                 <div>
@@ -501,18 +501,20 @@
                   <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
                        handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
                        other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
-                      }" @click="calendar_day_click=!calendar_day_click">
-                  </div>
+                      }" @click.stop="calendar_day_click=!calendar_day_click">
+                  <div v-if="calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date) > 0">+ {{calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)}}</div>
+                    </div>
                 </div>
               </div>
             </div>
           </transition>
           <!-- 日曆打開卡片們 -->
-          <transition name="fade" mode="out-in">
+          <transition name="horizentalfade" mode="out-in">
             <div class="cal_card_list_box" v-show="calendar_day_click" @click.stop="">
               <div class="cal_card_list">
 
-                <div class="cal_card" v-for="item in calendar_cards">
+                <!-- <div class="cal_card" v-for="item in calendar_cards"> -->
+                  <div class="cal_card">
                   <div class="cal_card_color">
                   </div>
                   <!-- <p>{{item.card_name}}</p> -->
