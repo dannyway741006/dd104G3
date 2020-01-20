@@ -217,9 +217,10 @@
                   <div class="cards_list cards_list_todo" id="cards_list_todo" v-for="listitem in item.card_list_todo">
 
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:330px;height:54vh" @change="catch_card_position({$event, type: listitem})">
+                      style="min-height:310px" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-if="item.card_name" v-for="(item, cardIndex) in listitem.cards"
-                        :key="cardIndex.value" @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
+                        :key="cardIndex.value"
+                        @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
                         <p>{{item.card_name}}</p>
                         <div class="cards_list_card_icon_bar">
@@ -249,9 +250,9 @@
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
                     v-for="listitem in item.card_list_doing">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh" @change="catch_card_position({$event, type: listitem})">
+                      style="min-height:420px" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
-                        @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
+                        @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
                         <p>{{item.card_name}}</p>
                         <div class="cards_list_card_icon_bar">
@@ -279,9 +280,9 @@
                 <div class="cards_column_body cards_column_body_done">
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="listitem in item.card_list_done">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh" @change="catch_card_position({$event, type: listitem})">
+                      style="min-height:420px" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex"
-                        @click.stop="open_card_func(),card_no=cardIndex,todo_type=listitem.type">
+                        @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
                         <p>{{item.card_name}}</p>
                         <div class="cards_list_card_icon_bar">
@@ -317,62 +318,8 @@
                     src="./img/program_img/chat_white.svg" alt=""></button>
               </div> -->
             </div>
-            <div class="calendar_mask" v-show="calendar_btn">
 
-              <transition name="fade" mode="out-in">
-                <div id="calendar" v-show="calendar_btn" @click.stop="">
-                  <h1 class="calendar_date_title">
-                    <div class="mont_date">{{calendar.date}}</div>
-                    <div>
-                      <div>th</div>
-                      <div>{{calendar.day}}</div>
-                    </div>
-                    <div class="todaybutton">
-                      <button @click="setToday">Today</button>
-                    </div>
-                  </h1>
-                  <div class="calendar_date_midtitle">
 
-                    <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg"
-                        alt="" width="20"></div>
-                    <div>{{calendar.week}}</div>
-                    <div>{{calendar.year}}</div>
-
-                    <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
-                        alt="" width="20"></div>
-                  </div>
-
-                  <div class="calendar">
-                    <div class="weekDay" v-if="handleResize()">
-                      <div style="color: #eb7a77;">Sunday</div>
-                      <div>Monday</div>
-                      <div>Tuesday</div>
-                      <div>Wednesday</div>
-                      <div>Thursday</div>
-                      <div>Friday</div>
-                      <div style="color: #eb7a77;">Saturday</div>
-                    </div>
-                    <div class="weekDay" v-else>
-                      <div style="color: #eb7a77;">Sun</div>
-                      <div>Mon</div>
-                      <div>Tue</div>
-                      <div>Wed</div>
-                      <div>Thu</div>
-                      <div>Fri</div>
-                      <div style="color: #eb7a77;">Sat</div>
-                    </div>
-                    <div class="week" v-for="i in 5">
-                      <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
-                           handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
-                           other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
-                          }">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </transition>
-            </div>
-            
           </div>
         </transition-group>
 
@@ -400,9 +347,9 @@
                     v-for="listitem in item.card_list_todo">
 
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh">
+                      style="min-height:420px">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
-                        @click.stop="open_card_func(),history_card_no=cardIndex,todo_type=listitem.type">
+                        @click.stop="open_card_func(cardIndex, listitem.type),history_card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
                         </div>
                         <p>{{item.card_name}}</p>
@@ -434,9 +381,9 @@
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
                     v-for="listitem in item.card_list_doing">
                     <!-- <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh"> -->
+                      style="min-height:420px"> -->
                     <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
-                      @click.stop="open_card_func(),history_card_no=cardIndex,todo_type=listitem.type">
+                      @click.stop="open_card_func(cardIndex, listitem.type),history_card_no=cardIndex,todo_type=listitem.type">
                       <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
                       </div>
                       <p>{{item.card_name}}</p>
@@ -466,9 +413,9 @@
 
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="listitem in item.card_list_done">
                     <!-- <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:435px;height:65vh"> -->
+                      style="min-height:420px"> -->
                     <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex"
-                      @click.stop="open_card_func(),history_card_no=cardIndex,todo_type=listitem.type">
+                      @click.stop="open_card_func(cardIndex, listitem.type),history_card_no=cardIndex,todo_type=listitem.type">
                       <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
                       </div>
                       <p>{{item.card_name}}</p>
@@ -505,6 +452,94 @@
             </div>
           </div>
         </transition-group>
+
+        <!-- 日曆最外層 -->
+        <div class="calendar_mask" v-show="calendar_btn">
+          <transition name="fade" mode="out-in">
+            <div id="calendar" v-show="calendar_btn" @click.stop="">
+              <h1 class="calendar_date_title">
+                <div class="mont_date">{{calendar.date}}</div>
+                <div>
+                  <div>th</div>
+                  <div>{{calendar.day}}</div>
+                </div>
+                <div class="todaybutton">
+                  <button @click="setToday">Today</button>
+                </div>
+              </h1>
+              <div class="calendar_date_midtitle">
+
+                <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg" alt=""
+                    width="20"></div>
+                <div>{{calendar.week}}</div>
+                <div>{{calendar.year}}</div>
+
+                <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
+                    alt="" width="20"></div>
+              </div>
+
+              <div class="calendar">
+                <div class="weekDay" v-if="handleResize()">
+                  <div style="color: #eb7a77;">Sunday</div>
+                  <div>Monday</div>
+                  <div>Tuesday</div>
+                  <div>Wednesday</div>
+                  <div>Thursday</div>
+                  <div>Friday</div>
+                  <div style="color: #eb7a77;">Saturday</div>
+                </div>
+                <div class="weekDay" v-else>
+                  <div style="color: #eb7a77;">Sun</div>
+                  <div>Mon</div>
+                  <div>Tue</div>
+                  <div>Wed</div>
+                  <div>Thu</div>
+                  <div>Fri</div>
+                  <div style="color: #eb7a77;">Sat</div>
+                </div>
+                <div class="week" v-for="i in 5">
+                  <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
+                       handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
+                       other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
+                      }" @click="calendar_day_click=!calendar_day_click">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </transition>
+          <!-- 日曆打開卡片們 -->
+          <transition name="fade" mode="out-in">
+            <div class="cal_card_list_box" v-show="calendar_day_click" @click.stop="">
+              <div class="cal_card_list">
+
+                <div class="cal_card" v-for="item in calendar_cards">
+                  <div class="cal_card_color">
+                  </div>
+                  <!-- <p>{{item.card_name}}</p> -->
+                  <p>card_name</p>
+                  <div class="cards_list_card_icon_bar">
+                    <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                        src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                    <!-- <span>{{history_doing_showcalendarpanel(cardIndex)}}</span> -->
+                    <span>calendarpanel</span>
+                    <div class="cards_list_card_icon_right">
+                      <div class="cards_list_card_icon_right">
+                        <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg" alt="">
+                        </div>
+                        <!-- <span>{{history_doing_card_progress_checked(cardIndex)}}/{{history_doing_card_progress_sum(cardIndex)}}</span> -->
+                        <span>0/0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </transition>
+        </div>
+
+
+
 
         <!-- 確認完成專案跳窗 -->
         <div class="complete_info_mask"
@@ -593,7 +628,7 @@
                           <form method="post" enctype="multipart/form-data">
                             <label class="upfile_content">
                               <p>上傳附件</p>
-                              <input type="file" multiple id="upFile">
+                              <input type="file" multiple id="upFile" name="upFile">
                             </label>
                           </form>
                         </div>
@@ -710,7 +745,7 @@
                                 v-show="item.test_title_name">{{item.title}}</h3>
                               <div class="change_title" v-show="item.showname" @click.stop="">
                                 <textarea name="" v-model.trim="item.title"
-                                  @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title(detailIndex)"
+                                  @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title"
                                   maxlength="50"></textarea>
                               </div>
 
@@ -784,14 +819,17 @@
                         <div class="card_upload_file">
                           <!-- 上傳的內容 -->
                           <form method="post" enctype="multipart/form-data">
-                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
+                            <!-- <input name="MAX_FILE_SIZE" type="hidden" value="2097152"> -->
+                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}' >
                               <p>上傳附件</p>
-                              <input type="file" @change="filesearch" multiple>
+                              <input type="file" @change="filesearch" multiple  name="upFile">
                             </label>
                           </form>
                         </div>
                       </div>
                     </div>
+
+                    
                   </div>
                 </div>
               </div>
@@ -855,7 +893,7 @@
                           <form method="post" enctype="multipart/form-data">
                             <label class="upfile_content">
                               <p>上傳附件</p>
-                              <input type="file" multiple id="upFile">
+                              <input type="file" multiple id="upFile" name="upFile">
                             </label>
                           </form>
                         </div>
@@ -972,7 +1010,7 @@
                                 v-show="item.test_title_name">{{item.title}}</h3>
                               <div class="change_title" v-show="item.showname" @click.stop="">
                                 <textarea name="" v-model.trim="item.title"
-                                  @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title(detailIndex)"
+                                  @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title"
                                   maxlength="50"></textarea>
                               </div>
 
@@ -1047,7 +1085,7 @@
                           <form method="post" enctype="multipart/form-data">
                             <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
                               <p>上傳附件</p>
-                              <input type="file" @change="filesearch" multiple>
+                              <input type="file" @change="filesearch" multiple name="upFile">
                             </label>
                           </form>
                         </div>
@@ -1116,7 +1154,7 @@
                           <form method="post" enctype="multipart/form-data">
                             <label class="upfile_content">
                               <p>上傳附件</p>
-                              <input type="file" multiple id="upFile">
+                              <input type="file" multiple id="upFile" name="upFile">
                             </label>
                           </form>
                         </div>
@@ -1233,7 +1271,7 @@
                                 v-show="item.test_title_name">{{item.title}}</h3>
                               <div class="change_title" v-show="item.showname" @click.stop="">
                                 <textarea name="" v-model.trim="item.title"
-                                  @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title(detailIndex)"
+                                  @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title"
                                   maxlength="50"></textarea>
                               </div>
 
@@ -1285,6 +1323,7 @@
                         </transition-group>
                       </draggable>
 
+
                       <!-- 上傳附件 -->
                       <div class="card_file">
                         <div class="card_file_title">
@@ -1308,7 +1347,7 @@
                           <form method="post" enctype="multipart/form-data">
                             <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
                               <p>上傳附件</p>
-                              <input type="file" @change="filesearch" multiple>
+                              <input type="file" @change="filesearch" multiple name="upFile">
                             </label>
                           </form>
                         </div>
@@ -1669,6 +1708,7 @@
     </script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
   <script src="./js/lib/index.min.js"></script>
@@ -1677,7 +1717,7 @@
   <script src="./js/background.js"></script>
   <script src="./js/layout.js"></script>
 
-  <!--  -->
+
 </body>
 
 </html>
