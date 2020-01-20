@@ -13,9 +13,10 @@
     $lastId = $pdo->lastInsertId();
 
     //
-    $sql = "insert into `join_program` (mem_no, pro_no) values( ?, $lastId)";
-    $join = $pdo->prepare( $sql );
+    $sql = "insert into `join_program` (mem_no,inv_by_mem, pro_no,pro_mem_inv) values(?,?, $lastId,1)";
+    $join = $pdo->prepare($sql);
     $join->bindValue(1, $_SESSION["mem_no"]);
+    $join->bindValue(2, $_SESSION["mem_no"]);
     $join->execute();
 
     echo $lastId;

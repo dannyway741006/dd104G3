@@ -2,7 +2,7 @@
 try {
   require_once('../pdo.php');
   session_start();
-  $_SESSION['mem_no'] = 1; //test
+  // $_SESSION['mem_no'] = 1; //test
   switch ($_POST['type']) {
     case "add_card":
       $pro_no = $_POST['pro_no'];
