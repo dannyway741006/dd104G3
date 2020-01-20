@@ -318,58 +318,7 @@
                     src="./img/program_img/chat_white.svg" alt=""></button>
               </div> -->
             </div>
-            <transition name="fade" mode="out-in">
-              <div id="calendar" v-show="calendar_btn" @click.stop="">
-                <h1 class="calendar_date_title">
-                  <div class="mont_date">{{calendar.date}}</div>
-                  <div>
-                    <div>th</div>
-                    <div>{{calendar.day}}</div>
-                  </div>
-                  <div class="todaybutton">
-                    <button @click="setToday">Today</button>
-                  </div>
-                </h1>
-                <div class="calendar_date_midtitle">
 
-                  <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg"
-                      alt="" width="20"></div>
-                  <div>{{calendar.week}}</div>
-                  <div>{{calendar.year}}</div>
-
-                  <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
-                      alt="" width="20"></div>
-                </div>
-
-                <div class="calendar">
-                  <div class="weekDay" v-if="handleResize()">
-                    <div style="color: #eb7a77;">Sunday</div>
-                    <div>Monday</div>
-                    <div>Tuesday</div>
-                    <div>Wednesday</div>
-                    <div>Thursday</div>
-                    <div>Friday</div>
-                    <div style="color: #eb7a77;">Saturday</div>
-                  </div>
-                  <div class="weekDay" v-else>
-                    <div style="color: #eb7a77;">Sun</div>
-                    <div>Mon</div>
-                    <div>Tue</div>
-                    <div>Wed</div>
-                    <div>Thu</div>
-                    <div>Fri</div>
-                    <div style="color: #eb7a77;">Sat</div>
-                  </div>
-                  <div class="week" v-for="i in 5">
-                    <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
-                           handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
-                           other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
-                          }">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </transition>
 
           </div>
         </transition-group>
@@ -503,6 +452,94 @@
             </div>
           </div>
         </transition-group>
+
+        <!-- 日曆最外層 -->
+        <div class="calendar_mask" v-show="calendar_btn">
+          <transition name="fade" mode="out-in">
+            <div id="calendar" v-show="calendar_btn" @click.stop="">
+              <h1 class="calendar_date_title">
+                <div class="mont_date">{{calendar.date}}</div>
+                <div>
+                  <div>th</div>
+                  <div>{{calendar.day}}</div>
+                </div>
+                <div class="todaybutton">
+                  <button @click="setToday">Today</button>
+                </div>
+              </h1>
+              <div class="calendar_date_midtitle">
+
+                <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg" alt=""
+                    width="20"></div>
+                <div>{{calendar.week}}</div>
+                <div>{{calendar.year}}</div>
+
+                <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
+                    alt="" width="20"></div>
+              </div>
+
+              <div class="calendar">
+                <div class="weekDay" v-if="handleResize()">
+                  <div style="color: #eb7a77;">Sunday</div>
+                  <div>Monday</div>
+                  <div>Tuesday</div>
+                  <div>Wednesday</div>
+                  <div>Thursday</div>
+                  <div>Friday</div>
+                  <div style="color: #eb7a77;">Saturday</div>
+                </div>
+                <div class="weekDay" v-else>
+                  <div style="color: #eb7a77;">Sun</div>
+                  <div>Mon</div>
+                  <div>Tue</div>
+                  <div>Wed</div>
+                  <div>Thu</div>
+                  <div>Fri</div>
+                  <div style="color: #eb7a77;">Sat</div>
+                </div>
+                <div class="week" v-for="i in 5">
+                  <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
+                       handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
+                       other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
+                      }" @click="calendar_day_click=!calendar_day_click">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </transition>
+          <!-- 日曆打開卡片們 -->
+          <transition name="fade" mode="out-in">
+            <div class="cal_card_list_box" v-show="calendar_day_click" @click.stop="">
+              <div class="cal_card_list">
+
+                <div class="cal_card" v-for="item in calendar_cards">
+                  <div class="cal_card_color">
+                  </div>
+                  <!-- <p>{{item.card_name}}</p> -->
+                  <p>card_name</p>
+                  <div class="cards_list_card_icon_bar">
+                    <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                        src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                    <!-- <span>{{history_doing_showcalendarpanel(cardIndex)}}</span> -->
+                    <span>calendarpanel</span>
+                    <div class="cards_list_card_icon_right">
+                      <div class="cards_list_card_icon_right">
+                        <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg" alt="">
+                        </div>
+                        <!-- <span>{{history_doing_card_progress_checked(cardIndex)}}/{{history_doing_card_progress_sum(cardIndex)}}</span> -->
+                        <span>0/0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </transition>
+        </div>
+
+
+
 
         <!-- 確認完成專案跳窗 -->
         <div class="complete_info_mask"
