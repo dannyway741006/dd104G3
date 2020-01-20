@@ -247,7 +247,7 @@ var main_content = new Vue({
     //邀請專案成員
     invite_add_member(program) {
       console.log(program)
-      fetch('./php/pm/invite_member.php', {
+      fetch('./php/member/invite_member.php', {
         method: 'POST',
         body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&invite_id=${program.invite_add_member_addr}&pro_no=${program.pro_no}`)
       })
