@@ -74,7 +74,8 @@ try {
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta);
+                (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
+                $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color"=>$todo_cont_clock);
               }else{
                 $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'] = array();
               }
@@ -106,7 +107,8 @@ try {
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
+                (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][0] = array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => $todo_cont_clock);
               }else{
                 $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }
@@ -144,7 +146,8 @@ try {
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                $step1_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta);
+                (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
+                $step1_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta,"tomato_color"=>$todo_cont_clock);
               }else{
                 $step1_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'] = array();
               }
@@ -176,7 +179,8 @@ try {
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
+                (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => $todo_cont_clock);
               }else{
                 $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }
@@ -214,7 +218,8 @@ try {
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta);
+                (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
+                $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta,"tomato_color"=>$todo_cont_clock);
               }else{
                 $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'] = array();
               }
@@ -246,7 +251,8 @@ try {
               if($card['todo_cont'] != NULL)
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
-                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
+                (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" =>$todo_cont_clock);
               }else{
                 $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }

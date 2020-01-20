@@ -1507,8 +1507,8 @@ var main_content = new Vue({
     //送出資料
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     console.log(this);
-    let data_info = `mem_no=${this.userInfo.mem_no}`;
-    // let data_info = `mem_no=1`;
+    // let data_info = `mem_no=${this.userInfo.mem_no}`;
+    let data_info = `mem_no=1`;
     xhr.send(data_info);
     // console.log(this)
   },

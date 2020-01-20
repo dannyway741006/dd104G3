@@ -130,9 +130,10 @@ var main_content = new Vue({
 
 
     window_width: 0,
-    userInfo: []
+    userInfo: [],
 
-
+    calendar_day_click:false,
+    calendar_cards:[],
 
   },
 
@@ -892,7 +893,7 @@ var main_content = new Vue({
           "cache": false,
           "success": function (data) {
             console.log(data);
-            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[(vm.programs[vm.page][vm.todo_type][0].cards[index].todo_list_content_detail[detailIndex].lists).length - 1].todo_no = data.todo_no;          },
+            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists).length - 1].todo_cont_no = data.todo_cont_no;          },
           "error": function (data) {
             console.log(data);
           }
@@ -971,6 +972,7 @@ var main_content = new Vue({
             pro_card.filebox.push({
               name: file_name,
               source: pro_card.file_result,
+              file_no:'',
             });
 
             const vm = this;
@@ -995,6 +997,7 @@ var main_content = new Vue({
               "cache": false,
               "success": function (data) {
                 console.log(data);
+                pro_card.filebox[(pro_card.filebox).length - 1].file_no = data.file_no;
 
               },
               "error": function (data) {
@@ -1561,6 +1564,7 @@ var main_content = new Vue({
       this.todo_switch = false;
       this.todoListTitle = '';
       this.fileder_switch = false;
+      this.calendar_day_click=false;
 
       // console.log(this.programs.length - 1)
       if (this.programs.length == 0) {
