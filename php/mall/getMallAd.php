@@ -1,7 +1,7 @@
 <?php
   try{
     require_once('../pdo.php');
-    $sql = 'select * from `mall_product` where index_true = 1';
+    $sql = 'select * from `mall_product` where index_on = 1';
     $res = $pdo->prepare($sql);
     $res->execute();
     if($res->rowCount()){
