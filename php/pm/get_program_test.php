@@ -93,7 +93,7 @@ try {
               $todo_list_content_detail_arr[0]['title'] = $card['todo_title'];
               if($card['todo_cont'] != NULL)
               {
-                (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
+               ( int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
                 $todo_list_content_detail_arr[0]['lists'][0] = array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => false);
               }else{
                 $todo_list_content_detail_arr[0]['lists'] = [];

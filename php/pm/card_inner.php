@@ -150,7 +150,6 @@ try {
       // $file_src='';
       // $pdo->beginTransaction();
       $pdo->beginTransaction();
-      // $max_size=2097152;
       if( $_FILES["upFile"]["error"] == UPLOAD_ERR_OK){
       $sql = "insert into `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, '')";
       $files = $pdo->prepare($sql);
