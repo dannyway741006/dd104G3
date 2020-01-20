@@ -248,16 +248,11 @@ option:hover {
       // outline: none;
       cursor: pointer;
       // @include font(1);
-<<<<<<< HEAD:sass/pages/_mall_v2.scss
-      @include baseBtn;
-      margin-left: 10px;
-=======
       // @include baseBtn(90%, 50px, 10px);
 
       @include baseBtn;
       width:90%;
       margin:10px 0 0;
->>>>>>> nicole:sass/pages/_mall.scss
 
 
     }
@@ -457,12 +452,8 @@ option:hover {
 
       .mall_bBtn {
         @include baseBtn;
-<<<<<<< HEAD:sass/pages/_mall_v2.scss
-        margin-left: 10px;
-=======
         line-height: 60px;
         width:100%;
->>>>>>> nicole:sass/pages/_mall.scss
       }
     }
   }

@@ -24,17 +24,17 @@ try {
       $join->execute();
       // require_once('get_program.php');
       echo json_encode(['status' => 'success', 'content' => '新建卡片成功']);
-    break;
-    
+      break;
+
     case "delete_card":
       $sql = "delete from `card` WHERE `card_no` = :card_no";
       $res = $pdo->prepare($sql);
       $res->bindValue('card_no', $_POST['card_no']);
       $res->execute();
-    
+
       echo json_encode(['status' => 'success', 'content' => '刪除卡片']);
-    break;
-      
+      break;
+
     case "check_dateline":
       $sql = "update `card` set card_sta = :card_sta 
       where card_no = :card_no";
@@ -42,9 +42,9 @@ try {
       $res->bindParam('card_sta', $_POST['card_sta']);
       $res->bindParam('card_no', $_POST['card_no']);
       $res->execute();
-    
+
       echo json_encode(['status' => 'success', 'content' => '異動成功']);
-    break;
+      break;
 
     case "set_calendar_date":
       $sql = "update `card` set card_date = :card_date 
@@ -53,38 +53,36 @@ try {
       $res->bindParam('card_date', $_POST['card_date']);
       $res->bindParam('card_no', $_POST['card_no']);
       $res->execute();
-    
+
       echo json_encode(['status' => 'success', 'content' => '異動成功']);
-    break;
-    case "update_card":
+      break;
+
+    case "update_card_title":
 
       $sql = "update `card` set card_name = :card_name 
-      where `card_no` = :card_no";
-    $res = $pdo->prepare($sql);
-    $res->bindParam(':card_name', $_POST['card_name']);
-    $res->bindParam(':card_no', $_POST['card_no']);
-    $res->execute();
+            where `card_no` = :card_no";
+      $res = $pdo->prepare($sql);
+      $res->bindParam(':card_name', $_POST['card_name']);
+      $res->bindParam(':card_no', $_POST['card_no']);
+      $res->execute();
 
-    echo json_encode(['status' => 'success', 'content' => '修改卡片標題成功']);
-          break;
-    
+      echo json_encode(['status' => 'success', 'content' => '修改卡片標題成功']);
+      break;
 
-  case "add_todo":
+    case "add_todo":
       $sql = 'insert into `todo` 
-    ( `todo_no`,`pro_no`,`card_no`,`todo_title`
-    ) values 
-    (null ,:pro_no, :card_no, :todo_title)';
+            ( `todo_no`,`pro_no`,`card_no`,`todo_title`
+            ) values 
+            (null ,:pro_no, :card_no, :todo_title)';
       $todos = $pdo->prepare($sql);
       $todos->bindValue(":pro_no", $_POST["pro_no"]);
       $todos->bindValue(":card_no", $_POST["card_no"]);
       $todos->bindValue(":todo_title", $_POST["todo_title"]);
       $todos->execute();
-      echo json_encode(['status' => 'success', 'content' => '更新待辦事項成功']);
       $todos_id = $pdo->lastInsertId();
-
-
+      echo json_encode(['status' => 'success', 'content' => '增加待辦事項成功', 'todo_no' => $todos_id]);
       break;
-  case "delete_todo":
+    case "delete_todo":
 
       $sql = "delete FROM `todo` WHERE `todo_no` = :todo_no";
       $res = $pdo->prepare($sql);
@@ -93,25 +91,26 @@ try {
       echo json_encode(['status' => 'success', 'content' => '刪除代辦事項']);
       break;
 
-  case "update_todo":
+    case "update_todo":
 
-    $sql = "update `todo` set pro_sta = :todo_title 
-  where todo_no = :todo_no";
-$res = $pdo->prepare($sql);
-$res->bindParam(':todo_title', $_POST['todo_title']);
-$res->bindParam(':todo_no', $_POST['todo_no']);
-$res->execute();
 
-echo json_encode(['status' => 'success', 'content' => '修改清單標題成功']);
+      $sql = "update `todo` set todo_title = :todo_title 
+          where todo_no = :todo_no";
+      $res = $pdo->prepare($sql);
+      $res->bindParam(':todo_title', $_POST['todo_title']);
+      $res->bindParam(':todo_no', $_POST['todo_no']);
+      $res->execute();
+
+      echo json_encode(['status' => 'success', 'content' => '修改清單標題成功']);
       break;
 
 
 
-  case "add_todo_content":
+    case "add_todo_content":
       $sql = 'insert into `todo_content` 
-        (`todo_cont_no`,`pro_no`,`card_no`,`todo_no`,`todo_cont`,`todo_cont_sta`,`todo_timer`,`todo_cont_clock`
-        ) values 
-        (null ,:pro_no, :card_no, :todo_no, :todo_cont, :todo_cont_sta, :todo_timer, :todo_cont_clock)';
+                (`todo_cont_no`,`pro_no`,`card_no`,`todo_no`,`todo_cont`,`todo_cont_sta`,`todo_timer`,`todo_cont_clock`
+                ) values 
+                (null ,:pro_no, :card_no, :todo_no, :todo_cont, :todo_cont_sta, :todo_timer, :todo_cont_clock)';
       $todos = $pdo->prepare($sql);
       $todos->bindValue(":pro_no", $_POST["pro_no"]);
       $todos->bindValue(":card_no", $_POST["card_no"]);
@@ -121,32 +120,48 @@ echo json_encode(['status' => 'success', 'content' => '修改清單標題成功'
       $todos->bindValue(":todo_timer", 10);
       $todos->bindValue(":todo_cont_clock", 0);
       $todos->execute();
-      echo json_encode(['status' => 'success', 'content' => '更新待辦事項成功']);
+      $todos_cont_id = $pdo->lastInsertId();
+
+      echo json_encode(['status' => 'success', 'content' => '更新待辦事項成功','todo_cont_no'=>$todos_cont_id]);
 
 
       break;
 
-      case "delete_todo_content":
+    case "delete_todo_content":
 
-          $sql = "delete FROM `todo_content` WHERE `todo_cont_no` = :todo_cont_no";
-          $res = $pdo->prepare($sql);
-          $res->bindValue(':todo_cont_no', $_POST["todo_cont_no"]);
-          $res->execute();
-          echo json_encode(['status' => 'success', 'content' => '刪除待辦事項子項目']);
-          break;
+      $sql = "delete FROM `todo_content` WHERE `todo_cont_no` = :todo_cont_no";
+      $res = $pdo->prepare($sql);
+      $res->bindValue(':todo_cont_no', $_POST["todo_cont_no"]);
+      $res->execute();
+      echo json_encode(['status' => 'success', 'content' => '刪除待辦事項子項目']);
+      break;
 
-          
-      case "update_todo_content":
 
-          $sql = "update `todo_content` set todo_cont_sta = :todo_cont_sta 
-          where todo_cont_no = :todo_cont_no";
-          $res = $pdo->prepare($sql);
-          $res->bindParam(':todo_cont_sta', $_POST['todo_cont_sta']);
-          $res->bindParam(':todo_cont_no', $_POST['todo_cont_no']);
-          $res->execute();
-        
-          echo json_encode(['status' => 'success', 'content' => '更改子項目成功']);
-          break;
+    case "update_todo_content":
+
+      $sql = "update `todo_content` set todo_cont_sta = :todo_cont_sta 
+                  where todo_cont_no = :todo_cont_no";
+      $res = $pdo->prepare($sql);
+      // $current_cont_sta=$_POST['todo_cont_sta']=='0'?$_POST['todo_cont_sta']='1':$_POST['todo_cont_sta']='0';
+      $res->bindParam(':todo_cont_sta', $_POST['todo_cont_sta']);
+      $res->bindParam(':todo_cont_no', $_POST['todo_cont_no']);
+      $res->execute();
+
+      echo json_encode(['status' => 'success', 'content' => '更改子項目成功']);
+      break;
+
+
+    case "update_onload_tomato":
+
+      $sql = "update `todo_content` set todo_cont_clock = :todo_cont_clock 
+                  where todo_cont_no = :todo_cont_no";
+      $res = $pdo->prepare($sql);
+      $res->bindParam(':todo_cont_clock', $_POST['todo_cont_clock']);
+      $res->bindParam(':todo_cont_no', $_POST['todo_cont_no']);
+      $res->execute();
+
+      echo json_encode(['status' => 'success', 'content' => '加入番茄鐘']);
+      break;
 
     case "add_file":
       // $pro_no = $_POST['pro_no'];
@@ -164,21 +179,21 @@ echo json_encode(['status' => 'success', 'content' => '修改清單標題成功'
       $files->bindValue(":file_src", $_POST["file_src"]);
       $files->execute();
 
-      //取得自動創號的key值
-      $psn = $pdo->lastInsertId();
 
-      echo json_encode(['status' => 'success', 'content' => '上傳檔案成功']);
-    break;
+      //取得自動創號的key值
+      $files_id = $pdo->lastInsertId();
+
+      echo json_encode(['status' => 'success', 'content' => '上傳檔案成功','file_no'=>$files_id]);
+      break;
 
     case "delete_file":
-      $sql = "delete FROM `card_file` WHERE `card_file`.`file_no` = :file_no";
+      $sql = "delete FROM `card_file` WHERE file_no = :file_no";
       $res = $pdo->prepare($sql);
       $res->bindValue('file_no', $_POST['file_no']);
       $res->execute();
-    
-      echo json_encode(['status' => 'success', 'content' => '刪除檔案']);
-    break;
 
+      echo json_encode(['status' => 'success', 'content' => '刪除檔案']);
+      break;
   }
 } catch (PDOException $e) {
   echo $e->getLine();
