@@ -94,10 +94,11 @@
             <div class="setting_project">
               <div>
                 <p class="setting_project_title1">專案名稱 Project</p>
-                <input type="text" v-model.trim="pro_title" name="pro_title" id="pro_title" maxlength="50"/>
+                <input type="text" v-model.trim="pro_title" name="pro_title" id="pro_title" maxlength="50" />
                 <p class="setting_project_title2">專案專屬色 Color</p>
                 <div class="colors">
-                  <span class="new_program_choose_color_item" v-for='pro_col in colors' @click.stop='selectColor = pro_col'
+                  <span class="new_program_choose_color_item" v-for='pro_col in colors'
+                    @click.stop='selectColor = pro_col'
                     :class='{new_program_choose_color_item_checked: selectColor === pro_col}'
                     :style='{backgroundColor: pro_col}' :value=pro_col.pro_col>
                   </span>
@@ -181,8 +182,8 @@
               <transition name="fade" mode="out-in">
                 <div class="invite_add_member_box" v-show="invite_add_member_box" @click.stop="">
                   <p>輸入會員帳號</p>
-                  <input type="text" class="invite_add_member_addr"
-                    v-model="item.invite_add_member_addr" @keyup.enter="invite_add_member(item)" maxlength="50">
+                  <input type="text" class="invite_add_member_addr" v-model="item.invite_add_member_addr"
+                    @keyup.enter="invite_add_member(item)" maxlength="50">
                   <button class="invite_add_member_btn" @click='invite_add_member(item)'>送出</button>
                 </div>
               </transition>
@@ -217,7 +218,8 @@
 
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
                       style="min-height:310px" @change="catch_card_position({$event, type: listitem})">
-                      <div class="cards_list_card" v-if="item.card_name" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
+                      <div class="cards_list_card" v-if="item.card_name" v-for="(item, cardIndex) in listitem.cards"
+                        :key="cardIndex.value"
                         @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
                         <p>{{item.card_name}}</p>
@@ -248,7 +250,7 @@
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
                     v-for="listitem in item.card_list_doing">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:420px"  @change="catch_card_position({$event, type: listitem})">
+                      style="min-height:420px" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
@@ -538,7 +540,8 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"
+                      @blur="change_card_title"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -685,7 +688,7 @@
                           <!-- hover時顏色好像改不了 -->
                           <p>
                             <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm'
-                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="set_calendar_date"/>
+                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="set_calendar_date" />
                           </p>
                           <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                         </div>
@@ -693,60 +696,69 @@
 
                       <!-- 新增出來的待辦清單 -->
                       <draggable v-model="item.todo_list_content_detail" :options="{animation:500}">
-                      <transition-group name="fade" tag="div">
-                        <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
-                          :key="detailIndex" @change="detail_no=detailIndex">
-                          <div class="todo_title">
-                            <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
-                            </div>
-                            <h3
-                              @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
-                              v-show="item.test_title_name">{{item.title}}</h3>
-                            <div class="change_title" v-show="item.showname" @click.stop="">
-                              <textarea name="" v-model.trim="item.title"
-                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title" maxlength="50"></textarea>
-                            </div>
-
-                            <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
-                                src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
-                          </div>
-                          <div class="todo_progress_bar">
-                            <p>{{todo_inner_progress_bar(detailIndex)}}%</p>
-                            <div class="progress_bar">
-                              <span :style="{width:todo_inner_progress_bar(detailIndex)+'%'}"></span>
-                            </div>
-                          </div>
-
-                          <!-- 新增的卡片細項 -->
-                          <draggable v-model="item.lists" :options="{animation:500}">
-                            <transition-group name="fade" tag="div">
-                              <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                                <div @click="item.status = !item.status,item.text =!item.text">
-                                  <img src="./img/check.svg" alt="" v-if="item.status">
-                                  <img src="./img/uncheck.svg" alt="" v-else>
-                                </div>
-                                <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color,calltomato()" :class="{add_to_tomato : item.tomato_color}"></div>
-                                <div><img src="./img/card_img/delete.0df56913.svg" alt=""
-                                    @click="delete_todo_title(detailIndex,index)"></div>
+                        <transition-group name="fade" tag="div">
+                          <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
+                            :key="detailIndex" @change="detail_no=detailIndex">
+                            <div class="todo_title">
+                              <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt=""
+                                  width="20">
                               </div>
-                            </transition-group>
-                          </draggable>
+                              <h3
+                                @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
+                                v-show="item.test_title_name">{{item.title}}</h3>
+                              <div class="change_title" v-show="item.showname" @click.stop="">
+                                <textarea name="" v-model.trim="item.title"
+                                  @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title"
+                                  maxlength="50"></textarea>
+                              </div>
 
-                          <div class="card_add_button">
-                            <label for="">
-                              <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
-                                @keyup.enter="add_card_detail(detailIndex)"
-                                :style='{backgroundColor: programs[page].pro_col}' v-model.trim="item.test"
-                                @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
-                                @blur="item.card_length =! item.card_length,item.test=''" maxlength="50">
-                              <img src="./img/card_img/plus_write.svg" alt="" width="14"
-                                @mousedown="add_card_detail(detailIndex)">
-                            </label>
+                              <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
+                                  src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
+                            </div>
+                            <div class="todo_progress_bar">
+                              <p>{{todo_inner_progress_bar(detailIndex)}}%</p>
+                              <div class="progress_bar">
+                                <span :style="{width:todo_inner_progress_bar(detailIndex)+'%'}"></span>
+                              </div>
+                            </div>
+
+                            <!-- 新增的卡片細項 -->
+                            <draggable v-model="item.lists" :options="{animation:500}">
+                              <transition-group name="fade" tag="div">
+                                <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
+                                  <div
+                                    @click="item.status = !item.status,item.text =!item.text,update_list_sta(detailIndex, index)">
+                                    <img src="./img/check.svg" alt="" v-if="item.status"
+                                      @click="item.todo_cont_sta='1'">
+                                    <img src="./img/uncheck.svg" alt="" v-else @click="item.todo_cont_sta='0'">
+                                  </div>
+                                  <p :class="{lineThrough:item.text}">{{item.content}}</p>
+                                  <div @click="item.tomato_color  = ! item.tomato_color">
+                                    <img src="./img/icon/clockPrimary.svg" alt="" v-if="item.tomato_color"
+                                      @click="droptomato(detailIndex,index)">
+                                    <img src="./img/icon/time-left.svg" alt="" v-else
+                                      @click="calltomato(detailIndex,index)">
+                                  </div>
+                                  <div><img src="./img/card_img/delete.0df56913.svg" alt=""
+                                      @click="delete_todo_title(detailIndex,index)"></div>
+                                </div>
+                              </transition-group>
+                            </draggable>
+
+                            <div class="card_add_button">
+                              <label for="">
+                                <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
+                                  @keyup.enter="add_card_detail(detailIndex)"
+                                  :style='{backgroundColor: programs[page].pro_col}' v-model.trim="item.test"
+                                  @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
+                                  @blur="item.card_length =! item.card_length,item.test=''" maxlength="50">
+                                <img src="./img/card_img/plus_write.svg" alt="" width="14"
+                                  @mousedown="add_card_detail(detailIndex)">
+                              </label>
+                            </div>
                           </div>
-                        </div>
-                      </transition-group>
-                    </draggable>
+                        </transition-group>
+                      </draggable>
 
 
                       <!-- 上傳附件 -->
@@ -790,7 +802,8 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"
+                      @blur="change_card_title"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -937,7 +950,7 @@
                           <!-- hover時顏色好像改不了 -->
                           <p>
                             <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm'
-                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="set_calendar_date"/>
+                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="set_calendar_date" />
                           </p>
                           <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                         </div>
@@ -945,60 +958,69 @@
 
                       <!-- 新增出來的待辦清單 -->
                       <draggable v-model="item.todo_list_content_detail" :options="{animation:500}">
-                      <transition-group name="fade" tag="div">
-                        <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
-                          :key="detailIndex" @change="detail_no=detailIndex">
-                          <div class="todo_title">
-                            <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
-                            </div>
-                            <h3
-                              @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
-                              v-show="item.test_title_name">{{item.title}}</h3>
-                            <div class="change_title" v-show="item.showname" @click.stop="">
-                              <textarea name="" v-model.trim="item.title"
-                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title" maxlength="50"></textarea>
-                            </div>
-
-                            <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
-                                src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
-                          </div>
-                          <div class="todo_progress_bar">
-                            <p>{{doing_inner_progress_bar(detailIndex)}}%</p>
-                            <div class="progress_bar">
-                              <span :style="{width:doing_inner_progress_bar(detailIndex)+'%'}"></span>
-                            </div>
-                          </div>
-
-                          <!-- 新增的卡片細項 -->
-                          <draggable v-model="item.lists" :options="{animation:500}">
-                            <transition-group name="fade" tag="div">
-                              <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                                <div @click="item.status = !item.status,item.text =!item.text">
-                                  <img src="./img/check.svg" alt="" v-if="item.status">
-                                  <img src="./img/uncheck.svg" alt="" v-else>
-                                </div>
-                                <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color,calltomato()" :class="{add_to_tomato : item.tomato_color}"></div>
-                                <div><img src="./img/card_img/delete.0df56913.svg" alt=""
-                                    @click="delete_todo_title(detailIndex,index)"></div>
+                        <transition-group name="fade" tag="div">
+                          <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
+                            :key="detailIndex" @change="detail_no=detailIndex">
+                            <div class="todo_title">
+                              <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt=""
+                                  width="20">
                               </div>
-                            </transition-group>
-                          </draggable>
+                              <h3
+                                @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
+                                v-show="item.test_title_name">{{item.title}}</h3>
+                              <div class="change_title" v-show="item.showname" @click.stop="">
+                                <textarea name="" v-model.trim="item.title"
+                                  @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title"
+                                  maxlength="50"></textarea>
+                              </div>
 
-                          <div class="card_add_button">
-                            <label for="">
-                              <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
-                                @keyup.enter="add_card_detail(detailIndex)"
-                                :style='{backgroundColor: programs[page].pro_col}' v-model.trim="item.test"
-                                @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
-                                @blur="item.card_length =! item.card_length,item.test=''" maxlength="50">
-                              <img src="./img/card_img/plus_write.svg" alt="" width="14"
-                                @mousedown="add_card_detail(detailIndex)">
-                            </label>
+                              <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
+                                  src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
+                            </div>
+                            <div class="todo_progress_bar">
+                              <p>{{doing_inner_progress_bar(detailIndex)}}%</p>
+                              <div class="progress_bar">
+                                <span :style="{width:doing_inner_progress_bar(detailIndex)+'%'}"></span>
+                              </div>
+                            </div>
+
+                            <!-- 新增的卡片細項 -->
+                            <draggable v-model="item.lists" :options="{animation:500}">
+                              <transition-group name="fade" tag="div">
+                                <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
+                                  <div
+                                    @click="item.status = !item.status,item.text =!item.text,update_list_sta(detailIndex, index)">
+                                    <img src="./img/check.svg" alt="" v-if="item.status"
+                                      @click="item.todo_cont_sta='1'">
+                                    <img src="./img/uncheck.svg" alt="" v-else @click="item.todo_cont_sta='0'">
+                                  </div>
+                                  <p :class="{lineThrough:item.text}">{{item.content}}</p>
+                                  <div @click="item.tomato_color  = ! item.tomato_color">
+                                    <img src="./img/icon/clockPrimary.svg" alt="" v-if="item.tomato_color"
+                                      @click="droptomato(detailIndex,index)">
+                                    <img src="./img/icon/time-left.svg" alt="" v-else
+                                      @click="calltomato(detailIndex,index)">
+                                  </div>
+                                  <div><img src="./img/card_img/delete.0df56913.svg" alt=""
+                                      @click="delete_todo_title(detailIndex,index)"></div>
+                                </div>
+                              </transition-group>
+                            </draggable>
+
+                            <div class="card_add_button">
+                              <label for="">
+                                <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
+                                  @keyup.enter="add_card_detail(detailIndex)"
+                                  :style='{backgroundColor: programs[page].pro_col}' v-model.trim="item.test"
+                                  @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
+                                  @blur="item.card_length =! item.card_length,item.test=''" maxlength="50">
+                                <img src="./img/card_img/plus_write.svg" alt="" width="14"
+                                  @mousedown="add_card_detail(detailIndex)">
+                              </label>
+                            </div>
                           </div>
-                        </div>
-                      </transition-group>
-                    </draggable>
+                        </transition-group>
+                      </draggable>
 
                       <!-- 上傳附件 -->
                       <div class="card_file">
@@ -1041,7 +1063,8 @@
               <div class="card_light_box" id="card_light_box" v-if="card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: programs[page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50" @blur="change_card_title"></h1>
+                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"
+                      @blur="change_card_title"></h1>
 
                   <div @click="opened = false;card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
@@ -1188,7 +1211,7 @@
                           <!-- hover時顏色好像改不了 -->
                           <p>
                             <date-picker v-model="item.calendar_date" type="datetime" format='YYYY-MM-DD HH:mm'
-                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="set_calendar_date"/>
+                              value-type='YYYY-MM-DD HH:mm' placeholder="請選擇日期" @change="set_calendar_date" />
                           </p>
                           <span :class="{calandarcolor : item.dateline}">{{item.dateline_text}}</span>
                         </div>
@@ -1196,60 +1219,70 @@
 
                       <!-- 新增出來的待辦清單 -->
                       <draggable v-model="item.todo_list_content_detail" :options="{animation:500}">
-                      <transition-group name="fade" tag="div">
-                        <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
-                          :key="detailIndex" @change="detail_no=detailIndex">
-                          <div class="todo_title">
-                            <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt="" width="20">
-                            </div>
-                            <h3
-                              @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
-                              v-show="item.test_title_name">{{item.title}}</h3>
-                            <div class="change_title" v-show="item.showname" @click.stop="">
-                              <textarea name="" v-model.trim="item.title"
-                                @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title" maxlength="50"></textarea>
-                            </div>
-
-                            <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
-                                src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
-                          </div>
-                          <div class="todo_progress_bar">
-                            <p>{{done_inner_progress_bar(detailIndex)}}%</p>
-                            <div class="progress_bar">
-                              <span :style="{width:done_inner_progress_bar(detailIndex)+'%'}"></span>
-                            </div>
-                          </div>
-
-                          <!-- 新增的卡片細項 -->
-                          <draggable v-model="item.lists" :options="{animation:500}">
-                            <transition-group name="fade" tag="div">
-                              <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
-                                <div @click="item.status = !item.status,item.text =!item.text">
-                                  <img src="./img/check.svg" alt="" v-if="item.status">
-                                  <img src="./img/uncheck.svg" alt="" v-else>
-                                </div>
-                                <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                <div><img src="./img/icon/time-left.svg" alt=""  @click="item.tomato_color =! item.tomato_color,calltomato()" :class="{add_to_tomato : item.tomato_color}"></div>
-                                <div><img src="./img/card_img/delete.0df56913.svg" alt=""
-                                    @click="delete_todo_title(detailIndex,index)"></div>
+                        <transition-group name="fade" tag="div">
+                          <div class="card_todo_content" v-for="(item,detailIndex) in item.todo_list_content_detail"
+                            :key="detailIndex" @change="detail_no=detailIndex">
+                            <div class="todo_title">
+                              <div class="cardtitle_img"><img src="./img/card_img/content.22f4a956.svg" alt=""
+                                  width="20">
                               </div>
-                            </transition-group>
-                          </draggable>
+                              <h3
+                                @click.stop="item.showname =! item.showname,item.test_title_name =! item.test_title_name"
+                                v-show="item.test_title_name">{{item.title}}</h3>
+                              <div class="change_title" v-show="item.showname" @click.stop="">
+                                <textarea name="" v-model.trim="item.title"
+                                  @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title"
+                                  maxlength="50"></textarea>
+                              </div>
 
-                          <div class="card_add_button">
-                            <label for="">
-                              <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
-                                @keyup.enter="add_card_detail(detailIndex)"
-                                :style='{backgroundColor: programs[page].pro_col}' v-model.trim="item.test"
-                                @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
-                                @blur="item.card_length =! item.card_length,item.test=''" maxlength="50">
-                              <img src="./img/card_img/plus_write.svg" alt="" width="14"
-                                @mousedown="add_card_detail(detailIndex)">
-                            </label>
+                              <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
+                                  src="./img/card_img/delete.0df56913.svg" alt="" width="20"></div>
+                            </div>
+                            <div class="todo_progress_bar">
+                              <p>{{done_inner_progress_bar(detailIndex)}}%</p>
+                              <div class="progress_bar">
+                                <span :style="{width:done_inner_progress_bar(detailIndex)+'%'}"></span>
+                              </div>
+                            </div>
+
+                            <!-- 新增的卡片細項 -->
+                            <draggable v-model="item.lists" :options="{animation:500}">
+                              <transition-group name="fade" tag="div">
+                                <div class="card_check_item" v-for="(item,index) in item.lists" :key="index">
+                                  <div
+                                    @click="item.status = !item.status,item.text =!item.text,update_list_sta(detailIndex, index)">
+                                    <img src="./img/check.svg" alt="" v-if="item.status"
+                                      @click="item.todo_cont_sta='1'">
+                                    <img src="./img/uncheck.svg" alt="" v-else @click="item.todo_cont_sta='0'">
+                                  </div>
+                                  <p :class="{lineThrough:item.text}">{{item.content}}</p>
+                                  <div @click="item.tomato_color  = ! item.tomato_color">
+                                    <img src="./img/icon/clockPrimary.svg" alt="" v-if="item.tomato_color"
+                                      @click="droptomato(detailIndex,index)">
+                                    <img src="./img/icon/time-left.svg" alt="" v-else
+                                      @click="calltomato(detailIndex,index)">
+                                  </div>
+                                  <div><img src="./img/card_img/delete.0df56913.svg" alt=""
+                                      @click="delete_todo_title(detailIndex,index)"></div>
+                                </div>
+                              </transition-group>
+                            </draggable>
+
+                            <div class="card_add_button">
+                              <label for="">
+                                <input placeholder="增加項目" type="text" class="card_detail_lightbox_input"
+                                  @keyup.enter="add_card_detail(detailIndex)"
+                                  :style='{backgroundColor: programs[page].pro_col}' v-model.trim="item.test"
+                                  @focus="item.card_length =! item.card_length" :class="{addlength : item.card_length}"
+                                  @blur="item.card_length =! item.card_length,item.test=''" maxlength="50">
+                                <img src="./img/card_img/plus_write.svg" alt="" width="14"
+                                  @mousedown="add_card_detail(detailIndex)">
+                              </label>
+                            </div>
                           </div>
-                        </div>
-                      </transition-group>
-                    </draggable>
+                        </transition-group>
+                      </draggable>
+
 
                       <!-- 上傳附件 -->
                       <div class="card_file">
@@ -1633,16 +1666,16 @@
             gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
         }
     </script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
-    <script src="./js/lib/index.min.js"></script>
-    
-    <script src="./js/program.js"></script>
-    <script src="./js/background.js"></script>
-    <script src="./js/layout.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
+  <script src="./js/lib/index.min.js"></script>
+
+  <script src="./js/program.js"></script>
+  <script src="./js/background.js"></script>
+  <script src="./js/layout.js"></script>
 
 
 </body>
