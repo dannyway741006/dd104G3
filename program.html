@@ -144,7 +144,7 @@
 
 
             <transition-group name="fade" mode="out-in" tag="div">
-              <li v-for="(item,index) in programs" :key="index" @click="show_cards(index),page=index;close_humberger()">
+              <li v-for="(item,index) in programs" :key="index" @click="show_cards(index, ''),page=index;close_humberger()">
                 <p><span :style='{backgroundColor:item.pro_col}'></span>{{item.pro_title}}</p>
                 <img src="./img/check.svg" alt="check" width="20" v-if='item.changeimage' />
                 <img src="./img/uncheck.svg" alt="uncheck" width="20" v-else @click.stop="complete_info_func(index)" />
@@ -501,43 +501,56 @@
                   <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
                        handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
                        other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
-                      }" @click.stop="calendar_day_click=!calendar_day_click">
-                  <div v-if="calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date) > 0" class="calendar_date_cards">+{{calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)}}</div>
+                      }"
+                    @click.stop="calendar_day_click=!calendar_day_click;cal_today=calendar_date(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)">
+                    <div
+                      v-if="calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date) > 0"
+                      class="calendar_date_cards">
+                      +{{calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)}}
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
           </transition>
           <!-- 日曆打開卡片們 -->
-          <transition-group name="horizentalfade" mode="out-in">
-            <div class="cal_card_list_box" v-show="calendar_day_click" @click.stop="" v-for="(item,index) in calendar_cards" :key="index">
-              <div class="cal_card_list">
+          <transition name="horizentalfade" mode="out-in">
+            <div class="cal_card_list_box" v-if="calendar_day_click">
+            <!-- <div class="week" v-for="i in 5" :key="i"> -->
+              <!-- <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date"> -->
 
-                <!-- <div class="cal_card" v-for="item in calendar_cards"> -->
-                  <div class="cal_card">
-                  <div class="cal_card_color" :style='{backgroundColor: item.pro_col}'>
-                  </div>
-                  <!-- <p>{{item.card_name}}</p> -->
-                  <p>{{item.card_name}}</p>
-                  <div class="cards_list_card_icon_bar">
-                    <div class="cards_list_card_icon cards_list_card_calendaricon"><img
-                        src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                    <!-- <span>{{history_doing_showcalendarpanel(cardIndex)}}</span> -->
-                    <span>{{item.card_date}}</span>
-                    <div class="cards_list_card_icon_right">
+            <!-- <div class="cal_card_list_box" v-if="calendar_day_click" @click.stop=""
+              v-for="(item,index) in calendar_cards" :key="index"> -->
+           
+              <div class="cal_card_list" v-for="(item,index) in calendar_cards" v-if="index == cal_today" >
+
+                <transition-group name="horizentalfade" mode="out-in">
+                  <div class="cal_card" v-for="(item2,index) in item" :key="index" @click="page = to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[0];open_card_func(to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[1], item2.card_type),card_no=to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[1],todo_type=item2.card_type">
+                    <!-- <div class="cal_card"> -->
+                    <div class="cal_card_color" :style='{backgroundColor: item2.pro_col}'>
+                    </div>
+                    <p>{{item2.card_name}}</p>
+                    <div class="cards_list_card_icon_bar">
+                      <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                          src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                      <span>{{item2.card_date}}</span>
                       <div class="cards_list_card_icon_right">
-                        <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg" alt="">
+                        <div class="cards_list_card_icon_right">
+                          <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg" alt="">
+                          </div>
+                          <span>{{item2.todo_cont_sta_checked}}/{{item2.todo_cont_sta_sum}}</span>
                         </div>
-                        <!-- <span>{{history_doing_card_progress_checked(cardIndex)}}/{{history_doing_card_progress_sum(cardIndex)}}</span> -->
-                        <span>{{item.todo_cont_sta_checked}}/{{item.todo_cont_sta_sum}}</span>
                       </div>
                     </div>
                   </div>
-                </div>
 
+                </transition-group>
               </div>
+            <!-- </div>
+
+            </div> -->
             </div>
-          </transition-group>
+          </transition>
         </div>
 
 

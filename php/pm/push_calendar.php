@@ -11,6 +11,7 @@ try {
                       c.pro_no, 
                       c.card_name, 
                       c.card_date, 
+                      c.card_type, 
                       p.pro_col, 
                       tc.todo_cont_no, 
                       tc.todo_cont_sta 
@@ -42,12 +43,25 @@ try {
             }else {
               $todo_cont_sta_sum = 1;
             }
+            switch($card["card_type"])
+            {
+              case 0:
+                $card_type = 'card_list_todo';
+              break;
+              case 1:
+                $card_type = 'card_list_doing';
+              break;
+              case 2:
+                $card_type = 'card_list_done';
+              break;
+            }
             $calendar_cards_arr[$calendar_date][$key] = [
               "card_name" => $card["card_name"],
               "card_date" => $card["card_date"],
               "pro_col" => $card["pro_col"],
               "pro_no" => $card["pro_no"],
               "card_no" => $card["card_no"],
+              "card_type" => $card_type,
               "todo_cont_sta_checked" => $todo_cont_sta_checked,
               "todo_cont_sta_sum" => $todo_cont_sta_sum
             ];
