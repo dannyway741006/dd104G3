@@ -117,10 +117,6 @@
           </div>
 
           <ul v-if="click_complete_btn" class="page_info_list setting_pm history_program">
-            <!-- <li>
-              <p><span></span>已完成專案1</p>
-              <img src="./img/delete.0df56913.svg" alt="uncheck" width="20" />
-            </li> -->
 
             <transition-group name="fade" mode="out-in" tag="div">
               <li v-for="(item,index) in history_programs" :key="index" @click="history_page=index;close_humberger()">
@@ -134,17 +130,9 @@
 
           <ul v-else class="page_info_list setting_pm having_program">
 
-            <!-- <transition name="fade" mode="out-in">
-              <li @click="page=-1">
-                <p><span></span>專案0</p>
-                <img src="./img/uncheck.svg" alt="uncheck" width="20" @click.stop='program_complete_func()' />
-              </li>
-            </transition> -->
-
-
-
             <transition-group name="fade" mode="out-in" tag="div">
-              <li v-for="(item,index) in programs" :key="index" @click="show_cards(index, ''),page=index;close_humberger()">
+              <li v-for="(item,index) in programs" :key="index"
+                @click="show_cards(index, '');page=index;close_humberger()">
                 <p><span :style='{backgroundColor:item.pro_col}'></span>{{item.pro_title}}</p>
                 <img src="./img/check.svg" alt="check" width="20" v-if='item.changeimage' />
                 <img src="./img/uncheck.svg" alt="uncheck" width="20" v-else @click.stop="complete_info_func(index)" />
@@ -217,7 +205,7 @@
                   <div class="cards_list cards_list_todo" id="cards_list_todo" v-for="listitem in item.card_list_todo">
 
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:310px" @change="catch_card_position({$event, type: listitem})">
+                      class="draggable draggable_todo" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-if="item.card_name" v-for="(item, cardIndex) in listitem.cards"
                         :key="cardIndex.value"
                         @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
@@ -229,8 +217,11 @@
                           <span>{{todo_showcalendarpanel(cardIndex)}}</span>
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon_right">
-                              <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
-                                  alt="">
+                              <div class="cards_list_card_icon cards_list_card_todoicon" v-if="item.dateline==false">
+                                <img src="./img/check.svg">
+                              </div>
+                              <div class="cards_list_card_icon cards_list_card_todoicon" v-else><img
+                                  src="./img/checked_s.c56e3070.svg">
                               </div>
                               <span>{{todo_card_progress_checked(cardIndex)}}/{{todo_card_progress_sum(cardIndex)}}</span>
                             </div>
@@ -250,7 +241,7 @@
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
                     v-for="listitem in item.card_list_doing">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:420px" @change="catch_card_position({$event, type: listitem})">
+                      class="draggable" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
@@ -261,8 +252,11 @@
                           <span>{{doing_showcalendarpanel(cardIndex)}}</span>
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon_right">
-                              <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
-                                  alt="">
+                              <div class="cards_list_card_icon cards_list_card_todoicon" v-if="item.dateline==false">
+                                <img src="./img/check.svg">
+                              </div>
+                              <div class="cards_list_card_icon cards_list_card_todoicon" v-else><img
+                                  src="./img/checked_s.c56e3070.svg">
                               </div>
                               <span>{{doing_card_progress_checked(cardIndex)}}/{{doing_card_progress_sum(cardIndex)}}</span>
                             </div>
@@ -280,7 +274,7 @@
                 <div class="cards_column_body cards_column_body_done">
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="listitem in item.card_list_done">
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:420px" @change="catch_card_position({$event, type: listitem})">
+                      class="draggable" @change="catch_card_position({$event, type: listitem})">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex"
                         @click.stop="open_card_func(cardIndex, listitem.type),card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: programs[index].pro_col}'></div>
@@ -291,8 +285,11 @@
                           <span>{{done_showcalendarpanel(cardIndex)}}</span>
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon_right">
-                              <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
-                                  alt="">
+                              <div class="cards_list_card_icon cards_list_card_todoicon" v-if="item.dateline==false">
+                                <img src="./img/check.svg">
+                              </div>
+                              <div class="cards_list_card_icon cards_list_card_todoicon" v-else><img
+                                  src="./img/checked_s.c56e3070.svg">
                               </div>
                               <span>{{done_card_progress_checked(cardIndex)}}/{{done_card_progress_sum(cardIndex)}}</span>
                             </div>
@@ -309,7 +306,8 @@
 
             <div class="cal-chat_all_bar">
               <div class="program_calendar_all cal-chat_same_all">
-                <button class="calendar_btn cal-chat_same_btn" @click.stop='calendar_btn = ! calendar_btn'><img
+                <button class="calendar_btn cal-chat_same_btn"
+                  @click.stop='calendar_btn = ! calendar_btn;push_calendar_cards()'><img
                     src="./img/icon/calendar_white.svg" alt=""></button>
 
               </div>
@@ -347,7 +345,7 @@
                     v-for="listitem in item.card_list_todo">
 
                     <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:420px">
+                      class="draggable">
                       <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                         @click.stop="open_card_func(cardIndex, listitem.type),history_card_no=cardIndex,todo_type=listitem.type">
                         <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
@@ -359,8 +357,11 @@
                           <span>{{history_todo_showcalendarpanel(cardIndex)}}</span>
                           <div class="cards_list_card_icon_right">
                             <div class="cards_list_card_icon_right">
-                              <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
-                                  alt="">
+                              <div class="cards_list_card_icon cards_list_card_todoicon" v-if="item.dateline==false">
+                                <img src="./img/check.svg">
+                              </div>
+                              <div class="cards_list_card_icon cards_list_card_todoicon" v-else><img
+                                  src="./img/checked_s.c56e3070.svg">
                               </div>
                               <span>{{history_todo_card_progress_checked(cardIndex)}}/{{history_todo_card_progress_sum(cardIndex)}}</span>
                             </div>
@@ -381,7 +382,7 @@
                   <div class="cards_list cards_list_doing" id="cards_list_doing"
                     v-for="listitem in item.card_list_doing">
                     <!-- <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:420px"> -->
+                      class="draggable"> -->
                     <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex.value"
                       @click.stop="open_card_func(cardIndex, listitem.type),history_card_no=cardIndex,todo_type=listitem.type">
                       <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
@@ -393,8 +394,11 @@
                         <span>{{history_doing_showcalendarpanel(cardIndex)}}</span>
                         <div class="cards_list_card_icon_right">
                           <div class="cards_list_card_icon_right">
-                            <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
-                                alt="">
+                            <div class="cards_list_card_icon cards_list_card_todoicon" v-if="item.dateline==false"><img
+                                src="./img/check.svg">
+                            </div>
+                            <div class="cards_list_card_icon cards_list_card_todoicon" v-else><img
+                                src="./img/checked_s.c56e3070.svg">
                             </div>
                             <span>{{history_doing_card_progress_checked(cardIndex)}}/{{history_doing_card_progress_sum(cardIndex)}}</span>
                           </div>
@@ -413,7 +417,7 @@
 
                   <div class="cards_list cards_list_done" id="cards_list_done" v-for="listitem in item.card_list_done">
                     <!-- <draggable v-model="listitem.cards" :options="{group:'cards_list',animation: 500,scroll:true}"
-                      style="min-height:420px"> -->
+                      class="draggable"> -->
                     <div class="cards_list_card" v-for="(item, cardIndex) in listitem.cards" :key="cardIndex"
                       @click.stop="open_card_func(cardIndex, listitem.type),history_card_no=cardIndex,todo_type=listitem.type">
                       <div class="cards_list_card_color" :style='{backgroundColor: history_programs[index].pro_col}'>
@@ -425,8 +429,11 @@
                         <span>{{history_done_showcalendarpanel(cardIndex)}}</span>
                         <div class="cards_list_card_icon_right">
                           <div class="cards_list_card_icon_right">
-                            <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
-                                alt="">
+                            <div class="cards_list_card_icon cards_list_card_todoicon" v-if="item.dateline==false"><img
+                                src="./img/check.svg">
+                            </div>
+                            <div class="cards_list_card_icon cards_list_card_todoicon" v-else><img
+                                src="./img/checked_s.c56e3070.svg">
                             </div>
                             <span>{{history_done_card_progress_checked(cardIndex)}}/{{history_done_card_progress_sum(cardIndex)}}</span>
                           </div>
@@ -442,7 +449,8 @@
 
             <div class="cal-chat_all_bar">
               <div class="program_calendar_all cal-chat_same_all">
-                <button class="calendar_btn cal-chat_same_btn" @click.stop='calendar_btn = !calendar_btn'><img
+                <button class="calendar_btn cal-chat_same_btn"
+                  @click.stop='calendar_btn = !calendar_btn;push_calendar_cards()'><img
                     src="./img/icon/calendar_white.svg" alt=""></button>
               </div>
               <!-- <div class="program_chatroom_all cal-chat_same_all">
@@ -516,16 +524,17 @@
           <!-- 日曆打開卡片們 -->
           <transition name="horizentalfade" mode="out-in">
             <div class="cal_card_list_box" v-if="calendar_day_click">
-            <!-- <div class="week" v-for="i in 5" :key="i"> -->
+              <!-- <div class="week" v-for="i in 5" :key="i"> -->
               <!-- <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date"> -->
 
-            <!-- <div class="cal_card_list_box" v-if="calendar_day_click" @click.stop=""
+              <!-- <div class="cal_card_list_box" v-if="calendar_day_click" @click.stop=""
               v-for="(item,index) in calendar_cards" :key="index"> -->
-           
-              <div class="cal_card_list" v-for="(item,index) in calendar_cards" v-if="index == cal_today" >
+
+              <div class="cal_card_list" v-for="(item,index) in calendar_cards" v-if="index == cal_today">
 
                 <transition-group name="horizentalfade" mode="out-in">
-                  <div class="cal_card" v-for="(item2,index) in item" :key="index" @click="page = to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[0];open_card_func(to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[1], item2.card_type),card_no=to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[1],todo_type=item2.card_type">
+                  <div class="cal_card" v-for="(item2,index) in item" :key="index"
+                    @click="page = to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[0];open_card_func(to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[1], item2.card_type),card_no=to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[1],todo_type=item2.card_type">
                     <!-- <div class="cal_card"> -->
                     <div class="cal_card_color" :style='{backgroundColor: item2.pro_col}'>
                     </div>
@@ -546,7 +555,7 @@
 
                 </transition-group>
               </div>
-            <!-- </div>
+              <!-- </div>
 
             </div> -->
             </div>
@@ -562,7 +571,7 @@
           v-for="(item,index) in programs" v-if="programs[index].show_complete_info_box==true">
           <div class="complete_info_box" @click.stop="">
             <p>確定要完成{{item.pro_title}}專案嗎?<br>
-              完成專案後就無法再回到現有專案了喔!</p>
+              完成專案後就無法再編輯專案了喔!</p>
             <button @click="program_complete_func(index)">確定</button>
             <button
               @click="complete_info_box=!complete_info_box;programs[index].show_complete_info_box=false">返回</button>
