@@ -12,12 +12,14 @@
 // session_start();
 // exit( $_REQUEST["product_price"]);
 try {
-  $dsn = "mysql:host=localhost;port=8889;dbname=dd104g3;charset=utf8";
-  $user = "root";
-  $password = "root";
-  $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-  $pdo = new PDO($dsn, $user, $password, $options);
+  // $dsn = "mysql:host=localhost;port=8889;dbname=dd104g3;charset=utf8";
+  // $user = "root";
+  // $password = "root";
+  // $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+  // $pdo = new PDO($dsn, $user, $password, $options);
   // $_SESSION["mem_no"] = 1;
+
+  require_once('../pdo.php');
 
   $sql = "insert into `test2` (`product_price`,`cret_date`,`ship_addr`,`receiver_name`,`receiver_tel`,`order_sta`) values (:product_price , NOW(),:ship_addr,:receiver_name,:receiver_tel,2)";
   $cart = $pdo->prepare($sql);

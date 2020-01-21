@@ -1,10 +1,12 @@
 <?php
 try {
-  $dsn = "mysql:host=localhost;port=8889;dbname=dd104g3;charset=utf8";
-  $user = "root";
-  $password = "root";
-  $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-  $pdo = new PDO($dsn, $user, $password, $options);
+  // $dsn = "mysql:host=localhost;port=8889;dbname=dd104g3;charset=utf8";
+  // $user = "root";
+  // $password = "root";
+  // $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+  // $pdo = new PDO($dsn, $user, $password, $options);
+
+  require_once('../pdo.php');
   $sql = "select * from `test2` ORDER BY `test2`.`order_no` DESC";
   $orders = $pdo->query($sql);
 
