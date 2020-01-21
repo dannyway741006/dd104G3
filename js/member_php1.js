@@ -22,7 +22,7 @@ function checkLogin() {
     .catch(err => console.log(err));
 }
 //================member update=======================//
-const updateBtn = document.getElementById('enter_delete1');
+const updateBtn = document.getElementById('memberbtn');
 updateBtn.addEventListener('click', memUpdate)
 function memUpdate() {
   fetch('./php/member/member_update.php', {
