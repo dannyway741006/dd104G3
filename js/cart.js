@@ -129,9 +129,11 @@ let xhr = new XMLHttpRequest();
 let cartSubmit = document.querySelector('.cart_submit');
 cartSubmit.addEventListener('click', () => {
   //註冊callback function 
+  console.log(MEMBER_INFO);
   xhr.onload = function () {
     if (xhr.status == 200) {
       // document.querySelector("#idMsg").textContent = xhr.responseText;
+      
       console.log("----", xhr.responseText)
     } else {
       alert(xhr.statusText);
@@ -147,7 +149,7 @@ cartSubmit.addEventListener('click', () => {
   xhr.open("POST", url, true);
   //送出資料
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  let sendProductPrice = `product_price=${cartNewTotal.textContent}&ship_addr=${shipAddr.value}&receiver_name=${receiverName.value}&receiver_tel=${receiverTel.value}`;
+  let sendProductPrice = `product_price=${cartNewTotal.textContent}&mem_no=${MEMBER_INFO.mem_no}&ship_addr=${shipAddr.value}&receiver_name=${receiverName.value}&receiver_tel=${receiverTel.value}`;
   xhr.send(sendProductPrice);
   console.log(sendProductPrice);
 
