@@ -893,7 +893,7 @@ var main_content = new Vue({
           "cache": false,
           "success": function (data) {
             console.log(data);
-            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[(vm.programs[vm.page][vm.todo_type][0].cards[index].todo_list_content_detail[detailIndex].lists).length - 1].todo_no = data.todo_no;          },
+            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists).length - 1].todo_no = data.todo_no;          },
           "error": function (data) {
             console.log(data);
           }
@@ -959,39 +959,52 @@ var main_content = new Vue({
     filesearch(e) {
       if (e.target.files.length > 0) {
         this.file = e.target.files;
+        console.log(e.target.files);
+        let upFile = e.target.files[0];
         this.file_switch = false;
         this.fileder_switch = false;
         for (let i = 0; i < this.file.length; i++) {
           //-------------取得檔名
           let readFile = new FileReader();
           let pro = this.programs[this.page];
+          let upFile = e.target.files[i];
           let pro_card = this.programs[this.page][this.todo_type][0].cards[this.card_no];
           let file_name = this.file[i].name;
           readFile.addEventListener("loadend", function (e) {
             pro_card.file_result = readFile.result;
-            pro_card.filebox.push({
-              name: file_name,
-              source: pro_card.file_result,
-            });
+            // pro_card.filebox.push({
+            //   name: file_name,
+            //   source: pro_card.file_result,
+            // });
 
             const vm = this;
-         
 
+            let form_data = new FormData();
+            form_data.append("upFile", upFile);
+            form_data.append("type", "add_file");
+            form_data.append("pro_no", pro.pro_no);
+            form_data.append("card_no", pro_card.card_no);
+            form_data.append("file_name", upFile.name);
+            console.log(form_data);
             $.ajax({
               "type": "POST",
+              "url":"url",
               "dataType": "json",
               "url": "./php/pm/card_inner.php",
-              "data": {
-                "type": "add_file",
-                "pro_no": pro.pro_no,
-                "card_no": pro_card.card_no,
-                "todo_no": 0, //不知道為什麼要綁這個
-                "file_src":pro_card.filebox[pro_card.filebox.length - 1].source,
-                "file_name": pro_card.filebox[pro_card.filebox.length - 1].name,
-              },
+              "data": form_data,
+              // "data":,
               "cache": false,
+              "contentType": false,
+              "processData": false,
+             
               "success": function (data) {
                 console.log(data);
+                var source=data.data;
+                pro_card.filebox.push({
+                  name: file_name,
+                  source: source,
+                });
+       
 
               },
               "error": function (data) {

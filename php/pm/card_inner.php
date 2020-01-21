@@ -3,6 +3,7 @@ try {
   require_once('../pdo.php');
   session_start();
   // $_SESSION['mem_no'] = 1; //test
+  // $_POST['type'] = 'add_file';
   switch ($_POST['type']) {
     case "add_card":
       $pro_no = $_POST['pro_no'];
@@ -143,53 +144,64 @@ try {
       break;
 
     case "add_file":
-      // $pro_no = $_POST['pro_no'];
-      // $card_no=$_POST['card_no'];
-      // $todo_no = 1;   //不知道為什麼要綁這個
-      // $file_name=$_POST['file_name'];
-      // $file_src='';
-      // $pdo->beginTransaction();
-      $pdo->beginTransaction();
-      if( $_FILES["upFile"]["error"] == UPLOAD_ERR_OK){
-      $sql = "insert into `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, '')";
-      $files = $pdo->prepare($sql);
-      $files->bindValue(":pro_no", $_POST["pro_no"]);
-      $files->bindValue(":card_no", $_POST["card_no"]);
-      $files->bindValue(":todo_no", 0);
-      $files->bindValue(":file_name", $_POST["file_name"]);
-      $files->bindValue(":file_src", $_POST["file_src"]);
-      $files->execute();
+     
+      
+      if ($_FILES['upFile']['error'] === UPLOAD_ERR_OK) {
+        $from = $_FILES['upFile']['tmp_name'];
+        $pro_card_no = '';
+        if (file_exists("fileder") === false) {
+          mkdir("fileder");
+        }
+        $pro_no = $_POST["pro_no"];
+        $card_no = $_POST["card_no"];
+        $fileder_path = "fileder/".$pro_no."_".$card_no;
+        if (file_exists($fileder_path) === false) {
+          mkdir($fileder_path);
+        }
+        $pro_card_no = $_POST["pro_no"]."_".$_POST["card_no"]."/";
+        //將檔案copy到要放的路徑
+        $fileInfoArr = pathinfo($_FILES["upFile"]["name"]);
+        $fileName = $_POST["file_name"];  //8.gif
+  
+        $from = $_FILES["upFile"]["tmp_name"];
+        $to = $fileder_path.'/'.$fileName;
+        $realpath="./php/pm/".$fileder_path.'/'.$fileName;
+        if (copy($from, $to)) {
+          $sql = "insert into `card_file` (`pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(:pro_no, :card_no, :todo_no, :file_name, :file_src)";
+          $files = $pdo->prepare($sql);
+          $files->bindValue(":pro_no", $_POST["pro_no"]);
+          $files->bindValue(":card_no", $_POST["card_no"]);
+          $files->bindValue(":todo_no", 0);
+          $files->bindValue(":file_name", $_POST["file_name"]);
+          $files->bindValue(":file_src", $realpath);
+          $files->execute();
 
-      //取得自動創號的key值
-      $file_id = $pdo->lastInsertId();
+          //取得自動創號的key值
+          $file_id = $pdo->lastInsertId();
+          echo json_encode(['status' => 'success', 'content' => '上傳檔案成功','data'=>$realpath]);
 
-      if (file_exists("fileder") === false) {
-        mkdir("fileder");
+        }
+      
       }
-      //將檔案copy到要放的路徑
-      $fileInfoArr = pathinfo($_FILES["upFile"]["name"]);
-      $fileName = "{$file_id}.{$fileInfoArr["EXTENSION"]}";  //8.gif
 
-      $from = $_FILES["upFile"]["tmp_name"];
-      $to = "fileder/$fileName";
-      if(copy($from, $to)===true){
-        //將檔案名稱寫回資料庫
-        $sql = "update `card_file` set file_src = :file_src where file_no = $file_id";
-        $files = $pdo->prepare($sql);
-        $files -> bindValue(":file_src", $fileName);
-        $files -> execute();
-        echo "新增成功~";
-        $pdo->commit();			
-      }else{
-        $pdo->rollBack();
-      }
-    }else{
-      echo "錯誤代碼 : {$_FILES["upFile"]["error"]} <br>";
-      echo "新增失敗<br>";
-      $pdo->rollBack();
-    }
 
-      echo json_encode(['status' => 'success', 'content' => '上傳檔案成功']);
+
+    
+      // if( $_FILES["upFile"]["error"] == UPLOAD_ERR_OK){
+      // $sql = "insert into `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, '')";
+      // $files = $pdo->prepare($sql);
+      // $files->bindValue(":pro_no", $_POST["pro_no"]);
+      // $files->bindValue(":card_no", $_POST["card_no"]);
+      // $files->bindValue(":todo_no", 0);
+      // $files->bindValue(":file_name", $_POST["file_name"]);
+      // $files->bindValue(":file_src", $_POST["file_src"]);
+      // $files->execute();
+
+      // //取得自動創號的key值
+      // $file_id = $pdo->lastInsertId();
+
+    
+
       break;
 
     case "delete_file":

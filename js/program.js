@@ -1081,7 +1081,7 @@ var main_content = new Vue({
                 "pro_no": pro.pro_no,
                 "card_no": pro_card.card_no,
                 "todo_no": 0, //不知道為什麼要綁這個
-                // "file_src": vm.result,
+                "file_src": vm.result,
                 "file_name": pro_card.filebox[pro_card.filebox.length - 1].name,
               },
               "cache": false,
