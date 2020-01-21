@@ -471,9 +471,10 @@
 
                 <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg" alt=""
                     width="20"></div>
-                <div>{{calendar.week}}</div>
-                <div>{{calendar.year}}</div>
-
+                <div class="calendar_title_container">
+                  <div>{{calendar.week}}</div>
+                  <div>{{calendar.year}}</div>
+                </div>
                 <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
                     alt="" width="20"></div>
               </div>
@@ -625,7 +626,7 @@
                       <transition name="fade" mode="out-in">
                         <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="filesearch">
                           <h3>上傳檔案</h3>
-                          <form method="post" enctype="multipart/form-data">
+                          <form method="post" enctype="multipart/form-data" id="aaaaa">
                             <label class="upfile_content">
                               <p>上傳附件</p>
                               <input type="file" multiple id="upFile" name="upFile">
@@ -678,8 +679,8 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"><img
-                              :src="item.source" alt=""></div>
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
+                            v-if="index > 0"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -797,7 +798,6 @@
                         </transition-group>
                       </draggable>
 
-
                       <!-- 上傳附件 -->
                       <div class="card_file">
                         <div class="card_file_title">
@@ -820,16 +820,16 @@
                           <!-- 上傳的內容 -->
                           <form method="post" enctype="multipart/form-data">
                             <!-- <input name="MAX_FILE_SIZE" type="hidden" value="2097152"> -->
-                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}' >
+                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
                               <p>上傳附件</p>
-                              <input type="file" @change="filesearch" multiple  name="upFile">
+                              <input type="file" @change="filesearch" multiple name="upFile">
                             </label>
                           </form>
                         </div>
                       </div>
                     </div>
 
-                    
+
                   </div>
                 </div>
               </div>
@@ -943,8 +943,8 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"><img
-                              :src="item.source" alt=""></div>
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
+                            v-if="index > 0"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -1204,8 +1204,8 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"><img
-                              :src="item.source" alt=""></div>
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
+                            v-if="index > 0"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -1386,7 +1386,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            :key="index"><img :src="item.source" alt=""></div>
+                            v-if="index > 0"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
@@ -1492,7 +1492,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            :key="index"><img :src="item.source" alt=""></div>
+                            v-if="index > 0"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
@@ -1597,7 +1597,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            :key="index"><img :src="item.source" alt=""></div>
+                            v-if="index > 0"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
