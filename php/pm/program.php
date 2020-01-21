@@ -63,7 +63,7 @@ try {
           $member_arr[] = [
             "member_name" => $member["mem_name"],
             "userId" => $member["mem_id"],
-            "src" => $member["headshot"]
+            "src" =>  './userImg/'.$member["headshot"]
           ];
         }
       }

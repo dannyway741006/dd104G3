@@ -11,15 +11,16 @@ try {
                       c.pro_no, 
                       c.card_name, 
                       c.card_date, 
-                      c.card_type, 
+                      c.card_type,
+                      c.card_sta,
                       p.pro_col, 
                       tc.todo_cont_no, 
                       tc.todo_cont_sta 
-              FROM `card` c 
-              LEFT JOIN `program` p ON c.pro_no=p.pro_no 
-              LEFT JOIN `todo_content` tc ON tc.card_no=c.card_no 
-              WHERE card_date is not null AND mem_no=:mem_no 
-              ORDER BY c.card_date, c.pro_no";
+                FROM `card` c 
+                LEFT JOIN `program` p ON c.pro_no=p.pro_no 
+                LEFT JOIN `todo_content` tc ON tc.card_no=c.card_no 
+                WHERE card_date is not null AND c.card_sta=0 AND mem_no=:mem_no 
+                ORDER BY c.card_date, c.pro_no";
       $res = $pdo->prepare($sql);
       $res->bindValue(':mem_no', $_SESSION["mem_no"]);
       $res->execute();

@@ -48,6 +48,7 @@ let mem_mask3 = document.getElementById("mem_mask3");
 let liclose3 = document.getElementById("liclose3");
 let memlibox3 = document.getElementById("memlibox3");
 let light_box_title3 = document.getElementById("light_box_title3");
+let member_sign_up =document.getElementById("member_sign_up");
 
 open_sign_ligh1.addEventListener("click", function() {
   mem_mask3.classList.add("active_for_mask3");
@@ -66,6 +67,11 @@ mem_mask3.addEventListener("click", function() {
 });
 
 light_box_title3.addEventListener("click", function() {
+  mem_mask3.classList.remove("active_for_mask3");
+  memlibox3.classList.add("closeani3");
+});
+
+member_sign_up.addEventListener("click",function(){
   mem_mask3.classList.remove("active_for_mask3");
   memlibox3.classList.add("closeani3");
 });

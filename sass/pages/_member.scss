@@ -1,6 +1,7 @@
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+
 .status {
   a {
     width: 30%;
@@ -582,7 +583,7 @@ input[type=number]::-webkit-inner-spin-button {
       border: 1px solid transparent;
       border-bottom-color: rgb(149, 149, 149);
       transition: 0.3s;
-@include font(0);
+      @include font(0);
       position: relative;
       z-index: 4;
     }
@@ -603,6 +604,7 @@ input[type=number]::-webkit-inner-spin-button {
     box-shadow: 1px 1px 3px $shadow;
     border-radius: 10px;
     padding: 10px;
+    overflow-x: scroll;
 
     table {
       width: 100%;
@@ -610,7 +612,7 @@ input[type=number]::-webkit-inner-spin-button {
       border-collapse: collapse;
 
       .table_oder_top {
-        @include font(1);
+        @include font(0);
         border-bottom: $gray solid;
         border-bottom-width: 2px;
 
@@ -627,99 +629,13 @@ input[type=number]::-webkit-inner-spin-button {
         font-weight: 400;
         border-bottom: #d8d8d8 solid;
         border-bottom-width: 1px;
-
-        label {
-          cursor: pointer;
-        }
       }
 
       tr,
       th,
       td {
-        width: calc((100%) / 3);
+        width: calc((100%) / 5);
         text-align: center;
-      }
-
-      .th3_box {
-        .checkall1 {
-          cursor: pointer;
-
-          input[type="checkbox"] {
-            display: none;
-
-            &+label::before {
-              content: "";
-              display: inline-block;
-              width: 15px;
-              height: 15px;
-              background-image: url("../img/unchecked_d.3b5daaa1.svg");
-              background-size: contain;
-              margin-right: 4px;
-              position: relative;
-              top: 2px;
-            }
-
-            &:checked+label::before {
-              background-image: url("../img/checked_d.83ea7245.svg");
-            }
-          }
-        }
-
-        .checkall {
-          cursor: pointer;
-
-          input[type="checkbox"] {
-            display: none;
-
-            &+label::before {
-              content: "";
-              display: inline-block;
-              width: 15px;
-              height: 15px;
-              background-image: url("../img/unchecked_d.3b5daaa1.svg");
-              background-size: contain;
-              margin-right: 4px;
-              position: relative;
-              top: 2px;
-            }
-
-            &:checked+label::before {
-              background-image: url("../img/checked_d.83ea7245.svg");
-            }
-          }
-        }
-
-        .allcheck {
-          cursor: pointer;
-
-          input[type="checkbox"] {
-            display: none;
-
-            &+label::before {
-              content: "";
-              display: inline-block;
-              width: 20px;
-              height: 20px;
-              background-image: url("../img/unchecked_d.3b5daaa1.svg");
-              background-size: contain;
-              margin-right: -4px;
-              position: relative;
-              top: 2px;
-            }
-
-            &:checked+label::before {
-              background-image: url("../img/checked_d.83ea7245.svg");
-            }
-          }
-        }
-
-        .delete_pointer {
-          cursor: pointer;
-
-          #allcheck {
-            cursor: pointer;
-          }
-        }
       }
     }
 
@@ -741,11 +657,13 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
     position: relative;
-    img{
+
+    img {
       object-fit: cover;
       object-position: center;
       width: 100px;
     }
+
     .order_infomation {
       width: 100%;
       height: 100%;
@@ -753,54 +671,55 @@ input[type=number]::-webkit-inner-spin-button {
       border-radius: 10px;
       position: absolute;
       background-color: $white;
-      opacity: 0;
-      visibility: hidden;
+      // opacity: 0;
+      // visibility: hidden;
       transform-origin: top center;
-      transform: scale(0);
+
       border-radius: 10px;
-      transition: all 0.5s ease-in-out;
+      // transition: all 0.5s ease-in-out;
 
       .order_group1 {
         width: 100%;
         height: 100%;
-        // margin-top: 10px;
         // border: 1px solid rgb(90, 110, 175);
         box-shadow: 1px 1px 3px $shadow;
         border-radius: 10px;
         padding: 10px;
+        overflow-x: scroll;
 
-        tr td {
-          color: $primary;
-          padding: 10px 0;
-          font-weight: 400;
-          border-bottom: #d8d8d8 solid;
-          border-bottom-width: 1px;
-          text-align: center;
-        }
 
         .table_order {
           width: 100%;
           color: $gray;
           border-collapse: collapse;
-
+          td {
+            color: $primary;
+            font-weight: 400;
+            border-bottom: #d8d8d8 solid;
+            border-bottom-width: 1px;
+            @include font(0);
+         
+          }
+    
+          tr,
+          th,
+          td {
+            width: calc((100%) / 3);
+            text-align: center;
+          }
           .table_order_top1 {
-            @include font(1);
-            border-bottom: $gray solid;
-            border-bottom-width: 2px;
-            th{
-              color: $gray;
+            @include font(0);
+        border-bottom: $gray solid;
+        border-bottom-width: 1px;
+            th {
               font-weight: 100;
-
+              height: 40px;
+              color: $gray;
             }
           }
+        
         }
       }
-    }
-
-    input[type="radio"]:checked+.order_infomation {
-      transform: scale(1);
-      opacity: 1;
-      visibility: visible;
     }
   }
 }
@@ -847,7 +766,7 @@ input[type=number]::-webkit-inner-spin-button {
     }
   }
 
-  .light_box_content1{
+  .light_box_content1 {
     width: 100%;
     height: 60%;
     // border: 1px solid red;
@@ -906,7 +825,7 @@ input[type=number]::-webkit-inner-spin-button {
   }
 }
 
-@keyframes closeani1{
+@keyframes closeani1 {
   from {
     top: calc((100% - 220px) / 2);
     left: calc((100% - 350px) / 2);
@@ -929,21 +848,26 @@ input[type=number]::-webkit-inner-spin-button {
 
 // ===========rwd width 768px====================
 @include media(768px) {
-  .memlibox1 .light_box_content1{
+  .memlibox1 .light_box_content1 {
     @include font(1);
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title.active .terms_title_privacy h3{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title.active .terms_title_privacy h3 {
     @include font(2);
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title.active .terms_title_privacy h3{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title.active .terms_title_privacy h3 {
     @include font(2);
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_privacy h3{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_privacy h3 {
     @include font(2);
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_member h3{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_member h3 {
     @include font(2);
   }
+
   .memberTitle .member_title1 {
     position: relative;
     overflow: hidden;
@@ -1081,39 +1005,45 @@ input[type=number]::-webkit-inner-spin-button {
     @include font(0);
     cursor: pointer;
   }
-  .memberTitle .member_title1{
+
+  .memberTitle .member_title1 {
     cursor: pointer;
-    .active{
+
+    .active {
       width: 50%;
       @include font(0);
     }
   }
 
- 
+
 }
 
 // ============rwd 576px================================
 @include media(576px) {
-  .member_order_content .order_group table tr td{
+  .member_order_content .order_group table tr td {
     @include font(0);
   }
-  .memberTitle .member_title1{
+
+  .memberTitle .member_title1 {
     align-items: center;
-justify-content: center;
-padding: 0;
+    justify-content: center;
+    padding: 0;
   }
+
   .member_title_two .testh3 {
     @include font(0);
   }
-  .memberTitle .member_order_title{
-align-items: center;
-justify-content: center;
-padding: 0;
-  }
-  .memberTitle .member_title1.active{
+
+  .memberTitle .member_order_title {
     align-items: center;
-justify-content: center;
-padding: 0;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .memberTitle .member_title1.active {
+    align-items: center;
+    justify-content: center;
+    padding: 0;
   }
 
   .memberTitle .member_title1 .testh2 {
@@ -1188,22 +1118,28 @@ padding: 0;
   .member_order_content .order_details .order_infomation .order_group1 .table_order .table_order_top1 {
     @include font(0);
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 {
     width: 98%;
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_content .terms_content2{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_content .terms_content2 {
     padding: 20px 10px 55px 40px;
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_content.active .terms_content1{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_content.active .terms_content1 {
     padding: 20px 10px 55px 40px;
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title.active .terms_title_privacy h3{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title.active .terms_title_privacy h3 {
     @include font(0);
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_member h3{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_member h3 {
     @include font(0);
   }
-  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_privacy h3{
+
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_privacy h3 {
     @include font(0);
   }
 
@@ -1232,7 +1168,7 @@ padding: 0;
     letter-spacing: 0px;
   }
 
-  
+
 }
 
 // =================rwd 325px========================
@@ -1262,6 +1198,7 @@ padding: 0;
       }
     }
   }
+
   .member_order_content .order_details {
     margin-top: 10px;
     height: calc(100% - 40% - 20px);
@@ -1301,6 +1238,7 @@ padding: 0;
     line-height: 26px;
     @include font(0);
   }
+
   .member_order_content .order_group table .table_oder_top th {
     @include font(0);
   }

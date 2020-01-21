@@ -21,7 +21,7 @@ function checkLogin() {
     })
     .catch(err => console.log(err));
 }
-
+//================member update=======================//
 const updateBtn = document.getElementById('enter_delete1');
 updateBtn.addEventListener('click', memUpdate)
 function memUpdate() {
@@ -35,7 +35,7 @@ function memUpdate() {
     })
     .catch(err=>console.log(err))
 }
-
+//=====================order list===============================//
 const tableOrder = document.querySelector('.table_oder');
 function getOrderList(memNo){
   fetch('./php/member/orderList.php',{
@@ -77,15 +77,10 @@ function order_temp(data) {
     tr.innerHTML = `
     <td class='cretDate'>${info.cret_date}</td>
     <td class="order_no">0000${info.order_no}</td>
+    <td>${info.atr_date}</td>
+    <td>${info.cel_date}</td>
     <td>
       <div class="th3_box">
-        <span class="checkall">
-          <input type="checkbox" class="checks" id="checkall_${index}">
-          <label for=checkall_${index}></label>
-          <label for="allchecks" class="delete_pointer">
-            <span>/</span>
-          </label>
-        </span>
         <span class="delete_oder" data-index=${index} data-order=${info.order_no}>
           <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
           <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
@@ -106,9 +101,9 @@ function order_temp1(data) {
     const tr = document.createElement('tr')
     tr.innerHTML = `
     <tr>
-      <th>${info.product_name}</th>
-      <th>${info.product_amout}</th>
-      <th>${info.product_price * info.product_amout}</th>
+      <td>${info.product_name}</td>
+      <td>${info.product_amout}</td>
+      <td>${info.product_price * info.product_amout}</td>
     </tr>
     `
     tableProduct.appendChild(tr)

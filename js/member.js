@@ -75,25 +75,6 @@ memberbtn.addEventListener("click",function(){
   memlibox1.classList.add("closeani1");
 });
 
-// ==================================================
-let allcheck = document.getElementById("allcheck");
-let change_word1 = document.getElementById("change_word1");
-let change_word2 = document.getElementById("change_word2");
-
-function selectAll(event) {
-  const allCheckBox = document.getElementsByClassName("checks");
-
-  for (var i = 0; i < allCheckBox.length; i++) {
-    allCheckBox[i].checked = event.target.checked;
-  }
-}
-allcheck.addEventListener("click", function() {
-  if (change_word1.innerHTML.match("全選/")) {
-    change_word1.innerHTML = "取消/";
-  } else {
-    change_word1.innerHTML = "全選/";
-  }
-});
 
 // =========================================================
 let terms1 = document.getElementById("terms1");
