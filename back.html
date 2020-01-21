@@ -625,8 +625,8 @@
                     <th scope="col">商品清單</th>
                     <th scope="col">訂單金額</th>
                     <th scope="col">成立時間</th>
+                    <th scope="col">撿貨時間</th>
                     <th scope="col">出貨時間</th>
-                    <th scope="col">送達時間</th>
                     <th scope="col">收件人姓名</th>
                     <th scope="col">收件人地址</th>
                     <th scope="col">收件人電話</th>
@@ -692,169 +692,9 @@
 
 
   <script src="./js/back.js"></script>
-  <script>
-    let xhrOrder = new XMLHttpRequest();
-
-    getOrder();
-
-    function getOrder() {
-      xhrOrder.onload = function () {
-        if (xhrOrder.status == 200) {
-          showOrders(xhrOrder.responseText);
-          // console.log(xhrOrder.responseText);
-        } else {
-          alert(xhrOrder.status);
-        }
-      }
-
-      let url = "./php/order/backorder.php";
-      xhrOrder.open("Get", url, true);
-      xhrOrder.send(null);
-    }
-
-    function showOrders(ordersArr) {
-      let orders = JSON.parse(ordersArr).data;
-      let ordersList = "";
-      let orderStatus = document.querySelectorAll('.orderStatus');
-      let orderStatusValue = "";
-      for (let i = 0; i < orders.length; i++) {
-        ordersList += `
-        <tr>
-          <td>${orders[i].order_no}</td>
-          <td>${orders[i].mem_no}</td>
-          <td>還沒取資料喔！！</td>
-          <td>${orders[i].product_price}</td>
-          <td>${orders[i].cret_date}</td>
-          <td>${orders[i].atr_date ? orders[i].atr_date : ''}</td>
-          <td>${orders[i].cel_date ? orders[i].cel_date : ''}</td>
-          <td>${orders[i].receiver_name}</td>
-          <td>${orders[i].ship_addr}</td>
-          <td>${orders[i].receiver_tel}</td>
-          <td>
-            <p class="orderStatusNum" style="display:none;">${orders[i].order_sta}</p>
-            <select class="orderStatus">
-            </select>
-          </td>
-          </tr>`;
-      }
-      document.querySelector('.back_orders_item').innerHTML = ordersList;
-
-
-      orderSta();
-
-      function orderSta() {
-        let orderStatusNum = document.querySelectorAll('.orderStatusNum');
-        let orderStatus = document.querySelectorAll('.orderStatus');
-        // console.log(orderStatusNum.length);
-        for (let i = 0; i < orderStatusNum.length; i++) {
-          // console.log(parseInt(orderStatusNum[i].textContent));
-          switch (parseInt(orderStatusNum[i].textContent)) {
-            case 1:
-              orderStatus[i].innerHTML =
-                `<option value="1" selected>1：訂單處理中</option>
-              <option value="2">2：商品已出貨</option>
-              <option value="3">3：訂單已完成</option>`;
-              break;
-            case 2:
-              orderStatus[i].innerHTML =
-                `<option value="1" disabled>1：訂單處理中</option>
-              <option value="2" selected>2：商品已出貨</option>
-              <option value="3">3：訂單已完成</option>`;
-              break;
-            case 3:
-              orderStatus[i].innerHTML =
-                `<option value="1" disabled>1：訂單處理中</option>
-              <option value="2" disabled>2：商品已出貨</option>
-              <option value="3" selected>3：訂單已完成</option>`;
-              break;
-          }
-        }
-      }
-    }
-
-    setInterval(getOrder,15000);
-
-
-    // window.addEventListener('load', () => {
-    // function orderSta() {
-    //   let orderStatusNum = document.querySelectorAll('.orderStatusNum');
-    //   let orderStatus = document.querySelectorAll('.orderStatus');
-    //   // console.log(orderStatusNum.length);
-    //   for (let i = 0; i < orderStatusNum.length; i++) {
-    //     // console.log(parseInt(orderStatusNum[i].textContent));
-    //     switch (parseInt(orderStatusNum[i].textContent)) {
-    //       case 1:
-    //         orderStatus[i].innerHTML =
-    //           `<option value="1" selected>1：訂單處理中</option>
-    //           <option value="2">2：商品已出貨</option>
-    //           <option value="3">3：訂單已完成</option>`;
-    //         break;
-    //       case 2:
-    //         orderStatus[i].innerHTML =
-    //           `<option value="1" disabled>1：訂單處理中</option>
-    //           <option value="2" selected>2：商品已出貨</option>
-    //           <option value="3">3：訂單已完成</option>`;
-    //         break;
-    //       case 3:
-    //         orderStatus[i].innerHTML =
-    //           `<option value="1" disabled>1：訂單處理中</option>
-    //           <option value="2" disabled>2：商品已出貨</option>
-    //           <option value="3" selected>3：訂單已完成</option>`;
-    //         break;
-    //     }
-    //   }
-    // }
-
-    // window.addEventListener('load', orderSta);
-
-
-
-    // })
-
-    // let orderStatus = document.querySelectorAll('.orderStatus');
-
-    // };
-    // console.log(orderStatusNum[0]);
-    // for (let i = 0; i < orderStatusNum.length; i++) {
-    //   window.addEventListener('load', () => {
-    //   console.log(orderStatusNum[i].innerHTML);})
-    //   // switch (parseInt(orderStatusNum[i].textContent)) {
-    //   //     case 1:
-    //   //       orderStatus[i].options[0].createAttribute('checked');
-    //   //     case 2:
-    //   //       orderStatus[i].options[1].createAttribute('checked');
-    //   //     case 3:
-    //   //       orderStatus[i].options[2].createAttribute('checked');
-    //   //   }
-    // }
-
-
-    // window.addEventListener('load', () => {
-    //   let orderStatus = document.querySelectorAll('.orderStatus');
-    //   for (let i = 0; i < orderStatus.length; i++) {
-
-    //     orderStatus[i].addEventListener('change', () => {
-    //       let orderStatusValue = orderStatus[i].options[orderStatus[i].selectedIndex].value;
-    //       // if (orderStatusValue == 1) {
-    //       alert(orderStatus[i].options[orderStatus[i].selectedIndex].text);
-    //       // orderStatusValue = this.options.value;
-    //       // }
-    //       console.log(orderStatusValue);
-    //     })
-
-    //   }
-    // })
-
-
-
-    // for (let i = 0; i < orderStatus.length; i++) {
-    //   let orderStatusValue = orderStatus[i].options[orderStatusIndex].text;
-    //   console.log(orderStatusValue);
-    //   // orderStatus[i].addEventListener('click', () => {
-    //   //   console.log(orderStatusValue);
-    //   // })
-    // }
-  </script>
+  <script src="./js/backorder.js"></script>
+  <!-- <script src="./js/sendorderstatus.js"></script> -->
+  
   <script>
     (function(){
       const acc = document.getElementById('account');
