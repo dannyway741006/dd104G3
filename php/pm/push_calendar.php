@@ -10,10 +10,11 @@ try {
       $sql = " SELECT c.card_no, 
                       c.pro_no, 
                       c.card_name, 
-                      c.card_date, 
+                      DATE_FORMAT(c.`card_date`, '%Y-%m-%d %H:%i') AS `card_date`, 
                       c.card_type,
                       c.card_sta,
                       p.pro_col, 
+                      p.pro_sta, 
                       tc.todo_cont_no, 
                       tc.todo_cont_sta 
                 FROM `card` c 
@@ -60,6 +61,7 @@ try {
               "card_name" => $card["card_name"],
               "card_date" => $card["card_date"],
               "pro_col" => $card["pro_col"],
+              "pro_sta" => $card["pro_sta"],
               "pro_no" => $card["pro_no"],
               "card_no" => $card["card_no"],
               "card_type" => $card_type,
