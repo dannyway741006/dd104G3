@@ -297,11 +297,18 @@ var main_content = new Vue({
     change_watched_text() {
       if (this.click_complete_btn == false) { //已完成專案畫面
         this.click_complete_btn = true;
-
+        if(this.programs.length>0){
+          this.show_cards(0,true);
+        }
+        
       } else { //現有專案畫面
         this.click_complete_btn = false;
-
+        if(this.history_programs.length>0){
+          this.show_cards(0,true);
+        }
       }
+
+
     },
     //rwd時點選關閉漢堡---------------------------打開它
     close_humberger() {
@@ -336,7 +343,7 @@ var main_content = new Vue({
           "cache": false,
           "success": function (data) {
             // console.log(data);
-            vm.show_cards(index,'');
+            vm.show_cards(index, true);
 
           },
           "error": function (data) {
@@ -378,40 +385,50 @@ var main_content = new Vue({
 
     },
 
-    show_cards(index, array) {
+    show_cards(index, async_status) {
       if (!this.programs.length) return
       const vm = this;
       // console.log("123")
+      let pro_no = "";
+      if(this.click_complete_btn == false)
+      {
+        pro_no = this.programs[index].pro_no;
+      }else{
+        pro_no = this.history_programs[index].pro_no;
+      }
       $.ajax({
         "type": "POST",
         "dataType": "json",
         "url": "./php/pm/get_program.php",
         "data": {
-          "pro_no": this.programs[index].pro_no
+          "pro_no": pro_no
         },
         "cache": false,
+        "async": async_status,
         "success": function (data) {
           // console.log(index)
           // console.log(data);
           // console.log(vm.programs[index].card_list_todo.cards);
           // console.log(data);
           // console.log(vm.programs[index].card_list_todo)
-          vm.programs[index].card_list_todo.splice(0, 1, data[0])
-          vm.programs[index].card_list_doing.splice(0, 1, data[1])
-          vm.programs[index].card_list_done.splice(0, 1, data[2])
+          if(vm.click_complete_btn == false)
+          {
+            vm.programs[index].card_list_todo.splice(0, 1, data[0])
+            vm.programs[index].card_list_doing.splice(0, 1, data[1])
+            vm.programs[index].card_list_done.splice(0, 1, data[2])
+          }else{
+            vm.history_programs[index].card_list_todo.splice(0, 1, data[0])
+            vm.history_programs[index].card_list_doing.splice(0, 1, data[1])
+            vm.history_programs[index].card_list_done.splice(0, 1, data[2])
+          }
+          
           vm.mem_data(index);
           vm.push_calendar_cards();
-          if(array !== '')
-          {
-            console.log(array);
-            vm.to_pro_card(vm.programs[index].pro_no, array[0], array[1], 1);
-          }
         },
         "error": function (data) {
           console.log(data);
         }
       });
-
     },
 
     //把所有專案成員推進卡片
@@ -419,22 +436,32 @@ var main_content = new Vue({
       const vm = this;
       // console.log(vm.programs[index].pro_no)
       // console.log(vm.programs[vm.page].program_memeber)
-
+      if(this.click_complete_btn == false)
+      {
+        pro_no = this.programs[index].pro_no;
+      }else{
+        pro_no = this.history_programs[index].pro_no;
+      }
       $.ajax({
         "type": "POST",
         "dataType": "json",
         "url": "./php/pm/program.php",
         "data": {
           "type": "mem_data",
-          "pro_no": vm.programs[index].pro_no
+          "pro_no": pro_no
         },
         "cache": false,
         "success": function (data) {
           console.log(data);
           // console.log(vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member);
 
-          vm.programs[index].program_memeber = data.data;
-          vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member = data.data;
+          if(vm.click_complete_btn == false)
+          {
+            vm.programs[index].program_memeber = data.data;
+          }else{
+            vm.history_programs[index].program_memeber = data.data;
+          }
+          // vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member = data.data;
           // vm.programs[index][vm.todo_type][0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member = data.data;
           
           // console.log(vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member);
@@ -692,32 +719,73 @@ var main_content = new Vue({
       date_text = year_text+'-'+month_text+'-'+day_text;
       return date_text;
     },
-    to_pro_card(pro_no, card_no, card_type, src_type){
-      console.log(src_type);
-      let pro_no_index = $.map(this.programs, function(item, index) {
+    to_pro_card(pro_no, card_no, card_type, pro_sta){
+      let pro_arr = [];
+      this.todo_type = card_type;
+      if(pro_sta == 0)
+      {
+        pro_arr = this.programs;
+      }else{
+        pro_arr = this.history_programs;
+      }
+      let pro_no_index = $.map(pro_arr, function(item, index) {
         return item.pro_no
       }).indexOf(pro_no);
-      console.log(this.programs[pro_no_index][card_type]);
-      if(this.programs[pro_no_index][card_type].length == 0)
+      if(pro_sta == 0)
       {
-        this.show_cards(pro_no_index, [card_no, card_type]);
+        this.page = pro_no_index;
+        this.click_complete_btn = false;
       }else{
-        let card_no_index = $.map(this.programs[pro_no_index][card_type][0].cards, function(item, index) {
-          return item.card_no
-        }).indexOf(card_no);
-        if(src_type == 0)
-        {
-          console.log(pro_no_index);
-          console.log(card_no_index);
-          return [pro_no_index, card_no_index];
-        }
+        this.history_page = pro_no_index;
+        this.click_complete_btn = true;
       }
-      // to_pro_card(item2.pro_no,item2.card_no, item2.card_type)[0]
+      if(pro_arr[pro_no_index][card_type].length == 0)
+      {
+        this.show_cards(pro_no_index, false);
+      }
+      if(pro_sta == 0)
+      {
+        pro_arr = this.programs;
+      }else{
+        pro_arr = this.history_programs;
+      }
+      let card_no_index = $.map(pro_arr[pro_no_index][card_type][0].cards, function(item, index) {
+        return item.card_no
+      }).indexOf(card_no);
+      if(pro_sta == 0)
+      {
+        this.card_no = card_no_index;
+      }else{
+        this.history_card_no = card_no_index;
+      }
+      return card_no_index;
     },
+
+    calendar_day_click_func(year, month, date){
+      if(this.calendar_date_cards(year, month, date) > 0)
+      {
+        this.calendar_day_click=! this.calendar_day_click;
+      }else{
+        this.calendar_day_click=false;
+      }
+
+      this.cal_today = this.calendar_date(year, month, date);
+    },
+
+
+
     //打開卡片本人
     open_card_func(index, this_todo_type) {
       this.opened = !this.opened;
-      this.programs[this.page][this_todo_type][0].cards[index].card_member = this.programs[this.page].program_memeber;
+      if(this.click_complete_btn == false)
+      {
+        console.log(this.page);
+        this.programs[this.page][this_todo_type][0].cards[index].card_member = this.programs[this.page].program_memeber;
+      }else{
+        console.log(this.history_page);
+        console.log(this.history_page);
+        this.history_programs[this.history_page][this_todo_type][0].cards[index].card_member = this.history_programs[this.history_page].program_memeber;
+      }
     },
 
     //刪除卡片
@@ -757,6 +825,7 @@ var main_content = new Vue({
     //卡片背面
     //勾選未完成->已完成
     check_dateline() {
+
       if (this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline == false) { //未完成框框
 
         const vm = this;
@@ -887,7 +956,6 @@ var main_content = new Vue({
           "success": function (data) {
             // console.log(data);
             vm.programs[vm.page][vm.todo_type][0].cards[index].todo_list_content_detail[(vm.programs[vm.page][vm.todo_type][0].cards[index].todo_list_content_detail).length - 1].todo_no = data.todo_no;
-            // console.log(vm.show_cards(index))
             // vm.show_cards(vm.page); 
           },
           "error": function (data) {
@@ -1049,45 +1117,52 @@ var main_content = new Vue({
     filesearch(e) {
       if (e.target.files.length > 0) {
         this.file = e.target.files;
+        console.log(e.target.files);
+        let upFile = e.target.files[0];
         this.file_switch = false;
         this.fileder_switch = false;
         for (let i = 0; i < this.file.length; i++) {
           //-------------取得檔名
           let readFile = new FileReader();
           let pro = this.programs[this.page];
+          let upFile = e.target.files[i];
           let pro_card = this.programs[this.page][this.todo_type][0].cards[this.card_no];
           let file_name = this.file[i].name;
           readFile.addEventListener("loadend", function (e) {
             pro_card.file_result = readFile.result;
-            pro_card.filebox.push({
-              name: file_name,
-              source: pro_card.file_result,
-              file_no: '',
-            });
+            // pro_card.filebox.push({
+            //   name: file_name,
+            //   source: pro_card.file_result,
+            // });
 
             const vm = this;
-            // console.log(vm)
-            // console.log(vm.result)
-            // console.log(pro_card.filebox.length-1)
-            // console.log(pro_card.filebox[pro_card.filebox.length - 1].name)
-            // console.log(pro.pro_no)
 
+            let form_data = new FormData();
+            form_data.append("upFile", upFile);
+            form_data.append("type", "add_file");
+            form_data.append("pro_no", pro.pro_no);
+            form_data.append("card_no", pro_card.card_no);
+            form_data.append("file_name", upFile.name);
+            console.log(form_data);
             $.ajax({
               "type": "POST",
+              "url":"url",
               "dataType": "json",
               "url": "./php/pm/card.php",
-              "data": {
-                "type": "add_file",
-                "pro_no": pro.pro_no,
-                "card_no": pro_card.card_no,
-                "todo_no": 0, //不知道為什麼要綁這個
-                "file_src": vm.result,
-                "file_name": pro_card.filebox[pro_card.filebox.length - 1].name,
-              },
+              "data": form_data,
+              // "data":,
               "cache": false,
+              "contentType": false,
+              "processData": false,
+             
               "success": function (data) {
                 console.log(data);
-                pro_card.filebox[(pro_card.filebox).length - 1].file_no = data.file_no;
+                var source=data.data;
+                pro_card.filebox.push({
+                  name: file_name,
+                  source: source,
+                });
+       
 
               },
               "error": function (data) {
@@ -1375,12 +1450,16 @@ var main_content = new Vue({
     history_inner_progress_bar(detailIndex) {
       // console.log(detailIndex)
       // console.log(this.inner_progress(detailIndex))
-      let length = this.history_programs[this.history_page][this.todo_type][0].cards[this.history_card_no].todo_list_content_detail[detailIndex].lists.length;
-      if (length == 0) {
-        return 0;
-      } else {
-        return Math.round((100 / length) * this.history_inner_progress(detailIndex).length);
+      if(this.history_programs[this.history_page][this.todo_type][0].cards[this.history_card_no].todo_list_content_detail[detailIndex])
+      {
+        let length = this.history_programs[this.history_page][this.todo_type][0].cards[this.history_card_no].todo_list_content_detail[detailIndex].lists.length;
+        if (length == 0) {
+          return 0;
+        } else {
+          return Math.round((100 / length) * this.history_inner_progress(detailIndex).length);
+        }
       }
+      
     },
 
     todo_showcalendarpanel(cardIndex) {
@@ -1675,11 +1754,11 @@ var main_content = new Vue({
         main_content.history_programs = result.data.filter(item => item.pro_sta === "1")
         if (main_content.programs.length > 0) {
           main_content.page = 0;
-          main_content.show_cards(main_content.page,'');
+          main_content.show_cards(main_content.page, true);
         }
         if (main_content.history_programs.length > 0) {
           main_content.history_page = 0;
-          main_content.show_cards(main_content.history_page,'');
+          main_content.show_cards(main_content.history_page, true);
         }
         console.log(main_content.programs)
 
