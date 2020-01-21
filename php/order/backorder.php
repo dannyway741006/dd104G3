@@ -7,7 +7,7 @@ try {
   // $pdo = new PDO($dsn, $user, $password, $options);
 
   require_once('../pdo.php');
-  $sql = "select * from `test2` ORDER BY `test2`.`order_no` DESC";
+  $sql = "select * from `orders` ORDER BY `test2`.`order_no` DESC";
   $orders = $pdo->query($sql);
 
   if( $orders->rowCount() == 0 ){ //找不到
