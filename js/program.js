@@ -134,6 +134,9 @@ var main_content = new Vue({
 
     calendar_day_click: false,
     calendar_cards: [],
+    cal_today:null,
+    cal_mon:null,
+
 
   },
 
@@ -329,7 +332,7 @@ var main_content = new Vue({
           "cache": false,
           "success": function (data) {
             // console.log(data);
-            vm.show_cards(index);
+            vm.show_cards(index,'');
 
           },
           "error": function (data) {
@@ -371,7 +374,7 @@ var main_content = new Vue({
 
     },
 
-    show_cards(index) {
+    show_cards(index, array) {
       if (!this.programs.length) return
       const vm = this;
       // console.log("123")
@@ -394,6 +397,11 @@ var main_content = new Vue({
           vm.programs[index].card_list_done.splice(0, 1, data[2])
           vm.mem_data(index);
           vm.push_calendar_cards();
+          if(array !== '')
+          {
+            console.log(array);
+            vm.to_pro_card(vm.programs[index].pro_no, array[0], array[1], 1);
+          }
         },
         "error": function (data) {
           console.log(data);
@@ -619,7 +627,7 @@ var main_content = new Vue({
     push_calendar_cards() {
       const vm = this;
 
-      console.log(vm.history_programs)
+      // console.log(vm.history_programs)
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -643,6 +651,16 @@ var main_content = new Vue({
       this.calendar_day_click=false;
     },
     calendar_date_cards(year, month, day){
+      let date_text = this.calendar_date(year, month, day);
+      if(this.calendar_cards[date_text])
+      {
+        return (this.calendar_cards[date_text]).length;
+      }else{
+        return 0;
+      }
+      
+    },
+    calendar_date(year, month, day) {
       year = year.toString();
       month += 1;
       month = month.toString();
@@ -666,16 +684,29 @@ var main_content = new Vue({
       month_text = month_zero+month;
       day_text = day_zero+day;
       date_text = year_text+'-'+month_text+'-'+day_text;
-      if(this.calendar_cards[date_text])
+      return date_text;
+    },
+    to_pro_card(pro_no, card_no, card_type, src_type){
+      console.log(src_type);
+      let pro_no_index = $.map(this.programs, function(item, index) {
+        return item.pro_no
+      }).indexOf(pro_no);
+      console.log(this.programs[pro_no_index][card_type]);
+      if(this.programs[pro_no_index][card_type].length == 0)
       {
-        // console.log(date_text);
-        // console.log((this.calendar_cards[date_text]).length);
-        console.log(this.calendar_cards[date_text])
-        return (this.calendar_cards[date_text]).length;
+        this.show_cards(pro_no_index, [card_no, card_type]);
       }else{
-        return 0;
+        let card_no_index = $.map(this.programs[pro_no_index][card_type][0].cards, function(item, index) {
+          return item.card_no
+        }).indexOf(card_no);
+        if(src_type == 0)
+        {
+          console.log(pro_no_index);
+          console.log(card_no_index);
+          return [pro_no_index, card_no_index];
+        }
       }
-      
+      // to_pro_card(item2.pro_no,item2.card_no, item2.card_type)[0]
     },
     //打開卡片本人
     open_card_func(index, this_todo_type) {
@@ -1638,11 +1669,11 @@ var main_content = new Vue({
         main_content.history_programs = result.data.filter(item => item.pro_sta === "1")
         if (main_content.programs.length > 0) {
           main_content.page = 0;
-          main_content.show_cards(main_content.page);
+          main_content.show_cards(main_content.page,'');
         }
         if (main_content.history_programs.length > 0) {
           main_content.history_page = 0;
-          main_content.show_cards(main_content.history_page);
+          main_content.show_cards(main_content.history_page,'');
         }
         console.log(main_content.programs)
 
