@@ -22,7 +22,7 @@ var app = new Vue({
         //計時器
         // countDownTimer:'',
         currentTomato:{},
-        currentRing:'',
+        currentRing:'./audio/ring2.mp3',
         currentTotalTime:0,
         //現在再跑的任務,
         working:true,
@@ -51,7 +51,7 @@ var app = new Vue({
         rings:[
             {
              ringName:'靜音',
-             checked:true,
+             checked:false,
              id:'ring1',
              url:'',
             },
@@ -63,7 +63,7 @@ var app = new Vue({
             },
             {
                 ringName:'鈴聲2',
-                checked:false,
+                checked:true,
                 id:'ring3',
                 url:'./audio/ring2.mp3'
             },
@@ -134,6 +134,11 @@ var app = new Vue({
             this.rings.forEach(ring => {
                 ring.checked=false;
             });
+            fetch('./php/clock/updateRing.php',{
+              method:'POST',
+              body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&ring_no=${this.currentRing}`)
+            }).then(res=>res.json())
+            .then(json=>console.log(json))
             ring.checked=true;
             this.currentRing = ring.url;
             this.playRing();

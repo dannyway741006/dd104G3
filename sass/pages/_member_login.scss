@@ -14,7 +14,7 @@
   }
 }
 // ==============light box==================================
-.mem_mask {
+.mem_mask3 {
   width: 100%;
   height: 100vh;
   background-color: rgba(194, 194, 194, 0.3);
@@ -27,7 +27,7 @@
   visibility: hidden;
 }
 
-.memlibox {
+.memlibox3 {
   width: 0px;
   height: 0px;
   background-color: rgb(255, 255, 255);
@@ -37,12 +37,12 @@
   top: 0%;
   left: calc((100%) / 2);
   border-radius: 10px;
-  box-shadow: 0 0 5px rgb(255, 208, 208);
+  box-shadow: 0 0 5px rgb(192, 192, 192);
 
   opacity: 0;
   visibility: hidden;
 
-  .light_box_title {
+  .light_box_title3 {
     width: 100%;
     height: 16%;
     display: flex;
@@ -55,7 +55,7 @@
     }
   }
 
-  .light_box_content {
+  .light_box_content3 {
     width: 100%;
     height: 60%;
     // border: 1px solid red;
@@ -65,7 +65,7 @@
     color: $dark;
   }
 
-  .memlibtn {
+  .memlibtn3 {
     width: 100%;
     height: 25%;
     // border: 1px solid gold;
@@ -73,32 +73,32 @@
     align-items: center;
     justify-content: center;
 
-    .btn_close {
+    .btn_close3 {
       @include baseBtn;
       margin: 0 10% 2%;
     }
   }
 }
 
-.active_for_memlibox {
+.active_for_memlibox3 {
   animation-duration: 0.3s;
-  animation-name: boxrotate;
+  animation-name: boxrotate3;
   animation-fill-mode: forwards;
 
 }
 
-.closeani {
+.closeani3{
   animation-duration: 0.3s;
-  animation-name: closeani;
+  animation-name: closeani3;
   animation-fill-mode: forwards;
 }
 
-.active_for_mask {
+.active_for_mask3 {
   opacity: 1;
   visibility: visible;
 }
 
-@keyframes boxrotate {
+@keyframes boxrotate3 {
   from {
     width: 0px;
     height: 0px;
@@ -115,7 +115,7 @@
   }
 }
 
-@keyframes closeani {
+@keyframes closeani3 {
   from {
     top: calc((100% - 220px) / 2);
     left: calc((100% - 350px) / 2);
@@ -725,5 +725,11 @@
         }
       }
     }
+  }
+}
+// ============rwd 576px==================================
+@include media(576px){
+  .mem_login_all .login_move_box{
+    width: 100%;
   }
 }

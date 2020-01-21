@@ -8,6 +8,7 @@ input[type=number]::-webkit-inner-spin-button {
     text-decoration: none;
     color: $dark;
     transition: all 0.1s;
+
     div {
       width: 30%;
     }
@@ -200,7 +201,7 @@ input[type=number]::-webkit-inner-spin-button {
             }
 
             .terms_content2 {
-              border: 1px solid rgb(230, 22, 57);
+              // border: 1px solid rgb(230, 22, 57);
               width: 100%;
               height: 100%;
               transition: all 0.3s;
@@ -276,7 +277,7 @@ input[type=number]::-webkit-inner-spin-button {
           .terms_box2_left {
             width: 60%;
             height: 100%;
-            border: 1px solid red;
+            // border: 1px solid red;
 
             form ul li {
               list-style: none;
@@ -295,24 +296,24 @@ input[type=number]::-webkit-inner-spin-button {
         width: 100%;
         height: 100%;
         // border: 1px solid rgb(149, 235, 109);
-        background-color: cadetblue;
+        background-color: $white;
 
         .terms_box3 {
           width: 100%;
           height: 100%;
-          border: 1px solid blue;
+          // border: 1px solid blue;
         }
       }
     }
   }
 
-  input[type="radio"] + .terms_word1 {
+  input[type="radio"]+.terms_word1 {
     width: 100%;
     height: calc(100% - 60px);
     // border: 1px solid rgb(226, 165, 185);
     border-radius: 10px;
     position: absolute;
-    background-color: rgb(219, 185, 185);
+    // background-color: rgb(219, 185, 185);
     opacity: 0;
     visibility: hidden;
     transform-origin: top center;
@@ -335,7 +336,7 @@ input[type=number]::-webkit-inner-spin-button {
       .terms_top_content1 {
         width: calc(100% - 74px);
         height: 100%;
-        border: 1px solid black;
+        // border: 1px solid black;
       }
 
       .terms_top_content2 {
@@ -385,7 +386,7 @@ input[type=number]::-webkit-inner-spin-button {
     }
   }
 
-  input[type="radio"]:checked + .terms_word {
+  input[type="radio"]:checked+.terms_word {
     transform: scale(1);
     opacity: 1;
     visibility: visible;
@@ -481,8 +482,8 @@ input[type=number]::-webkit-inner-spin-button {
 
       .up_member_icon {
         border: 1px solid black;
-        @include hoverIcon(25px);
-        @include baseBtn(40px, 40px, 50%);
+        // @include hoverIcon(25px);
+        @include baseBtn(40px, 40px, 100%);
         left: -80%;
         margin-top: 190%;
 
@@ -493,20 +494,20 @@ input[type=number]::-webkit-inner-spin-button {
       }
 
       .member_img_box {
-        width: 120px;
-        height: 120px;
-        background-color: $dark;
+        width: 100px;
+        height: 100px;
+        // border: 2px solid blue;
         border-radius: 100%;
         overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        background-color: $dark;
         box-shadow: 1px 1px 3px $shadow;
         margin-left: 4.5%;
 
         img {
           object-fit: cover;
           object-position: center;
+          width: 100%;
+          height: 100%;
         }
       }
     }
@@ -547,14 +548,14 @@ input[type=number]::-webkit-inner-spin-button {
         transition: 0.3s;
       }
 
-      .text_word:focus ~ .upbox {
+      .text_word:focus~.upbox {
         transition: 0.3s;
         height: 35px;
         border-radius: 5px;
         z-index: 1;
       }
 
-      .text_word ~ .upbox {
+      .text_word~.upbox {
         position: absolute;
         height: 0;
         bottom: 3px;
@@ -581,7 +582,7 @@ input[type=number]::-webkit-inner-spin-button {
       border: 1px solid transparent;
       border-bottom-color: rgb(149, 149, 149);
       transition: 0.3s;
-      @include font(2);
+@include font(0);
       position: relative;
       z-index: 4;
     }
@@ -646,7 +647,7 @@ input[type=number]::-webkit-inner-spin-button {
           input[type="checkbox"] {
             display: none;
 
-            & + label::before {
+            &+label::before {
               content: "";
               display: inline-block;
               width: 15px;
@@ -658,7 +659,7 @@ input[type=number]::-webkit-inner-spin-button {
               top: 2px;
             }
 
-            &:checked + label::before {
+            &:checked+label::before {
               background-image: url("../img/checked_d.83ea7245.svg");
             }
           }
@@ -670,7 +671,7 @@ input[type=number]::-webkit-inner-spin-button {
           input[type="checkbox"] {
             display: none;
 
-            & + label::before {
+            &+label::before {
               content: "";
               display: inline-block;
               width: 15px;
@@ -682,7 +683,7 @@ input[type=number]::-webkit-inner-spin-button {
               top: 2px;
             }
 
-            &:checked + label::before {
+            &:checked+label::before {
               background-image: url("../img/checked_d.83ea7245.svg");
             }
           }
@@ -694,7 +695,7 @@ input[type=number]::-webkit-inner-spin-button {
           input[type="checkbox"] {
             display: none;
 
-            & + label::before {
+            &+label::before {
               content: "";
               display: inline-block;
               width: 20px;
@@ -706,7 +707,7 @@ input[type=number]::-webkit-inner-spin-button {
               top: 2px;
             }
 
-            &:checked + label::before {
+            &:checked+label::before {
               background-image: url("../img/checked_d.83ea7245.svg");
             }
           }
@@ -740,7 +741,11 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
     position: relative;
-
+    img{
+      object-fit: cover;
+      object-position: center;
+      width: 100px;
+    }
     .order_infomation {
       width: 100%;
       height: 100%;
@@ -775,19 +780,24 @@ input[type=number]::-webkit-inner-spin-button {
 
         .table_order {
           width: 100%;
-          color: $dark;
+          color: $gray;
           border-collapse: collapse;
 
           .table_order_top1 {
             @include font(1);
             border-bottom: $gray solid;
             border-bottom-width: 2px;
+            th{
+              color: $gray;
+              font-weight: 100;
+
+            }
           }
         }
       }
     }
 
-    input[type="radio"]:checked + .order_infomation {
+    input[type="radio"]:checked+.order_infomation {
       transform: scale(1);
       opacity: 1;
       visibility: visible;
@@ -796,10 +806,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 // ============light box========================
-.mem_mask {
+.mem_mask2 {
   width: 100%;
   height: 100vh;
-  background-color: rgba(223, 27, 27, 0.3);
+  background-color: rgba(229, 226, 226, 0.3);
   position: fixed;
   z-index: 10000;
   left: 0%;
@@ -809,21 +819,22 @@ input[type=number]::-webkit-inner-spin-button {
   visibility: hidden;
 }
 
-.memlibox {
-  width: 0px;
-  height: 0px;
+.memlibox2 {
+  width: 350px;
+  height: 200px;
   background-color: rgb(255, 255, 255);
   position: fixed;
-  z-index: 10001;
+  z-index: 10006;
   left: 0%;
   top: 0%;
   left: calc((100%) / 2);
   border-radius: 10px;
-  box-shadow: 0 0 5px rgb(255, 208, 208);
   opacity: 0;
   visibility: hidden;
+  box-shadow: 0 0 5px rgb(192, 190, 190);
+  // border: 1px solid red;
 
-  .light_box_title {
+  .light_box_title2 {
     width: 100%;
     height: 16%;
     display: flex;
@@ -836,7 +847,7 @@ input[type=number]::-webkit-inner-spin-button {
     }
   }
 
-  .light_box_content {
+  .light_box_content2 {
     width: 100%;
     height: 60%;
     // border: 1px solid red;
@@ -846,7 +857,7 @@ input[type=number]::-webkit-inner-spin-button {
     color: $dark;
   }
 
-  .memlibtn {
+  .memlibtn2 {
     width: 100%;
     height: 25%;
     // border: 1px solid gold;
@@ -854,31 +865,31 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
 
-    .btn_close {
+    .btn_close2 {
       @include baseBtn;
       margin: 0 10% 2%;
     }
   }
 }
 
-.active_for_memlibox {
+.active_for_memlibox2 {
   animation-duration: 0.3s;
-  animation-name: boxrotate;
+  animation-name: boxrotate2;
   animation-fill-mode: forwards;
 }
 
-.closeani {
+.closeani2 {
   animation-duration: 0.3s;
-  animation-name: closeani;
+  animation-name: closeani2;
   animation-fill-mode: forwards;
 }
 
-.active_for_mask {
+.active_for_mask2 {
   opacity: 1;
   visibility: visible;
 }
 
-@keyframes boxrotate {
+@keyframes boxrotate2 {
   from {
     width: 0px;
     height: 0px;
@@ -895,7 +906,7 @@ input[type=number]::-webkit-inner-spin-button {
   }
 }
 
-@keyframes closeani {
+@keyframes closeani2{
   from {
     top: calc((100% - 220px) / 2);
     left: calc((100% - 350px) / 2);
@@ -915,18 +926,154 @@ input[type=number]::-webkit-inner-spin-button {
     display: none;
   }
 }
+// ================member update light box=====================
+.mem_mask1 {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(229, 226, 226, 0.3);
+  position: fixed;
+  z-index: 10000;
+  left: 0%;
+  top: 0%;
+  transition: all 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
 
+.memlibox1 {
+  width: 0px;
+  height: 0px;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  z-index: 10001;
+  left: 0%;
+  top: 0%;
+  left: calc((100%) / 2);
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgb(192, 190, 190);
+  opacity: 0;
+  visibility: hidden;
+
+  .light_box_title1 {
+    width: 100%;
+    height: 16%;
+    display: flex;
+    // border: 1px solid red;
+    @include hoverIcon(15);
+
+    img {
+      top: 8.5%;
+      left: 94.5%;
+    }
+  }
+
+  .light_box_content1 {
+    width: 100%;
+    height: 60%;
+    // border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $dark;
+  }
+
+  .memlibtn1 {
+    width: 100%;
+    height: 25%;
+    // border: 1px solid gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .btn_close1 {
+      @include baseBtn;
+      margin: 0 10% 2%;
+    }
+  }
+}
+
+.active_for_memlibox1 {
+  animation-duration: 0.3s;
+  animation-name: boxrotate1;
+  animation-fill-mode: forwards;
+}
+
+.closeani1 {
+  animation-duration: 0.3s;
+  animation-name: closeani1;
+  animation-fill-mode: forwards;
+}
+
+.active_for_mask1 {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes boxrotate1 {
+  from {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+  }
+
+  to {
+    top: calc((100% - 220px) / 2);
+    left: calc((100% - 350px) / 2);
+    visibility: visible;
+    opacity: 1;
+    width: 350px;
+    height: 220px;
+  }
+}
+
+@keyframes closeani1 {
+  from {
+    top: calc((100% - 220px) / 2);
+    left: calc((100% - 350px) / 2);
+    opacity: 1;
+    visibility: visible;
+    width: 350px;
+    height: 220px;
+  }
+
+  to {
+    top: calc((100%) / 2);
+    left: 92%;
+    visibility: hidden;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
+}
 // ===========rwd width 768px====================
 @include media(768px) {
+  .memlibox1 .light_box_content1{
+    @include font(1);
+  }
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title.active .terms_title_privacy h3{
+    @include font(2);
+  }
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title.active .terms_title_privacy h3{
+    @include font(2);
+  }
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_privacy h3{
+    @include font(2);
+  }
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_member h3{
+    @include font(2);
+  }
   .memberTitle .member_title1 {
     position: relative;
     overflow: hidden;
     width: 48%;
+    @include font(0);
     // background-color: $primary;
 
     .testh2 {
       position: absolute;
       z-index: 2;
+      @include font(2);
     }
 
     &.active {
@@ -949,6 +1096,7 @@ input[type=number]::-webkit-inner-spin-button {
 
     .for_member_ani1 {
       left: 0;
+      @include font(0);
     }
 
     .colorchangeForH2 {
@@ -977,6 +1125,7 @@ input[type=number]::-webkit-inner-spin-button {
     .testh3 {
       position: absolute;
       z-index: 2;
+      @include font(2);
     }
 
     .member_ani2 {
@@ -1048,27 +1197,58 @@ input[type=number]::-webkit-inner-spin-button {
 
   .memberTitle .member_order_title {
     width: 50%;
+    @include font(0);
+    cursor: pointer;
   }
+  .memberTitle .member_title1{
+    cursor: pointer;
+    .active{
+      width: 50%;
+      @include font(0);
+    }
+  }
+
+ 
 }
 
 // ============rwd 576px================================
 @include media(576px) {
+  .member_order_content .order_group table tr td{
+    @include font(0);
+  }
+  .memberTitle .member_title1{
+    align-items: center;
+justify-content: center;
+padding: 0;
+  }
   .member_title_two .testh3 {
-    @include font(1);
+    @include font(0);
+  }
+  .memberTitle .member_order_title{
+align-items: center;
+justify-content: center;
+padding: 0;
+  }
+  .memberTitle .member_title1.active{
+    align-items: center;
+justify-content: center;
+padding: 0;
   }
 
   .memberTitle .member_title1 .testh2 {
-    @include font(1);
+    @include font(0);
   }
 
   .member_all_box .memberContent .member_img {
     margin: 10px 0;
     height: 120px;
+    // border: 2px solid green;
 
     .member_img_box {
       width: 100px;
       height: 100px;
       margin-left: 8%;
+      // border: 1px solid red;
 
       img {
         width: 100%;
@@ -1112,7 +1292,7 @@ input[type=number]::-webkit-inner-spin-button {
     margin-bottom: 4%;
 
     p {
-      @include font(1);
+      @include font(0);
     }
   }
 
@@ -1124,15 +1304,31 @@ input[type=number]::-webkit-inner-spin-button {
     @include font(0);
   }
 
-  .member_order_content
-    .order_details
-    .order_infomation
-    .order_group1
-    .table_order
-    .table_order_top1 {
+  .member_order_content .order_details .order_infomation .order_group1 .table_order .table_order_top1 {
     @include font(0);
   }
+  .member_content .terms_word .terms_all .terms1 .terms_box1{
+    width: 98%;
+  }
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_content .terms_content2{
+    padding: 20px 10px 55px 40px;
+  }
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_content.active .terms_content1{
+    padding: 20px 10px 55px 40px;
+  }
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title.active .terms_title_privacy h3{
+    @include font(0);
+  }
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_member h3{
+    @include font(0);
+  }
+  .member_content .terms_word .terms_all .terms1 .terms_box1 .terms_box1_title .terms_title_privacy h3{
+    @include font(0);
+  }
+
 }
+
+
 
 // =============rwd 376px=============================
 @include media(376px) {
@@ -1145,7 +1341,7 @@ input[type=number]::-webkit-inner-spin-button {
     margin-bottom: 2%;
   }
 
-  .member_content input[type="radio"] + .terms_word1 {
+  .member_content input[type="radio"]+.terms_word1 {
     height: calc(100% - 90px);
   }
 
@@ -1154,16 +1350,18 @@ input[type=number]::-webkit-inner-spin-button {
     @include font(0);
     letter-spacing: 0px;
   }
+
+  
 }
 
 // =================rwd 325px========================
 @include media(325px) {
   .member_title_two .testh3 {
-    @include font(1);
+    @include font(0);
   }
 
   .memberTitle .member_title1 .testh2 {
-    @include font(1);
+    @include font(0);
   }
 
   .member_all_box .memberContent .member_img {
@@ -1183,10 +1381,6 @@ input[type=number]::-webkit-inner-spin-button {
       }
     }
   }
-
-  // .member_order_content .order_group{
-  //   margin-top: 10px;
-  // }
   .member_order_content .order_details {
     margin-top: 10px;
     height: calc(100% - 40% - 20px);
@@ -1224,22 +1418,17 @@ input[type=number]::-webkit-inner-spin-button {
   .member_all_box .member_info input {
     width: 70%;
     line-height: 26px;
+    @include font(0);
   }
-
   .member_order_content .order_group table .table_oder_top th {
     @include font(0);
   }
 
-  .member_order_content
-    .order_details
-    .order_infomation
-    .order_group1
-    .table_order
-    .table_order_top1 {
+  .member_order_content .order_details .order_infomation .order_group1 .table_order .table_order_top1 {
     @include font(0);
   }
 
-  .member_content input[type="radio"] + .terms_word1 {
+  .member_content input[type="radio"]+.terms_word1 {
     height: calc(100% - 190px);
   }
 
