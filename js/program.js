@@ -21,7 +21,7 @@ var main_content = new Vue({
 
     invite_add_member_box: false,
 
-    colors: ["#B6BE9C", "#48A9A6", "#437C90", "#6CA6C1", "#3581B8", "#C38D94", "#C1666B", "#A09CB0", "#9E768F", "#B2967D", "#7C6C77"],
+    colors: ["#81c7d4","#a6c1ee","#f8c3cd","#f9bf45","#eb7a77","#86c166","#B6BE9C", "#48A9A6", "#437C90", "#6CA6C1", "#3581B8", "#C38D94", "#C1666B", "#A09CB0", "#9E768F", "#B2967D", "#7C6C77"],
     selectColor: null,
     new_program_choose_color_item: [],
 
@@ -243,11 +243,13 @@ var main_content = new Vue({
       const vm = this;
       // console.log(vm.userInfo)
       // console.log(vm.programs[vm.page].program_memeber)
+      // console.log('./userImg/'+vm.userInfo.headshot)
       vm.programs[vm.page].program_memeber.push({
         member_name: vm.userInfo.mem_name,
         userId: vm.userInfo.mem_id,
-        src: vm.userInfo.headshot,
+        src: './userImg/'+vm.userInfo.headshot,
       })
+
       // console.log(vm.programs[vm.page].program_memeber)
     },
     //點擊邀請出現邀請的跳窗
@@ -271,6 +273,7 @@ var main_content = new Vue({
     },
     //推入已加入專案成員
     program_all_member() {
+      const vm=this;
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -282,6 +285,7 @@ var main_content = new Vue({
         "cache": false,
         "success": function (data) {
           console.log(data);
+          vm.src= './userImg/'+vm.src;
         },
         "error": function (data) {
           console.log(data);
@@ -431,6 +435,8 @@ var main_content = new Vue({
 
           vm.programs[index].program_memeber = data.data;
           vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member = data.data;
+          // vm.programs[index][vm.todo_type][0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member = data.data;
+          
           // console.log(vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member);
           // // console.log(vm.programs[index].card_list_todo[0].cards.length-1)
           // console.log(vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member)
