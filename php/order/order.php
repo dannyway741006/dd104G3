@@ -21,7 +21,7 @@ try {
 
   require_once('../pdo.php');
 
-  $sql = "insert into `orders` (`product_price`,`cret_date`,`ship_addr`,`receiver_name`,`receiver_tel`,`order_sta`) values (:product_price , NOW(),:ship_addr,:receiver_name,:receiver_tel,2)";
+  $sql = "insert into `orders` (`product_price`,`mem_no`,`cret_date`,`ship_addr`,`receiver_name`,`receiver_tel`,`order_sta`) values (:product_price,2, NOW(),:ship_addr,:receiver_name,:receiver_tel,1)";
   $cart = $pdo->prepare($sql);
   $cart->bindValue(":product_price", $_REQUEST["product_price"]);
   $cart->bindValue(":ship_addr", $_REQUEST["ship_addr"]);
