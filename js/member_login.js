@@ -44,30 +44,30 @@ login_sw2.addEventListener("click", function() {
 
 // ================light box================================
 let open_sign_ligh1 = document.getElementById("open_sign_ligh1");
-let mem_mask = document.getElementById("mem_mask");
-let liclose = document.getElementById("liclose");
-let memlibox = document.getElementById("memlibox");
-let imgClose = document.getElementById("light_box_title");
+let mem_mask3 = document.getElementById("mem_mask3");
+let liclose3 = document.getElementById("liclose3");
+let memlibox3 = document.getElementById("memlibox3");
+let light_box_title3 = document.getElementById("light_box_title3");
 
 open_sign_ligh1.addEventListener("click", function() {
-  mem_mask.classList.add("active_for_mask");
-  memlibox.classList.add("active_for_memlibox");
-  memlibox.classList.remove("closeani");
+  mem_mask3.classList.add("active_for_mask3");
+  memlibox3.classList.add("active_for_memlibox3");
+  memlibox3.classList.remove("closeani3");
 });
 
-liclose.addEventListener("click", function() {
-  mem_mask.classList.remove("active_for_mask");
-  memlibox.classList.add("closeani");
+liclose3.addEventListener("click", function() {
+  mem_mask3.classList.remove("active_for_mask3");
+  memlibox3.classList.add("closeani3");
 });
 
-mem_mask.addEventListener("click", function() {
-  mem_mask.classList.remove("active_for_mask");
-  memlibox.classList.add("closeani");
+mem_mask3.addEventListener("click", function() {
+  mem_mask3.classList.remove("active_for_mask3");
+  memlibox3.classList.add("closeani3");
 });
 
-imgClose.addEventListener("click", function() {
-  mem_mask.classList.remove("active_for_mask");
-  memlibox.classList.add("closeani");
+light_box_title3.addEventListener("click", function() {
+  mem_mask3.classList.remove("active_for_mask3");
+  memlibox3.classList.add("closeani3");
 });
 // ===================member_change_img====================================
 function showImg(thisimg) {
