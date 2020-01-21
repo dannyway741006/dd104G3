@@ -108,7 +108,7 @@
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-  <div class="login">
+  <!-- <div class="login">
     <div>
       <h1>Login</h1>
       <div>Account</div>
@@ -117,7 +117,7 @@
       <input type="text" id="password">
       <button id="loginSubmit">送出</button>
     </div>
-  </div>
+  </div> -->
   <header class="app-header navbar">
     <!-- <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
       <span class="navbar-toggler-icon"></span>
@@ -725,8 +725,8 @@
           <td>還沒取資料喔！！</td>
           <td>${orders[i].product_price}</td>
           <td>${orders[i].cret_date}</td>
-          <td>${orders[i].atr_date}</td>
-          <td>${orders[i].cel_date}</td>
+          <td>${orders[i].atr_date ? orders[i].atr_date : ''}</td>
+          <td>${orders[i].cel_date ? orders[i].cel_date : ''}</td>
           <td>${orders[i].receiver_name}</td>
           <td>${orders[i].ship_addr}</td>
           <td>${orders[i].receiver_tel}</td>
