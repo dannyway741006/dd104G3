@@ -28,24 +28,16 @@ var app = new Vue({
         working:true,
         userInfo: [],
         todos:[
-            {
-                id:'mask1',
-                title:'新任務',
-                runstatus:0,
-                currentTime:this.workTime,
-                totalTime:0,
-                complete:false,
-            },
-        ],
-        trelloTodos:[
             // {
-            //     id:'mask2',
-            //     title:'新任務trello',
+            //     id:'mask1',
+            //     title:'新任務',
             //     runstatus:0,
             //     currentTime:this.workTime,
             //     totalTime:0,
             //     complete:false,
             // },
+        ],
+        trelloTodos:[
         ],
         allTodos:[],
         rings:[
@@ -138,7 +130,8 @@ var app = new Vue({
               method:'POST',
               body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&ring_no=${this.currentRing}`)
             }).then(res=>res.json())
-            .then(json=>console.log(json))
+            .then(json=>json)
+            .catch(err=>console.log(err))
             ring.checked=true;
             this.currentRing = ring.url;
             this.playRing();
@@ -179,15 +172,13 @@ var app = new Vue({
                 complete:false,
             }
             this.todos.push(task)
-            // localStorage.todos = this.todos;
             this.newTodo="";
-            this.savelocal()
         },
         removeTodo(item,key,trello){
             var index = myChart.data.labels.indexOf(item.title)
-            console.log(index)
+            // console.log(index)
             if(index!=-1){
-                console.log(index)
+                // console.log(index)
                 myChart.data.labels.splice(index,1);
                 myChart.data.datasets[0].data.splice(index,1);
                 myChart.update();   
@@ -201,18 +192,11 @@ var app = new Vue({
                 });
                 this.trelloTodos.splice(key,1);
             }
-            this.savelocal()
         },
-        savelocal() {
-            //加到localstorage
-            const parsed = JSON.stringify(this.todos);
-            localStorage.setItem('todos', parsed);
-          },
         pauseTomato(item){   
             //暫停
             item.runstatus = 0;
             clearTimeout(this.mytimer);
-            this.savelocal();
             fetch('./php/clock/recordTime.php',{
                 method:'POST',
                 body:new URLSearchParams(`timer=${this.currentTomato.totalTime}&todo_cont_no=${this.currentTomato.id}`)
@@ -281,7 +265,6 @@ var app = new Vue({
                 this.timer = this.workTime;
                 this.working = !this.working;
                 this.totalTimer-=!this.working?1:0
-                this.savelocal();
                 this.playRing();
                 fetch('./php/clock/recordTime.php',{
                     method:'POST',

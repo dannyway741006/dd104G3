@@ -40,37 +40,39 @@ function showImg(thisimg) {
 }
 // ======================light box=================
 
-let delet_btn = document.getElementById("delet_btn");
-let mem_mask = document.getElementById("mem_mask");
-let liclose = document.getElementById("liclose");
-let memlibox = document.getElementById("memlibox");
-let imgClose = document.getElementById("light_box_title");
+
+let mem_mask1 = document.getElementById("mem_mask1");
+let liclose1 = document.getElementById("liclose1");
+let memlibox1 = document.getElementById("memlibox1");
+let imgClose1 = document.getElementById("light_box_title1");
+let enter_delete1 = document.getElementById("enter_delete1");
 let memberbtn = document.getElementById("memberbtn");
-delet_btn.addEventListener("click", function() {
-  mem_mask.classList.add("active_for_mask");
-  memlibox.classList.add("active_for_memlibox");
-  memlibox.classList.remove("closeani");
+
+
+enter_delete1.addEventListener("click", function() {
+  mem_mask1.classList.add("active_for_mask1");
+  memlibox1.classList.add("active_for_memlibox1");
+  memlibox1.classList.remove("closeani1");
 });
 
-memberbtn.addEventListener("click", function() {
-  mem_mask.classList.add("active_for_mask");
-  memlibox.classList.add("active_for_memlibox");
-  memlibox.classList.remove("closeani");
+liclose1.addEventListener("click", function() {
+  mem_mask1.classList.remove("active_for_mask1");
+  memlibox1.classList.add("closeani1");
 });
 
-liclose.addEventListener("click", function() {
-  mem_mask.classList.remove("active_for_mask");
-  memlibox.classList.add("closeani");
+mem_mask1.addEventListener("click", function() {
+  mem_mask1.classList.remove("active_for_mask1");
+  memlibox1.classList.add("closeani1");
 });
 
-mem_mask.addEventListener("click", function() {
-  mem_mask.classList.remove("active_for_mask");
-  memlibox.classList.add("closeani");
+imgClose1.addEventListener("click", function() {
+  mem_mask1.classList.remove("active_for_mask1");
+  memlibox1.classList.add("closeani1");
 });
 
-imgClose.addEventListener("click", function() {
-  mem_mask.classList.remove("active_for_mask");
-  memlibox.classList.add("closeani");
+memberbtn.addEventListener("click",function(){
+  mem_mask1.classList.remove("active_for_mask1");
+  memlibox1.classList.add("closeani1");
 });
 
 // ==================================================
