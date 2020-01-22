@@ -127,7 +127,7 @@ try {
               $filebox_arr = [];
             }
             (int)$card['card_sta'] == 0 ? $card_sta = false: $card_sta = true;
-            $step0_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => $card_member_arr, "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => $dateline_text, "calendar_date" => $calendar_date, "filebox" => $filebox_arr, "file_switch" => false);
+            $step0_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => [], "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => $dateline_text, "calendar_date" => $calendar_date, "filebox" => $filebox_arr, "file_switch" => false);
           }
           ksort($step0_arr[$card['card_no']]['todo_list_content_detail']);
           if($card['todo_no'] != null)
@@ -199,7 +199,7 @@ try {
               $filebox_arr = [];
             }
             (int)$card['card_sta'] == 0 ? $card_sta = false: $card_sta = true;
-            $step1_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => $card_member_arr, "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => $dateline_text, "calendar_date" => $calendar_date, "filebox" => $filebox_arr, "file_switch" => false);
+            $step1_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => [], "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => $dateline_text, "calendar_date" => $calendar_date, "filebox" => $filebox_arr, "file_switch" => false);
           }
           ksort($step1_arr[$card['card_no']]['todo_list_content_detail']);
           if($card['todo_no'] != null)
@@ -271,7 +271,7 @@ try {
               $filebox_arr = [];
             }
             (int)$card['card_sta'] == 0 ? $card_sta = false: $card_sta = true;
-            $step2_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => $card_member_arr, "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => $dateline_text, "calendar_date" => $calendar_date, "filebox" => $filebox_arr, "file_switch" => false);
+            $step2_arr[$card['card_no']] = array("card_no"=> $card['card_no'], "card_name"=> trim($card['card_name']), "card_member" => $pro_member_arr, "showhideMember" => false, "member_input" => "", "member_inout" => [], "todo_list_content_detail" => $todo_list_content_detail_arr, "dateline" => $card_sta, "dateline_text" => $dateline_text, "calendar_date" => $calendar_date, "filebox" => $filebox_arr, "file_switch" => false);
           }
           ksort($step2_arr[$card['card_no']]['todo_list_content_detail']);
           if($card['todo_no'] != null)
