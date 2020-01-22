@@ -462,6 +462,7 @@
         </transition-group>
 
         <!-- 日曆最外層 -->
+        <transition name="calendar_fade">
         <div class="calendar_mask" v-show="calendar_btn" >
           <transition name="fade" mode="out-in">
             <div id="calendar" v-show="calendar_btn" @click.stop="calendar_click()">
@@ -561,7 +562,7 @@
             </div>
           </transition>
         </div>
-
+    </transition>
 
 
 
@@ -671,10 +672,15 @@
                             <li>
                               <div class="card_member_message" v-for="(item,index) in showmember_select"
                                 @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                                <div><img :src="item.check" alt=""></div>
                                 <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
+<<<<<<< HEAD
                                 <!-- <div><img :src="item.check" alt=""></div> -->
+=======
+               
+>>>>>>> practice
                               </div>
                             </li>
                           </ul>
@@ -722,10 +728,10 @@
                                   <li>
                                     <div class="card_member_message" v-for="(item,index) in showmember_select"
                                       @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                                      <div><img :src="item.check" alt=""></div>
                                       <div><img :src="item.src" alt=""></div>
                                       <span class="card_member_name">{{item.member_name}}<span
                                           class="card_memberId">{{item.userId}}</span></span>
-                                      <div><img :src="item.check" alt=""></div>
                                     </div>
                                   </li>
                                 </ul>
@@ -933,10 +939,12 @@
                             <li>
                               <div class="card_member_message" v-for="(item,index) in showmember_select"
                                 @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                                <div><img :src="item.check" alt=""></div>
                                 <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
-                                <div><img :src="item.check" alt=""></div>
+                               
+                             
                               </div>
                             </li>
                           </ul>
@@ -984,10 +992,13 @@
                                   <li>
                                     <div class="card_member_message" v-for="(item,index) in showmember_select"
                                       @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                                          <div><img :src="item.check" alt=""></div>
                                       <div><img :src="item.src" alt=""></div>
+                                    
                                       <span class="card_member_name">{{item.member_name}}<span
                                           class="card_memberId">{{item.userId}}</span></span>
-                                      <div><img :src="item.check" alt=""></div>
+                                  
+                                    
                                     </div>
                                   </li>
                                 </ul>
@@ -1194,10 +1205,12 @@
                             <li>
                               <div class="card_member_message" v-for="(item,index) in showmember_select"
                                 @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                                <div><img :src="item.check" alt=""></div>
                                 <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
-                                <div><img :src="item.check" alt=""></div>
+                              
+                              
                               </div>
                             </li>
                           </ul>
@@ -1245,10 +1258,12 @@
                                   <li>
                                     <div class="card_member_message" v-for="(item,index) in showmember_select"
                                       @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                                     
+                                      <div><img :src="item.check" alt=""></div>
                                       <div><img :src="item.src" alt=""></div>
                                       <span class="card_member_name">{{item.member_name}}<span
                                           class="card_memberId">{{item.userId}}</span></span>
-                                      <div><img :src="item.check" alt=""></div>
+                                 
                                     </div>
                                   </li>
                                 </ul>

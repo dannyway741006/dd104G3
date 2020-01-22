@@ -1280,7 +1280,7 @@ var main_content = new Vue({
       let pro_page = this.programs[this.page];
       if (this.showmember_select[index].check == '') {
         this.showmember_select[index].uncolor = true;
-        this.showmember_select[index].check = "./img/checked_member.svg";
+        this.showmember_select[index].check = "./img/check.svg";
 
         if (pro_page[this.todo_type][0].cards[this.card_no].member_inout.map(x => x.src).indexOf(this.showmember_select[index].src) === -1) {
           pro_page[this.todo_type][0].cards[this.card_no].member_inout.push({

@@ -226,18 +226,21 @@
 
 @include media(500px) {
   .calendar_mask {
+    .calendar{
+      margin: 15px 0 15px 0;
+    }
     #calendar {
-      padding: 16px;
+      padding: 22px;
       .todaybutton {
         right: 0px;
       }
 
       .calendar_date_title {
         .mont_date {
-          @include font(20, 40px);
+          @include font(22,40px);
         }
         div:nth-child(2){
-          @include font(1, 30px);
+          @include font(1,22px);
         }
       }
       .calendar_date_midtitle{
@@ -248,5 +251,15 @@
     }
 
   }
+}
+
+.calendar_fade-enter-active, 
+.calendar_fade-leave-active {
+  transition: opacity .3s;
+}
+
+.calendar_fade-enter, 
+.calendar_fade-leave-to {
+  opacity: 0;
 }
 
