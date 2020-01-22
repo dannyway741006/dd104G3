@@ -71,6 +71,17 @@ try {
       $res->execute();
     }
   }
+  if(isset($data['cardMember'])){
+    foreach ($data['cardMember'] as $member){
+      $sql = 'insert into `person_in_charge` 
+        (mem_no, card_no) values
+        (:mem_no, :card_no)';
+      $res = $pdo->prepare($sql);
+      $res->bindParam(':mem_no', $member['mem_no']);
+      $res->bindParam(':card_no', $lastCardId);
+      $res->execute();
+    }
+  }
   echo json_encode(['status' => 'success', 'content' => '新建成功', 'data'=>$lastCardId]);
 } catch (PDOException $e) {
   echo $e->getLine();

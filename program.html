@@ -119,7 +119,7 @@
           <ul v-if="click_complete_btn" class="page_info_list setting_pm history_program">
 
             <transition-group name="fade" mode="out-in" tag="div">
-              <li v-for="(item,index) in history_programs" :key="index" @click="history_page=index;close_humberger()">
+              <li v-for="(item,index) in history_programs" :key="index" @click="show_cards(index, '');history_page=index;close_humberger()">
                 <p><span :style='{backgroundColor: item.pro_col}'></span>{{item.pro_title}}</p>
                 <img src="./img/delete.0df56913.svg" alt="uncheck" width="20" @click.stop='delete_info_func(index)' />
 
@@ -149,7 +149,7 @@
 
       </nav>
     </header>
-    <main>
+    <main style="display: none" ref='main'>
       <div class="content">
         <!-- 內容 -->
 
@@ -162,7 +162,7 @@
             :key="index">
 
             <div class="invite_list">
-              <div class="program_member" v-for="(item,index) in program_member_show" v-show="index < 3"><img
+              <div class="program_member" v-for="(item,index) in program_member_show" v-if="index < 3"><img
                   :src="item.src" alt=""></div>
 
               <div class="program_member_more" v-show="programs[page].hideMember_sum">+{{programs_member_hidenum}}</div>
@@ -462,7 +462,7 @@
         </transition-group>
 
         <!-- 日曆最外層 -->
-        <div class="calendar_mask" v-show="calendar_btn">
+        <div class="calendar_mask" v-show="calendar_btn" >
           <transition name="fade" mode="out-in">
             <div id="calendar" v-show="calendar_btn" @click.stop="calendar_click()">
               <h1 class="calendar_date_title">
@@ -510,7 +510,7 @@
                        handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
                        other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
                       }"
-                    @click.stop="calendar_day_click=!calendar_day_click;cal_today=calendar_date(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)">
+                    @click.stop="calendar_day_click_func(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)">
                     <div
                       v-if="calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date) > 0"
                       class="calendar_date_cards">
@@ -534,7 +534,7 @@
 
                 <transition-group name="horizentalfade" mode="out-in">
                   <div class="cal_card" v-for="(item2,index) in item" :key="index"
-                    @click="page = to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[0];open_card_func(to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[1], item2.card_type),card_no=to_pro_card(item2.pro_no,item2.card_no, item2.card_type, 0)[1],todo_type=item2.card_type">
+                    @click="open_card_func(to_pro_card(item2.pro_no,item2.card_no, item2.card_type, item2.pro_sta), item2.card_type),todo_type=item2.card_type">
                     <!-- <div class="cal_card"> -->
                     <div class="cal_card_color" :style='{backgroundColor: item2.pro_col}'>
                     </div>
@@ -702,7 +702,7 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"><img
+                          <div class="card_member" v-for="(item,index) in item.member_inout"  v-show="index < 3" :key="index"><img
                               :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
@@ -964,7 +964,7 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"><img
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-if="index < 3"><img
                               :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
@@ -1225,7 +1225,7 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"><img
+                          <div class="card_member" v-for="(item,index) in item.member_inout"  v-if="index < 3"><img
                               :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
@@ -1406,7 +1406,7 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-if="index>0 && index < 3"
                             :key="index"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
@@ -1512,7 +1512,7 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-if="index > 0 && index < 3"
                             :key="index"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
@@ -1617,7 +1617,7 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-if="index < 3"
                             :key="index"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>

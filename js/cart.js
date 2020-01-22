@@ -53,7 +53,7 @@ for (let key in cartProducts) {
         <img src="${productInfo[0]}" alt="">
       </div>
       <div class="cart_product_message">
-        <p>${productInfo[1]}${productInfo[2]}</p>
+        <p class="cart_product_color">${productInfo[1]}${productInfo[2]}</p>
         <span>$</span><span class="cart_product_price">${productInfo[3]}</span>
         <p>商品介紹 : ${productInfo[4]}</p>
       </div>

@@ -82,6 +82,7 @@ try {
       $todos_id = $pdo->lastInsertId();
       echo json_encode(['status' => 'success', 'content' => '增加待辦事項成功', 'todo_no' => $todos_id]);
       break;
+
     case "delete_todo":
 
       $sql = "delete FROM `todo` WHERE `todo_no` = :todo_no";
@@ -93,7 +94,6 @@ try {
 
     case "update_todo":
 
-
       $sql = "update `todo` set todo_title = :todo_title 
           where todo_no = :todo_no";
       $res = $pdo->prepare($sql);
@@ -103,8 +103,6 @@ try {
 
       echo json_encode(['status' => 'success', 'content' => '修改清單標題成功']);
       break;
-
-
 
     case "add_todo_content":
       $sql = 'insert into `todo_content` 
@@ -163,60 +161,66 @@ try {
       echo json_encode(['status' => 'success', 'content' => '加入番茄鐘']);
       break;
 
-    case "add_file":
-      $sql = "insert INTO `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, :file_src)";
-      $files = $pdo->prepare($sql);
-      $files->bindValue(":pro_no", $_POST["pro_no"]);
-      $files->bindValue(":card_no", $_POST["card_no"]);
-      $files->bindValue(":todo_no", 0);
-      $files->bindValue(":file_name", $_POST["file_name"]);
-      $files->bindValue(":file_src", $_POST["file_src"]);
-      $files->execute();
-      $files_id = $pdo->lastInsertId();
-      echo json_encode(['status' => 'success', 'content' => '上傳檔案成功','file_no'=>$files_id]);
-      // $pdo->beginTransaction();
-      // if ($_FILES["upFile"]["error"] == UPLOAD_ERR_OK) {
-      //   $sql = "insert into `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, '')";
-      //   $files = $pdo->prepare($sql);
-      //   $files->bindValue(":pro_no", $_POST["pro_no"]);
-      //   $files->bindValue(":card_no", $_POST["card_no"]);
-      //   $files->bindValue(":todo_no", 0);
-      //   $files->bindValue(":file_name", $_POST["file_name"]);
-      //   $files->bindValue(":file_src", $_POST["file_src"]);
-      //   $files->execute();
-
-      //   //取得自動創號的key值
-      //   $file_id = $pdo->lastInsertId();
-
-      //   if (file_exists("fileder") === false) {
-      //     mkdir("fileder");
-      //   }
-      //   //將檔案copy到要放的路徑
-      //   $fileInfoArr = pathinfo($_FILES["upFile"]["name"]);
-      //   $fileName = "{$file_id}.{$fileInfoArr["EXTENSION"]}";  //8.gif
-
-      //   $from = $_FILES["upFile"]["tmp_name"];
-      //   $to = "fileder/$fileName";
-      //   if (copy($from, $to) === true) {
-      //     //將檔案名稱寫回資料庫
-      //     $sql = "update `card_file` set file_src = :file_src where file_no = $file_id";
-      //     $files = $pdo->prepare($sql);
-      //     $files->bindValue(":file_src", $fileName);
-      //     $files->execute();
-      //     echo "新增成功~";
-      //     $pdo->commit();
-      //   } else {
-      //     $pdo->rollBack();
-      //   }
-      // } else {
-      //   echo "錯誤代碼 : {$_FILES["upFile"]["error"]} <br>";
-      //   echo "新增失敗<br>";
-      //   $pdo->rollBack();
-      // }
-
-      // echo json_encode(['status' => 'success', 'content' => '上傳檔案成功']);
-
-      break;
+      case "add_file":
+      
+      
+        if ($_FILES['upFile']['error'] === UPLOAD_ERR_OK) {
+          $from = $_FILES['upFile']['tmp_name'];
+          $pro_card_no = '';
+          if (file_exists("fileder") === false) {
+            mkdir("fileder");
+          }
+          $pro_no = $_POST["pro_no"];
+          $card_no = $_POST["card_no"];
+          $fileder_path = "fileder/".$pro_no."_".$card_no;
+          if (file_exists($fileder_path) === false) {
+            mkdir($fileder_path);
+          }
+          $pro_card_no = $_POST["pro_no"]."_".$_POST["card_no"]."/";
+          //將檔案copy到要放的路徑
+          $fileInfoArr = pathinfo($_FILES["upFile"]["name"]);
+          $fileName = $_POST["file_name"];  //8.gif
+    
+          $from = $_FILES["upFile"]["tmp_name"];
+          $to = $fileder_path.'/'.$fileName;
+          $realpath="./php/pm/".$fileder_path.'/'.$fileName;
+          if (copy($from, $to)) {
+            $sql = "insert into `card_file` (`pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(:pro_no, :card_no, :todo_no, :file_name, :file_src)";
+            $files = $pdo->prepare($sql);
+            $files->bindValue(":pro_no", $_POST["pro_no"]);
+            $files->bindValue(":card_no", $_POST["card_no"]);
+            $files->bindValue(":todo_no", 0);
+            $files->bindValue(":file_name", $_POST["file_name"]);
+            $files->bindValue(":file_src", $realpath);
+            $files->execute();
+  
+            //取得自動創號的key值
+            $file_id = $pdo->lastInsertId();
+            echo json_encode(['status' => 'success', 'content' => '上傳檔案成功','data'=>$realpath]);
+  
+          }
+        
+        }
+  
+  
+  
+      
+        // if( $_FILES["upFile"]["error"] == UPLOAD_ERR_OK){
+        // $sql = "insert into `card_file` (`file_no`, `pro_no`, `card_no`, `todo_no`, `file_name`, `file_src`) values(null, :pro_no, :card_no, :todo_no, :file_name, '')";
+        // $files = $pdo->prepare($sql);
+        // $files->bindValue(":pro_no", $_POST["pro_no"]);
+        // $files->bindValue(":card_no", $_POST["card_no"]);
+        // $files->bindValue(":todo_no", 0);
+        // $files->bindValue(":file_name", $_POST["file_name"]);
+        // $files->bindValue(":file_src", $_POST["file_src"]);
+        // $files->execute();
+  
+        // //取得自動創號的key值
+        // $file_id = $pdo->lastInsertId();
+  
+      
+  
+        break;
 
     case "delete_file":
       $sql = "delete FROM `card_file` WHERE file_no = :file_no";
@@ -226,6 +230,55 @@ try {
 
       echo json_encode(['status' => 'success', 'content' => '刪除檔案']);
       break;
+
+      case "mem_data_card_add":
+        $sql = 'INSERT INTO `person_in_charge`(`mem_no`, `card_no`) VALUES (:mem_no,:card_no)';
+        $res = $pdo->prepare($sql);
+        $res->bindValue(':mem_no', $_SESSION["mem_no"]);
+        $res->bindValue(":card_no", $_POST["card_no"]);
+        
+        $res->execute();
+        echo json_encode(['status' => 'success']);
+      break;
+
+      case "mem_data_card_get":
+        // $sql = 'select jp.inv_by_mem,jp.pro_no,jp.pro_mem_inv,m.mem_name,m.mem_id,m.headshot
+        // FROM `join_program` jp,`member` m 
+        // where jp.inv_by_mem=m.mem_no and
+        // m.mem_no = :mem_no';
+  
+        $sql = 'select pic.card_no,pic.mem_no,m.headshot
+        FROM `person_in_charge` pic,`member` m 
+        where pic.mem_no=m.mem_no and pic.card_no=:card_no';
+        $res = $pdo->prepare($sql);
+        $res->bindValue(":card_no", $_POST["card_no"]);
+        $res->execute();
+        if ($res->rowCount()) {
+          $card_members = $res->fetchAll(PDO::FETCH_ASSOC);
+          $card_member_arr = [];  //program_memeber
+          foreach ($card_members as $member) {
+            $card_member_arr[] = [
+              "member_name" => $member["mem_name"],
+              "userId" => $member["mem_id"],
+              "src" =>  './userImg/'.$member["headshot"]
+            ];
+          }
+        }
+        echo json_encode(['status' => 'success', 'data' => $card_member_arr]);
+  
+        break;
+
+        case "mem_data_card_delete":
+
+          $sql = "DELETE FROM `person_in_charge` WHERE `mem_no` =:mem_no AND `card_no` = :card_no";
+          $res = $pdo->prepare($sql);
+          $res->bindValue(':mem_no', $_SESSION["mem_no"]);
+          $res->bindValue(":card_no", $_POST["card_no"]);
+          $res->execute();
+
+          echo json_encode(['status' => 'success', 'content' => '刪除待辦事項子項目']);
+          break;
+
   }
 } catch (PDOException $e) {
   echo $e->getLine();
