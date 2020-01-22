@@ -1,11 +1,15 @@
 //---產生一個xhr物件---//
 let xhrOrder = new XMLHttpRequest();
+let xhrGetOrderList = new XMLHttpRequest();
 
 getOrder();
 
 function getOrder() {
   xhrOrder.onload = function () {
     //---成功撈取資料的話執行showOrders函式---//
+    //---抓orders資料表---//
+    //---抓到後在下一個函式再抓order_item資料表---//
+
     if (xhrOrder.status == 200) {
       showOrders(xhrOrder.responseText);
       // console.log(xhrOrder.responseText);
@@ -13,11 +17,11 @@ function getOrder() {
       alert(xhrOrder.status);
     }
   }
-
   //---設定撈取資料路徑---//
   let url = "./php/order/backorder.php";
   xhrOrder.open("Get", url, true);
   xhrOrder.send(null);
+  // console.log(xhrOrder)
 }
 
 function showOrders(ordersArr) {
@@ -27,10 +31,10 @@ function showOrders(ordersArr) {
   for (let i = 0; i < orders.length; i++) {
     //---將取出來的資料動態生成結構---//
     ordersList += `
-        <tr>
+        <tr class="backOrderList">
           <td class="orderNo">${orders[i].order_no}</td>
           <td>${orders[i].mem_no}</td>
-          <td>還沒取資料喔！！</td>
+          <td class="getOrderList">還沒取資料喔！！</td>
           <td>${orders[i].product_price}</td>
           <td>${orders[i].cret_date}</td>
           <td>${orders[i].atr_date ? orders[i].atr_date : ''}</td>
@@ -95,7 +99,7 @@ function showOrders(ordersArr) {
   for (let i = 0; i < orderStatus.length; i++) {
     // console.log(orderStatus[i]);
     //---判定哪一個select上執行change事件---//
-    orderStatus[i].addEventListener('change', function statusChange(){
+    orderStatus[i].addEventListener('change', function statusChange() {
       let orderStatusValue = orderStatus[i].options[orderStatus[i].selectedIndex].value;
       //---執行錯誤的話跳出錯誤訊息---//
       xhrOrderStatus.onload = function () {
@@ -107,7 +111,7 @@ function showOrders(ordersArr) {
       }
       //---判斷送出資料的order_no號碼---//
       console.log(orderNo[i].textContent);
-     
+
       let url = "./php/order/orderstatusupdate.php";
       xhrOrderStatus.open("POST", url, true);
       //送出資料
@@ -118,7 +122,43 @@ function showOrders(ordersArr) {
       // console.log(updateOrderStatus);
     })
   }
+
+  /////////////////////////////////////////////////////
+  //---抓order_item---//
+  xhrGetOrderList.onload = function () {
+    //---成功撈取資料的話執行showOrderList函式---//
+    //---抓order_item資料表---//
+    if (xhrGetOrderList.status == 200) {
+      showOrderList(xhrGetOrderList.responseText);
+      // console.log(xhrGetOrderList.responseText);
+    } else {
+      alert(xhrGetOrderList.status);
+    }
+  }
+
+
+  ////---這邊接著寫下去---//
+  let urlGetList = "./php/order/backorderlist.php";
+  xhrGetOrderList.open("Get", urlGetList, true);
+  xhrGetOrderList.send(null);
+  // console.log(xhrGetOrderList);
+  ///---產生商品清單---///
+  function showOrderList(orderListArr) {
+    let orderlistitem = JSON.parse(orderListArr).data;
+    console.log(orderlistitem);
+  
+    let backOrderList = document.querySelectorAll('.backOrderList');
+      console.log(backOrderList);
+
+    for (let i = 0; i < backOrderList; i++) {
+    }
+
+
 }
 
+
+}
+
+
 //---設定每15秒執行一次ajax---//
-setInterval(getOrder, 15000);
+// setInterval(getOrder, 1000);
