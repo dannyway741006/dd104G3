@@ -149,7 +149,7 @@
 
       </nav>
     </header>
-    <main>
+    <main style="display: none" ref='main'>
       <div class="content">
         <!-- 內容 -->
 
@@ -462,7 +462,7 @@
         </transition-group>
 
         <!-- 日曆最外層 -->
-        <div class="calendar_mask" v-show="calendar_btn">
+        <div class="calendar_mask" v-show="calendar_btn" >
           <transition name="fade" mode="out-in">
             <div id="calendar" v-show="calendar_btn" @click.stop="calendar_click()">
               <h1 class="calendar_date_title">

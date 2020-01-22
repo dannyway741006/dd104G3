@@ -1702,6 +1702,7 @@ var main_content = new Vue({
   },
 
   async mounted() {
+    this.$refs.main.style.display = 'block'
     this.userInfo = await fetch("./php/member/isLogin.php")
       .then(res => res.json())
       .then(json => {
