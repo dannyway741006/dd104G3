@@ -6,6 +6,8 @@ const memName = document.getElementById('memName');
 const memEmail = document.getElementById('memEmail');
 const memPhone = document.getElementById('memPhone');
 const memAddr = document.getElementById('memAddr');
+const headshot = document.getElementById('acceptImg');
+
 function checkLogin() {
   fetch("./php/member/isLogin.php")
     .then(res => res.json())
@@ -16,6 +18,7 @@ function checkLogin() {
         memEmail.value = json.data.mem_email
         memPhone.value = json.data.mem_tel
         memAddr.value = json.data.mem_addr
+        headshot.src = json.data.headshot
         getOrderList(json.data.mem_no)
       }
     })
@@ -27,7 +30,7 @@ updateBtn.addEventListener('click', memUpdate)
 function memUpdate() {
   fetch('./php/member/member_update.php', {
     method: 'POST',
-    body: new URLSearchParams(`mem_no=${MEMBER_INFO.mem_no}&mem_name=${memName.value}&mem_tel=${memPhone.value}&mem_addr=${memAddr.value}`)
+    body: new URLSearchParams(`mem_no=${MEMBER_INFO.mem_no}&mem_name=${memName.value}&mem_tel=${memPhone.value}&mem_addr=${memAddr.value}&headshot=${headshot.src}`)
   })
     .then(res=>res.json())
     .then(json=>{
@@ -97,7 +100,13 @@ function order_temp(data) {
 }
 
 function order_temp1(data) {
+  let test = document.querySelector('.table_order_special')
+  // console.log(test);
+  
+  // if(test)test.removeChild()
+  
   data.forEach(info=>{
+
     const tr = document.createElement('tr')
     tr.innerHTML = `
     <tr>
