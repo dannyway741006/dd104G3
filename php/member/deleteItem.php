@@ -1,7 +1,7 @@
 <?php
 try {
   require_once('../pdo.php');
-  $sql = 'delete from `orders` where order_no = :order_no';
+  $sql = 'update `orders` set order_sta = 4 where order_no = :order_no';
   $res = $pdo->prepare($sql);
   $res->bindParam('order_no', $_POST['order_no']);
   $res->execute();

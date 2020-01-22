@@ -1,9 +1,7 @@
 <?php
 try {
   require_once('../pdo.php');
-    $sql = 'select * from `order_item` o
-    JOIN `mall_product` m on m.product_no = o.product_no 
-    where order_no	= :order_no';
+    $sql = 'select * from `order_item` where order_no	= :order_no';
     $res = $pdo->prepare($sql);
     $res->bindParam(':order_no', $_POST['order_no']);
     $res->execute();
