@@ -3,7 +3,7 @@ try {
   require_once('../pdo.php');
     $sql = 'select order_no, cret_date, atr_date, cel_date
     FROM `orders` 
-    where mem_no = :mem_no';
+    where mem_no = :mem_no AND order_sta != 4';
     $res = $pdo->prepare($sql);
     $res->bindParam(':mem_no', $_POST['mem_no']);
     $res->execute();

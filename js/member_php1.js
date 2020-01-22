@@ -64,6 +64,8 @@ function getOrderProduct(){
 function deleteOrder(){
   let dom = document.querySelector(`#order_${this.dataset.index}`);
   tableOrder.removeChild(dom)
+  let productDom = document.querySelectorAll(`.product_${this.dataset.order}`);
+  if(productDom)[...productDom].forEach(dom => tableProduct.removeChild(dom))
   fetch('./php/member/deleteItem.php',{
     method: 'POST',
     body: new URLSearchParams(`order_no=${this.dataset.order}`)
@@ -80,8 +82,8 @@ function order_temp(data) {
     tr.innerHTML = `
     <td class='cretDate'>${info.cret_date}</td>
     <td class="order_no">0000${info.order_no}</td>
-    <td>${info.atr_date}</td>
-    <td>${info.cel_date}</td>
+    <td>${info.atr_date ? info.atr_date : ''}</td>
+    <td>${info.cel_date ? info.cel_date : ''}</td>
     <td>
       <div class="th3_box">
         <span class="delete_oder" data-index=${index} data-order=${info.order_no}>
@@ -100,138 +102,25 @@ function order_temp(data) {
 }
 
 function order_temp1(data) {
-  let test = document.querySelector('.table_order_special')
-  // console.log(test);
-  
-  // if(test)test.removeChild()
-  
+  let oldTr = document.querySelectorAll('.table_order_special>tr')
+  if(oldTr){
+    [...oldTr].forEach(dom=>{
+      tableProduct.removeChild(dom)
+    })
+  }
   data.forEach(info=>{
-
     const tr = document.createElement('tr')
+    tr.className = `product_${info.order_no}`
     tr.innerHTML = `
     <tr>
-      <td>${info.product_name}</td>
-      <td>${info.product_amout}</td>
-      <td>${info.product_price * info.product_amout}</td>
+      <td>${info.product_name_color}</td>
+      <td>${info.order_product_num}</td>
+      <td>${info.order_product_price * info.order_product_num}</td>
     </tr>
     `
     tableProduct.appendChild(tr)
   })
 }
 checkLogin()
-// function test3() {
-//   let xhr = new XMLHttpRequest();
-//   // let divLogin = document.getElementById("divLogin");
-//   let str = "";
-//   xhr.onload = function () {
-//     member = JSON.parse(xhr.responseText);
-//     console.log("aaa");
-
-//     for (i = 0; i < member.length; i++) {
-//       str = order_temp1(member[i].product_no, member[i].product_amout, member[i].product_price, str, i);
-//     }
-
-//     str = `
-//       <input type="radio" id="order_box${i + 1}" name="gallery" hidden="" checked="checked" />
-//       <div class="order_infomation">
-//         <div class="order_group1">
-//           <table class="table_order table_order_special">
-//             <tr class="table_order_top1">
-//               <th>商品</th>
-//               <th>數量</th>
-//               <th>價格</th>
-//             </tr>` + str;
-//     document.getElementsByClassName("order_details")[0].innerHTML = str;
-//   };
-//   xhr.open("get", "./php/member/order_mem.php", true);
-//   xhr.send(null);
-// };
-
-
-// function test2() {
-//   let xhr = new XMLHttpRequest();
-//   // let divLogin = document.getElementById("divLogin");
-
-//   xhr.onload = function () {
-//     member = JSON.parse(xhr.responseText);
-//     // console.log(member);
-//     let str = "";
-//     for (i = 0; i < member.length; i++) {
-//       str = order_temp(member[i].cret_date, member[i].order_no, str, i);
-//     }
-
-//     str =
-//       `
-// <tr class="table_oder_top">
-//                       <th>購買日期</th>
-//                       <th>訂單編號</th>
-//                       <th>
-//                         <div class="th3_box">
-//                           <span class="allcheck">
-//                             <input type="checkbox" id="allcheck" onChange="selectAll.call(this, event);">
-//                             <label for="allcheck" class="delete_pointer">
-//                               <span id="change_word1">全選/</span>
-//                             </label>
-//                             <label id="delet_btn1" class="delete_all_oder">
-//                               <input type="botton" name="botton" style="display: none;">
-//                           </span>
-//                           <span class="delete_oder" id="delet_btn">
-//                             <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
-//                             <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
-//                           </span>
-//                           </label>
-//                         </div>
-//                       </th>
-//                     </tr>` + str;
-//     document.getElementsByClassName("table_oder")[0].innerHTML = str;
-//     let delet_btn = document.getElementById("delet_btn");
-//     let mem_mask = document.getElementById("mem_mask");
-//     let liclose = document.getElementById("liclose");
-//     let memlibox = document.getElementById("memlibox");
-//     let imgClose = document.getElementById("light_box_title");
-//     delet_btn.addEventListener("click", function () {
-//       mem_mask.classList.add("active_for_mask");
-//       memlibox.classList.add("active_for_memlibox");
-//       memlibox.classList.remove("closeani");
-//     });
-//     liclose.addEventListener("click", function () {
-//       mem_mask.classList.remove("active_for_mask");
-//       memlibox.classList.add("closeani");
-//     });
-
-//     mem_mask.addEventListener("click", function () {
-//       mem_mask.classList.remove("active_for_mask");
-//       memlibox.classList.add("closeani");
-//     });
-
-//     imgClose.addEventListener("click", function () {
-//       mem_mask.classList.remove("active_for_mask");
-//       memlibox.classList.add("closeani");
-//     });
-
-//     // ===================================================================
-
-//     let allcheck = document.getElementById("allcheck");
-//     let change_word1 = document.getElementById("change_word1");
-
-//     function selectAll(event) {
-//       const allCheckBox = document.getElementsByClassName("checks");
-
-//       for (var i = 0; i < allCheckBox.length; i++) {
-//         allCheckBox[i].checked = event.target.checked;
-//       }
-//     }
-//     allcheck.addEventListener("click", function () {
-//       if (change_word1.innerHTML.match("全選/")) {
-//         change_word1.innerHTML = "取消/";
-//       } else {
-//         change_word1.innerHTML = "全選/";
-//       }
-//     });
-//   };
-//   xhr.open("get", "./php/member/order_mem.php", true);
-//   xhr.send(null);
-// };
-
 
 

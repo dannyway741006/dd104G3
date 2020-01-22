@@ -22,6 +22,15 @@ cartSubmit.addEventListener('click', () => {
       if (xhr.status == 200) {
         // document.querySelector("#idMsg").textContent = xhr.responseText;
         //console.log("----", xhr.responseText)
+        for (let i = 0; i < cartProduct.length; i++) {
+          orderListurl = "./php/order/orderlist.php";
+          xhrOrderList.open("POST", orderListurl, true);
+          //送出資料
+          xhrOrderList.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          sendOrderList = `order_no=${+xhr.responseText}&mem_no=${MEMBER_INFO.mem_no}&product_name_color=${cartProductColor[i].textContent}&order_product_price=${orderProductPrice[i].textContent}&order_product_num=${orderProductNumber[i].textContent}`;
+          xhrOrderList.send(sendOrderList);
+          console.log(cartProduct);
+        };
       } else {
         alert(xhr.statusText);
       }
@@ -51,16 +60,6 @@ cartSubmit.addEventListener('click', () => {
     //     alert(xhrOrderList.statusText);
     //   }
     // }
-
-    for (let i = 0; i < cartProduct.length; i++) {
-      orderListurl = "./php/order/orderlist.php";
-      xhrOrderList.open("POST", orderListurl, true);
-      //送出資料
-      xhrOrderList.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      sendOrderList = `mem_no=${MEMBER_INFO.mem_no}&product_name_color=${cartProductColor[i].textContent}&order_product_price=${orderProductPrice[i].textContent}&order_product_num=${orderProductNumber[i].textContent}`;
-      xhrOrderList.send(sendOrderList);
-      console.log(sendOrderList);
-    };
 
     //成功送出資料後清除填入的資訊
     shipAddr.value = "";
