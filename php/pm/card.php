@@ -82,6 +82,7 @@ try {
       $todos_id = $pdo->lastInsertId();
       echo json_encode(['status' => 'success', 'content' => '增加待辦事項成功', 'todo_no' => $todos_id]);
       break;
+
     case "delete_todo":
 
       $sql = "delete FROM `todo` WHERE `todo_no` = :todo_no";
@@ -93,7 +94,6 @@ try {
 
     case "update_todo":
 
-
       $sql = "update `todo` set todo_title = :todo_title 
           where todo_no = :todo_no";
       $res = $pdo->prepare($sql);
@@ -103,8 +103,6 @@ try {
 
       echo json_encode(['status' => 'success', 'content' => '修改清單標題成功']);
       break;
-
-
 
     case "add_todo_content":
       $sql = 'insert into `todo_content` 
@@ -164,7 +162,7 @@ try {
       break;
 
       case "add_file":
-     
+      
       
         if ($_FILES['upFile']['error'] === UPLOAD_ERR_OK) {
           $from = $_FILES['upFile']['tmp_name'];
@@ -232,6 +230,55 @@ try {
 
       echo json_encode(['status' => 'success', 'content' => '刪除檔案']);
       break;
+
+      case "mem_data_card_add":
+        $sql = 'INSERT INTO `person_in_charge`(`mem_no`, `card_no`) VALUES (:mem_no,:card_no)';
+        $res = $pdo->prepare($sql);
+        $res->bindValue(':mem_no', $_SESSION["mem_no"]);
+        $res->bindValue(":card_no", $_POST["card_no"]);
+        
+        $res->execute();
+        echo json_encode(['status' => 'success']);
+      break;
+
+      case "mem_data_card_get":
+        // $sql = 'select jp.inv_by_mem,jp.pro_no,jp.pro_mem_inv,m.mem_name,m.mem_id,m.headshot
+        // FROM `join_program` jp,`member` m 
+        // where jp.inv_by_mem=m.mem_no and
+        // m.mem_no = :mem_no';
+  
+        $sql = 'select pic.card_no,pic.mem_no,m.headshot
+        FROM `person_in_charge` pic,`member` m 
+        where pic.mem_no=m.mem_no and pic.card_no=:card_no';
+        $res = $pdo->prepare($sql);
+        $res->bindValue(":card_no", $_POST["card_no"]);
+        $res->execute();
+        if ($res->rowCount()) {
+          $card_members = $res->fetchAll(PDO::FETCH_ASSOC);
+          $card_member_arr = [];  //program_memeber
+          foreach ($card_members as $member) {
+            $card_member_arr[] = [
+              "member_name" => $member["mem_name"],
+              "userId" => $member["mem_id"],
+              "src" =>  './userImg/'.$member["headshot"]
+            ];
+          }
+        }
+        echo json_encode(['status' => 'success', 'data' => $card_member_arr]);
+  
+        break;
+
+        case "mem_data_card_delete":
+
+          $sql = "DELETE FROM `person_in_charge` WHERE `mem_no` =:mem_no AND `card_no` = :card_no";
+          $res = $pdo->prepare($sql);
+          $res->bindValue(':mem_no', $_SESSION["mem_no"]);
+          $res->bindValue(":card_no", $_POST["card_no"]);
+          $res->execute();
+
+          echo json_encode(['status' => 'success', 'content' => '刪除待辦事項子項目']);
+          break;
+
   }
 } catch (PDOException $e) {
   echo $e->getLine();
