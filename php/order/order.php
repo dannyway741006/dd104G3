@@ -11,12 +11,9 @@ try {
   $cart->bindValue(":receiver_name", $_REQUEST["receiver_name"]);
   $cart->bindValue(":receiver_tel", $_REQUEST["receiver_tel"]);
   $cart->execute();
+  $lastId = $pdo->lastInsertId();
+  echo $lastId;
   
-  echo $_REQUEST["product_price"];
-  echo $_REQUEST["ship_addr"];
-  echo $_REQUEST["receiver_name"];
-  echo $_REQUEST["receiver_tel"];
-  echo $_REQUEST["cret_date"];
 } catch (PDOException $e) {
   echo $e->getMessage();
 }
