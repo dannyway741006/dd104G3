@@ -276,23 +276,26 @@ var main_content = new Vue({
     //推入已加入專案成員
     program_all_member() {
       const vm = this;
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/program.php",
-        "data": {
-          "type": "mem_data",
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/program.php",
+          "data": {
+            "type": "mem_data",
 
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
-          vm.src = './userImg/' + vm.src;
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
+            vm.src = './userImg/' + vm.src;
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
+      }
     },
 
     //切換現有-已完成專案
@@ -400,38 +403,41 @@ var main_content = new Vue({
       } else {
         pro_no = this.history_programs[index].pro_no;
       }
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/get_program.php",
-        "data": {
-          "pro_no": pro_no
-        },
-        "cache": false,
-        "async": async_status,
-        "success": function (data) {
-          // console.log(index)
-          // console.log(data);
-          // console.log(vm.programs[index].card_list_todo.cards);
-          // console.log(data);
-          // console.log(vm.programs[index].card_list_todo)
-          if (vm.click_complete_btn == false) {
-            vm.programs[index].card_list_todo.splice(0, 1, data[0])
-            vm.programs[index].card_list_doing.splice(0, 1, data[1])
-            vm.programs[index].card_list_done.splice(0, 1, data[2])
-          } else {
-            vm.history_programs[index].card_list_todo.splice(0, 1, data[0])
-            vm.history_programs[index].card_list_doing.splice(0, 1, data[1])
-            vm.history_programs[index].card_list_done.splice(0, 1, data[2])
-          }
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/get_program.php",
+          "data": {
+            "pro_no": pro_no
+          },
+          "cache": false,
+          "async": async_status,
+          "success": function (data) {
+            // console.log(index)
+            // console.log(data);
+            // console.log(vm.programs[index].card_list_todo.cards);
+            // console.log(data);
+            // console.log(vm.programs[index].card_list_todo)
+            if (vm.click_complete_btn == false) {
+              vm.programs[index].card_list_todo.splice(0, 1, data[0])
+              vm.programs[index].card_list_doing.splice(0, 1, data[1])
+              vm.programs[index].card_list_done.splice(0, 1, data[2])
+            } else {
+              vm.history_programs[index].card_list_todo.splice(0, 1, data[0])
+              vm.history_programs[index].card_list_doing.splice(0, 1, data[1])
+              vm.history_programs[index].card_list_done.splice(0, 1, data[2])
+            }
 
-          vm.mem_data(index);
-          vm.push_calendar_cards();
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
+            vm.mem_data(index);
+            vm.push_calendar_cards();
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
+      }
     },
 
     //把所有專案成員推進卡片
@@ -901,8 +907,6 @@ var main_content = new Vue({
         // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no)
         // console.log(this.islogin.length)
         if (this.islogin.length != 0) {
-
-
           $.ajax({
             "type": "POST",
             "dataType": "json",
@@ -928,14 +932,45 @@ var main_content = new Vue({
       } else {
 
         const vm = this;
+        // console.log(this.islogin.length)
+        if (this.islogin.length != 0) {
+          $.ajax({
+            "type": "POST",
+            "dataType": "json",
+            "url": "./php/pm/card.php",
+            "data": {
+              "type": "check_dateline",
+              "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+              "card_sta": 0
+            },
+            "cache": false,
+            "success": function (data) {
+              console.log(data);
+
+            },
+            "error": function (data) {
+              console.log(data);
+            }
+          });
+        }
+        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false;
+        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '未完成';
+      }
+    },
+    //設定卡片時間
+    set_calendar_date() {
+      // console.log(this.programs[this.page][this.todo_type][0].cards[this.card_no].calendar_date)
+      const vm = this;
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
         $.ajax({
           "type": "POST",
           "dataType": "json",
           "url": "./php/pm/card.php",
           "data": {
-            "type": "check_dateline",
+            "type": "set_calendar_date",
             "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-            "card_sta": 0
+            "card_date": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date
           },
           "cache": false,
           "success": function (data) {
@@ -946,55 +981,32 @@ var main_content = new Vue({
             console.log(data);
           }
         });
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false;
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '未完成';
       }
-    },
-    //設定卡片時間
-    set_calendar_date() {
-      // console.log(this.programs[this.page][this.todo_type][0].cards[this.card_no].calendar_date)
-      const vm = this;
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "set_calendar_date",
-          "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-          "card_date": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
-
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
-
     },
     //改變卡片標題
     change_card_title() {
       const vm = this;
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "update_card_title",
-          "card_name": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_name,
-          "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "update_card_title",
+            "card_name": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_name,
+            "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
 
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
+      }
     },
 
     // 增加待辦清單項目
@@ -1015,26 +1027,29 @@ var main_content = new Vue({
           //改變待辦事項標題
           test: '',
         })
-        $.ajax({
-          "type": "POST",
-          "dataType": "json",
-          "url": "./php/pm/card.php",
-          "data": {
-            "type": "add_todo",
-            "pro_no": vm.programs[vm.page].pro_no,
-            "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-            "todo_title": vm.todoListTitle,
-          },
-          "cache": false,
-          "success": function (data) {
-            // console.log(data);
-            vm.programs[vm.page][vm.todo_type][0].cards[index].todo_list_content_detail[(vm.programs[vm.page][vm.todo_type][0].cards[index].todo_list_content_detail).length - 1].todo_no = data.todo_no;
-            // vm.show_cards(vm.page); 
-          },
-          "error": function (data) {
-            console.log(data);
-          }
-        });
+        // console.log(this.islogin.length)
+        if (this.islogin.length != 0) {
+          $.ajax({
+            "type": "POST",
+            "dataType": "json",
+            "url": "./php/pm/card.php",
+            "data": {
+              "type": "add_todo",
+              "pro_no": vm.programs[vm.page].pro_no,
+              "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+              "todo_title": vm.todoListTitle,
+            },
+            "cache": false,
+            "success": function (data) {
+              // console.log(data);
+              vm.programs[vm.page][vm.todo_type][0].cards[index].todo_list_content_detail[(vm.programs[vm.page][vm.todo_type][0].cards[index].todo_list_content_detail).length - 1].todo_no = data.todo_no;
+              // vm.show_cards(vm.page); 
+            },
+            "error": function (data) {
+              console.log(data);
+            }
+          });
+        }
         this.todoListTitle = null;
         this.todo_lightbox_switch = false;
         this.todo_switch = false;
@@ -1046,51 +1061,55 @@ var main_content = new Vue({
 
       const vm = this;
 
-      // console.log(detailIndex)
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "delete_todo",
-          "todo_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "delete_todo",
+            "todo_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
 
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
-      console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex])
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
+      }
+      // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex])
       vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail.splice(detailIndex, 1);
 
     },
 
     // 修改待辦清單項目
     updatetodolist_title(detailIndex) {
-      console.log("123")
       const vm = this;
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "update_todo",
-          "todo_title": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].title,
-          "todo_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "update_todo",
+            "todo_title": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].title,
+            "todo_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,
 
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
+      }
     },
 
     // 增加最小子項目
@@ -1109,26 +1128,29 @@ var main_content = new Vue({
           todo_cont_sta: '0',
           // tomato_count:'0',
         });
-        $.ajax({
-          "type": "POST",
-          "dataType": "json",
-          "url": "./php/pm/card.php",
-          "data": {
-            "type": "add_todo_content",
-            "pro_no": vm.programs[vm.page].pro_no,
-            "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-            "todo_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,
-            "todo_cont": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].test,
-          },
-          "cache": false,
-          "success": function (data) {
-            console.log(data);
-            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists).length - 1].todo_cont_no = data.todo_cont_no;
-          },
-          "error": function (data) {
-            console.log(data);
-          }
-        });
+        // console.log(this.islogin.length)
+        if (this.islogin.length != 0) {
+          $.ajax({
+            "type": "POST",
+            "dataType": "json",
+            "url": "./php/pm/card.php",
+            "data": {
+              "type": "add_todo_content",
+              "pro_no": vm.programs[vm.page].pro_no,
+              "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+              "todo_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].todo_no,
+              "todo_cont": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].test,
+            },
+            "cache": false,
+            "success": function (data) {
+              console.log(data);
+              vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists).length - 1].todo_cont_no = data.todo_cont_no;
+            },
+            "error": function (data) {
+              console.log(data);
+            }
+          });
+        }
         this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test = '';
         this.card_detail_lightbox = false;
       } else {}
@@ -1139,23 +1161,26 @@ var main_content = new Vue({
       console.log()
 
       const vm = this;
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "delete_todo_content",
-          "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "delete_todo_content",
+            "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
 
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
+      }
       this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.splice(index, 1);
 
     },
@@ -1163,26 +1188,29 @@ var main_content = new Vue({
     //修改子清單項目
     update_list_sta(detailIndex, index) {
       const vm = this;
-      console.log(this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_sta == '0' ? '1' : '0')
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "update_todo_content",
-          "todo_cont_sta": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_sta == '0' ? '1' : '0',
-          "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
+      // console.log(this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_sta == '0' ? '1' : '0')
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "update_todo_content",
+            "todo_cont_sta": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_sta == '0' ? '1' : '0',
+            "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
 
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
 
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
+      }
     },
 
 
@@ -1216,8 +1244,10 @@ var main_content = new Vue({
             form_data.append("pro_no", pro.pro_no);
             form_data.append("card_no", pro_card.card_no);
             form_data.append("file_name", upFile.name);
-            console.log(form_data);
-            $.ajax({
+            // console.log(form_data);
+       // console.log(this.islogin.length)
+       if (this.islogin.length != 0) {
+      $.ajax({
               "type": "POST",
               "url": "url",
               "dataType": "json",
@@ -1242,6 +1272,8 @@ var main_content = new Vue({
                 console.log(data);
               }
             });
+      }
+          
 
           });
           readFile.readAsDataURL(this.file[i]);
@@ -1252,25 +1284,28 @@ var main_content = new Vue({
     //卡片檔案刪除
     delete_file(cardIndex) {
       const vm = this;
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "delete_file",
-          "file_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].filebox[cardIndex].file_no,
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "delete_file",
+            "file_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].filebox[cardIndex].file_no,
 
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
 
 
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
+      }
       this.programs[this.page][this.todo_type][0].cards[this.card_no].filebox.splice(cardIndex, 1);
 
     },
@@ -1302,58 +1337,62 @@ var main_content = new Vue({
     calltomato(detailIndex, index) {
       alert("已加入蕃茄鐘");
       const vm = this;
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "update_onload_tomato",
+            "todo_cont_clock": 1,
+            "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
 
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "update_onload_tomato",
-          "todo_cont_clock": 1,
-          "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
+            // vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=true;
 
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
-          // vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=true;
+          },
+          "error": function (data) {
+            console.log(data);
+          }
 
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-
-      });
-      console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index])
-      console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color)
+        });
+      }
+      // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index])
+      // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color)
       // this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=true;
 
     },
     droptomato(detailIndex, index) {
       alert("已移除蕃茄鐘");
       const vm = this;
+      // console.log(this.islogin.length)
+      if (this.islogin.length != 0) {
+        $.ajax({
+          "type": "POST",
+          "dataType": "json",
+          "url": "./php/pm/card.php",
+          "data": {
+            "type": "update_onload_tomato",
+            "todo_cont_clock": 0,
+            "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
 
-      $.ajax({
-        "type": "POST",
-        "dataType": "json",
-        "url": "./php/pm/card.php",
-        "data": {
-          "type": "update_onload_tomato",
-          "todo_cont_clock": 0,
-          "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
+          },
+          "cache": false,
+          "success": function (data) {
+            console.log(data);
 
-        },
-        "cache": false,
-        "success": function (data) {
-          console.log(data);
-
-        },
-        "error": function (data) {
-          console.log(data);
-        }
-      });
-      console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index])
-      console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color)
+          },
+          "error": function (data) {
+            console.log(data);
+          }
+        });
+      }
+      // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index])
+      // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color)
       // this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=false;
 
     },
