@@ -10,6 +10,7 @@
   <link rel=icon href=favicon.ico>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
+    <link rel="stylesheet" href="./node_modules/vue-loading-overlay/dist/vue-loading.css">
   <title>職人口袋 | 專案管理</title>
 </head>
 
@@ -567,6 +568,12 @@
               @click="delete_info_box=!delete_info_box;history_programs[index].show_delete_info_box=false">返回</button>
           </div>
         </div>
+
+
+        <loading loader="bars" 
+        :active.sync="isLoading" 
+        :can-cancel="true" 
+        :is-full-page="false"></loading>
 
         <!-- 現有卡片背面 -->
         <div class="mask" :class="{masked: opened}" @click="card_no=-1;history_card_no=-1;opened =! opened"></div>
@@ -1712,7 +1719,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
   <script src="./js/lib/index.min.js"></script>
-
+  <script src="./js/vueLoading.js"></script>
   <script src="./js/programByCardPart.js"></script>
   <script src="./js/background.js"></script>
   <script src="./js/layout.js"></script>
