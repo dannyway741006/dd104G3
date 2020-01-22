@@ -10,12 +10,16 @@
   <link rel=icon href=favicon.ico>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
-    <link rel="stylesheet" href="./node_modules/vue-loading-overlay/dist/vue-loading.css">
+  <link rel="stylesheet" href="./node_modules/vue-loading-overlay/dist/vue-loading.css">
   <title>職人口袋 | 專案管理</title>
 </head>
 
 <body>
   <div id="app">
+
+    <loading loader="spinner" :active.sync="isLoading" :can-cancel="true" :is-full-page="true">
+    </loading>
+
     <div id="threeJs"></div>
     <header>
       <div class="header">
@@ -163,7 +167,7 @@
       </nav>
     </header>
     <main>
-      <div class="content">
+      <div class="content" ref='content'>
         <!-- 內容 -->
 
         <div id="no_program_screen" v-if="click_complete_btn==false && page==-1">快來建立新專案吧!</div>
@@ -570,10 +574,7 @@
         </div>
 
 
-        <loading loader="bars" 
-        :active.sync="isLoading" 
-        :can-cancel="true" 
-        :is-full-page="false"></loading>
+
 
         <!-- 現有卡片背面 -->
         <div class="mask" :class="{masked: opened}" @click="card_no=-1;history_card_no=-1;opened =! opened"></div>
@@ -687,7 +688,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            v-if="index > 0"><img :src="item.source" alt=""></div>
+                            ><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -951,7 +952,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            v-if="index > 0"><img :src="item.source" alt=""></div>
+                           ><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -1212,7 +1213,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            v-if="index > 0"><img :src="item.source" alt=""></div>
+                           ><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -1393,7 +1394,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            v-if="index > 0"><img :src="item.source" alt=""></div>
+                            ><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
@@ -1499,7 +1500,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            v-if="index > 0"><img :src="item.source" alt=""></div>
+                           ><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
@@ -1604,7 +1605,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            v-if="index > 0"><img :src="item.source" alt=""></div>
+                           ><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
@@ -1715,11 +1716,12 @@
     </script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+  <script src="./js/vueLoading.js"></script>
+
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
   <script src="./js/lib/index.min.js"></script>
-  <script src="./js/vueLoading.js"></script>
   <script src="./js/programByCardPart.js"></script>
   <script src="./js/background.js"></script>
   <script src="./js/layout.js"></script>
