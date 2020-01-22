@@ -17,17 +17,17 @@ $(document).ready(function ($) {
     responsive: {
       768: {
         items: 3,
-        dots: true,
+    
       },
 
       480: {
         items: 2,
-        dots: false,
+    
       },
 
       0: {
         items: 2,
-        dots: false,
+     
       }
 
     }
@@ -47,6 +47,7 @@ const mallListBtn = document.querySelectorAll('.page_info_list > li');
 let mall_data, mall_type, mall_num;
 
 async function getProduct() {
+  container.classList.remove("nav_open");
   mall_color.innerHTML = ''; //下拉選單按鈕預設
   mallType = this.dataset ? this.dataset.type : 1;
   mall_data = await fetch('./php/mall/mall_data.php', {
