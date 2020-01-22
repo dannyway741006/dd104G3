@@ -28,16 +28,13 @@ function checkLogin() {
 const updateBtn = document.getElementById('memberbtn');
 updateBtn.addEventListener('click', memUpdate)
 function memUpdate() {
-  let src = null
-  if(headShot)src = headShot.replace(/\&/g, "%26").replace(/\+/g, "%2B")
-  console.log(MEMBER_INFO)
+  let src = headShot ? headShot.replace(/\&/g, "%26").replace(/\+/g, "%2B") : MEMBER_INFO.headshot
   fetch('./php/member/member_update.php', {
     method: 'POST',
-    body: new URLSearchParams(`mem_id=${MEMBER_INFO.mem_id}&mem_no=${MEMBER_INFO.mem_no}&mem_name=${memName.value}&mem_tel=${memPhone.value}&mem_addr=${memAddr.value}&headshot=${src}&file_type=${fileType}&file_ext=${fileExt}`)
+    body: new URLSearchParams(`mem_id=${MEMBER_INFO.mem_id}&mem_no=${MEMBER_INFO.mem_no}&mem_name=${memName.value}&mem_tel=${memPhone.value}&mem_email=${memEmail.value}&mem_addr=${memAddr.value}&headshot=${src}&file_type=${fileType}&file_ext=${fileExt}`)
   })
-    .then(res=>res.text())
+    .then(res=>res.json())
     .then(json=>{
-      console.log(json)
       if(json.status === 'success')alert(json.content)
     })
     .catch(err=>console.log(err))
