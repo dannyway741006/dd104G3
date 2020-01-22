@@ -707,10 +707,11 @@
                                   <li>
                                     <div class="card_member_message" v-for="(item,index) in showmember_select"
                                       @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
+                                      <div><img :src="item.check" alt=""></div>
                                       <div><img :src="item.src" alt=""></div>
                                       <span class="card_member_name">{{item.member_name}}<span
                                           class="card_memberId">{{item.userId}}</span></span>
-                                      <div><img :src="item.check" alt=""></div>
+                                     
                                     </div>
                                   </li>
                                 </ul>

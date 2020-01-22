@@ -237,7 +237,7 @@
           @include font(20, 40px);
         }
         div:nth-child(2){
-          @include font(1 30px);
+          @include font(1, 30px);
         }
       }
       .calendar_date_midtitle{
