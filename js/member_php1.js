@@ -109,7 +109,7 @@ function order_temp1(data) {
 
     const tr = document.createElement('tr')
     tr.innerHTML = `
-    <tr>
+    <tr class="order_list_item">
       <td>${info.product_name}</td>
       <td>${info.product_amout}</td>
       <td>${info.product_price * info.product_amout}</td>

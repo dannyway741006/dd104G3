@@ -47,7 +47,7 @@ input[type=number]::-webkit-inner-spin-button {
         width: 100%;
         height: 100%;
         // border: 1px solid rebeccapurple;
-        background-color: rebeccapurple;
+        // background-color: rebeccapurple;
         opacity: 0;
         display: flex;
         justify-content: center;
@@ -439,8 +439,9 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     padding-left: 20px;
 
-    .testh2 {
+    .testh2{
       color: $primary;
+      @include font(5);
     }
   }
 }
@@ -457,6 +458,9 @@ input[type=number]::-webkit-inner-spin-button {
   color: $primary;
   // background-color: $abyss;
   margin-left: 20px;
+  .testh3{
+    @include font(5);
+  }
 }
 
 .member_all_box {
@@ -483,14 +487,17 @@ input[type=number]::-webkit-inner-spin-button {
 
       .up_member_icon {
         border: 1px solid black;
-        // @include hoverIcon(25px);
         @include baseBtn(40px, 40px, 100%);
         left: -80%;
-        margin-top: 190%;
+        margin-top: 170%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         img {
           cursor: pointer;
-          border-radius: 5px;
+      
+            width: 25px;
         }
       }
 
@@ -693,12 +700,14 @@ input[type=number]::-webkit-inner-spin-button {
           width: 100%;
           color: $gray;
           border-collapse: collapse;
+         
           td {
             color: $primary;
             font-weight: 400;
             border-bottom: #d8d8d8 solid;
             border-bottom-width: 1px;
             @include font(0);
+            height: 40px;
          
           }
     
@@ -707,16 +716,19 @@ input[type=number]::-webkit-inner-spin-button {
           td {
             width: calc((100%) / 3);
             text-align: center;
+        
           }
           .table_order_top1 {
             @include font(0);
         border-bottom: $gray solid;
         border-bottom-width: 1px;
+        
             th {
               font-weight: 100;
               height: 40px;
               color: $gray;
             }
+           
           }
         
         }

@@ -456,8 +456,16 @@
           position: absolute;
           top: 55%;
           left: 53%;
+       
           .sign_up_img {        
             @include baseBtn(45px, 45px, 30px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+              width: 25px;
+            }
+
           }
          }        
         }
@@ -533,6 +541,12 @@
         // border: 1px solid aqua;
         line-height: 50px;
         padding-left: 7%;
+        h2{
+          @include font(4, 2);
+        }
+        p{
+          @include font(1, 2);
+        }
 
         #mem_sign_btn {
           @include baseBtn;
@@ -552,12 +566,15 @@
         // border: 1px solid aqua;
         line-height: 50px;
         padding-left: 7%;
-
+        h2{
+          @include font(4, 2);
+        }
+        p{
+          @include font(1, 2);
+        }
         #mem_login_btn {
           @include baseBtn;
-
         }
-
       }
     }
   }
