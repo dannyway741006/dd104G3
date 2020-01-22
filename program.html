@@ -674,7 +674,7 @@
                                 <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
-                                <div><img :src="item.check" alt=""></div>
+                                <!-- <div><img :src="item.check" alt=""></div> -->
                               </div>
                             </li>
                           </ul>
@@ -703,7 +703,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout"  v-show="index < 3" :key="index"><img
-                              :src="item.source" alt=""></div>
+                              :src="item.src" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">

@@ -48,7 +48,7 @@ try {
       // where jp.inv_by_mem=m.mem_no and
       // m.mem_no = :mem_no';
 
-      $sql = 'select m.mem_name,m.mem_id,m.headshot FROM `join_program` jp,`member` m 
+      $sql = 'select m.mem_name,m.mem_id,m.headshot,m.mem_no FROM `join_program` jp,`member` m 
       where jp.mem_no=m.mem_no and jp.pro_no=:pro_no';
       $res = $pdo->prepare($sql);
       // $_SESSION['mem_no'] = 1; //-----------------------------
@@ -61,9 +61,12 @@ try {
         $member_arr = [];  //program_memeber
         foreach ($members as $member) {
           $member_arr[] = [
+            "mem_no" => $member["mem_no"],
             "member_name" => $member["mem_name"],
             "userId" => $member["mem_id"],
-            "src" =>  './userImg/'.$member["headshot"]
+            "src" =>  './userImg/'.$member["headshot"],
+            "check" =>  '',
+            "uncolor" =>  false
           ];
         }
       }
