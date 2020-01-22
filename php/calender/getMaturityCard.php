@@ -2,10 +2,10 @@
   try{
     require_once('../pdo.php');
     $sql = "select p.pro_no, pro_col, card_no, card_name, card_date, card_type, card_sta 
-    FROM `card` c 
-    JOIN `join_program` j on (c.pro_no = j.pro_no AND j.mem_no = :mem_no)
-    JOIN `program` p on (c.pro_no = p.pro_no AND p.pro_sta = 0)
-    WHERE card_date BETWEEN CURDATE() AND DATE_ADD(CURDATE() , INTERVAL 7 DAY) AND card_sta = 0";
+    FROM `join_program` j 
+    JOIN `program` p on (p.pro_no = j.pro_no AND j.pro_mem_inv = 1 AND p.pro_sta = 0)
+    JOIN `card` c on (c.pro_no = p.pro_no  AND c.card_sta = 0)
+    WHERE card_date BETWEEN CURDATE() AND DATE_ADD(CURDATE() , INTERVAL 7 DAY) AND j.mem_no = :mem_no";
     $res = $pdo->prepare($sql);
     $res->bindParam('mem_no', $_POST['mem_no']);
     $res->execute();

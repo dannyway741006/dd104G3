@@ -9,7 +9,7 @@
       $member = $res->fetchObject();
       $sql = "insert into `join_program` (mem_no, inv_by_mem, pro_no, inv_sta)
       values ({$member->mem_no}, :inv_by_mem, :pro_no, 0)
-      ON DUPLICATE KEY UPDATE inv_sta = 0";
+      ON DUPLICATE KEY UPDATE inv_sta = 0, inv_by_mem = :inv_by_mem";
       $inviteRes = $pdo->prepare($sql);
       $inviteRes->bindParam('inv_by_mem', $_POST['mem_no']);
       $inviteRes->bindParam('pro_no', $_POST['pro_no']);
