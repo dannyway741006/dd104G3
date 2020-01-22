@@ -1134,16 +1134,17 @@
         }
 
         div:first-child {
-          width: 35px;
-          height: 35px;
-          border-radius: 50%;
+        
+          width: 20px;
+          height: 20px;
+          // border-radius: 50%;
           overflow: hidden;
           vertical-align: middle;
 
           img {
             vertical-align: middle;
-            width: 35px;
-            height: 35px;
+            width: 20px;
+            height: 20px;
             margin-right: 0;
           }
 
@@ -1151,17 +1152,18 @@
 
         span.card_member_name {
           @include positionCenter(y);
-          left: 20%;
+          left: 35%;
         }
 
-        div:last-child {
+        div:nth-child(2){
           width: 20px;
           height: 20px;
+
           border-radius: 50%;
           overflow: hidden;
           vertical-align: middle;
           @include positionCenter(y);
-          right: 4%;
+          left: 15%;
 
           img {
             vertical-align: middle;

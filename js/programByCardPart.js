@@ -1,12 +1,9 @@
 //新增專案
-setTimeout(()=>{
-  const app = document.getElementById('app');
+// setTimeout(()=>{
+//   const app = document.getElementById('app');
   var main_content = new Vue({
     el: "#app",
-    // components: {
-    //   DatePicker,
-    //   loading: VueLoading
-    // },
+   
     data: {
       isLoading: true,
   
@@ -968,6 +965,8 @@ setTimeout(()=>{
       //卡片內上傳檔案
       filesearch(e) {
         if (e.target.files.length > 0) {
+          const vm = this;
+
           this.file = e.target.files;
           console.log(e.target.files);
           let upFile = e.target.files[0];
@@ -978,49 +977,58 @@ setTimeout(()=>{
             let readFile = new FileReader();
             let pro = this.programs[this.page];
             let upFile = e.target.files[i];
-            let pro_card = this.programs[this.page][this.todo_type][0].cards[this.card_no];
+            let pro_card = vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no];
             let file_name = this.file[i].name;
+            let file_size=this.file[i].size;
             readFile.addEventListener("loadend", function (e) {
               pro_card.file_result = readFile.result;
+              if(file_size>2097152){
+                alert("上傳檔案不得超過2M，請重新上傳")
+              }else{
+
+                const vm = this;
+    
+                let form_data = new FormData();
+                form_data.append("upFile", upFile);
+                form_data.append("type", "add_file");
+                form_data.append("pro_no", pro.pro_no);
+                form_data.append("card_no", pro_card.card_no);
+                form_data.append("file_name", upFile.name);
+                console.log(form_data);
+                $.ajax({
+                  "type": "POST",
+                  "url": "url",
+                  "dataType": "json",
+                  "url": "./php/pm/card_inner.php",
+                  "data": form_data,
+                  // "data":,
+                  "cache": false,
+                  "contentType": false,
+                  "processData": false,
+    
+                  "success": function (data) {
+                    console.log(data);
+                    var source = data.data;
+                  
+                    pro_card.filebox.push({
+                      name: file_name,
+                      source: source,
+                      file_no:'',
+                    });
+                  pro_card.filebox[(pro_card.filebox).length-1].file_no=data.file_no;
+    
+                  },
+                  "error": function (data) {
+                    console.log(data);
+                  }
+                });
+              }
+              // if(file_size>200)
               // pro_card.filebox.push({
               //   name: file_name,
               //   source: pro_card.file_result,
               // });
   
-              const vm = this;
-  
-              let form_data = new FormData();
-              form_data.append("upFile", upFile);
-              form_data.append("type", "add_file");
-              form_data.append("pro_no", pro.pro_no);
-              form_data.append("card_no", pro_card.card_no);
-              form_data.append("file_name", upFile.name);
-              console.log(form_data);
-              $.ajax({
-                "type": "POST",
-                "url": "url",
-                "dataType": "json",
-                "url": "./php/pm/card_inner.php",
-                "data": form_data,
-                // "data":,
-                "cache": false,
-                "contentType": false,
-                "processData": false,
-  
-                "success": function (data) {
-                  console.log(data);
-                  var source = data.data;
-                  pro_card.filebox.push({
-                    name: file_name,
-                    source: source,
-                  });
-  
-  
-                },
-                "error": function (data) {
-                  console.log(data);
-                }
-              });
   
             });
             readFile.readAsDataURL(this.file[i]);
@@ -1552,11 +1560,6 @@ setTimeout(()=>{
   
     async mounted() {
   
-      //vue loading
-      // setTimeout(() => {
-      //   this.isLoading = false
-      // }, 5000);
-  
       this.userInfo = await fetch("./php/member/isLogin.php")
         .then(res => res.json())
         .then(json => {
@@ -1635,4 +1638,4 @@ setTimeout(()=>{
   
   
   });
-}, 1000)
+// }, 1000)
