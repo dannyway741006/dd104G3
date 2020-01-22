@@ -186,6 +186,7 @@
           align-items: flex-end;
           justify-content: center;
           color:$dark ;
+          @include font(5);
           // border: 1px solid red;
         }
 
@@ -248,7 +249,8 @@
                     left: 2%;
                     font-weight: $fontweight;
                     color: $dark;
-                    transition: all 0.3s;                 
+                    transition: all 0.3s;  
+                    @include font(0);              
                   }
 
                 input:focus ~ p{
@@ -308,6 +310,9 @@
         visibility: visible;
         transform: scale(1);
         transition: all 0.3s;
+        h2{
+          @include font(5);
+        }
 
         // display: none;
         &.active {
@@ -382,6 +387,7 @@
                     color: $dark;
                     font-weight: $fontweight;
                     transition: all 0.3s;
+                    @include font(0);
                   }
                   input:focus ~ p{
                     color: $white;

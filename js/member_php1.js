@@ -112,17 +112,10 @@ function order_temp1(data) {
     const tr = document.createElement('tr')
     tr.className = `product_${info.order_no}`
     tr.innerHTML = `
-<<<<<<< HEAD
     <tr class="order_list_item">
-      <td>${info.product_name}</td>
-      <td>${info.product_amout}</td>
-      <td>${info.product_price * info.product_amout}</td>
-=======
-    <tr>
       <td>${info.product_name_color}</td>
       <td>${info.order_product_num}</td>
       <td>${info.order_product_price * info.order_product_num}</td>
->>>>>>> 50a459ffc0467bd71fca5114cc5e7ec120a874cf
     </tr>
     `
     tableProduct.appendChild(tr)
