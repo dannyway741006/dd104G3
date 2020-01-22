@@ -76,17 +76,19 @@ member_sign_up.addEventListener("click",function(){
   memlibox3.classList.add("closeani3");
 });
 // ===================member_change_img====================================
+let headshot, fileType, fileExt;
 function showImg(thisimg) {
   let file = thisimg.files[0];
+  fileType = file.type
+  fileExt = file.name.split('.').pop()
   if (window.FileReader) {
     let files = new FileReader();
-
     let showimg = document.getElementById("show_sign_img");
     files.onloadend = function(e) {
       showimg.src = e.target.result;
+      headshot = e.target.result;
     };
     files.readAsDataURL(file);
-    acceptImg.style.display = "block";
   }
 }
 

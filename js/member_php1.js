@@ -18,7 +18,7 @@ function checkLogin() {
         memEmail.value = json.data.mem_email
         memPhone.value = json.data.mem_tel
         memAddr.value = json.data.mem_addr
-        headshot.src = json.data.headshot
+        if(json.data.headshot)headshot.src = `./userImg/${json.data.headshot}`
         getOrderList(json.data.mem_no)
       }
     })
@@ -46,7 +46,9 @@ function getOrderList(memNo){
     body: new URLSearchParams(`mem_no=${memNo}`)
   })
     .then(res=>res.json())
-    .then(json=>order_temp(json.data))
+    .then(json=>{
+      if(json.status === 'success')order_temp(json.data)
+    })
     .catch(err=>console.log(err))
 }
 
@@ -58,7 +60,9 @@ function getOrderProduct(){
     body: new URLSearchParams(`order_no=${+this.innerText}`)
   })
     .then(res=>res.json())
-    .then(json=>order_temp1(json.data))
+    .then(json=>{
+      if(json.status === 'success')order_temp1(json.data)
+    })
     .catch(err=>console.log(err))
 }
 function deleteOrder(){
@@ -112,7 +116,11 @@ function order_temp1(data) {
     const tr = document.createElement('tr')
     tr.className = `product_${info.order_no}`
     tr.innerHTML = `
+<<<<<<< HEAD
     <tr class="order_list_item">
+=======
+    <tr>
+>>>>>>> yang
       <td>${info.product_name_color}</td>
       <td>${info.order_product_num}</td>
       <td>${info.order_product_price * info.order_product_num}</td>

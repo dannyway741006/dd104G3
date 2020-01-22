@@ -126,7 +126,7 @@
             </div>
 
             <div class="login_move_box" id="login_move_box ">
-              <form action="#" id="mem_login_send" class="mem_login_send">
+              <div id="mem_login_send" class="mem_login_send">
                 <!-- ================================rwd 768 switch =====================================           -->
                 <div id="login_switch" class="login_switch">
                   <button id="login_sw1" class="login_sw1 active">
@@ -170,13 +170,13 @@
                     <ul>
                       <li>
                         <div>
-                          <label for="" class="for_up_info_ani">
+                          <label class="for_up_info_ani">
                             <input
                               type="text"
-                              name=""
                               placeholder="請輸入帳號"
                               autocomplete="off"
                               class="text_info"
+                              id='memId_s'
                             />
                             <span class="up_info_ani"></span>
                             <p>Account</p>
@@ -186,13 +186,13 @@
                       </li>
                       <li>
                         <div>
-                          <label for="" class="for_up_info_ani">
+                          <label class="for_up_info_ani">
                             <input
                               type="password"
-                              name=""
                               placeholder="請輸入密碼"
                               autocomplete="off"
                               class="text_info"
+                              id='memPsw_s'
                             />
                             <span class="up_info_ani"></span>
                             <p>Password</p>
@@ -202,13 +202,13 @@
                       </li>
                       <li>
                         <div>
-                          <label for="" class="for_up_info_ani">
+                          <label class="for_up_info_ani">
                             <input
                               type="email"
-                              name=""
                               placeholder="請輸入電子信箱"
                               autocomplete="off"
                               class="text_info"
+                              id='memEmail'
                             />
                             <span class="up_info_ani"></span>
                             <p>Email</p>
@@ -222,7 +222,7 @@
                     </div>
                   </div>
                 </div>
-              </form>
+              </div>
               <!-- =================sign in===========================             -->
               <div class="mem_login_in_send" id="mem_login_in_send">
                 <div class="sign_in_input">
@@ -231,7 +231,7 @@
                     <ul>
                       <li>
                         <div>
-                          <label for="" class="for_in_info_ani">
+                          <label class="for_in_info_ani">
                             <input
                               type="text"
                               name="memId"
@@ -239,6 +239,7 @@
                               autocomplete="off"
                               class="text_info_in"
                               id="memId"
+                              value="dd104g3"
                             />
                             <span class="in_info_ani"></span>
                             <p>Account</p>
@@ -248,7 +249,7 @@
                       </li>
                       <li>
                         <div>
-                          <label for="" class="for_in_info_ani">
+                          <label class="for_in_info_ani">
                             <input
                               type="password"
                               name="memPsw"
@@ -256,6 +257,7 @@
                               autocomplete="off"
                               class="text_info_in"
                               id="memPsw"
+                              value="dd104g3"
                             />
                             <span class="in_info_ani"></span>
                             <p>Password</p>
