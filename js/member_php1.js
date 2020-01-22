@@ -28,12 +28,16 @@ function checkLogin() {
 const updateBtn = document.getElementById('memberbtn');
 updateBtn.addEventListener('click', memUpdate)
 function memUpdate() {
+  let src = null
+  if(headShot)src = headShot.replace(/\&/g, "%26").replace(/\+/g, "%2B")
+  console.log(MEMBER_INFO)
   fetch('./php/member/member_update.php', {
     method: 'POST',
-    body: new URLSearchParams(`mem_no=${MEMBER_INFO.mem_no}&mem_name=${memName.value}&mem_tel=${memPhone.value}&mem_addr=${memAddr.value}&headshot=${headshot.src}`)
+    body: new URLSearchParams(`mem_id=${MEMBER_INFO.mem_id}&mem_no=${MEMBER_INFO.mem_no}&mem_name=${memName.value}&mem_tel=${memPhone.value}&mem_addr=${memAddr.value}&headshot=${src}&file_type=${fileType}&file_ext=${fileExt}`)
   })
-    .then(res=>res.json())
+    .then(res=>res.text())
     .then(json=>{
+      console.log(json)
       if(json.status === 'success')alert(json.content)
     })
     .catch(err=>console.log(err))
@@ -116,11 +120,7 @@ function order_temp1(data) {
     const tr = document.createElement('tr')
     tr.className = `product_${info.order_no}`
     tr.innerHTML = `
-<<<<<<< HEAD
-    <tr class="order_list_item">
-=======
     <tr>
->>>>>>> yang
       <td>${info.product_name_color}</td>
       <td>${info.order_product_num}</td>
       <td>${info.order_product_price * info.order_product_num}</td>

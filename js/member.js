@@ -25,14 +25,18 @@ function member_page2() {
 }
 
 // ===================member_change_img====================================
+let headShot, fileType, fileExt;
 function showImg(thisimg) {
   let file = thisimg.files[0];
+  fileType = file.type
+  fileExt = file.name.split('.').pop()
   if (window.FileReader) {
     let files = new FileReader();
 
     let showimg = document.getElementById("acceptImg");
     files.onloadend = function(e) {
       showimg.src = e.target.result;
+      headShot = e.target.result;
     };
     files.readAsDataURL(file);
     acceptImg.style.display = "block";
