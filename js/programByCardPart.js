@@ -132,9 +132,10 @@ var main_content = new Vue({
     window_width: 0,
     userInfo: [],
 
-    calendar_day_click:false,
-    calendar_cards:[],
+    calendar_day_click: false,
+    calendar_cards: [],
 
+    isLoading: true,
   },
 
   methods: {
@@ -260,11 +261,11 @@ var main_content = new Vue({
     invite_add_member(program) {
       console.log(program)
       fetch('./php/member/invite_member.php', {
-        method: 'POST',
-        body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&invite_id=${program.invite_add_member_addr}&pro_no=${program.pro_no}`)
-      })
-        .then(res=>res.json())
-        .then(json=>{
+          method: 'POST',
+          body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&invite_id=${program.invite_add_member_addr}&pro_no=${program.pro_no}`)
+        })
+        .then(res => res.json())
+        .then(json => {
           alert(json.content)
         })
         .catch(err => console.log(err))
@@ -770,7 +771,7 @@ var main_content = new Vue({
     todo_list_add(index) {
       //如何在新增代辦項目時產生變數todo_no
       const vm = this;
-      if (this.todoListTitle !=null) {
+      if (this.todoListTitle != null) {
         this.programs[this.page][this.todo_type][0].cards[index].todo_list_content_detail.push({
           todo_no: '',
           title: this.todoListTitle,
@@ -871,12 +872,12 @@ var main_content = new Vue({
       if (this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
         // console.log(this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists);
         this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.push({
-          todo_cont_no:'',
+          todo_cont_no: '',
           content: this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test,
           status: false,
           text: false,
           tomato_color: false,
-          todo_cont_sta:'0',
+          todo_cont_sta: '0',
           // tomato_count:'0',
         });
         $.ajax({
@@ -893,7 +894,8 @@ var main_content = new Vue({
           "cache": false,
           "success": function (data) {
             console.log(data);
-            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists).length - 1].todo_no = data.todo_no;          },
+            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists).length - 1].todo_no = data.todo_no;
+          },
           "error": function (data) {
             console.log(data);
           }
@@ -906,7 +908,7 @@ var main_content = new Vue({
     // 刪除最小子項目
     delete_todo_title(detailIndex, index) {
       console.log()
-     
+
       const vm = this;
       $.ajax({
         "type": "POST",
@@ -932,14 +934,14 @@ var main_content = new Vue({
     //修改子清單項目
     update_list_sta(detailIndex, index) {
       const vm = this;
-      console.log(this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_sta=='0'?'1':'0')
+      console.log(this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_sta == '0' ? '1' : '0')
       $.ajax({
         "type": "POST",
         "dataType": "json",
         "url": "./php/pm/card.php",
         "data": {
           "type": "update_todo_content",
-          "todo_cont_sta":vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_sta=='0'?'1':'0',
+          "todo_cont_sta": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_sta == '0' ? '1' : '0',
           "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
 
         },
@@ -988,7 +990,7 @@ var main_content = new Vue({
             console.log(form_data);
             $.ajax({
               "type": "POST",
-              "url":"url",
+              "url": "url",
               "dataType": "json",
               "url": "./php/pm/card_inner.php",
               "data": form_data,
@@ -996,15 +998,15 @@ var main_content = new Vue({
               "cache": false,
               "contentType": false,
               "processData": false,
-             
+
               "success": function (data) {
                 console.log(data);
-                var source=data.data;
+                var source = data.data;
                 pro_card.filebox.push({
                   name: file_name,
                   source: source,
                 });
-       
+
 
               },
               "error": function (data) {
@@ -1033,7 +1035,7 @@ var main_content = new Vue({
         "cache": false,
         "success": function (data) {
           console.log(data);
-      
+
 
         },
         "error": function (data) {
@@ -1064,11 +1066,11 @@ var main_content = new Vue({
       }
     },
 
-    
-    calltomato(detailIndex,index) {
+
+    calltomato(detailIndex, index) {
       alert("已加入蕃茄鐘");
       const vm = this;
-    
+
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -1088,17 +1090,17 @@ var main_content = new Vue({
         "error": function (data) {
           console.log(data);
         }
-        
+
       });
       console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index])
       console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color)
       // this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=true;
 
     },
-    droptomato(detailIndex,index){
+    droptomato(detailIndex, index) {
       alert("已移除蕃茄鐘");
       const vm = this;
-    
+
       $.ajax({
         "type": "POST",
         "dataType": "json",
@@ -1250,12 +1252,11 @@ var main_content = new Vue({
 
     //最小子項目進度條
     inner_progress(detailIndex) {
-      if(this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex])
-      {
+      if (this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex]) {
         return this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.filter(item => {
           return item.status;
         });
-      }else{
+      } else {
         return [];
       }
     },
@@ -1319,7 +1320,7 @@ var main_content = new Vue({
     },
     doing_showcalendarpanel(cardIndex) {
       // console.log([this.doing_type][0])
-      
+
       if (this.programs[this.page].card_list_doing[0] != null && this.programs[this.page].card_list_doing[0].cards.length != 0) {
         // if ([this.todo_type][0] == this.programs[this.page].card_list_doing[0].type && this.programs[this.page].card_list_doing[0].cards.length != 0) {
         // console.log(this.programs[this.page][this.doing_type][0].cards)
@@ -1351,35 +1352,35 @@ var main_content = new Vue({
 
     history_todo_showcalendarpanel(cardIndex) {
       // if ([this.todo_type][0] != null) {
-        // if (this.history_programs[this.history_page].card_list_todo[0].cards[cardIndex].calendar_date == null) {
-          // return '未設定';
-        // } else {
-          return this.history_programs[this.history_page].card_list_todo[0].cards[cardIndex].calendar_date;
-        // }
+      // if (this.history_programs[this.history_page].card_list_todo[0].cards[cardIndex].calendar_date == null) {
+      // return '未設定';
       // } else {
-        // return '未設定';
+      return this.history_programs[this.history_page].card_list_todo[0].cards[cardIndex].calendar_date;
+      // }
+      // } else {
+      // return '未設定';
       // }
     },
     history_doing_showcalendarpanel(cardIndex) {
       // if ([this.todo_type][0] != null) {
-        // if (this.history_programs[this.history_page].card_list_doing[0].cards[cardIndex].calendar_date == null) {
-          // return '未設定';
-        // } else {
-          return this.history_programs[this.history_page].card_list_doing[0].cards[cardIndex].calendar_date;
-        // }
+      // if (this.history_programs[this.history_page].card_list_doing[0].cards[cardIndex].calendar_date == null) {
+      // return '未設定';
       // } else {
-        // return '未設定';
+      return this.history_programs[this.history_page].card_list_doing[0].cards[cardIndex].calendar_date;
+      // }
+      // } else {
+      // return '未設定';
       // }
     },
     history_done_showcalendarpanel(cardIndex) {
       // if ([this.todo_type][0] != null) {
-        // if (this.history_programs[this.history_page].card_list_done[0].cards[cardIndex].calendar_date == null) {
-          // return '未設定';
-        // } else {
-          return this.history_programs[this.history_page].card_list_done[0].cards[cardIndex].calendar_date;
-        // }
+      // if (this.history_programs[this.history_page].card_list_done[0].cards[cardIndex].calendar_date == null) {
+      // return '未設定';
       // } else {
-        // return '未設定';
+      return this.history_programs[this.history_page].card_list_done[0].cards[cardIndex].calendar_date;
+      // }
+      // } else {
+      // return '未設定';
       // }
     },
 
@@ -1571,7 +1572,7 @@ var main_content = new Vue({
       this.todo_switch = false;
       this.todoListTitle = '';
       this.fileder_switch = false;
-      this.calendar_day_click=false;
+      this.calendar_day_click = false;
 
       // console.log(this.programs.length - 1)
       if (this.programs.length == 0) {
@@ -1611,9 +1612,16 @@ var main_content = new Vue({
     // let data_info = `mem_no=1`;
     xhr.send(data_info);
     // console.log(this)
+
+
+    //vue loading
+    setTimeout(() => {
+      this.isLoading = false
+    }, 3000);
   },
 
   components: {
-    DatePicker
+    DatePicker,
+    loading: VueLoading
   },
 });
