@@ -1231,49 +1231,58 @@ var main_content = new Vue({
           let file_name = this.file[i].name;
           readFile.addEventListener("loadend", function (e) {
             pro_card.file_result = readFile.result;
-            // pro_card.filebox.push({
-            //   name: file_name,
-            //   source: pro_card.file_result,
-            // });
+            
 
-            const vm = this;
+            if (file_size > 2097152 ) {
+              alert("上傳檔案不得超過2M，請重新上傳")
+            }else if(file_size < 2097152 && this.islogin.length != 0){
 
-            let form_data = new FormData();
-            form_data.append("upFile", upFile);
-            form_data.append("type", "add_file");
-            form_data.append("pro_no", pro.pro_no);
-            form_data.append("card_no", pro_card.card_no);
-            form_data.append("file_name", upFile.name);
-            // console.log(form_data);
-       // console.log(this.islogin.length)
-       if (this.islogin.length != 0) {
-      $.ajax({
-              "type": "POST",
-              "url": "url",
-              "dataType": "json",
-              "url": "./php/pm/card.php",
-              "data": form_data,
-              // "data":,
-              "cache": false,
-              "contentType": false,
-              "processData": false,
+              const vm = this;
+  
+              let form_data = new FormData();
+              form_data.append("upFile", upFile);
+              form_data.append("type", "add_file");
+              form_data.append("pro_no", pro.pro_no);
+              form_data.append("card_no", pro_card.card_no);
+              form_data.append("file_name", upFile.name);
+           
+              $.ajax({
+  
+                "type": "POST",
+                "url": "url",
+                "dataType": "json",
+                "url": "./php/pm/card.php",
+                "data": form_data,
+                // "data":,
+                "cache": false,
+                "contentType": false,
+                "processData": false,
+  
+                "success": function (data) {
+                  console.log(data);
+                  var source = data.data;
+                  pro_card.filebox.push({
+                    name: file_name,
+                    source: source,
+                  });
+  
+  
+                },
+                "error": function (data) {
+                  console.log(data);
+                }
+              });
+            }else{
+              pro_card.filebox.push({
+                name: file_name,
+                source: pro_card.file_result,
+              });
+            }
+     
 
-              "success": function (data) {
-                console.log(data);
-                var source = data.data;
-                pro_card.filebox.push({
-                  name: file_name,
-                  source: source,
-                });
+           
+         
 
-
-              },
-              "error": function (data) {
-                console.log(data);
-              }
-            });
-      }
-          
 
           });
           readFile.readAsDataURL(this.file[i]);
