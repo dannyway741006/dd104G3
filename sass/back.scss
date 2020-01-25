@@ -3,12 +3,12 @@
 @import "./mixins/_mixin";
 
 // Import styles
-// @import "../node_modules/@coreui/coreui/scss/coreui";
 @import "./pages/back/coreui.scss";
 
 // If you want to add something do it here
-@import "././pages/back/backpage";
+@import "./pages/back/backpage";
 .app {
+  font-family: "Montserrat", "Noto Sans TC", sans-serif;
   >.login {
     position: absolute;
     top: 0;
@@ -20,6 +20,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include font(1);
+    h1 {
+      @include font(5);
+    }
+    button {
+      @include baseBtn;
+      margin: 10px;
+    }
     >div {
       @include font(1);
       color: $white;

@@ -1,36 +1,56 @@
-.welcome {
+#welcome {
   width: 100%;
   height: 100vh;
-  background-image: url('../img/mat_ft.4f7a9f32.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-image: linear-gradient(
+    -30deg,
+    rgba($primary, 0.7),
+    rgba($third, 0.7)
+  );
   font-family: "Montserrat", "Noto Sans TC", sans-serif;
-  .home {
-    max-width: 429px;
-    width: 30vw;
-    min-width: 252px;
-    height: 40vw;
-    max-height: 572px;
-    min-height: 336px;
-    background-image: url('../img/1.png');
-    background-size: cover;
-  }
-  >a {
+  #front, #back{
+    display: inline-block;
     text-decoration: none;
-    >h1 {
-      @include font(20);
-      font-weight: normal;
-      color: $white;
-      cursor: pointer;
-      text-decoration: none;
-      margin: 0 20px;
-      &:hover {
-        color: $primary;
-        transition: color .3s;
+    color: $white;
+    .button {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: $primary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      @include font(8);
+      z-index: 1;
+      transition: transform .3s;
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: inherit;
+        animation: btn_animate linear infinite 2s;
+      }
+      &::before {
+        z-index: -1;
+      }
+      &::after {
+        z-index: -2;
+        animation-delay: 1s;
       }
     }
+  }
+}
+@keyframes btn_animate {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
   }
 }
