@@ -1,6 +1,8 @@
 #welcome {
+  position: absolute;
+  overflow: hidden;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-image: linear-gradient(
     -30deg,
     rgba($primary, 0.7),
@@ -11,6 +13,7 @@
     display: inline-block;
     text-decoration: none;
     color: $white;
+    @include positionCenter(y);
     .button {
       width: 150px;
       height: 150px;
@@ -23,6 +26,9 @@
       @include font(8);
       z-index: 1;
       transition: transform .3s;
+      &:hover {
+        transform: scale(1.3)
+      }
       &::before, &::after {
         content: '';
         position: absolute;
@@ -40,6 +46,35 @@
       &::after {
         z-index: -2;
         animation-delay: 1s;
+      }
+    }
+  }
+  #front {
+    left: 15%;
+  }
+  #back {
+    right: 15%;
+  }
+  @include media(1023px){
+    #front {
+      left: 10%;
+    }
+    #back {
+      right: 10%;
+    }
+    #front, #back{
+      .button {
+        width: 130px;
+        height: 130px;
+      }
+    }
+  }
+  @include media(479px){
+    #front, #back{
+      .button {
+        @include font(5);
+        width: 100px;
+        height: 100px;
       }
     }
   }

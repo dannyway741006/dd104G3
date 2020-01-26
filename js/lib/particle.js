@@ -1,5 +1,7 @@
+const textureLoader = new THREE.TextureLoader()
+const fluffy = textureLoader.load('./img/fluffy.png');
 class Particle {
-  constructor(size = 1, colorX, colorY, colorZ, range = 500, density = 300) {
+  constructor(size = 1, colorX, colorY, colorZ, range = 500, density = 200) {
     this.size = size;
     this.colorX = colorX;
     this.colorY = colorY;
@@ -14,7 +16,7 @@ class Particle {
         value: new THREE.Color(0xffffff)
       },
       texture: {
-        value: this.getTexture()
+        value: fluffy
       },
       val: {
         value: 1.0
@@ -85,23 +87,6 @@ class Particle {
       new THREE.BufferAttribute(velocitys, 1)
     );
     this.particleSystem = new THREE.Points(pointGeo, shaderMaterial);
-  }
-  getTexture(canvasSize = 64) {
-    let canvas = document.createElement('canvas');
-    canvas.width = canvasSize;
-    canvas.height = canvasSize;
-    canvas.style.background = "transparent";
-    let context = canvas.getContext('2d');
-    let gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, canvas.width / 8, canvas.width / 2, canvas.height / 2, canvas.width / 2);
-    gradient.addColorStop(0, '#fff');
-    gradient.addColorStop(1, 'transparent');
-    context.fillStyle = gradient;
-    context.beginPath();
-    context.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, 0, Math.PI * 2, true);
-    context.fill();
-    let texture = new THREE.Texture(canvas);
-    texture.needsUpdate = true;
-    return texture;
   }
   update() {
     const time = Date.now() * 0.0025;

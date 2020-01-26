@@ -27,7 +27,7 @@ function background() {
   shadowLight.position.set(500, 400, 0);
   scene.add(globalLight, shadowLight);
 
-  let particle = new Particle(3, 0.9, 0.9, 0.7);
+  let particle = new Particle(2, 0.9, 0.9, 0.7);
   scene.add(particle.particleSystem);
 
   function render() {
