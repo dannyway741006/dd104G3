@@ -16,7 +16,7 @@ function showMemInfo(json) {
     userName.innerText = json.data.mem_name || json.data.mem_id;
     location.replace("./member.html");
   } else {
-    alert("帳密錯誤");
+    alert(json.content);
   }
 }
 
