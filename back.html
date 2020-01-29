@@ -8,8 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
   <meta name="author" content="Łukasz Holeczek">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
+    rel="stylesheet" />
+  <link rel=icon href=favicon.ico>
   <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-  <title>職人口袋後台</title>
+  <title>職人口袋 | 後台</title>
 
   <link rel="icon" type="image/ico" href="./img/favicon.ico" sizes="any" />
   <link href="./css/back.css" rel="stylesheet">
@@ -108,16 +111,16 @@
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-  <!-- <div class="login">
+  <form class="login">
     <div>
-      <h1>Login</h1>
+      <h1>職人口袋後台 登入</h1>
       <div>Account</div>
       <input type="text" id="account">
       <div>Password</div>
-      <input type="text" id="password">
+      <input type="password" id="password">
       <button id="loginSubmit">送出</button>
     </div>
-  </div> -->
+  </form>
   <header class="app-header navbar">
     <!-- <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
       <span class="navbar-toggler-icon"></span>
@@ -210,10 +213,6 @@
             </div>
           </div>
         </div>
-
-
-
-
         <!-- 會員帳號管理 -->
         <div class="animated fadeIn backTable">
           <div class="card">
@@ -221,17 +220,17 @@
               <div class="bd-example">
                 <p class="h4">會員帳號管理</p>
               </div>
-              <table class="table">
+              <table class="table mem_table">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">會員帳號</th>
+                    <th scope="col">會員信箱</th>
+                    <th scope="col">會員狀態</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
@@ -248,7 +247,7 @@
                     <td>Larry</td>
                     <td>the Bird</td>
                     <td>@twitter</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
 
@@ -296,11 +295,9 @@
                   </tr>
                 </tbody>
               </table>
-
             </div>
           </div>
         </div>
-
         <!-- 商城商品管理 -->
         <!-- <div class="animated fadeIn backTable">
           <div class="card">
@@ -308,24 +305,15 @@
               <div class="bd-example">
                 <p class="h4">商城商品管理</p>
               </div>
-
-
-
               <form action="">
-
-
                 <ul class="nav nav-tabs">
                   <li class="active"><a data-toggle="tab" href="#home" onclick="checkId();">商品管理</a></li>
-
                   <li><a data-toggle="tab" href="#menu1">新增商品</a></li>
-
-
                 </ul>
               </form>
               <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
-
-                  <!-- <h3>商品管理</h3> -->
+                  <h3>商品管理</h3> -->
         <!-- <table class="table">
                     <thead class="thead-dark">
                       <tr>
@@ -357,32 +345,21 @@
                     </tbody>
                   </table> -->
         <!-- <div id="back_product">
-
                   </div>
                 </div>
                 <div id="menu1" class="tab-pane fade">
                   <h3>新增商品</h3>
-
                 </div>
-
               </div>
             </div> -->
-
-
-
         <div class="animated fadeIn backTable">
           <div class="card">
             <div class="card-body">
               <div class="bd-example">
                 <p class="h4">商城商品管理</p>
-
-
                 <div class="mall_add">新增商品</div>
-
                 <!-- <button>新增商品</button> -->
               </div>
-
-
               <table class="table rwd-table">
                 <thead class="thead-dark">
                   <tr>
@@ -418,11 +395,7 @@
             </div>
           </div>
         </div>
-
-
         <!--    商城單筆修改資料表 -->
-
-
         <!--   跳窗 -->
         <div class="lightBox_content" id="lightBox_content">
           <div class="animated fadeIn ">
@@ -434,10 +407,8 @@
                 <form action="./php/mall/back_product_edit.php" method="post" enctype="multipart/form-data">
                   <table class="table">
                     <thead class="thead-dark" id="back_product_input">
-
                     </thead>
                     <tbody>
-
                       <!-- <tr>
                       <th><input type="text"></th>
                       <th>商品名稱</th>
@@ -450,23 +421,19 @@
                       <th>商品輪播圖</th>
                       <th>設定</th>
                     </tr>  -->
-
                     </tbody>
                   </table>
                 </form>
-                <p style="text-align: right;" class="text_del">刪除此筆資料</p> 
+                <p style="text-align: right;" class="text_del">刪除此筆資料</p>
                 <form action="./php/mall/back_product_del.php" id="delForm">
-                <div id="del_content">
-                  <input type="hidden" name="product_no" value="" >
-                </div>
+                  <div id="del_content">
+                    <input type="hidden" name="product_no" value="">
+                  </div>
                 </form>
-              
               </div>
             </div>
           </div>
-
         </div>
-
         <div class="lightBox_content" id="lightBox_content_add">
           <div class="animated fadeIn ">
             <div class="card">
@@ -477,7 +444,6 @@
                 <form action="./php/mall/back_product_add.php" method="post" enctype="multipart/form-data">
                   <table class="table">
                     <thead class="thead-dark" id="back_product_add">
-
                       <tr>
                         <th>商品貨號</th>
                         <td>
@@ -536,7 +502,6 @@
                             value="${mallProductObj[i].product_slide_img}">
                         </td>
                       </tr>
-
                       <tr>
                         <th>首頁廣告狀態</th>
                         <td>
@@ -565,28 +530,18 @@
                           <input type="submit" name="submit" value="送出">
                         </th>
                       </tr>
-
                     </thead>
-
                   </table>
                 </form>
               </div>
             </div>
           </div>
-
         </div>
-
-
-
-
         <!-- =========================light box===================================== -->
-
-
         <!-- <div class="light_box_title" id="light_box_title">
                   <img src="./img/member_img/times-solid.svg" alt="" width="15">
                   <img src="./img/member_img/times-solid1.svg" alt="" width="15">
                 </div> -->
-
         <!-- ==============放內容=====================================           -->
         <!-- <p>確定刪除所有訂單記錄？</p>
                   <input type="text"> -->
@@ -598,17 +553,7 @@
                 </div>
               </div> -->
         <!-- ========================light box end===============================================       -->
-
         <!-- <button type="button" class="memberbtn" id="memberbtn">test light box</button> -->
-
-
-
-
-
-
-
-
-
         <!-- 商城訂單管理 -->
         <div class="animated fadeIn backTable">
           <div class="card">
@@ -622,7 +567,7 @@
                   <tr>
                     <th scope="col">訂單編號</th>
                     <th scope="col">會員編號</th>
-                    <th scope="col">商品清單</th>
+                    <th scope="col" width="250">商品清單</th>
                     <th scope="col">訂單金額</th>
                     <th scope="col">成立時間</th>
                     <th scope="col">撿貨時間</th>
@@ -665,58 +610,58 @@
                   </tr> -->
                 </tbody>
               </table>
-
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
       </div>
     </main>
-
-
-
-
   </div>
   <footer class="app-footer">
     <div class="ml-auto">
-      <span> <a href="./home.html">Staff pocket</a> &copy; 2020 </span>
+      <span> <a href="./home.html">Master Pocket</a> &copy; 2020 </span>
     </div>
   </footer>
 
 
   <script src="./js/back.js"></script>
   <script src="./js/backorder.js"></script>
-  
+  <script src="./js/backMember.js"></script>
+
   <script>
-    (function(){
+    (function () {
       const acc = document.getElementById('account');
       const psw = document.getElementById('password');
       const login = document.getElementById('loginSubmit');
       const mask = document.querySelector('.login');
-      let mgrInfo; 
-      login.addEventListener('click', async function(){
-        if(!acc.value || !psw.value) return
+      let mgrInfo;
+      login.addEventListener('click', async function () {
+        if (!acc.value || !psw.value) return
         mgrInfo = await fetch('./php/member/backLogin.php', {
-          method: 'POST',
-          body: new URLSearchParams(`mgr_id=${acc.value}&mgr_psw=${psw.value}`)
-        }).then(res=>res.json())
-        .then(json=>{
-          if(json.status === 'success'){
-            mask.style.display = 'none'
-            return json.data
-          }
-        })
-        .catch(err=>console.log(err))
+            method: 'POST',
+            body: new URLSearchParams(`mgr_id=${acc.value}&mgr_psw=${psw.value}`)
+          }).then(res => res.json())
+          .then(json => {
+            if (json.status === 'success') {
+              mask.style.display = 'none'
+              return json.data
+            } else {
+              alert(json.content)
+            }
+          })
+          .catch(err => console.log(err))
       })
-    })()
 
+      function checkLogin() {
+        fetch('./php/member/isBackLogin.php')
+          .then(res => res.json()).then(json => {
+            if (json.status === 'success') {
+              mask.style.display = 'none'
+              mgrInfo = json.data
+            }
+          })
+      }
+      checkLogin()
+    })()
   </script>
 
 

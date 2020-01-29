@@ -12,21 +12,17 @@
     if($res->rowCount()){
       $nowDate = (int)date("d");
       $month_days  = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
-      $dateList = [
-        '0'=>[],
-        '1'=>[],
-        '2'=>[],
-        '3'=>[],
-        '4'=>[],
-        '5'=>[],
-        '6'=>[]
-      ];
+      $dateList = [];
       $cards = $res->fetchAll(PDO::FETCH_ASSOC);
       foreach($cards as $card){
         $datetime = new DateTime($card['card_date']);
         $cardDate = (int)$datetime->format('d');
-        $range = $cardDate - $nowDate < 0 ? $cardDate - $nowDate + $month_days : $cardDate - $nowDate;
-        $dateList[$range][] = $card;
+        $cardMonth = (int)$datetime->format('m');
+        if($cardDate - $nowDate > 0){
+          $dateList[$cardMonth][$cardDate][] = $card;
+        }else {
+          $dateList[$cardMonth][$cardDate][] = $card;
+        }
       }
       echo json_encode(['status' => 'success', 'data' => $dateList]);
     }else {

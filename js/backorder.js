@@ -22,6 +22,10 @@ function getOrder() {
   xhrOrder.open("Get", url, true);
   xhrOrder.send(null);
   // console.log(xhrOrder)
+
+
+
+
 }
 
 function showOrders(ordersArr) {
@@ -31,10 +35,10 @@ function showOrders(ordersArr) {
   for (let i = 0; i < orders.length; i++) {
     //---將取出來的資料動態生成結構---//
     ordersList += `
-        <tr class="backOrderList">
+        <tr>
           <td class="orderNo">${orders[i].order_no}</td>
           <td>${orders[i].mem_no}</td>
-          <td class="getOrderList">還沒取資料喔！！</td>
+          <td style="padding:2px;"><ul class="getOrderList" style="height:63px;overflow:auto;"></ul></td>
           <td>${orders[i].product_price}</td>
           <td>${orders[i].cret_date}</td>
           <td>${orders[i].atr_date ? orders[i].atr_date : ''}</td>
@@ -51,6 +55,53 @@ function showOrders(ordersArr) {
   }
   document.querySelector('.back_orders_item').innerHTML = ordersList;
 
+  /////////////////////////////////////////////////////
+  //---抓order_item---//
+  getOrderList();
+
+  function getOrderList() {
+    xhrGetOrderList.onload = function () {
+      //---成功撈取資料的話執行showOrderList函式---//
+      //---抓order_item資料表---//
+      if (xhrGetOrderList.status == 200) {
+        showOrderList(xhrGetOrderList.responseText);
+        // console.log(xhrGetOrderList.responseText);
+      } else {
+        alert(xhrGetOrderList.status);
+      }
+    }
+
+    let urlGetList = "./php/order/backorderlist.php";
+    xhrGetOrderList.open("Get", urlGetList, true);
+    xhrGetOrderList.send(null);
+    // console.log(xhrGetOrderList);
+    ///---產生商品清單---///
+    function showOrderList(orderListArr) {
+      let orderlistitem = JSON.parse(orderListArr).data;
+      let getOrderList = document.querySelectorAll('.getOrderList');
+      // console.log(getOrderList);
+      //---先將每一個ul取出來---//
+      for (let i = 0; i < getOrderList.length; i++) {
+        //---每一個執行的時候再把JSON回傳的全部資料取出來---//
+        for (let j = 0; j < orderlistitem.length; j++) {
+          //---建立一個空的變數準備存放li內容---//
+          let getOrderListLi = "";
+          //---如果欄位的order_no跟JSON陣列裡的order_no相同的話，就把值寫進去---//
+          if (orderNo[i].innerHTML == orderlistitem[j].order_no) {
+            // console.log(orderNo[i].innerHTML);
+            // // console.log(getOrderList[i]);
+            getOrderListLi = `
+          <li>${orderlistitem[j].product_name_color} x ${orderlistitem[j].order_product_num}</li>
+          `
+          }
+          //---把生成的li動態寫回ul裡---//
+          getOrderList[i].innerHTML += getOrderListLi;
+        }
+        // console.log(orderlistitem.order_no);
+        // console.log(orderlistitem.mem_no);
+      }
+    }
+  }
 
   orderSta();
   //---在每一筆訂單下面動態生成物品狀態---//
@@ -110,7 +161,7 @@ function showOrders(ordersArr) {
         }
       }
       //---判斷送出資料的order_no號碼---//
-      console.log(orderNo[i].textContent);
+      // console.log(orderNo[i].textContent);
 
       let url = "./php/order/orderstatusupdate.php";
       xhrOrderStatus.open("POST", url, true);
@@ -122,43 +173,8 @@ function showOrders(ordersArr) {
       // console.log(updateOrderStatus);
     })
   }
-
-  /////////////////////////////////////////////////////
-  //---抓order_item---//
-  xhrGetOrderList.onload = function () {
-    //---成功撈取資料的話執行showOrderList函式---//
-    //---抓order_item資料表---//
-    if (xhrGetOrderList.status == 200) {
-      showOrderList(xhrGetOrderList.responseText);
-      // console.log(xhrGetOrderList.responseText);
-    } else {
-      alert(xhrGetOrderList.status);
-    }
-  }
-
-
-  ////---這邊接著寫下去---//
-  let urlGetList = "./php/order/backorderlist.php";
-  xhrGetOrderList.open("Get", urlGetList, true);
-  xhrGetOrderList.send(null);
-  // console.log(xhrGetOrderList);
-  ///---產生商品清單---///
-  function showOrderList(orderListArr) {
-    let orderlistitem = JSON.parse(orderListArr).data;
-    console.log(orderlistitem);
-  
-    let backOrderList = document.querySelectorAll('.backOrderList');
-      console.log(backOrderList);
-
-    for (let i = 0; i < backOrderList; i++) {
-    }
-
-
 }
 
 
-}
-
-
-//---設定每15秒執行一次ajax---//
-// setInterval(getOrder, 1000);
+//---設定每5秒執行一次ajax---//
+setInterval(getOrder, 5000);

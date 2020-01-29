@@ -14,6 +14,10 @@
         'content'=>'登入成功', 
         'data'=>$member
       ]);
+      session_start();
+      foreach($member as $key=>$info){
+        $_SESSION[$key] = $info;
+      }
     }else {
       echo json_encode(['status'=>'error', 'content'=>'帳號或密碼錯誤']);
     }

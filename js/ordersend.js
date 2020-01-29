@@ -29,6 +29,8 @@ cartSubmit.addEventListener('click', () => {
           xhrOrderList.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
           sendOrderList = `order_no=${+xhr.responseText}&mem_no=${MEMBER_INFO.mem_no}&product_name_color=${cartProductColor[i].textContent}&order_product_price=${orderProductPrice[i].textContent}&order_product_num=${orderProductNumber[i].textContent}`;
           xhrOrderList.send(sendOrderList);
+
+          console.log(xhr.responseText);
           console.log(cartProduct);
         };
       } else {

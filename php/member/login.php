@@ -10,6 +10,10 @@
 
     if($res->rowCount()){
       $member = $res->fetchObject();
+      if(!$member->mem_status){
+        echo json_encode(['status'=>'error', 'content'=>'此帳號以遭停權']);
+        exit();
+      }
       echo json_encode([
         'status'=>'success', 
         'content'=>'登入成功', 
