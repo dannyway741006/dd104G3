@@ -302,7 +302,42 @@ input[type=number]::-webkit-inner-spin-button {
         .terms_box3 {
           width: 100%;
           height: 100%;
-          // border: 1px solid blue;
+          border: 1px solid blue;
+
+          .developer {
+            border: 2px solid red;
+            width: 100%;
+            height: 100%;
+            padding-top: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .developer_concent {
+              border: 1px solid gold;
+              width: 50%;
+              height: 50%;
+              display: flex;
+
+              .developer_1 {
+                border: 1px solid green;
+                width: 30%;
+                height: 100%;
+                .developer_img{
+                  border: 1px solid greenyellow;
+                  width: 100%;
+                  height: 100%;
+                  
+                }
+              }
+
+              .developer_2 {
+                border: 1px solid rgb(182, 85, 85);
+                width: 70%;              
+                height: 100%;             
+              }
+            }
+          }
         }
       }
     }
@@ -311,7 +346,7 @@ input[type=number]::-webkit-inner-spin-button {
   input[type="radio"]+.terms_word1 {
     width: 100%;
     height: calc(100% - 60px);
-    // border: 1px solid rgb(226, 165, 185);
+    border: 1px solid rgb(226, 165, 185);
     border-radius: 10px;
     position: absolute;
     // background-color: rgb(219, 185, 185);
@@ -329,7 +364,7 @@ input[type=number]::-webkit-inner-spin-button {
     .terms_close_box {
       width: 100%;
       height: 70px;
-      // border: 1px solid green;
+      border: 1px solid green;
       position: absolute;
       z-index: 10;
       display: flex;
@@ -337,7 +372,7 @@ input[type=number]::-webkit-inner-spin-button {
       .terms_top_content1 {
         width: calc(100% - 74px);
         height: 100%;
-        // border: 1px solid black;
+        border: 1px solid black;
       }
 
       .terms_top_content2 {
@@ -439,7 +474,7 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     padding-left: 20px;
 
-    .testh2{
+    .testh2 {
       color: $primary;
       @include font(5);
     }
@@ -458,7 +493,8 @@ input[type=number]::-webkit-inner-spin-button {
   color: $primary;
   // background-color: $abyss;
   margin-left: 20px;
-  .testh3{
+
+  .testh3 {
     @include font(5);
   }
 }
@@ -496,8 +532,8 @@ input[type=number]::-webkit-inner-spin-button {
 
         img {
           cursor: pointer;
-      
-            width: 25px;
+
+          width: 25px;
         }
       }
 
@@ -636,7 +672,7 @@ input[type=number]::-webkit-inner-spin-button {
         font-weight: 400;
         border-bottom: #d8d8d8 solid;
         border-bottom-width: 1px;
-       
+
       }
 
       tr,
@@ -700,37 +736,38 @@ input[type=number]::-webkit-inner-spin-button {
           width: 100%;
           color: $gray;
           border-collapse: collapse;
-         
+
           td {
             color: $primary;
             font-weight: 400;
             border-bottom: #d8d8d8 solid;
             border-bottom-width: 1px;
             @include font(0);
-            
+
           }
-    
+
           tr,
           th,
           td {
             width: calc((100%) / 3);
             text-align: center;
             height: 40px;
-        
+
           }
+
           .table_order_top1 {
             @include font(0);
-        border-bottom: $gray solid;
-        border-bottom-width: 1px;
-        
+            border-bottom: $gray solid;
+            border-bottom-width: 1px;
+
             th {
               font-weight: 100;
               height: 40px;
               color: $gray;
             }
-           
+
           }
-        
+
         }
       }
     }
