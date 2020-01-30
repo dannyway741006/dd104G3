@@ -5,6 +5,6 @@
 
 $dsn = 'mysql:host=localhost;post=8889;dbname=dd104g3;charset=utf8';
 $options = array([PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-$pdo = new PDO($dsn, 'Yang', 'T1901166',$options);
+$pdo = new PDO($dsn, 'root', 'nicole0116',$options);
 
 ?>
