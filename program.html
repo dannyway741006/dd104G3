@@ -102,23 +102,14 @@
                     :class='{new_program_choose_color_item_checked: selectColor === pro_col}'
                     :style='{backgroundColor: pro_col}' :value=pro_col.pro_col>
                   </span>
-                    <!-- <span class="new_program_choose_color_item"  :style='{backgroundColor:choose_colors.hex8}' @click="push_to_collors"
-                   ></span> -->
                    <div class="add_colors_array " @click.prevent="create_color =! create_color"  >
                      <img src="./img/plus.a4d786b4.svg" alt="" class="add_inner_color">
                   </div>
                   <button class="new_add"  @click.prevent="push_to_collors" v-show="create_color">新增</button>
                
-                   <chrome-picker v-model="choose_colors" v-show="create_color"/> 
-                    
-                 
-                  
+                   <chrome-picker v-model="choose_colors" v-show="create_color"/>       
                 </div>
-                
-              
-
                 <button @click.prevent="add_program(),create_color=false" type="button">建立專案</button>
-
               </div>
             </div>
           </form>
@@ -691,8 +682,11 @@
                                 <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
+<<<<<<< HEAD
                                 <!-- <div><img :src="item.check" alt=""></div> -->
+=======
                
+>>>>>>> practice
                               </div>
                             </li>
                           </ul>
@@ -788,7 +782,7 @@
                               <div class="change_title" v-show="item.showname" @click.stop="">
                                 <textarea name="" v-model.trim="item.title"
                                   @blur="item.showname =! item.showname,item.test_title_name =! item.test_title_name,updatetodolist_title"
-                                  maxlength="50" autofocus></textarea>
+                                  maxlength="50"></textarea>
                               </div>
 
                               <div class="all_card_todo_delete" @click="deletecard_todo(detailIndex)"><img
@@ -1206,7 +1200,7 @@
                           <form method="post" enctype="multipart/form-data">
                             <label class="upfile_content">
                               <p>上傳附件</p>
-                              <input type="file" multiple  name="upFile">
+                              <input type="file" multiple name="upFile">
                             </label>
                           </form>
                         </div>
@@ -1398,6 +1392,7 @@
                               <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
                                   @click="delete_file(cardIndex)" class="garbage">
                               </div>
+                              
                             </li>
                           </transition-group>
                         </ul>
@@ -1771,9 +1766,11 @@
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.19.2/vuedraggable.umd.min.js"></script>
   <script src="./js/vue_color.js"></script>
+
   <script src="./js/lib/index.min.js"></script>
 
   <script src="./js/program.js"></script>
+  <script src="./js/lib/particle.js"></script>
   <script src="./js/background.js"></script>
   <script src="./js/layout.js"></script>
 
