@@ -1,4 +1,32 @@
 //新增專案
+
+var Photoshop = VueColor.Photoshop
+var chrome = VueColor.Chrome
+var sketch = VueColor.Sketch
+
+var defaultProps =
+{
+  hex8: '#194d33',
+  hsl: {
+    h: 150,
+    s: 0.5,
+    l: 0.2,
+    a: 1
+  },
+  hsv: {
+    h: 150,
+    s: 0.66,
+    v: 0.30,
+    a: 1
+  },
+  rgba: {
+    r: 25,
+    g: 77,
+    b: 51,
+    a: 1
+  },
+  a: 1
+}
 var main_content = new Vue({
   el: "#app",
   data: {
@@ -21,6 +49,7 @@ var main_content = new Vue({
 
     invite_add_member_box: false,
 
+    choose_colors: defaultProps,
     colors: ["#81c7d4", "#a6c1ee", "#f8c3cd", "#f9bf45", "#eb7a77", "#86c166", "#B6BE9C", "#48A9A6", "#437C90", "#6CA6C1", "#3581B8", "#C38D94", "#C1666B", "#A09CB0", "#9E768F", "#B2967D", "#7C6C77"],
     selectColor: null,
     new_program_choose_color_item: [],
@@ -129,13 +158,22 @@ var main_content = new Vue({
     calendar_cards: [],
     cal_today: null,
     cal_mon: null,
-
-
+   
+    create_color:false
   },
 
   methods: {
+    push_to_collors() {
+
+
+      this.colors.push(
+        this.choose_colors.hex8
+      )
+      this.create_color=false;
+    },
     //新增專案
     add_program() {
+      console.log(this.colors[17])
 
       // console.log(this.programs)
       // console.log(main_content.programs)
@@ -262,9 +300,9 @@ var main_content = new Vue({
     invite_add_member(program) {
       // console.log(program)
       fetch('./php/member/invite_member.php', {
-          method: 'POST',
-          body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&invite_id=${program.invite_add_member_addr}&pro_no=${program.pro_no}`)
-        })
+        method: 'POST',
+        body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&invite_id=${program.invite_add_member_addr}&pro_no=${program.pro_no}`)
+      })
         .then(res => res.json())
         .then(json => {
           alert(json.content)
@@ -385,7 +423,7 @@ var main_content = new Vue({
         });
         this.mem_data(index);
 
-      } else {}
+      } else { }
       this.card_name = "";
       this.cards_list_card_input_box = false;
       this.add_cards_btn = false;
@@ -846,6 +884,8 @@ var main_content = new Vue({
       }
 
       this.cal_today = this.calendar_date(year, month, date);
+      // console.log(this.handcalendar_today.year)
+
     },
 
 
@@ -961,7 +1001,26 @@ var main_content = new Vue({
     set_calendar_date() {
       // console.log(this.programs[this.page][this.todo_type][0].cards[this.card_no].calendar_date)
       const vm = this;
-      // console.log(this.islogin.length)
+      // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date.substr(0,10).split("-"))
+      let arr = vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date.substr(0, 10).split("-");
+      let year = parseInt(arr[0]);
+      let month = parseInt(arr[1]);
+      let date = parseInt(arr[2]);
+      // console.log(this.handcalendar_today.month+1)
+      // console.log(month)
+      if (year < this.handcalendar_today.year) {
+        alert("選擇的日期已逾期，請在選一次");
+        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '逾期';
+
+      } else if (year == this.handcalendar_today.year && month < this.handcalendar_today.month + 1) {
+        alert("選擇的日期已逾期，請在選一次");
+        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '逾期';
+
+      } else if (year == this.handcalendar_today.year && month == this.handcalendar_today.month + 1 && date < this.handcalendar_today.date) {
+        alert("選擇的日期已逾期，請在選一次");
+        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '逾期';
+
+      }
       if (this.islogin.length != 0) {
         $.ajax({
           "type": "POST",
@@ -1027,6 +1086,9 @@ var main_content = new Vue({
           //改變待辦事項標題
           test: '',
         })
+        // $(".right_aside").animate({
+        //   scrollTop:$(document).height()-$(".card_file").height()
+        // }, 300);
         // console.log(this.islogin.length)
         if (this.islogin.length != 0) {
           $.ajax({
@@ -1053,7 +1115,7 @@ var main_content = new Vue({
         this.todoListTitle = null;
         this.todo_lightbox_switch = false;
         this.todo_switch = false;
-      } else {};
+      } else { };
     },
 
     // 刪除待辦清單項目
@@ -1153,7 +1215,7 @@ var main_content = new Vue({
         }
         this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test = '';
         this.card_detail_lightbox = false;
-      } else {}
+      } else { }
     },
 
     // 刪除最小子項目
@@ -1217,6 +1279,8 @@ var main_content = new Vue({
     //卡片內上傳檔案
     filesearch(e) {
       if (e.target.files.length > 0) {
+        const vm = this;
+
         this.file = e.target.files;
         console.log(e.target.files);
         let upFile = e.target.files[0];
@@ -1227,61 +1291,76 @@ var main_content = new Vue({
           let readFile = new FileReader();
           let pro = this.programs[this.page];
           let upFile = e.target.files[i];
-          let pro_card = this.programs[this.page][this.todo_type][0].cards[this.card_no];
+          let pro_card = vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no];
           let file_name = this.file[i].name;
+          let file_size = this.file[i].size;
+          let islogin = this.islogin;
           readFile.addEventListener("loadend", function (e) {
             pro_card.file_result = readFile.result;
-            
 
-            if (file_size > 2097152 ) {
+            if (file_size > 2097152) {
               alert("上傳檔案不得超過2M，請重新上傳")
-            }else if(file_size < 2097152 && this.islogin.length != 0){
+            } else if (file_size < 2097152 && islogin.length != 0) {
 
               const vm = this;
-  
+
               let form_data = new FormData();
               form_data.append("upFile", upFile);
               form_data.append("type", "add_file");
               form_data.append("pro_no", pro.pro_no);
               form_data.append("card_no", pro_card.card_no);
               form_data.append("file_name", upFile.name);
-           
+              console.log(form_data);
               $.ajax({
-  
                 "type": "POST",
                 "url": "url",
                 "dataType": "json",
-                "url": "./php/pm/card.php",
+                "url": "./php/pm/card_inner.php",
                 "data": form_data,
                 // "data":,
                 "cache": false,
                 "contentType": false,
                 "processData": false,
-  
+
                 "success": function (data) {
                   console.log(data);
                   var source = data.data;
+
+                  let pic=file_name.split(".")[1];
+                  if(pic=="jpg" || pic=="png" || pic=="gif" || pic=="svg"){
+                    pic=null;
+                  }
                   pro_card.filebox.push({
+                    title:pic,
                     name: file_name,
                     source: source,
+                    file_no: '',
                   });
-  
-  
+                  // $(".right_aside").animate({
+                  //   scrollTop: $(document).height()
+                  // }, 300);
+                  pro_card.filebox[(pro_card.filebox).length - 1].file_no = data.file_no;
+
                 },
                 "error": function (data) {
                   console.log(data);
                 }
               });
-            }else{
+            } else {
+              let pic=file_name.split(".")[1];
+              if(pic=="jpg" || pic=="png" || pic=="gif" || pic=="svg"){
+                pic=null;
+              }
               pro_card.filebox.push({
+                title:pic,
                 name: file_name,
                 source: pro_card.file_result,
               });
+              console.log(file_name.split(".")[1])
+              // $(".right_aside").animate({
+              //   scrollTop: $(document).height()
+              // }, 300);
             }
-     
-
-           
-         
 
 
           });
@@ -1322,6 +1401,10 @@ var main_content = new Vue({
     //成員進入
     member_outin(index) {
       let pro_page = this.programs[this.page];
+
+      $(".right_aside").animate({
+        scrollTop: 0
+      }, 300);
       if (this.showmember_select[index].check == '') {
         this.showmember_select[index].uncolor = true;
         this.showmember_select[index].check = "./img/check.svg";
@@ -1676,6 +1759,8 @@ var main_content = new Vue({
       this.fileder_switch = false;
       this.todo_switch = false;
       this.add_card_meber_switch = false;
+
+
     },
     opentodo() {
       this.card_meber_switch = false;
@@ -1849,6 +1934,7 @@ var main_content = new Vue({
       this.setting_btn = false;
       this.add_cards_btn = false;
       this.calendar_btn = false;
+      // this.create_color=false;
       //卡片背面
       if (this.page >= 0 && this.card_no == 0 && this.card_no > 0) {
         this.programs[this.page].cards[this.card_no].member_input = "";
@@ -1873,6 +1959,8 @@ var main_content = new Vue({
     });
     // 日曆部分
     this.setToday();
+
+    // console.log(JSON.stringify(this.choose_colors))
 
     let xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -1907,6 +1995,13 @@ var main_content = new Vue({
   },
 
   components: {
-    DatePicker
+    DatePicker,
+    // 'Photoshop': Photoshop,
+    'chrome-picker': chrome,
+    // ChromePicker
+    'photoshop-picker': Photoshop,
+    'sketch-picker': sketch,
+
   },
 });
+
