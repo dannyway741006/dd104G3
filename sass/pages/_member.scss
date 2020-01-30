@@ -487,7 +487,7 @@ input[type=number]::-webkit-inner-spin-button {
 
       .up_member_icon {
         border: 1px solid black;
-        @include baseBtn(40px, 40px, 100%);
+        @include baseBtn(40px, 40px, 50%);
         left: -80%;
         margin-top: 170%;
         display: flex;

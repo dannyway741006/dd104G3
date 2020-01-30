@@ -35,8 +35,10 @@ function showImg(thisimg) {
 
     let showimg = document.getElementById("acceptImg");
     files.onloadend = function(e) {
-      showimg.src = e.target.result;
-      headShot = e.target.result;
+      let result = e.target.result
+      showimg.src = result;
+      layoutShot.src = result
+      headShot = result;
     };
     files.readAsDataURL(file);
     acceptImg.style.display = "block";

@@ -283,7 +283,7 @@
                   .text_info_in:focus {
                     padding: 3px 10px 0px;
                     transition: 0.3s;
-                  
+                    color: $white;
                   }                
                 }             
               }
@@ -416,7 +416,7 @@
                 .text_info:focus {
                   padding: 3px 10px 0px;
                   transition: 0.3s;
-
+                  color: $white;
                 }
               }
             }

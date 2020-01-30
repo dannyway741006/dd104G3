@@ -136,8 +136,10 @@ body {
       position: relative;
       margin-right: 20px;
       img {
-        width: 25px;
-        overflow: hidden;
+        border-radius: 50%;
+        width: 90%;
+        height: 90%;
+        object-fit: cover;
       }
       &::before {
         content: "";
