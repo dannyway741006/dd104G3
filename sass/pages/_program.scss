@@ -14,6 +14,7 @@
     // 新專案選顏色
     .colors {
       position: relative;
+      font-size: 0;
 
       .new_program_choose_color_item {
         background-color: #5395de;
@@ -413,7 +414,7 @@
             // border: 1px solid red;
             height: 613px;
 
-          //   // min-height:310px;420
+            //   // min-height:310px;420
             &.draggable_todo {
               height: 508px;
             }

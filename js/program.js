@@ -243,8 +243,11 @@ var main_content = new Vue({
             pro_col: this.programs[this.page].pro_col,
           }, function (res) {
             console.log(res)
+<<<<<<< HEAD
             console.log(vm.programs[vm.page].pro_title)
             console.log(vm.programs[vm.page].pro_col)
+=======
+>>>>>>> ade84a40009255cc75d9495b06b23820bc563c7c
             vm.programs[vm.page].pro_no = res;
           })
 

@@ -1,5 +1,6 @@
 const container = document.getElementById("app");
 const hamburger = document.querySelector(".nav_hamburger");
+const layoutShot = document.getElementById('user_shot');
 let MEMBER_INFO = {};
 (async function() {
   const navLists = document.querySelectorAll(".nav_list > li");
@@ -15,6 +16,9 @@ let MEMBER_INFO = {};
         .then(json => {
           if (json.status === "success") {
             userStatus.classList.add("logout");
+            if(json.data.headshot){
+              layoutShot.src = `./userImg/${json.data.headshot}`
+            }
             userName.innerText = json.data.mem_name || json.data.mem_id;
             resolve(json.data);
           }

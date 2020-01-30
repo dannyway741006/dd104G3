@@ -291,10 +291,6 @@ function mall_edit() { //修改商品表單
         }
        
       })
-
-   
-
-
     }
   }
 
@@ -374,13 +370,9 @@ function mallList() {
   xhr.open("get", url, true);
   xhr.send(null);
 }
-// console.log(document.querySelectorAll(".mallSwitch1")[0])
-// console.log('11');
+
 mall_add.addEventListener("click", mall_Add, false)
 window.addEventListener("load", mallList, false);
-
-
-
 
 //新增商品預設開關
 window.addEventListener("load", function () {
