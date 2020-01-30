@@ -61,6 +61,8 @@ try {
       }
       if($card['card_date'] !== null) {
         $calendar_date = $card['card_date'];
+      }else if($card['card_date'] == null){
+        $calendar_date='未設定';
       }
       switch($card['card_type'])
       {
@@ -75,7 +77,7 @@ try {
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
                 (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
-                $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color"=>$todo_cont_clock);
+                $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color"=>$todo_cont_clock,"todo_cont_sta"=>'0');
               }else{
                 $step0_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'] = array();
               }
@@ -85,7 +87,11 @@ try {
             }
             if($card['file_name'] != NULL)
             {
-              $step0_arr[$card['card_no']]['filebox'][$card['file_no']] = array("file_no"=> $card['file_no'], "name"=> $card['file_name'], "source" => $card['file_src']);
+              $pic=explode(".",$card['file_name'])[1];
+              if ($pic == "jpg" || $pic == "png" || $pic == "gif" || $pic == "svg") {
+                $pic = null;
+              }
+              $step0_arr[$card['card_no']]['filebox'][$card['file_no']] = array("file_no"=> $card['file_no'], "name"=> $card['file_name'], "source" => $card['file_src'],"title"=> $pic);
             }
           }else{
             if($card["pro_mem_no_string"] != NULL)
@@ -108,7 +114,7 @@ try {
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
                 (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
-                $todo_list_content_detail_arr[$card['todo_no']]['lists'][0] = array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => $todo_cont_clock);
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][0] = array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => $todo_cont_clock,"todo_cont_sta"=>'0');
               }else{
                 $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }
@@ -120,9 +126,14 @@ try {
             }
             if($card['file_name'] != NULL)
             {
+              $pic=explode(".",$card['file_name'])[1];
+              if ($pic == "jpg" || $pic == "png" || $pic == "gif" || $pic == "svg") {
+                $pic = null;
+              }
               $filebox_arr[$card['file_no']]['file_no'] = $card['file_no'];
               $filebox_arr[$card['file_no']]['name'] = $card['file_name'];
               $filebox_arr[$card['file_no']]['source'] = $card['file_src'];
+              $filebox_arr[$card['file_no']]['title'] =$pic;
             }else{
               $filebox_arr = [];
             }
@@ -157,7 +168,12 @@ try {
             }
             if($card['file_name'] != NULL)
             {
-              $step1_arr[$card['card_no']]['filebox'][$card['file_no']] = array("file_no"=> $card['file_no'], "name"=> $card['file_name'], "source" => $card['file_src']);
+              $pic=explode(".",$card['file_name'])[1];
+              if ($pic == "jpg" || $pic == "png" || $pic == "gif" || $pic == "svg") {
+                $pic = null;
+              }
+              $step1_arr[$card['card_no']]['filebox'][$card['file_no']] = array("file_no"=> $card['file_no'], "name"=> $card['file_name'], "source" => $card['file_src'],"title"=> $pic);
+
             }
           }else{
             if($card["pro_mem_no_string"] != NULL)
@@ -180,7 +196,7 @@ try {
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
                 (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
-                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => $todo_cont_clock);
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => $todo_cont_clock,"todo_cont_sta"=>'0');
               }else{
                 $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }
@@ -192,9 +208,14 @@ try {
             }
             if($card['file_name'] != NULL)
             {
+              $pic=explode(".",$card['file_name'])[1];
+              if ($pic == "jpg" || $pic == "png" || $pic == "gif" || $pic == "svg") {
+                $pic = null;
+              }
               $filebox_arr[$card['file_no']]['file_no'] = $card['file_no'];
               $filebox_arr[$card['file_no']]['name'] = $card['file_name'];
               $filebox_arr[$card['file_no']]['source'] = $card['file_src'];
+              $filebox_arr[$card['file_no']]['title'] =$pic;
             }else{
               $filebox_arr = [];
             }
@@ -219,7 +240,7 @@ try {
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
                 (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
-                $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta,"tomato_color"=>$todo_cont_clock);
+                $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta,"tomato_color"=>$todo_cont_clock,"todo_cont_sta"=>'0');
               }else{
                 $step2_arr[$card['card_no']]['todo_list_content_detail'][$card['todo_no']]['lists'] = array();
               }
@@ -229,7 +250,11 @@ try {
             }
             if($card['file_name'] != NULL)
             {
-              $step2_arr[$card['card_no']]['filebox'][$card['file_no']] = array("file_no"=> $card['file_no'], "name"=> $card['file_name'], "source" => $card['file_src']);
+              $pic=explode(".",$card['file_name'])[1];
+              if ($pic == "jpg" || $pic == "png" || $pic == "gif" || $pic == "svg") {
+                $pic = null;
+              }
+              $step2_arr[$card['card_no']]['filebox'][$card['file_no']] = array("file_no"=> $card['file_no'], "name"=> $card['file_name'], "source" => $card['file_src'],"title"=> $pic);
             }
           }else{
             if($card["pro_mem_no_string"] != NULL)
@@ -252,7 +277,7 @@ try {
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
                 (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
-                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" =>$todo_cont_clock);
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][$card['todo_cont_no']] = array("todo_cont_no" => $card['todo_cont_no'], "content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" =>$todo_cont_clock,"todo_cont_sta"=>'0');
               }else{
                 $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }
@@ -264,9 +289,14 @@ try {
             }
             if($card['file_name'] != NULL)
             {
+              $pic=explode(".",$card['file_name'])[1];
+              if ($pic == "jpg" || $pic == "png" || $pic == "gif" || $pic == "svg") {
+                $pic = null;
+              }
               $filebox_arr[$card['file_no']]['file_no'] = $card['file_no'];
               $filebox_arr[$card['file_no']]['name'] = $card['file_name'];
               $filebox_arr[$card['file_no']]['source'] = $card['file_src'];
+              $filebox_arr[$card['file_no']]['title'] =$pic;
             }else{
               $filebox_arr = [];
             }

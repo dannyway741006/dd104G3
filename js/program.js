@@ -169,10 +169,11 @@ var main_content = new Vue({
         this.choose_colors.hex8
       )
       this.create_color = false;
+      console.log(this.programs)
     },
     //新增專案
     add_program() {
-
+      console.log(this.colors)
       // console.log(this.programs)
       // console.log(main_content.programs)
       if (this.pro_title !== "" && this.selectColor) {
@@ -225,6 +226,7 @@ var main_content = new Vue({
           }],
 
         });
+        console.log(this.programs)
         this.pro_title = "";
         this.selectColor = null;
         this.click_complete_btn = false;
@@ -240,7 +242,9 @@ var main_content = new Vue({
             pro_title: this.programs[this.page].pro_title,
             pro_col: this.programs[this.page].pro_col,
           }, function (res) {
-            // console.log(res)
+            console.log(res)
+            console.log(vm.programs[vm.page].pro_title)
+            console.log(vm.programs[vm.page].pro_col)
             vm.programs[vm.page].pro_no = res;
           })
 
@@ -282,8 +286,8 @@ var main_content = new Vue({
         member_name: vm.userInfo.mem_name,
         userId: vm.userInfo.mem_id,
         src: './userImg/' + vm.userInfo.headshot,
-        check: '',
-        uncolor: false,
+        check: './img/unchecked_d.3b5daaa1.svg',
+        // uncolor: false,
       })
 
       // console.log(vm.programs[vm.page].program_memeber)
@@ -568,8 +572,8 @@ var main_content = new Vue({
                   return item.mem_no
                 }).indexOf(data.data[x].mem_no);
                 if (mem_no_index != -1) {
-                  vm.showmember_select[mem_no_index].uncolor = true;
-                  vm.showmember_select[mem_no_index].check = "./img/checked_member.svg";
+                  // vm.showmember_select[mem_no_index].uncolor = true;
+                  vm.showmember_select[mem_no_index].check = "./img/check.svg";
                 }
               }
             } else {
@@ -936,83 +940,90 @@ var main_content = new Vue({
     //卡片背面
     //勾選未完成->已完成
     check_dateline() {
+      const vm = this;
+      if (vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date == null) {
+        alert("請設定日期");
+      } else if (vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date != null) {
+        if (this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline == false) { //未完成框框
 
-      if (this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline == false) { //未完成框框
 
-        const vm = this;
-        // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no)
-        // console.log(this.islogin.length)
-        if (this.islogin.length != 0) {
-          $.ajax({
-            "type": "POST",
-            "dataType": "json",
-            "url": "./php/pm/card.php",
-            "data": {
-              "type": "check_dateline",
-              "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-              "card_sta": 1
-            },
-            "cache": false,
-            "success": function (data) {
-              console.log(data);
+          // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no)
+          // console.log(this.islogin.length)
+          if (this.islogin.length != 0) {
+            $.ajax({
+              "type": "POST",
+              "dataType": "json",
+              "url": "./php/pm/card.php",
+              "data": {
+                "type": "check_dateline",
+                "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+                "card_sta": 1
+              },
+              "cache": false,
+              "success": function (data) {
+                console.log(data);
 
-            },
-            "error": function (data) {
-              console.log(data);
-            }
-          });
+              },
+              "error": function (data) {
+                console.log(data);
+              }
+            });
+          }
+          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = true;
+          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '完成';
+
+        } else {
+
+          const vm = this;
+          // console.log(this.islogin.length)
+          if (this.islogin.length != 0) {
+            $.ajax({
+              "type": "POST",
+              "dataType": "json",
+              "url": "./php/pm/card.php",
+              "data": {
+                "type": "check_dateline",
+                "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+                "card_sta": 0
+              },
+              "cache": false,
+              "success": function (data) {
+                console.log(data);
+
+              },
+              "error": function (data) {
+                console.log(data);
+              }
+            });
+          }
+          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false;
+          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '未完成';
         }
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = true;
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '完成';
-
-      } else {
-
-        const vm = this;
-        // console.log(this.islogin.length)
-        if (this.islogin.length != 0) {
-          $.ajax({
-            "type": "POST",
-            "dataType": "json",
-            "url": "./php/pm/card.php",
-            "data": {
-              "type": "check_dateline",
-              "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-              "card_sta": 0
-            },
-            "cache": false,
-            "success": function (data) {
-              console.log(data);
-
-            },
-            "error": function (data) {
-              console.log(data);
-            }
-          });
-        }
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false;
-        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '未完成';
       }
+
     },
     //設定卡片時間
     set_calendar_date() {
       // console.log(this.programs[this.page][this.todo_type][0].cards[this.card_no].calendar_date)
       const vm = this;
       // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date.substr(0,10).split("-"))
-      if (vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date !=null) {
+      if (vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date != null) {
         let arr = vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date.substr(0, 10).split("-");
         let year = parseInt(arr[0]);
         let month = parseInt(arr[1]);
         let date = parseInt(arr[2]);
         if (year < this.handcalendar_today.year) {
-          alert("選擇的日期已逾期，請再選一次");
+          // alert("選擇的日期已逾期，請再選一次");
           this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '逾期';
+          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false
         } else if (year == this.handcalendar_today.year && month < this.handcalendar_today.month + 1) {
-          alert("選擇的日期已逾期，請再選一次");
+          // alert("選擇的日期已逾期，請再選一次");
           this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '逾期';
-
+          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false
         } else if (year == this.handcalendar_today.year && month == this.handcalendar_today.month + 1 && date < this.handcalendar_today.date) {
-          alert("選擇的日期已逾期，請再選一次");
+          // alert("選擇的日期已逾期，請再選一次");
           this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '逾期';
+          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false
         }
 
         if (year > this.handcalendar_today.year && this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline == false) {
@@ -1083,7 +1094,7 @@ var main_content = new Vue({
     todo_list_add(index) {
       //如何在新增代辦項目時產生變數todo_no
       const vm = this;
-      if (this.todoListTitle != null) {
+      if (this.todoListTitle.length !=0) {
         this.programs[this.page][this.todo_type][0].cards[index].todo_list_content_detail.push({
           todo_no: '',
           title: this.todoListTitle,
@@ -1098,7 +1109,7 @@ var main_content = new Vue({
           test: '',
         })
         // $(".right_aside").animate({
-        //   scrollTop:$(document).height()-$(".card_file").height()
+        //   scrollTop: $(document).height() - $(".card_file").height()
         // }, 300);
         // console.log(this.islogin.length)
         if (this.islogin.length != 0) {
@@ -1190,7 +1201,7 @@ var main_content = new Vue({
       const vm = this;
       // console.log()
 
-      if (this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test !== "") {
+      if (this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].test.length) {
         // console.log(this.programs[this.page].cards[this.card_no].todo_list_content_detail[detailIndex].lists);
         this.programs[this.page][this.todo_type][0].cards[this.card_no].todo_list_content_detail[detailIndex].lists.push({
           todo_cont_no: '',
@@ -1327,7 +1338,7 @@ var main_content = new Vue({
                 "type": "POST",
                 "url": "url",
                 "dataType": "json",
-                "url": "./php/pm/card_inner.php",
+                "url": "./php/pm/card.php",
                 "data": form_data,
                 // "data":,
                 "cache": false,
@@ -1348,6 +1359,8 @@ var main_content = new Vue({
                     source: source,
                     file_no: '',
                   });
+                  console.log( pro_card.filebox)
+
                   // $(".right_aside").animate({
                   //   scrollTop: $(document).height()
                   // }, 300);
@@ -1417,8 +1430,8 @@ var main_content = new Vue({
       $(".right_aside").animate({
         scrollTop: 0
       }, 300);
-      if (this.showmember_select[index].check == '') {
-        this.showmember_select[index].uncolor = true;
+      if (this.showmember_select[index].check == './img/unchecked_d.3b5daaa1.svg') {
+        // this.showmember_select[index].uncolor = true;
         this.showmember_select[index].check = "./img/check.svg";
 
         if (pro_page[this.todo_type][0].cards[this.card_no].member_inout.map(x => x.src).indexOf(this.showmember_select[index].src) === -1) {
@@ -1429,8 +1442,8 @@ var main_content = new Vue({
         }
         this.mem_data_card_add_delete("mem_data_card_add", pro_page[this.todo_type][0].cards[this.card_no].card_no, this.showmember_select[index].mem_no);
       } else {
-        this.showmember_select[index].check = '';
-        this.showmember_select[index].uncolor = false;
+        this.showmember_select[index].check = './img/unchecked_d.3b5daaa1.svg';
+        // this.showmember_select[index].uncolor = false;
         let findIndex = pro_page[this.todo_type][0].cards[this.card_no].member_inout.findIndex(item => item.src === this.showmember_select[index].src);
         this.mem_data_card_add_delete("mem_data_card_delete", pro_page[this.todo_type][0].cards[this.card_no].card_no, pro_page[this.todo_type][0].cards[this.card_no].member_inout[findIndex].mem_no);
         pro_page[this.todo_type][0].cards[this.card_no].member_inout.splice(findIndex, 1);
@@ -1456,6 +1469,7 @@ var main_content = new Vue({
           "cache": false,
           "success": function (data) {
             console.log(data);
+            console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no)
             // vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=true;
 
           },
@@ -1477,7 +1491,7 @@ var main_content = new Vue({
       if (this.islogin.length != 0) {
         $.ajax({
           "type": "POST",
-          "dataType": "json",
+          "dataType":"json",
           "url": "./php/pm/card.php",
           "data": {
             "type": "update_onload_tomato",

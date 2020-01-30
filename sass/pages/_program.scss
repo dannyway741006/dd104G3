@@ -150,6 +150,7 @@
 
       img {
         width: 100%;
+        height: 100%;
       }
     }
 
@@ -557,6 +558,7 @@
   overflow-y: auto;
   border: 1px solid $shadow;
   background-color: $white;
+  background-image: linear-gradient(-30deg,#81c7d4,#e1e9f7,#f8c3cd);
   box-shadow: 1px 1px 3px $shadow;
   @include positionfixed(1001, 0, 0);
   @include positionCenter;

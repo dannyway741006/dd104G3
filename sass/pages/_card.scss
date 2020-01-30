@@ -135,7 +135,7 @@
 
       // div:nth-child(6) 
  {
-        width: 90%;
+        width: 100%;
         margin: 10px 0px;
         padding: 10px;
 
@@ -475,7 +475,7 @@
       left: 25px;
       border-bottom: 1px solid #e0dcdc;
       width: 88.5%;
-      white-space: nowrap;
+      // white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       margin-bottom: 10px;
@@ -505,9 +505,15 @@
       p {
         margin-left: 15px;
         @include font(0, 20px);
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        width: 70%;
+        word-break: break-word;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
         overflow: hidden;
-        text-overflow: ellipsis;
-        width: 60%;
+        // max-height: 162px;
 
         &.lineThrough {
           text-decoration: line-through;
@@ -1132,7 +1138,7 @@
           vertical-align: middle;
 
           img {
-            vertical-align: middle;
+            // vertical-align: middle;
             width: 20px;
             height: 20px;
             margin-right: 0;
@@ -1250,9 +1256,31 @@ margin: 2.5px;
   bottom: 0;
   right: 22.5%;
   z-index: 999999999;
+  width: 100px;
+  height: 30px;
+  @include btnReset;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: $dark;
+  transition: all 0.3s;
+  // float: right;
+  .add_button{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 5px;
+  }
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
 }
 
 //卡片rwd
+@include media(1200px){
+  .card_light_box{
+    width: 650px;
+  }
+}
 @include media(850px) {
   .card_light_box {
     width: 90%;
