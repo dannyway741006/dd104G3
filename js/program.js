@@ -240,7 +240,7 @@ var main_content = new Vue({
             pro_title: this.programs[this.page].pro_title,
             pro_col: this.programs[this.page].pro_col,
           }, function (res) {
-            // console.log(res)
+            console.log(res)
             vm.programs[vm.page].pro_no = res;
           })
 

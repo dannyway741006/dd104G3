@@ -102,12 +102,12 @@
                     :class='{new_program_choose_color_item_checked: selectColor === pro_col}'
                     :style='{backgroundColor: pro_col}' :value=pro_col.pro_col>
                   </span>
-                   <div class="add_colors_array " @click.prevent="create_color =! create_color"  >
-                     <img src="./img/plus.a4d786b4.svg" alt="" class="add_inner_color">
+                  <div class="add_colors_array " @click.prevent="create_color =! create_color">
+                    <img src="./img/plus.a4d786b4.svg" alt="" class="add_inner_color">
                   </div>
-                  <button class="new_add"  @click.prevent="push_to_collors" v-show="create_color">新增</button>
-               
-                   <chrome-picker v-model="choose_colors" v-show="create_color"/>       
+                  <button class="new_add" @click.prevent="push_to_collors" v-show="create_color">新增</button>
+
+                  <chrome-picker v-model="choose_colors" v-show="create_color" />
                 </div>
                 <button @click.prevent="add_program(),create_color=false" type="button">建立專案</button>
               </div>
@@ -124,7 +124,8 @@
           <ul v-if="click_complete_btn" class="page_info_list setting_pm history_program">
 
             <transition-group name="fade" mode="out-in" tag="div">
-              <li v-for="(item,index) in history_programs" :key="index" @click="show_cards(index, '');history_page=index;close_humberger()">
+              <li v-for="(item,index) in history_programs" :key="index"
+                @click="show_cards(index, '');history_page=index;close_humberger()">
                 <p><span :style='{backgroundColor: item.pro_col}'></span>{{item.pro_title}}</p>
                 <img src="./img/delete.0df56913.svg" alt="uncheck" width="20" @click.stop='delete_info_func(index)' />
 
@@ -468,107 +469,108 @@
 
         <!-- 日曆最外層 -->
         <transition name="calendar_fade">
-        <div class="calendar_mask" v-show="calendar_btn" >
-          <transition name="fade" mode="out-in">
-            <div id="calendar" v-show="calendar_btn" @click.stop="calendar_click()">
-              <h1 class="calendar_date_title">
-                <div class="mont_date">{{calendar.date}}</div>
-                <div>
-                  <div>th</div>
-                  <div>{{calendar.day}}</div>
-                </div>
-                <div class="todaybutton">
-                  <button @click="setToday">Today</button>
-                </div>
-              </h1>
-              <div class="calendar_date_midtitle">
+          <div class="calendar_mask" v-show="calendar_btn">
+            <transition name="fade" mode="out-in">
+              <div id="calendar" v-show="calendar_btn" @click.stop="calendar_click()">
+                <h1 class="calendar_date_title">
+                  <div class="mont_date">{{calendar.date}}</div>
+                  <div>
+                    <div>th</div>
+                    <div>{{calendar.day}}</div>
+                  </div>
+                  <div class="todaybutton">
+                    <button @click="setToday">Today</button>
+                  </div>
+                </h1>
+                <div class="calendar_date_midtitle">
 
-                <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg" alt=""
-                    width="20"></div>
-                <div class="calendar_title_container">
-                  <div>{{calendar.week}}</div>
-                  <div>{{calendar.year}}</div>
+                  <div @click="adjustMonth(-1)" class="calleft_arrow"><img src="./img/icon/arrow-point-to-left.svg"
+                      alt="" width="20"></div>
+                  <div class="calendar_title_container">
+                    <div>{{calendar.week}}</div>
+                    <div>{{calendar.year}}</div>
+                  </div>
+                  <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
+                      alt="" width="20"></div>
                 </div>
-                <div @click="adjustMonth(1)" class="calright_arrow"><img src="./img/icon/arrow-point-to-right.svg"
-                    alt="" width="20"></div>
-              </div>
 
-              <div class="calendar">
-                <div class="weekDay" v-if="handleResize()">
-                  <div style="color: #eb7a77;">Sunday</div>
-                  <div>Monday</div>
-                  <div>Tuesday</div>
-                  <div>Wednesday</div>
-                  <div>Thursday</div>
-                  <div>Friday</div>
-                  <div style="color: #eb7a77;">Saturday</div>
-                </div>
-                <div class="weekDay" v-else>
-                  <div style="color: #eb7a77;">Sun</div>
-                  <div>Mon</div>
-                  <div>Tue</div>
-                  <div>Wed</div>
-                  <div>Thu</div>
-                  <div>Fri</div>
-                  <div style="color: #eb7a77;">Sat</div>
-                </div>
-                <div class="week" v-for="i in 5">
-                  <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
+                <div class="calendar">
+                  <div class="weekDay" v-if="handleResize()">
+                    <div style="color: #eb7a77;">Sunday</div>
+                    <div>Monday</div>
+                    <div>Tuesday</div>
+                    <div>Wednesday</div>
+                    <div>Thursday</div>
+                    <div>Friday</div>
+                    <div style="color: #eb7a77;">Saturday</div>
+                  </div>
+                  <div class="weekDay" v-else>
+                    <div style="color: #eb7a77;">Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div style="color: #eb7a77;">Sat</div>
+                  </div>
+                  <div class="week" v-for="i in 5">
+                    <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date" :class="{
                        handcalendar_today:calendarMonth[(i-1)*7+j-1].year === handcalendar_today.year && calendarMonth[(i-1)*7+j-1].month === handcalendar_today.month && calendarMonth[(i-1)*7+j-1].date === handcalendar_today.date,
                        other:calendarMonth[(i-1)*7+j-1].month !== calendar.month
                       }"
-                    @click.stop="calendar_day_click_func(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)">
-                    <div
-                      v-if="calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date) > 0"
-                      class="calendar_date_cards">
-                      +{{calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)}}
+                      @click.stop="calendar_day_click_func(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)">
+                      <div
+                        v-if="calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date) > 0"
+                        class="calendar_date_cards">
+                        +{{calendar_date_cards(calendarMonth[(i-1)*7+j-1].year, calendarMonth[(i-1)*7+j-1].month, calendarMonth[(i-1)*7+j-1].date)}}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </transition>
-          <!-- 日曆打開卡片們 -->
-          <transition name="horizentalfade" mode="out-in">
-            <div class="cal_card_list_box" v-if="calendar_day_click">
-              <!-- <div class="week" v-for="i in 5" :key="i"> -->
-              <!-- <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date"> -->
+            </transition>
+            <!-- 日曆打開卡片們 -->
+            <transition name="horizentalfade" mode="out-in">
+              <div class="cal_card_list_box" v-if="calendar_day_click">
+                <!-- <div class="week" v-for="i in 5" :key="i"> -->
+                <!-- <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date"> -->
 
-              <!-- <div class="cal_card_list_box" v-if="calendar_day_click" @click.stop=""
+                <!-- <div class="cal_card_list_box" v-if="calendar_day_click" @click.stop=""
               v-for="(item,index) in calendar_cards" :key="index"> -->
 
-              <div class="cal_card_list" v-for="(item,index) in calendar_cards" v-if="index == cal_today">
+                <div class="cal_card_list" v-for="(item,index) in calendar_cards" v-if="index == cal_today">
 
-                <transition-group name="horizentalfade" mode="out-in">
-                  <div class="cal_card" v-for="(item2,index) in item" :key="index"
-                    @click="open_card_func(to_pro_card(item2.pro_no,item2.card_no, item2.card_type, item2.pro_sta), item2.card_type),todo_type=item2.card_type">
-                    <!-- <div class="cal_card"> -->
-                    <div class="cal_card_color" :style='{backgroundColor: item2.pro_col}'>
-                    </div>
-                    <p>{{item2.card_name}}</p>
-                    <div class="cards_list_card_icon_bar">
-                      <div class="cards_list_card_icon cards_list_card_calendaricon"><img
-                          src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
-                      <span>{{item2.card_date}}</span>
-                      <div class="cards_list_card_icon_right">
+                  <transition-group name="horizentalfade" mode="out-in">
+                    <div class="cal_card" v-for="(item2,index) in item" :key="index"
+                      @click="open_card_func(to_pro_card(item2.pro_no,item2.card_no, item2.card_type, item2.pro_sta), item2.card_type),todo_type=item2.card_type">
+                      <!-- <div class="cal_card"> -->
+                      <div class="cal_card_color" :style='{backgroundColor: item2.pro_col}'>
+                      </div>
+                      <p>{{item2.card_name}}</p>
+                      <div class="cards_list_card_icon_bar">
+                        <div class="cards_list_card_icon cards_list_card_calendaricon"><img
+                            src="./img/icon/calendar.e1ea5ef5.svg" alt=""></div>
+                        <span>{{item2.card_date}}</span>
                         <div class="cards_list_card_icon_right">
-                          <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg" alt="">
+                          <div class="cards_list_card_icon_right">
+                            <div class="cards_list_card_icon cards_list_card_todoicon"><img src="./img/check.svg"
+                                alt="">
+                            </div>
+                            <span>{{item2.todo_cont_sta_checked}}/{{item2.todo_cont_sta_sum}}</span>
                           </div>
-                          <span>{{item2.todo_cont_sta_checked}}/{{item2.todo_cont_sta_sum}}</span>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                </transition-group>
-              </div>
-              <!-- </div>
+                  </transition-group>
+                </div>
+                <!-- </div>
 
             </div> -->
-            </div>
-          </transition>
-        </div>
-    </transition>
+              </div>
+            </transition>
+          </div>
+        </transition>
 
 
 
@@ -659,7 +661,7 @@
                           <form method="post" enctype="multipart/form-data">
                             <label class="upfile_content">
                               <p>上傳附件</p>
-                              <input type="file" multiple  name="upFile">
+                              <input type="file" multiple name="upFile">
                             </label>
                           </form>
                         </div>
@@ -682,11 +684,7 @@
                                 <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
-<<<<<<< HEAD
-                                <!-- <div><img :src="item.check" alt=""></div> -->
-=======
-               
->>>>>>> practice
+
                               </div>
                             </li>
                           </ul>
@@ -714,8 +712,8 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout"  v-show="index < 3" :key="index"><img
-                              :src="item.src" alt=""></div>
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
+                            :key="index"><img :src="item.src" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -846,13 +844,15 @@
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
                               <a :href="item.source" :download="item.name">
-                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img :src="item.source" alt=""  class="file_picture"><span class="file_title">{{item.title}}</span></div>
+                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                    :src="item.source" alt="" class="file_picture"><span
+                                    class="file_title">{{item.title}}</span></div>
                                 <span class="file_arc">{{item.name}}</span>
-                                </a>
+                              </a>
                               <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
                                   @click="delete_file(cardIndex)" class="garbage">
                               </div>
-                              
+
                             </li>
                           </transition-group>
                         </ul>
@@ -930,7 +930,7 @@
                           <form method="post" enctype="multipart/form-data">
                             <label class="upfile_content">
                               <p>上傳附件</p>
-                              <input type="file" multiple  name="upFile">
+                              <input type="file" multiple name="upFile">
                             </label>
                           </form>
                         </div>
@@ -953,8 +953,8 @@
                                 <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
-                               
-                             
+
+
                               </div>
                             </li>
                           </ul>
@@ -1002,13 +1002,13 @@
                                   <li>
                                     <div class="card_member_message" v-for="(item,index) in showmember_select"
                                       @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
-                                          <div><img :src="item.check" alt=""></div>
+                                      <div><img :src="item.check" alt=""></div>
                                       <div><img :src="item.src" alt=""></div>
-                                    
+
                                       <span class="card_member_name">{{item.member_name}}<span
                                           class="card_memberId">{{item.userId}}</span></span>
-                                  
-                                    
+
+
                                     </div>
                                   </li>
                                 </ul>
@@ -1116,13 +1116,15 @@
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
                               <a :href="item.source" :download="item.name">
-                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img :src="item.source" alt=""  class="file_picture"><span class="file_title">{{item.title}}</span></div>
+                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                    :src="item.source" alt="" class="file_picture"><span
+                                    class="file_title">{{item.title}}</span></div>
                                 <span class="file_arc">{{item.name}}</span>
-                                </a>
+                              </a>
                               <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
                                   @click="delete_file(cardIndex)" class="garbage">
                               </div>
-                              
+
                             </li>
                           </transition-group>
                         </ul>
@@ -1223,8 +1225,8 @@
                                 <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
-                              
-                              
+
+
                               </div>
                             </li>
                           </ul>
@@ -1252,7 +1254,7 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout"  v-if="index < 3"><img
+                          <div class="card_member" v-for="(item,index) in item.member_inout" v-if="index < 3"><img
                               :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
@@ -1272,12 +1274,12 @@
                                   <li>
                                     <div class="card_member_message" v-for="(item,index) in showmember_select"
                                       @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
-                                     
+
                                       <div><img :src="item.check" alt=""></div>
                                       <div><img :src="item.src" alt=""></div>
                                       <span class="card_member_name">{{item.member_name}}<span
                                           class="card_memberId">{{item.userId}}</span></span>
-                                 
+
                                     </div>
                                   </li>
                                 </ul>
@@ -1386,13 +1388,15 @@
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
                               <a :href="item.source" :download="item.name">
-                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img :src="item.source" alt=""  class="file_picture"><span class="file_title">{{item.title}}</span></div>
+                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                    :src="item.source" alt="" class="file_picture"><span
+                                    class="file_title">{{item.title}}</span></div>
                                 <span class="file_arc">{{item.name}}</span>
-                                </a>
+                              </a>
                               <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
                                   @click="delete_file(cardIndex)" class="garbage">
                               </div>
-                              
+
                             </li>
                           </transition-group>
                         </ul>
@@ -1545,8 +1549,8 @@
                           <h3>成員</h3>
                         </div>
                         <div class="memimg">
-                          <div class="card_member" v-for="(item,index) in item.member_inout" v-if="index > 0 && index < 3"
-                            :key="index"><img :src="item.source" alt=""></div>
+                          <div class="card_member" v-for="(item,index) in item.member_inout"
+                            v-if="index > 0 && index < 3" :key="index"><img :src="item.source" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
