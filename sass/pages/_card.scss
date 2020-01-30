@@ -59,7 +59,8 @@
       @include font(5, 50px);
       // @include positionCenter();
       color: white;
-     cursor: url('../img/edit_w.b47c71f6.svg'),default !important;
+      cursor: url('../img/edit_w.b47c71f6.svg'), default !important;
+
       input {
         background-color: inherit;
         border: none;
@@ -134,7 +135,7 @@
       .wave // div:nth-child(5),
 
       // div:nth-child(6) 
- {
+        {
         width: 90%;
         margin: 10px 0px;
         padding: 10px;
@@ -533,9 +534,11 @@
           width: 100%;
           cursor: pointer;
           transition: all 0.3s;
+
           &.add_to_tomato {
             filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
           }
+
           &:hover {
             filter: invert(92%) sepia(59%) saturate(5971%) hue-rotate(163deg) brightness(94%) contrast(85%);
           }
@@ -658,28 +661,30 @@
           div {
             transition: all 0.3s;
           }
-         
-          .file_wrap{
+
+          .file_wrap {
             display: inline-block;
             width: 112px;
             height: 80px;
             // background-color: $primary;
             color: white;
-            opacity:1;
+            opacity: 1;
             position: relative;
-          
-            .file_title{
-                @include font(0, 20px);
+
+            .file_title {
+              @include font(0, 20px);
               @include positionCenter();
             }
-          .file_picture {
-            object-fit: cover;
-            object-position: 50% 50%;
-            width: inherit;
-            height: inherit;
+
+            .file_picture {
+              object-fit: cover;
+              object-position: 50% 50%;
+              width: inherit;
+              height: inherit;
+            }
           }
-          }
-             .file_arc{
+
+          .file_arc {
             // border: 1px solid red;
             vertical-align: top;
             width: 70%;
@@ -764,6 +769,7 @@
 .history_card_light_box {
   .right_aside {
     width: 100%;
+
     .memberRight {
       h3 {
         cursor: default;
@@ -775,22 +781,27 @@
             cursor: default;
           }
         }
+
         .card_check_item {
           cursor: default;
+
           img {
             cursor: default;
           }
         }
       }
+
       .calendar {
         .calendar_status {
           p:nth-child(2):hover {
             color: black;
             cursor: default;
           }
+
           span:nth-child(3) {
             cursor: default;
           }
+
           .calendar_img {
             cursor: default;
           }
@@ -951,7 +962,7 @@
     justify-content: space-between;
     color: #666666;
 
-    & > button {
+    &>button {
       // width: 50px;
       // height: 50px;
       border: none;
@@ -965,7 +976,7 @@
       }
     }
 
-    .calendar_header > p {
+    .calendar_header>p {
       width: 30%;
       text-align: center;
     }
@@ -1066,6 +1077,7 @@
   overflow-y: scroll;
   max-height: 300px;
   min-height: 150px;
+
   // &.open_card_mem{
   //   display: block;
   // }
@@ -1199,53 +1211,63 @@
 
 
 //自選顏色
-.vc-input__desc{
+.vc-input__desc {
   display: block !important;
   background-color: transparent !important;
   width: 0 !important;
-  height:0 !important;
+  height: 0 !important;
   margin: auto !important;
-  position:initial !important;
+  position: initial !important;
 }
-.vc-input__label{
+
+.vc-input__label {
   display: block !important;
   background-color: transparent !important;
-  width:auto !important;
-  height:25px !important;
+  width: auto !important;
+  height: 25px !important;
   margin-top: 12px !important;
-  position:initial !important;
+  position: initial !important;
   cursor: default !important;
 }
-//新增顏色時位置會跑掉
-.add_colors_array{
 
- width: 25px;
- height: 25px;
- border-radius: 50%;
- position: relative;
-//  right: 4px;
-//  top: -2px;
-box-sizing: border-box;
-margin: 2.5px;
- border: 2px solid rgb(160, 153, 153);
- display: inline-block;
- transition: all 0.3s;
- cursor: pointer;
- .add_inner_color{
-   width: 80%;
-   height: 80%;
-   @include positionCenter();
- }
- 
- &:hover {
-  border-color: #81c7d4;
+//新增顏色時位置會跑掉
+.add_colors_array {
+  font-size: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: relative;
+  //  right: 4px;
+  // top: -2px;
+  box-sizing: border-box;
+  margin: 2.5px;
+  border: 2px solid rgb(160, 153, 153);
+  display: inline-block;
+  transition: all 0.3s;
+  cursor: pointer;
 
   .add_inner_color {
-    filter: invert(96%) sepia(58%) saturate(3512%) hue-rotate(161deg) brightness(100%) contrast(80%);
+    width:80%;
+    // height:80%;
+    // padding: 5%;
+    
+    @include positionCenter();
+    // position: absolute;
+    // left:50%;
+    // top:50%;
+    // transform: translate(-50%,-50%);
+  }
+
+  &:hover {
+    border-color: #81c7d4;
+
+    .add_inner_color {
+      filter: invert(96%) sepia(58%) saturate(3512%) hue-rotate(161deg) brightness(100%) contrast(80%);
+    }
   }
 }
-}
-.new_add{
+
+.new_add {
   position: absolute;
   bottom: 0;
   right: 22.5%;
@@ -1281,6 +1303,7 @@ margin: 2.5px;
 
         .first_right,
         .second_right {
+
           .todogo,
           .first_right_member,
           .second_right_deletecard,
@@ -1321,6 +1344,7 @@ margin: 2.5px;
 
 @media screen and (max-width: 503px) {
   .card_light_box {
+
     // .left_aside{
     //   .first_right,.second_right{
     // .todogo,
