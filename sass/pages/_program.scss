@@ -72,7 +72,7 @@
   text-align: center;
   @include positionCenter(y);
   color: $dark;
-  font-size: 36px;
+  @include font(10);
 }
 
 #program_main {
@@ -124,7 +124,7 @@
   
   内阴影+圆角*/
   ::-webkit-scrollbar-thumb {
-    background-color: $gray;
+    // background-color: $gray;
   }
 
   //邀請成員區
@@ -135,7 +135,7 @@
     display: inline-block;
     position: relative;
     background-color: rgba(255,255,255,.4);
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 1px 1px 3px $shadow;
     padding: 20px;
 
@@ -229,7 +229,6 @@
     max-width: 970px;
     // background-color: $white;
     border-radius: 10px;
-    box-shadow: 1px 1px 3px $shadow;
     margin-top: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
