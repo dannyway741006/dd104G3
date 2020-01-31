@@ -1450,7 +1450,7 @@ var main_content = new Vue({
 
 
     calltomato(detailIndex, index) {
-      alert("已加入蕃茄鐘");
+      alert("已加入番茄鐘");
       const vm = this;
       // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
@@ -1483,7 +1483,7 @@ var main_content = new Vue({
 
     },
     droptomato(detailIndex, index) {
-      alert("已移除蕃茄鐘");
+      alert("已移除番茄鐘");
       const vm = this;
       // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
