@@ -123,18 +123,18 @@ var app = new Vue({
     },
     methods: {
         setRing(ring){
-            this.rings.forEach(ring => {
-                ring.checked=false;
-            });
-            fetch('./php/clock/updateRing.php',{
-              method:'POST',
-              body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&ring_no=${this.currentRing}`)
-            }).then(res=>res.json())
-            .then(json=>json)
-            .catch(err=>console.log(err))
-            ring.checked=true;
-            this.currentRing = ring.url;
-            this.playRing();
+          this.currentRing = ring.url;
+          this.rings.forEach(ring => {
+              ring.checked=false;
+          });
+          fetch('./php/clock/updateRing.php',{
+            method:'POST',
+            body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}&ring_no=${this.currentRing}`)
+          }).then(res=>res.json())
+          .then(json=>json)
+          .catch(err=>console.log(err))
+          ring.checked=true;
+          if(this.currentRing)this.playRing();
         },
         playRing(){
             var sound = new Audio(this.currentRing);
