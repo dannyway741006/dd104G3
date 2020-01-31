@@ -153,7 +153,7 @@ var app = new Vue({
             this.currentTomato.runstatus =0;
             clearTimeout(this.mytimer);
             this.timer = this.workTime;
-            alert('設定完成')
+            swal("設定完成!", "", "success",{timer:1500});
         },
         addTodo(){
             //加入任務
@@ -204,10 +204,10 @@ var app = new Vue({
         },
         startTomato(item){
             if(item.complete){
-                alert('請先解除任務完成狀態')
+                swal("請先解除完成狀態!!","","warning",{timer:1500});
             }
             else if(!this.currentTomato.currentTime){
-                alert('請先設定時間')
+                swal("請先設定時間!!",'',"warning",{timer:1500});
             }
             else if(this.currentTomato && this.currentTomato.runstatus == 1){  
                 this.currentTomato.runstatus = 0; //任務進行中點擊其他任務      
