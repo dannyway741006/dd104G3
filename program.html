@@ -715,7 +715,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            :key="index"><img :src="item.src" alt="" ></div>
+                            :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -984,7 +984,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            :key="index"><img :src="item.src" alt=""></div>
+                            :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -1256,7 +1256,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                            :key="index"><img :src="item.src" alt=""></div>
+                            :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
                           <div class="add_member_to_card"
                             @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
@@ -1445,7 +1445,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                          :key="index"><img :src="item.src" alt=""></div>
+                          :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
@@ -1560,7 +1560,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                          :key="index"><img :src="item.src" alt=""></div>
+                          :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>

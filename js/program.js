@@ -307,7 +307,7 @@ var main_content = new Vue({
         })
         .catch(err => console.log(err))
       this.invite_add_member_box = false;
-      this.invite_add_member_addr = '';
+      this.programs[this.page].invite_add_member_addr = '';
     },
     //推入已加入專案成員
     program_all_member() {
@@ -1951,7 +1951,7 @@ var main_content = new Vue({
       this.cards_list_card_input_box = false;
       this.card_name = "";
       this.invite_add_member_box = false;
-      this.invite_add_member_addr = '';
+      this.programs[this.page].invite_add_member_addr = '';
       this.setting_btn = false;
       this.add_cards_btn = false;
       this.calendar_btn = false;

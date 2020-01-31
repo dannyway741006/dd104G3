@@ -258,7 +258,7 @@ try {
       // where jp.inv_by_mem=m.mem_no and
       // m.mem_no = :mem_no';
       $card_member_arr = [];
-      $sql = 'select pic.mem_no,m.headshot
+      $sql = 'select pic.mem_no,m.headshot,m.mem_name
         FROM `person_in_charge` pic,`member` m 
         where pic.mem_no=m.mem_no and pic.card_no=:card_no';
       $res = $pdo->prepare($sql);
@@ -271,7 +271,8 @@ try {
         foreach ($card_members as $member) {
           $card_member_arr[] = [
             "mem_no" => $member["mem_no"],
-            "src" =>  './userImg/' . $member["headshot"]
+            "src" =>  './userImg/' . $member["headshot"],
+            "member_name"=>$member["mem_name"]
           ];
         }
       }
