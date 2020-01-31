@@ -114,7 +114,7 @@ try {
               {
                 (int)$card['todo_cont_sta'] == 0 ? $todo_cont_sta = false: $todo_cont_sta = true;
                 (int)$card['todo_cont_clock'] == 0 ? $todo_cont_clock = false: $todo_cont_clock = true;
-                $todo_list_content_detail_arr[$card['todo_no']]['lists'][0] = array("content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => $todo_cont_clock,"todo_cont_sta"=>'0');
+                $todo_list_content_detail_arr[$card['todo_no']]['lists'][0] = array("todo_cont_no" => $card['todo_cont_no'],"content" => $card['todo_cont'], "status" => $todo_cont_sta, "status" => $todo_cont_sta, "text" => $todo_cont_sta, "tomato_color" => $todo_cont_clock,"todo_cont_sta"=>'0');
               }else{
                 $todo_list_content_detail_arr[$card['todo_no']]['lists'] = [];
               }
