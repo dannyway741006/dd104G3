@@ -105,15 +105,9 @@
                   <div class="add_colors_array " @click.prevent="create_color =! create_color">
                     <img src="./img/plus.a4d786b4.svg" alt="" class="add_inner_color">
                   </div>
-<<<<<<< HEAD
                   <div class="new_add"  @click="push_to_collors"  v-show="create_color"><div class="add_button">新增</div></div>
                
                    <chrome-picker v-model="choose_colors" v-show="create_color"/>       
-=======
-                  <button class="new_add" @click.prevent="push_to_collors" v-show="create_color">新增</button>
-
-                  <chrome-picker v-model="choose_colors" v-show="create_color" />
->>>>>>> ade84a40009255cc75d9495b06b23820bc563c7c
                 </div>
                 <button @click="add_program(),create_color=false" type="button">建立專案</button>
               </div>
@@ -1522,7 +1516,16 @@
                         <ul>
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
-                              <a :href="item.source" :download="item.name">{{item.name}}</a>
+                              <a :href="item.source" :download="item.name">
+                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                    :src="item.source" alt="" class="file_picture"><span
+                                    class="file_title">{{item.title}}</span></div>
+                                <span class="file_arc">{{item.name}}</span>
+                              </a>
+                              <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                                  @click="delete_file(cardIndex)" class="garbage">
+                              </div>
+
                             </li>
                           </transition-group>
                         </ul>
@@ -1627,7 +1630,16 @@
                         <ul>
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
-                              <a :href="item.source" :download="item.name">{{item.name}}</a>
+                              <a :href="item.source" :download="item.name">
+                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                    :src="item.source" alt="" class="file_picture"><span
+                                    class="file_title">{{item.title}}</span></div>
+                                <span class="file_arc">{{item.name}}</span>
+                              </a>
+                              <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                                  @click="delete_file(cardIndex)" class="garbage">
+                              </div>
+
                             </li>
                           </transition-group>
                         </ul>
@@ -1733,7 +1745,16 @@
                         <ul>
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
-                              <a :href="item.source" :download="item.name">{{item.name}}</a>
+                              <a :href="item.source" :download="item.name">
+                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                    :src="item.source" alt="" class="file_picture"><span
+                                    class="file_title">{{item.title}}</span></div>
+                                <span class="file_arc">{{item.name}}</span>
+                              </a>
+                              <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                                  @click="delete_file(cardIndex)" class="garbage">
+                              </div>
+
                             </li>
                           </transition-group>
                         </ul>
