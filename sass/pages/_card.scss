@@ -869,11 +869,12 @@
       // border: 2px solid #fff;
       background-color: $primary;
       color: #fff;
-      padding: 5px;
+      padding: 7px;
       margin-top: 5px;
       // border-radius: 5px;
       transition: all 0.3s;
-      @include baseBtn(auto, auto, 10px);
+      border-radius: 5px;      
+      // @include baseBtn(auto, auto, 10px);
     }
   }
 }
