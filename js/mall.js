@@ -115,7 +115,7 @@ function mall_content() {
 
         // 下拉選單 Value
         mall_color_optionSingle.value = mall_data[i].product_src;
-        console.log(mall_color_optionSingle.value)
+        // console.log(mall_color_optionSingle.value)
 
         // // 下拉換圖
         var bImag = document.querySelector('.b_img');
