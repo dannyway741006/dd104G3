@@ -134,7 +134,7 @@
     // @include card(auto, auto, false);
     display: inline-block;
     position: relative;
-    background-color: $white;
+    background-color: rgba(255,255,255,.4);
     border-radius: 10px;
     box-shadow: 1px 1px 3px $shadow;
     padding: 20px;
@@ -227,7 +227,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     max-width: 970px;
-    background-color: $white;
+    // background-color: $white;
     border-radius: 10px;
     box-shadow: 1px 1px 3px $shadow;
     margin-top: 20px;
@@ -286,7 +286,7 @@
             position: absolute;
             @include positionCenter();
             // border: 1px solid blue;
-            background-color: rgba(0, 0, 0, 0.1);
+            // background-color: rgba(0, 0, 0, 0.1);
             height: 100%;
             width: 100%;
             cursor: pointer;
@@ -552,12 +552,13 @@
 
 //日曆打開卡片們
 .cal_card_list_box {
-  border-radius: 0 0 10px 10px;
-  width: 300px;
+  border-radius:20px;
+  width: 320px;
   height: 60vh;
+  padding: 10px;
   max-height: 60vh;
   overflow-y: auto;
-  border: 1px solid $shadow;
+  // border: 1px solid $shadow;
   background-color: $white;
   background-image: linear-gradient(-30deg,#81c7d4,#e1e9f7,#f8c3cd);
   box-shadow: 1px 1px 3px $shadow;

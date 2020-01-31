@@ -115,7 +115,7 @@ try {
       $todos->bindValue(":todo_no", $_POST["todo_no"]);
       $todos->bindValue(":todo_cont", $_POST["todo_cont"]);
       $todos->bindValue(":todo_cont_sta", 0);
-      $todos->bindValue(":todo_timer", 10);
+      $todos->bindValue(":todo_timer", 0);
       $todos->bindValue(":todo_cont_clock", 0);
       $todos->execute();
       $todos_cont_id = $pdo->lastInsertId();
