@@ -301,6 +301,7 @@ input[type=number]::-webkit-inner-spin-button {
         padding-top: 70px;
         overflow: hidden;
         display: flex;
+        position: relative;
 
         %transition_all_03s {
           transition: all .3s ease;
@@ -313,7 +314,7 @@ input[type=number]::-webkit-inner-spin-button {
 
         .swiper-container {
           width: 80%;
-          height: 100vh;
+          height: 100%;
           // display:inline-block;
           // vertical-align:top;
           float: left;
@@ -338,7 +339,7 @@ input[type=number]::-webkit-inner-spin-button {
                 width: 100%;
 
                 .title {
-                  font-size: 20px;
+                  @include font(1);
                 }
               }
             }
@@ -380,22 +381,21 @@ input[type=number]::-webkit-inner-spin-button {
 
           .content {
             position: absolute;
-            top: 40%;
+            top: 55%;
             left: 0;
             width: 50%;
             padding-left: 5%;
             color: #fff;
 
             .title {
-              font-size: 2.6em;
+              @include font(5);
               font-weight: bold;
               margin-bottom: 30px;
             }
 
             .caption {
               display: block;
-              font-size: 13px;
-              line-height: 1.4;
+              @include font;
               transform: translateX(50px);
               opacity: 0;
               transition: opacity .3s ease, transform .7s ease;
@@ -421,146 +421,6 @@ input[type=number]::-webkit-inner-spin-button {
 
         .swiper-button-next {
           transform: translateX(-50px);
-        }
-
-        // .developer_img {
-        //   width: 80%;
-        //   height: 100%;
-        //   border: 1px solid greenyellow;
-        //   overflow: hidden;
-        //   @keyframes change {
-        //     0%{
-        //       transform: translateX(0%);
-        //       animation-delay: 1s;
-        //     }
-        //     20%{
-        //       animation-delay: 1s;
-        //       transform: translateX(calc((-100% / 7)*2));
-        //     }
-        //     30%{
-        //       animation-delay: 1s;
-        //       transform: translateX(calc((-100% / 7)*3));
-        //     }
-
-        //   }
-        //   .developer_pic_box {
-        //     width: 700%;
-        //     height: 100%;
-        //     border: 6px solid goldenrod;
-        //     display: flex;
-        //     animation:change 5s;
-
-
-        //     .developer_pic1 {
-        //       width: calc(100% / 7);
-        //       height: 100%;
-        //       background-color: rgb(93, 158, 40);
-        //     }
-
-        //     .developer_pic2 {
-        //       width: calc(100% / 7);
-        //       height: 100%;
-        //       background-color: rgb(123, 155, 116);
-        //     }
-
-        //     .developer_pic3 {
-        //       width: calc(100% / 7);
-        //       height: 100%;
-        //       background-color: rgb(176, 87, 184);
-        //     }
-
-        //     .developer_pic4 {
-        //       width: calc(100% / 7);
-        //       height: 100%;
-        //       background-color: rgb(172, 207, 161);
-        //     }
-
-        //     .developer_pic5 {
-        //       width: calc(100% / 7);
-        //       height: 100%;
-        //       background-color: rgb(185, 144, 29);
-        //     }
-
-        //     .developer_pic6 {
-        //       width: calc(100% / 7);
-        //       height: 100%;
-        //       background-color: rgb(63, 202, 133);
-        //     }
-
-        //     .developer_pic7 {
-        //       width: calc(100% / 7);
-        //       height: 100%;
-        //       background-color: rgb(133, 133, 175);
-        //     }
-
-        //   }
-
-        //   .active {
-        //     transform: translateX(0%);
-        //     transition: all 1s;
-        //     transition-duration: 1s;
-        //   }
-
-        //   .active1 {
-        //     transform: translateX(calc(-100% / 7));
-        //     transition: all 1s;
-        //     transition-duration: 1s;
-        //   }
-        // }
-
-        // .developer_side {
-        //   width: 20%;
-        //   height: 100%;
-        //   border: 1px solid goldenrod;
-
-        //   .developer_side_box {
-        //     width: 100%;
-        //     height: 160%;
-        //     border: 1px solid royalblue;
-
-        //     .developer_pic_side1 {
-        //       width: 100%;
-        //       height: calc(100% / 7);
-        //       background-color: rgb(93, 158, 40);
-        //     }
-
-        //     .developer_pic_side2 {
-        //       width: 100%;
-        //       height: calc(100% / 7);
-        //       background-color: rgb(123, 155, 116);
-        //     }
-
-        //     .developer_pic_side3 {
-        //       width: 100%;
-        //       height: calc(100% / 7);
-        //       background-color: rgb(176, 87, 184);
-        //     }
-
-        //     .developer_pic_side4 {
-        //       width: 100%;
-        //       height: calc(100% / 7);
-        //       background-color: rgb(172, 207, 161);
-        //     }
-
-        //     .developer_pic_side5 {
-        //       width: 100%;
-        //       height: calc(100% / 7);
-        //       background-color: rgb(185, 144, 29);
-        //     }
-
-        //     .developer_pic_side6 {
-        //       width: 100%;
-        //       height: calc(100% / 7);
-        //       background-color: rgb(63, 202, 133);
-        //     }
-
-        //     .developer_pic_side7 {
-        //       width: 100%;
-        //       height: calc(100% / 7);
-        //       background-color: rgb(133, 133, 175);
-        //     }
-        //   }
-        // }
       }
     }
   }
@@ -1013,7 +873,7 @@ input[type=number]::-webkit-inner-spin-button {
 .memlibox1 {
   width: 350px;
   height: 200px;
-  background-color: rgb(255, 255, 255);
+  background-color: $white;
   position: fixed;
   z-index: 10006;
   left: 0%;
