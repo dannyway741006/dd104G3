@@ -1,8 +1,6 @@
 //新增專案
 
-var Photoshop = VueColor.Photoshop
 var chrome = VueColor.Chrome
-var sketch = VueColor.Sketch
 
 var defaultProps = {
   hex8: '#194d33',
@@ -138,7 +136,7 @@ var main_content = new Vue({
     test_length: '',
 
     progress_mount: [],
-    todoListTitle: null,
+    todoListTitle:'',
 
 
     //卡片背面member燈箱
@@ -1092,7 +1090,8 @@ var main_content = new Vue({
     todo_list_add(index) {
       //如何在新增代辦項目時產生變數todo_no
       const vm = this;
-      if (this.todoListTitle.length !=0) {
+      console.log(this.todoListTitle.length)
+      if (this.todoListTitle.length !='') {
         this.programs[this.page][this.todo_type][0].cards[index].todo_list_content_detail.push({
           todo_no: '',
           title: this.todoListTitle,
@@ -1132,7 +1131,7 @@ var main_content = new Vue({
             }
           });
         }
-        this.todoListTitle = null;
+        this.todoListTitle = '';
         this.todo_lightbox_switch = false;
         this.todo_switch = false;
       } else {};
@@ -1435,7 +1434,7 @@ var main_content = new Vue({
         if (pro_page[this.todo_type][0].cards[this.card_no].member_inout.map(x => x.src).indexOf(this.showmember_select[index].src) === -1) {
           pro_page[this.todo_type][0].cards[this.card_no].member_inout.push({
             src: this.showmember_select[index].src,
-            mem_no: this.showmember_select[index].mem_no
+            mem_no: this.showmember_select[index].mem_no,
           })
         }
         this.mem_data_card_add_delete("mem_data_card_add", pro_page[this.todo_type][0].cards[this.card_no].card_no, this.showmember_select[index].mem_no);
@@ -2020,8 +2019,8 @@ var main_content = new Vue({
   components: {
     DatePicker,
     'chrome-picker': chrome,
-    'photoshop-picker': Photoshop,
-    'sketch-picker': sketch,
+    // 'photoshop-picker': Photoshop,
+    // 'sketch-picker': sketch,
 
   },
 });
