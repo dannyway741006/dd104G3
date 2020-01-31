@@ -15,13 +15,13 @@ try {
       $res->bindParam(':card_name', $card_name);
       $res->execute();
       $lastCardId = $pdo->lastInsertId();
-      $sql = "insert into `person_in_charge` 
-      (mem_no, card_no) values 
-      (:mem_no, :card_no)";
-      $join = $pdo->prepare($sql);
-      $join->bindValue(':mem_no', $_SESSION["mem_no"]);
-      $join->bindValue(':card_no', $lastCardId);
-      $join->execute();
+      // $sql = "insert into `person_in_charge` 
+      // (mem_no, card_no) values 
+      // (:mem_no, :card_no)";
+      // $join = $pdo->prepare($sql);
+      // $join->bindValue(':mem_no', $_SESSION["mem_no"]);
+      // $join->bindValue(':card_no', $lastCardId);
+      // $join->execute();
       // require_once('get_program.php');
       echo json_encode(['status' => 'success', 'content' => '新建卡片成功']);
       break;
@@ -50,8 +50,12 @@ try {
       $sql = "update `card` set card_date = :card_date 
       where card_no = :card_no";
       $res = $pdo->prepare($sql);
-      $res->bindParam('card_date', $_POST['card_date']);
-      $res->bindParam('card_no', $_POST['card_no']);
+      if( $_POST['card_date']!=null){
+          $res->bindValue(':card_date', $_POST['card_date']);
+      }else{
+        $res->bindValue(':card_date', null);
+      }
+      $res->bindValue(':card_no', $_POST['card_no']);
       $res->execute();
 
       echo json_encode(['status' => 'success', 'content' => '異動成功']);

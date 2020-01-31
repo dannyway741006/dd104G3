@@ -167,11 +167,11 @@ var main_content = new Vue({
         this.choose_colors.hex8
       )
       this.create_color = false;
-      console.log(this.programs)
+      // console.log(this.programs)
     },
     //新增專案
     add_program() {
-      console.log(this.colors)
+      // console.log(this.colors)
       // console.log(this.programs)
       // console.log(main_content.programs)
       if (this.pro_title !== "" && this.selectColor) {
@@ -224,7 +224,7 @@ var main_content = new Vue({
           }],
 
         });
-        console.log(this.programs)
+        // console.log(this.programs)
         this.pro_title = "";
         this.selectColor = null;
         this.click_complete_btn = false;
@@ -240,7 +240,7 @@ var main_content = new Vue({
             pro_title: this.programs[this.page].pro_title,
             pro_col: this.programs[this.page].pro_col,
           }, function (res) {
-            console.log(res)
+            // console.log(res)
             vm.programs[vm.page].pro_no = res;
           })
 
@@ -324,7 +324,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
             vm.src = './userImg/' + vm.src;
           },
           "error": function (data) {
@@ -560,7 +560,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
             if (vm.click_complete_btn == false) { //現有專案畫面
               vm.programs[vm.page][this_todo_type][0].cards[index].member_inout = data.data;
               for (let x = 0; x < (data.data).length; x++) {
@@ -640,7 +640,7 @@ var main_content = new Vue({
             },
             "cache": false,
             "success": function (data) {
-              console.log(data);
+              // console.log(data);
               // console.log(e.type);
 
             },
@@ -690,7 +690,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
 
           },
           "error": function (data) {
@@ -893,8 +893,8 @@ var main_content = new Vue({
         // console.log(this.page);
         this.programs[this.page][this_todo_type][0].cards[index].card_member = this.programs[this.page].program_memeber;
       } else {
-        console.log(this.history_page);
-        console.log(this.history_page);
+        // console.log(this.history_page);
+        // console.log(this.history_page);
         this.history_programs[this.history_page][this_todo_type][0].cards[index].card_member = this.history_programs[this.history_page].program_memeber;
       }
       this.mem_data_card_get(index, this_todo_type);
@@ -918,7 +918,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
             // vm.programs[vm.page][vm.todo_type][0].cards.splice(index, 1);
           },
           "error": function (data) {
@@ -957,7 +957,7 @@ var main_content = new Vue({
               },
               "cache": false,
               "success": function (data) {
-                console.log(data);
+                // console.log(data);
 
               },
               "error": function (data) {
@@ -984,7 +984,7 @@ var main_content = new Vue({
               },
               "cache": false,
               "success": function (data) {
-                console.log(data);
+                // console.log(data);
 
               },
               "error": function (data) {
@@ -1038,7 +1038,8 @@ var main_content = new Vue({
           this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '完成';
         }
       }
-
+    
+      
       if (this.islogin.length != 0) {
         $.ajax({
           "type": "POST",
@@ -1076,7 +1077,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
 
           },
           "error": function (data) {
@@ -1090,7 +1091,7 @@ var main_content = new Vue({
     todo_list_add(index) {
       //如何在新增代辦項目時產生變數todo_no
       const vm = this;
-      console.log(this.todoListTitle.length)
+      // console.log(this.todoListTitle.length)
       if (this.todoListTitle.length !='') {
         this.programs[this.page][this.todo_type][0].cards[index].todo_list_content_detail.push({
           todo_no: '',
@@ -1105,9 +1106,9 @@ var main_content = new Vue({
           //改變待辦事項標題
           test: '',
         })
-        // $(".right_aside").animate({
-        //   scrollTop: $(document).height() - $(".card_file").height()
-        // }, 300);
+        $(".right_aside").animate({
+          scrollTop: $(document).height() - $(".card_file").height()
+        }, 300);
         // console.log(this.islogin.length)
         if (this.islogin.length != 0) {
           $.ajax({
@@ -1154,7 +1155,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
 
           },
           "error": function (data) {
@@ -1184,7 +1185,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
           },
           "error": function (data) {
             console.log(data);
@@ -1224,7 +1225,7 @@ var main_content = new Vue({
             },
             "cache": false,
             "success": function (data) {
-              console.log(data);
+              // console.log(data);
               vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists).length - 1].todo_cont_no = data.todo_cont_no;
             },
             "error": function (data) {
@@ -1239,7 +1240,7 @@ var main_content = new Vue({
 
     // 刪除最小子項目
     delete_todo_title(detailIndex, index) {
-      console.log()
+      // console.log()
 
       const vm = this;
       // console.log(this.islogin.length)
@@ -1255,7 +1256,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
           },
           "error": function (data) {
             console.log(data);
@@ -1284,7 +1285,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
 
           },
           "error": function (data) {
@@ -1302,7 +1303,7 @@ var main_content = new Vue({
         const vm = this;
 
         this.file = e.target.files;
-        console.log(e.target.files);
+        // console.log(e.target.files);
         let upFile = e.target.files[0];
         this.file_switch = false;
         this.fileder_switch = false;
@@ -1330,7 +1331,7 @@ var main_content = new Vue({
               form_data.append("pro_no", pro.pro_no);
               form_data.append("card_no", pro_card.card_no);
               form_data.append("file_name", upFile.name);
-              console.log(form_data);
+              // console.log(form_data);
               $.ajax({
                 "type": "POST",
                 "url": "url",
@@ -1343,7 +1344,7 @@ var main_content = new Vue({
                 "processData": false,
 
                 "success": function (data) {
-                  console.log(data);
+                  // console.log(data);
                   var source = data.data;
 
                   let pic = file_name.split(".")[1];
@@ -1356,11 +1357,11 @@ var main_content = new Vue({
                     source: source,
                     file_no: '',
                   });
-                  console.log( pro_card.filebox)
+                  // console.log( pro_card.filebox)
 
-                  // $(".right_aside").animate({
-                  //   scrollTop: $(document).height()
-                  // }, 300);
+                  $(".right_aside").animate({
+                    scrollTop: $(document).height()
+                  }, 300);
                   pro_card.filebox[(pro_card.filebox).length - 1].file_no = data.file_no;
 
                 },
@@ -1378,10 +1379,10 @@ var main_content = new Vue({
                 name: file_name,
                 source: pro_card.file_result,
               });
-              console.log(file_name.split(".")[1])
-              // $(".right_aside").animate({
-              //   scrollTop: $(document).height()
-              // }, 300);
+              // console.log(file_name.split(".")[1])
+              $(".right_aside").animate({
+                scrollTop: $(document).height()
+              }, 300);
             }
 
 
@@ -1408,7 +1409,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
 
 
           },
@@ -1465,8 +1466,8 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
-            console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no)
+            // console.log(data);
+            // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no)
             // vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=true;
 
           },
@@ -1498,7 +1499,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
 
           },
           "error": function (data) {
@@ -1647,7 +1648,7 @@ var main_content = new Vue({
       }
     },
     todo_inner_progress_bar(detailIndex) {
-      console.log(this.programs[this.page].card_list_todo[0].cards[this.card_no].todo_list_content_detail[detailIndex]);
+      // console.log(this.programs[this.page].card_list_todo[0].cards[this.card_no].todo_list_content_detail[detailIndex]);
       let length = (this.programs[this.page].card_list_todo[0].cards[this.card_no].todo_list_content_detail[detailIndex].lists).length;
       if (length == 0) {
         return 0;
@@ -1703,7 +1704,7 @@ var main_content = new Vue({
           return this.programs[this.page].card_list_todo[0].cards[cardIndex].calendar_date;
         }
       } else {
-        console.log(cardIndex);
+        // console.log(cardIndex);
         return '未設定';
       }
     },
@@ -1998,7 +1999,7 @@ var main_content = new Vue({
           main_content.history_page = 0;
           main_content.show_cards(main_content.history_page, true);
         }
-        console.log(main_content.programs)
+        // console.log(main_content.programs)
 
       }
     }
@@ -2007,7 +2008,7 @@ var main_content = new Vue({
        xhr.open("post", './php/pm/get_program_list.php', true);
     //送出資料
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    console.log(this);
+    // console.log(this);
     let data_info = `mem_no=${this.userInfo.mem_no}`;
 
     xhr.send(data_info);
