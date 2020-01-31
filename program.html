@@ -169,7 +169,7 @@
 
             <div class="invite_list">
               <div class="program_member" v-for="(item,index) in program_member_show" v-if="index < 3"><img
-                  :src="item.src" alt=""></div>
+                  :src="item.src" alt="" :title="item.member_name"></div>
 
               <div class="program_member_more" v-show="programs[page].hideMember_sum">+{{programs_member_hidenum}}</div>
               <button class="invite_btn" @click.stop='show_invite_add_member_box()'>邀請</button>
