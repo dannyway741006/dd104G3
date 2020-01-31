@@ -2004,8 +2004,8 @@ var main_content = new Vue({
       }
     }
 
-
-    xhr.open("post", './php/pm/get_program_list.php', true);
+    if (this.islogin.length != 0){
+       xhr.open("post", './php/pm/get_program_list.php', true);
     //送出資料
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     console.log(this);
@@ -2013,6 +2013,8 @@ var main_content = new Vue({
 
     xhr.send(data_info);
     // console.log(this)
+    }
+   
   },
 
   components: {
