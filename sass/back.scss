@@ -34,6 +34,22 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      >div {
+        margin: 5px;
+      }
     }
+  }
+  .modal{
+    background-color: rgba($fontColorBlack, .8);
+    &.open{
+      display: block;
+    }
+  }
+  .modal-dialog {
+    @include positionCenter;
+    width: 500px;
+  }
+  .form-control {
+    border-color: $dark;
   }
 }

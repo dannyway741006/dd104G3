@@ -158,7 +158,7 @@ try {
       $res->bindParam(':todo_cont_no', $_POST['todo_cont_no']);
       $res->execute();
 
-      echo json_encode(['status' => 'success', 'content' => '加入番茄鐘']);
+      echo json_encode(['status' => 'success', 'content' => '修改番茄鐘']);
       break;
 
       case "add_file":

@@ -65,8 +65,8 @@ try {
             "member_name" => $member["mem_name"],
             "userId" => $member["mem_id"],
             "src" =>  './userImg/'.$member["headshot"],
-            "check" =>  '',
-            "uncolor" =>  false
+            "check" =>  './img/unchecked_d.3b5daaa1.svg',
+            // "uncolor" =>  false
           ];
         }
       }
