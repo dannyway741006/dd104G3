@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="./css/main.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
     rel="stylesheet" />
+ 
+
   <title>職人口袋 | 會員中心</title>
 </head>
 
@@ -312,32 +314,39 @@
                   </div>
                 </div>
               </div>
-              <div id="terms2" class="terms2">
+              <!-- <div id="terms2" class="terms2">
                 <div class="terms_box2">
-                  <!-- <input type="text">
                   <input type="text">
                   <input type="text">
                   <input type="text">
-                  <input type="text"> -->
+                  <input type="text">
+                  <input type="text">
                 </div>
-              </div>
+              </div> -->
               <div id="terms3" class="terms3">
-                <div class="terms_box3">
-                  <div class="developer">
-                    <div class="developer_concent">
-                      <div class="developer_1">
-                        
-                      </div>
-                      <div class="developer_2">
-
-                      </div>
-                    </div>
+                <div class="developer_img">
+                  <div id="developer_pic_box" class="developer_pic_box">
+                    <div id="developer_pic1" class="developer_pic1"><img src="" alt=""></div>
+                    <div class="developer_pic2"><img src="" alt=""></div>
+                    <div class="developer_pic3"><img src="" alt=""></div>
+                    <div class="developer_pic4"><img src="" alt=""></div>
+                    <div class="developer_pic5"><img src="" alt=""></div>
+                    <div class="developer_pic6"><img src="" alt=""></div>
+                    <div class="developer_pic7"><img src="" alt=""></div>
+                  </div>  
+                </div>
+                <div class="developer_side">
+                  <div class="developer_side_box">
+                    <div id="developer_pic_side1" class="developer_pic_side1"></div>
+                    <div id="developer_pic_side2" class="developer_pic_side2"></div>
+                    <div id="developer_pic_side3" class="developer_pic_side3"></div>
+                    <div class="developer_pic_side4"></div>
+                    <div class="developer_pic_side5"></div>
+                    <div class="developer_pic_side6"></div>
+                    <div class="developer_pic_side7"></div>
                   </div>
-                  </div>
-                 
-                
-                  <div class="developer_5"></div>
-                  <div class="developer_6"></div>
+          
+                </div>
               </div>
             </div>
           </div>
@@ -372,14 +381,14 @@
                     <li>
                       <p>帳號：</p>
                       <label for="" class="line_box">
-                        <input type="text" autocomplete="off" class="text_word" id="memId" disabled >
+                        <input type="text" autocomplete="off" class="text_word" id="memId" disabled>
                         <span class="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>姓名：</p>
                       <label for="" class="line_box">
-                        <input type="text" autocomplete="off" class="text_word" id="memName" placeholder="更改資料" >
+                        <input type="text" autocomplete="off" class="text_word" id="memName" placeholder="更改資料">
                         <span class="upbox"></span>
                       </label>
                     </li>
@@ -393,18 +402,18 @@
                     <li>
                       <p>電話：</p>
                       <label for="" class="line_box">
-                        <input type="number" autocomplete="off" class="text_word" id="memPhone" placeholder="更改資料" >
+                        <input type="number" autocomplete="off" class="text_word" id="memPhone" placeholder="更改資料">
                         <span class="upbox"></span>
                       </label>
                     </li>
                     <li>
                       <p>住址：</p>
                       <label for="" class="line_box">
-                        <input type="text" autocomplete="off" class="text_word" id="memAddr" placeholder="更改地址" >
+                        <input type="text" autocomplete="off" class="text_word" id="memAddr" placeholder="更改地址">
                         <span class="upbox"></span>
                       </label>
                     </li>
-                    <button type="button" class="memberbtn"  id="enter_delete1">確認修改</button>
+                    <button type="button" class="memberbtn" id="enter_delete1">確認修改</button>
                   </ul>
                 </form>
               </div>
@@ -449,7 +458,7 @@
                       </div>
                     </td>
                   </tr> -->
-                 
+
                 </table>
               </div>
               <div class="order_details">
@@ -465,7 +474,7 @@
                     </table>
                   </div>
                 </div>
-             <!-- =============================================================================================  -->
+                <!-- =============================================================================================  -->
                 <div class="details_img">
                   <img src="./img/member_img/folder-open-solid.svg" alt="" width="150">
                 </div>
@@ -500,7 +509,7 @@
   </div>
   </main>
   </div>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
   <script src="./js/lib/three.min.js"></script>
   <script type="x-shader/x-fragment" id="fragmentshader">
     uniform vec3 color;
@@ -512,11 +521,11 @@
             gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
         }
     </script>
-  <script src="./js/lib/particle.js"></script>
   <script src="./js/background.js"></script>
   <script src="./js/layout.js"></script>
   <script src="./js/member.js"></script>
   <script src="./js/member_php1.js"></script>
+
 </body>
 
 </html>
