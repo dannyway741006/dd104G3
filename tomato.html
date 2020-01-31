@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Noto+Sans+TC:400,500&display=swap"
@@ -102,7 +103,7 @@
               <p>時間設定</p>
             </div>
             <div class="setting_timer">
-              <p>Work</p>
+              <p>work</p>
               <div>
                 <label>
                   <input type="number" v-model="workmin"/>
@@ -116,7 +117,7 @@
               </div>
             </div>
             <div class="setting_timer">
-              <p>Break</p>
+              <p>REST</p>
               <div>
                 <label>
                   <input type="number" v-model="restmin"/>
@@ -155,8 +156,8 @@
             </div>
             <div class="clockControl">
               <div class="switch">
-                <div class="work" :class="{'active': working}" @click="working=true">work</div>
-                <div class="rest" :class="{'active': !working}" @click="working=false">rest</div>
+                <div class="work" :class="{'active': working}" @click="working=true"><P>WORK</P></div>
+                <div class="rest" :class="{'active': !working}" @click="working=false"><P>REST</P></div>
               </div>
             </div>
           </div>
@@ -164,7 +165,7 @@
             <div class="todoList" :class="{'toTrello':toTrello}">
               <div class="custom" id="todoCon1">
                 <div class="todoHead">
-                  <h2>自訂任務</h2>
+                  <h2>個人項目</h2>
                   <div class="changeTodo moveToTrello" @click="toTrello=!toTrello" >
                     <img src="./img/icon/arrow-point-to-right.svg" alt="">
                     <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
@@ -213,7 +214,7 @@
                    <img src="./img/icon/arrow-point-to-left.svg" alt="">
                    <img src="./img/icon/arrow-point-to-left-on.svg" alt="">
                   </div>
-                  <h2>行事曆任務</h2>
+                  <h2>專案任務</h2>
                     <div class="changeTodo moveToStat" @click="toStat=!toStat">
                       <img src="./img/icon/arrow-point-to-right.svg" alt="">
                       <img src="./img/icon/arrow-point-to-right_on.svg" alt="">
