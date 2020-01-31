@@ -17,6 +17,8 @@
 
     h1 {
       @include font(5, 50px);
+      color: $dark;
+      font-weight: normal;
       // color: $fontColorBlack;
     }
   }
@@ -27,6 +29,7 @@
     padding: 10px;
     border-radius: 20px;
     box-shadow: 1px 1px 3px $shadow;
+    color: $dark;
   }
 
   .cart_list {
@@ -34,13 +37,14 @@
     margin-right: 10px;
     overflow: auto;
     transition: width .3s;
+    background-color: rgba($white, .5);
 
     .cart_product {
       margin-bottom: 20px;
       display: flex;
       border-radius: 10px;
       box-shadow: 1px 1px 3px $shadow;
-      background-image: linear-gradient(30deg, rgba(129, 199, 212, 0.15), rgba(248, 195, 205, 0.15));
+      background-color: rgba($white, .3);
       justify-content: flex-start;
       align-items: center;
       position: relative;
@@ -107,6 +111,7 @@
     box-sizing: border-box;
     overflow: auto;
     transition: width .3s;
+    background-color: rgba($white, .8);
 
     .cart_summary {
       width: 100%;
@@ -117,6 +122,8 @@
       h2 {
         height: 50px;
         @include font(4, 50px);
+        color: $dark;
+        font-weight: normal;
       }
 
       p {
