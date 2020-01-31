@@ -54,7 +54,6 @@ try {
       // $_SESSION['mem_no'] = 1; //-----------------------------
       // $res->bindValue(':mem_no', $_SESSION['mem_no']);
       $res->bindValue(':pro_no', $_POST['pro_no']);
-      
       $res->execute();
       if ($res->rowCount()) {
         $members = $res->fetchAll(PDO::FETCH_ASSOC);

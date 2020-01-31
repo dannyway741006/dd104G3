@@ -263,6 +263,7 @@ try {
         where pic.mem_no=m.mem_no and pic.card_no=:card_no';
       $res = $pdo->prepare($sql);
       $res->bindValue(":card_no", $_POST["card_no"]);
+      // $res->bindValue(":mem_no", $_POST["mem_no"]);
       $res->execute();
       if ($res->rowCount()) {
         $card_members = $res->fetchAll(PDO::FETCH_ASSOC);
