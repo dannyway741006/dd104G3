@@ -69,7 +69,7 @@
         <div class="user_status">
           <div class="user_shot">
             <div>
-              <img src="./img/user.9c173fc0.svg" alt="member" id="user_shot"/>
+              <img src="./img/user.9c173fc0.svg" alt="member" id="user_shot" />
             </div>
             <p id="mem_id">尚未登入</p>
           </div>
@@ -105,9 +105,11 @@
                   <div class="add_colors_array " @click.prevent="create_color =! create_color">
                     <img src="./img/plus.a4d786b4.svg" alt="" class="add_inner_color">
                   </div>
-                  <div class="new_add"  @click="push_to_collors"  v-show="create_color"><div class="add_button">新增</div></div>
-               
-                   <chrome-picker v-model="choose_colors" v-show="create_color"/>       
+                  <div class="new_add" @click="push_to_collors" v-show="create_color">
+                    <div class="add_button">新增</div>
+                  </div>
+
+                  <chrome-picker v-model="choose_colors" v-show="create_color" />
                 </div>
                 <button @click="add_program(),create_color=false" type="button">建立專案</button>
               </div>
@@ -192,7 +194,8 @@
                   <div class="add_card_input_box_all">
                     <transition name="fade" mode="out-in">
                       <div class="add_cards_btn_div" v-show="add_cards_btn_div"
-                        @click.stop="show_cards_list_card_input_box()" :style="{backgroundColor: `${item.pro_col+'20'}`}">
+                        @click.stop="show_cards_list_card_input_box()"
+                        :style="{backgroundColor: `${item.pro_col+'20'}`}">
                         <button class="add_cards_btn"><img src="./img/plus.a4d786b4.svg" alt=""><img
                             src="./img/icon/plus_on.d2fc8c08.svg" alt=""></button>
                         <p>建立卡片</p>
@@ -532,18 +535,13 @@
             <!-- 日曆打開卡片們 -->
             <transition name="horizentalfade" mode="out-in">
               <div class="cal_card_list_box" v-if="calendar_day_click">
-                <!-- <div class="week" v-for="i in 5" :key="i"> -->
-                <!-- <div class="day" v-for="j in 7" :data-date="calendarMonth[(i-1)*7+j-1].date"> -->
 
-                <!-- <div class="cal_card_list_box" v-if="calendar_day_click" @click.stop=""
-              v-for="(item,index) in calendar_cards" :key="index"> -->
 
                 <div class="cal_card_list" v-for="(item,index) in calendar_cards" v-if="index == cal_today">
 
                   <transition-group name="horizentalfade" mode="out-in">
                     <div class="cal_card" v-for="(item2,index) in item" :key="index"
                       @click="open_card_func(to_pro_card(item2.pro_no,item2.card_no, item2.card_type, item2.pro_sta), item2.card_type),todo_type=item2.card_type">
-                      <!-- <div class="cal_card"> -->
                       <div class="cal_card_color" :style='{backgroundColor: item2.pro_col}'>
                       </div>
                       <p>{{item2.card_name}}</p>
@@ -564,9 +562,7 @@
 
                   </transition-group>
                 </div>
-                <!-- </div>
 
-            </div> -->
               </div>
             </transition>
           </div>
@@ -621,7 +617,7 @@
                     <div class="first_right">
                       <h3>新增至卡片</h3>
                       <hr />
-                      <div class="first_right_member" @click.stop="openmember(),member_switch =! member_switch"
+                      <div class="first_right_member" @click.stop="openmember()"
                         :class="{click_light_two : member_switch}">
                         <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
                         成員
@@ -649,7 +645,7 @@
                               @keyup.13="todo_list_add(cardIndex)" maxlength="50">
                           </label>
                           <div class="todo_lightbox_botton" @click="todo_list_add(cardIndex)">
-                            <button>新增</button>
+                            <button :style='{backgroundColor: programs[page].pro_col}'>新增</button>
                           </div>
                         </div>
                       </transition>
@@ -659,7 +655,7 @@
                         <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="filesearch">
                           <h3>上傳檔案</h3>
                           <form method="post" enctype="multipart/form-data">
-                            <label class="upfile_content">
+                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
                               <p>上傳附件</p>
                               <input type="file" multiple name="upFile">
                             </label>
@@ -681,11 +677,11 @@
                               <div class="card_member_message" v-for="(item,index) in showmember_select"
                                 @click.stop="member_outin(index)" :class="{mem_addcolor: item.uncolor}">
                                 <div><img :src="item.check" alt=""></div>
-                                <div><img :src="item.src" alt="" ></div>
+                                <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
                                 <!-- <div><img :src="item.check" alt=""></div> -->
-               
+
 
                               </div>
                             </li>
@@ -717,8 +713,7 @@
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
                             :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
-                          <div class="add_member_to_card"
-                            @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
+                          <div class="add_member_to_card" @click.stop="openaddmember()">
                             <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg">
 
                             <transition name="fade" mode="out-in">
@@ -805,7 +800,7 @@
                                     <img src="./img/uncheck.svg" alt="" v-else @click="item.todo_cont_sta='0'">
                                   </div>
                                   <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                  <div @click="item.tomato_color  = ! item.tomato_color">
+                                  <div >
                                     <img src="./img/icon/clockPrimary.svg" alt="" v-if="item.tomato_color"
                                       @click="droptomato(detailIndex,index)">
                                     <img src="./img/icon/time-left.svg" alt="" v-else
@@ -891,7 +886,7 @@
                     <div class="first_right">
                       <h3>新增至卡片</h3>
                       <hr />
-                      <div class="first_right_member" @click.stop="openmember(),member_switch =! member_switch"
+                      <div class="first_right_member" @click.stop="openmember()"
                         :class="{click_light_two : member_switch}">
                         <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
                         成員
@@ -919,7 +914,7 @@
                               @keyup.13="todo_list_add(cardIndex)" maxlength="50">
                           </label>
                           <div class="todo_lightbox_botton" @click="todo_list_add(cardIndex)">
-                            <button>新增</button>
+                            <button :style='{backgroundColor: programs[page].pro_col}'>新增</button>
                           </div>
                         </div>
                       </transition>
@@ -929,7 +924,7 @@
                         <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="filesearch">
                           <h3>上傳檔案</h3>
                           <form method="post" enctype="multipart/form-data">
-                            <label class="upfile_content">
+                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
                               <p>上傳附件</p>
                               <input type="file" multiple name="upFile">
                             </label>
@@ -986,8 +981,7 @@
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
                             :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
-                          <div class="add_member_to_card"
-                            @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
+                          <div class="add_member_to_card" @click.stop="openaddmember()">
                             <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg">
 
                             <transition name="fade" mode="out-in">
@@ -1078,7 +1072,7 @@
                                     <img src="./img/uncheck.svg" alt="" v-else @click="item.todo_cont_sta='0'">
                                   </div>
                                   <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                  <div @click="item.tomato_color  = ! item.tomato_color">
+                                  <div >
                                     <img src="./img/icon/clockPrimary.svg" alt="" v-if="item.tomato_color"
                                       @click="droptomato(detailIndex,index)">
                                     <img src="./img/icon/time-left.svg" alt="" v-else
@@ -1163,7 +1157,7 @@
                     <div class="first_right">
                       <h3>新增至卡片</h3>
                       <hr />
-                      <div class="first_right_member" @click.stop="openmember(),member_switch =! member_switch"
+                      <div class="first_right_member" @click.stop="openmember()"
                         :class="{click_light_two : member_switch}">
                         <img src="./img/card_img/multiple-users-silhouette.cde8086c.svg" alt="" style="width: 20px;" />
                         成員
@@ -1191,7 +1185,7 @@
                               @keyup.13="todo_list_add(cardIndex)" maxlength="50">
                           </label>
                           <div class="todo_lightbox_botton" @click="todo_list_add(cardIndex)">
-                            <button>新增</button>
+                            <button :style='{backgroundColor: programs[page].pro_col}'>新增</button>
                           </div>
                         </div>
                       </transition>
@@ -1201,7 +1195,7 @@
                         <div class="file_lightbox" v-show="file_switch" @click.stop="" @change="filesearch">
                           <h3>上傳檔案</h3>
                           <form method="post" enctype="multipart/form-data">
-                            <label class="upfile_content">
+                            <label class="upfile_content" :style='{backgroundColor: programs[page].pro_col}'>
                               <p>上傳附件</p>
                               <input type="file" multiple name="upFile">
                             </label>
@@ -1258,8 +1252,7 @@
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
                             :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember"><span>+{{hidemembers}}</span></div>
-                          <div class="add_member_to_card"
-                            @click.stop="openaddmember(),addmemberswitch =! addmemberswitch">
+                          <div class="add_member_to_card" @click.stop="openaddmember()">
                             <img src="./img/plus.a4d786b4.svg" alt="" class="memeimg">
 
                             <transition name="fade" mode="out-in">
@@ -1349,7 +1342,7 @@
                                     <img src="./img/uncheck.svg" alt="" v-else @click="item.todo_cont_sta='0'">
                                   </div>
                                   <p :class="{lineThrough:item.text}">{{item.content}}</p>
-                                  <div @click="item.tomato_color  = ! item.tomato_color">
+                                  <div >
                                     <img src="./img/icon/clockPrimary.svg" alt="" v-if="item.tomato_color"
                                       @click="droptomato(detailIndex,index)">
                                     <img src="./img/icon/time-left.svg" alt="" v-else
@@ -1429,7 +1422,7 @@
               <div class="card_light_box history_card_light_box" id="card_light_box" v-if="history_card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title">{{item.card_name}}</h1>
                   <div @click="opened = false;history_card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
                 <div class="lightbox_content">
@@ -1445,7 +1438,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                          :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
+                            :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
@@ -1517,14 +1510,12 @@
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
                               <a :href="item.source" :download="item.name">
-                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                <div class="file_wrap" :style='{backgroundColor: history_programs[history_page].pro_col}'><img
                                     :src="item.source" alt="" class="file_picture"><span
                                     class="file_title">{{item.title}}</span></div>
                                 <span class="file_arc">{{item.name}}</span>
                               </a>
-                              <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
-                                  @click="delete_file(cardIndex)" class="garbage">
-                              </div>
+                             
 
                             </li>
                           </transition-group>
@@ -1544,7 +1535,7 @@
               <div class="card_light_box history_card_light_box" id="card_light_box" v-if="history_card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title">{{item.card_name}}</h1>
                   <div @click="opened = false;history_card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
                 <div class="lightbox_content">
@@ -1560,7 +1551,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                          :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
+                            :key="index"><img :src="item.src" alt="" :title="item.member_name"></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
@@ -1631,15 +1622,12 @@
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
                               <a :href="item.source" :download="item.name">
-                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                <div class="file_wrap" :style='{backgroundColor: history_programs[history_page].pro_col}'><img
                                     :src="item.source" alt="" class="file_picture"><span
                                     class="file_title">{{item.title}}</span></div>
                                 <span class="file_arc">{{item.name}}</span>
                               </a>
-                              <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
-                                  @click="delete_file(cardIndex)" class="garbage">
-                              </div>
-
+                            
                             </li>
                           </transition-group>
                         </ul>
@@ -1658,7 +1646,7 @@
               <div class="card_light_box history_card_light_box" id="card_light_box" v-if="history_card_no==cardIndex"
                 v-for="(item,cardIndex) in item.cards" :key="cardIndex">
                 <div class="card_header_title" :style='{backgroundColor: history_programs[history_page].pro_col}'>
-                  <h1 id="card_title"><input type="text" v-model.trim="item.card_name" maxlength="50"></h1>
+                  <h1 id="card_title">{{item.card_name}}</h1>
                   <div @click="opened = false;history_card_no=-1"><img src="./img/card_img/cancel_w.svg" alt=""></div>
                 </div>
                 <div class="lightbox_content">
@@ -1674,7 +1662,7 @@
                         </div>
                         <div class="memimg">
                           <div class="card_member" v-for="(item,index) in item.member_inout" v-show="index < 3"
-                          :key="index"><img :src="item.src" alt=""></div>
+                            :key="index"><img :src="item.src" alt=""></div>
                           <div class="show_dote_member" v-show="item.showhideMember">
                             <span>+{{history_hidemembers}}</span>
                           </div>
@@ -1746,14 +1734,12 @@
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
                               <a :href="item.source" :download="item.name">
-                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                <div class="file_wrap" :style='{backgroundColor: history_programs[history_page].pro_col}'><img
                                     :src="item.source" alt="" class="file_picture"><span
                                     class="file_title">{{item.title}}</span></div>
                                 <span class="file_arc">{{item.name}}</span>
                               </a>
-                              <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
-                                  @click="delete_file(cardIndex)" class="garbage">
-                              </div>
+                             
 
                             </li>
                           </transition-group>
