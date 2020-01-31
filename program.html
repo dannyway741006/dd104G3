@@ -105,11 +105,11 @@
                   <div class="add_colors_array " @click.prevent="create_color =! create_color">
                     <img src="./img/plus.a4d786b4.svg" alt="" class="add_inner_color">
                   </div>
-                  <button class="new_add" @click.prevent="push_to_collors" v-show="create_color">新增</button>
-
-                  <chrome-picker v-model="choose_colors" v-show="create_color" />
+                  <div class="new_add"  @click="push_to_collors"  v-show="create_color"><div class="add_button">新增</div></div>
+               
+                   <chrome-picker v-model="choose_colors" v-show="create_color"/>       
                 </div>
-                <button @click.prevent="add_program(),create_color=false" type="button">建立專案</button>
+                <button @click="add_program(),create_color=false" type="button">建立專案</button>
               </div>
             </div>
           </form>
@@ -684,6 +684,8 @@
                                 <div><img :src="item.src" alt=""></div>
                                 <span class="card_member_name">{{item.member_name}}<span
                                     class="card_memberId">{{item.userId}}</span></span>
+                                <!-- <div><img :src="item.check" alt=""></div> -->
+               
 
                               </div>
                             </li>
@@ -744,7 +746,6 @@
                           </div>
                         </div>
                       </div>
-
                       <div class="calendar">
                         <div class="calendar_title">
                           <div><img src="./img/calendar.e1ea5ef5.svg" alt="" style="width: 20px;" /></div>
@@ -1515,7 +1516,16 @@
                         <ul>
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
-                              <a :href="item.source" :download="item.name">{{item.name}}</a>
+                              <a :href="item.source" :download="item.name">
+                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                    :src="item.source" alt="" class="file_picture"><span
+                                    class="file_title">{{item.title}}</span></div>
+                                <span class="file_arc">{{item.name}}</span>
+                              </a>
+                              <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                                  @click="delete_file(cardIndex)" class="garbage">
+                              </div>
+
                             </li>
                           </transition-group>
                         </ul>
@@ -1620,7 +1630,16 @@
                         <ul>
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
-                              <a :href="item.source" :download="item.name">{{item.name}}</a>
+                              <a :href="item.source" :download="item.name">
+                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                    :src="item.source" alt="" class="file_picture"><span
+                                    class="file_title">{{item.title}}</span></div>
+                                <span class="file_arc">{{item.name}}</span>
+                              </a>
+                              <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                                  @click="delete_file(cardIndex)" class="garbage">
+                              </div>
+
                             </li>
                           </transition-group>
                         </ul>
@@ -1726,7 +1745,16 @@
                         <ul>
                           <transition-group name="fade">
                             <li v-for="(item,cardIndex) in item.filebox" :key="cardIndex">
-                              <a :href="item.source" :download="item.name">{{item.name}}</a>
+                              <a :href="item.source" :download="item.name">
+                                <div class="file_wrap" :style='{backgroundColor: programs[page].pro_col}'><img
+                                    :src="item.source" alt="" class="file_picture"><span
+                                    class="file_title">{{item.title}}</span></div>
+                                <span class="file_arc">{{item.name}}</span>
+                              </a>
+                              <div class="trash"><img src="./img/card_img/delete.0df56913.svg" alt="" width="20"
+                                  @click="delete_file(cardIndex)" class="garbage">
+                              </div>
+
                             </li>
                           </transition-group>
                         </ul>

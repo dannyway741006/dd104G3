@@ -1093,7 +1093,7 @@
           "url": "./php/pm/card.php",
           "data": {
             "type": "update_onload_tomato",
-            "todo_cont_clock": 1,
+            "todo_cont_clock": '1',
             "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
   
           },

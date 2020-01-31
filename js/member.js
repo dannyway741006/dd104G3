@@ -89,7 +89,7 @@ let terms3 = document.getElementById("terms3");
 let terms_close = document.getElementById("terms_close");
 let for_terms_box0 = document.getElementById("for_terms_box0");
 let for_terms_box1 = document.getElementById("for_terms_box1");
-let for_terms_box2 = document.getElementById("for_terms_box2");
+// let for_terms_box2 = document.getElementById("for_terms_box2");
 let for_terms_box3 = document.getElementById("for_terms_box3");
 let terms_all = document.getElementById("terms_all");
 let terms_word = document.getElementById("terms_word");
@@ -103,14 +103,14 @@ for_terms_box1.addEventListener("click", function() {
   terms1.classList.add("terms_change");
   terms_word.classList.add("terms_word");
 });
-for_terms_box2.addEventListener("click", function() {
-  terms1.classList.remove("terms_change");
-  terms2.classList.add("terms_change");
-  terms_all.style.cssText = "left:-100%";
-  terms_word.classList.add("terms_word");
-});
+// for_terms_box2.addEventListener("click", function() {
+//   terms1.classList.remove("terms_change");
+//   terms2.classList.add("terms_change");
+//   terms_all.style.cssText = "left:-100%";
+//   terms_word.classList.add("terms_word");
+// });
 for_terms_box3.addEventListener("click", function() {
-  terms_all.style.cssText = "left:-200%";
+  terms_all.style.cssText = "left:-100%";
   terms1.classList.remove("terms_change");
   terms_word.classList.add("terms_word");
 });
@@ -144,3 +144,36 @@ for_terms_content2.addEventListener("click", function() {
   terms_content1.classList.remove("active");
   term_box1_title.classList.remove("active");
 });
+// ============開發人員================================
+let developer_pic_box_1 = document.querySelector(".developer_pic_box");
+let developer_pic_side1 = document.getElementById("developer_pic_side1");
+let developer_pic_side2 = document.getElementById("developer_pic_side2");
+let developer_pic_box = document.getElementById(".developer_pic_box");
+let timer;
+let developer_pic1 = document.getElementById("developer_pic1 img");
+
+developer_pic_side1.addEventListener("click",function(){
+  developer_pic_box_1.classList.add("active");
+  developer_pic_box_1.classList.remove("active1");
+
+});
+developer_pic_side2.addEventListener("click",function(){
+  developer_pic_box_1.classList.add("active1");
+  developer_pic_box_1.classList.remove("active");
+ 
+});
+
+developer_pic_side2.addEventListener("click",function(){
+ timer = setTimeout(() => {
+
+console.log("c");
+
+ }, 1000);
+ 
+});
+
+
+
+
+
+

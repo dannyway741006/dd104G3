@@ -22,7 +22,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 // test card=========================
 .content {
-  background-color: $white;
+  // background-color: $white;
   border-radius: $radius;
 }
 
@@ -35,7 +35,7 @@ input[type=number]::-webkit-inner-spin-button {
     overflow: hidden;
 
     .terms_all {
-      width: 300%;
+      width: 200%;
       height: 100%;
       // border: 1px solid gold;
       display: flex;
@@ -288,7 +288,7 @@ input[type=number]::-webkit-inner-spin-button {
           .terms_box2_right {
             width: 40%;
             height: 100%;
-            border: 1px solid green;
+            // border: 1px solid green;
           }
         }
       }
@@ -296,13 +296,150 @@ input[type=number]::-webkit-inner-spin-button {
       .terms3 {
         width: 100%;
         height: 100%;
-        // border: 1px solid rgb(149, 235, 109);
+        // border: 4px solid rgb(83, 236, 12);
         background-color: $white;
+        padding-top: 70px;
+        overflow: hidden;
+        display: flex;
 
-        .terms_box3 {
-          width: 100%;
+
+        .developer_img {
+          width: 80%;
           height: 100%;
-          // border: 1px solid blue;
+          border: 1px solid greenyellow;
+          overflow: hidden;
+          @keyframes change {
+            0%{
+              transform: translateX(0%);
+              animation-delay: 1s;
+            }
+            20%{
+              animation-delay: 1s;
+              transform: translateX(calc((-100% / 7)*2));
+            }
+            30%{
+              animation-delay: 1s;
+              transform: translateX(calc((-100% / 7)*3));
+            }
+       
+          }
+          .developer_pic_box {
+            width: 700%;
+            height: 100%;
+            border: 6px solid goldenrod;
+            display: flex;
+            animation:change 5s;
+           
+
+            .developer_pic1 {
+              width: calc(100% / 7);
+              height: 100%;
+              background-color: rgb(93, 158, 40);
+            }
+
+            .developer_pic2 {
+              width: calc(100% / 7);
+              height: 100%;
+              background-color: rgb(123, 155, 116);
+            }
+
+            .developer_pic3 {
+              width: calc(100% / 7);
+              height: 100%;
+              background-color: rgb(176, 87, 184);
+            }
+
+            .developer_pic4 {
+              width: calc(100% / 7);
+              height: 100%;
+              background-color: rgb(172, 207, 161);
+            }
+
+            .developer_pic5 {
+              width: calc(100% / 7);
+              height: 100%;
+              background-color: rgb(185, 144, 29);
+            }
+
+            .developer_pic6 {
+              width: calc(100% / 7);
+              height: 100%;
+              background-color: rgb(63, 202, 133);
+            }
+
+            .developer_pic7 {
+              width: calc(100% / 7);
+              height: 100%;
+              background-color: rgb(133, 133, 175);
+            }
+          
+          }
+
+          .active {
+            transform: translateX(0%);
+            transition: all 1s;
+            transition-duration: 1s;
+          }
+
+          .active1 {
+            transform: translateX(calc(-100% / 7));
+            transition: all 1s;
+            transition-duration: 1s;
+          }
+        }
+
+        .developer_side {
+          width: 20%;
+          height: 100%;
+          border: 1px solid goldenrod;
+
+          .developer_side_box {
+            width: 100%;
+            height: 160%;
+            border: 1px solid royalblue;
+
+            .developer_pic_side1 {
+              width: 100%;
+              height: calc(100% / 7);
+              background-color: rgb(93, 158, 40);
+            }
+
+            .developer_pic_side2 {
+              width: 100%;
+              height: calc(100% / 7);
+              background-color: rgb(123, 155, 116);
+            }
+
+            .developer_pic_side3 {
+              width: 100%;
+              height: calc(100% / 7);
+              background-color: rgb(176, 87, 184);
+            }
+
+            .developer_pic_side4 {
+              width: 100%;
+              height: calc(100% / 7);
+              background-color: rgb(172, 207, 161);
+            }
+
+            .developer_pic_side5 {
+              width: 100%;
+              height: calc(100% / 7);
+              background-color: rgb(185, 144, 29);
+            }
+
+            .developer_pic_side6 {
+              width: 100%;
+              height: calc(100% / 7);
+              background-color: rgb(63, 202, 133);
+            }
+
+            .developer_pic_side7 {
+              width: 100%;
+              height: calc(100% / 7);
+              background-color: rgb(133, 133, 175);
+            }
+          }
         }
       }
     }
@@ -439,7 +576,7 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     padding-left: 20px;
 
-    .testh2{
+    .testh2 {
       color: $primary;
       @include font(5);
     }
@@ -458,7 +595,8 @@ input[type=number]::-webkit-inner-spin-button {
   color: $primary;
   // background-color: $abyss;
   margin-left: 20px;
-  .testh3{
+
+  .testh3 {
     @include font(5);
   }
 }
@@ -496,8 +634,8 @@ input[type=number]::-webkit-inner-spin-button {
 
         img {
           cursor: pointer;
-      
-            width: 25px;
+
+          width: 25px;
         }
       }
 
@@ -636,7 +774,7 @@ input[type=number]::-webkit-inner-spin-button {
         font-weight: 400;
         border-bottom: #d8d8d8 solid;
         border-bottom-width: 1px;
-       
+
       }
 
       tr,
@@ -700,37 +838,38 @@ input[type=number]::-webkit-inner-spin-button {
           width: 100%;
           color: $gray;
           border-collapse: collapse;
-         
+
           td {
             color: $primary;
             font-weight: 400;
             border-bottom: #d8d8d8 solid;
             border-bottom-width: 1px;
             @include font(0);
-            
+
           }
-    
+
           tr,
           th,
           td {
             width: calc((100%) / 3);
             text-align: center;
             height: 40px;
-        
+
           }
+
           .table_order_top1 {
             @include font(0);
-        border-bottom: $gray solid;
-        border-bottom-width: 1px;
-        
+            border-bottom: $gray solid;
+            border-bottom-width: 1px;
+
             th {
               font-weight: 100;
               height: 40px;
               color: $gray;
             }
-           
+
           }
-        
+
         }
       }
     }
