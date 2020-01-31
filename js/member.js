@@ -145,34 +145,123 @@ for_terms_content2.addEventListener("click", function() {
   term_box1_title.classList.remove("active");
 });
 // ============開發人員================================
-let developer_pic_box_1 = document.querySelector(".developer_pic_box");
-let developer_pic_side1 = document.getElementById("developer_pic_side1");
-let developer_pic_side2 = document.getElementById("developer_pic_side2");
-let developer_pic_box = document.getElementById(".developer_pic_box");
-let timer;
-let developer_pic1 = document.getElementById("developer_pic1 img");
+// let developer_pic_box_1 = document.querySelector(".developer_pic_box");
+// let developer_pic_side1 = document.getElementById("developer_pic_side1");
+// let developer_pic_side2 = document.getElementById("developer_pic_side2");
+// let developer_pic_box = document.getElementById(".developer_pic_box");
+// let timer;
+// let developer_pic1 = document.getElementById("developer_pic1 img");
 
-developer_pic_side1.addEventListener("click",function(){
-  developer_pic_box_1.classList.add("active");
-  developer_pic_box_1.classList.remove("active1");
+// developer_pic_side1.addEventListener("click",function(){
+//   developer_pic_box_1.classList.add("active");
+//   developer_pic_box_1.classList.remove("active1");
 
-});
-developer_pic_side2.addEventListener("click",function(){
-  developer_pic_box_1.classList.add("active1");
-  developer_pic_box_1.classList.remove("active");
+// });
+// developer_pic_side2.addEventListener("click",function(){
+//   developer_pic_box_1.classList.add("active1");
+//   developer_pic_box_1.classList.remove("active");
  
-});
+// });
 
-developer_pic_side2.addEventListener("click",function(){
- timer = setTimeout(() => {
+// developer_pic_side2.addEventListener("click",function(){
+//  timer = setTimeout(() => {
 
-console.log("c");
+// console.log("c");
 
- }, 1000);
+//  }, 1000);
  
-});
+// });
+// ===============test 開發人員==================================
 
+// Params
+let mainSliderSelector = '.main-slider',
+    navSliderSelector = '.nav-slider',
+    interleaveOffset = 0.5;
 
+// Main Slider
+let mainSliderOptions = {
+      loop: true,
+      speed:1000,
+      autoplay:{
+        delay:3000
+      },
+      loopAdditionalSlides: 10,
+      grabCursor: true,
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on: {
+        init: function(){
+          this.autoplay.stop();
+        },
+        imagesReady: function(){
+          this.el.classList.remove('loading');
+          this.autoplay.start();
+        },
+        slideChangeTransitionEnd: function(){
+          let swiper = this,
+              captions = swiper.el.querySelectorAll('.caption');
+          for (let i = 0; i < captions.length; ++i) {
+            captions[i].classList.remove('show');
+          }
+          swiper.slides[swiper.activeIndex].querySelector('.caption').classList.add('show');
+        },
+        progress: function(){
+          let swiper = this;
+          for (let i = 0; i < swiper.slides.length; i++) {
+            let slideProgress = swiper.slides[i].progress,
+                innerOffset = swiper.width * interleaveOffset,
+                innerTranslate = slideProgress * innerOffset;
+           
+            swiper.slides[i].querySelector(".slide-bgimg").style.transform =
+              "translateX(" + innerTranslate + "px)";
+          }
+        },
+        touchStart: function() {
+          let swiper = this;
+          for (let i = 0; i < swiper.slides.length; i++) {
+            swiper.slides[i].style.transition = "";
+          }
+        },
+        setTransition: function(speed) {
+          let swiper = this;
+          for (let i = 0; i < swiper.slides.length; i++) {
+            swiper.slides[i].style.transition = speed + "ms";
+            swiper.slides[i].querySelector(".slide-bgimg").style.transition =
+              speed + "ms";
+          }
+        }
+      }
+    };
+let mainSlider = new Swiper(mainSliderSelector, mainSliderOptions);
+
+// Navigation Slider
+let navSliderOptions = {
+      loop: true,
+      loopAdditionalSlides: 10,
+      speed:1000,
+      spaceBetween: 5,
+      slidesPerView: 5,
+      centeredSlides : true,
+      touchRatio: 0.2,
+      slideToClickedSlide: true,
+      direction: 'vertical',
+      on: {
+        imagesReady: function(){
+          this.el.classList.remove('loading');
+        },
+        click: function(){
+          mainSlider.autoplay.stop();
+        }
+      }
+    };
+let navSlider = new Swiper(navSliderSelector, navSliderOptions);
+
+// Matching sliders
+mainSlider.controller.control = navSlider;
+navSlider.controller.control = mainSlider;
 
 
 
