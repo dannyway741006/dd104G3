@@ -3,7 +3,7 @@ try {
   require_once('../pdo.php');
   $sql = 'select * from `program` p 
   LEFT JOIN `todo_content` t on p.pro_no = t.pro_no
-  WHERE p.mem_no = :mem_no AND t.todo_cont_clock = 1 AND todo_cont_sta = 0';
+  WHERE p.mem_no = :mem_no AND t.todo_cont_clock = 1';
   $res = $pdo->prepare($sql);
   $res->bindParam('mem_no', $_POST['mem_no']);
   $res->execute();
