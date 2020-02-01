@@ -551,22 +551,16 @@ input[type=number]::-webkit-inner-spin-button {
       height: 50px;
       // border: 1px solid rgb(66, 75, 48);
       border-radius: 10px;
-      box-shadow: 1px 1px 3px $shadow;
       margin-top: 20px;
       text-align: right;
       vertical-align: middle;
       line-height: 50px;
-      background-color: rgba(255, 255, 255, 0.5);
 
       span {
         cursor: pointer;
-        padding: 0 2%;
         color: $dark;
-        @include font(0);
-
-        &:nth-last-of-type(1) {
-          padding-right: 4%;
-        }
+        @include font(1);
+        padding-left: 10px;
       }
     }
   }
@@ -706,6 +700,10 @@ input[type=number]::-webkit-inner-spin-button {
         .text_word:focus {
           padding: 3px 10px 0px;
           transition: 0.3s;
+          color: $white;
+          &::placeholder {
+            color: $white;
+          }
         }
 
         .text_word:focus~.upbox {

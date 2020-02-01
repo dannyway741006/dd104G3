@@ -214,7 +214,6 @@ let mainSliderOptions = {
             let slideProgress = swiper.slides[i].progress,
                 innerOffset = swiper.width * interleaveOffset,
                 innerTranslate = slideProgress * innerOffset;
-           
             swiper.slides[i].querySelector(".slide-bgimg").style.transform =
               "translateX(" + innerTranslate + "px)";
           }
@@ -242,8 +241,8 @@ let navSliderOptions = {
       loop: true,
       loopAdditionalSlides: 10,
       speed:1000,
-      spaceBetween: 5,
-      slidesPerView: 5,
+      spaceBetween: 3,
+      slidesPerView: 3,
       centeredSlides : true,
       touchRatio: 0.2,
       slideToClickedSlide: true,
