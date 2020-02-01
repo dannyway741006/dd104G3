@@ -7,16 +7,16 @@ var app = new Vue({
         toStat:false,
         newTodo:'',
         //todolist 頁面切換結束
-        timer:0,
+        timer:5,
         dashOffSet:290*Math.PI,
         dasharray:285*Math.PI,
         //要跑的時間
         workmin:0,
         worksec:5,
-        workTime:0,
+        workTime:5,
         restmin:0,
         restsec:3,
-        restTime:0,
+        restTime:3,
         myTimer:null,
         totalTimer:0,
         //計時器
@@ -28,14 +28,14 @@ var app = new Vue({
         working:true,
         userInfo: [],
         todos:[
-            {
-                id:'mask1',
-                title:'新任務',
-                runstatus:0,
-                currentTime:this.workTime,
-                totalTime:0,
-                complete:false,
-            },
+            // {
+            //     id:'mask1',
+            //     title:'新任務',
+            //     runstatus:0,
+            //     currentTime:this.workTime,
+            //     totalTime:0,
+            //     complete:false,
+            // },
         ],
         trelloTodos:[
         ],
@@ -206,9 +206,9 @@ var app = new Vue({
             if(item.complete){
                 swal("請先解除完成狀態!!","","warning",{timer:1500});
             }
-            else if(!this.currentTomato.currentTime){
-                swal("請先設定時間!!",'',"warning",{timer:1500});
-            }
+            // else if(!this.currentTomato.currentTime){
+            //     swal("請先設定時間!!",'',"warning",{timer:1500});
+            // }
             else if(this.currentTomato && this.currentTomato.runstatus == 1){  
                 this.currentTomato.runstatus = 0; //任務進行中點擊其他任務      
                 // console.log('1')
