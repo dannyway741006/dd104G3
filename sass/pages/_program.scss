@@ -138,7 +138,9 @@
     border-radius: 10px;
     box-shadow: 1px 1px 3px $shadow;
     padding: 20px;
-
+ &.show_invite_list{
+   visibility: hidden;
+ }
 
     .program_member {
       display: inline-block;
