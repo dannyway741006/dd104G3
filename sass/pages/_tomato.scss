@@ -312,7 +312,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background-image: linear-gradient(to right, #8acede, #FBC2EB);
+            background-image: linear-gradient(to right, rgba($primary, 1), rgba($secondary, 1), rgba($third, 1));
             width: 100%;
             height: 3px;
             transition: .3s;
