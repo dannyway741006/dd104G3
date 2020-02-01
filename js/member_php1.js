@@ -92,8 +92,8 @@ function order_temp(data) {
     <td>
       <div class="th3_box">
         <span class="delete_oder" data-index=${index} data-order=${info.order_no}>
-          <img src="./img/member_img/trash-alt-regular1.svg" alt="" width="14">
-          <img src="./img/member_img/trash-alt-regular.svg" alt="" width="14">
+          <img src="./img/icon/delete.0df56913.svg" alt="" width="14">
+          <img src="./img/icon/delete_on.70d3ed1f.svg" alt="" width="14">
         </span>
       </div>
     </td>

@@ -34,6 +34,7 @@ input[type=number]::-webkit-inner-spin-button {
 
   .terms_word {
     overflow: hidden;
+    border-radius: 20px;
 
     .terms_all {
       width: 200%;
@@ -43,6 +44,7 @@ input[type=number]::-webkit-inner-spin-button {
       position: absolute;
       // overflow: hidden;
       transition: all 1s;
+      border-radius: 20px;
 
       .terms1 {
         width: 100%;
@@ -78,7 +80,9 @@ input[type=number]::-webkit-inner-spin-button {
 
               .terms_title_privacy {
                 h3 {
-                  color: $primary;
+                  color: $dark;
+                  font-weight: 100;
+                  @include font;
                 }
 
                 .terms_title_ani2 {
@@ -104,7 +108,9 @@ input[type=number]::-webkit-inner-spin-button {
               h3 {
                 position: absolute;
                 z-index: 5;
-                color: $primary;
+                color: $dark;
+                @include font;
+                font-weight: 100;
               }
 
               .terms_title_ani1 {
@@ -137,6 +143,8 @@ input[type=number]::-webkit-inner-spin-button {
                 position: absolute;
                 z-index: 5;
                 color: rgb(255, 255, 255);
+                @include font;
+                font-weight: 100;
               }
 
               .terms_title_ani2 {
@@ -160,6 +168,9 @@ input[type=number]::-webkit-inner-spin-button {
 
             h4 {
               color: $price;
+              @include font;
+            font-weight: 300;
+
             }
 
             .terms_content1 {
@@ -176,11 +187,14 @@ input[type=number]::-webkit-inner-spin-button {
               transform-origin: right;
               overflow: scroll;
               padding: 60px 40px;
+           
+              
 
               ul,
               li {
                 list-style-type: cjk-ideographic;
-                color: $price;
+                color: $gray;
+                @include font;
 
                 ol {
                   padding-left: 40px;
@@ -189,7 +203,8 @@ input[type=number]::-webkit-inner-spin-button {
                 ol,
                 li {
                   list-style-type: decimal;
-                  color: $price;
+                  color: $gray;
+                  @include font;
 
                   ul {
                     padding-left: 40px;
@@ -219,7 +234,8 @@ input[type=number]::-webkit-inner-spin-button {
               ul,
               li {
                 list-style-type: cjk-ideographic;
-                color: $price;
+                color: $dark;
+                @include font;
 
                 ul {
                   padding-left: 40px;
@@ -228,7 +244,8 @@ input[type=number]::-webkit-inner-spin-button {
                 ol,
                 li {
                   list-style-type: decimal;
-                  color: $price;
+                  color: $dark;
+                  @include font;
 
                   ul {
                     padding-left: 40px;
@@ -262,6 +279,7 @@ input[type=number]::-webkit-inner-spin-button {
         background-color: rgb(255, 255, 255);
         opacity: 1;
         transition: all 0.4s;
+        border-radius:20px;
       }
 
       .terms2 {
@@ -376,6 +394,10 @@ input[type=number]::-webkit-inner-spin-button {
             height: 100%;
             background-position: center;
             background-size: cover;
+            img{
+              object-fit: cover;
+              object-position: center;
+            }
           }
 
           .entity-img {
@@ -438,14 +460,13 @@ input[type=number]::-webkit-inner-spin-button {
       width: 100%;
       height: calc(100% - 60px);
       // border: 1px solid rgb(226, 165, 185);
-      border-radius: 10px;
+      border-radius: 20px;
       position: absolute;
       // background-color: rgb(219, 185, 185);
       opacity: 0;
       visibility: hidden;
       transform-origin: top center;
-      transform: scale(0);
-      border-radius: 10px;
+      transform: scale(0);    
       transition: all 0.3s ease-in-out;
       box-shadow: 1px 1px 3px $shadow;
       top: 0;
@@ -540,7 +561,7 @@ input[type=number]::-webkit-inner-spin-button {
       span {
         cursor: pointer;
         padding: 0 2%;
-        color: $primary;
+        color: $dark;
         @include font(0);
 
         &:nth-last-of-type(1) {
@@ -561,15 +582,16 @@ input[type=number]::-webkit-inner-spin-button {
       width: 38%;
       height: 100%;
       border-radius: $radius $radius 0 0;
-      box-shadow: 1px 1px 3px $shadow;
+      // box-shadow: 1px 1px 3px $shadow;
       display: flex;
       align-items: center;
       padding-left: 20px;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0);
 
       .testh2 {
-        color: $primary;
+        color: $dark;
         @include font(5);
+        font-weight: 100;
       }
     }
   }
@@ -579,16 +601,17 @@ input[type=number]::-webkit-inner-spin-button {
     height: 100%;
     // border: 1px solid yellowgreen;
     border-radius: $radius $radius 0 0;
-    box-shadow: 1px 1px 3px $shadow;
+    // box-shadow: 1px 1px 3px $shadow;
     display: flex;
     align-items: center;
     padding-left: 20px;
-    color: $primary;
-    background-color:rgba(255, 255, 255, 0.5);
+    color: $dark;
+    background-color:rgba(255, 255, 255, 0);
     margin-left: 20px;
 
     .testh3 {
       @include font(5);
+      font-weight: 100;
     }
   }
 
@@ -602,21 +625,20 @@ input[type=number]::-webkit-inner-spin-button {
     .memberContent {
       width: 40%;
       height: 100%;
+      padding-top: 20px;
 
       .member_img {
         width: 100%;
-        height: 150px;
         // border: 1px solid pink;
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin: 20px 0;
-        box-shadow: 1px 1px 3px $shadow;
-        border-radius: $radius;
-        background-color: rgba(255, 255, 255, 0.5);
+        justify-content: center;      
+        // box-shadow: 1px 1px 3px $shadow;
+        // border-radius: $radius;
+        background-color: rgba(255, 255, 255, 0);
 
         .up_member_icon {
-          border: 1px solid black;
+          // border: 1px solid black;
           @include baseBtn(40px, 40px, 50%);
           left: -80%;
           margin-top: 170%;
@@ -626,7 +648,6 @@ input[type=number]::-webkit-inner-spin-button {
 
           img {
             cursor: pointer;
-
             width: 25px;
           }
         }
@@ -654,17 +675,17 @@ input[type=number]::-webkit-inner-spin-button {
 
     .member_info {
       width: 100%;
-      height: calc(100% - 190px);
+      height: 100%;
       // border: 1px solid palevioletred;
       box-shadow: 1px 1px 3px $shadow;
-      border-radius: 10px;
+      border-radius: 20px;
       background-color: rgba(255, 255, 255, 0.5);
       padding-top: 5%;
 
       .con1_info {
         text-align: center;
         @include font(1, 50px);
-        margin-top: 10px;
+        margin-top: 30px;
 
         .memberbtn {
           @include baseBtn;
@@ -679,7 +700,7 @@ input[type=number]::-webkit-inner-spin-button {
 
         li {
           list-style: none;
-          margin-bottom: 5px;
+          margin-bottom: 15px;
         }
 
         .text_word:focus {
@@ -740,7 +761,7 @@ input[type=number]::-webkit-inner-spin-button {
       margin-top: 20px;
       // border: 1px solid rgb(90, 110, 175);
       box-shadow: 1px 1px 3px $shadow;
-      border-radius: 10px;
+      border-radius: 20px;
       padding: 10px;
       overflow-x: scroll;
       background-color: rgba(255, 255, 255, 0.5);
@@ -764,11 +785,12 @@ input[type=number]::-webkit-inner-spin-button {
         }
 
         tr td {
-          color: $primary;
+          color: $dark;
           padding: 10px 0;
           font-weight: 400;
           border-bottom: #d8d8d8 solid;
           border-bottom-width: 1px;
+          cursor: pointer;
 
         }
 
@@ -793,7 +815,7 @@ input[type=number]::-webkit-inner-spin-button {
       margin-top: 20px;
       // border: 4px solid rgb(90, 110, 175);
       box-shadow: 1px 1px 3px $shadow;
-      border-radius: 10px;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -809,14 +831,14 @@ input[type=number]::-webkit-inner-spin-button {
         width: 100%;
         height: 100%;
         // border: 1px solid palevioletred;
-        border-radius: 10px;
+        border-radius: 20px;
         position: absolute;
         background-color: rgba(255, 255, 255, 0.5);
         // opacity: 0;
         // visibility: hidden;
         transform-origin: top center;
 
-        border-radius: 10px;
+        
         // transition: all 0.5s ease-in-out;
 
         .order_group1 {
@@ -824,7 +846,7 @@ input[type=number]::-webkit-inner-spin-button {
           height: 100%;
           // border: 1px solid rgb(90, 110, 175);
           box-shadow: 1px 1px 3px $shadow;
-          border-radius: 10px;
+          border-radius: 20px;
           padding: 10px;
           overflow-x: scroll;
 
@@ -835,7 +857,7 @@ input[type=number]::-webkit-inner-spin-button {
             border-collapse: collapse;
 
             td {
-              color: $primary;
+              color: $dark;
               font-weight: 400;
               border-bottom: #d8d8d8 solid;
               border-bottom-width: 1px;
@@ -862,7 +884,6 @@ input[type=number]::-webkit-inner-spin-button {
                 height: 40px;
                 color: $gray;
               }
-
             }
           }
         }
@@ -1242,6 +1263,7 @@ input[type=number]::-webkit-inner-spin-button {
       padding: 0 2%;
       @include font(0);
       letter-spacing: 0px;
+
     }
 
     .member_all_box .member_info .con1_info li {
