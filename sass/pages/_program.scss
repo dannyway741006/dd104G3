@@ -72,7 +72,7 @@
   text-align: center;
   @include positionCenter(y);
   color: $dark;
-  font-size: 36px;
+  @include font(8);
 }
 
 #program_main {
@@ -730,6 +730,9 @@
 
   #program_main .cards_column_all .cards_column {
     height: calc(95vh - 231px);
+  }
+  #no_program_screen {
+    @include font(5);
   }
 
 

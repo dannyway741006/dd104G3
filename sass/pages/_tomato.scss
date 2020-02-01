@@ -38,7 +38,7 @@
     align-items: center;
     border-radius: 20px;
     box-shadow: 1px 1px 3px $shadow;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.5);
     @include media(1280px){
         position: absolute;
         max-width: 46.5%;
@@ -193,28 +193,28 @@
         height: 98%;
     }
     >div{
-        background-color: rgba(255, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.5);
         width: 49%;
         // height: 100%;
         // border: 1px solid red;
         border-radius: 20px;
         box-shadow: 1px 1px 3px $heavyshadow;
         z-index: 999;
+        overflow: hidden;
     }
     .custom{
         position: relative;
         .addTodo{
             // border: 3px solid blue;
             // border-radius: 10px;
-            @include positionCenter(x);
+            // @include positionCenter(x);
             @include btnReset;
-            border-bottom: 1px solid #666;
-            bottom: 5px;
-            width: 90%;
+            padding: 0 5px;
+            width: 100%;
             height: 40px;
             background: $white;
             &::-ms-input-placeholder{text-align: center;}
-            &::-webkit-input-placeholder{text-align:            center;}
+            &::-webkit-input-placeholder{text-align: center;}
         }
     }
 .custom,.fromTrello{
@@ -222,15 +222,18 @@
     display: flex;
     flex-direction: column;
     ul{
-        padding-bottom: 40px;
+        height: 100%;
         overflow-y: scroll;
     }
     .todoHead{
         // border: 1px solid green;
+        width: 100%;
         padding-top: 10px;
         margin: 0 auto;
         display: flex;
+        justify-content: center;
         position: relative;
+        background-color: $white;
         h2{
             @include font(2);
             color: $dark;
@@ -278,6 +281,9 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        background-color: $white;
+        @include font(1);
+        color: $fontColorBlack;
         // animation: slide-up .8s ease;
         // @keyframes slide-up {
         //     0% {
