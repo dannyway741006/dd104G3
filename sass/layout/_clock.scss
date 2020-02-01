@@ -18,16 +18,16 @@
     #gradient {
       stop {
         &:nth-of-type(1) {
-          stop-color: $primary;
+          stop-color: $secondary;
         }
         &:nth-of-type(2) {
-          stop-color: $third;
+          stop-color: $primary;
         }
       }
       &.rest{
         stop {
           &:nth-of-type(1) {
-            stop-color: $red;
+            stop-color: $danger;
           }
           &:nth-of-type(2) {
             stop-color: $third;
