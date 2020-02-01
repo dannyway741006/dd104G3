@@ -156,7 +156,9 @@ var main_content = new Vue({
     cal_today: null,
     cal_mon: null,
 
-    create_color: false
+    create_color: false,
+
+    show_invite:true,
 
   },
 
@@ -314,6 +316,14 @@ var main_content = new Vue({
       this.invite_add_member_box = false;
       this.programs[this.page].invite_add_member_addr = '';
     },
+    //完成專案後邀請人員是否顯示
+    // show_invite_list(){
+    //    if(this.islogin.length != 0){
+    //      this.show_invite=false;
+    //    }
+    //     this.show_invite=true;
+       
+    // },
     //推入已加入專案成員
     program_all_member() {
       const vm = this;
@@ -341,19 +351,26 @@ var main_content = new Vue({
 
     //切換現有-已完成專案
     change_watched_text() {
-      if (this.click_complete_btn == false) { //已完成專案畫面
-        this.click_complete_btn = true;
-        if (this.programs.length > 0) {
-          this.show_cards(0, true);
-        }
+   
 
-      } else { //現有專案畫面
-        this.click_complete_btn = false;
-        if (this.history_programs.length > 0) {
-          this.show_cards(0, true);
+        if (this.click_complete_btn == false) { //已完成專案畫面
+          this.click_complete_btn = true;
+          if (this.programs.length > 0) {
+            this.show_cards(0, true);
+          }
+  
+        } else { //現有專案畫面
+          this.click_complete_btn = false;
+          if (this.history_programs.length > 0) {
+            this.show_cards(0, true);
+          }
         }
-      }
+     if(this.islogin.length !=0){
+      this.show_invite=false;
+     }else{
+      this.show_invite=true;
 
+     }
 
     },
     //rwd時點選關閉漢堡---------------------------打開它
@@ -435,15 +452,20 @@ var main_content = new Vue({
     },
 
     show_cards(index, async_status) {
+      
       if (!this.programs.length) return
       const vm = this;
       // console.log("123")
-      let pro_no = "";
-      if (this.click_complete_btn == false) {
+      let pro_no='';
+      // console.log(this.history_programs)
+      if(this.history_programs.length !==0){
+          if (this.click_complete_btn == false) {
         pro_no = this.programs[index].pro_no;
       } else {
         pro_no = this.history_programs[index].pro_no;
       }
+      }
+    
       // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
         $.ajax({
