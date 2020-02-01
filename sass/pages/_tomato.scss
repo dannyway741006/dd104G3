@@ -107,9 +107,9 @@
         &:hover{
             color: #8acede;
         }
-        &.active{
-          color: #8acede;
-        }
+      }
+      &.active p{
+        color: #8acede;
       }
   }
   .rest{
@@ -119,10 +119,10 @@
         &:hover{
             color: #f175c5;
         }
-        &.active{
-          color: #f175c5;
-        }
     }
+    &.active p{
+        color: #f175c5;
+      }
   }
   }
 
@@ -213,10 +213,24 @@
             width: 100%;
             height: 40px;
             background: $white;
-            border-radius: 20px;
+            // border-radius: 20px;
+            display: flex;
             padding:0 5px;
             &::-ms-input-placeholder{text-align: center;}
             &::-webkit-input-placeholder{text-align: center;}
+        }
+        .addInput{
+            width: 90%;
+            height: 100%;
+            @include inputReset;
+            &::-ms-input-placeholder{text-align: center;}
+            &::-webkit-input-placeholder{text-align: center;}
+        }
+        .addTodoBtn{
+            // border: 1px solid red;
+            @include hoverIcon(30px);
+            margin-top: 5px;
+            position: relative;
         }
     }
 .custom,.fromTrello{

@@ -28,14 +28,14 @@ var app = new Vue({
         working:true,
         userInfo: [],
         todos:[
-            {
-                id:'mask1',
-                title:'新任務',
-                runstatus:0,
-                currentTime:this.workTime,
-                totalTime:0,
-                complete:false,
-            },
+            // {
+            //     id:'mask1',
+            //     title:'新任務',
+            //     runstatus:0,
+            //     currentTime:this.workTime,
+            //     totalTime:0,
+            //     complete:false,
+            // },
         ],
         trelloTodos:[
         ],
@@ -314,10 +314,10 @@ var ctx = document.getElementById("statChart");
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["任務1", "任務2", "任務3"],
+      labels: [],
       datasets: [{
         label: '完成所花時間:秒',
-        data: [10, 8, 15],
+        data: [],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
