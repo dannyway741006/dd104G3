@@ -33,7 +33,10 @@ let storage = sessionStorage;
 
 //--先把myCartList取出來--//
 let getMyCartList = storage.getItem(`myCartList`);
-let cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
+let cartProducts;
+if(getMyCartList){
+  cartProducts = getMyCartList.substr(0, getMyCartList.length - 1).split(',');
+}
 // console.log(cartProducts);
 
 let total = 0;
