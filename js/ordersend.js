@@ -12,12 +12,14 @@ let orderListurl = "";
 let sendOrderList = "";
 cartSubmit.addEventListener('click', () => {
   //---判斷會員id---//
-  console.log(MEMBER_INFO);
   //---判斷有沒有登入---//
-  if (MEMBER_INFO){
-    alert('訂單已送出');
+  if (Object.entries(MEMBER_INFO).length){
     //註冊callback function 
     //---送訂單總表orders---///
+    if(!cartProduct.length){
+      alert('請先加入商品')
+      return
+    }
     xhr.onload = function () {
       if (xhr.status == 200) {
         // document.querySelector("#idMsg").textContent = xhr.responseText;
@@ -30,9 +32,11 @@ cartSubmit.addEventListener('click', () => {
           sendOrderList = `order_no=${+xhr.responseText}&mem_no=${MEMBER_INFO.mem_no}&product_name_color=${cartProductColor[i].textContent}&order_product_price=${orderProductPrice[i].textContent}&order_product_num=${orderProductNumber[i].textContent}`;
           xhrOrderList.send(sendOrderList);
 
-          console.log(xhr.responseText);
-          console.log(cartProduct);
+          // console.log(xhr.responseText);
+          // console.log(cartProduct)
         };
+        location.href = './mall.html';
+        alert('訂單已送出');
       } else {
         alert(xhr.statusText);
       }
@@ -49,7 +53,7 @@ cartSubmit.addEventListener('click', () => {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     let sendProductPrice = `product_price=${cartNewTotal.textContent}&mem_no=${MEMBER_INFO.mem_no}&ship_addr=${shipAddr.value}&receiver_name=${receiverName.value}&receiver_tel=${receiverTel.value}`;
     xhr.send(sendProductPrice);
-    console.log(sendProductPrice);
+    // console.log(sendProductPrice);
 
     //---送訂單明細order_item---//
     
