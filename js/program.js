@@ -290,9 +290,14 @@ var main_content = new Vue({
     },
     //點擊邀請出現邀請的跳窗
     show_invite_add_member_box() {
-      this.invite_add_member_box = !this.invite_add_member_box;
+      if(this.islogin.length!=0){
+         this.invite_add_member_box = !this.invite_add_member_box;
       this.cards_list_card_input_box = false;
       this.add_cards_btn_div = true;
+      }else{
+        alert("請先登入")
+      }
+     
     },
     //邀請專案成員
     invite_add_member(program) {
@@ -1052,7 +1057,7 @@ var main_content = new Vue({
           },
           "cache": false,
           "success": function (data) {
-            console.log(data);
+            // console.log(data);
 
           },
           "error": function (data) {
@@ -1374,6 +1379,7 @@ var main_content = new Vue({
               if (pic == "jpg" || pic == "png" || pic == "gif" || pic == "svg") {
                 pic = null;
               }
+              // console.log( pic)
               pro_card.filebox.push({
                 title: pic,
                 name: file_name,
@@ -1450,10 +1456,11 @@ var main_content = new Vue({
 
 
     calltomato(detailIndex, index) {
-      alert("已加入番茄鐘");
+   
       const vm = this;
       // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
+
         $.ajax({
           "type": "POST",
           "dataType": "json",
@@ -1468,7 +1475,7 @@ var main_content = new Vue({
           "success": function (data) {
             // console.log(data);
             // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no)
-            // vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=true;
+            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=true;
 
           },
           "error": function (data) {
@@ -1476,6 +1483,9 @@ var main_content = new Vue({
           }
 
         });
+        alert("已加入番茄鐘");
+      }else{
+        alert("尚未登入");
       }
       // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index])
       // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color)
@@ -1483,8 +1493,8 @@ var main_content = new Vue({
 
     },
     droptomato(detailIndex, index) {
-      alert("已移除番茄鐘");
       const vm = this;
+       alert("已移除番茄鐘");
       // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
         $.ajax({
@@ -1495,17 +1505,19 @@ var main_content = new Vue({
             "type": "update_onload_tomato",
             "todo_cont_clock": 0,
             "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
-
+            
           },
           "cache": false,
           "success": function (data) {
             // console.log(data);
-
+            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=false;
           },
           "error": function (data) {
             console.log(data);
           }
         });
+        
+       
       }
       // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index])
       // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color)
@@ -1776,13 +1788,21 @@ var main_content = new Vue({
 
     //卡片內開關清空
     openmember() {
-      this.card_meber_switch = true;
+      if(this.islogin.length!=0){
+         this.card_meber_switch = true;   
+         this.member_switch =! this.member_switch;
+      }else{
+        alert("尚未登入")
+          this.member_switch = false;
+      }
+     
       // this.calandar_switch = false;
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.fileder_switch = false;
       this.todo_switch = false;
       this.add_card_meber_switch = false;
+     
     },
     opentodo() {
       this.card_meber_switch = false;
@@ -1803,11 +1823,18 @@ var main_content = new Vue({
       this.add_card_meber_switch = false;
     },
     openaddmember() {
+      if(this.islogin.length!=0){
+        // this.card_meber_switch = true;   
+        this.add_card_meber_switch =! this.add_card_meber_switch;
+     }else{
+       alert("尚未登入")
+         this.add_card_meber_switch = false;
+     }
       this.card_meber_switch = false;
       this.calandar_switch = false;
       this.todo_lightbox_switch = false;
       this.file_switch = false;
-      this.add_card_meber_switch = true;
+      // this.add_card_meber_switch = true;
       this.member_switch = false;
       this.todo_switch = false;
       this.fileder_switch = false;
@@ -1952,7 +1979,7 @@ var main_content = new Vue({
       this.cards_list_card_input_box = false;
       this.card_name = "";
       this.invite_add_member_box = false;
-      this.programs[this.page].invite_add_member_addr = '';
+     
       this.setting_btn = false;
       this.add_cards_btn = false;
       this.calendar_btn = false;
@@ -1961,6 +1988,8 @@ var main_content = new Vue({
       //卡片背面
       if (this.page >= 0 && this.card_no == 0 && this.card_no > 0) {
         this.programs[this.page].cards[this.card_no].member_input = "";
+        this.programs[this.page].invite_add_member_addr = '';
+
       }
 
       this.todo_lightbox_switch = false;
@@ -1983,35 +2012,6 @@ var main_content = new Vue({
     // 日曆部分
     this.setToday();
 
-<<<<<<< HEAD
-    // let xhr = new XMLHttpRequest();
-    // xhr.onload = function () {
-    //   // console.log(xhr.responseText);
-    //   result = JSON.parse(xhr.responseText);
-    //   console.log(result)
-    //   // if (result.status == "success") {
-    //   //   this.programs = result.data.filter(item => item.pro_sta === "0")
-    //   //   this.history_programs = result.data.filter(item => item.pro_sta === "1")
-    //   //   if (this.programs.length > 0) {
-    //   //     this.page = 0;
-    //   //     this.show_cards(this.page, true);
-    //   //   }
-    //   //   if (this.history_programs.length > 0) {
-    //   //     this.history_page = 0;
-    //   //     this.show_cards(this.history_page, true);
-    //   //   }
-    //   //   console.log(this.programs)
-
-    //   // }
-    // }
-
-    if (this.islogin.length != 0){
-    //    xhr.open("post", './php/pm/get_program_list.php', true);
-    // //送出資料
-    // xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    // console.log(this);
-    // let data_info = `mem_no=${this.userInfo.mem_no}`;
-=======
     let xhr = new XMLHttpRequest();
     xhr.onload = function () {
       // console.log(xhr.responseText);
@@ -2039,7 +2039,6 @@ var main_content = new Vue({
     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
     // console.log(this);
     let data_info = `mem_no=${this.userInfo.mem_no}`;
->>>>>>> practice
 
     // xhr.send(data_info);
     // console.log(this)
@@ -2050,7 +2049,7 @@ var main_content = new Vue({
         if (json.status == "success") {
           this.programs = json.data.filter(item => item.pro_sta === "0")
           this.history_programs = json.data.filter(item => item.pro_sta === "1")
-          console.log(json.data)
+          // console.log(json.data)
           if (this.programs.length > 0) {
             this.page = 0;
             this.show_cards(this.page, true);
