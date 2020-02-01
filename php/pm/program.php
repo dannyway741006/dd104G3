@@ -48,13 +48,12 @@ try {
       // where jp.inv_by_mem=m.mem_no and
       // m.mem_no = :mem_no';
 
-      $sql = 'select m.mem_name,m.mem_id,m.headshot,m.mem_no FROM `join_program` jp,`member` m 
-      where jp.mem_no=m.mem_no and jp.pro_no=:pro_no';
+      $sql = 'select m.mem_name,m.mem_id,m.headshot,m.mem_no,jp.pro_mem_inv FROM `join_program` jp,`member` m 
+      where jp.mem_no=m.mem_no and jp.pro_mem_inv=1 and jp.pro_no=:pro_no';
       $res = $pdo->prepare($sql);
       // $_SESSION['mem_no'] = 1; //-----------------------------
       // $res->bindValue(':mem_no', $_SESSION['mem_no']);
       $res->bindValue(':pro_no', $_POST['pro_no']);
-      
       $res->execute();
       if ($res->rowCount()) {
         $members = $res->fetchAll(PDO::FETCH_ASSOC);

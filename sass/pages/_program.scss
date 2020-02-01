@@ -72,7 +72,7 @@
   text-align: center;
   @include positionCenter(y);
   color: $dark;
-  @include font(10);
+  @include font(8);
 }
 
 #program_main {
@@ -124,7 +124,7 @@
   
   内阴影+圆角*/
   ::-webkit-scrollbar-thumb {
-    // background-color: $gray;
+    background-color: $gray;
   }
 
   //邀請成員區
@@ -135,10 +135,12 @@
     display: inline-block;
     position: relative;
     background-color: rgba(255,255,255,.4);
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 1px 1px 3px $shadow;
     padding: 20px;
-
+ &.show_invite_list{
+   visibility: hidden;
+ }
 
     .program_member {
       display: inline-block;
@@ -229,6 +231,7 @@
     max-width: 970px;
     // background-color: $white;
     border-radius: 10px;
+    // box-shadow: 1px 1px 3px $shadow;
     margin-top: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -518,7 +521,7 @@
     // border: 1px solid red;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 0;
     border-radius: 10px;
     padding: 0 10px;
     // box-shadow: 1px 1px 3px $shadow;
@@ -536,7 +539,7 @@
 
       .cal-chat_same_btn {
         // border: 1px solid blue;
-        @include baseBtn(40px, 40px, 50px);
+        @include baseBtn(50px, 50px, 50px);
         margin: 5px;
         z-index: 2;
 
@@ -559,7 +562,7 @@
   overflow-y: auto;
   // border: 1px solid $shadow;
   background-color: $white;
-  background-image: linear-gradient(-30deg,#81c7d4,#e1e9f7,#f8c3cd);
+  background-image:linear-gradient(-30deg,#81c7d4,rgba(152,181,238,.7),#f8c3cd);
   box-shadow: 1px 1px 3px $shadow;
   @include positionfixed(1001, 0, 0);
   @include positionCenter;
@@ -727,6 +730,9 @@
 
   #program_main .cards_column_all .cards_column {
     height: calc(95vh - 231px);
+  }
+  #no_program_screen {
+    @include font(5);
   }
 
 

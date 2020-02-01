@@ -31,6 +31,7 @@ input[type=number]::-webkit-inner-spin-button {
   height: 100%;
   position: relative;
 
+
   .terms_word {
     overflow: hidden;
 
@@ -400,8 +401,13 @@ input[type=number]::-webkit-inner-spin-button {
               @include font;
               transform: translateX(50px);
               opacity: 0;
-              transition: opacity .3s ease, transform .7s ease;
-
+             animation-duration: 1s;
+             transition:all 1s;
+              
+              .Developer_font{
+                @include font(2);
+              }
+            
               &.show {
                 transform: translateX(0);
                 opacity: 1;
@@ -529,6 +535,7 @@ input[type=number]::-webkit-inner-spin-button {
       text-align: right;
       vertical-align: middle;
       line-height: 50px;
+      background-color: rgba(255, 255, 255, 0.5);
 
       span {
         cursor: pointer;
@@ -558,6 +565,7 @@ input[type=number]::-webkit-inner-spin-button {
       display: flex;
       align-items: center;
       padding-left: 20px;
+      background-color: rgba(255, 255, 255, 0.5);
 
       .testh2 {
         color: $primary;
@@ -576,7 +584,7 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     padding-left: 20px;
     color: $primary;
-    // background-color: $abyss;
+    background-color:rgba(255, 255, 255, 0.5);
     margin-left: 20px;
 
     .testh3 {
@@ -605,6 +613,7 @@ input[type=number]::-webkit-inner-spin-button {
         margin: 20px 0;
         box-shadow: 1px 1px 3px $shadow;
         border-radius: $radius;
+        background-color: rgba(255, 255, 255, 0.5);
 
         .up_member_icon {
           border: 1px solid black;
@@ -631,6 +640,7 @@ input[type=number]::-webkit-inner-spin-button {
           background-color: $dark;
           box-shadow: 1px 1px 3px $shadow;
           margin-left: 4.5%;
+          
 
           img {
             object-fit: cover;
@@ -648,7 +658,7 @@ input[type=number]::-webkit-inner-spin-button {
       // border: 1px solid palevioletred;
       box-shadow: 1px 1px 3px $shadow;
       border-radius: 10px;
-      background-color: $white;
+      background-color: rgba(255, 255, 255, 0.5);
       padding-top: 5%;
 
       .con1_info {
@@ -733,6 +743,8 @@ input[type=number]::-webkit-inner-spin-button {
       border-radius: 10px;
       padding: 10px;
       overflow-x: scroll;
+      background-color: rgba(255, 255, 255, 0.5);
+
 
       table {
         width: 100%;
@@ -799,7 +811,7 @@ input[type=number]::-webkit-inner-spin-button {
         // border: 1px solid palevioletred;
         border-radius: 10px;
         position: absolute;
-        background-color: $white;
+        background-color: rgba(255, 255, 255, 0.5);
         // opacity: 0;
         // visibility: hidden;
         transform-origin: top center;
