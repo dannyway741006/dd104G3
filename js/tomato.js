@@ -12,10 +12,10 @@ var app = new Vue({
         dasharray:285*Math.PI,
         //要跑的時間
         workmin:0,
-        worksec:10,
+        worksec:5,
         workTime:0,
         restmin:0,
-        restsec:15,
+        restsec:3,
         restTime:0,
         myTimer:null,
         totalTimer:0,
@@ -28,14 +28,14 @@ var app = new Vue({
         working:true,
         userInfo: [],
         todos:[
-            // {
-            //     id:'mask1',
-            //     title:'新任務',
-            //     runstatus:0,
-            //     currentTime:this.workTime,
-            //     totalTime:0,
-            //     complete:false,
-            // },
+            {
+                id:'mask1',
+                title:'新任務',
+                runstatus:0,
+                currentTime:this.workTime,
+                totalTime:0,
+                complete:false,
+            },
         ],
         trelloTodos:[
         ],
@@ -141,7 +141,7 @@ var app = new Vue({
             sound.play();
         },
         setTime(){
-            console.log(MEMBER_INFO)
+            // console.log(MEMBER_INFO)
             //設定時間
             this.workmin = this.workmin?this.workmin:0;
             this.worksec = this.worksec?this.worksec:0;
@@ -211,7 +211,7 @@ var app = new Vue({
             }
             else if(this.currentTomato && this.currentTomato.runstatus == 1){  
                 this.currentTomato.runstatus = 0; //任務進行中點擊其他任務      
-                console.log('1')
+                // console.log('1')
                 clearTimeout(this.mytimer);
                 this.dashOffSet=290*Math.PI;
             }
@@ -222,28 +222,28 @@ var app = new Vue({
                     this.working = true;
                     return
                 }
-                console.log('3')
+                // console.log('3')
                 this.working = true;
                 this.currentTomato = item;
                 this.currentTomato.currentTime =  this.working? this.workTime:this.restTime;
-                console.log(this.currentTomato.currentTime)
+                // console.log(this.currentTomato.currentTime)
                 item.runstatus =1;
                 this.countDown(this.currentTomato.currentTime,this.currentTomato.totalTime)
             }
             else{
                 //暫停之後重啟      
-                console.log('2')
+                // console.log('2')
                 item.currentTime = this.timer;
                 this.currentTomato = item;
                 item.runstatus =1;
-                console.log(this.currentTomato.currentTime)
+                // console.log(this.currentTomato.currentTime)
                 this.countDown(this.currentTomato.currentTime,this.currentTomato.totalTime);
             }
         },
          countDown(count,total){
-            console.log(count)
-            console.log(total)
-            console.log(this.timer)
+            // console.log(count)
+            // console.log(total)
+            // console.log(this.timer)
            this.timer = 0;
            this.timer = count;
            this.totalTimer = total;
@@ -293,7 +293,7 @@ var app = new Vue({
             }else{
                 // console.log(item.index)
                 var index = myChart.data.labels.indexOf(item.title)
-                console.log(index)
+                // console.log(index)
                 myChart.data.labels.splice(index,1);
                 myChart.data.datasets[0].data.splice(index,1);
                 myChart.update();
