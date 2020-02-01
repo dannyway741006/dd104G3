@@ -28,14 +28,14 @@ var app = new Vue({
         working:true,
         userInfo: [],
         todos:[
-            // {
-            //     id:'mask1',
-            //     title:'新任務',
-            //     runstatus:0,
-            //     currentTime:this.workTime,
-            //     totalTime:0,
-            //     complete:false,
-            // },
+            {
+                id:'mask1',
+                title:'新任務',
+                runstatus:0,
+                currentTime:this.workTime,
+                totalTime:0,
+                complete:false,
+            },
         ],
         trelloTodos:[
         ],
