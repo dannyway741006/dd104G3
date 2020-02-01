@@ -455,16 +455,15 @@ var main_content = new Vue({
       
       if (!this.programs.length) return
       const vm = this;
-      // console.log("123")
       let pro_no='';
-      // console.log(this.history_programs)
-      if(this.history_programs.length !==0){
-          if (this.click_complete_btn == false) {
+      // if(this.history_programs.length !==0){
+        // console.log(this.history_programs)
+          if (this.click_complete_btn == false ) {
         pro_no = this.programs[index].pro_no;
-      } else {
+      } else if(this.click_complete_btn == true && this.history_programs.length !==0 ) {
         pro_no = this.history_programs[index].pro_no;
       }
-      }
+      // }
     
       // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
@@ -487,7 +486,7 @@ var main_content = new Vue({
               vm.programs[index].card_list_todo.splice(0, 1, data[0])
               vm.programs[index].card_list_doing.splice(0, 1, data[1])
               vm.programs[index].card_list_done.splice(0, 1, data[2])
-            } else {
+            } else if(vm.click_complete_btn == true && vm.history_programs.length !==0){
               vm.history_programs[index].card_list_todo.splice(0, 1, data[0])
               vm.history_programs[index].card_list_doing.splice(0, 1, data[1])
               vm.history_programs[index].card_list_done.splice(0, 1, data[2])
@@ -510,7 +509,7 @@ var main_content = new Vue({
       // console.log(vm.programs[vm.page].program_memeber)
       if (this.click_complete_btn == false) {
         pro_no = this.programs[index].pro_no;
-      } else {
+      }else if(vm.click_complete_btn == true && vm.history_programs.length !==0) {
         pro_no = this.history_programs[index].pro_no;
       }
 
@@ -531,7 +530,8 @@ var main_content = new Vue({
 
             if (vm.click_complete_btn == false) {
               vm.programs[index].program_memeber = data.data;
-            } else {
+            } else if(vm.click_complete_btn == true && vm.history_programs.length !==0)
+            {
               vm.history_programs[index].program_memeber = data.data;
             }
             // vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member = data.data;
@@ -572,7 +572,7 @@ var main_content = new Vue({
       let card_no = 0;
       if (this.click_complete_btn == false) { //現有專案畫面
         card_no = vm.programs[vm.page][this_todo_type][0].cards[index].card_no
-      } else {
+      } else if(vm.click_complete_btn == true && vm.history_programs.length !==0) {
         card_no = vm.history_programs[vm.history_page][this_todo_type][0].cards[index].card_no
       }
       // console.log(this.islogin.length)
@@ -599,7 +599,8 @@ var main_content = new Vue({
                   vm.showmember_select[mem_no_index].check = "./img/check.svg";
                 }
               }
-            } else {
+            } else if(vm.click_complete_btn == true && vm.history_programs.length !==0)
+            {
               vm.history_programs[vm.history_page][this_todo_type][0].cards[index].member_inout = data.data;
             }
           },
@@ -919,7 +920,7 @@ var main_content = new Vue({
       if (this.click_complete_btn == false) {
         // console.log(this.page);
         this.programs[this.page][this_todo_type][0].cards[index].card_member = this.programs[this.page].program_memeber;
-      } else {
+      } else if(this.click_complete_btn == true && this.history_programs.length !==0) {
         // console.log(this.history_page);
         // console.log(this.history_page);
         this.history_programs[this.history_page][this_todo_type][0].cards[index].card_member = this.history_programs[this.history_page].program_memeber;
