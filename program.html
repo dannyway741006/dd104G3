@@ -335,7 +335,7 @@
           <div id="program_main" v-if="click_complete_btn==true && history_page == index"
             v-for="(item,index) in history_programs" :key="index">
 
-            <div class="invite_list">
+            <div class="invite_list" :class="{show_invite_list : show_invite}" >
               <div class="program_member" v-for="(item,index) in history_program_member_show" v-show="index < 3"><img
                   :src="item.src" alt=""></div>
 

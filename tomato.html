@@ -206,7 +206,14 @@
                       </div>
                     </li>
                   </transition-group>
-                  <input type="text" class="addTodo" placeholder="請輸入任務" v-model="newTodo" @keyup.enter="addTodo">
+                  <!-- <input type="text" class="addTodo" placeholder="請輸入任務" v-model="newTodo" @keyup.enter="addTodo"> -->
+                  <div class="addTodo">
+                    <input type="text" class="addInput" placeholder="請輸入任務" v-model="newTodo" @keyup.enter="addTodo">
+                    <div class="addTodoBtn" @click='addTodo'>
+                      <img src="./img/edit.46ea6cd6.svg" alt="">
+                      <img src="./img/edit_on.bf09ac6f.svg" alt="">
+                    </div>
+                  </div>
               </div>
               <div class="fromTrello" id="todoCon2">
                 <div class="todoHead">
