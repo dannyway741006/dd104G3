@@ -280,12 +280,12 @@ var app = new Vue({
             return `${mini}:${second}`
         },
         editChart(item,trello){
-            this.timer = 0;
-            
             if(!item.complete){
             myChart.data.labels.push(item.title)
             myChart.data.datasets[0].data.push(item.totalTime)
             myChart.update();
+            this.timer = 0;
+            this.dashOffSet=290*Math.PI;
             if(trello){
                 fetch('./php/clock/editStatus.php',{
                     method:'POST',
