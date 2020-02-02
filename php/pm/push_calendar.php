@@ -20,8 +20,7 @@ try {
                 FROM `card` c 
                 LEFT JOIN `program` p ON c.pro_no=p.pro_no 
                 LEFT JOIN `todo_content` tc ON tc.card_no=c.card_no 
-                LEFT JOIN `member` m on (m.mem_no = :mem_no) 
-                WHERE card_date is not null AND c.card_sta=0
+                WHERE card_date is not null AND c.card_sta=0 AND mem_no=:mem_no 
                 ORDER BY c.card_date, c.pro_no";
       $res = $pdo->prepare($sql);
       $res->bindValue(':mem_no', $_SESSION["mem_no"]);
