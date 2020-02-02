@@ -136,7 +136,7 @@ var main_content = new Vue({
     test_length: '',
 
     progress_mount: [],
-    todoListTitle:'',
+    todoListTitle: '',
 
 
     //卡片背面member燈箱
@@ -158,7 +158,7 @@ var main_content = new Vue({
 
     create_color: false,
 
-    show_invite:true,
+    show_invite: true,
 
   },
 
@@ -298,14 +298,14 @@ var main_content = new Vue({
     },
     //點擊邀請出現邀請的跳窗
     show_invite_add_member_box() {
-      if(this.islogin.length!=0){
-         this.invite_add_member_box = !this.invite_add_member_box;
-      this.cards_list_card_input_box = false;
-      this.add_cards_btn_div = true;
-      }else{
+      if (this.islogin.length != 0) {
+        this.invite_add_member_box = !this.invite_add_member_box;
+        this.cards_list_card_input_box = false;
+        this.add_cards_btn_div = true;
+      } else {
         alert("請先登入")
       }
-     
+
     },
     //邀請專案成員
     invite_add_member(program) {
@@ -328,7 +328,7 @@ var main_content = new Vue({
     //      this.show_invite=false;
     //    }
     //     this.show_invite=true;
-       
+
     // },
     //推入已加入專案成員
     program_all_member() {
@@ -357,26 +357,26 @@ var main_content = new Vue({
 
     //切換現有-已完成專案
     change_watched_text() {
-   
 
-        if (this.click_complete_btn == false) { //已完成專案畫面
-          this.click_complete_btn = true;
+
+      if (this.click_complete_btn == false) { //已完成專案畫面
+        this.click_complete_btn = true;
+        this.show_cards(0, true);
+        // if (this.programs.length > 0) {
+        // }
+
+      } else { //現有專案畫面
+        this.click_complete_btn = false;
+        if (this.history_programs.length > 0) {
           this.show_cards(0, true);
-          // if (this.programs.length > 0) {
-          // }
-  
-        } else { //現有專案畫面
-          this.click_complete_btn = false;
-          if (this.history_programs.length > 0) {
-            this.show_cards(0, true);
-          }
         }
-     if(this.islogin.length !=0){
-      this.show_invite=false;
-     }else{
-      this.show_invite=true;
+      }
+      if (this.islogin.length != 0) {
+        this.show_invite = false;
+      } else {
+        this.show_invite = true;
 
-     }
+      }
 
     },
     //rwd時點選關閉漢堡---------------------------打開它
@@ -458,19 +458,19 @@ var main_content = new Vue({
     },
 
     show_cards(index, async_status) {
-      
+
       // if (!this.programs.length) return
       const vm = this;
-      let pro_no='';
+      let pro_no = '';
       // if(this.history_programs.length !==0){
-        // console.log(this.history_programs)
-      if (this.programs.length && this.click_complete_btn == false ) {
+      // console.log(this.history_programs)
+      if (this.programs.length && this.click_complete_btn == false) {
         pro_no = this.programs[index].pro_no;
-      } else if(this.click_complete_btn == true && this.history_programs.length !==0 ) {
+      } else if (this.click_complete_btn == true && this.history_programs.length !== 0) {
         pro_no = this.history_programs[index].pro_no;
       }
       // }
-    
+
       // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
         $.ajax({
@@ -492,7 +492,7 @@ var main_content = new Vue({
               vm.programs[index].card_list_todo.splice(0, 1, data[0])
               vm.programs[index].card_list_doing.splice(0, 1, data[1])
               vm.programs[index].card_list_done.splice(0, 1, data[2])
-            } else if(vm.click_complete_btn == true && vm.history_programs.length !==0){
+            } else if (vm.click_complete_btn == true && vm.history_programs.length !== 0) {
               vm.history_programs[index].card_list_todo.splice(0, 1, data[0])
               vm.history_programs[index].card_list_doing.splice(0, 1, data[1])
               vm.history_programs[index].card_list_done.splice(0, 1, data[2])
@@ -510,11 +510,11 @@ var main_content = new Vue({
     //把所有專案成員推進卡片
     mem_data(index) {
       const vm = this;
-      let pro_no='';
+      let pro_no = '';
       // console.log(vm.history_programs.length)
       if (this.programs.length && this.click_complete_btn == false) {
         pro_no = this.programs[index].pro_no;
-      }else if(vm.click_complete_btn == true && vm.history_programs.length !==0) {
+      } else if (vm.click_complete_btn == true && vm.history_programs.length !== 0) {
         pro_no = this.history_programs[index].pro_no;
       }
 
@@ -533,8 +533,7 @@ var main_content = new Vue({
             // console.log(vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member);
             if (vm.programs.length && vm.click_complete_btn == false) {
               vm.programs[index].program_memeber = data.data;
-            } else if(vm.click_complete_btn == true && vm.history_programs.length !==0)
-            {
+            } else if (vm.click_complete_btn == true && vm.history_programs.length !== 0) {
               vm.history_programs[index].program_memeber = data.data;
             }
             // vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member = data.data;
@@ -575,7 +574,7 @@ var main_content = new Vue({
       let card_no = 0;
       if (this.click_complete_btn == false) { //現有專案畫面
         card_no = vm.programs[vm.page][this_todo_type][0].cards[index].card_no
-      } else if(vm.click_complete_btn == true && vm.history_programs.length !==0) {
+      } else if (vm.click_complete_btn == true && vm.history_programs.length !== 0) {
         card_no = vm.history_programs[vm.history_page][this_todo_type][0].cards[index].card_no
       }
       // console.log(this.islogin.length)
@@ -602,8 +601,7 @@ var main_content = new Vue({
                   vm.showmember_select[mem_no_index].check = "./img/check.svg";
                 }
               }
-            } else if(vm.click_complete_btn == true && vm.history_programs.length !==0)
-            {
+            } else if (vm.click_complete_btn == true && vm.history_programs.length !== 0) {
               vm.history_programs[vm.history_page][this_todo_type][0].cards[index].member_inout = data.data;
             }
           },
@@ -923,7 +921,7 @@ var main_content = new Vue({
       if (this.click_complete_btn == false) {
         // console.log(this.page);
         this.programs[this.page][this_todo_type][0].cards[index].card_member = this.programs[this.page].program_memeber;
-      } else if(this.click_complete_btn == true && this.history_programs.length !==0) {
+      } else if (this.click_complete_btn == true && this.history_programs.length !== 0) {
         // console.log(this.history_page);
         // console.log(this.history_page);
         this.history_programs[this.history_page][this_todo_type][0].cards[index].card_member = this.history_programs[this.history_page].program_memeber;
@@ -968,65 +966,65 @@ var main_content = new Vue({
     //勾選未完成->已完成
     check_dateline() {
       const vm = this;
-      if (vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date == null) {
-        alert("請設定日期");
-      } else if (vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date != null) {
-        if (this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline == false) { //未完成框框
+      // if (vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date == null) {
+      //   alert("請設定日期");
+      // } else if (vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].calendar_date != null) {
+      if (this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline == false) { //未完成框框
 
 
-          // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no)
-          // console.log(this.islogin.length)
-          if (this.islogin.length != 0) {
-            $.ajax({
-              "type": "POST",
-              "dataType": "json",
-              "url": "./php/pm/card.php",
-              "data": {
-                "type": "check_dateline",
-                "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-                "card_sta": 1
-              },
-              "cache": false,
-              "success": function (data) {
-                // console.log(data);
+        // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no)
+        // console.log(this.islogin.length)
+        if (this.islogin.length != 0) {
+          $.ajax({
+            "type": "POST",
+            "dataType": "json",
+            "url": "./php/pm/card.php",
+            "data": {
+              "type": "check_dateline",
+              "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+              "card_sta": 1
+            },
+            "cache": false,
+            "success": function (data) {
+              // console.log(data);
 
-              },
-              "error": function (data) {
-                console.log(data);
-              }
-            });
-          }
-          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = true;
-          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '完成';
-
-        } else {
-
-          const vm = this;
-          // console.log(this.islogin.length)
-          if (this.islogin.length != 0) {
-            $.ajax({
-              "type": "POST",
-              "dataType": "json",
-              "url": "./php/pm/card.php",
-              "data": {
-                "type": "check_dateline",
-                "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
-                "card_sta": 0
-              },
-              "cache": false,
-              "success": function (data) {
-                // console.log(data);
-
-              },
-              "error": function (data) {
-                console.log(data);
-              }
-            });
-          }
-          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false;
-          this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '未完成';
+            },
+            "error": function (data) {
+              console.log(data);
+            }
+          });
         }
+        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = true;
+        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '完成';
+
+      } else {
+
+        const vm = this;
+        // console.log(this.islogin.length)
+        if (this.islogin.length != 0) {
+          $.ajax({
+            "type": "POST",
+            "dataType": "json",
+            "url": "./php/pm/card.php",
+            "data": {
+              "type": "check_dateline",
+              "card_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].card_no,
+              "card_sta": 0
+            },
+            "cache": false,
+            "success": function (data) {
+              // console.log(data);
+
+            },
+            "error": function (data) {
+              console.log(data);
+            }
+          });
+        }
+        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline = false;
+        this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '未完成';
       }
+      // }
 
     },
     //設定卡片時間
@@ -1069,8 +1067,8 @@ var main_content = new Vue({
           this.programs[this.page][this.todo_type][0].cards[this.card_no].dateline_text = '完成';
         }
       }
-    
-      
+
+
       if (this.islogin.length != 0) {
         $.ajax({
           "type": "POST",
@@ -1123,7 +1121,7 @@ var main_content = new Vue({
       //如何在新增代辦項目時產生變數todo_no
       const vm = this;
       // console.log(this.todoListTitle.length)
-      if (this.todoListTitle.length !='') {
+      if (this.todoListTitle.length != '') {
         this.programs[this.page][this.todo_type][0].cards[index].todo_list_content_detail.push({
           todo_no: '',
           title: this.todoListTitle,
@@ -1482,7 +1480,7 @@ var main_content = new Vue({
 
 
     calltomato(detailIndex, index) {
-   
+
       const vm = this;
       // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
@@ -1501,7 +1499,7 @@ var main_content = new Vue({
           "success": function (data) {
             // console.log(data);
             // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no)
-            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=true;
+            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color = true;
 
           },
           "error": function (data) {
@@ -1510,7 +1508,7 @@ var main_content = new Vue({
 
         });
         alert("已加入番茄鐘");
-      }else{
+      } else {
         alert("尚未登入");
       }
       // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index])
@@ -1520,30 +1518,30 @@ var main_content = new Vue({
     },
     droptomato(detailIndex, index) {
       const vm = this;
-       alert("已移除番茄鐘");
+      alert("已移除番茄鐘");
       // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
         $.ajax({
           "type": "POST",
-          "dataType":"json",
+          "dataType": "json",
           "url": "./php/pm/card.php",
           "data": {
             "type": "update_onload_tomato",
             "todo_cont_clock": 0,
             "todo_cont_no": vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].todo_cont_no
-            
+
           },
           "cache": false,
           "success": function (data) {
             // console.log(data);
-            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color=false;
+            vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color = false;
           },
           "error": function (data) {
             console.log(data);
           }
         });
-        
-       
+
+
       }
       // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index])
       // console.log(vm.programs[vm.page][vm.todo_type][0].cards[vm.card_no].todo_list_content_detail[detailIndex].lists[index].tomato_color)
@@ -1814,21 +1812,21 @@ var main_content = new Vue({
 
     //卡片內開關清空
     openmember() {
-      if(this.islogin.length!=0){
-         this.card_meber_switch = true;   
-         this.member_switch =! this.member_switch;
-      }else{
+      if (this.islogin.length != 0) {
+        this.card_meber_switch = true;
+        this.member_switch = !this.member_switch;
+      } else {
         alert("尚未登入")
-          this.member_switch = false;
+        this.member_switch = false;
       }
-     
+
       // this.calandar_switch = false;
       this.todo_lightbox_switch = false;
       this.file_switch = false;
       this.fileder_switch = false;
       this.todo_switch = false;
       this.add_card_meber_switch = false;
-     
+
     },
     opentodo() {
       this.card_meber_switch = false;
@@ -1849,13 +1847,13 @@ var main_content = new Vue({
       this.add_card_meber_switch = false;
     },
     openaddmember() {
-      if(this.islogin.length!=0){
+      if (this.islogin.length != 0) {
         // this.card_meber_switch = true;   
-        this.add_card_meber_switch =! this.add_card_meber_switch;
-     }else{
-       alert("尚未登入")
-         this.add_card_meber_switch = false;
-     }
+        this.add_card_meber_switch = !this.add_card_meber_switch;
+      } else {
+        alert("尚未登入")
+        this.add_card_meber_switch = false;
+      }
       this.card_meber_switch = false;
       this.calandar_switch = false;
       this.todo_lightbox_switch = false;
@@ -2005,7 +2003,7 @@ var main_content = new Vue({
       this.cards_list_card_input_box = false;
       this.card_name = "";
       this.invite_add_member_box = false;
-     
+
       this.setting_btn = false;
       this.add_cards_btn = false;
       this.calendar_btn = false;
@@ -2037,12 +2035,12 @@ var main_content = new Vue({
     });
     // 日曆部分
     this.setToday();
-    if (this.islogin.length != 0){
-    //送出資料
-    fetch('./php/pm/get_program_list.php', {
-      method: 'POST',
-      body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}`)
-    }).then(res=>res.json()).then(json=>{
+    if (this.islogin.length != 0) {
+      //送出資料
+      fetch('./php/pm/get_program_list.php', {
+        method: 'POST',
+        body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}`)
+      }).then(res => res.json()).then(json => {
         if (json.status == "success") {
           // console.log(json)
           this.programs = json.data.filter(item => item.pro_sta === "0")
