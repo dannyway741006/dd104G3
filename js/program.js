@@ -912,7 +912,7 @@ var main_content = new Vue({
 
 
     //打開卡片本人
-    open_card_func(index, this_todo_type) {
+    open_card_func(index, this_todo_type, item) {
       this.opened = !this.opened;
       if (this.click_complete_btn == false) {
         // console.log(this.page);
@@ -922,6 +922,9 @@ var main_content = new Vue({
         // console.log(this.history_page);
         this.history_programs[this.history_page][this_todo_type][0].cards[index].card_member = this.history_programs[this.history_page].program_memeber;
       }
+      item.card_member.forEach(info=>{
+        info.check = './img/unchecked_d.3b5daaa1.svg'
+      })
       this.mem_data_card_get(index, this_todo_type);
     },
 
