@@ -233,12 +233,12 @@ var main_content = new Vue({
         // console.log(this.page);
         // console.log(this.programs.length-1);
         this.page = this.programs.length - 1;
-        $(".nav_bar").animate({
-          scrollTop: $(document).height() - $(".setting_bookmark").height()
-        }, 300);
-        $("#having_program").animate({
-          scrollTop: $(document).height() - $(".setting_bookmark").height()
-        }, 300);
+        // $(".nav_bar").animate({
+        //   scrollTop: $(document).height() - $(".setting_bookmark").height()
+        // }, 300);
+        // $("#having_program").animate({
+        //   scrollTop: $(document).height() - $(".setting_bookmark").height()
+        // }, 300);
 
         // console.log(this.islogin.length)
         if (this.islogin.length != 0) {
