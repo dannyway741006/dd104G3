@@ -926,9 +926,11 @@ var main_content = new Vue({
         // console.log(this.history_page);
         this.history_programs[this.history_page][this_todo_type][0].cards[index].card_member = this.history_programs[this.history_page].program_memeber;
       }
-      item.card_member.forEach(info=>{
-        info.check = './img/unchecked_d.3b5daaa1.svg'
-      })
+      if(item){
+        item.card_member.forEach(info=>{
+          info.check = './img/unchecked_d.3b5daaa1.svg'
+        })
+      }
       this.mem_data_card_get(index, this_todo_type);
     },
 
