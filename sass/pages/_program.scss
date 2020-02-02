@@ -727,3 +727,12 @@
 
 
 }
+.mx-calendar-content .cell.active{
+  background-color: $primary !important;
+}
+.mx-time-column .mx-time-item.active {
+  color:$primary !important;
+}
+.mx-table-date .today{
+  color:$primary !important;
+}
