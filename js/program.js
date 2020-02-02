@@ -2034,45 +2034,16 @@ var main_content = new Vue({
     });
     // 日曆部分
     this.setToday();
-
-    let xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-      // console.log(xhr.responseText);
-      result = JSON.parse(xhr.responseText);
-      // console.log(result)
-      if (result.status == "success") {
-        main_content.programs = result.data.filter(item => item.pro_sta === "0")
-        main_content.history_programs = result.data.filter(item => item.pro_sta === "1")
-        if (main_content.programs.length > 0) {
-          main_content.page = 0;
-          main_content.show_cards(main_content.page, true);
-        }
-        if (main_content.history_programs.length > 0) {
-          main_content.history_page = 0;
-          main_content.show_cards(main_content.history_page, true);
-        }
-        // console.log(main_content.programs)
-
-      }
-    }
-
     if (this.islogin.length != 0){
-       xhr.open("post", './php/pm/get_program_list.php', true);
     //送出資料
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    // console.log(this);
-    let data_info = `mem_no=${this.userInfo.mem_no}`;
-
-    // xhr.send(data_info);
-    // console.log(this)
     fetch('./php/pm/get_program_list.php', {
       method: 'POST',
       body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}`)
     }).then(res=>res.json()).then(json=>{
         if (json.status == "success") {
+          console.log(json)
           this.programs = json.data.filter(item => item.pro_sta === "0")
           this.history_programs = json.data.filter(item => item.pro_sta === "1")
-          // console.log(json.data)
           if (this.programs.length > 0) {
             this.page = 0;
             this.show_cards(this.page, true);
