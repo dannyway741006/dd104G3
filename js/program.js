@@ -355,9 +355,9 @@ var main_content = new Vue({
 
         if (this.click_complete_btn == false) { //已完成專案畫面
           this.click_complete_btn = true;
-          if (this.programs.length > 0) {
-            this.show_cards(0, true);
-          }
+          this.show_cards(0, true);
+          // if (this.programs.length > 0) {
+          // }
   
         } else { //現有專案畫面
           this.click_complete_btn = false;
@@ -453,12 +453,12 @@ var main_content = new Vue({
 
     show_cards(index, async_status) {
       
-      if (!this.programs.length) return
+      // if (!this.programs.length) return
       const vm = this;
       let pro_no='';
       // if(this.history_programs.length !==0){
         // console.log(this.history_programs)
-          if (this.click_complete_btn == false ) {
+      if (this.programs.length && this.click_complete_btn == false ) {
         pro_no = this.programs[index].pro_no;
       } else if(this.click_complete_btn == true && this.history_programs.length !==0 ) {
         pro_no = this.history_programs[index].pro_no;
@@ -482,7 +482,7 @@ var main_content = new Vue({
             // console.log(vm.programs[index].card_list_todo.cards);
             // console.log(data);
             // console.log(vm.programs[index].card_list_todo)
-            if (vm.click_complete_btn == false) {
+            if (vm.programs.length && vm.click_complete_btn == false) {
               vm.programs[index].card_list_todo.splice(0, 1, data[0])
               vm.programs[index].card_list_doing.splice(0, 1, data[1])
               vm.programs[index].card_list_done.splice(0, 1, data[2])
@@ -491,7 +491,6 @@ var main_content = new Vue({
               vm.history_programs[index].card_list_doing.splice(0, 1, data[1])
               vm.history_programs[index].card_list_done.splice(0, 1, data[2])
             }
-
             vm.mem_data(index);
             vm.push_calendar_cards();
           },
@@ -505,15 +504,14 @@ var main_content = new Vue({
     //把所有專案成員推進卡片
     mem_data(index) {
       const vm = this;
-      // console.log(vm.programs[index].pro_no)
-      // console.log(vm.programs[vm.page].program_memeber)
-      if (this.click_complete_btn == false) {
+      let pro_no='';
+      // console.log(vm.history_programs.length)
+      if (this.programs.length && this.click_complete_btn == false) {
         pro_no = this.programs[index].pro_no;
       }else if(vm.click_complete_btn == true && vm.history_programs.length !==0) {
         pro_no = this.history_programs[index].pro_no;
       }
 
-      // console.log(this.islogin.length)
       if (this.islogin.length != 0) {
         $.ajax({
           "type": "POST",
@@ -527,8 +525,7 @@ var main_content = new Vue({
           "success": function (data) {
             // console.log(data);
             // console.log(vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1].card_member);
-
-            if (vm.click_complete_btn == false) {
+            if (vm.programs.length && vm.click_complete_btn == false) {
               vm.programs[index].program_memeber = data.data;
             } else if(vm.click_complete_btn == true && vm.history_programs.length !==0)
             {
@@ -550,7 +547,7 @@ var main_content = new Vue({
             // console.log(vm.programs[index].card_list_todo[0].cards[vm.programs[index].card_list_todo[0].cards.length - 1])
           },
           "error": function (data) {
-            console.log(data);
+            // console.log(data);
           }
         });
       }
@@ -2034,45 +2031,16 @@ var main_content = new Vue({
     });
     // 日曆部分
     this.setToday();
-
-    let xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-      // console.log(xhr.responseText);
-      result = JSON.parse(xhr.responseText);
-      // console.log(result)
-      if (result.status == "success") {
-        main_content.programs = result.data.filter(item => item.pro_sta === "0")
-        main_content.history_programs = result.data.filter(item => item.pro_sta === "1")
-        if (main_content.programs.length > 0) {
-          main_content.page = 0;
-          main_content.show_cards(main_content.page, true);
-        }
-        if (main_content.history_programs.length > 0) {
-          main_content.history_page = 0;
-          main_content.show_cards(main_content.history_page, true);
-        }
-        // console.log(main_content.programs)
-
-      }
-    }
-
     if (this.islogin.length != 0){
-       xhr.open("post", './php/pm/get_program_list.php', true);
     //送出資料
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    // console.log(this);
-    let data_info = `mem_no=${this.userInfo.mem_no}`;
-
-    // xhr.send(data_info);
-    // console.log(this)
     fetch('./php/pm/get_program_list.php', {
       method: 'POST',
       body: new URLSearchParams(`mem_no=${this.userInfo.mem_no}`)
     }).then(res=>res.json()).then(json=>{
         if (json.status == "success") {
+          // console.log(json)
           this.programs = json.data.filter(item => item.pro_sta === "0")
           this.history_programs = json.data.filter(item => item.pro_sta === "1")
-          // console.log(json.data)
           if (this.programs.length > 0) {
             this.page = 0;
             this.show_cards(this.page, true);

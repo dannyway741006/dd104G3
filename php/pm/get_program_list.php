@@ -4,7 +4,7 @@ try {
   // $sql = 'select * from `program` where mem_no = :mem_no';
   $sql = 'select * FROM `join_program` j JOIN `program` p 
     on (j.pro_no = p.pro_no)
-    where j.mem_no = :mem_no AND pro_mem_inv = 1';
+    where j.mem_no = :mem_no';
   $res = $pdo->prepare($sql);
   $res->bindParam(':mem_no', $_POST['mem_no']);
   $res->execute();
