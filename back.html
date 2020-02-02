@@ -663,7 +663,8 @@
       const login = document.getElementById('loginSubmit');
       const mask = document.querySelector('.login');
       let mgrInfo;
-      login.addEventListener('click', async function () {
+      login.addEventListener('click', async function (e) {
+        e.preventDefault()
         if (!acc.value || !psw.value) return
         mgrInfo = await fetch('./php/member/backLogin.php', {
             method: 'POST',
