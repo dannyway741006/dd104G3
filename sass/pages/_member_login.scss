@@ -224,7 +224,7 @@
                   border: 0;
                   padding: 3px 0 0px;
                   border: 1px solid transparent;
-                  border-bottom-color: rgb(149, 149, 149);
+                  border-bottom-color:rgba($primary, 1);
                   transition: 0.3s;
                   position: relative;
                   z-index: 4;
@@ -358,7 +358,7 @@
                   border: 0;
                   padding: 3px 0 0px;
                   border: 1px solid transparent;
-                  border-bottom-color: rgb(149, 149, 149);
+                  border-bottom-color: rgba($primary, 1);
                   transition: 0.3s;
                   position: relative;
                   z-index: 4;
