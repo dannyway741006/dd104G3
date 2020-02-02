@@ -273,6 +273,7 @@ var app = new Vue({
                 })
             }
             }
+            
         ,totalTime(timer){
             //計算累積時間
             let [mini,second] = [parseInt(timer/60).toString().padStart(2,'0'),(timer%60).toString().padStart(2,'0')];
