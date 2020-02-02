@@ -146,11 +146,14 @@
     }
     @include media(1280px){
         width: 100%;
+        min-width: 650px;
         height: 100%;
         flex-direction:column-reverse;
         align-items: flex-end;
+        overflow-x: auto;
     }
     @include media(699px){
+        min-width: auto;
         .stat{
             transform-origin: left;
             transform: scaleX(0);
