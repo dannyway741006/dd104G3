@@ -233,12 +233,12 @@ var main_content = new Vue({
         // console.log(this.page);
         // console.log(this.programs.length-1);
         this.page = this.programs.length - 1;
-        $(".nav_bar").animate({
-          scrollTop: $(document).height() - $(".setting_bookmark").height()
-        }, 300);
-        $("#having_program").animate({
-          scrollTop: $(document).height() - $(".setting_bookmark").height()
-        }, 300);
+        // $(".nav_bar").animate({
+        //   scrollTop: $(document).height() - $(".setting_bookmark").height()
+        // }, 300);
+        // $("#having_program").animate({
+        //   scrollTop: $(document).height() - $(".setting_bookmark").height()
+        // }, 300);
 
         // console.log(this.islogin.length)
         if (this.islogin.length != 0) {
@@ -926,9 +926,11 @@ var main_content = new Vue({
         // console.log(this.history_page);
         this.history_programs[this.history_page][this_todo_type][0].cards[index].card_member = this.history_programs[this.history_page].program_memeber;
       }
-      item.card_member.forEach(info=>{
-        info.check = './img/unchecked_d.3b5daaa1.svg'
-      })
+      if(item){
+        item.card_member.forEach(info=>{
+          info.check = './img/unchecked_d.3b5daaa1.svg'
+        })
+      }
       this.mem_data_card_get(index, this_todo_type);
     },
 
