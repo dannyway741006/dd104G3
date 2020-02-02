@@ -35,7 +35,10 @@ function memUpdate() {
   })
     .then(res=>res.json())
     .then(json=>{
-      if(json.status === 'success')alert(json.content)
+      if(json.status === 'success'){
+        document.getElementById('mem_id').textContent = memName.value
+        alert(json.content)
+      }
     })
     .catch(err=>console.log(err))
 }
