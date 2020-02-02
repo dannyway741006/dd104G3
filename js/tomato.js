@@ -212,6 +212,7 @@ var app = new Vue({
             else if(this.currentTomato && this.currentTomato.runstatus == 1){  
                 this.currentTomato.runstatus = 0; //任務進行中點擊其他任務      
                 // console.log('1')
+                this.timer = 0;
                 clearTimeout(this.mytimer);
                 this.dashOffSet=290*Math.PI;
             }
@@ -278,6 +279,8 @@ var app = new Vue({
             return `${mini}:${second}`
         },
         editChart(item,trello){
+            this.timer = 0;
+            
             if(!item.complete){
             myChart.data.labels.push(item.title)
             myChart.data.datasets[0].data.push(item.totalTime)
